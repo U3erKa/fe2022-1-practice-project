@@ -10,7 +10,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import Header from '../../components/Header/Header';
 
 const StartContestPage = (props) => {
-  if (props.userStore.data.role !== CONSTANTS.CUSTOMER) {
+  if (props.userStore.data?.role !== CONSTANTS.CUSTOMER) {
     props.history.replace('/');
   }
 

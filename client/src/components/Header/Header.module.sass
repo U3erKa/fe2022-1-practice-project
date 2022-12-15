@@ -177,11 +177,23 @@
             &:hover
               background: #f9fafb
 
-            span
+            span,
+            button
+              box-sizing: border-box
               display: inline-block
+              margin-left: 0
               padding: 5px 15px
               color: #333
               font-size: 16px
+              width: 100%
+
+            button
+              background: #fff
+              border: none
+              text-align: left
+
+              &:hover
+                background: inherit
 
         img
           width: 20px
@@ -220,7 +232,7 @@
         padding: 0 5px
         margin-left: 0
 
-      span
+      a
         color: #337ab7
         font-size: 14px
         margin-left: 10px
@@ -251,4 +263,3 @@
       letter-spacing: 0.3px
       color: lightyellow
       text-decoration: underline
-
