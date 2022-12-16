@@ -7,7 +7,7 @@ import {
   changeCatalogName,
 } from '../../../../store/slices/chatSlice';
 import styles from './CatalogHeader.module.sass';
-import FormInput from '../../../FormInput/FormInput';
+import FormInput from '../../../inputs/FormInput/FormInput';
 import Schems from '../../../../utils/validators/validationSchems';
 
 const CatalogListHeader = (props) => {
