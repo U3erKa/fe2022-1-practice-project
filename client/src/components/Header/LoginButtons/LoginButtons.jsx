@@ -2,8 +2,7 @@ import React from 'react';
 import CONSTANTS from '../../../constants';
 import HEADER_CONSTANTS from 'headerConstants';
 import ProfileNavBar from '../ProfileNavBar/ProfileNavBar';
-import styles from '../Header.module.sass';
-
+import styles from './LoginButtons.module.sass';
 
 export default function LoginButtons({ data, logOut }) {
   console.log(data);

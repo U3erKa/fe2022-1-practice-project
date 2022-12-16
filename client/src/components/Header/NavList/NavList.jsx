@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../Header.module.sass';
+import styles from './NavList.module.sass';
 import CONSTANTS from '../../../constants';
 
 export default function NavList({ list }) {
