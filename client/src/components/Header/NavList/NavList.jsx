@@ -10,7 +10,7 @@ export default function NavList({ list }) {
       <NavListItem list={listItem} />
     </li>
   ));
-  return <ul>{mapList}</ul>;
+  return <ul className={styles.nav}>{mapList}</ul>;
 }
 
 export function NavListItem({ list }) {
