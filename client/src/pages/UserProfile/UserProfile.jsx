@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import styles from './UserProfile.module.sass';
 import CONSTANTS from '../../constants';
 import UserInfo from '../../components/UserInfo/UserInfo';
-import PayForm from '../../components/PayForm/PayForm';
+import PayForm from '../../components/FormComponents/PayForm/PayForm';
 import { cashOut, clearPaymentStore } from '../../store/slices/paymentSlice';
 import { changeProfileViewMode } from '../../store/slices/userProfileSlice';
 import Error from '../../components/Error/Error';

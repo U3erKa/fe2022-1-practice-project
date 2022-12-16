@@ -1,9 +1,9 @@
 import React from 'react';
-import CONSTANTS from '../../constants';
-import SelectInput from '../SelectInput/SelectInput';
-import FormInput from '../FormInput/FormInput';
+import CONSTANTS from '../../../constants';
+import SelectInput from '../../InputComponents/SelectInput/SelectInput';
+import FormInput from '../../inputs/FormInput/FormInput';
 import styles from '../ContestForm/ContestForm.module.sass';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../Spinner/Spinner';
 
 const OptionalSelects = (props) => {
   if (props.isFetching) {
@@ -101,6 +101,9 @@ const OptionalSelects = (props) => {
           />
         </>
       );
+    }
+    default: {
+      break;
     }
   }
 };

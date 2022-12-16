@@ -10,8 +10,8 @@ import {
   setNewCreatorFilter,
 } from '../../store/slices/contestsSlice';
 import { getDataForContest } from '../../store/slices/dataForContestSlice';
-import ContestsContainer from '../ContestsContainer/ContestsContainer';
-import ContestBox from '../ContestBox/ContestBox';
+import ContestsContainer from '../Contest/ContestsContainer/ContestsContainer';
+import ContestBox from '../Contest/ContestBox/ContestBox';
 import styles from './CreatorDashboard.module.sass';
 import TryAgain from '../TryAgain/TryAgain';
 import CONSTANTS from '../../constants';

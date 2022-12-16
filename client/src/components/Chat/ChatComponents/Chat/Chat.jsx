@@ -16,7 +16,7 @@ import CONSTANTS from '../../../../constants';
 import CatalogListContainer from '../../CatalogComponents/CatalogListContainer/CatalogListContainer';
 import CatalogCreation from '../../CatalogComponents/CatalogCreation/CatalogCreation';
 import CatalogListHeader from '../../CatalogComponents/CatalogListHeader/CatalogListHeader';
-import ChatError from '../../../ChatError/ChatError';
+import ChatError from '../../ChatError/ChatError';
 
 class Chat extends React.Component {
   componentDidMount() {

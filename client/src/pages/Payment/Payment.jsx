@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import { pay, clearPaymentStore } from '../../store/slices/paymentSlice';
-import PayForm from '../../components/PayForm/PayForm';
+import PayForm from '../../components/FormComponents/PayForm/PayForm';
 import styles from './Payment.module.sass';
 import CONSTANTS from '../../constants';
 import Error from '../../components/Error/Error';
