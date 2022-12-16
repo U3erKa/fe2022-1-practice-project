@@ -5,7 +5,7 @@ import CONSTANTS from '../../constants';
 import HEADER_CONSTANTS from 'headerConstants';
 import { clearUserStore } from '../../store/slices/userSlice';
 import Logo from 'components/Logo';
-import ProfileNavBar from './ProfileNavBar/ProfileNavBar';
+import LoginButtons from './LoginButtons/LoginButtons';
 import NavList from './NavList/NavList';
 import styles from './Header.module.sass';
 
@@ -22,31 +22,7 @@ class Header extends React.Component {
 
   renderLoginButtons = () => {
     if (this.props.data) {
-      return (
-        <>
-          <div className={styles.userInfo}>
-            <img
-              src={
-                this.props.data.avatar === 'anon.png'
-                  ? CONSTANTS.ANONYM_IMAGE_PATH
-                  : `${CONSTANTS.publicURL}${this.props.data.avatar}`
-              }
-              alt="user"
-            />
-            <span>{`Hi, ${this.props.data.displayName}`}</span>
-            <img
-              src={`${CONSTANTS.STATIC_IMAGES_PATH}menu-down.png`}
-              alt="menu"
-            />
-            <ProfileNavBar list={HEADER_CONSTANTS.PROFILE_NAVBAR} logOut={this.logOut} />
-          </div>
-          <img
-            src={`${CONSTANTS.STATIC_IMAGES_PATH}email.png`}
-            className={styles.emailIcon}
-            alt="email"
-          />
-        </>
-      );
+      return <LoginButtons data={this.props.data} logOut={this.logOut} />;
     }
     return (
       <>
