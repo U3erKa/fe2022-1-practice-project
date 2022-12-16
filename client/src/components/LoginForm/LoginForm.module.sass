@@ -30,6 +30,7 @@
 
   .inputContainer
     display: flex
+    position: relative
     flex-direction: column
     justify-content: center
     align-self: stretch
@@ -37,6 +38,12 @@
     margin-left: 20px
 
     .fieldWarning
+      position: absolute
+      bottom: -25px
+      right: 0
+      left: 0
+      z-index: 1
+      background: #f7542c
       font-size: 15px
       display: flex
       flex-direction: row
@@ -51,7 +58,7 @@
 
     .input
       background-color: white
-      border: none
+      border: 2px solid white
       border-radius: 4px
       color: #9ca8b7
       font-size: 18px
