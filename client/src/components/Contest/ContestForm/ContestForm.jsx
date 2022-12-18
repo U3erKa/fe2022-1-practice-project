@@ -6,7 +6,7 @@ import CONSTANTS from '../../../constants';
 import { getDataForContest } from '../../../store/slices/dataForContestSlice';
 import styles from './ContestForm.module.sass';
 import Spinner from '../../Spinner/Spinner';
-import FormInput from '../../inputs/FormInput/FormInput';
+import FormInput from '../../InputComponents/FormInput/FormInput';
 import SelectInput from '../../InputComponents/SelectInput/SelectInput';
 import FieldFileInput from '../../InputComponents/FieldFileInput/FieldFileInput';
 import FormTextArea from '../../InputComponents/FormTextArea/FormTextArea';
