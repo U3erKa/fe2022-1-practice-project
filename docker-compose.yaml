@@ -18,8 +18,6 @@ services:
       dockerfile: Dockerfile-production
     environment:
       NODE_ENV: production
-    ports:
-      - "3000:3000"
     depends_on:
       - db-prod
       - mongo-prod
@@ -32,8 +30,6 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
       - POSTGRES_DB=todo-prod
-    ports:
-      - "5432:5432"
 
   mongo-prod:
     image: mongo:4.4.6-bionic
@@ -42,8 +38,6 @@ services:
       - MONGO_LOG_DIR=/dev/null
     volumes:
       - ./data/db:/data/db
-    ports:
-      - "27017:27017"
     command: mongod --smallfiles --logpath=/dev/null
 
 volumes:
