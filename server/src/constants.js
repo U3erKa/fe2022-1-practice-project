@@ -1,3 +1,4 @@
+const path = require('path');
 const {
   ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_TIME,
@@ -28,7 +29,7 @@ module.exports = {
   OFFER_STATUS_PENDING: 'pending',
   OFFER_STATUS_REJECTED: 'rejected',
   OFFER_STATUS_WON: 'won',
-  FILES_PATH: 'public/',
+  FILES_PATH: path.resolve(__dirname, '..', 'public'),
   SOCKET_CONNECTION: 'connection',
   SOCKET_SUBSCRIBE: 'subscribe',
   SOCKET_UNSUBSCRIBE: 'unsubscribe',
