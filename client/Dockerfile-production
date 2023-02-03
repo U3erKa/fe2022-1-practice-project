@@ -4,7 +4,7 @@ ARG NODE_ENV="production"
 
 RUN mkdir ./client
 
-WORKDIR ./client
+WORKDIR /client
 
 COPY package*.json ./
 

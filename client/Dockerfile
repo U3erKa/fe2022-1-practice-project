@@ -6,8 +6,6 @@ RUN mkdir -p ./client
 
 WORKDIR /client
 
-COPY package*.json ./
-
 COPY . .
 
 EXPOSE 5000
