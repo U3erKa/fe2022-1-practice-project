@@ -1,0 +1,60 @@
+.chatHeader
+  height: 50px
+  background-color: #4e618d
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  border-bottom: 1px solid #f3f3f3
+  box-sizing: border-box
+  z-index: 600
+  padding-left: 15px
+
+  .buttonContainer
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+
+  .infoContainer
+    flex: 1
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-left: 15px
+
+    div
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
+
+      &:last-child
+        margin-right: 15px
+
+      i
+        margin-right: 10px
+        font-size: 18px
+        transition: font-size 0.2s ease
+
+        &:hover
+          font-size: 22px
+          color: red
+          transition: font-size 0.2s ease
+
+      img
+        height: 44px
+        width: 44px
+        border-radius: 50%
+
+      span
+        display: inline-block
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        width: 100px
+        color: white
+        font-size: 18px
+        font-weight: 500
+        margin-left: 12px
+
+

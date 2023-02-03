@@ -1,0 +1,73 @@
+.previewChatBox
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+  height: 60px
+  cursor: pointer
+  border-bottom: 1px solid #4e618d
+
+  &:hover
+    background-color: #e5e5e5
+
+  .infoContainer
+    display: flex
+    justify-content: space-between
+    flex: 1
+    align-items: flex-start
+    padding: 0 15px
+    padding-right: 10px
+    overflow: hidden
+    padding-bottom: 5px
+
+    .buttonsContainer
+      align-self: center
+      display: flex
+      justify-content: flex-end
+      align-items: center
+
+      .time
+        margin-right: 10px
+
+      i
+        margin-right: 5px
+        font-size: 16px
+        transition: font-size 0.2s ease
+
+        &:hover
+          font-size: 20px
+          color: red
+          transition: font-size 0.2s ease
+
+    span
+      color: grey
+      font-size: 15px
+
+    .interlocutorInfo
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: space-between
+
+      .interlocutorMessage
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        color: grey
+        font-size: 15px
+        width: 65px
+
+      .interlocutorName
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        color: #6b8ab1
+        width: 65px
+        font-weight: 500
+        font-size: 16px
+
+  img
+    border-radius: 50%
+    width: 46px
+    height: 46px
+    margin-left: 10px

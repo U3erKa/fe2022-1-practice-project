@@ -1,0 +1,32 @@
+.container
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+
+  span
+    cursor: pointer
+    margin-right: 8px
+    font-size: 20px
+    font-weight: 600
+    color: #4e618d
+
+  i
+    right: -24px
+    position: absolute
+    font-size: 24px
+    cursor: pointer
+    transition: font-size 0.2s
+    color: #4e618d
+
+    &:hover
+      animation: rot 0.4s infinite linear
+      font-size: 30px
+      transition: font-size 0.2s
+
+@keyframes rot
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+

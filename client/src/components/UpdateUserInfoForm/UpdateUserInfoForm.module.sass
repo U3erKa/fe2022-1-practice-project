@@ -1,0 +1,102 @@
+.updateContainer
+  margin: 40px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+
+  button
+    align-self: flex-end
+    background-color: #4e618d
+    color: white
+    border-radius: 6px
+    padding: 5px 10px
+    font-size: 16px
+    font-weight: 500
+    border: none
+
+    &:hover
+      background-color: #f27e51
+
+  .imageUploadContainer
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+
+    .imgStyle
+      width: 120px
+      height: 120px
+      align-self: center
+
+    .uploadInputContainer
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: flex-start
+      margin-bottom: 10px
+
+      span
+        font-size: 14px
+        margin-bottom: 4px
+        color: red
+
+      input
+        display: none
+        border: none
+        border-radius: 8px
+        color: white
+        background-color: #66afe9
+
+      label
+        padding: 5px 10px
+        color: white
+        background-color: #455a89
+        border-radius: 4px
+        align-self: flex-start
+        cursor: pointer
+
+        &:hover
+          color: white
+          background-color: #f27e51
+
+  .container
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: flex-start
+
+    .label
+      margin-bottom: 2px
+      font-size: 16px
+      font-weight: 500
+      color: #585859
+
+    .inputContainer
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: flex-start
+      margin-bottom: 20px
+
+      .notValid
+        border: 1px solid red !important
+
+      .error
+        display: inline-block
+        align-self: stretch
+        margin-bottom: 5px
+        color: red
+        font-size: 14px
+
+      .input
+        outline: none
+        height: 48px
+        border: 2px solid #d0d0d0
+        padding: 0 8px
+        font-size: 17px
+        color: #555
+        border-radius: 4px
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+
+        &:focus
+          border-color: #66afe9

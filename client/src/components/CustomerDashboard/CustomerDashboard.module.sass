@@ -1,0 +1,80 @@
+.mainContainer
+  width: 1200px
+  margin: 0 auto
+  margin-top: 50px
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  @media(max-width: 1400px)
+    width: auto
+  @media(max-width: 1000px)
+    flex-direction: column
+
+  .errorContainer
+    margin: 0 auto
+    text-align: center
+    display: flex
+    flex-direction: column
+    width: 260px
+    padding: 15px
+
+    .message
+      color: red
+      font-size: 18px
+
+    .try
+      color: #333
+      font-size: 18px
+
+  .contestsContainer
+    display: flex
+    justify-content: center
+    width: 100%
+    margin-top: 15px
+
+  .filterContainer
+    min-width: 250px
+    height: 350px
+    padding-top: 30px
+    margin-right: 50px
+    display: flex
+    flex-direction: column
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1)
+    align-items: flex-start
+    background-color: white
+    margin-bottom: 15px
+    @media(max-width: 1000px)
+      padding-top: 10px
+      flex-direction: row
+      margin-right: 0
+      justify-content: center
+      height: 80px
+
+    .filter
+      margin-top: 15px
+      align-self: stretch
+      text-align: center
+      color: #46568a
+      font-size: 18px
+      border-radius: 10px
+      padding: 10px
+      @media(max-width: 1000px)
+        height: 20px
+        margin: 0 5px
+
+      &:hover
+        background-color: #eefaea
+
+    .activeFilter
+      transition: 0.5s background-color
+      margin-top: 15px
+      align-self: stretch
+      text-align: center
+      font-size: 18px
+      border-radius: 10px
+      padding: 10px
+      background-color: #4e618d
+      color: white
+      @media(max-width: 1000px)
+        height: 20px
+        margin: 0 5px

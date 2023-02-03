@@ -1,0 +1,109 @@
+.notFound
+  color: #455a89
+  font-size: 20px
+  margin-top: 40px
+  width: 100%
+  text-align: center
+
+.errorContainer
+  display: flex
+  justify-content: center
+  margin-top: 40px
+  flex-direction: column
+  align-items: center
+  color: red
+  font-size: 18px
+  width: 100%
+  text-align: center
+
+  .messageError
+    color: red
+    font-size: 20px
+
+  .try
+    color: #455a89
+    font-size: 20px
+
+.containerSpinner
+  height: 100vh
+  display: flex
+  flex: 1
+  justify-content: center
+  align-items: center
+  align-self: stretch
+
+.tryContainer
+  margin: 0 auto
+  margin-top: 60px
+  width: 250px
+
+.mainInfoContainer
+  display: flex
+  flex-direction: row
+  align-items: flex-start
+  justify-content: stretch
+  padding-top: 20px
+  width: 1200px
+  margin: 0 auto
+  margin-bottom: 50px
+  @media(max-width: 1200px)
+    width: auto
+  @media(max-width: 680px)
+    align-items: center
+    flex-direction: column
+
+  .infoContainer
+    width: 80%
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1)
+    margin-right: 40px
+    flex: 1 1
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: flex-start
+    @media(max-width: 680px)
+      width: auto
+      margin: 10px
+      align-self: stretch
+
+    .offersContainer
+      display: flex
+      flex-direction: column
+      justify-content: flex-start
+      align-items: center
+      align-self: stretch
+      border-top: 1px solid #f3f3f3
+      padding: 15px
+
+      .offers
+        width: 100%
+        margin-top: 20px
+        padding-top: 10px
+        align-self: stretch
+
+    .buttonsContainer
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      align-self: stretch
+      background-color: #f3f3f3
+
+      .btn
+        cursor: pointer
+        background-color: #6b8ab1
+        margin-right: 7px
+        padding: 11px 15px
+        border: 1px solid transparent
+        font-weight: 700
+        color: white
+        border-radius: 4px 4px 0 0
+
+        &:hover
+          background-color: rgba(176, 196, 222, 0.8)
+
+      .activeBtn
+        background-color: white
+        color: #333
+
+        &:hover
+          background-color: white

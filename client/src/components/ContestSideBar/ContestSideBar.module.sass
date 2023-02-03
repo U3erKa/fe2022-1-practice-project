@@ -1,0 +1,165 @@
+.contestSideBarInfo
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  justify-content: flex-start
+  @media(max-width: 680px)
+    align-self: stretch
+    width: auto
+    margin: 0 10px
+
+  .infoCustomerContainer
+    display: flex
+    align-self: stretch
+    flex-direction: column
+    align-items: flex-start
+    justify-content: flex-start
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1)
+
+    .customerInfo
+      padding: 15px 20px
+      display: flex
+      align-items: center
+      justify-content: flex-start
+
+      img
+        width: 40px
+        height: 40px
+        border-radius: 20px
+        margin-right: 20px
+
+      .customerNameContainer
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: flex-start
+
+        span
+          color: #337ab7
+          font-size: 14px
+          margin: 2px 0
+
+    .labelCustomerInfo
+      align-self: stretch
+      font-size: 15px
+      padding: 15px 20px
+      background-color: #f3f3f3
+      font-weight: 700
+
+  .contestInfo
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: flex-start
+    @media(max-width: 680px)
+      align-self: stretch
+
+    .contestStats
+      align-self: stretch
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1)
+      margin-bottom: 22px
+
+      .totalEntrie
+        align-self: stretch
+        padding: 15px 20px
+        background: white
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        span
+          padding: 0
+          background-color: white
+          font-weight: 600
+          color: #6b89b0
+          font-size: 14px
+
+        .totalEntriesLabel
+          background-color: white
+          padding: 0
+          font-size: 15px
+          color: #333
+          font-weight: 400
+
+      span
+        color: #000
+        font-size: 15px
+        font-weight: 700
+        align-self: stretch
+        display: inline-block
+        background-color: #f3f3f3
+        padding: 15px 20px
+
+    .awardAndTimeContainer
+      width: 100%
+      box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1)
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      margin-bottom: 22px
+
+      .guaranteedPrize
+        align-self: stretch
+        display: flex
+        align-items: center
+        margin-top: 10px
+        padding: 0 15px
+        margin-bottom: 15px
+
+        div
+          border-radius: 8px
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 16px
+          height: 16px
+          background-color: #8aca6b
+
+        span
+          font-size: 14px
+          margin-left: 5px
+          color: #333
+
+      .timeContainer
+        align-self: stretch
+        margin-top: 10px
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: flex-start
+        padding: 0 15px
+
+        .time
+          color: #455a89
+          font-size: 15px
+          margin-left: 32px
+
+        .timeDesc
+          display: flex
+          align-items: center
+
+          span
+            font-size: 14px
+            color: #333
+            margin-left: 10px
+
+    .prizeContainer
+      align-self: stretch
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      background-color: #6b89b0
+      padding: 12px 20px
+
+      span
+        color: white
+        font-size: 22px
+        font-weight: 600
+        margin-left: 10px
+

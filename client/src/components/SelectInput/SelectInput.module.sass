@@ -1,0 +1,36 @@
+.inputContainer
+  margin: 15px 0 0 0
+  display: flex
+  flex-direction: column
+  width: 100%
+
+  .selectInput
+    width: 550px
+    height: 46px
+    box-sizing: border-box
+    box-shadow: none
+    display: flex
+    align-items: center
+    font-size: 18px
+    background-color: white
+    border: 2px solid #d0d0d0
+    border-radius: 4px
+    cursor: text
+    margin-bottom: 15px
+    outline: none
+    padding: 0 10px
+    color: #555
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+    @media(max-width: 700px)
+      width: min-content
+
+    &:focus
+      border: 2px solid #28d2d0
+
+  .inputHeader
+    display: inline-block
+    font-size: 19px
+    color: #585859
+    font-weight: 700
+    margin-top: 12px
+    margin-bottom: 5px

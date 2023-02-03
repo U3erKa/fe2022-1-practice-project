@@ -1,0 +1,254 @@
+
+.headerContainer
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  width: 100%
+
+  .navContainer
+    width: 100%
+    margin: 0 auto
+    display: flex
+    justify-content: space-around
+    align-items: center
+    border-bottom: 1px solid #ebebeb
+    @media(max-width: 920px)
+      justify-content: center
+    @media(max-width: 700px)
+      justify-content: flex-start
+
+    .logo
+      align-self: flex-end
+      @media(max-width: 920px)
+        display: none
+
+    .startContestBtn
+      text-align: center
+      max-width: 340px
+      padding: 10px 22px
+      border: 2px solid #28d2d0
+      color: #28d2d0
+      border-radius: 5px
+      font-size: 14px
+      font-weight: 400
+      margin-bottom: 10px
+
+      &:hover
+        color: white
+        background-color: #28d2d0
+
+    .leftNav
+      display: flex
+      @media(max-width: 750px)
+        align-items: center
+        flex-direction: column
+
+      .nav
+        display: flex
+
+        ul
+          margin: 0
+          list-style: none
+          display: flex
+          justify-content: flex-start
+          align-items: center
+          @media(max-width: 920px)
+            padding: 0
+          @media(max-width: 700px)
+            flex-direction: column
+            align-items: flex-start
+
+          &:last-child li
+            ul
+              width: 200px
+
+          li
+            display: flex
+            align-items: center
+            justify-content: flex-start
+            margin-right: 30px
+            @media(max-width: 700px)
+              width: 100%
+              padding: 0 15px
+
+            &:hover
+              span
+                color: #f27e51
+
+              ul
+                display: block
+                position: absolute
+                border: 1px solid #eee
+                z-index: 1000
+                top: 130px
+                background-color: white
+                @media(max-width: 700px)
+                  top: auto
+                  left: 145px
+
+            ul
+              padding: 0
+              margin: 0
+              width: 160px
+              display: none
+
+              .last
+                width: 100%
+                padding-top: 8px
+                box-sizing: border-box
+                border-top: 1px solid aquamarine
+
+              li
+                box-sizing: border-box
+                width: 100%
+                padding: 10px 15px
+                display: flex
+                justify-content: flex-start
+
+                &:hover
+                  background: #f9fafb
+
+                a
+                  font-size: 12px
+                  text-decoration: none
+                  color: #333
+
+                  &:hover
+                    color: #f27e51
+
+            span
+              color: #495d8b
+              font-size: 15px
+              font-weight: 300
+              padding: 15px 0
+
+  .loginSignnUpHeaders
+    margin-top: 30px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-around
+    border: 1px solid #ebebeb
+    margin-bottom: 13px
+
+    .userButtonsContainer
+      margin-left: 100px
+      align-items: center
+      justify-content: center
+      display: flex
+      border-left: 1px solid #ebebeb
+      height: 40px
+      @media(max-width: 600px)
+        margin-left: 60px
+      @media(max-width: 400px)
+        margin-left: 20px
+      @media(max-width: 320px)
+        margin-left: 0
+
+      .emailIcon
+        padding: 0 15px
+        border-right: 1px solid #ebebeb
+
+      .userInfo
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 0 15px
+        border-right: 1px solid #ebebeb
+
+        &:hover
+          ul
+            display: block
+            position: absolute
+            top: 45px
+
+        ul
+          border: 1px solid #eee
+          z-index: 500
+          padding: 5px 0
+          list-style: none
+          background: white
+          width: 180px
+          display: none
+
+          li
+            text-align: left
+
+            &:hover
+              background: #f9fafb
+
+            span
+              display: inline-block
+              padding: 5px 15px
+              color: #333
+              font-size: 16px
+
+        img
+          width: 20px
+          height: 20px
+          border-radius: 10px
+
+        span
+          padding: 0
+          margin-left: 5px
+          color: #718888
+          font-weight: 400
+          font-size: 16px
+          border: none
+
+      span
+        padding: 0 15px
+        color: #718888
+        font-weight: 400
+        font-size: 14px
+        border-right: 1px solid #ebebeb
+
+    .numberContainer
+      text-decoration: none
+      color: inherit
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 0 15px
+      border-right: 1px solid #ebebeb
+      border-left: 1px solid #ebebeb
+      margin-left: 120px
+      height: 40px
+      @media(max-width: 600px)
+        margin-left: 10px
+      @media(max-width: 360px)
+        padding: 0 5px
+        margin-left: 0
+
+      span
+        color: #337ab7
+        font-size: 14px
+        margin-left: 10px
+        @media(max-width: 360px)
+          font-size: 12px
+
+  .fixedHeader
+    z-index: 500
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    position: fixed
+    background-color: rgb(69, 90, 137)
+    border-bottom: 3px solid rgb(255, 255, 255)
+    height: 30px
+
+    .info
+      font-size: 8pt
+      letter-spacing: 0.3px
+      color: white
+      margin-right: 4px
+      @media(max-width: 600px)
+        display: none
+
+    a
+      font-size: 8pt
+      letter-spacing: 0.3px
+      color: lightyellow
+      text-decoration: underline
+

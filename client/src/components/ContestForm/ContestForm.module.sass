@@ -1,0 +1,190 @@
+.errorContainer
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  align-items: center
+  padding: 20px
+  width: 280px
+  margin: 0 auto
+
+  .message
+    font-size: 18px
+    color: red
+
+  .try
+    font-size: 18px
+    color: #333
+
+.changeData
+  float: right
+  margin-top: 50px
+  width: 150px
+  text-align: center
+  margin-right: 15px
+  color: white
+  font-size: 20px
+  padding: 12px 28px
+  border-radius: 8px
+  background-color: #8aca6b
+
+  &:hover
+    background-color: #6b8ab1
+
+.componentInputContainer
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-start
+
+.warning
+  font-size: 18px
+  display: flex
+  justify-content: center
+  align-items: center
+  border: 2px solid #b72522
+  border-radius: 4px
+  padding: 3px 20px
+  color: #333
+
+.textArea
+  width: 550px
+  height: 250px
+  box-sizing: border-box
+  box-shadow: none
+  display: flex
+  align-items: center
+  font-size: 18px
+  background-color: white
+  border: 2px solid #d0d0d0
+  border-radius: 4px
+  cursor: text
+  margin-bottom: 15px
+  outline: none
+  padding: 10px 10px
+  color: #555
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+  @media(max-width: 700px)
+    width: auto
+
+  &:focus
+    border: 2px solid #28d2d0
+
+.input
+  width: 550px
+  height: 46px
+  box-sizing: border-box
+  box-shadow: none
+  display: flex
+  align-items: center
+  font-size: 18px
+  background-color: white
+  border: 2px solid #d0d0d0
+  border-radius: 4px
+  cursor: text
+  margin-bottom: 15px
+  outline: none
+  padding: 0 10px
+  color: #555
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+  @media(max-width: 700px)
+    width: auto
+
+  &:focus
+    border: 2px solid #28d2d0
+
+
+.formContainer
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  width: 100%
+  @media (max-width: 700px)
+    justify-content: center
+
+  .selectInputContainer
+    margin: 15px 0 0 0
+    display: flex
+    flex-direction: column
+    width: 100%
+
+    .select
+      width: 550px
+      height: 46px
+      box-sizing: border-box
+      box-shadow: none
+      display: flex
+      align-items: center
+      font-size: 18px
+      background-color: white
+      border: 2px solid #d0d0d0
+      border-radius: 4px
+      cursor: text
+      margin-bottom: 15px
+      outline: none
+      padding: 0 10px
+      color: #555
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+      @media(max-width: 700px)
+        width: min-content
+
+      &:focus
+        border: 2px solid #28d2d0
+
+    .selectHeader
+      display: inline-block
+      font-size: 19px
+      color: #585859
+      font-weight: 700
+      margin-top: 12px
+      margin-bottom: 5px
+
+.inputContainer
+  margin: 15px 0 0 0
+  width: 100%
+
+  .inputHeader
+    display: inline-block
+    font-size: 19px
+    color: #585859
+    font-weight: 700
+    margin-top: 12px
+    margin-bottom: 5px
+
+
+.fileUploadContainer
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 80px
+  box-sizing: border-box
+  width: 350px
+  margin: 10px 0 10px 0
+  padding: 10px 15px
+  background-color: #eee
+  @media(max-width: 700px)
+    width: auto
+  @media(max-width: 600px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    height: 120px
+
+  .label
+    text-align: center
+    display: inline-block
+    width: 150px
+    background-color: white
+    padding: 20px
+    font-size: 16px
+    cursor: pointer
+
+  .fileName
+    width: 100px
+    display: inline-block
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    padding: 12px
+
+  .fileInput
+    display: none

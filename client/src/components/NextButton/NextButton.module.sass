@@ -1,0 +1,26 @@
+.buttonContainer
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: #f3875d
+  height: 70px
+  border-radius: 10px
+  font-size: 26px
+  margin: 0 15px
+  color: white
+  font-weight: 700
+  width: 275px
+  min-width: 140px
+  cursor: pointer
+
+  &:hover
+    font-size: 32px
+    transition: font-size 0.1s ease-in-out
+
+  @media (max-width: 700px)
+    font-size: 22px
+    height: 60px
+    border-radius: 0
+    width: auto
+  @media(max-width: 400px)
+    margin: 0 10px
