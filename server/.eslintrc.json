@@ -1,5 +1,8 @@
 {
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
   "env": {
     "node": true,
     "browser": true,
@@ -10,10 +13,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
     "comma-spacing": [
       "error",
       {
@@ -21,24 +20,7 @@
         "after": true
       }
     ],
-    "eol-last": [
-      "error",
-      "always"
-    ],
-    "indent": [
-      "error",
-      2,
-      {
-        "MemberExpression": 1
-      }
-    ],
-    "no-multiple-empty-lines": [
-      "error"
-    ],
     "no-new-symbol": "error",
-    "no-trailing-spaces": [
-      "error"
-    ],
     "no-undef": [
       "error"
     ],
@@ -51,18 +33,6 @@
     ],
     "object-shorthand": "error",
     "prefer-const": 2,
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "space-in-parens": [
-      "error",
-      "never"
-    ],
     "strict": [
       2,
       "never"
