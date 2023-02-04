@@ -17,7 +17,11 @@ module.exports.parseBody = (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.canGetContest = async (req, res, next) => {
+module.exports.canGetContest = async (
+  /** @type {import('express').Request & {tokenData: any}} */ req,
+  res,
+  next,
+) => {
   const {
     tokenData,
     params: { contestId },
