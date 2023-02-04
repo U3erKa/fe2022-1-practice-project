@@ -28,7 +28,7 @@ export const getUser = createAsyncThunk(
         status: err?.response?.status ?? 504,
       });
     }
-  }
+  },
 );
 
 export const updateUser = createAsyncThunk(
@@ -44,21 +44,21 @@ export const updateUser = createAsyncThunk(
         status: err?.response?.status ?? 504,
       });
     }
-  }
+  },
 );
 
 const reducers = {
-  clearUserStore: state => {
+  clearUserStore: (state) => {
     state.error = null;
     state.data = null;
   },
-  clearUserError: state => {
+  clearUserError: (state) => {
     state.error = null;
   },
 };
 
-const extraReducers = builder => {
-  builder.addCase(getUser.pending, state => {
+const extraReducers = (builder) => {
+  builder.addCase(getUser.pending, (state) => {
     state.isFetching = true;
     state.error = null;
     state.data = null;

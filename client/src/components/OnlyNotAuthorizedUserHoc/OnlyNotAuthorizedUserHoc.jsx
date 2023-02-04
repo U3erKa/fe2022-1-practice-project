@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { getUser } from '../../store/slices/userSlice';
 import Spinner from '../Spinner/Spinner';
 
-const OnlyNotAuthorizedUserHoc = Component => {
+const OnlyNotAuthorizedUserHoc = (Component) => {
   class HocForLoginSignUp extends React.Component {
-    componentDidMount () {
+    componentDidMount() {
       this.props.checkAuth(this.props.history.replace);
     }
 
-    render () {
+    render() {
       if (this.props.isFetching) {
         return <Spinner />;
       }
@@ -20,10 +20,10 @@ const OnlyNotAuthorizedUserHoc = Component => {
     }
   }
 
-  const mapStateToProps = state => state.userStore;
+  const mapStateToProps = (state) => state.userStore;
 
-  const mapDispatchToProps = dispatch => ({
-    checkAuth: replace => dispatch(getUser(replace)),
+  const mapDispatchToProps = (dispatch) => ({
+    checkAuth: (replace) => dispatch(getUser(replace)),
   });
 
   return connect(mapStateToProps, mapDispatchToProps)(HocForLoginSignUp);

@@ -49,7 +49,7 @@ class ContestPage extends React.Component {
           setOfferStatus={this.setOfferStatus}
           contestType={this.props.contestByIdStore.contestData.contestType}
           date={new Date()}
-        />
+        />,
       );
     }
     return array.length !== 0 ? (
@@ -91,7 +91,7 @@ class ContestPage extends React.Component {
     const { id } = this.props.userStore.data;
     const participants = [id, interlocutorId];
     participants.sort(
-      (participant1, participant2) => participant1 - participant2
+      (participant1, participant2) => participant1 - participant2,
     );
     for (let i = 0; i < messagesPreview.length; i++) {
       if (isEqual(participants, messagesPreview[i].participants)) {

@@ -3,7 +3,7 @@ import { Field } from 'formik';
 
 const AgreeTermOfServiceInput = ({ id, type, classes, label, ...rest }) => (
   <Field {...rest}>
-    {props => {
+    {(props) => {
       const {
         meta: { touched, error },
         field,
@@ -15,7 +15,7 @@ const AgreeTermOfServiceInput = ({ id, type, classes, label, ...rest }) => (
             <input {...field} placeholder={label} id={id} type={type} />
             <label htmlFor={id}>
               By clicking this checkbox, you agree to our{' '}
-              <a href='https://www.google.com' target='_blank' rel='noreferrer'>
+              <a href="https://www.google.com" target="_blank" rel="noreferrer">
                 Terms of Service.
               </a>
             </label>

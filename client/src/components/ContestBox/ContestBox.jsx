@@ -3,7 +3,7 @@ import moment from 'moment';
 import styles from './ContestBox.module.sass';
 import CONSTANTS from '../../constants';
 
-const ContestBox = props => {
+const ContestBox = (props) => {
   const getTimeStr = () => {
     const diff = moment.duration(moment().diff(moment(props.data.createdAt)));
     let str = '';
@@ -20,7 +20,7 @@ const ContestBox = props => {
     return data.typeOfTagline;
   };
 
-  const ucFirstLetter = string =>
+  const ucFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
 
   const { id, title, contestType, prize, count, goToExtended } = props.data;
@@ -36,7 +36,7 @@ const ContestBox = props => {
         </div>
         <div className={styles.contestType}>
           <span>{`${ucFirstLetter(
-            contestType
+            contestType,
           )} / ${getPreferenceContest()}`}</span>
         </div>
         <div className={styles.contestType}>
@@ -50,7 +50,7 @@ const ContestBox = props => {
             <div>
               <img
                 src={`${CONSTANTS.STATIC_IMAGES_PATH}smallCheck.png`}
-                alt='check'
+                alt="check"
               />
             </div>
             <span>Guaranteed prize</span>
@@ -58,7 +58,7 @@ const ContestBox = props => {
           <div className={styles.prize}>
             <img
               src={`${CONSTANTS.STATIC_IMAGES_PATH}diamond.png`}
-              alt='diamond'
+              alt="diamond"
             />
             <span>{`$${prize}`}</span>
           </div>
@@ -69,7 +69,7 @@ const ContestBox = props => {
           <div className={styles.entriesCounter}>
             <img
               src={`${CONSTANTS.STATIC_IMAGES_PATH}entrieImage.png`}
-              alt='logo'
+              alt="logo"
             />
             <span>{count}</span>
           </div>

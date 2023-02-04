@@ -8,7 +8,7 @@ import {
 import _ from 'lodash';
 
 class ChatSocket extends WebSocket {
-  constructor (dispatch, getState, room) {
+  constructor(dispatch, getState, room) {
     super(dispatch, getState, room);
   }
 
@@ -18,22 +18,22 @@ class ChatSocket extends WebSocket {
   };
 
   onChangeBlockStatus = () => {
-    this.socket.on(CONTANTS.CHANGE_BLOCK_STATUS, data => {
+    this.socket.on(CONTANTS.CHANGE_BLOCK_STATUS, (data) => {
       this.dispatch(changeBlockStatusInStore(data.message));
     });
   };
 
   onNewMessage = () => {
-    this.socket.on('newMessage', data => {
+    this.socket.on('newMessage', (data) => {
       this.dispatch(addMessage(data.message));
     });
   };
 
-  subscribeChat = id => {
+  subscribeChat = (id) => {
     this.socket.emit('subscribeChat', id);
   };
 
-  unsubscribeChat = id => {
+  unsubscribeChat = (id) => {
     this.socket.emit('unsubscribeChat', id);
   };
 }

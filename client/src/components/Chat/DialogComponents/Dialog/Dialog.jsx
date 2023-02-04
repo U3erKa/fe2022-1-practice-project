@@ -44,7 +44,7 @@ class Dialog extends React.Component {
         messagesArray.push(
           <div key={message.createdAt} className={styles.date}>
             {moment(message.createdAt).format('MMMM DD, YYYY')}
-          </div>
+          </div>,
         );
         currentTime = moment(message.createdAt);
       }
@@ -52,7 +52,7 @@ class Dialog extends React.Component {
         <div
           key={i}
           className={className(
-            userId === message.sender ? styles.ownMessage : styles.message
+            userId === message.sender ? styles.ownMessage : styles.message,
           )}
         >
           <span>{message.body}</span>
@@ -60,7 +60,7 @@ class Dialog extends React.Component {
             {moment(message.createdAt).format('HH:mm')}
           </span>
           <div ref={this.messagesEnd} />
-        </div>
+        </div>,
       );
     });
     return <div className={styles.messageList}>{messagesArray}</div>;

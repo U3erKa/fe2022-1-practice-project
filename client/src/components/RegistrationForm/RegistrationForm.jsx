@@ -11,11 +11,11 @@ import CONSTANTS from '../../constants';
 import Schems from '../../utils/validators/validationSchems';
 
 class RegistrationForm extends React.Component {
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.props.authClear();
   }
 
-  clicked = values => {
+  clicked = (values) => {
     this.props.register({
       data: {
         firstName: values.firstName,
@@ -29,7 +29,7 @@ class RegistrationForm extends React.Component {
     });
   };
 
-  render () {
+  render() {
     const { submitting, auth, authClear } = this.props;
     const { error } = auth;
     const formInputClasses = {
@@ -69,79 +69,79 @@ class RegistrationForm extends React.Component {
           <Form>
             <div className={styles.row}>
               <FormInput
-                name='firstName'
+                name="firstName"
                 classes={formInputClasses}
-                type='text'
-                label='First name'
+                type="text"
+                label="First name"
               />
               <FormInput
-                name='lastName'
+                name="lastName"
                 classes={formInputClasses}
-                type='text'
-                label='Last name'
-              />
-            </div>
-            <div className={styles.row}>
-              <FormInput
-                name='displayName'
-                classes={formInputClasses}
-                type='text'
-                label='Display Name'
-              />
-              <FormInput
-                name='email'
-                classes={formInputClasses}
-                type='text'
-                label='Email Address'
+                type="text"
+                label="Last name"
               />
             </div>
             <div className={styles.row}>
               <FormInput
-                name='password'
+                name="displayName"
                 classes={formInputClasses}
-                type='password'
-                label='Password'
+                type="text"
+                label="Display Name"
               />
               <FormInput
-                name='confirmPassword'
+                name="email"
                 classes={formInputClasses}
-                type='password'
-                label='Password confirmation'
+                type="text"
+                label="Email Address"
+              />
+            </div>
+            <div className={styles.row}>
+              <FormInput
+                name="password"
+                classes={formInputClasses}
+                type="password"
+                label="Password"
+              />
+              <FormInput
+                name="confirmPassword"
+                classes={formInputClasses}
+                type="password"
+                label="Password confirmation"
               />
             </div>
             <div className={styles.choseRoleContainer}>
               <Field
-                name='role'
-                type='radio'
+                name="role"
+                type="radio"
                 value={CONSTANTS.CUSTOMER}
-                strRole='Join As a Buyer'
-                infoRole='I am looking for a Name, Logo or Tagline for my business, brand or product.'
+                strRole="Join As a Buyer"
+                infoRole="I am looking for a Name, Logo or Tagline for my business, brand or product."
                 component={RoleInput}
                 id={CONSTANTS.CUSTOMER}
               />
               <Field
-                name='role'
-                type='radio'
+                name="role"
+                type="radio"
                 value={CONSTANTS.CREATOR}
-                strRole='Join As a Creative'
-                infoRole='I plan to submit name ideas, Logo designs or sell names in Domain Marketplace.'
+                strRole="Join As a Creative"
+                infoRole="I plan to submit name ideas, Logo designs or sell names in Domain Marketplace."
                 component={RoleInput}
                 id={CONSTANTS.CREATOR}
               />
             </div>
             <div className={styles.termsOfService}>
               <AgreeTermOfServiceInput
-                name='agreeOfTerms'
+                name="agreeOfTerms"
                 classes={{
                   container: styles.termsOfService,
                   warning: styles.fieldWarning,
                 }}
-                id='termsOfService'
-                type='checkbox'
+                id="termsOfService"
+                type="checkbox"
               />
             </div>
             <button
-              type='submit'
+              type="submit"
               disabled={submitting}
               className={styles.submitContainer}
             >
@@ -154,17 +154,17 @@ class RegistrationForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
   initialValues: {
     role: CONSTANTS.CUSTOMER,
   },
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   register: ({ data, history }) =>
     dispatch(
-      checkAuth({ data, history, authMode: CONSTANTS.AUTH_MODE.REGISTER })
+      checkAuth({ data, history, authMode: CONSTANTS.AUTH_MODE.REGISTER }),
     ),
   authClear: () => dispatch(clearAuth()),
 });

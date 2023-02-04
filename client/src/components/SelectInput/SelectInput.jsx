@@ -56,7 +56,7 @@ const SelectInputWrapper = ({
   ...rest
 }) => (
   <Field {...rest}>
-    {fieldProps => (
+    {(fieldProps) => (
       <>
         <SelectInput
           {...fieldProps}
@@ -67,7 +67,7 @@ const SelectInputWrapper = ({
         />
         <ErrorMessage
           name={fieldProps.field.name}
-          component='span'
+          component="span"
           className={classes.warning}
         />
       </>
