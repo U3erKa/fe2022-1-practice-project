@@ -50,7 +50,11 @@ module.exports.dataForContest = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getContestById = async (req, res, next) => {
+module.exports.getContestById = async (
+  /** @type {import('express').Request & {tokenData: any}} */ req,
+  res,
+  next,
+) => {
   const {
     tokenData,
     params: { contestId },
@@ -115,7 +119,11 @@ module.exports.downloadFile = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.updateContest = async (req, res, next) => {
+module.exports.updateContest = async (
+  /** @type {import('express').Request & {tokenData: any}} */ req,
+  res,
+  next,
+) => {
   const {
     tokenData,
     file,
@@ -275,7 +283,11 @@ module.exports.setOfferStatus = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getContests = async (req, res, next) => {
+module.exports.getContests = async (
+  /** @type {import('express').Request & {tokenData: any}} */ req,
+  res,
+  next,
+) => {
   const {
     tokenData,
     headers: { status },
