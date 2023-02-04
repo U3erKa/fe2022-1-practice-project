@@ -24,17 +24,13 @@ router.post(
   userController.payment,
 );
 
-router.post('/getCustomersContests', contestController.getCustomersContests);
-
 router.get(
   '/getContestById',
   basicMiddlewares.canGetContest,
   contestController.getContestById,
 );
 
-router
-  .route('/contests')
-  .get(basicMiddlewares.onlyForCreative, contestController.getContests);
+router.route('/contests').get(contestController.getContests);
 
 router.get('/downloadFile/:fileName', contestController.downloadFile);
 
