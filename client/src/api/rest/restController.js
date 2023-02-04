@@ -4,7 +4,6 @@ import queryString from 'query-string';
 export const registerRequest = (data) => http.post('registration', data);
 export const loginRequest = (data) => http.post('login', data);
 export const getUser = () => http.post('getUser');
-export const updateContest = (data) => http.post('updateContest', data);
 export const setNewOffer = (data) => http.post('setNewOffer', data);
 export const setOfferStatus = (data) => http.post('setOfferStatus', data);
 export const downloadContestFile = (data) =>
@@ -27,6 +26,7 @@ export const deleteCatalog = (data) => http.post('deleteCatalog', data);
 export const removeChatFromCatalog = (data) =>
   http.post('removeChatFromCatalog', data);
 export const changeCatalogName = (data) => http.post('updateNameCatalog', data);
+
 export const getCustomersContests = (data) =>
   http.get(
     `contests?${queryString.stringify({
@@ -62,3 +62,7 @@ export const getActiveContests = ({
   );
 
 export const getContestById = (data) => http.get(`contests/${data.contestId}`);
+export const updateContest = (/** @type {FormData} */ data) => {
+  console.log(data);
+  return http.put(`contests/${data.get('contestId')}`, data);
+};

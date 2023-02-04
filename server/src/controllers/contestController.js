@@ -104,17 +104,23 @@ module.exports.downloadFile = async (req, res, next) => {
   res.download(file);
 };
 
+/** @type {import('express').RequestHandler} */
 module.exports.updateContest = async (req, res, next) => {
-  if (req.file) {
-    req.body.fileName = req.file.filename;
-    req.body.originalFileName = req.file.originalname;
+  const {
+    tokenData,
+    file,
+    body,
+    params: { contestId },
+  } = req;
+
+  if (file) {
+    body.fileName = file.filename;
+    body.originalFileName = file.originalname;
   }
-  const contestId = req.body.contestId;
-  delete req.body.contestId;
   try {
-    const updatedContest = await contestQueries.updateContest(req.body, {
+    const updatedContest = await contestQueries.updateContest(body, {
       id: contestId,
-      userId: req.tokenData.userId,
+      userId: tokenData.userId,
     });
     res.send(updatedContest);
   } catch (e) {
