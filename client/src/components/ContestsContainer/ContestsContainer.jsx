@@ -4,11 +4,11 @@ import styles from './ContestContainer.module.sass';
 import Spinner from '../Spinner/Spinner';
 
 class ContestsContainer extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     window.addEventListener('scroll', this.scrollHandler);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.scrollHandler);
   }
 
@@ -23,7 +23,7 @@ class ContestsContainer extends React.Component {
     }
   };
 
-  render () {
+  render() {
     const { isFetching } = this.props;
     if (!isFetching && this.props.children.length === 0) {
       return <div className={styles.notFound}>Nothing not found</div>;

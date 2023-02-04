@@ -37,8 +37,8 @@ class CreatorDashboard extends React.Component {
         array.push(
           <option key={i - 1} value={el}>
             {el}
-          </option>
-        )
+          </option>,
+        ),
     );
     return (
       <select
@@ -63,15 +63,16 @@ class CreatorDashboard extends React.Component {
     array.push(
       <option key={0} value={null}>
         Choose industry
-      </option>
+      </option>,
     );
-    industry && industry.forEach((industry, i) =>
-      array.push(
-        <option key={i + 1} value={industry}>
-          {industry}
-        </option>
-      )
-    );
+    industry &&
+      industry.forEach((industry, i) =>
+        array.push(
+          <option key={i + 1} value={industry}>
+            {industry}
+          </option>,
+        ),
+      );
     return (
       <select
         onChange={({ target }) =>
@@ -178,7 +179,7 @@ class CreatorDashboard extends React.Component {
           data={contests[i]}
           key={contests[i].id}
           goToExtended={this.goToExtended}
-        />
+        />,
       );
     }
     return array;
@@ -294,5 +295,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CreatorDashboard)
+  connect(mapStateToProps, mapDispatchToProps)(CreatorDashboard),
 );

@@ -1,7 +1,7 @@
 const ApplicationError = require('./ApplicationError');
 
-class BadRequestError extends ApplicationError{
-  constructor (message) {
+class BadRequestError extends ApplicationError {
+  constructor(message) {
     super(message || 'bad request', 400);
   }
 }

@@ -28,7 +28,7 @@ const CatalogList = (props) => {
           key={catalog._id}
           deleteCatalog={deleteCatalog}
           goToCatalog={goToCatalog}
-        />
+        />,
       );
     });
     return elementList.length ? (

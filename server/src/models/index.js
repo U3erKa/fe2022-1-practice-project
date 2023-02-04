@@ -10,7 +10,7 @@ const configPath =
         '..',
         '..',
         '..',
-        'src/server/config/postgresConfig.json'
+        'src/server/config/postgresConfig.json',
       )
     : path.join(__dirname, '..', '/config/postgresConfig.json');
 const config = require(configPath)[env];
@@ -20,7 +20,7 @@ const sequelize = new Sequelize(
   config.database,
   config.username,
   config.password,
-  config
+  config,
 );
 
 fs.readdirSync(__dirname)
@@ -32,7 +32,7 @@ fs.readdirSync(__dirname)
   .forEach((file) => {
     const model = require(path.join(__dirname, file))(
       sequelize,
-      Sequelize.DataTypes
+      Sequelize.DataTypes,
     );
     db[model.name] = model;
   });

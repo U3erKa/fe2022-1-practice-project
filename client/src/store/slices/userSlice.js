@@ -30,7 +30,7 @@ export const refresh = createAsyncThunk(
         status: err?.response?.status ?? 504,
       });
     }
-  }
+  },
 );
 
 export const updateUser = createAsyncThunk(
@@ -46,7 +46,7 @@ export const updateUser = createAsyncThunk(
         status: err?.response?.status ?? 504,
       });
     }
-  }
+  },
 );
 
 const reducers = {
@@ -70,7 +70,7 @@ const extraReducers = (builder) => {
     state.isFetching = false;
   });
   builder.addCase(checkAuth.rejected, rejectedReducer);
-  
+
   builder.addCase(refresh.pending, (state) => {
     state.isFetching = true;
     state.error = null;
@@ -82,7 +82,6 @@ const extraReducers = (builder) => {
   });
 
   builder.addCase(refresh.rejected, rejectedReducer);
-
 
   builder.addCase(updateUser.fulfilled, (state, { payload }) => {
     state.data = { ...state.data, ...payload };

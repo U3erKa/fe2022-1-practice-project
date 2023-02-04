@@ -22,7 +22,7 @@ module.exports.dataForContest = async (req, res, next) => {
     } = req;
     console.log(req.body, characteristic1, characteristic2);
     const types = [characteristic1, characteristic2, 'industry'].filter(
-      Boolean
+      Boolean,
     );
 
     const characteristics = await Select.findAll({
@@ -96,7 +96,7 @@ module.exports.getContestById = async (req, res, next) => {
     });
     res.send(contestInfo);
   } catch (e) {
-    console.log(e)
+    console.log(e);
     next(new ServerError(JSON.stringify(e)));
   }
 };
@@ -151,14 +151,14 @@ module.exports.setNewOffer = async (req, res, next) => {
 const rejectOffer = async (offerId, creatorId, contestId) => {
   const rejectedOffer = await contestQueries.updateOffer(
     { status: CONSTANTS.OFFER_STATUS_REJECTED },
-    { id: offerId }
+    { id: offerId },
   );
   controller
     .getNotificationController()
     .emitChangeOfferStatus(
       creatorId,
       'Someone of yours offers was rejected',
-      contestId
+      contestId,
     );
   return rejectedOffer;
 };
@@ -169,7 +169,7 @@ const resolveOffer = async (
   orderId,
   offerId,
   priority,
-  transaction
+  transaction,
 ) => {
   const finishedContest = await contestQueries.updateContestStatus(
     {
@@ -185,12 +185,12 @@ const resolveOffer = async (
     `),
     },
     { orderId },
-    transaction
+    transaction,
   );
   await userQueries.updateUser(
     { balance: sequelize.literal('balance + ' + finishedContest.prize) },
     creatorId,
-    transaction
+    transaction,
   );
   const updatedOffers = await contestQueries.updateOfferStatus(
     {
@@ -203,7 +203,7 @@ const resolveOffer = async (
     {
       contestId,
     },
-    transaction
+    transaction,
   );
   transaction.commit();
   const arrayRoomsId = [];
@@ -220,7 +220,7 @@ const resolveOffer = async (
     .emitChangeOfferStatus(
       arrayRoomsId,
       'Someone of yours offers was rejected',
-      contestId
+      contestId,
     );
   controller
     .getNotificationController()
@@ -235,7 +235,7 @@ module.exports.setOfferStatus = async (req, res, next) => {
       const offer = await rejectOffer(
         req.body.offerId,
         req.body.creatorId,
-        req.body.contestId
+        req.body.contestId,
       );
       res.send(offer);
     } catch (err) {
@@ -250,7 +250,7 @@ module.exports.setOfferStatus = async (req, res, next) => {
         req.body.orderId,
         req.body.offerId,
         req.body.priority,
-        transaction
+        transaction,
       );
       res.send(winningOffer);
     } catch (err) {
@@ -277,7 +277,7 @@ module.exports.getCustomersContests = (req, res, next) => {
     .then((contests) => {
       contests.forEach(
         (contest) =>
-          (contest.dataValues.count = contest.dataValues.Offers.length)
+          (contest.dataValues.count = contest.dataValues.Offers.length),
       );
       let haveMore = true;
       if (contests.length === 0) {
@@ -293,7 +293,7 @@ module.exports.getContests = (req, res, next) => {
     req.body.typeIndex,
     req.body.contestId,
     req.body.industry,
-    req.body.awardSort
+    req.body.awardSort,
   );
   Contest.findAll({
     where: predicates.where,
@@ -312,7 +312,7 @@ module.exports.getContests = (req, res, next) => {
     .then((contests) => {
       contests.forEach(
         (contest) =>
-          (contest.dataValues.count = contest.dataValues.Offers.length)
+          (contest.dataValues.count = contest.dataValues.Offers.length),
       );
       let haveMore = true;
       if (contests.length === 0) {

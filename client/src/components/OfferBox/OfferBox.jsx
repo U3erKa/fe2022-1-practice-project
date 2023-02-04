@@ -21,7 +21,7 @@ const OfferBox = (props) => {
     const { messagesPreview, id } = props;
     const participants = [id, props.data.User.id];
     participants.sort(
-      (participant1, participant2) => participant1 - participant2
+      (participant1, participant2) => participant1 - participant2,
     );
     for (let i = 0; i < messagesPreview.length; i++) {
       if (isEqual(participants, messagesPreview[i].participants)) {
@@ -234,5 +234,5 @@ const mapStateToProps = (state) => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(OfferBox)
+  connect(mapStateToProps, mapDispatchToProps)(OfferBox),
 );

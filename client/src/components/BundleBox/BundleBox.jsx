@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './BundleBox.module.sass';
 import CONSTANTS from '../../constants';
 
-const BundleBox = props => {
+const BundleBox = (props) => {
   const defaultPathToImages = `${CONSTANTS.STATIC_IMAGES_PATH}contestLabels/`;
 
   const renderImage = () => {
@@ -14,7 +14,7 @@ const BundleBox = props => {
           key={i}
           className={styles.imgContainer}
           alt={props.path[i].replace(/.png/g, 'Contest')}
-        />
+        />,
       );
     }
     return array;

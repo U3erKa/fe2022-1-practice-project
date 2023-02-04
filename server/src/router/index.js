@@ -21,7 +21,7 @@ router.post(
   upload.uploadContestFiles,
   basicMiddlewares.parseBody,
   validators.validateContestCreation,
-  userController.payment
+  userController.payment,
 );
 
 router.post('/getCustomersContests', contestController.getCustomersContests);
@@ -29,13 +29,13 @@ router.post('/getCustomersContests', contestController.getCustomersContests);
 router.get(
   '/getContestById',
   basicMiddlewares.canGetContest,
-  contestController.getContestById
+  contestController.getContestById,
 );
 
 router.post(
   '/getAllContests',
   basicMiddlewares.onlyForCreative,
-  contestController.getContests
+  contestController.getContests,
 );
 
 router.get('/downloadFile/:fileName', contestController.downloadFile);
@@ -43,26 +43,26 @@ router.get('/downloadFile/:fileName', contestController.downloadFile);
 router.post(
   '/updateContest',
   upload.updateContestFile,
-  contestController.updateContest
+  contestController.updateContest,
 );
 
 router.post(
   '/setNewOffer',
   upload.uploadLogoFiles,
   basicMiddlewares.canSendOffer,
-  contestController.setNewOffer
+  contestController.setNewOffer,
 );
 
 router.post(
   '/setOfferStatus',
   basicMiddlewares.onlyForCustomerWhoCreateContest,
-  contestController.setOfferStatus
+  contestController.setOfferStatus,
 );
 
 router.post(
   '/changeMark',
   basicMiddlewares.onlyForCustomer,
-  userController.changeMark
+  userController.changeMark,
 );
 
 router.post('/updateUser', upload.uploadAvatar, userController.updateUser);
@@ -70,7 +70,7 @@ router.post('/updateUser', upload.uploadAvatar, userController.updateUser);
 router.post(
   '/cashout',
   basicMiddlewares.onlyForCreative,
-  userController.cashout
+  userController.cashout,
 );
 
 router.post('/newMessage', chatController.addMessage);

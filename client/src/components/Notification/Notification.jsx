@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styles from './Notification.module.sass';
 
-const Notification = props => (
+const Notification = (props) => (
   <div>
     <br />
     <span>{props.message}</span>
