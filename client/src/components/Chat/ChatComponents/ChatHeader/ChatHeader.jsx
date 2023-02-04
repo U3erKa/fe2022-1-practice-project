@@ -64,7 +64,7 @@ const ChatHeader = (props) => {
                     participants: chatData.participants,
                     favoriteFlag: !isFavorite(chatData, userId),
                   },
-                  event
+                  event,
                 )
               }
               className={classNames({
@@ -79,7 +79,7 @@ const ChatHeader = (props) => {
                     participants: chatData.participants,
                     blackListFlag: !isBlocked(chatData, userId),
                   },
-                  event
+                  event,
                 )
               }
               className={classNames({

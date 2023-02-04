@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     async comparePassword(password) {
       return bcrypt.compare(password, this.password);
     }
-    static associate({ Offer, Contest, Rating,RefreshToken }) {
+    static associate({ Offer, Contest, Rating, RefreshToken }) {
       // define association here
       User.hasMany(Offer, {
         foreignKey: 'userId',
@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'User',
       timestamps: false,
-    }
+    },
   );
 
   User.beforeCreate(hashPassword);

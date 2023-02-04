@@ -27,7 +27,7 @@ const reducers = {
   clearContestUpdationStore: () => initialState,
 };
 
-const extraReducers = builder => {
+const extraReducers = (builder) => {
   builder.addCase(updateContest.pending, pendingReducer);
   builder.addCase(updateContest.fulfilled, fulfilledReducer);
   builder.addCase(updateContest.rejected, rejectedReducer);

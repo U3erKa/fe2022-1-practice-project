@@ -1,19 +1,12 @@
 const jwt = require('jsonwebtoken');
 const CONSTANTS = require('../constants');
-const {
-  sequelize,
-  Sequelize,
-  Rating,
-  Offer,
-  Contest,
-} = require('../models');
+const { sequelize, Sequelize, Rating, Offer, Contest } = require('../models');
 const moment = require('moment');
 const { v4: uuid } = require('uuid');
 const controller = require('../socketInit');
 const userQueries = require('./queries/userQueries');
 const bankQueries = require('./queries/bankQueries');
 const ratingQueries = require('./queries/ratingQueries');
-
 
 function getQuery(offerId, userId, mark, isFirst, transaction) {
   const getCreateQuery = () =>
@@ -23,7 +16,7 @@ function getQuery(offerId, userId, mark, isFirst, transaction) {
         mark,
         userId,
       },
-      transaction
+      transaction,
     );
   const getUpdateQuery = () =>
     ratingQueries.updateRating({ mark }, { offerId, userId }, transaction);
@@ -77,7 +70,7 @@ module.exports.payment = async (req, res, next) => {
                 CASE
             WHEN "cardNumber"='${req.body.number.replace(
               / /g,
-              ''
+              '',
             )}' AND "cvc"='${req.body.cvc}' AND "expiry"='${req.body.expiry}'
                 THEN "balance"-${req.body.price}
             WHEN "cardNumber"='${CONSTANTS.SQUADHELP_BANK_NUMBER}' AND "cvc"='${
@@ -94,7 +87,7 @@ module.exports.payment = async (req, res, next) => {
           ],
         },
       },
-      transaction
+      transaction,
     );
     const orderId = uuid();
     req.body.contests.forEach((contest, index) => {
@@ -127,7 +120,7 @@ module.exports.updateUser = async (req, res, next) => {
     }
     const updatedUser = await userQueries.updateUser(
       req.body,
-      req.tokenData.userId
+      req.tokenData.userId,
     );
     res.send({
       firstName: updatedUser.firstName,
@@ -151,14 +144,14 @@ module.exports.cashout = async (req, res, next) => {
     const updatedUser = await userQueries.updateUser(
       { balance: sequelize.literal('balance - ' + req.body.sum) },
       req.tokenData.userId,
-      transaction
+      transaction,
     );
     await bankQueries.updateBankBalance(
       {
         balance: sequelize.literal(`CASE 
                 WHEN "cardNumber"='${req.body.number.replace(
                   / /g,
-                  ''
+                  '',
                 )}' AND "expiry"='${req.body.expiry}' AND "cvc"='${
           req.body.cvc
         }'
@@ -180,7 +173,7 @@ module.exports.cashout = async (req, res, next) => {
           ],
         },
       },
-      transaction
+      transaction,
     );
     transaction.commit();
     res.send({ balance: updatedUser.balance });

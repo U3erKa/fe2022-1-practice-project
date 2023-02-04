@@ -7,9 +7,8 @@ authRouter.post('/login', validators.validateLogin, AuthController.login);
 authRouter.post(
   '/registration',
   validators.validateRegistrationData,
-  AuthController.registration
+  AuthController.registration,
 );
 authRouter.post('/refresh', checkRefreshToken, AuthController.refresh);
-
 
 module.exports = authRouter;

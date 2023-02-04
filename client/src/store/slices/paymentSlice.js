@@ -43,7 +43,7 @@ const reducers = {
   clearPaymentStore: () => initialState,
 };
 
-const extraReducers = builder => {
+const extraReducers = (builder) => {
   builder.addCase(pay.pending, pendingReducer);
   builder.addCase(pay.fulfilled, () => initialState);
   builder.addCase(pay.rejected, rejectedReducer);

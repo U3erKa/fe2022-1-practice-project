@@ -14,7 +14,7 @@ httpClient.interceptors.request.use(
     }
     return config;
   },
-  (err) => Promise.reject(err)
+  (err) => Promise.reject(err),
 );
 
 httpClient.interceptors.response.use(
@@ -48,7 +48,7 @@ httpClient.interceptors.response.use(
       return axios.request(err.config);
     }
     return Promise.reject(err);
-  }
+  },
 );
 
 export default httpClient;

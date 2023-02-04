@@ -1,7 +1,7 @@
 const ApplicationError = require('./ApplicationError');
 
-class TokenExpirationError extends ApplicationError{
-  constructor (message) {
+class TokenExpirationError extends ApplicationError {
+  constructor(message) {
     super(message || 'token expired', 419);
   }
 }

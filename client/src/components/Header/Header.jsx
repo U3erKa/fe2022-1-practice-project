@@ -5,7 +5,6 @@ import styles from './Header.module.sass';
 import CONSTANTS from '../../constants';
 import { clearUserStore } from '../../store/slices/userSlice';
 class Header extends React.Component {
-
   logOut = () => {
     localStorage.clear();
     this.props.clearUserStore();

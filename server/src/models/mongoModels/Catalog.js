@@ -21,5 +21,3 @@ const Schema = new mongoose.Schema({
 
 const Catalog = mongoose.model('Catalog', Schema);
 module.exports = Catalog;
-
-

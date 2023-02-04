@@ -10,10 +10,10 @@ const override = css`
 const SpinnerLoader = () => (
   <div className={styles.loaderContainer}>
     <ClipLoader
-      sizeUnit='px'
+      sizeUnit="px"
       css={override}
       size={50}
-      color='#46568a'
+      color="#46568a"
       loading
     />
   </div>

@@ -177,5 +177,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ContestForm)
+  connect(mapStateToProps, mapDispatchToProps)(ContestForm),
 );

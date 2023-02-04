@@ -12,14 +12,14 @@ const initialState = {
 
 export const getDataForContest = decorateAsyncThunk({
   key: `${DATA_FOR_CONTEST_SLICE_NAME}/getDataForContest`,
-  thunk: async payload => {
+  thunk: async (payload) => {
     const { data } = await restController.dataForContest(payload);
     return data;
   },
 });
 
-const extraReducers = builder => {
-  builder.addCase(getDataForContest.pending, state => {
+const extraReducers = (builder) => {
+  builder.addCase(getDataForContest.pending, (state) => {
     state.isFetching = true;
     state.data = null;
     state.error = null;

@@ -13,7 +13,7 @@ import styles from './CustomerDashboard.module.sass';
 import TryAgain from '../TryAgain/TryAgain';
 
 class CustomerDashboard extends React.Component {
-  loadMore = startFrom => {
+  loadMore = (startFrom) => {
     this.props.getContests({
       limit: 8,
       offset: startFrom,
@@ -21,7 +21,7 @@ class CustomerDashboard extends React.Component {
     });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.getContests();
   }
 
@@ -32,13 +32,13 @@ class CustomerDashboard extends React.Component {
     });
   };
 
-  componentDidUpdate (prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.customerFilter !== prevProps.customerFilter) {
       this.getContests();
     }
   }
 
-  goToExtended = contest_id => {
+  goToExtended = (contest_id) => {
     this.props.history.push(`/contest/${contest_id}`);
   };
 
@@ -51,13 +51,13 @@ class CustomerDashboard extends React.Component {
           data={contests[i]}
           key={contests[i].id}
           goToExtended={this.goToExtended}
-        />
+        />,
       );
     }
     return array;
   };
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.props.clearContestsList();
   }
 
@@ -66,7 +66,7 @@ class CustomerDashboard extends React.Component {
     this.getContests();
   };
 
-  render () {
+  render() {
     const { error, haveMore } = this.props;
     const { customerFilter } = this.props;
     return (
@@ -131,13 +131,13 @@ class CustomerDashboard extends React.Component {
   }
 }
 
-const mapStateToProps = state => state.contestsList;
+const mapStateToProps = (state) => state.contestsList;
 
-const mapDispatchToProps = dispatch => ({
-  getContests: data =>
+const mapDispatchToProps = (dispatch) => ({
+  getContests: (data) =>
     dispatch(getContests({ requestData: data, role: CONSTANTS.CUSTOMER })),
   clearContestsList: () => dispatch(clearContestsList()),
-  newFilter: filter => dispatch(setNewCustomerFilter(filter)),
+  newFilter: (filter) => dispatch(setNewCustomerFilter(filter)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomerDashboard);

@@ -25,7 +25,7 @@ module.exports = {
           balance: 5000,
         },
       ],
-      {}
+      {},
     );
   },
 };
