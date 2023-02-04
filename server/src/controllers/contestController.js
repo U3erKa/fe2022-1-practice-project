@@ -251,38 +251,11 @@ module.exports.setOfferStatus = async (req, res, next) => {
   }
 };
 
-module.exports.getCustomersContests = (req, res, next) => {
-  db.Contests.findAll({
-    where: { status: req.headers.status, userId: req.tokenData.userId },
-    limit: req.body.limit,
-    offset: req.body.offset ? req.body.offset : 0,
-    order: [['id', 'DESC']],
-    include: [
-      {
-        model: db.Offers,
-        required: false,
-        attributes: ['id'],
-      },
-    ],
-  })
-    .then((contests) => {
-      contests.forEach(
-        (contest) =>
-          (contest.dataValues.count = contest.dataValues.Offers.length),
-      );
-      let haveMore = true;
-      if (contests.length === 0) {
-        haveMore = false;
-      }
-      res.send({ contests, haveMore });
-    })
-    .catch((err) => next(new ServerError(err)));
-};
-
 /** @type {import('express').RequestHandler} */
 module.exports.getContests = async (req, res, next) => {
   const {
     tokenData,
+    headers: { status },
     query: {
       offset,
       limit,
@@ -296,12 +269,22 @@ module.exports.getContests = async (req, res, next) => {
   const ownEntries = _ownEntries === 'true';
 
   try {
-    const predicates = UtilFunctions.createWhereForAllContests(
+    const sellerParams = {
       typeIndex,
       contestId,
       industry,
       awardSort,
-    );
+    };
+    const buyerParams = {
+      status,
+      userId: tokenData.userId,
+    };
+
+    const predicates =
+      tokenData.role === CONSTANTS.CREATOR
+        ? UtilFunctions.createWhereForAllContests(sellerParams)
+        : UtilFunctions.createWhereForCustomerContests(buyerParams);
+
     const contests = await db.Contests.findAll({
       where: predicates.where,
       order: predicates.order,
@@ -310,8 +293,11 @@ module.exports.getContests = async (req, res, next) => {
       include: [
         {
           model: db.Offers,
-          required: ownEntries,
-          where: ownEntries ? { userId: tokenData.userId } : {},
+          required: tokenData.role === CONSTANTS.CREATOR ? ownEntries : false,
+          where:
+            tokenData.role === CONSTANTS.CREATOR && ownEntries
+              ? { userId: tokenData.userId }
+              : {},
           attributes: ['id'],
         },
       ],
