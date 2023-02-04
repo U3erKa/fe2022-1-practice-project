@@ -28,15 +28,10 @@ router.route('/contests').get(contestController.getContests);
 
 router
   .route('/contests/:contestId')
-  .get(basicMiddlewares.canGetContest, contestController.getContestById);
+  .get(basicMiddlewares.canGetContest, contestController.getContestById)
+  .put(upload.updateContestFile, contestController.updateContest);
 
 router.get('/downloadFile/:fileName', contestController.downloadFile);
-
-router.post(
-  '/updateContest',
-  upload.updateContestFile,
-  contestController.updateContest,
-);
 
 router.post(
   '/setNewOffer',
