@@ -16,17 +16,23 @@ module.exports.parseBody = (req, res, next) => {
   next();
 };
 
+/** @type {import('express').RequestHandler} */
 module.exports.canGetContest = async (req, res, next) => {
+  const {
+    tokenData,
+    params: { contestId },
+  } = req;
+
   let result = null;
   try {
-    if (req.tokenData.role === CONSTANTS.CUSTOMER) {
+    if (tokenData.role === CONSTANTS.CUSTOMER) {
       result = await Contest.findOne({
-        where: { id: req.headers.contestid, userId: req.tokenData.userId },
+        where: { id: contestId, userId: tokenData.userId },
       });
-    } else if (req.tokenData.role === CONSTANTS.CREATOR) {
+    } else if (tokenData.role === CONSTANTS.CREATOR) {
       result = await Contest.findOne({
         where: {
-          id: req.headers.contestid,
+          id: contestId,
           status: {
             [Sequelize.Op.or]: [
               CONSTANTS.CONTEST_STATUS_ACTIVE,

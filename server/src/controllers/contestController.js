@@ -48,10 +48,16 @@ module.exports.dataForContest = async (req, res, next) => {
   }
 };
 
+/** @type {import('express').RequestHandler} */
 module.exports.getContestById = async (req, res, next) => {
+  const {
+    tokenData,
+    params: { contestId },
+  } = req;
+
   try {
-    let contestInfo = await Contest.findOne({
-      where: { id: req.headers.contestid },
+    const contests = await Contest.findOne({
+      where: { id: contestId },
       order: [[Offer, 'id', 'asc']],
       include: [
         {
@@ -65,8 +71,8 @@ module.exports.getContestById = async (req, res, next) => {
           model: Offer,
           required: false,
           where:
-            req.tokenData.role === CONSTANTS.CREATOR
-              ? { userId: req.tokenData.userId }
+            tokenData.role === CONSTANTS.CREATOR
+              ? { userId: tokenData.userId }
               : {},
           attributes: { exclude: ['userId', 'contestId'] },
           include: [
@@ -80,14 +86,15 @@ module.exports.getContestById = async (req, res, next) => {
             {
               model: Rating,
               required: false,
-              where: { userId: req.tokenData.userId },
+              where: { userId: tokenData.userId },
               attributes: { exclude: ['userId', 'offerId'] },
             },
           ],
         },
       ],
     });
-    contestInfo = contestInfo.get({ plain: true });
+
+    const contestInfo = contests.get({ plain: true });
     contestInfo.Offers.forEach((offer) => {
       if (offer.Rating) {
         offer.mark = offer.Rating.mark;
