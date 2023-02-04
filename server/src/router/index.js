@@ -32,11 +32,9 @@ router.get(
   contestController.getContestById,
 );
 
-router.post(
-  '/getAllContests',
-  basicMiddlewares.onlyForCreative,
-  contestController.getContests,
-);
+router
+  .route('/contests')
+  .get(basicMiddlewares.onlyForCreative, contestController.getContests);
 
 router.get('/downloadFile/:fileName', contestController.downloadFile);
 
