@@ -8,6 +8,7 @@ const {
   sequelize,
 } = require('../models');
 const ServerError = require('../errors/ServerError');
+const RightsError = require('../errors/RightsError');
 const contestQueries = require('./queries/contestQueries');
 const userQueries = require('./queries/userQueries');
 const controller = require('../socketInit');
@@ -291,21 +292,39 @@ module.exports.getContests = async (req, res, next) => {
   const ownEntries = _ownEntries === 'true';
 
   try {
-    const sellerParams = {
-      typeIndex,
-      contestId,
-      industry,
-      awardSort,
-    };
-    const buyerParams = {
-      status,
-      userId: tokenData.userId,
-    };
+    let predicates;
+    let isRequiredOffer;
+    const offerFilter = {};
 
-    const predicates =
-      tokenData.role === CONSTANTS.CREATOR
-        ? UtilFunctions.createWhereForAllContests(sellerParams)
-        : UtilFunctions.createWhereForCustomerContests(buyerParams);
+    switch (tokenData.role) {
+      case CONSTANTS.CREATOR: {
+        const sellerParams = {
+          typeIndex,
+          contestId,
+          industry,
+          awardSort,
+        };
+
+        predicates = UtilFunctions.createWhereForAllContests(sellerParams);
+        isRequiredOffer = ownEntries;
+        Object.assign(offerFilter, { userId: tokenData.userId });
+        break;
+      }
+      case CONSTANTS.CUSTOMER: {
+        const buyerParams = {
+          status,
+          userId: tokenData.userId,
+        };
+
+        predicates = UtilFunctions.createWhereForCustomerContests(buyerParams);
+        isRequiredOffer = false;
+        break;
+      }
+
+      default: {
+        next(new RightsError());
+      }
+    }
 
     const contests = await Contest.findAll({
       where: predicates.where,
@@ -315,11 +334,8 @@ module.exports.getContests = async (req, res, next) => {
       include: [
         {
           model: Offer,
-          required: tokenData.role === CONSTANTS.CREATOR ? ownEntries : false,
-          where:
-            tokenData.role === CONSTANTS.CREATOR && ownEntries
-              ? { userId: tokenData.userId }
-              : {},
+          required: isRequiredOffer,
+          where: offerFilter,
           attributes: ['id'],
         },
       ],
