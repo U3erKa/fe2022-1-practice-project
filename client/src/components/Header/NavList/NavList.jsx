@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './NavList.module.sass';
-import CONSTANTS from '../../../constants';
+import { STATIC_IMAGES_PATH } from '../../../constants';
 
 export default function NavList({ list }) {
   const mapList = list.map(({ id, text, listItem }) => (
     <li key={id}>
       <span>{text}</span>
-      <img src={`${CONSTANTS.STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
+      <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
       <NavListItem list={listItem} />
     </li>
   ));

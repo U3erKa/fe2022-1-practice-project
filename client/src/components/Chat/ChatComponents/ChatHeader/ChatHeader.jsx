@@ -7,7 +7,11 @@ import {
   changeChatBlock,
 } from '../../../../store/slices/chatSlice';
 import styles from './ChatHeader.module.sass';
-import CONSTANTS from '../../../../constants';
+import {
+  STATIC_IMAGES_PATH,
+  ANONYM_IMAGE_PATH,
+  publicURL,
+} from '../../../../constants';
 
 const ChatHeader = (props) => {
   const changeFavorite = (data, event) => {
@@ -38,18 +42,15 @@ const ChatHeader = (props) => {
         className={styles.buttonContainer}
         onClick={() => backToDialogList()}
       >
-        <img
-          src={`${CONSTANTS.STATIC_IMAGES_PATH}arrow-left-thick.png`}
-          alt="back"
-        />
+        <img src={`${STATIC_IMAGES_PATH}arrow-left-thick.png`} alt="back" />
       </div>
       <div className={styles.infoContainer}>
         <div>
           <img
             src={
               avatar === 'anon.png'
-                ? CONSTANTS.ANONYM_IMAGE_PATH
-                : `${CONSTANTS.publicURL}${avatar}`
+                ? ANONYM_IMAGE_PATH
+                : `${publicURL}${avatar}`
             }
             alt="user"
           />

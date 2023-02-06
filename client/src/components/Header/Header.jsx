@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import CONSTANTS from '../../constants';
+import { STATIC_IMAGES_PATH, CREATOR } from '../../constants';
 import HEADER_CONSTANTS from 'headerConstants';
 import { clearUserStore } from '../../store/slices/userSlice';
 import Logo from 'components/Logo';
@@ -51,7 +51,7 @@ class Header extends React.Component {
         </div>
         <div className={styles.loginSignnUpHeaders}>
           <div className={styles.numberContainer}>
-            <img src={`${CONSTANTS.STATIC_IMAGES_PATH}phone.png`} alt="phone" />
+            <img src={`${STATIC_IMAGES_PATH}phone.png`} alt="phone" />
             <a href="tel:8773553585">(877)&nbsp;355-3585</a>
           </div>
           <div className={styles.userButtonsContainer}>
@@ -64,7 +64,7 @@ class Header extends React.Component {
             <div className={styles.nav}>
               <NavList list={HEADER_CONSTANTS.HEADER_LIST} />
             </div>
-            {this.props.data && this.props.data.role !== CONSTANTS.CREATOR && (
+            {this.props.data && this.props.data.role !== CREATOR && (
               <div
                 className={styles.startContestBtn}
                 onClick={this.startContests}

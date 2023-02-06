@@ -1,8 +1,8 @@
 import axios from 'axios';
-import CONTANTS from '../constants';
+import { BASE_URL, ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 
 const httpClient = axios.create({
-  baseURL: CONTANTS.BASE_URL,
+  baseURL: BASE_URL,
 });
 
 let accessToken = null;
@@ -23,24 +23,24 @@ httpClient.interceptors.response.use(
       const { accessToken: newAccessToken, refreshToken } =
         response.data.tokenPair;
 
-      window.localStorage.setItem(CONTANTS.REFRESH_TOKEN, refreshToken);
+      window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
       accessToken = newAccessToken;
     }
     return response;
   },
   async (err) => {
-    const oldRefreshToken = localStorage.getItem(CONTANTS.REFRESH_TOKEN);
+    const oldRefreshToken = localStorage.getItem(REFRESH_TOKEN);
 
     if (err.response.status === 419 && oldRefreshToken) {
       const {
         data: {
           tokenPair: { accessToken: newAccessToken, refreshToken },
         },
-      } = await axios.post(`${CONTANTS.BASE_URL}/auth/refresh`, {
+      } = await axios.post(`${BASE_URL}/auth/refresh`, {
         refreshToken: oldRefreshToken,
       });
 
-      window.localStorage.setItem(CONTANTS.REFRESH_TOKEN, refreshToken);
+      window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
       accessToken = newAccessToken;
 
       err.config.headers.Authorization = `Bearer ${accessToken}`;

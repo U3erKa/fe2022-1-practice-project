@@ -1,5 +1,9 @@
 import React from 'react';
-import CONSTANTS from '../../../constants';
+import {
+  NAME_CONTEST,
+  LOGO_CONTEST,
+  TAGLINE_CONTEST,
+} from '../../../constants';
 import SelectInput from '../../InputComponents/SelectInput/SelectInput';
 import FormInput from '../../InputComponents/FormInput/FormInput';
 import styles from '../ContestForm/ContestForm.module.sass';
@@ -10,7 +14,7 @@ const OptionalSelects = (props) => {
     return <Spinner />;
   }
   switch (props.contestType) {
-    case CONSTANTS.NAME_CONTEST: {
+    case NAME_CONTEST: {
       return (
         <>
           <SelectInput
@@ -38,7 +42,7 @@ const OptionalSelects = (props) => {
         </>
       );
     }
-    case CONSTANTS.LOGO_CONTEST: {
+    case LOGO_CONTEST: {
       return (
         <>
           <div className={styles.inputContainer}>
@@ -70,7 +74,7 @@ const OptionalSelects = (props) => {
         </>
       );
     }
-    case CONSTANTS.TAGLINE_CONTEST: {
+    case TAGLINE_CONTEST: {
       return (
         <>
           <div className={styles.inputContainer}>

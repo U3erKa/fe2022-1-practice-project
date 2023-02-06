@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { sendMessage } from '../../../../store/slices/chatSlice';
 import styles from './ChatInput.module.sass';
-import CONSTANTS from '../../../../constants';
+import { STATIC_IMAGES_PATH } from '../../../../constants';
 import FormInput from '../../../InputComponents/FormInput/FormInput';
 import Schems from '../../../../utils/validators/validationSchems';
 
@@ -36,10 +36,7 @@ const ChatInput = (props) => {
             }}
           />
           <button type="submit">
-            <img
-              src={`${CONSTANTS.STATIC_IMAGES_PATH}send.png`}
-              alt="send Message"
-            />
+            <img src={`${STATIC_IMAGES_PATH}send.png`} alt="send Message" />
           </button>
         </Form>
       </Formik>

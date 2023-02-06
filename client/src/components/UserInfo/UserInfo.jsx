@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import UpdateUserInfoForm from '../FormComponents/UpdateUserInfoForm/UpdateUserInfoForm';
 import { updateUser } from '../../store/slices/userSlice';
 import { changeEditModeOnUserProfile } from '../../store/slices/userProfileSlice';
-import CONSTANTS from '../../constants';
+import { ANONYM_IMAGE_PATH, publicURL, CREATOR } from '../../constants';
 import styles from './UserInfo.module.sass';
 
 const UserInfo = (props) => {
@@ -28,8 +28,8 @@ const UserInfo = (props) => {
           <img
             src={
               avatar === 'anon.png'
-                ? CONSTANTS.ANONYM_IMAGE_PATH
-                : `${CONSTANTS.publicURL}${avatar}`
+                ? ANONYM_IMAGE_PATH
+                : `${publicURL}${avatar}`
             }
             className={styles.avatar}
             alt="user"
@@ -55,7 +55,7 @@ const UserInfo = (props) => {
               <span className={styles.label}>Role</span>
               <span className={styles.info}>{role}</span>
             </div>
-            {role === CONSTANTS.CREATOR && (
+            {role === CREATOR && (
               <div className={styles.infoBlock}>
                 <span className={styles.label}>Balance</span>
                 <span className={styles.info}>{`${balance}$`}</span>

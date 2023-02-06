@@ -11,7 +11,15 @@ import {
   clearChangeMarkError,
   changeShowImage,
 } from '../../store/slices/contestByIdSlice';
-import CONSTANTS from '../../constants';
+import {
+  OFFER_STATUS_REJECTED,
+  OFFER_STATUS_WON,
+  ANONYM_IMAGE_PATH,
+  publicURL,
+  STATIC_IMAGES_PATH,
+  LOGO_CONTEST,
+  CREATOR,
+} from '../../constants';
 import styles from './OfferBox.module.sass';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './confirmStyle.css';
@@ -82,14 +90,14 @@ const OfferBox = (props) => {
 
   const offerStatus = () => {
     const { status } = props.data;
-    if (status === CONSTANTS.OFFER_STATUS_REJECTED) {
+    if (status === OFFER_STATUS_REJECTED) {
       return (
         <i
           className={classNames('fas fa-times-circle reject', styles.reject)}
         />
       );
     }
-    if (status === CONSTANTS.OFFER_STATUS_WON) {
+    if (status === OFFER_STATUS_WON) {
       return (
         <i
           className={classNames('fas fa-check-circle resolve', styles.resolve)}
@@ -117,8 +125,8 @@ const OfferBox = (props) => {
             <img
               src={
                 avatar === 'anon.png'
-                  ? CONSTANTS.ANONYM_IMAGE_PATH
-                  : `${CONSTANTS.publicURL}${avatar}`
+                  ? ANONYM_IMAGE_PATH
+                  : `${publicURL}${avatar}`
               }
               alt="user"
             />
@@ -133,20 +141,14 @@ const OfferBox = (props) => {
               initialRating={rating}
               fractions={2}
               fullSymbol={
-                <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
+                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
               }
               placeholderSymbol={
-                <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
+                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
               }
               emptySymbol={
                 <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}star-outline.png`}
+                  src={`${STATIC_IMAGES_PATH}star-outline.png`}
                   alt="star-outline"
                 />
               }
@@ -155,7 +157,7 @@ const OfferBox = (props) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {contestType === CONSTANTS.LOGO_CONTEST ? (
+          {contestType === LOGO_CONTEST ? (
             <img
               onClick={() =>
                 props.changeShowImage({
@@ -164,7 +166,7 @@ const OfferBox = (props) => {
                 })
               }
               className={styles.responseLogo}
-              src={`${CONSTANTS.publicURL}${data.fileName}`}
+              src={`${publicURL}${data.fileName}`}
               alt="logo"
             />
           ) : (
@@ -174,31 +176,20 @@ const OfferBox = (props) => {
             <Rating
               fractions={2}
               fullSymbol={
-                <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
+                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
               }
               placeholderSymbol={
-                <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
+                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
               }
               emptySymbol={
-                <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}star-outline.png`}
-                  alt="star"
-                />
+                <img src={`${STATIC_IMAGES_PATH}star-outline.png`} alt="star" />
               }
               onClick={changeMark}
               placeholderRating={data.mark}
             />
           )}
         </div>
-        {role !== CONSTANTS.CREATOR && (
-          <i onClick={goChat} className="fas fa-comments" />
-        )}
+        {role !== CREATOR && <i onClick={goChat} className="fas fa-comments" />}
       </div>
       {props.needButtons(data.status) && (
         <div className={styles.btnsContainer}>

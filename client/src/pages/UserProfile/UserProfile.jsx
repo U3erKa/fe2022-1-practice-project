@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import Header from '../../components/Header/Header';
 import styles from './UserProfile.module.sass';
-import CONSTANTS from '../../constants';
+import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from '../../constants';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import PayForm from '../../components/FormComponents/PayForm/PayForm';
 import { cashOut, clearPaymentStore } from '../../store/slices/paymentSlice';
@@ -38,27 +38,25 @@ const UserProfile = (props) => {
           <div className={styles.optionsContainer}>
             <div
               className={classNames(styles.optionContainer, {
-                [styles.currentOption]:
-                  profileViewMode === CONSTANTS.USER_INFO_MODE,
+                [styles.currentOption]: profileViewMode === USER_INFO_MODE,
               })}
-              onClick={() => changeProfileViewMode(CONSTANTS.USER_INFO_MODE)}
+              onClick={() => changeProfileViewMode(USER_INFO_MODE)}
             >
               UserInfo
             </div>
-            {role === CONSTANTS.CREATOR && (
+            {role === CREATOR && (
               <div
                 className={classNames(styles.optionContainer, {
-                  [styles.currentOption]:
-                    profileViewMode === CONSTANTS.CASHOUT_MODE,
+                  [styles.currentOption]: profileViewMode === CASHOUT_MODE,
                 })}
-                onClick={() => changeProfileViewMode(CONSTANTS.CASHOUT_MODE)}
+                onClick={() => changeProfileViewMode(CASHOUT_MODE)}
               >
                 Cashout
               </div>
             )}
           </div>
         </div>
-        {profileViewMode === CONSTANTS.USER_INFO_MODE ? (
+        {profileViewMode === USER_INFO_MODE ? (
           <UserInfo />
         ) : (
           <div className={styles.container}>

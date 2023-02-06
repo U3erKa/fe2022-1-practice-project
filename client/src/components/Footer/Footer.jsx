@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Footer.module.sass';
-import CONSTANTS from '../../constants';
+import { FooterItems } from '../../constants';
 
 class Footer extends Component {
   topFooterItemsRender = (item) => (
@@ -15,7 +15,7 @@ class Footer extends Component {
   );
 
   topFooterRender() {
-    return CONSTANTS.FooterItems.map((item) => this.topFooterItemsRender(item));
+    return FooterItems.map((item) => this.topFooterItemsRender(item));
   }
 
   render() {

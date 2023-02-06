@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from '../../components/Header/Header';
-import CONSTANTS from '../../constants';
+import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from '../../constants';
 import SlideBar from '../../components/SlideBar/SlideBar';
 import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.sass';
@@ -26,10 +26,7 @@ const Home = (props) => {
   });
 
   const { isFetching } = props;
-  const text =
-    CONSTANTS.HEADER_ANIMATION_TEXT[
-      index % CONSTANTS.HEADER_ANIMATION_TEXT.length
-    ];
+  const text = HEADER_ANIMATION_TEXT[index % HEADER_ANIMATION_TEXT.length];
   return (
     <>
       <Header />
@@ -66,7 +63,7 @@ const Home = (props) => {
               <div className={styles.cardContainer}>
                 <div className={styles.card}>
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}more-benifits-world-icon.png`}
+                    src={`${STATIC_IMAGES_PATH}more-benifits-world-icon.png`}
                     alt="globe"
                   />
                   <h3>Largest Naming Community</h3>
@@ -80,7 +77,7 @@ const Home = (props) => {
                 </div>
                 <div className={styles.card}>
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}more-benifits-high-quality-icon.png`}
+                    src={`${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.png`}
                     alt="desktop"
                   />
                   <h3>High Quality & Collaboration</h3>
@@ -93,7 +90,7 @@ const Home = (props) => {
                 </div>
                 <div className={styles.card}>
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}more-benifits-trademark-icon.png`}
+                    src={`${STATIC_IMAGES_PATH}more-benifits-trademark-icon.png`}
                     alt="cards"
                   />
                   <h3>Agency-Level Features</h3>
@@ -111,31 +108,31 @@ const Home = (props) => {
               <div className={styles.adv}>
                 <div className={styles.images}>
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}sponsors/Forbes-inactive.png`}
+                    src={`${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.png`}
                     alt="forbes"
                   />
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}sponsors/Forbes-active.png`}
+                    src={`${STATIC_IMAGES_PATH}sponsors/Forbes-active.png`}
                     alt="forbes"
                   />
                 </div>
                 <div className={styles.images}>
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.png`}
+                    src={`${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.png`}
                     alt="web"
                   />
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}sponsors/the_next_web_active.png`}
+                    src={`${STATIC_IMAGES_PATH}sponsors/the_next_web_active.png`}
                     alt="web"
                   />
                 </div>
                 <div className={styles.images}>
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}sponsors/mashable-inactive.png`}
+                    src={`${STATIC_IMAGES_PATH}sponsors/mashable-inactive.png`}
                     alt="mashable"
                   />
                   <img
-                    src={`${CONSTANTS.STATIC_IMAGES_PATH}sponsors/mashable-active.png`}
+                    src={`${STATIC_IMAGES_PATH}sponsors/mashable-active.png`}
                     alt="mashable"
                   />
                 </div>
@@ -176,7 +173,7 @@ const Home = (props) => {
                   </p>
                 </div>
                 <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}gif/1-compressed.gif`}
+                  src={`${STATIC_IMAGES_PATH}gif/1-compressed.gif`}
                   alt="compressed"
                 />
               </div>
@@ -184,7 +181,7 @@ const Home = (props) => {
             <div className={styles.greenContainer}>
               <div className={styles.step}>
                 <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}gif/2-compressed-new.gif`}
+                  src={`${STATIC_IMAGES_PATH}gif/2-compressed-new.gif`}
                   alt="compressed"
                 />
                 <div className={styles.greenStep}>
@@ -227,7 +224,7 @@ const Home = (props) => {
                   </p>
                 </div>
                 <img
-                  src={`${CONSTANTS.STATIC_IMAGES_PATH}gif/3-compressed.gif`}
+                  src={`${STATIC_IMAGES_PATH}gif/3-compressed.gif`}
                   alt="compressed"
                 />
               </div>

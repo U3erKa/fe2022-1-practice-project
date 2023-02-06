@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form } from 'formik';
-import CONTANTS from '../../../constants';
+import { LOGO_CONTEST } from '../../../constants';
 import {
   addOffer,
   clearAddOfferError,
@@ -14,7 +14,7 @@ import Error from '../../Error/Error';
 
 const OfferForm = (props) => {
   const renderOfferInput = () => {
-    if (props.contestType === CONTANTS.LOGO_CONTEST) {
+    if (props.contestType === LOGO_CONTEST) {
       return (
         <ImageUpload
           name="offerData"
@@ -55,7 +55,7 @@ const OfferForm = (props) => {
 
   const { valid, addOfferError, clearOfferError } = props;
   const validationSchema =
-    props.contestType === CONTANTS.LOGO_CONTEST
+    props.contestType === LOGO_CONTEST
       ? Schems.LogoOfferSchema
       : Schems.TextOfferSchema;
   return (

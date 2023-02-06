@@ -3,7 +3,7 @@ import * as restController from '../../api/rest/restController';
 import { clearContestStore } from './contestCreationSlice';
 import { changeProfileViewMode } from './userProfileSlice';
 import { updateUser } from './userSlice';
-import CONSTANTS from '../../constants';
+import { USER_INFO_MODE } from '../../constants';
 import {
   decorateAsyncThunk,
   pendingReducer,
@@ -32,7 +32,7 @@ export const cashOut = decorateAsyncThunk({
   thunk: async (payload, { dispatch }) => {
     const { data } = await restController.cashOut(payload);
     dispatch(updateUser.fulfilled(data));
-    dispatch(changeProfileViewMode(CONSTANTS.USER_INFO_MODE));
+    dispatch(changeProfileViewMode(USER_INFO_MODE));
   },
 });
 

@@ -1,6 +1,12 @@
 import React from 'react';
 import styles from '../../Brief/Brief.module.sass';
-import CONSTANTS from '../../../constants';
+import {
+  CONTEST_STATUS_FINISHED,
+  CUSTOMER,
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+  publicURL,
+} from '../../../constants';
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
 import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
@@ -30,16 +36,15 @@ const ContestInfo = (props) => {
             <span className={styles.label}>Contest Type</span>
             <span className={styles.data}>{contestType}</span>
           </div>
-          {User.id === userId &&
-            status !== CONSTANTS.CONTEST_STATUS_FINISHED && (
-              <div
-                onClick={() => changeEditContest(true)}
-                className={styles.editBtn}
-              >
-                Edit
-              </div>
-            )}
-          {role !== CONSTANTS.CUSTOMER && (
+          {User.id === userId && status !== CONTEST_STATUS_FINISHED && (
+            <div
+              onClick={() => changeEditContest(true)}
+              className={styles.editBtn}
+            >
+              Edit
+            </div>
+          )}
+          {role !== CUSTOMER && (
             <i onClick={goChat} className="fas fa-comments" />
           )}
         </div>
@@ -47,12 +52,12 @@ const ContestInfo = (props) => {
           <span className={styles.label}>Title of the Project</span>
           <span className={styles.data}>{title}</span>
         </div>
-        {contestType === CONSTANTS.NAME_CONTEST ? (
+        {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
             typeOfName={typeOfName}
             styleName={styleName}
           />
-        ) : contestType === CONSTANTS.TAGLINE_CONTEST ? (
+        ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
             typeOfTagline={typeOfTagline}
             nameVenture={contestData.nameVenture}
@@ -85,7 +90,7 @@ const ContestInfo = (props) => {
             <a
               target="_blank"
               className={styles.file}
-              href={`${CONSTANTS.publicURL}${fileName}`}
+              href={`${publicURL}${fileName}`}
               download={originalFileName}
               rel="noreferrer"
             >
