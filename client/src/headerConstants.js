@@ -46,7 +46,7 @@ const BLOG = [
   { id: 3, href: 'http://www.google.com', text: 'All Articles' },
 ];
 
-const HEADER_LIST = [
+export const HEADER_LIST = [
   { id: 0, text: 'NAME IDEAS', listItem: NAME_IDEAS },
   { id: 1, text: 'CONTESTS', listItem: CONTESTS },
   { id: 2, text: 'OUR WORK', listItem: OUR_WORK },
@@ -54,16 +54,9 @@ const HEADER_LIST = [
   { id: 4, text: 'BLOG', listItem: BLOG },
 ];
 
-const PROFILE_NAVBAR = [
+export const PROFILE_NAVBAR = [
   { id: 0, href: '/dashboard', text: 'View Dashboard' },
   { id: 1, href: '/account', text: 'My Account' },
   { id: 2, href: 'http:/www.google.com', text: 'Messages' },
   { id: 3, href: 'http:/www.google.com', text: 'Affiliate Dashboard' },
 ];
-
-const HEADER_CONSTANTS = {
-  HEADER_LIST,
-  PROFILE_NAVBAR,
-};
-
-export default HEADER_CONSTANTS;
