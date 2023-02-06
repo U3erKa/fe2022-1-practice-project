@@ -19,7 +19,7 @@ export const ANONYM_IMAGE_PATH = '/staticImages/anonym.png';
 export const BASE_URL = `http://${serverIP}:${serverPort}/`;
 export const REFRESH_TOKEN = 'refreshToken';
 
-export const publicURL =
+export const PUBLIC_URL =
   env === 'production'
     ? `http://${serverIP}:80/images/`
     : `http://${serverIP}:${serverPort}/public/images/`;
@@ -52,7 +52,7 @@ export const HEADER_ANIMATION_TEXT = [
   'a Startup',
 ];
 
-export const FooterItems = [
+export const FOOTER_ITEMS = [
   {
     title: 'SQUADHELP',
     items: ['About', 'Contact', 'How It Works?', 'Testimonials', 'Our Work'],

@@ -20,7 +20,7 @@ import OfferForm from '../../components/FormComponents/OfferForm/OfferForm';
 import {
   CONTEST_STATUS_ACTIVE,
   OFFER_STATUS_PENDING,
-  publicURL,
+  PUBLIC_URL,
   CREATOR,
 } from '../../constants';
 import Brief from '../../components/Brief/Brief';
@@ -143,7 +143,7 @@ class ContestPage extends React.Component {
         {/* <Chat/> */}
         {isShowOnFull && (
           <LightBox
-            mainSrc={`${publicURL}${imagePath}`}
+            mainSrc={`${PUBLIC_URL}${imagePath}`}
             onCloseRequest={() =>
               changeShowImage({ isShowOnFull: false, imagePath: null })
             }

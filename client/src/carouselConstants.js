@@ -4,7 +4,7 @@ export const MAIN_SLIDER = 'MAIN_SLIDER';
 export const EXAMPLE_SLIDER = 'EXAMPLE_SLIDER';
 export const FEEDBACK_SLIDER = 'FEEDBACK_SLIDER';
 
-export const mainSliderImages = [
+export const MAIN_SLIDER_IMAGES = [
   `${STATIC_IMAGES_PATH}main_slider/21..jpg`,
   `${STATIC_IMAGES_PATH}main_slider/B_1_01.jpg`,
   `${STATIC_IMAGES_PATH}main_slider/B_2_15.jpg`,
@@ -19,7 +19,7 @@ export const mainSliderImages = [
   `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_Y_29_Vechetti.jpg`,
 ];
 
-export const exampleSliderImages = [
+export const EXAMPLE_SLIDER_IMAGES = [
   `${STATIC_IMAGES_PATH}example_slider/1.jpg`,
   `${STATIC_IMAGES_PATH}example_slider/2.jpg`,
   `${STATIC_IMAGES_PATH}example_slider/3.jpg`,
@@ -34,7 +34,7 @@ export const exampleSliderImages = [
   `${STATIC_IMAGES_PATH}example_slider/12.jpg`,
 ];
 
-export const feedbackSliderImages = [
+export const FEEDBACK_SLIDER_IMAGES = [
   `${STATIC_IMAGES_PATH}feedback_slider/Blue dress professional Lynne Lowder-avatar.jpg`,
   `${STATIC_IMAGES_PATH}feedback_slider/Bonnie Linked-avatar.jpg`,
   `${STATIC_IMAGES_PATH}feedback_slider/IMG_0232-avatar.jpg`,

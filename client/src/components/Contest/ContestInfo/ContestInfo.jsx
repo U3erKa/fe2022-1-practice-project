@@ -5,7 +5,7 @@ import {
   CUSTOMER,
   NAME_CONTEST,
   TAGLINE_CONTEST,
-  publicURL,
+  PUBLIC_URL,
 } from '../../../constants';
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
@@ -90,7 +90,7 @@ const ContestInfo = (props) => {
             <a
               target="_blank"
               className={styles.file}
-              href={`${publicURL}${fileName}`}
+              href={`${PUBLIC_URL}${fileName}`}
               download={originalFileName}
               rel="noreferrer"
             >
