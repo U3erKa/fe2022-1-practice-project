@@ -16,7 +16,7 @@ import ContestPage from './pages/ContestPage/ContestPage';
 import UserProfile from './pages/UserProfile/UserProfile';
 import 'react-toastify/dist/ReactToastify.css';
 import ContestCreationPage from './pages/ContestCreation/ContestCreationPage';
-import CONSTANTS from './constants';
+import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST, REFRESH_TOKEN } from './constants';
 import browserHistory from './browserHistory';
 import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatContainer';
 import { refresh } from './store/slices/userSlice';
@@ -24,7 +24,7 @@ import { refresh } from './store/slices/userSlice';
 class App extends Component {
   componentDidMount() {
     const { refresh } = this.props;
-    const refreshToken = localStorage.getItem(CONSTANTS.REFRESH_TOKEN);
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
     if (refreshToken) {
       refresh(refreshToken);
@@ -67,7 +67,7 @@ class App extends Component {
             exact
             path="/startContest/nameContest"
             component={PrivateHoc(ContestCreationPage, {
-              contestType: CONSTANTS.NAME_CONTEST,
+              contestType: NAME_CONTEST,
               title: 'Company Name',
             })}
           />
@@ -75,7 +75,7 @@ class App extends Component {
             exact
             path="/startContest/taglineContest"
             component={PrivateHoc(ContestCreationPage, {
-              contestType: CONSTANTS.TAGLINE_CONTEST,
+              contestType: TAGLINE_CONTEST,
               title: 'TAGLINE',
             })}
           />
@@ -83,7 +83,7 @@ class App extends Component {
             exact
             path="/startContest/logoContest"
             component={PrivateHoc(ContestCreationPage, {
-              contestType: CONSTANTS.LOGO_CONTEST,
+              contestType: LOGO_CONTEST,
               title: 'LOGO',
             })}
           />

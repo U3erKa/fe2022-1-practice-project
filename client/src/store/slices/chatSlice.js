@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { isEqual, remove } from 'lodash';
 import * as restController from '../../api/rest/restController';
-import CONSTANTS from '../../constants';
+import {
+  NORMAL_PREVIEW_CHAT_MODE,
+  ADD_CHAT_TO_OLD_CATALOG,
+} from '../../constants';
 import {
   decorateAsyncThunk,
   createExtraReducers,
@@ -22,11 +25,11 @@ const initialState = {
   interlocutor: [],
   messagesPreview: [],
   isShow: false,
-  chatMode: CONSTANTS.NORMAL_PREVIEW_CHAT_MODE,
+  chatMode: NORMAL_PREVIEW_CHAT_MODE,
   catalogList: [],
   isRenameCatalog: false,
   isShowChatsInCatalog: false,
-  catalogCreationMode: CONSTANTS.ADD_CHAT_TO_OLD_CATALOG,
+  catalogCreationMode: ADD_CHAT_TO_OLD_CATALOG,
 };
 
 //---------- getPreviewChat

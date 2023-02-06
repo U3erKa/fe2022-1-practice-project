@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import CONSTANTS from '../../constants';
+import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from '../../constants';
 import * as restController from '../../api/rest/restController';
 import {
   decorateAsyncThunk,
@@ -85,13 +85,11 @@ const setOfferStatusExtraReducers = createExtraReducers({
   thunk: setOfferStatus,
   fulfilledReducer: (state, { payload }) => {
     state.offers.forEach((offer) => {
-      if (payload.status === CONSTANTS.OFFER_STATUS_WON) {
+      if (payload.status === OFFER_STATUS_WON) {
         offer.status =
-          payload.id === offer.id
-            ? CONSTANTS.OFFER_STATUS_WON
-            : CONSTANTS.OFFER_STATUS_REJECTED;
+          payload.id === offer.id ? OFFER_STATUS_WON : OFFER_STATUS_REJECTED;
       } else if (payload.id === offer.id) {
-        offer.status = CONSTANTS.OFFER_STATUS_REJECTED;
+        offer.status = OFFER_STATUS_REJECTED;
       }
     });
     state.error = null;

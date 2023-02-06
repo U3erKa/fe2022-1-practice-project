@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import CONSTANTS from '../../constants';
+import { AUTH_MODE } from '../../constants';
 import * as authController from '../../api/rest/authController';
 import {
   decorateAsyncThunk,
@@ -22,7 +22,7 @@ export const checkAuth = decorateAsyncThunk({
     const {
       data: { user },
     } =
-      authMode === CONSTANTS.AUTH_MODE.LOGIN
+      authMode === AUTH_MODE.LOGIN
         ? await authController.login(authInfo)
         : await authController.registration(authInfo);
 

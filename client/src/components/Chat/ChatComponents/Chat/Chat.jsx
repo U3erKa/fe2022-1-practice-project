@@ -12,7 +12,13 @@ import {
   getPreviewChat,
 } from '../../../../store/slices/chatSlice';
 import { chatController } from '../../../../api/ws/socketController';
-import CONSTANTS from '../../../../constants';
+import {
+  STATIC_IMAGES_PATH,
+  NORMAL_PREVIEW_CHAT_MODE,
+  FAVORITE_PREVIEW_CHAT_MODE,
+  BLOCKED_PREVIEW_CHAT_MODE,
+  CATALOG_PREVIEW_CHAT_MODE,
+} from '../../../../constants';
 import CatalogListContainer from '../../CatalogComponents/CatalogListContainer/CatalogListContainer';
 import CatalogCreation from '../../CatalogComponents/CatalogCreation/CatalogCreation';
 import CatalogListHeader from '../../CatalogComponents/CatalogListHeader/CatalogListHeader';
@@ -32,18 +38,13 @@ class Chat extends React.Component {
     const { setChatPreviewMode } = this.props;
     const { chatMode, isShowChatsInCatalog } = this.props.chatStore;
     const { id } = this.props.userStore.data;
-    const {
-      NORMAL_PREVIEW_CHAT_MODE,
-      FAVORITE_PREVIEW_CHAT_MODE,
-      BLOCKED_PREVIEW_CHAT_MODE,
-      CATALOG_PREVIEW_CHAT_MODE,
-    } = CONSTANTS;
+
     return (
       <div>
         {isShowChatsInCatalog && <CatalogListHeader />}
         {!isShowChatsInCatalog && (
           <div className={styles.chatHeader}>
-            <img src={`${CONSTANTS.STATIC_IMAGES_PATH}logo.png`} alt="logo" />
+            <img src={`${STATIC_IMAGES_PATH}logo.png`} alt="logo" />
           </div>
         )}
         {!isShowChatsInCatalog && (

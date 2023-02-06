@@ -1,7 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './DialogBox.module.sass';
-import CONSTANTS from '../../../../constants';
+import {
+  ANONYM_IMAGE_PATH,
+  publicURL,
+  CATALOG_PREVIEW_CHAT_MODE,
+} from '../../../../constants';
 
 const DialogBox = (props) => {
   const {
@@ -37,8 +41,8 @@ const DialogBox = (props) => {
       <img
         src={
           interlocutor.avatar === 'anon.png'
-            ? CONSTANTS.ANONYM_IMAGE_PATH
-            : `${CONSTANTS.publicURL}${interlocutor.avatar}`
+            ? ANONYM_IMAGE_PATH
+            : `${publicURL}${interlocutor.avatar}`
         }
         alt="user"
       />
@@ -84,10 +88,8 @@ const DialogBox = (props) => {
           <i
             onClick={(event) => catalogOperation(event, _id)}
             className={classNames({
-              'far fa-plus-square':
-                chatMode !== CONSTANTS.CATALOG_PREVIEW_CHAT_MODE,
-              'fas fa-minus-circle':
-                chatMode === CONSTANTS.CATALOG_PREVIEW_CHAT_MODE,
+              'far fa-plus-square': chatMode !== CATALOG_PREVIEW_CHAT_MODE,
+              'fas fa-minus-circle': chatMode === CATALOG_PREVIEW_CHAT_MODE,
             })}
           />
         </div>

@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import CONSTANTS from '../../../../constants';
+import {
+  ADD_CHAT_TO_OLD_CATALOG,
+  CREATE_NEW_CATALOG_AND_ADD_CHAT,
+} from '../../../../constants';
 import {
   changeTypeOfChatAdding,
   changeShowAddChatToCatalogMenu,
@@ -23,8 +26,7 @@ class CatalogCreation extends React.Component {
       changeShowAddChatToCatalogMenu,
       isFetching,
     } = this.props;
-    const { ADD_CHAT_TO_OLD_CATALOG, CREATE_NEW_CATALOG_AND_ADD_CHAT } =
-      CONSTANTS;
+
     return (
       <>
         {!isFetching && (

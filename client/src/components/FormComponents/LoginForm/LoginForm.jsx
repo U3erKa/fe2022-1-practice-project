@@ -6,7 +6,7 @@ import styles from './LoginForm.module.sass';
 import FormInput from '../../InputComponents/FormInput/FormInput';
 import Schems from '../../../utils/validators/validationSchems';
 import Error from '../../Error/Error';
-import CONSTANTS from '../../../constants';
+import { AUTH_MODE } from '../../../constants';
 
 class LoginForm extends React.Component {
   componentWillUnmount() {
@@ -83,7 +83,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   loginRequest: ({ data, history }) =>
-    dispatch(checkAuth({ data, history, authMode: CONSTANTS.AUTH_MODE.LOGIN })),
+    dispatch(checkAuth({ data, history, authMode: AUTH_MODE.LOGIN })),
   authClear: () => dispatch(clearAuth()),
 });
 

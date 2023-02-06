@@ -14,7 +14,7 @@ import ContestsContainer from '../Contest/ContestsContainer/ContestsContainer';
 import ContestBox from '../Contest/ContestBox/ContestBox';
 import styles from './CreatorDashboard.module.sass';
 import TryAgain from '../TryAgain/TryAgain';
-import CONSTANTS from '../../constants';
+import { CREATOR } from '../../constants';
 
 const types = [
   '',
@@ -288,7 +288,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getContests: (data) =>
-    dispatch(getContests({ requestData: data, role: CONSTANTS.CREATOR })),
+    dispatch(getContests({ requestData: data, role: CREATOR })),
   clearContestsList: () => dispatch(clearContestsList()),
   newFilter: (filter) => dispatch(setNewCreatorFilter(filter)),
   getDataForContest: () => dispatch(getDataForContest()),

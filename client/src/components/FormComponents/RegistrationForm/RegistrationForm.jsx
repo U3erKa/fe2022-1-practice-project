@@ -7,7 +7,7 @@ import styles from './RegistrationForm.module.sass';
 import FormInput from '../../InputComponents/FormInput/FormInput';
 import RoleInput from '../../InputComponents/RoleInput/RoleInput';
 import AgreeTermOfServiceInput from '../../InputComponents/AgreeTermOfServiceInput/AgreeTermOfServiceInput';
-import CONSTANTS from '../../../constants';
+import { AUTH_MODE, CUSTOMER, CREATOR } from '../../../constants';
 import Schems from '../../../utils/validators/validationSchems';
 
 class RegistrationForm extends React.Component {
@@ -60,7 +60,7 @@ class RegistrationForm extends React.Component {
             email: '',
             password: '',
             confirmPassword: '',
-            role: CONSTANTS.CUSTOMER,
+            role: CUSTOMER,
             agreeOfTerms: false,
           }}
           onSubmit={this.clicked}
@@ -113,20 +113,20 @@ class RegistrationForm extends React.Component {
               <Field
                 name="role"
                 type="radio"
-                value={CONSTANTS.CUSTOMER}
+                value={CUSTOMER}
                 strRole="Join As a Buyer"
                 infoRole="I am looking for a Name, Logo or Tagline for my business, brand or product."
                 component={RoleInput}
-                id={CONSTANTS.CUSTOMER}
+                id={CUSTOMER}
               />
               <Field
                 name="role"
                 type="radio"
-                value={CONSTANTS.CREATOR}
+                value={CREATOR}
                 strRole="Join As a Creative"
                 infoRole="I plan to submit name ideas, Logo designs or sell names in Domain Marketplace."
                 component={RoleInput}
-                id={CONSTANTS.CREATOR}
+                id={CREATOR}
               />
             </div>
             <div className={styles.termsOfService}>
@@ -157,15 +157,13 @@ class RegistrationForm extends React.Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   initialValues: {
-    role: CONSTANTS.CUSTOMER,
+    role: CUSTOMER,
   },
 });
 
 const mapDispatchToProps = (dispatch) => ({
   register: ({ data, history }) =>
-    dispatch(
-      checkAuth({ data, history, authMode: CONSTANTS.AUTH_MODE.REGISTER }),
-    ),
+    dispatch(checkAuth({ data, history, authMode: AUTH_MODE.REGISTER })),
   authClear: () => dispatch(clearAuth()),
 });
 

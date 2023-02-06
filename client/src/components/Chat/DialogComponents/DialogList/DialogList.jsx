@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import CONSTANTS from '../../../../constants';
+import {
+  CATALOG_PREVIEW_CHAT_MODE,
+  FAVORITE_PREVIEW_CHAT_MODE,
+  BLOCKED_PREVIEW_CHAT_MODE,
+} from '../../../../constants';
 import {
   goToExpandedDialog,
   changeChatFavorite,
@@ -63,7 +67,7 @@ const DialogList = (props) => {
           changeBlackList={changeBlackList}
           chatMode={chatMode}
           catalogOperation={
-            chatMode === CONSTANTS.CATALOG_PREVIEW_CHAT_MODE
+            chatMode === CATALOG_PREVIEW_CHAT_MODE
               ? removeChat
               : changeShowCatalogCreation
           }
@@ -85,9 +89,9 @@ const DialogList = (props) => {
 
   const renderChatPreview = () => {
     const { chatMode } = props;
-    if (chatMode === CONSTANTS.FAVORITE_PREVIEW_CHAT_MODE)
+    if (chatMode === FAVORITE_PREVIEW_CHAT_MODE)
       return renderPreview(onlyFavoriteDialogs);
-    if (chatMode === CONSTANTS.BLOCKED_PREVIEW_CHAT_MODE)
+    if (chatMode === BLOCKED_PREVIEW_CHAT_MODE)
       return renderPreview(onlyBlockDialogs);
     return renderPreview();
   };

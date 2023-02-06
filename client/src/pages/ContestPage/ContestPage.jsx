@@ -17,7 +17,12 @@ import ContestSideBar from '../../components/Contest/ContestSideBar/ContestSideB
 import styles from './ContestPage.module.sass';
 import OfferBox from '../../components/OfferBox/OfferBox';
 import OfferForm from '../../components/FormComponents/OfferForm/OfferForm';
-import CONSTANTS from '../../constants';
+import {
+  CONTEST_STATUS_ACTIVE,
+  OFFER_STATUS_PENDING,
+  publicURL,
+  CREATOR,
+} from '../../constants';
 import Brief from '../../components/Brief/Brief';
 import Spinner from '../../components/Spinner/Spinner';
 import TryAgain from '../../components/TryAgain/TryAgain';
@@ -67,8 +72,8 @@ class ContestPage extends React.Component {
     const contestStatus = this.props.contestByIdStore.contestData.status;
     return (
       contestCreatorId === userId &&
-      contestStatus === CONSTANTS.CONTEST_STATUS_ACTIVE &&
-      offerStatus === CONSTANTS.OFFER_STATUS_PENDING
+      contestStatus === CONTEST_STATUS_ACTIVE &&
+      offerStatus === OFFER_STATUS_PENDING
     );
   };
 
@@ -138,7 +143,7 @@ class ContestPage extends React.Component {
         {/* <Chat/> */}
         {isShowOnFull && (
           <LightBox
-            mainSrc={`${CONSTANTS.publicURL}${imagePath}`}
+            mainSrc={`${publicURL}${imagePath}`}
             onCloseRequest={() =>
               changeShowImage({ isShowOnFull: false, imagePath: null })
             }
@@ -182,8 +187,8 @@ class ContestPage extends React.Component {
                 />
               ) : (
                 <div className={styles.offersContainer}>
-                  {role === CONSTANTS.CREATOR &&
-                    contestData.status === CONSTANTS.CONTEST_STATUS_ACTIVE && (
+                  {role === CREATOR &&
+                    contestData.status === CONTEST_STATUS_ACTIVE && (
                       <OfferForm
                         contestType={contestData.contestType}
                         contestId={contestData.id}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CONSTANTS from '../../constants';
+import { CUSTOMER } from '../../constants';
 import CustomerDashboard from '../../components/CustomerDashboard/CustomerDashboard';
 import CreatorDashboard from '../../components/CreatorDashboard/CreatorDashboard';
 import Header from '../../components/Header/Header';
@@ -10,7 +10,7 @@ const Dashboard = (props) => {
   return (
     <div>
       <Header />
-      {role === CONSTANTS.CUSTOMER ? (
+      {role === CUSTOMER ? (
         <CustomerDashboard history={history} match={props.match} />
       ) : (
         <CreatorDashboard history={history} match={props.match} />
