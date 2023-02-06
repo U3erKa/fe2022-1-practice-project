@@ -5,7 +5,6 @@ import ProfileNavBar from '../ProfileNavBar/ProfileNavBar';
 import styles from './LoginButtons.module.sass';
 
 export default function LoginButtons({ data, logOut }) {
-  console.log(data);
   return (
     <>
       <div className={styles.userInfo}>
