@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { STATIC_IMAGES_PATH, CREATOR } from '../../constants';
-import HEADER_CONSTANTS from 'headerConstants';
+import { HEADER_LIST } from 'headerConstants';
 import { clearUserStore } from '../../store/slices/userSlice';
 import Logo from 'components/Logo';
 import LoginButtons from './LoginButtons/LoginButtons';
@@ -62,7 +62,7 @@ class Header extends React.Component {
           <Logo />
           <div className={styles.leftNav}>
             <div className={styles.nav}>
-              <NavList list={HEADER_CONSTANTS.HEADER_LIST} />
+              <NavList list={HEADER_LIST} />
             </div>
             {this.props.data && this.props.data.role !== CREATOR && (
               <div

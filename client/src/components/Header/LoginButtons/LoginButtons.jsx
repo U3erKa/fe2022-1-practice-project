@@ -4,7 +4,7 @@ import {
   publicURL,
   STATIC_IMAGES_PATH,
 } from '../../../constants';
-import HEADER_CONSTANTS from 'headerConstants';
+import { PROFILE_NAVBAR } from 'headerConstants';
 import ProfileNavBar from '../ProfileNavBar/ProfileNavBar';
 import styles from './LoginButtons.module.sass';
 
@@ -22,7 +22,7 @@ export default function LoginButtons({ data, logOut }) {
         />
         <span>{`Hi, ${data.displayName}`}</span>
         <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
-        <ProfileNavBar list={HEADER_CONSTANTS.PROFILE_NAVBAR} logOut={logOut} />
+        <ProfileNavBar list={PROFILE_NAVBAR} logOut={logOut} />
       </div>
       <img
         src={`${STATIC_IMAGES_PATH}email.png`}
