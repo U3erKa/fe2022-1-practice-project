@@ -10,7 +10,7 @@ import styles from './ChatHeader.module.sass';
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
-  publicURL,
+  PUBLIC_URL,
 } from '../../../../constants';
 
 const ChatHeader = (props) => {
@@ -50,7 +50,7 @@ const ChatHeader = (props) => {
             src={
               avatar === 'anon.png'
                 ? ANONYM_IMAGE_PATH
-                : `${publicURL}${avatar}`
+                : `${PUBLIC_URL}${avatar}`
             }
             alt="user"
           />

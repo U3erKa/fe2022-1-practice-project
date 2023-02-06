@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ANONYM_IMAGE_PATH,
-  publicURL,
+  PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from '../../../constants';
 import { PROFILE_NAVBAR } from 'headerConstants';
@@ -16,7 +16,7 @@ export default function LoginButtons({ data, logOut }) {
           src={
             data.avatar === 'anon.png'
               ? ANONYM_IMAGE_PATH
-              : `${publicURL}${data.avatar}`
+              : `${PUBLIC_URL}${data.avatar}`
           }
           alt="user"
         />

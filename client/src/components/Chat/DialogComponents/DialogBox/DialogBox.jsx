@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './DialogBox.module.sass';
 import {
   ANONYM_IMAGE_PATH,
-  publicURL,
+  PUBLIC_URL,
   CATALOG_PREVIEW_CHAT_MODE,
 } from '../../../../constants';
 
@@ -42,7 +42,7 @@ const DialogBox = (props) => {
         src={
           interlocutor.avatar === 'anon.png'
             ? ANONYM_IMAGE_PATH
-            : `${publicURL}${interlocutor.avatar}`
+            : `${PUBLIC_URL}${interlocutor.avatar}`
         }
         alt="user"
       />

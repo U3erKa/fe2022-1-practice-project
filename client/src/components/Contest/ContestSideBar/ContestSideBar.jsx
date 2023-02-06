@@ -6,7 +6,7 @@ import styles from './ContestSideBar.module.sass';
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
-  publicURL,
+  PUBLIC_URL,
 } from '../../../constants';
 
 const ContestSideBar = (props) => {
@@ -64,7 +64,7 @@ const ContestSideBar = (props) => {
                 src={
                   User.avatar === 'anon.png'
                     ? ANONYM_IMAGE_PATH
-                    : `${publicURL}${User.avatar}`
+                    : `${PUBLIC_URL}${User.avatar}`
                 }
                 alt="user"
               />

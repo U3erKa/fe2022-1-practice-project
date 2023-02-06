@@ -7,11 +7,11 @@ import SlideBar from '../../components/SlideBar/SlideBar';
 import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.sass';
 import {
-  mainSliderImages,
+  MAIN_SLIDER_IMAGES,
   MAIN_SLIDER,
-  exampleSliderImages,
+  EXAMPLE_SLIDER_IMAGES,
   EXAMPLE_SLIDER,
-  feedbackSliderImages,
+  FEEDBACK_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
 } from '../../carouselConstants';
 import Spinner from '../../components/Spinner/Spinner';
@@ -60,7 +60,10 @@ const Home = (props) => {
               </div>
             </div>
             <div className={styles.greyContainer}>
-              <SlideBar images={mainSliderImages} carouselType={MAIN_SLIDER} />
+              <SlideBar
+                images={MAIN_SLIDER_IMAGES}
+                carouselType={MAIN_SLIDER}
+              />
             </div>
             <div className={styles.container__description}>
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
@@ -243,7 +246,7 @@ const Home = (props) => {
               </p>
             </div>
             <SlideBar
-              images={exampleSliderImages}
+              images={EXAMPLE_SLIDER_IMAGES}
               carouselType={EXAMPLE_SLIDER}
             />
             <div className={styles.button}>
@@ -254,7 +257,7 @@ const Home = (props) => {
             <div className={styles.blueContainer}>
               <h2 className={styles.whiteUnderline}>What our customers say</h2>
               <SlideBar
-                images={feedbackSliderImages}
+                images={FEEDBACK_SLIDER_IMAGES}
                 carouselType={FEEDBACK_SLIDER}
               />
             </div>

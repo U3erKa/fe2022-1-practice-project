@@ -15,7 +15,7 @@ import {
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
   ANONYM_IMAGE_PATH,
-  publicURL,
+  PUBLIC_URL,
   STATIC_IMAGES_PATH,
   LOGO_CONTEST,
   CREATOR,
@@ -126,7 +126,7 @@ const OfferBox = (props) => {
               src={
                 avatar === 'anon.png'
                   ? ANONYM_IMAGE_PATH
-                  : `${publicURL}${avatar}`
+                  : `${PUBLIC_URL}${avatar}`
               }
               alt="user"
             />
@@ -166,7 +166,7 @@ const OfferBox = (props) => {
                 })
               }
               className={styles.responseLogo}
-              src={`${publicURL}${data.fileName}`}
+              src={`${PUBLIC_URL}${data.fileName}`}
               alt="logo"
             />
           ) : (
