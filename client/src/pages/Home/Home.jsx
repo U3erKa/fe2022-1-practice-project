@@ -6,7 +6,14 @@ import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from '../../constants';
 import SlideBar from '../../components/SlideBar/SlideBar';
 import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.sass';
-import carouselConstants from '../../carouselConstants';
+import {
+  mainSliderImages,
+  MAIN_SLIDER,
+  exampleSliderImages,
+  EXAMPLE_SLIDER,
+  feedbackSliderImages,
+  FEEDBACK_SLIDER,
+} from '../../carouselConstants';
 import Spinner from '../../components/Spinner/Spinner';
 
 const Home = (props) => {
@@ -53,10 +60,7 @@ const Home = (props) => {
               </div>
             </div>
             <div className={styles.greyContainer}>
-              <SlideBar
-                images={carouselConstants.mainSliderImages}
-                carouselType={carouselConstants.MAIN_SLIDER}
-              />
+              <SlideBar images={mainSliderImages} carouselType={MAIN_SLIDER} />
             </div>
             <div className={styles.container__description}>
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
@@ -239,8 +243,8 @@ const Home = (props) => {
               </p>
             </div>
             <SlideBar
-              images={carouselConstants.exampleSliderImages}
-              carouselType={carouselConstants.EXAMPLE_SLIDER}
+              images={exampleSliderImages}
+              carouselType={EXAMPLE_SLIDER}
             />
             <div className={styles.button}>
               <Link className={styles.button__link} to="/dashboard">
@@ -250,8 +254,8 @@ const Home = (props) => {
             <div className={styles.blueContainer}>
               <h2 className={styles.whiteUnderline}>What our customers say</h2>
               <SlideBar
-                images={carouselConstants.feedbackSliderImages}
-                carouselType={carouselConstants.FEEDBACK_SLIDER}
+                images={feedbackSliderImages}
+                carouselType={FEEDBACK_SLIDER}
               />
             </div>
           </div>

@@ -1,7 +1,13 @@
 import React from 'react';
 import Flickity from 'react-flickity-component';
 import style from './SlideBar.module.sass';
-import carouselConstants from '../../carouselConstants';
+import {
+  MAIN_SLIDER,
+  EXAMPLE_SLIDER,
+  FEEDBACK_SLIDER,
+  EXAMPLE_SLIDER_TEXT,
+  FEEDBACK_SLIDER_TEXT,
+} from '../../carouselConstants';
 import './flickity.css';
 
 const SliderBar = (props) => {
@@ -18,11 +24,11 @@ const SliderBar = (props) => {
   const getStyleName = () => {
     const { carouselType } = props;
     switch (carouselType) {
-      case carouselConstants.MAIN_SLIDER:
+      case MAIN_SLIDER:
         return style.mainCarousel;
-      case carouselConstants.EXAMPLE_SLIDER:
+      case EXAMPLE_SLIDER:
         return style.exampleCarousel;
-      case carouselConstants.FEEDBACK_SLIDER:
+      case FEEDBACK_SLIDER:
         return style.feedbackCarousel;
       default: {
         break;
@@ -33,7 +39,7 @@ const SliderBar = (props) => {
   const renderSlides = () => {
     const { carouselType } = props;
     switch (carouselType) {
-      case carouselConstants.MAIN_SLIDER: {
+      case MAIN_SLIDER: {
         return Object.keys(props.images).map((key, index) => (
           <img
             src={props.images[key]}
@@ -43,20 +49,20 @@ const SliderBar = (props) => {
           />
         ));
       }
-      case carouselConstants.EXAMPLE_SLIDER: {
+      case EXAMPLE_SLIDER: {
         return Object.keys(props.images).map((key, index) => (
           <div className={style['example-cell']} key={index}>
             <img src={props.images[key]} alt="slide" />
-            <p>{carouselConstants.EXAMPLE_SLIDER_TEXT[index]}</p>
+            <p>{EXAMPLE_SLIDER_TEXT[index]}</p>
           </div>
         ));
       }
-      case carouselConstants.FEEDBACK_SLIDER: {
+      case FEEDBACK_SLIDER: {
         return Object.keys(props.images).map((key, index) => (
           <div className={style['feedback-cell']} key={index}>
             <img src={props.images[key]} alt="slide" />
-            <p>{carouselConstants.FEEDBACK_SLIDER_TEXT[index].feedback}</p>
-            <span>{carouselConstants.FEEDBACK_SLIDER_TEXT[index].name}</span>
+            <p>{FEEDBACK_SLIDER_TEXT[index].feedback}</p>
+            <span>{FEEDBACK_SLIDER_TEXT[index].name}</span>
           </div>
         ));
       }
