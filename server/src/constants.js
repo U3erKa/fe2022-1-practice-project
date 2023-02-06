@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const {
   ACCESS_TOKEN_SECRET,

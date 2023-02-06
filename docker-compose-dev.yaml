@@ -4,7 +4,6 @@ services:
   front-react:
     build:
       context: ./client
-
     environment:
       NODE_ENV: development
     depends_on:
@@ -18,7 +17,7 @@ services:
   server-dev:
     build:
       context: ./server
-
+    restart: on-failure
     environment:
       NODE_ENV: development
     ports:
