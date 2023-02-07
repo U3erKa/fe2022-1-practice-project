@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './NextButton.module.sass';
 
 const NextButton = (props) => {

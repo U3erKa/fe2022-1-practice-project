@@ -1,4 +1,3 @@
-import React from 'react';
 import { Field } from 'formik';
 
 const AgreeTermOfServiceInput = ({ id, type, classes, label, ...rest }) => (
