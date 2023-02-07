@@ -1,16 +1,13 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form } from 'formik';
+
+import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
+import { Error } from 'components';
+import { FormInput, ImageUpload } from 'components/InputComponents';
+
+import Schems from 'utils/validators/validationSchems';
 import { LOGO_CONTEST } from '../../../constants';
-import {
-  addOffer,
-  clearAddOfferError,
-} from '../../../store/slices/contestByIdSlice';
 import styles from './OfferForm.module.sass';
-import ImageUpload from '../../InputComponents/ImageUpload/ImageUpload';
-import FormInput from '../../InputComponents/FormInput/FormInput';
-import Schems from '../../../utils/validators/validationSchems';
-import Error from '../../Error/Error';
 
 const OfferForm = (props) => {
   const renderOfferInput = () => {
