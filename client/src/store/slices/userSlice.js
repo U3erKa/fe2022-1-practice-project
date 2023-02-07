@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import * as restController from '../../api/rest/restController';
-import * as authController from '../../api/rest/authController';
-import { controller } from '../../api/ws/socketController';
-import { rejectedReducer } from '../../utils/store';
+
+import * as restController from 'api/rest/restController';
+import * as authController from 'api/rest/authController';
+import { controller } from 'api/ws/socketController';
+
 import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';
+import { rejectedReducer } from 'utils/store';
 
 const USER_SLICE_NAME = 'user';
 

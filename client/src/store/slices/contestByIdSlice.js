@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
-import * as restController from '../../api/rest/restController';
+
+import * as restController from 'api/rest/restController';
 import {
   decorateAsyncThunk,
   rejectedReducer,
   createExtraReducers,
-} from '../../utils/store';
+} from 'utils/store';
+import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
 
 const CONTEST_BY_ID_SLICE_NAME = 'getContestById';
 

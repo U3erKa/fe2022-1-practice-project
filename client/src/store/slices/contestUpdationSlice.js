@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+
+import * as restController from 'api/rest/restController';
 import { updateStoreAfterUpdateContest } from './contestByIdSlice';
-import * as restController from '../../api/rest/restController';
+
 import {
   decorateAsyncThunk,
   pendingReducer,
   fulfilledReducer,
   rejectedReducer,
-} from '../../utils/store';
+} from 'utils/store';
 
 const CONTEST_UPDATION_SLICE_NAME = 'contestUpdation';
 
