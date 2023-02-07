@@ -10,7 +10,7 @@ import {
   RoleInput,
 } from 'components/InputComponents';
 
-import Schems from 'utils/validators/validationSchems';
+import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
 import styles from './RegistrationForm.module.sass';
 
@@ -68,7 +68,7 @@ class RegistrationForm extends React.Component {
             agreeOfTerms: false,
           }}
           onSubmit={this.clicked}
-          validationSchema={Schems.RegistrationSchem}
+          validationSchema={RegistrationSchem}
         >
           <Form>
             <div className={styles.row}>

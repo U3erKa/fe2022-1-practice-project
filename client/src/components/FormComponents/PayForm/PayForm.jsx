@@ -5,7 +5,7 @@ import Cards from 'react-credit-cards';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/InputComponents';
 
-import Schems from 'utils/validators/validationSchems';
+import { PaymentSchema } from 'utils/validators/validationSchems';
 
 import 'react-credit-cards/es/styles-compiled.css';
 import styles from './PayForm.module.sass';
@@ -32,7 +32,7 @@ const PayForm = (props) => {
           expiry: '',
         }}
         onSubmit={pay}
-        validationSchema={Schems.PaymentSchema}
+        validationSchema={PaymentSchema}
       >
         {({ values }) => {
           const { name, number, expiry, cvc } = values;

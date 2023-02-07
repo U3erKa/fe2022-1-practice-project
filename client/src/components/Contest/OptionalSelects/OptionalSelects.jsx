@@ -1,11 +1,7 @@
 import { Spinner } from 'components';
 import { SelectInput, FormInput } from 'components/InputComponents';
 
-import {
-  NAME_CONTEST,
-  LOGO_CONTEST,
-  TAGLINE_CONTEST,
-} from 'constants/general';
+import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import styles from '../ContestForm/ContestForm.module.sass';
 
 const OptionalSelects = (props) => {

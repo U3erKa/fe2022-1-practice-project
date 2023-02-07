@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 
 import { createCatalog } from 'store/slices/chatSlice';
 import { FormInput } from 'components/InputComponents';
-import Schems from 'utils/validators/validationSchems';
+import { CatalogSchema } from 'utils/validators/validationSchems';
 import styles from './CreateCatalog.module.sass';
 
 const CreateCatalog = (props) => {
@@ -16,7 +16,7 @@ const CreateCatalog = (props) => {
     <Formik
       onSubmit={click}
       initialValues={{ catalogName: '' }}
-      validationSchema={Schems.CatalogSchema}
+      validationSchema={CatalogSchema}
     >
       <Form className={styles.form}>
         <FormInput

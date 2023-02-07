@@ -13,12 +13,8 @@ import {
   FormTextArea,
 } from 'components/InputComponents';
 
-import Schems from 'utils/validators/validationSchems';
-import {
-  NAME_CONTEST,
-  LOGO_CONTEST,
-  TAGLINE_CONTEST,
-} from 'constants/general';
+import { ContestSchem } from 'utils/validators/validationSchems';
+import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import styles from './ContestForm.module.sass';
 
 const variableOptions = {
@@ -84,7 +80,7 @@ class ContestForm extends React.Component {
               ...this.props.initialValues,
             }}
             onSubmit={this.props.handleSubmit}
-            validationSchema={Schems.ContestSchem}
+            validationSchema={ContestSchem}
             innerRef={this.props.formRef}
             enableReinitialize
           >
