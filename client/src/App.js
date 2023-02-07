@@ -3,20 +3,27 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux';
 import './App.css';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
-import Payment from './pages/Payment/Payment';
-import StartContestPage from './pages/StartContestPage/StartContestPage';
-import Dashboard from './pages/Dashboard/Dashboard';
+import {
+  ContestCreationPage,
+  ContestPage,
+  Dashboard,
+  Home,
+  LoginPage,
+  Payment,
+  RegistrationPage,
+  StartContestPage,
+  UserProfile,
+} from 'pages';
 import PrivateHoc from './components/PrivateHoc/PrivateHoc';
 import NotFound from './components/NotFound/NotFound';
-import Home from './pages/Home/Home';
 import OnlyNotAuthorizedUserHoc from './components/OnlyNotAuthorizedUserHoc/OnlyNotAuthorizedUserHoc';
-import ContestPage from './pages/ContestPage/ContestPage';
-import UserProfile from './pages/UserProfile/UserProfile';
 import 'react-toastify/dist/ReactToastify.css';
-import ContestCreationPage from './pages/ContestCreation/ContestCreationPage';
-import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST, REFRESH_TOKEN } from './constants';
+import {
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+  LOGO_CONTEST,
+  REFRESH_TOKEN,
+} from './constants';
 import browserHistory from './browserHistory';
 import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatContainer';
 import { refresh } from './store/slices/userSlice';
