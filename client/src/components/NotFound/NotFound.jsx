@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './NotFound.module.sass';
 
 const NotFound = () => (

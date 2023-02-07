@@ -1,6 +1,5 @@
-import React from 'react';
-import styles from './NavList.module.sass';
 import { STATIC_IMAGES_PATH } from '../../../constants';
+import styles from './NavList.module.sass';
 
 export default function NavList({ list }) {
   const mapList = list.map(({ id, text, listItem }) => (

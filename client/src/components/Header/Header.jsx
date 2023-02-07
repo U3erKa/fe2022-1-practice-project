@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+
+import { clearUserStore } from 'store/slices/userSlice';
+import { Logo } from 'components';
+import { LoginButtons, NavList } from 'components/Header';
+
 import { STATIC_IMAGES_PATH, CREATOR } from '../../constants';
 import { HEADER_LIST } from 'headerConstants';
-import { clearUserStore } from '../../store/slices/userSlice';
-import Logo from 'components/Logo/Logo';
-import LoginButtons from './LoginButtons/LoginButtons';
-import NavList from './NavList/NavList';
 import styles from './Header.module.sass';
 
 class Header extends React.Component {

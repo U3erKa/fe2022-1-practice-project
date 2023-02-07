@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Error.module.sass';
 
 const Error = (props) => {
