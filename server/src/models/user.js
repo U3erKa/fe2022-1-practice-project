@@ -1,6 +1,15 @@
 'use strict';
 const { Model } = require('sequelize');
 const bcrypt = require('bcrypt');
+const { SALT_ROUNDS } = require('../constants');
+
+const hashPassword = async (user, options) => {
+  if (user.changed('password')) {
+    const passwordHash = await bcrypt.hash(user.password, SALT_ROUNDS);
+    user.password = passwordHash;
+  }
+};
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     async comparePassword(password) {
@@ -84,5 +93,9 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     }
   );
+
+  User.beforeCreate(hashPassword);
+  User.beforeUpdate(hashPassword);
+
   return User;
 };

@@ -1,6 +1,13 @@
 const jwt = require('jsonwebtoken');
 const CONSTANTS = require('../constants');
-const { sequelize, Sequelize, Rating, Offer, Contest, User } = require('../models');
+const {
+  sequelize,
+  Sequelize,
+  Rating,
+  Offer,
+  Contest,
+  User,
+} = require('../models');
 const NotUniqueEmail = require('../errors/NotUniqueEmail');
 const moment = require('moment');
 const { v4: uuid } = require('uuid');
@@ -36,9 +43,7 @@ module.exports.login = async (req, res, next) => {
 };
 module.exports.registration = async (req, res, next) => {
   try {
-    const newUser = await userQueries.userCreation(
-      Object.assign(req.body, { password: req.hashPass })
-    );
+    const newUser = await userQueries.userCreation(req.body);
     const accessToken = jwt.sign(
       {
         firstName: newUser.firstName,
