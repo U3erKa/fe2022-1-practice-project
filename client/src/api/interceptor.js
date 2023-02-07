@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL, ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
+import { BASE_URL, REFRESH_TOKEN } from '../constants';
 
 const httpClient = axios.create({
   baseURL: BASE_URL,
