@@ -5,7 +5,10 @@ import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
 import { Error } from 'components';
 import { FormInput, ImageUpload } from 'components/InputComponents';
 
-import Schems from 'utils/validators/validationSchems';
+import {
+  LogoOfferSchema,
+  TextOfferSchema,
+} from 'utils/validators/validationSchems';
 import { LOGO_CONTEST } from 'constants/general';
 import styles from './OfferForm.module.sass';
 
@@ -52,9 +55,7 @@ const OfferForm = (props) => {
 
   const { valid, addOfferError, clearOfferError } = props;
   const validationSchema =
-    props.contestType === LOGO_CONTEST
-      ? Schems.LogoOfferSchema
-      : Schems.TextOfferSchema;
+    props.contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema;
   return (
     <div className={styles.offerContainer}>
       {addOfferError && (

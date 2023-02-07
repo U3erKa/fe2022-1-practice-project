@@ -4,7 +4,7 @@ import { Form, Formik } from 'formik';
 import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/InputComponents';
 
-import Schems from 'utils/validators/validationSchems';
+import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './ChatInput.module.sass';
 
@@ -23,7 +23,7 @@ const ChatInput = (props) => {
       <Formik
         onSubmit={submitHandler}
         initialValues={{ message: '' }}
-        validationSchema={Schems.MessageSchema}
+        validationSchema={MessageSchema}
       >
         <Form className={styles.form}>
           <FormInput

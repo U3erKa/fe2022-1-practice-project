@@ -6,7 +6,7 @@ import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { Error } from 'components';
 import { FormInput } from 'components/InputComponents';
 
-import Schems from 'utils/validators/validationSchems';
+import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
 import styles from './LoginForm.module.sass';
 
@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
             password: '',
           }}
           onSubmit={this.clicked}
-          validationSchema={Schems.LoginSchem}
+          validationSchema={LoginSchem}
         >
           <Form>
             <FormInput
