@@ -1,8 +1,8 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form } from 'formik';
-import SelectInput from '../../../InputComponents/SelectInput/SelectInput';
-import { addChatToCatalog } from '../../../../store/slices/chatSlice';
+
+import { addChatToCatalog } from 'store/slices/chatSlice';
+import { SelectInput } from 'components/InputComponents';
 import styles from './AddToCatalog.module.sass';
 
 const AddToCatalog = (props) => {

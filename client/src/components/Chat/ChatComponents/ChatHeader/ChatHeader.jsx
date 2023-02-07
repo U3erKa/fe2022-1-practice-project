@@ -1,17 +1,18 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+
 import {
   backToDialogList,
   changeChatFavorite,
   changeChatBlock,
-} from '../../../../store/slices/chatSlice';
-import styles from './ChatHeader.module.sass';
+} from 'store/slices/chatSlice';
+
 import {
-  STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
+  STATIC_IMAGES_PATH,
 } from '../../../../constants';
+import styles from './ChatHeader.module.sass';
 
 const ChatHeader = (props) => {
   const changeFavorite = (data, event) => {

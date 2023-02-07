@@ -1,6 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import Chat from '../Chat/Chat';
+
+import { Chat } from 'components/Chat';
 
 const ChatContainer = (props) => {
   const { data } = props;

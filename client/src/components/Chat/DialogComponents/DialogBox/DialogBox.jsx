@@ -1,11 +1,11 @@
-import React from 'react';
 import classNames from 'classnames';
-import styles from './DialogBox.module.sass';
+
 import {
   ANONYM_IMAGE_PATH,
-  PUBLIC_URL,
   CATALOG_PREVIEW_CHAT_MODE,
+  PUBLIC_URL,
 } from '../../../../constants';
+import styles from './DialogBox.module.sass';
 
 const DialogBox = (props) => {
   const {
