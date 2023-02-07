@@ -13,7 +13,7 @@ import { CreateCatalog, AddToCatalog } from 'components/Chat';
 import {
   ADD_CHAT_TO_OLD_CATALOG,
   CREATE_NEW_CATALOG_AND_ADD_CHAT,
-} from '../../../../constants';
+} from 'constants/general';
 
 import styles from './CatalogCreation.module.sass';
 

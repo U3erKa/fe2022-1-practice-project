@@ -26,7 +26,7 @@ import {
   FAVORITE_PREVIEW_CHAT_MODE,
   NORMAL_PREVIEW_CHAT_MODE,
   STATIC_IMAGES_PATH,
-} from '../../../../constants';
+} from 'constants/general';
 
 import styles from './Chat.module.sass';
 

@@ -6,7 +6,7 @@ import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 import { Header, UserInfo, Error } from 'components';
 import { PayForm } from 'components/FormComponents';
 
-import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from '../../constants';
+import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';
 import styles from './UserProfile.module.sass';
 
 const UserProfile = (props) => {

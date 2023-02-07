@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from '../../constants';
+import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
 import * as restController from '../../api/rest/restController';
 import {
   decorateAsyncThunk,

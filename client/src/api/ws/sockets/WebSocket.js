@@ -1,6 +1,6 @@
 import socketIoClient from 'socket.io-client';
 
-import { BASE_URL } from '../../../constants';
+import { BASE_URL } from 'constants/general';
 
 class WebSocket {
   constructor(dispatch, getState, room) {

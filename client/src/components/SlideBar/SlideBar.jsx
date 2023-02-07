@@ -6,7 +6,7 @@ import {
   FEEDBACK_SLIDER,
   FEEDBACK_SLIDER_TEXT,
   MAIN_SLIDER,
-} from '../../carouselConstants';
+} from '../../constants/carousel';
 
 import style from './SlideBar.module.sass';
 import './flickity.css';

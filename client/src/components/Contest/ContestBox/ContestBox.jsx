@@ -4,7 +4,7 @@ import {
   LOGO_CONTEST,
   NAME_CONTEST,
   STATIC_IMAGES_PATH,
-} from '../../../constants';
+} from 'constants/general';
 import styles from './ContestBox.module.sass';
 
 const ContestBox = (props) => {

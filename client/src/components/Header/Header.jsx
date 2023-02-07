@@ -6,8 +6,8 @@ import { clearUserStore } from 'store/slices/userSlice';
 import { Logo } from 'components';
 import { LoginButtons, NavList } from 'components/Header';
 
-import { STATIC_IMAGES_PATH, CREATOR } from '../../constants';
-import { HEADER_LIST } from 'headerConstants';
+import { STATIC_IMAGES_PATH, CREATOR } from 'constants/general';
+import { HEADER_LIST } from 'constants/header';
 import styles from './Header.module.sass';
 
 class Header extends React.Component {

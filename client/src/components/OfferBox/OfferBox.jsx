@@ -20,7 +20,7 @@ import {
   STATIC_IMAGES_PATH,
   LOGO_CONTEST,
   CREATOR,
-} from '../../constants';
+} from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './confirmStyle.css';

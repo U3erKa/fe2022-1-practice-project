@@ -1,4 +1,4 @@
-import { STATIC_IMAGES_PATH } from '../../../constants';
+import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './NavList.module.sass';
 
 export default function NavList({ list }) {

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AUTH_MODE } from '../../constants';
+import { AUTH_MODE } from 'constants/general';
 import * as authController from '../../api/rest/authController';
 import {
   decorateAsyncThunk,

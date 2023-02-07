@@ -4,8 +4,8 @@ import {
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
-} from '../../../constants';
-import { PROFILE_NAVBAR } from 'headerConstants';
+} from 'constants/general';
+import { PROFILE_NAVBAR } from 'constants/header';
 
 import styles from './LoginButtons.module.sass';
 

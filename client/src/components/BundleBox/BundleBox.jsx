@@ -1,4 +1,4 @@
-import { STATIC_IMAGES_PATH } from '../../constants';
+import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './BundleBox.module.sass';
 
 const BundleBox = (props) => {

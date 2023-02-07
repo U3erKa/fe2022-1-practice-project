@@ -11,7 +11,7 @@ import {
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
-} from '../../../../constants';
+} from 'constants/general';
 import styles from './ChatHeader.module.sass';
 
 const ChatHeader = (props) => {

@@ -6,7 +6,7 @@ import { Error } from 'components';
 import { FormInput, ImageUpload } from 'components/InputComponents';
 
 import Schems from 'utils/validators/validationSchems';
-import { LOGO_CONTEST } from '../../../constants';
+import { LOGO_CONTEST } from 'constants/general';
 import styles from './OfferForm.module.sass';
 
 const OfferForm = (props) => {

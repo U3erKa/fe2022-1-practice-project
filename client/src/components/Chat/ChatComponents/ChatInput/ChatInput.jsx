@@ -5,7 +5,7 @@ import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/InputComponents';
 
 import Schems from 'utils/validators/validationSchems';
-import { STATIC_IMAGES_PATH } from 'constants.js';
+import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './ChatInput.module.sass';
 
 const ChatInput = (props) => {
