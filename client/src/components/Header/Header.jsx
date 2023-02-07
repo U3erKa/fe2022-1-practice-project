@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { STATIC_IMAGES_PATH, CREATOR } from '../../constants';
 import { HEADER_LIST } from 'headerConstants';
 import { clearUserStore } from '../../store/slices/userSlice';
-import Logo from 'components/Logo';
+import Logo from 'components/Logo/Logo';
 import LoginButtons from './LoginButtons/LoginButtons';
 import NavList from './NavList/NavList';
 import styles from './Header.module.sass';
