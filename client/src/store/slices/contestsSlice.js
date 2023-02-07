@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as restController from '../../api/rest/restController';
+
+import * as restController from 'api/rest/restController';
+import { decorateAsyncThunk, pendingReducer } from 'utils/store';
 import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
-import { decorateAsyncThunk, pendingReducer } from '../../utils/store';
 
 const CONTESTS_SLICE_NAME = 'contests';
 

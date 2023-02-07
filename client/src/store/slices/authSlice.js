@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AUTH_MODE } from 'constants/general';
-import * as authController from '../../api/rest/authController';
+
+import * as authController from 'api/rest/authController';
+import { controller } from 'api/ws/socketController';
+
 import {
   decorateAsyncThunk,
   pendingReducer,
   fulfilledReducer,
   rejectedReducer,
-} from '../../utils/store';
-import { controller } from '../../api/ws/socketController';
+} from 'utils/store';
+import { AUTH_MODE } from 'constants/general';
 
 const AUTH_SLICE_NAME = 'auth';
 

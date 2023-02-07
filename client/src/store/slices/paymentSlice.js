@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as restController from '../../api/rest/restController';
+
+import * as restController from 'api/rest/restController';
 import { clearContestStore } from './contestCreationSlice';
 import { changeProfileViewMode } from './userProfileSlice';
 import { updateUser } from './userSlice';
-import { USER_INFO_MODE } from 'constants/general';
+
 import {
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
-} from '../../utils/store';
+} from 'utils/store';
+import { USER_INFO_MODE } from 'constants/general';
 
 const PAYMENT_SLICE_NAME = 'payment';
 

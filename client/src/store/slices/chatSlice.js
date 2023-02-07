@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { isEqual, remove } from 'lodash';
-import * as restController from '../../api/rest/restController';
-import {
-  NORMAL_PREVIEW_CHAT_MODE,
-  ADD_CHAT_TO_OLD_CATALOG,
-} from 'constants/general';
+
+import * as restController from 'api/rest/restController';
 import {
   decorateAsyncThunk,
   createExtraReducers,
   rejectedReducer,
-} from '../../utils/store';
+} from 'utils/store';
+
+import {
+  NORMAL_PREVIEW_CHAT_MODE,
+  ADD_CHAT_TO_OLD_CATALOG,
+} from 'constants/general';
 
 const CHAT_SLICE_NAME = 'chat';
 

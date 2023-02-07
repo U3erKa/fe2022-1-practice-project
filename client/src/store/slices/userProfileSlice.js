@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { USER_INFO_MODE } from 'constants/general';
 
 const USER_PROFILE_SLICE_NAME = 'userProfile';
