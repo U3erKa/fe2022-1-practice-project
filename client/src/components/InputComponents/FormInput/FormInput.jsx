@@ -1,4 +1,3 @@
-import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import classNames from 'classnames';
 

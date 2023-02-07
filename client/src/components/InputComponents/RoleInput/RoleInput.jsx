@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './RoleInput.module.sass';
 
 const RoleInput = ({ label, id, strRole, infoRole, field, type }) => (
