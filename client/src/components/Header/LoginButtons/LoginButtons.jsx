@@ -1,11 +1,12 @@
-import React from 'react';
+import { ProfileNavBar } from 'components/Header';
+
 import {
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from '../../../constants';
 import { PROFILE_NAVBAR } from 'headerConstants';
-import ProfileNavBar from '../ProfileNavBar/ProfileNavBar';
+
 import styles from './LoginButtons.module.sass';
 
 export default function LoginButtons({ data, logOut }) {

@@ -1,21 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+
 import {
   getContests,
   clearContestsList,
   setNewCustomerFilter,
-} from '../../store/slices/contestsSlice';
+} from 'store/slices/contestsSlice';
+
+import { TryAgain } from 'components';
+import { ContestsContainer, ContestBox } from 'components/Contest';
+
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
   CONTEST_STATUS_PENDING,
   CUSTOMER,
 } from '../../constants';
-import ContestsContainer from '../Contest/ContestsContainer/ContestsContainer';
-import ContestBox from '../Contest/ContestBox/ContestBox';
 import styles from './CustomerDashboard.module.sass';
-import TryAgain from '../TryAgain/TryAgain';
 
 class CustomerDashboard extends React.Component {
   loadMore = (startFrom) => {

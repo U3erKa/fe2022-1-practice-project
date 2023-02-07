@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import styles from './Footer.module.sass';
 import { FOOTER_ITEMS } from '../../constants';
 

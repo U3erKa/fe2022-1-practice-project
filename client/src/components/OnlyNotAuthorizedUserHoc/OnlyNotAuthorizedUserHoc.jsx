@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Spinner from '../Spinner/Spinner';
+
+import { Spinner } from 'components';
 
 const OnlyNotAuthorizedUserHoc = (Component) => {
   class HocForLoginSignUp extends React.Component {

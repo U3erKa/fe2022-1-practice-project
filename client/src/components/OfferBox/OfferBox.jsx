@@ -1,16 +1,17 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import Rating from 'react-rating';
 import { withRouter } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import Rating from 'react-rating';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
-import { confirmAlert } from 'react-confirm-alert';
-import { goToExpandedDialog } from '../../store/slices/chatSlice';
+
+import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
   changeMark,
   clearChangeMarkError,
   changeShowImage,
-} from '../../store/slices/contestByIdSlice';
+} from 'store/slices/contestByIdSlice';
+
 import {
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
@@ -20,9 +21,10 @@ import {
   LOGO_CONTEST,
   CREATOR,
 } from '../../constants';
-import styles from './OfferBox.module.sass';
+
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './confirmStyle.css';
+import styles from './OfferBox.module.sass';
 
 const OfferBox = (props) => {
   const findConversationInfo = () => {

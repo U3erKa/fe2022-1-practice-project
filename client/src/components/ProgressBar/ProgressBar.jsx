@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ProgressBar.module.sass';
 
 const ProgressBar = (props) => {

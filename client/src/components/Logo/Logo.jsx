@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { STATIC_IMAGES_PATH } from '../../constants.js';
+
+import { STATIC_IMAGES_PATH } from '../../constants';
 
 const Logo = ({ to, ...props }) => (
   <Link to={to}>

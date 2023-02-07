@@ -1,8 +1,9 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import UpdateUserInfoForm from '../FormComponents/UpdateUserInfoForm/UpdateUserInfoForm';
-import { updateUser } from '../../store/slices/userSlice';
-import { changeEditModeOnUserProfile } from '../../store/slices/userProfileSlice';
+
+import { updateUser } from 'store/slices/userSlice';
+import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
+import { UpdateUserInfoForm } from 'components/FormComponents';
+
 import { ANONYM_IMAGE_PATH, PUBLIC_URL, CREATOR } from '../../constants';
 import styles from './UserInfo.module.sass';
 

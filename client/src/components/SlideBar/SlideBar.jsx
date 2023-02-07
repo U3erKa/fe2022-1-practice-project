@@ -1,13 +1,14 @@
-import React from 'react';
 import Flickity from 'react-flickity-component';
-import style from './SlideBar.module.sass';
+
 import {
-  MAIN_SLIDER,
   EXAMPLE_SLIDER,
-  FEEDBACK_SLIDER,
   EXAMPLE_SLIDER_TEXT,
+  FEEDBACK_SLIDER,
   FEEDBACK_SLIDER_TEXT,
+  MAIN_SLIDER,
 } from '../../carouselConstants';
+
+import style from './SlideBar.module.sass';
 import './flickity.css';
 
 const SliderBar = (props) => {

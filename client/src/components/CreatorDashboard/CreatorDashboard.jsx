@@ -4,17 +4,19 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
+
 import {
   getContests,
   clearContestsList,
   setNewCreatorFilter,
-} from '../../store/slices/contestsSlice';
-import { getDataForContest } from '../../store/slices/dataForContestSlice';
-import ContestsContainer from '../Contest/ContestsContainer/ContestsContainer';
-import ContestBox from '../Contest/ContestBox/ContestBox';
-import styles from './CreatorDashboard.module.sass';
-import TryAgain from '../TryAgain/TryAgain';
+} from 'store/slices/contestsSlice';
+import { getDataForContest } from 'store/slices/dataForContestSlice';
+
+import { TryAgain } from 'components';
+import { ContestsContainer, ContestBox } from 'components/Contest';
+
 import { CREATOR } from '../../constants';
+import styles from './CreatorDashboard.module.sass';
 
 const types = [
   '',

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './TryAgain.module.sass';
 
 const TryAgain = (props) => {
