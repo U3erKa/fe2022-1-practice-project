@@ -1,5 +1,7 @@
-import React from 'react';
-import styles from '../../Brief/Brief.module.sass';
+import LogoContestSpecialInfo from './LogoContestSpecialInfo';
+import NameContestSpecialInfo from './NameContestSpecialInfo';
+import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
+
 import {
   CONTEST_STATUS_FINISHED,
   CUSTOMER,
@@ -7,9 +9,7 @@ import {
   TAGLINE_CONTEST,
   PUBLIC_URL,
 } from '../../../constants';
-import LogoContestSpecialInfo from './LogoContestSpecialInfo';
-import NameContestSpecialInfo from './NameContestSpecialInfo';
-import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
+import styles from '../../Brief/Brief.module.sass';
 
 const ContestInfo = (props) => {
   const { changeEditContest, userId, contestData, role, goChat } = props;

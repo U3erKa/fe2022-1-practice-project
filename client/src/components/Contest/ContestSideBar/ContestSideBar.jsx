@@ -1,13 +1,12 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import moment from 'moment';
-import styles from './ContestSideBar.module.sass';
+
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
 } from '../../../constants';
+import styles from './ContestSideBar.module.sass';
 
 const ContestSideBar = (props) => {
   const getTimeStr = () => {

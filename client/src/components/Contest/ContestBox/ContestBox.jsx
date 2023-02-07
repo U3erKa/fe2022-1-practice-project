@@ -1,11 +1,11 @@
-import React from 'react';
 import moment from 'moment';
-import styles from './ContestBox.module.sass';
+
 import {
-  NAME_CONTEST,
   LOGO_CONTEST,
+  NAME_CONTEST,
   STATIC_IMAGES_PATH,
 } from '../../../constants';
+import styles from './ContestBox.module.sass';
 
 const ContestBox = (props) => {
   const getTimeStr = () => {

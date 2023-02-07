@@ -2,21 +2,24 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
+import { getDataForContest } from 'store/slices/dataForContestSlice';
+import { Spinner, TryAgain } from 'components';
+import { OptionalSelects } from 'components/Contest';
+import {
+  FormInput,
+  SelectInput,
+  FieldFileInput,
+  FormTextArea,
+} from 'components/InputComponents';
+
+import Schems from 'utils/validators/validationSchems';
 import {
   NAME_CONTEST,
   LOGO_CONTEST,
   TAGLINE_CONTEST,
 } from '../../../constants';
-import { getDataForContest } from '../../../store/slices/dataForContestSlice';
 import styles from './ContestForm.module.sass';
-import Spinner from '../../Spinner/Spinner';
-import FormInput from '../../InputComponents/FormInput/FormInput';
-import SelectInput from '../../InputComponents/SelectInput/SelectInput';
-import FieldFileInput from '../../InputComponents/FieldFileInput/FieldFileInput';
-import FormTextArea from '../../InputComponents/FormTextArea/FormTextArea';
-import TryAgain from '../../TryAgain/TryAgain';
-import Schems from '../../../utils/validators/validationSchems';
-import OptionalSelects from '../OptionalSelects/OptionalSelects';
 
 const variableOptions = {
   [NAME_CONTEST]: {
