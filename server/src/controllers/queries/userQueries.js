@@ -1,7 +1,6 @@
 const { User } = require('../../models');
 const NotFound = require('../../errors/UserNotFoundError');
 const ServerError = require('../../errors/ServerError');
-const bcrypt = require('bcrypt');
 
 module.exports.updateUser = async (data, userId, transaction) => {
   const [updatedCount, [updatedUser]] = await User.update(data, {
@@ -30,12 +29,5 @@ module.exports.userCreation = async (data) => {
     throw new ServerError('server error on user creation');
   } else {
     return newUser.get({ plain: true });
-  }
-};
-
-module.exports.passwordCompare = async (pass1, pass2) => {
-  const passwordCompare = await bcrypt.compare(pass1, pass2);
-  if (!passwordCompare) {
-    throw new NotFound('Wrong password');
   }
 };

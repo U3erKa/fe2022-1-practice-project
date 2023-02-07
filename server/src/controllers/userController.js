@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const CONSTANTS = require('../constants');
-const { sequelize, Sequelize, Rating, Offer, Contest } = require('../models');
+const { sequelize, Sequelize, Rating, Offer, Contest, User } = require('../models');
 const NotUniqueEmail = require('../errors/NotUniqueEmail');
 const moment = require('moment');
 const { v4: uuid } = require('uuid');
@@ -11,8 +11,8 @@ const ratingQueries = require('./queries/ratingQueries');
 
 module.exports.login = async (req, res, next) => {
   try {
-    const foundUser = await userQueries.findUser({ email: req.body.email });
-    await userQueries.passwordCompare(req.body.password, foundUser.password);
+    const foundUser = await User.findOne({ email: req.body.email });
+    await foundUser.comparePassword(req.body.password);
     const accessToken = jwt.sign(
       {
         firstName: foundUser.firstName,
