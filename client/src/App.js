@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+
 import { connect } from 'react-redux';
-import './App.css';
+import { refresh } from 'store/slices/userSlice';
 import {
   ContestCreationPage,
   ContestPage,
@@ -14,19 +15,20 @@ import {
   StartContestPage,
   UserProfile,
 } from 'pages';
-import PrivateHoc from './components/PrivateHoc/PrivateHoc';
-import NotFound from './components/NotFound/NotFound';
-import OnlyNotAuthorizedUserHoc from './components/OnlyNotAuthorizedUserHoc/OnlyNotAuthorizedUserHoc';
-import 'react-toastify/dist/ReactToastify.css';
+
+import { PrivateHoc, NotFound, OnlyNotAuthorizedUserHoc } from 'components';
+import { ChatContainer } from 'components/Chat';
+import browserHistory from 'browserHistory';
+
 import {
   NAME_CONTEST,
   TAGLINE_CONTEST,
   LOGO_CONTEST,
   REFRESH_TOKEN,
 } from './constants';
-import browserHistory from './browserHistory';
-import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatContainer';
-import { refresh } from './store/slices/userSlice';
+
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
 
 class App extends Component {
   componentDidMount() {

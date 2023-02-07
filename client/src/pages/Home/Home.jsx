@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Header from '../../components/Header/Header';
+
+import { Header, SlideBar, Footer, Spinner } from 'components';
+
 import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from '../../constants';
-import SlideBar from '../../components/SlideBar/SlideBar';
-import Footer from '../../components/Footer/Footer';
-import styles from './Home.module.sass';
 import {
   MAIN_SLIDER_IMAGES,
   MAIN_SLIDER,
@@ -14,7 +13,8 @@ import {
   FEEDBACK_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
 } from '../../carouselConstants';
-import Spinner from '../../components/Spinner/Spinner';
+
+import styles from './Home.module.sass';
 
 const Home = (props) => {
   const [index, setIndex] = useState(0);

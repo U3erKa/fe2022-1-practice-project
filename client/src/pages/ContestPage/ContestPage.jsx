@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import LightBox from 'react-image-lightbox';
-import { goToExpandedDialog } from '../../store/slices/chatSlice';
+
+import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
   getContestById,
   setOfferStatus,
@@ -11,23 +12,19 @@ import {
   changeEditContest,
   changeContestViewMode,
   changeShowImage,
-} from '../../store/slices/contestByIdSlice';
-import Header from '../../components/Header/Header';
-import ContestSideBar from '../../components/Contest/ContestSideBar/ContestSideBar';
-import styles from './ContestPage.module.sass';
-import OfferBox from '../../components/OfferBox/OfferBox';
-import OfferForm from '../../components/FormComponents/OfferForm/OfferForm';
+} from 'store/slices/contestByIdSlice';
+import { Header, OfferBox, Brief, Spinner, TryAgain, Error } from 'components';
+import { ContestSideBar } from 'components/Contest';
+import { OfferForm } from 'components/FormComponents';
+
 import {
   CONTEST_STATUS_ACTIVE,
   OFFER_STATUS_PENDING,
   PUBLIC_URL,
   CREATOR,
 } from '../../constants';
-import Brief from '../../components/Brief/Brief';
-import Spinner from '../../components/Spinner/Spinner';
-import TryAgain from '../../components/TryAgain/TryAgain';
+import styles from './ContestPage.module.sass';
 import 'react-image-lightbox/style.css';
-import Error from '../../components/Error/Error';
 
 class ContestPage extends React.Component {
   componentWillUnmount() {
