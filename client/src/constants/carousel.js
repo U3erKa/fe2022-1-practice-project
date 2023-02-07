@@ -1,4 +1,4 @@
-import { STATIC_IMAGES_PATH } from './constants';
+import { STATIC_IMAGES_PATH } from './general';
 
 export const MAIN_SLIDER = 'MAIN_SLIDER';
 export const EXAMPLE_SLIDER = 'EXAMPLE_SLIDER';

@@ -14,7 +14,7 @@ import {
   BLOCKED_PREVIEW_CHAT_MODE,
   CATALOG_PREVIEW_CHAT_MODE,
   FAVORITE_PREVIEW_CHAT_MODE,
-} from '../../../../constants';
+} from 'constants/general';
 
 import styles from './DialogList.module.sass';
 

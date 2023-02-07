@@ -5,7 +5,7 @@ import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
 import { Error } from 'components';
 import { PayForm } from 'components/FormComponents';
 
-import { STATIC_IMAGES_PATH } from '../../constants';
+import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './Payment.module.sass';
 
 const Payment = (props) => {

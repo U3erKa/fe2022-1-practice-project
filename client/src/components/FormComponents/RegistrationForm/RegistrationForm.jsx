@@ -11,7 +11,7 @@ import {
 } from 'components/InputComponents';
 
 import Schems from 'utils/validators/validationSchems';
-import { AUTH_MODE, CUSTOMER, CREATOR } from '../../../constants';
+import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
 import styles from './RegistrationForm.module.sass';
 
 class RegistrationForm extends React.Component {

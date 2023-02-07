@@ -15,7 +15,7 @@ import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { TryAgain } from 'components';
 import { ContestsContainer, ContestBox } from 'components/Contest';
 
-import { CREATOR } from '../../constants';
+import { CREATOR } from 'constants/general';
 import styles from './CreatorDashboard.module.sass';
 
 const types = [

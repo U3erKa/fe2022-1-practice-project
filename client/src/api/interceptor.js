@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { BASE_URL, REFRESH_TOKEN } from '../constants';
+
+import { BASE_URL, REFRESH_TOKEN } from 'constants/general';
 
 const httpClient = axios.create({
   baseURL: BASE_URL,

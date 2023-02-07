@@ -8,7 +8,7 @@ import {
   NAME_CONTEST,
   TAGLINE_CONTEST,
   PUBLIC_URL,
-} from '../../../constants';
+} from 'constants/general';
 import styles from '../../Brief/Brief.module.sass';
 
 const ContestInfo = (props) => {

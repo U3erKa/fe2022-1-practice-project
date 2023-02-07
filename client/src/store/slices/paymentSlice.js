@@ -3,7 +3,7 @@ import * as restController from '../../api/rest/restController';
 import { clearContestStore } from './contestCreationSlice';
 import { changeProfileViewMode } from './userProfileSlice';
 import { updateUser } from './userSlice';
-import { USER_INFO_MODE } from '../../constants';
+import { USER_INFO_MODE } from 'constants/general';
 import {
   decorateAsyncThunk,
   pendingReducer,

@@ -22,7 +22,7 @@ import {
   OFFER_STATUS_PENDING,
   PUBLIC_URL,
   CREATOR,
-} from '../../constants';
+} from 'constants/general';
 import styles from './ContestPage.module.sass';
 import 'react-image-lightbox/style.css';
 

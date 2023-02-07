@@ -25,7 +25,7 @@ import {
   TAGLINE_CONTEST,
   LOGO_CONTEST,
   REFRESH_TOKEN,
-} from './constants';
+} from 'constants/general';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';

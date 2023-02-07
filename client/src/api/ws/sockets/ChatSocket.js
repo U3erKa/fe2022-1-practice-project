@@ -1,7 +1,7 @@
 import WebSocket from './WebSocket';
 
 import { addMessage, changeBlockStatusInStore } from 'store/slices/chatSlice';
-import { CHANGE_BLOCK_STATUS } from '../../../constants';
+import { CHANGE_BLOCK_STATUS } from 'constants/general';
 
 class ChatSocket extends WebSocket {
   anotherSubscribes = () => {

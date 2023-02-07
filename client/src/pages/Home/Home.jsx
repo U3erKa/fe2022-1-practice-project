@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { Header, SlideBar, Footer, Spinner } from 'components';
 
-import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from '../../constants';
+import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from 'constants/general';
 import {
   MAIN_SLIDER_IMAGES,
   MAIN_SLIDER,
@@ -12,7 +12,7 @@ import {
   EXAMPLE_SLIDER,
   FEEDBACK_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
-} from '../../carouselConstants';
+} from 'constants/carousel';
 
 import styles from './Home.module.sass';
 

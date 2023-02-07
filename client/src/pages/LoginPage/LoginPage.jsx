@@ -5,7 +5,7 @@ import { clearAuthError } from '../../store/slices/authSlice';
 import { LoginForm } from 'components/FormComponents';
 import { Logo } from 'components';
 
-import { STATIC_IMAGES_PATH } from '../../constants';
+import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './LoginPage.module.sass';
 
 const LoginPage = (props) => (

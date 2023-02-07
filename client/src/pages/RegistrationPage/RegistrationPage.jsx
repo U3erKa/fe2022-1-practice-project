@@ -5,7 +5,7 @@ import { clearAuthError } from 'store/slices/authSlice';
 import { Logo } from 'components';
 import { RegistrationForm } from 'components/FormComponents';
 
-import { STATIC_IMAGES_PATH } from '../../constants';
+import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './RegistrationPage.module.sass';
 
 const RegistrationPage = (props) => {

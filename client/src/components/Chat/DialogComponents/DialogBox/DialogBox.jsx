@@ -4,7 +4,7 @@ import {
   ANONYM_IMAGE_PATH,
   CATALOG_PREVIEW_CHAT_MODE,
   PUBLIC_URL,
-} from '../../../../constants';
+} from 'constants/general';
 import styles from './DialogBox.module.sass';
 
 const DialogBox = (props) => {

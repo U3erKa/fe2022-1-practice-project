@@ -18,7 +18,7 @@ import {
   NAME_CONTEST,
   LOGO_CONTEST,
   TAGLINE_CONTEST,
-} from '../../../constants';
+} from 'constants/general';
 import styles from './ContestForm.module.sass';
 
 const variableOptions = {

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import styles from './Footer.module.sass';
-import { FOOTER_ITEMS } from '../../constants';
+import { FOOTER_ITEMS } from 'constants/general';
 
 class Footer extends Component {
   topFooterItemsRender = (item) => (

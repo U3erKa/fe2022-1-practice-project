@@ -4,7 +4,7 @@ import * as restController from '../../api/rest/restController';
 import {
   NORMAL_PREVIEW_CHAT_MODE,
   ADD_CHAT_TO_OLD_CATALOG,
-} from '../../constants';
+} from 'constants/general';
 import {
   decorateAsyncThunk,
   createExtraReducers,

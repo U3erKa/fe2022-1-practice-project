@@ -5,7 +5,7 @@ import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
-} from '../../../constants';
+} from 'constants/general';
 import styles from './ContestSideBar.module.sass';
 
 const ContestSideBar = (props) => {

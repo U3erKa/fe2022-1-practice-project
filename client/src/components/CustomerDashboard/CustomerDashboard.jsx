@@ -16,7 +16,7 @@ import {
   CONTEST_STATUS_FINISHED,
   CONTEST_STATUS_PENDING,
   CUSTOMER,
-} from '../../constants';
+} from 'constants/general';
 import styles from './CustomerDashboard.module.sass';
 
 class CustomerDashboard extends React.Component {
