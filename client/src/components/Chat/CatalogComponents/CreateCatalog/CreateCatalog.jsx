@@ -1,10 +1,10 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form } from 'formik';
-import FormInput from '../../../InputComponents/FormInput/FormInput';
+
+import { createCatalog } from 'store/slices/chatSlice';
+import { FormInput } from 'components/InputComponents';
+import Schems from 'utils/validators/validationSchems';
 import styles from './CreateCatalog.module.sass';
-import { createCatalog } from '../../../../store/slices/chatSlice';
-import Schems from '../../../../utils/validators/validationSchems';
 
 const CreateCatalog = (props) => {
   const click = (values) => {

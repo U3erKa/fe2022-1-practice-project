@@ -1,28 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import DialogListContainer from '../../DialogComponents/DialogListContainer/DialogListContainer';
-import styles from './Chat.module.sass';
-import Dialog from '../../DialogComponents/Dialog/Dialog';
+
 import {
   changeChatShow,
   setPreviewChatMode,
   changeShowModeCatalog,
   clearChatError,
   getPreviewChat,
-} from '../../../../store/slices/chatSlice';
-import { chatController } from '../../../../api/ws/socketController';
+} from 'store/slices/chatSlice';
+import { chatController } from 'api/ws/socketController';
+
 import {
-  STATIC_IMAGES_PATH,
-  NORMAL_PREVIEW_CHAT_MODE,
-  FAVORITE_PREVIEW_CHAT_MODE,
+  CatalogCreation,
+  CatalogListContainer,
+  CatalogListHeader,
+  ChatError,
+  Dialog,
+  DialogListContainer,
+} from 'components/Chat';
+
+import {
   BLOCKED_PREVIEW_CHAT_MODE,
   CATALOG_PREVIEW_CHAT_MODE,
+  FAVORITE_PREVIEW_CHAT_MODE,
+  NORMAL_PREVIEW_CHAT_MODE,
+  STATIC_IMAGES_PATH,
 } from '../../../../constants';
-import CatalogListContainer from '../../CatalogComponents/CatalogListContainer/CatalogListContainer';
-import CatalogCreation from '../../CatalogComponents/CatalogCreation/CatalogCreation';
-import CatalogListHeader from '../../CatalogComponents/CatalogListHeader/CatalogListHeader';
-import ChatError from '../../ChatError/ChatError';
+
+import styles from './Chat.module.sass';
 
 class Chat extends React.Component {
   componentDidMount() {

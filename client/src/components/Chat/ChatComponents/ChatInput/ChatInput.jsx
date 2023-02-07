@@ -1,11 +1,12 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Formik } from 'formik';
-import { sendMessage } from '../../../../store/slices/chatSlice';
+
+import { sendMessage } from 'store/slices/chatSlice';
+import { FormInput } from 'components/InputComponents';
+
+import Schems from 'utils/validators/validationSchems';
+import { STATIC_IMAGES_PATH } from 'constants.js';
 import styles from './ChatInput.module.sass';
-import { STATIC_IMAGES_PATH } from '../../../../constants';
-import FormInput from '../../../InputComponents/FormInput/FormInput';
-import Schems from '../../../../utils/validators/validationSchems';
 
 const ChatInput = (props) => {
   const submitHandler = (values, { resetForm }) => {

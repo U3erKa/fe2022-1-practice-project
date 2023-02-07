@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  getCatalogList,
-  removeChatFromCatalog,
-} from '../../../../store/slices/chatSlice';
-import CatalogList from '../CatalogList/CatalogList';
-import DialogList from '../../DialogComponents/DialogList/DialogList';
+
+import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';
+import { CatalogList, DialogList } from 'components/Chat';
 
 class CatalogListContainer extends React.Component {
   componentDidMount() {

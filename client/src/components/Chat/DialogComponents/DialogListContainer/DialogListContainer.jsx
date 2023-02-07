@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPreviewChat } from '../../../../store/slices/chatSlice';
-import DialogList from '../DialogList/DialogList';
+
+import { getPreviewChat } from 'store/slices/chatSlice';
+import { DialogList } from 'components/Chat';
 
 class DialogListContainer extends React.Component {
   componentDidMount() {
