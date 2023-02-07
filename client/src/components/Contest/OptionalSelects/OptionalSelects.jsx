@@ -1,13 +1,12 @@
-import React from 'react';
+import { Spinner } from 'components';
+import { SelectInput, FormInput } from 'components/InputComponents';
+
 import {
   NAME_CONTEST,
   LOGO_CONTEST,
   TAGLINE_CONTEST,
 } from '../../../constants';
-import SelectInput from '../../InputComponents/SelectInput/SelectInput';
-import FormInput from '../../InputComponents/FormInput/FormInput';
 import styles from '../ContestForm/ContestForm.module.sass';
-import Spinner from '../../Spinner/Spinner';
 
 const OptionalSelects = (props) => {
   if (props.isFetching) {
