@@ -1,11 +1,12 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LoginForm from '../../components/FormComponents/LoginForm/LoginForm';
-import Logo from '../../components/Logo/Logo';
-import styles from './LoginPage.module.sass';
+
 import { clearAuthError } from '../../store/slices/authSlice';
+import { LoginForm } from 'components/FormComponents';
+import { Logo } from 'components';
+
 import { STATIC_IMAGES_PATH } from '../../constants';
+import styles from './LoginPage.module.sass';
 
 const LoginPage = (props) => (
   <div className={styles.mainContainer}>

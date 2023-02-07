@@ -1,13 +1,10 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { updateBundle } from '../../store/slices/bundleSlice';
-import BundleBox from '../../components/BundleBox/BundleBox';
+
+import { updateBundle } from 'store/slices/bundleSlice';
+import { Header, BundleBox, Footer, ProgressBar } from 'components';
+
 import { CUSTOMER } from '../../constants';
 import styles from './StartContestPage.module.sass';
-import Footer from '../../components/Footer/Footer';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
-import Header from '../../components/Header/Header';
 
 const StartContestPage = (props) => {
   if (props.userStore.data?.role !== CUSTOMER) {
