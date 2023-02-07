@@ -7,6 +7,7 @@ require('./dbMongo/mongoose');
 const router = require('./router');
 const controller = require('./socketInit');
 const handlerError = require('./handlerError/handler');
+const tokenErrorHandler = require('./handlerError/tokenHandler');
 const multerErrorHandler = require('./handlerError/multerHandler');
 const { FILES_PATH } = require('./constants');
 
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/public', express.static(path.join(FILES_PATH)));
 app.use(router);
+app.use(tokenErrorHandler);
 app.use(multerErrorHandler);
 app.use(handlerError);
 
