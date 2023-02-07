@@ -7,3 +7,4 @@ export { default as Payment } from './Payment/Payment';
 export { default as RegistrationPage } from './RegistrationPage/RegistrationPage';
 export { default as StartContestPage } from './StartContestPage/StartContestPage';
 export { default as UserProfile } from './UserProfile/UserProfile';
+export { default as NotFound } from './NotFound/NotFound';
