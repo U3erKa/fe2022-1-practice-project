@@ -14,16 +14,16 @@ const initialState = {
   data: null,
 };
 
-export const getUser = createAsyncThunk(
-  `${USER_SLICE_NAME}/getUser`,
-  async (replace, { rejectWithValue }) => {
+export const refresh = createAsyncThunk(
+  `${USER_SLICE_NAME}/refresh`,
+  async (refreshToken, { rejectWithValue }) => {
     try {
-      const { data } = await restController.getUser();
-      controller.subscribe(data.id);
-      if (replace) {
-        replace('/');
-      }
-      return data;
+      const {
+        data: { user },
+      } = await authController.refresh(refreshToken);
+      controller.subscribe(user.id);
+
+      return user;
     } catch (err) {
       return rejectWithValue({
         data: err?.response?.data ?? 'Gateway Timeout',
@@ -71,9 +71,18 @@ const extraReducers = (builder) => {
   });
   builder.addCase(checkAuth.rejected, rejectedReducer);
   
-    state.data = payload;
+  builder.addCase(refresh.pending, (state) => {
+    state.isFetching = true;
+    state.error = null;
+    state.data = null;
   });
-  builder.addCase(getUser.rejected, rejectedReducer);
+  builder.addCase(refresh.fulfilled, (state, { payload }) => {
+    state.data = payload;
+    state.isFetching = false;
+  });
+
+  builder.addCase(refresh.rejected, rejectedReducer);
+
 
   builder.addCase(updateUser.fulfilled, (state, { payload }) => {
     state.data = { ...state.data, ...payload };
