@@ -2,23 +2,16 @@ const express = require('express');
 const basicMiddlewares = require('../middlewares/basicMiddlewares');
 const userController = require('../controllers/userController');
 const contestController = require('../controllers/contestController');
-const checkToken = require('../middlewares/checkToken');
 const validators = require('../middlewares/validators');
 const chatController = require('../controllers/chatController');
 const upload = require('../utils/fileUpload');
+const authRouter = require('./authRouter');
+const { checkAccessToken } = require('../middlewares/tokenMiddlewares');
 const router = express.Router();
 
-router.post(
-  '/registration',
-  validators.validateRegistrationData,
-  userController.registration
-);
+router.use('/auth', authRouter);
 
-router.post('/login', validators.validateLogin, userController.login);
-
-router.post('/getUser', checkToken.checkAuth);
-
-router.use(checkToken.checkToken);
+router.use(checkAccessToken);
 
 router.post('/dataForContest', contestController.dataForContest);
 
@@ -31,10 +24,7 @@ router.post(
   userController.payment
 );
 
-router.post(
-  '/getCustomersContests',
-  contestController.getCustomersContests,
-);
+router.post('/getCustomersContests', contestController.getCustomersContests);
 
 router.get(
   '/getContestById',
@@ -48,10 +38,7 @@ router.post(
   contestController.getContests
 );
 
-router.get(
-  '/downloadFile/:fileName',
-  contestController.downloadFile
-);
+router.get('/downloadFile/:fileName', contestController.downloadFile);
 
 router.post(
   '/updateContest',
@@ -78,11 +65,7 @@ router.post(
   userController.changeMark
 );
 
-router.post(
-  '/updateUser',
-  upload.uploadAvatar,
-  userController.updateUser
-);
+router.post('/updateUser', upload.uploadAvatar, userController.updateUser);
 
 router.post(
   '/cashout',
@@ -90,59 +73,26 @@ router.post(
   userController.cashout
 );
 
-router.post(
-  '/newMessage',
-  chatController.addMessage
-);
+router.post('/newMessage', chatController.addMessage);
 
-router.post(
-  '/getChat',
-  chatController.getChat
-);
+router.post('/getChat', chatController.getChat);
 
-router.post(
-  '/getPreview',
-  chatController.getPreview
-);
+router.post('/getPreview', chatController.getPreview);
 
-router.post(
-  '/blackList',
-  chatController.blackList
-);
+router.post('/blackList', chatController.blackList);
 
-router.post(
-  '/favorite',
-  chatController.favoriteChat
-);
+router.post('/favorite', chatController.favoriteChat);
 
-router.post(
-  '/createCatalog',
-  chatController.createCatalog
-);
+router.post('/createCatalog', chatController.createCatalog);
 
-router.post(
-  '/updateNameCatalog',
-  chatController.updateNameCatalog
-);
+router.post('/updateNameCatalog', chatController.updateNameCatalog);
 
-router.post(
-  '/addNewChatToCatalog',
-  chatController.addNewChatToCatalog
-);
+router.post('/addNewChatToCatalog', chatController.addNewChatToCatalog);
 
-router.post(
-  '/removeChatFromCatalog',
-  chatController.removeChatFromCatalog
-);
+router.post('/removeChatFromCatalog', chatController.removeChatFromCatalog);
 
-router.post(
-  '/deleteCatalog',
-  chatController.deleteCatalog
-);
+router.post('/deleteCatalog', chatController.deleteCatalog);
 
-router.post(
-  '/getCatalogs',
-  chatController.getCatalogs
-);
+router.post('/getCatalogs', chatController.getCatalogs);
 
 module.exports = router;
