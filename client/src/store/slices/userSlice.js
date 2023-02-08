@@ -18,7 +18,7 @@ const initialState = {
 
 export const refresh = createAsyncThunk(
   `${USER_SLICE_NAME}/refresh`,
-  async (refreshToken, { rejectWithValue }) => {
+  async (/** @type {unknown} */ refreshToken, { rejectWithValue }) => {
     try {
       const {
         data: { user },
@@ -37,7 +37,7 @@ export const refresh = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   `${USER_SLICE_NAME}/updateUser`,
-  async (payload, { rejectWithValue, dispatch }) => {
+  async (/** @type {unknown} */ payload, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await restController.updateUser(payload);
       dispatch(changeEditModeOnUserProfile(false));
