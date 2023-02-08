@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import CONSTANTS from '../../constants';
-import * as restController from '../../api/rest/restController';
+import * as authController from '../../api/rest/authController';
 import {
   decorateAsyncThunk,
   pendingReducer,
   fulfilledReducer,
   rejectedReducer,
 } from '../../utils/store';
+import { controller } from '../../api/ws/socketController';
 
 const AUTH_SLICE_NAME = 'auth';
 
@@ -18,21 +19,27 @@ const initialState = {
 export const checkAuth = decorateAsyncThunk({
   key: `${AUTH_SLICE_NAME}/checkAuth`,
   thunk: async ({ data: authInfo, history, authMode }) => {
-    authMode === CONSTANTS.AUTH_MODE.LOGIN
-      ? await restController.loginRequest(authInfo)
-      : await restController.registerRequest(authInfo);
+    const {
+      data: { user },
+    } =
+      authMode === CONSTANTS.AUTH_MODE.LOGIN
+        ? await authController.login(authInfo)
+        : await authController.registration(authInfo);
+
     history.replace('/');
+    controller.subscribe(user.id);
+    return user;
   },
 });
 
 const reducers = {
-  clearAuthError: state => {
+  clearAuthError: (state) => {
     state.error = null;
   },
   clearAuth: () => initialState,
 };
 
-const extraReducers = builder => {
+const extraReducers = (builder) => {
   builder.addCase(checkAuth.pending, pendingReducer);
   builder.addCase(checkAuth.fulfilled, fulfilledReducer);
   builder.addCase(checkAuth.rejected, rejectedReducer);

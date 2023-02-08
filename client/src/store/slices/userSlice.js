@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as restController from '../../api/rest/restController';
+import * as authController from '../../api/rest/authController';
 import { controller } from '../../api/ws/socketController';
 import { rejectedReducer } from '../../utils/store';
+import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';
 
 const USER_SLICE_NAME = 'user';
 
 const initialState = {
-  isFetching: true,
+  isFetching: false,
   error: null,
   data: null,
 };
@@ -48,23 +50,27 @@ export const updateUser = createAsyncThunk(
 );
 
 const reducers = {
-  clearUserStore: state => {
+  clearUserStore: (state) => {
     state.error = null;
     state.data = null;
   },
-  clearUserError: state => {
+  clearUserError: (state) => {
     state.error = null;
   },
 };
 
-const extraReducers = builder => {
-  builder.addCase(getUser.pending, state => {
+const extraReducers = (builder) => {
+  builder.addCase(checkAuth.pending, (state) => {
     state.isFetching = true;
     state.error = null;
     state.data = null;
   });
-  builder.addCase(getUser.fulfilled, (state, { payload }) => {
+  builder.addCase(checkAuth.fulfilled, (state, { payload }) => {
+    state.data = payload;
     state.isFetching = false;
+  });
+  builder.addCase(checkAuth.rejected, rejectedReducer);
+  
     state.data = payload;
   });
   builder.addCase(getUser.rejected, rejectedReducer);
