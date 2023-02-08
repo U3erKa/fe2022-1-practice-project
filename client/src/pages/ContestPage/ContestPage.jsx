@@ -115,7 +115,7 @@ class ContestPage extends React.Component {
   };
 
   render() {
-    const { role } = this.props.userStore.data;
+    const { role } = this.props.userStore.data || {};
     const {
       contestByIdStore,
       changeShowImage,
