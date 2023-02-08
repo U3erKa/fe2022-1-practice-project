@@ -19,11 +19,11 @@ export const rejectedReducer = (state, { payload }) => {
  * @param {Object} thunkOptions - options
  * @param {string} thunkOptions.key - thunk typePrefix
  * @param {Function} thunkOptions.thunk - async thunk
- * @returns {AsyncThunk} Async Thunk object with typePrefix key and async function thunk
+ * @returns {import('@reduxjs/toolkit').AsyncThunk<any, unknown, {}>} Async Thunk object with typePrefix key and async function thunk
  */
 
 export const decorateAsyncThunk = ({ key, thunk }) => {
-  const asyncThunk = createAsyncThunk(key, async (payload, thunkAPI) => {
+  const asyncThunk = createAsyncThunk(key, async (/** @type {unknown} */ payload, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
       return await thunk(payload, thunkAPI);
@@ -40,10 +40,10 @@ export const decorateAsyncThunk = ({ key, thunk }) => {
 /**
  * Create extra reducers for async thunk
  * @param {Object} extraReducersOptions - options
- * @param {AsyncThunk} extraReducersOptions.thunk - thunk
- * @param {Function} extraReducersOptions.pendingReducer - pending reducer
- * @param {Function} extraReducersOptions.fulfilledReducer - fulfilled reducer
- * @param {Function} extraReducersOptions.rejectedReducer - rejected reducer
+ * @param {import('@reduxjs/toolkit').AsyncThunk<any, unknown, {}>} extraReducersOptions.thunk - thunk
+ * @param {Function?} [extraReducersOptions.pendingReducer] - pending reducer
+ * @param {Function?} [extraReducersOptions.fulfilledReducer] - fulfilled reducer
+ * @param {Function?} [extraReducersOptions.rejectedReducer] - rejected reducer
  * @returns {Function} Extra reducers for thunk with pending/fulfilled/rejected reducers
  */
 
