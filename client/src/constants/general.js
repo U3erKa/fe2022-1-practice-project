@@ -24,6 +24,8 @@ export const PUBLIC_URL =
     ? `http://${serverIP}:80/images/`
     : `http://${serverIP}:${serverPort}/public/images/`;
 
+export const DUMMY_LINK = '/404';
+
 export const NORMAL_PREVIEW_CHAT_MODE = 'NORMAL_PREVIEW_CHAT_MODE';
 export const FAVORITE_PREVIEW_CHAT_MODE = 'FAVORITE_PREVIEW_CHAT_MODE';
 export const BLOCKED_PREVIEW_CHAT_MODE = 'BLOCKED_PREVIEW_CHAT_MODE';

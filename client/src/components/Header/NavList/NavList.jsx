@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './NavList.module.sass';
 
@@ -15,7 +17,7 @@ export default function NavList({ list }) {
 export function NavListItem({ list }) {
   const mapList = list.map(({ id, href, text }, i) => (
     <li key={id} className={list.length - 1 === i ? styles.last : undefined}>
-      <a href={href}>{text}</a>
+      <Link to={href}>{text}</Link>
     </li>
   ));
   return <ul>{mapList}</ul>;
