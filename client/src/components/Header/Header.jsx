@@ -6,7 +6,7 @@ import { clearUserStore } from 'store/slices/userSlice';
 import { Logo } from 'components';
 import { LoginButtons, NavList } from 'components/Header';
 
-import { STATIC_IMAGES_PATH, CREATOR } from 'constants/general';
+import { STATIC_IMAGES_PATH, CREATOR, DUMMY_LINK } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import styles from './Header.module.sass';
 
@@ -48,7 +48,7 @@ class Header extends React.Component {
             Squadhelp recognized as one of the Most Innovative Companies by Inc
             Magazine.
           </span>
-          <a href="http://www.google.com">Read Announcement</a>
+          <Link to={DUMMY_LINK}>Read Announcement</Link>
         </div>
         <div className={styles.loginSignnUpHeaders}>
           <div className={styles.numberContainer}>

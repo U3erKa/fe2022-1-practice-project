@@ -1,15 +1,17 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+import { DUMMY_LINK, FOOTER_ITEMS } from 'constants/general';
 import styles from './Footer.module.sass';
-import { FOOTER_ITEMS } from 'constants/general';
 
 class Footer extends Component {
   topFooterItemsRender = (item) => (
     <div key={item.title}>
       <h4>{item.title}</h4>
       {item.items.map((i) => (
-        <a key={i} href="https://google.com">
+        <Link key={i} to={DUMMY_LINK}>
           {i}
-        </a>
+        </Link>
       ))}
     </div>
   );

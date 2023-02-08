@@ -23,17 +23,20 @@ export const rejectedReducer = (state, { payload }) => {
  */
 
 export const decorateAsyncThunk = ({ key, thunk }) => {
-  const asyncThunk = createAsyncThunk(key, async (/** @type {unknown} */ payload, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      return await thunk(payload, thunkAPI);
-    } catch (err) {
-      return rejectWithValue({
-        data: err?.response?.data ?? 'Gateway Timeout',
-        status: err?.response?.status ?? 504,
-      });
-    }
-  });
+  const asyncThunk = createAsyncThunk(
+    key,
+    async (/** @type {unknown} */ payload, thunkAPI) => {
+      const { rejectWithValue } = thunkAPI;
+      try {
+        return await thunk(payload, thunkAPI);
+      } catch (err) {
+        return rejectWithValue({
+          data: err?.response?.data ?? 'Gateway Timeout',
+          status: err?.response?.status ?? 504,
+        });
+      }
+    },
+  );
   return asyncThunk;
 };
 
