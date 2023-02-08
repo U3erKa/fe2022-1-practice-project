@@ -98,11 +98,7 @@ class App extends Component {
             })}
           />
           <Route exact path="/dashboard" component={Private(Dashboard)} />
-          <Route
-            exact
-            path="/contest/:id"
-            component={Private(ContestPage)}
-          />
+          <Route exact path="/contest/:id" component={Private(ContestPage)} />
           <Route exact path="/account" component={Private(UserProfile)} />
           <Route component={NotFound} />
         </Switch>
