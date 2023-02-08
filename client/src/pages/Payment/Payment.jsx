@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
 import { Error } from 'components';
 import { PayForm } from 'components/FormComponents';
 
-import { STATIC_IMAGES_PATH } from 'constants/general';
+import { DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './Payment.module.sass';
 
 const Payment = (props) => {
@@ -71,7 +72,7 @@ const Payment = (props) => {
             <span>Total:</span>
             <span>$100.00 USD</span>
           </div>
-          <a href="http://www.google.com">Have a promo code?</a>
+          <Link to={DUMMY_LINK}>Have a promo code?</Link>
         </div>
       </div>
     </div>
