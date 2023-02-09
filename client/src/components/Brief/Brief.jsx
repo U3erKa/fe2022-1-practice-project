@@ -1,11 +1,13 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { isEqual } from 'lodash';
 
 import {
   clearContestUpdationStore,
   updateContest,
 } from 'store/slices/contestUpdationSlice';
 import { changeEditContest } from 'store/slices/contestByIdSlice';
+import { goToExpandedDialog } from 'store/slices/chatSlice';
 
 import { Error } from 'components';
 import { ContestForm, ContestInfo } from 'components/Contest';
@@ -70,11 +72,40 @@ const Brief = (props) => {
     contestData,
     changeEditContest,
     role,
-    goChat,
     clearContestUpdationStore,
+    goToExpandedDialog,
+    chatStore: { messagesPreview },
+    userId,
   } = props;
   const { error } = props.contestUpdationStore;
   const { id } = props.userStore.data;
+
+  const findConversationInfo = (interlocutorId) => {
+    const participants = [userId, interlocutorId];
+    participants.sort(
+      (participant1, participant2) => participant1 - participant2,
+    );
+    for (let i = 0; i < messagesPreview.length; i++) {
+      if (isEqual(participants, messagesPreview[i].participants)) {
+        return {
+          participants: messagesPreview[i].participants,
+          _id: messagesPreview[i]._id,
+          blackList: messagesPreview[i].blackList,
+          favoriteList: messagesPreview[i].favoriteList,
+        };
+      }
+    }
+    return null;
+  };
+
+  const goChat = () => {
+    const { User } = contestData;
+    goToExpandedDialog({
+      interlocutor: User,
+      conversationData: findConversationInfo(User.id),
+    });
+  };
+
   if (!isEditContest) {
     return (
       <ContestInfo
@@ -106,14 +137,15 @@ const Brief = (props) => {
 
 const mapStateToProps = (state) => {
   const { isEditContest } = state.contestByIdStore;
-  const { contestUpdationStore, userStore } = state;
-  return { contestUpdationStore, userStore, isEditContest };
+  const { contestUpdationStore, userStore, chatStore } = state;
+  return { contestUpdationStore, userStore, isEditContest, chatStore };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   update: (data) => dispatch(updateContest(data)),
   changeEditContest: (data) => dispatch(changeEditContest(data)),
   clearContestUpdationStore: () => dispatch(clearContestUpdationStore()),
+  goToExpandedDialog: (data) => dispatch(goToExpandedDialog(data)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Brief));
