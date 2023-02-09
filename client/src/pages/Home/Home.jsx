@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import { Header, SlideBar, Footer, Spinner } from 'components';
 
@@ -16,9 +16,12 @@ import {
 
 import styles from './Home.module.sass';
 
-const Home = (props) => {
+const Home = () => {
+  const { isFetching } = useSelector((state) => state.userStore);
   const [index, setIndex] = useState(0);
   const [styleName, setStyle] = useState(styles.headline__static);
+
+  const text = HEADER_ANIMATION_TEXT[index % HEADER_ANIMATION_TEXT.length];
 
   useEffect(() => {
     const timeout = setInterval(() => {
@@ -32,8 +35,6 @@ const Home = (props) => {
     };
   });
 
-  const { isFetching } = props;
-  const text = HEADER_ANIMATION_TEXT[index % HEADER_ANIMATION_TEXT.length];
   return (
     <>
       <Header />
@@ -269,9 +270,4 @@ const Home = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { isFetching } = state.userStore;
-  return { isFetching };
-};
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;
