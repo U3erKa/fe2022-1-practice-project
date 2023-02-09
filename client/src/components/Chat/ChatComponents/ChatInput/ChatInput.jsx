@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 
 import { sendMessage } from 'store/slices/chatSlice';
@@ -8,13 +8,18 @@ import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './ChatInput.module.sass';
 
-const ChatInput = (props) => {
+const ChatInput = () => {
+  const interlocutor = useSelector(({ chatStore }) => chatStore.interlocutor);
+  const dispatch = useDispatch();
+
   const submitHandler = (values, { resetForm }) => {
-    props.sendMessage({
-      messageBody: values.message,
-      recipient: props.interlocutor.id,
-      interlocutor: props.interlocutor,
-    });
+    dispatch(
+      sendMessage({
+        messageBody: values.message,
+        recipient: interlocutor.id,
+        interlocutor,
+      }),
+    );
     resetForm();
   };
 
@@ -45,14 +50,4 @@ const ChatInput = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { interlocutor } = state.chatStore;
-  const { data } = state.userStore;
-  return { interlocutor, data };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  sendMessage: (data) => dispatch(sendMessage(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChatInput);
+export default ChatInput;
