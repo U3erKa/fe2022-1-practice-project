@@ -6,9 +6,9 @@ import {
 } from 'store/slices/contestByIdSlice';
 import { OfferBox, Error } from 'components';
 
-import styles from './ContestPage.module.sass';
+import styles from './ContestOfferList.module.sass';
 
-export const ContestOffersList = ({ offers, contestData, userId }) => {
+const ContestOffersList = ({ offers, contestData, userId }) => {
   const { setOfferStatusError } = useSelector(
     (state) => state.contestByIdStore,
   );
@@ -59,3 +59,5 @@ export const ContestOffersList = ({ offers, contestData, userId }) => {
     </>
   );
 };
+
+export default ContestOffersList;
