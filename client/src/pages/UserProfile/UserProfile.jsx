@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
@@ -9,25 +9,22 @@ import { PayForm } from 'components/FormComponents';
 import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';
 import styles from './UserProfile.module.sass';
 
-const UserProfile = (props) => {
+const UserProfile = () => {
+  const { balance, role, profileViewMode, error } = useSelector((state) => {
+    const { balance, role } = state.userStore.data || {};
+    const { profileViewMode } = state.userProfile;
+    const { error } = state.payment;
+
+    return { balance, role, profileViewMode, error };
+  });
+
+  const dispatch = useDispatch();
+
   const pay = (values) => {
     const { number, expiry, cvc, sum } = values;
-    props.cashOut({
-      number,
-      expiry,
-      cvc,
-      sum,
-    });
+    dispatch(cashOut({ number, expiry, cvc, sum }));
   };
 
-  const {
-    balance,
-    role,
-    profileViewMode,
-    changeProfileViewMode,
-    error,
-    clearPaymentStore,
-  } = props;
   return (
     <div>
       <Header />
@@ -39,7 +36,7 @@ const UserProfile = (props) => {
               className={classNames(styles.optionContainer, {
                 [styles.currentOption]: profileViewMode === USER_INFO_MODE,
               })}
-              onClick={() => changeProfileViewMode(USER_INFO_MODE)}
+              onClick={() => dispatch(changeProfileViewMode(USER_INFO_MODE))}
             >
               UserInfo
             </div>
@@ -48,7 +45,7 @@ const UserProfile = (props) => {
                 className={classNames(styles.optionContainer, {
                   [styles.currentOption]: profileViewMode === CASHOUT_MODE,
                 })}
-                onClick={() => changeProfileViewMode(CASHOUT_MODE)}
+                onClick={() => dispatch(changeProfileViewMode(CASHOUT_MODE))}
               >
                 Cashout
               </div>
@@ -82,22 +79,4 @@ const UserProfile = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { balance, role } = state.userStore.data || {};
-  const { profileViewMode } = state.userProfile;
-  const { error } = state.payment;
-  return {
-    balance,
-    role,
-    profileViewMode,
-    error,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  cashOut: (data) => dispatch(cashOut(data)),
-  changeProfileViewMode: (data) => dispatch(changeProfileViewMode(data)),
-  clearPaymentStore: () => dispatch(clearPaymentStore()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default UserProfile;
