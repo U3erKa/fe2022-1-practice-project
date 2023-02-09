@@ -20,6 +20,8 @@ import {
   STATIC_IMAGES_PATH,
   LOGO_CONTEST,
   CREATOR,
+  CONTEST_STATUS_ACTIVE,
+  OFFER_STATUS_PENDING,
 } from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -116,7 +118,17 @@ const OfferBox = (props) => {
     });
   };
 
-  const { data, role, id, contestType } = props;
+  const needButtons = (offerStatus) => {
+    const contestCreatorId = props.contestData.User.id;
+    const contestStatus = props.contestData.status;
+    return (
+      contestCreatorId === props.userId &&
+      contestStatus === CONTEST_STATUS_ACTIVE &&
+      offerStatus === OFFER_STATUS_PENDING
+    );
+  };
+
+  const { data, role, id, contestData } = props;
   const { avatar, firstName, lastName, email, rating } = props.data.User;
   return (
     <div className={styles.offerContainer}>
@@ -159,7 +171,7 @@ const OfferBox = (props) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {contestType === LOGO_CONTEST ? (
+          {contestData.contestType === LOGO_CONTEST ? (
             <img
               onClick={() =>
                 props.changeShowImage({
@@ -193,7 +205,7 @@ const OfferBox = (props) => {
         </div>
         {role !== CREATOR && <i onClick={goChat} className="fas fa-comments" />}
       </div>
-      {props.needButtons(data.status) && (
+      {needButtons(data.status) && (
         <div className={styles.btnsContainer}>
           <div onClick={resolveOffer} className={styles.resolveBtn}>
             Resolve
