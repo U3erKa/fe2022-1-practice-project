@@ -7,6 +7,7 @@ export { default as CatalogListHeader } from './CatalogComponents/CatalogListHea
 export { default as CreateCatalog } from './CatalogComponents/CreateCatalog/CreateCatalog';
 
 export { default as Chat } from './ChatComponents/Chat/Chat';
+export { default as ChatList } from './ChatComponents/ChatList/ChatList';
 export { default as ChatContainer } from './ChatComponents/ChatContainer/ChatContainer';
 export { default as ChatHeader } from './ChatComponents/ChatHeader/ChatHeader';
 export { default as ChatInput } from './ChatComponents/ChatInput/ChatInput';
