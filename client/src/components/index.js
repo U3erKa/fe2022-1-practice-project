@@ -9,6 +9,7 @@ export { default as Logo } from './Logo/Logo';
 export { default as Notification } from './Notification/Notification';
 export { default as OfferBox } from './OfferBox/OfferBox';
 export { default as ProgressBar } from './ProgressBar/ProgressBar';
+export { default as RegistrationArticles } from './RegistrationArticles/RegistrationArticles';
 export { default as RouterProvider } from './RouterProvider/RouterProvider';
 export { default as SlideBar } from './SlideBar/SlideBar';
 export { default as Spinner } from './Spinner/Spinner';
