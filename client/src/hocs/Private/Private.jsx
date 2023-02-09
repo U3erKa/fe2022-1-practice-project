@@ -1,30 +1,25 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Spinner } from 'components';
 
 const PrivateHoc = (Component, props) => {
-  class Hoc extends React.Component {
-    render() {
-      return (
-        <>
-          {this.props.isFetching ? (
-            <Spinner />
-          ) : (
-            <Component
-              history={this.props.history}
-              match={this.props.match}
-              {...props}
-            />
-          )}
-        </>
-      );
-    }
-  }
+  const Hoc = ({ isFetching, history, match }) => {
+    const user = useSelector((state) => state.userStore.data);
 
-  const mapStateToProps = (state) => state.userStore;
+    return (
+      <>
+        {isFetching ? (
+          <Spinner />
+        ) : user ? (
+          <Component history={history} match={match} {...props} />
+        ) : (
+          history.replace('/login')
+        )}
+      </>
+    );
+  };
 
-  return connect(mapStateToProps)(Hoc);
+  return Hoc;
 };
 
 export default PrivateHoc;
