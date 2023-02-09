@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import * as restController from 'api/rest/restController';
+import * as dataForContest from 'api/rest/contestController';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';
 import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
 
@@ -26,8 +26,8 @@ export const getContests = decorateAsyncThunk({
   thunk: async ({ requestData, role }) => {
     const { data } =
       role === CUSTOMER
-        ? await restController.getCustomersContests(requestData)
-        : await restController.getActiveContests(requestData);
+        ? await dataForContest.getCustomersContests(requestData)
+        : await dataForContest.getActiveContests(requestData);
     return data;
   },
 });
