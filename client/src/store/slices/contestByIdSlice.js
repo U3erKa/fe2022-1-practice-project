@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import * as restController from 'api/rest/restController';
+import * as dataForContest from 'api/rest/contestController';
 import {
   decorateAsyncThunk,
   rejectedReducer,
@@ -29,7 +30,7 @@ const initialState = {
 export const getContestById = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/getContest`,
   thunk: async (payload) => {
-    const { data } = await restController.getContestById(payload);
+    const { data } = await dataForContest.getContestById(payload);
     const { Offers } = data;
     delete data.Offers;
     return { contestData: data, offers: Offers };

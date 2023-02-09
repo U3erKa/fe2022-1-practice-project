@@ -1,5 +1,4 @@
 import http from '../interceptor';
-import queryString from 'query-string';
 
 export const registerRequest = (data) => http.post('registration', data);
 export const loginRequest = (data) => http.post('login', data);
@@ -28,47 +27,3 @@ export const getCatalogList = (data) => http.post('getCatalogs', data);
 export const createCatalog = (data) => http.post('createCatalog', data);
 export const deleteCatalog = (data) => http.post('deleteCatalog', data);
 export const changeCatalogName = (data) => http.post('updateNameCatalog', data);
-
-export const dataForContest = (data) => http.post('dataForContest', data);
-export const downloadContestFile = (data) =>
-  http.get(`downloadFile/${data.fileName}`);
-
-export const getCustomersContests = (data) =>
-  http.get(
-    `contests?${queryString.stringify({
-      limit: data.limit,
-      offset: data.offset,
-    })}`,
-    {
-      headers: {
-        status: data.contestStatus,
-      },
-    },
-  );
-
-export const getActiveContests = ({
-  offset,
-  limit,
-  typeIndex,
-  contestId,
-  industry,
-  awardSort,
-  ownEntries,
-}) =>
-  http.get(
-    `contests?${queryString.stringify({
-      offset,
-      limit,
-      typeIndex,
-      contestId,
-      industry,
-      awardSort,
-      ownEntries,
-    })}`,
-  );
-
-export const getContestById = (data) => http.get(`contests/${data.contestId}`);
-export const updateContest = (/** @type {FormData} */ data) => {
-  console.log(data);
-  return http.put(`contests/${data.get('contestId')}`, data);
-};
