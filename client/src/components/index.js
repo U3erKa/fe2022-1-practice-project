@@ -12,5 +12,6 @@ export { default as ProgressBar } from './ProgressBar/ProgressBar';
 export { default as RouterProvider } from './RouterProvider/RouterProvider';
 export { default as SlideBar } from './SlideBar/SlideBar';
 export { default as Spinner } from './Spinner/Spinner';
+export { default as TextEntry } from './TextEntry/TextEntry';
 export { default as TryAgain } from './TryAgain/TryAgain';
 export { default as UserInfo } from './UserInfo/UserInfo';
