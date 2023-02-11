@@ -18,5 +18,4 @@ export { default as BlockMessage } from './DialogComponents/BlockMessage/BlockMe
 export { default as Dialog } from './DialogComponents/Dialog/Dialog';
 export { default as DialogBox } from './DialogComponents/DialogBox/DialogBox';
 export { default as DialogList } from './DialogComponents/DialogList/DialogList';
-export { default as DialogListContainer } from './DialogComponents/DialogListContainer/DialogListContainer';
 export { default as MainDialog } from './DialogComponents/MainDialog/MainDialog';
