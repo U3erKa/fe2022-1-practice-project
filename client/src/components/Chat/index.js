@@ -14,7 +14,9 @@ export { default as ChatInput } from './ChatComponents/ChatInput/ChatInput';
 
 export { default as ChatError } from './ChatError/ChatError';
 
+export { default as BlockMessage } from './DialogComponents/BlockMessage/BlockMessage';
 export { default as Dialog } from './DialogComponents/Dialog/Dialog';
 export { default as DialogBox } from './DialogComponents/DialogBox/DialogBox';
 export { default as DialogList } from './DialogComponents/DialogList/DialogList';
 export { default as DialogListContainer } from './DialogComponents/DialogListContainer/DialogListContainer';
+export { default as MainDialog } from './DialogComponents/MainDialog/MainDialog';
