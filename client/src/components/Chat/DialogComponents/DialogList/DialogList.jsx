@@ -18,8 +18,8 @@ import {
 
 import styles from './DialogList.module.sass';
 
-const DialogList = ({ userId, preview, removeChat }) => {
-  const { chatMode } = useSelector((state) => state.chatStore);
+const DialogList = ({ userId }) => {
+  const { chatMode, messagesPreview } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
   const changeFavorite = (data, event) => {
@@ -53,7 +53,7 @@ const DialogList = ({ userId, preview, removeChat }) => {
 
   const renderPreview = (filterFunc) => {
     const arrayList = [];
-    preview.forEach((chatPreview, index) => {
+    messagesPreview.forEach((chatPreview, index) => {
       const dialogNode = (
         <DialogBox
           interlocutor={chatPreview.interlocutor}
@@ -65,9 +65,7 @@ const DialogList = ({ userId, preview, removeChat }) => {
           changeBlackList={changeBlackList}
           chatMode={chatMode}
           catalogOperation={
-            chatMode === CATALOG_PREVIEW_CHAT_MODE
-              ? removeChat
-              : changeShowCatalogCreation
+            chatMode !== CATALOG_PREVIEW_CHAT_MODE && changeShowCatalogCreation
           }
           goToExpandedDialog={(data) => dispatch(goToExpandedDialog(data))}
         />

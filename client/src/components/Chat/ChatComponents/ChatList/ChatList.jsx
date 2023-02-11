@@ -5,7 +5,7 @@ import { setPreviewChatMode } from 'store/slices/chatSlice';
 import {
   CatalogListContainer,
   CatalogListHeader,
-  DialogListContainer,
+  DialogList,
 } from 'components/Chat';
 
 import {
@@ -55,7 +55,7 @@ const ChatList = () => {
       {chatMode === CATALOG_PREVIEW_CHAT_MODE ? (
         <CatalogListContainer />
       ) : (
-        <DialogListContainer userId={userId} />
+        <DialogList userId={userId} />
       )}
     </div>
   );
