@@ -18,7 +18,7 @@ import {
 
 import styles from './DialogList.module.sass';
 
-const DialogList = ({ userId }) => {
+const DialogList = ({ userId, removeChat }) => {
   const { chatMode, messagesPreview } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
@@ -65,7 +65,9 @@ const DialogList = ({ userId }) => {
           changeBlackList={changeBlackList}
           chatMode={chatMode}
           catalogOperation={
-            chatMode !== CATALOG_PREVIEW_CHAT_MODE && changeShowCatalogCreation
+            chatMode === CATALOG_PREVIEW_CHAT_MODE
+              ? removeChat
+              : changeShowCatalogCreation
           }
           goToExpandedDialog={(data) => dispatch(goToExpandedDialog(data))}
         />
