@@ -1,26 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { clearUserStore } from 'store/slices/userSlice';
-import { Logo } from 'components';
+import { Logo, Spinner } from 'components';
 import { LoginButtons, NavList } from 'components/Header';
 
-import { withRouter } from 'hocs';
 import { STATIC_IMAGES_PATH, CREATOR, DUMMY_LINK } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import styles from './Header.module.sass';
 
-class Header extends React.Component {
-  logOut = () => {
-    localStorage.clear();
-    this.props.clearUserStore();
-    this.redirect = '/login';
-  };
+const Header = () => {
+  const { data: user, isFetching } = useSelector((state) => state.userStore);
 
-  renderLoginButtons = () => {
-    if (this.props.data) {
-      return <LoginButtons data={this.props.data} logOut={this.logOut} />;
+  const renderLoginButtons = () => {
+    if (user) {
+      return <LoginButtons data={user} />;
     }
     return (
       <>
@@ -34,53 +27,43 @@ class Header extends React.Component {
     );
   };
 
-  render() {
-    if (this.props.isFetching) {
-      return null;
-    }
-    if (this.redirect) {
-      return <Navigate to={this.redirect} />;
-    }
+  if (isFetching) {
+    return <Spinner />;
+  }
 
-    return (
-      <div className={styles.headerContainer}>
-        <div className={styles.fixedHeader}>
-          <span className={styles.info}>
-            Squadhelp recognized as one of the Most Innovative Companies by Inc
-            Magazine.
-          </span>
-          <Link to={DUMMY_LINK}>Read Announcement</Link>
+  return (
+    <div className={styles.headerContainer}>
+      <div className={styles.fixedHeader}>
+        <span className={styles.info}>
+          Squadhelp recognized as one of the Most Innovative Companies by Inc
+          Magazine.
+        </span>
+        <Link to={DUMMY_LINK}>Read Announcement</Link>
+      </div>
+      <div className={styles.loginSignnUpHeaders}>
+        <div className={styles.numberContainer}>
+          <img src={`${STATIC_IMAGES_PATH}phone.png`} alt="phone" />
+          <a href="tel:8773553585">(877)&nbsp;355-3585</a>
         </div>
-        <div className={styles.loginSignnUpHeaders}>
-          <div className={styles.numberContainer}>
-            <img src={`${STATIC_IMAGES_PATH}phone.png`} alt="phone" />
-            <a href="tel:8773553585">(877)&nbsp;355-3585</a>
-          </div>
-          <div className={styles.userButtonsContainer}>
-            {this.renderLoginButtons()}
-          </div>
-        </div>
-        <div className={styles.navContainer}>
-          <Logo />
-          <div className={styles.leftNav}>
-            <div className={styles.nav}>
-              <NavList list={HEADER_LIST} />
-            </div>
-            {this.props.data && this.props.data.role !== CREATOR && (
-              <Link to="/startContest" className={styles.startContestBtn}>
-                START CONTEST
-              </Link>
-            )}
-          </div>
+        <div className={styles.userButtonsContainer}>
+          {renderLoginButtons()}
         </div>
       </div>
-    );
-  }
-}
+      <div className={styles.navContainer}>
+        <Logo />
+        <div className={styles.leftNav}>
+          <div className={styles.nav}>
+            <NavList list={HEADER_LIST} />
+          </div>
+          {user && user.role !== CREATOR && (
+            <Link to="/startContest" className={styles.startContestBtn}>
+              START CONTEST
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => state.userStore;
-const mapDispatchToProps = (dispatch) => ({
-  clearUserStore: () => dispatch(clearUserStore()),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default Header;

@@ -9,7 +9,7 @@ import { PROFILE_NAVBAR } from 'constants/header';
 
 import styles from './LoginButtons.module.sass';
 
-export default function LoginButtons({ data, logOut }) {
+export default function LoginButtons({ data }) {
   return (
     <>
       <div className={styles.userInfo}>
@@ -23,7 +23,7 @@ export default function LoginButtons({ data, logOut }) {
         />
         <span>{`Hi, ${data.displayName}`}</span>
         <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
-        <ProfileNavBar list={PROFILE_NAVBAR} logOut={logOut} />
+        <ProfileNavBar list={PROFILE_NAVBAR} />
       </div>
       <img
         src={`${STATIC_IMAGES_PATH}email.png`}
