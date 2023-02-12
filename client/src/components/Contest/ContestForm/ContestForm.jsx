@@ -1,7 +1,6 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Form, Formik } from 'formik';
-import { connect } from 'react-redux';
-import { withRouter } from 'hocs';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { Spinner, TryAgain } from 'components';
@@ -32,153 +31,152 @@ const variableOptions = {
   },
 };
 
-class ContestForm extends React.Component {
-  getPreference = () => {
-    const { contestType } = this.props;
+const ContestForm = (props) => {
+  const { isEditContest, dataForContest } = useSelector(
+    ({ contestByIdStore, dataForContest }) => ({
+      isEditContest: contestByIdStore.isEditContest,
+      dataForContest,
+    }),
+  );
+  const dispatch = useDispatch();
+
+  const { contestType, defaultData, handleSubmit, formRef } = props;
+  const { isFetching, error, data: contestData } = dataForContest;
+
+  const getPreference = () => {
     switch (contestType) {
       case NAME_CONTEST: {
-        this.props.getData({
-          characteristic1: 'nameStyle',
-          characteristic2: 'typeOfName',
-        });
+        dispatch(
+          getDataForContest({
+            characteristic1: 'nameStyle',
+            characteristic2: 'typeOfName',
+          }),
+        );
         break;
       }
       case TAGLINE_CONTEST: {
-        this.props.getData({ characteristic1: 'typeOfTagline' });
+        dispatch(getDataForContest({ characteristic1: 'typeOfTagline' }));
         break;
       }
       case LOGO_CONTEST: {
-        this.props.getData({ characteristic1: 'brandStyle' });
+        dispatch(getDataForContest({ characteristic1: 'brandStyle' }));
         break;
+      }
+      default: {
+        throw new TypeError(`${contestType} is not supported contest type`);
       }
     }
   };
 
-  componentDidMount() {
-    this.getPreference();
+  useEffect(() => {
+    getPreference();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (error) {
+    return <TryAgain getData={getPreference} />;
+  }
+  if (isFetching) {
+    return <Spinner />;
   }
 
-  render() {
-    const { isFetching, error } = this.props.dataForContest;
-    if (error) {
-      return <TryAgain getData={this.getPreference} />;
-    }
-    if (isFetching) {
-      return <Spinner />;
-    }
-    return (
-      <>
-        <div className={styles.formContainer}>
-          <Formik
-            initialValues={{
-              title: '',
-              industry: '',
-              focusOfWork: '',
-              targetCustomer: '',
-              file: '',
-              ...variableOptions[this.props.contestType],
-              ...this.props.initialValues,
-            }}
-            onSubmit={this.props.handleSubmit}
-            validationSchema={ContestSchem}
-            innerRef={this.props.formRef}
-            enableReinitialize
-          >
-            <Form>
-              <div className={styles.inputContainer}>
-                <span className={styles.inputHeader}>Title of contest</span>
-                <FormInput
-                  name="title"
-                  type="text"
-                  label="Title"
-                  classes={{
-                    container: styles.componentInputContainer,
-                    input: styles.input,
-                    warning: styles.warning,
-                  }}
-                />
-              </div>
-              <div className={styles.inputContainer}>
-                <SelectInput
-                  name="industry"
-                  classes={{
-                    inputContainer: styles.selectInputContainer,
-                    inputHeader: styles.selectHeader,
-                    selectInput: styles.select,
-                    warning: styles.warning,
-                  }}
-                  header="Describe industry associated with your venture"
-                  optionsArray={this.props.dataForContest.data.industry}
-                />
-              </div>
-              <div className={styles.inputContainer}>
-                <span className={styles.inputHeader}>
-                  What does your company / business do?
-                </span>
-                <FormTextArea
-                  name="focusOfWork"
-                  type="text"
-                  label="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
-                  classes={{
-                    container: styles.componentInputContainer,
-                    inputStyle: styles.textArea,
-                    warning: styles.warning,
-                  }}
-                />
-              </div>
-              <div className={styles.inputContainer}>
-                <span className={styles.inputHeader}>
-                  Tell us about your customers
-                </span>
-                <FormTextArea
-                  name="targetCustomer"
-                  type="text"
-                  label="customers"
-                  classes={{
-                    container: styles.componentInputContainer,
-                    inputStyle: styles.textArea,
-                    warning: styles.warning,
-                  }}
-                />
-              </div>
-              <OptionalSelects {...this.props} />
-              <FieldFileInput
-                name="file"
+  return (
+    <>
+      <div className={styles.formContainer}>
+        <Formik
+          initialValues={{
+            title: '',
+            industry: '',
+            focusOfWork: '',
+            targetCustomer: '',
+            file: '',
+            ...variableOptions[contestType],
+            ...defaultData,
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={ContestSchem}
+          innerRef={formRef}
+          enableReinitialize
+        >
+          <Form>
+            <div className={styles.inputContainer}>
+              <span className={styles.inputHeader}>Title of contest</span>
+              <FormInput
+                name="title"
+                type="text"
+                label="Title"
                 classes={{
-                  fileUploadContainer: styles.fileUploadContainer,
-                  labelClass: styles.label,
-                  fileNameClass: styles.fileName,
-                  fileInput: styles.fileInput,
+                  container: styles.componentInputContainer,
+                  input: styles.input,
                   warning: styles.warning,
                 }}
-                type="file"
               />
-              {this.props.isEditContest ? (
-                <button type="submit" className={styles.changeData}>
-                  Set Data
-                </button>
-              ) : null}
-            </Form>
-          </Formik>
-        </div>
-      </>
-    );
-  }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  const { isEditContest } = state.contestByIdStore;
-  return {
-    isEditContest,
-    contestCreationStore: state.contestCreationStore,
-    dataForContest: state.dataForContest,
-    initialValues: ownProps.defaultData,
-  };
+            </div>
+            <div className={styles.inputContainer}>
+              <SelectInput
+                name="industry"
+                classes={{
+                  inputContainer: styles.selectInputContainer,
+                  inputHeader: styles.selectHeader,
+                  selectInput: styles.select,
+                  warning: styles.warning,
+                }}
+                header="Describe industry associated with your venture"
+                optionsArray={contestData?.industry}
+              />
+            </div>
+            <div className={styles.inputContainer}>
+              <span className={styles.inputHeader}>
+                What does your company / business do?
+              </span>
+              <FormTextArea
+                name="focusOfWork"
+                type="text"
+                label="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
+                classes={{
+                  container: styles.componentInputContainer,
+                  inputStyle: styles.textArea,
+                  warning: styles.warning,
+                }}
+              />
+            </div>
+            <div className={styles.inputContainer}>
+              <span className={styles.inputHeader}>
+                Tell us about your customers
+              </span>
+              <FormTextArea
+                name="targetCustomer"
+                type="text"
+                label="customers"
+                classes={{
+                  container: styles.componentInputContainer,
+                  inputStyle: styles.textArea,
+                  warning: styles.warning,
+                }}
+              />
+            </div>
+            <OptionalSelects {...props} />
+            <FieldFileInput
+              name="file"
+              classes={{
+                fileUploadContainer: styles.fileUploadContainer,
+                labelClass: styles.label,
+                fileNameClass: styles.fileName,
+                fileInput: styles.fileInput,
+                warning: styles.warning,
+              }}
+              type="file"
+            />
+            {isEditContest ? (
+              <button type="submit" className={styles.changeData}>
+                Set Data
+              </button>
+            ) : null}
+          </Form>
+        </Formik>
+      </div>
+    </>
+  );
 };
-const mapDispatchToProps = (dispatch) => ({
-  getData: (data) => dispatch(getDataForContest(data)),
-});
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ContestForm),
-);
+export default ContestForm;
