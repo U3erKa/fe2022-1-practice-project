@@ -12,7 +12,7 @@ import {
 
 import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
-import history from 'browserHistory';
+import { withRouter } from 'hocs';
 import styles from './RegistrationForm.module.sass';
 
 class RegistrationForm extends React.Component {
@@ -30,7 +30,7 @@ class RegistrationForm extends React.Component {
         password: values.password,
         role: values.role,
       },
-      history,
+      navigate: this.props.navigate,
     });
   };
 
@@ -167,9 +167,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  register: ({ data, history }) =>
-    dispatch(checkAuth({ data, history, authMode: AUTH_MODE.REGISTER })),
+  register: ({ data, navigate }) =>
+    dispatch(checkAuth({ data, navigate, authMode: AUTH_MODE.REGISTER })),
   authClear: () => dispatch(clearAuth()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(RegistrationForm),
+);

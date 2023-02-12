@@ -1,11 +1,12 @@
-import { withRouter } from 'hocs';
+import { useNavigate } from 'react-router-dom';
 
-import history from 'browserHistory';
 import styles from './BackButton.module.sass';
 
-const BackButton = (props) => {
+const BackButton = () => {
+  const navigate = useNavigate();
+
   function clickHandler() {
-    history.back();
+    navigate(-1);
   }
 
   return (
@@ -15,4 +16,4 @@ const BackButton = (props) => {
   );
 };
 
-export default withRouter(BackButton);
+export default BackButton;

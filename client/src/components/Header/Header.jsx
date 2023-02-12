@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import { clearUserStore } from 'store/slices/userSlice';
 import { Logo } from 'components';
@@ -9,18 +9,13 @@ import { LoginButtons, NavList } from 'components/Header';
 import { withRouter } from 'hocs';
 import { STATIC_IMAGES_PATH, CREATOR, DUMMY_LINK } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
-import history from 'browserHistory';
 import styles from './Header.module.sass';
 
 class Header extends React.Component {
   logOut = () => {
     localStorage.clear();
     this.props.clearUserStore();
-    history.replace('/login');
-  };
-
-  startContests = () => {
-    history.push('/startContest');
+    this.redirect = '/login';
   };
 
   renderLoginButtons = () => {
@@ -43,6 +38,10 @@ class Header extends React.Component {
     if (this.props.isFetching) {
       return null;
     }
+    if (this.redirect) {
+      return <Navigate to={this.redirect} />;
+    }
+
     return (
       <div className={styles.headerContainer}>
         <div className={styles.fixedHeader}>
@@ -68,12 +67,9 @@ class Header extends React.Component {
               <NavList list={HEADER_LIST} />
             </div>
             {this.props.data && this.props.data.role !== CREATOR && (
-              <div
-                className={styles.startContestBtn}
-                onClick={this.startContests}
-              >
+              <Link to="/startContest" className={styles.startContestBtn}>
                 START CONTEST
-              </div>
+              </Link>
             )}
           </div>
         </div>

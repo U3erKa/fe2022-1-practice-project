@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'hocs';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import classNames from 'classnames';
@@ -16,7 +16,7 @@ import { TryAgain } from 'components';
 import { ContestsContainer, ContestBox } from 'components/Contest';
 
 import { CREATOR } from 'constants/general';
-import history from 'browserHistory';
+import { withRouter } from 'hocs';
 import styles from './CreatorDashboard.module.sass';
 
 const types = [
@@ -131,7 +131,7 @@ class CreatorDashboard extends React.Component {
     Object.keys(creatorFilter).forEach((el) => {
       if (creatorFilter[el]) obj[el] = creatorFilter[el];
     });
-    history.push(`/Dashboard?${queryString.stringify(obj)}`);
+    this.redirect = `/Dashboard?${queryString.stringify(obj)}`;
   };
 
   parseUrlForParams = (search) => {
@@ -189,7 +189,7 @@ class CreatorDashboard extends React.Component {
   };
 
   goToExtended = (contestId) => {
-    history.push(`/contest/${contestId}`);
+    this.redirect = `/contest/${contestId}`;
   };
 
   tryLoadAgain = () => {
@@ -204,6 +204,11 @@ class CreatorDashboard extends React.Component {
   render() {
     const { error, haveMore, creatorFilter } = this.props;
     const { isFetching } = this.props.dataForContest;
+
+    if (this.redirect) {
+      return <Navigate to={this.redirect} />;
+    }
+
     return (
       <div className={styles.mainContainer}>
         <div className={styles.filterContainer}>
@@ -273,7 +278,6 @@ class CreatorDashboard extends React.Component {
           <ContestsContainer
             isFetching={this.props.isFetching}
             loadMore={this.loadMore}
-            history={history}
             haveMore={haveMore}
           >
             {this.setContestList()}

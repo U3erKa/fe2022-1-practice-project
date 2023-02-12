@@ -1,22 +1,18 @@
-import { withRouter } from 'hocs';
+import { Link } from 'react-router-dom';
 
-import history from 'browserHistory';
 import styles from './Notification.module.sass';
 
-const Notification = (props) => (
+const Notification = ({ contestId, message }) => (
   <div>
     <br />
-    <span>{props.message}</span>
+    <span>{message}</span>
     <br />
-    {props.contestId && (
-      <span
-        onClick={() => history.push(`/contest/${props.contestId}`)}
-        className={styles.goToContest}
-      >
+    {contestId && (
+      <Link to={`/contest/${contestId}`} className={styles.goToContest}>
         Go to contest
-      </span>
+      </Link>
     )}
   </div>
 );
 
-export default withRouter(Notification);
+export default Notification;

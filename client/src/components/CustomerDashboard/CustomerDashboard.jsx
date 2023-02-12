@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import {
@@ -19,11 +20,12 @@ import {
 } from 'constants/general';
 import styles from './CustomerDashboard.module.sass';
 
-const CustomerDashboard = ({ history }) => {
+const CustomerDashboard = () => {
   const { isFetching, error, contests, customerFilter, haveMore } = useSelector(
     (state) => state.contestsList,
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getContestsMethod();
@@ -55,7 +57,7 @@ const CustomerDashboard = ({ history }) => {
   };
 
   const goToExtended = (contest_id) => {
-    history.push(`/contest/${contest_id}`);
+    navigate(`/contest/${contest_id}`);
   };
 
   const setContestList = () => {
@@ -117,7 +119,6 @@ const CustomerDashboard = ({ history }) => {
           <ContestsContainer
             isFetching={isFetching}
             loadMore={loadMore}
-            history={history}
             haveMore={haveMore}
           >
             {setContestList()}

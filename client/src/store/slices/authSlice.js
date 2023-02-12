@@ -20,7 +20,7 @@ const initialState = {
 
 export const checkAuth = decorateAsyncThunk({
   key: `${AUTH_SLICE_NAME}/checkAuth`,
-  thunk: async ({ data: authInfo, history, authMode }) => {
+  thunk: async ({ data: authInfo, navigate, authMode }) => {
     const {
       data: { user },
     } =
@@ -28,7 +28,7 @@ export const checkAuth = decorateAsyncThunk({
         ? await authController.login(authInfo)
         : await authController.registration(authInfo);
 
-    history.replace('/');
+    navigate('/', { replace: true });
     controller.subscribe(user.id);
     return user;
   },
