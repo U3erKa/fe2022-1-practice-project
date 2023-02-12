@@ -10,45 +10,35 @@ import {
   StartContestPage,
   UserProfile,
 } from 'pages';
-import { Private, OnlyNotAuthorizedUser } from 'hocs';
-import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST } from 'constants/general';
+// import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST } from 'constants/general';
 
 export const router = [
   { id: 0, path: '/', element: Home },
-  { id: 1, path: '/login', element: OnlyNotAuthorizedUser(LoginPage) },
+  { id: 1, path: '/login', element: LoginPage },
   {
     id: 2,
     path: '/registration',
-    element: OnlyNotAuthorizedUser(RegistrationPage),
+    element: RegistrationPage,
   },
-  { id: 3, path: '/payment', element: Private(Payment) },
-  { id: 4, path: '/startContest', element: Private(StartContestPage) },
+  { id: 3, path: '/payment', element: Payment },
+  { id: 4, path: '/startContest', element: StartContestPage },
   {
     id: 5,
     path: '/startContest/nameContest',
-    element: Private(ContestCreationPage, {
-      contestType: NAME_CONTEST,
-      title: 'Company Name',
-    }),
+    element: ContestCreationPage,
   },
   {
     id: 6,
     path: '/startContest/taglineContest',
-    element: Private(ContestCreationPage, {
-      contestType: TAGLINE_CONTEST,
-      title: 'TAGLINE',
-    }),
+    element: ContestCreationPage,
   },
   {
     id: 7,
     path: '/startContest/logoContest',
-    element: Private(ContestCreationPage, {
-      contestType: LOGO_CONTEST,
-      title: 'LOGO',
-    }),
+    element: ContestCreationPage,
   },
-  { id: 8, path: '/dashboard', element: Private(Dashboard) },
-  { id: 9, path: '/contest/:id', element: Private(ContestPage) },
-  { id: 10, path: '/account', element: Private(UserProfile) },
+  { id: 8, path: '/dashboard', element: Dashboard },
+  { id: 9, path: '/contest/:id', element: ContestPage },
+  { id: 10, path: '/account', element: UserProfile },
   { id: 999, path: '*', element: NotFound },
 ];
