@@ -94,6 +94,7 @@ const CreatorDashboard = () => {
 
   useEffect(() => {
     parseUrlForParams(location.search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
   const getContestsMethod = (filter) => {

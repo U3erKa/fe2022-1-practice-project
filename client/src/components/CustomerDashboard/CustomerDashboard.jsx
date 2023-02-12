@@ -32,6 +32,7 @@ const CustomerDashboard = () => {
     return () => {
       dispatch(clearContestsList());
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
