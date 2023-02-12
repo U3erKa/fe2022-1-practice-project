@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 
 import { refresh } from 'store/slices/userSlice';
 import { ChatContainer } from 'components/Chat';
-import browserHistory from 'browserHistory';
 
 import { REFRESH_TOKEN } from 'constants/general';
 import { router as routes } from 'constants/router';
@@ -15,7 +14,7 @@ import './App.css';
 
 const router = createBrowserRouter(routes);
 
-const App = (props) => {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {

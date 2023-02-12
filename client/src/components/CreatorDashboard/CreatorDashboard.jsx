@@ -16,6 +16,7 @@ import { TryAgain } from 'components';
 import { ContestsContainer, ContestBox } from 'components/Contest';
 
 import { CREATOR } from 'constants/general';
+import history from 'browserHistory';
 import styles from './CreatorDashboard.module.sass';
 
 const types = [
@@ -130,7 +131,7 @@ class CreatorDashboard extends React.Component {
     Object.keys(creatorFilter).forEach((el) => {
       if (creatorFilter[el]) obj[el] = creatorFilter[el];
     });
-    this.props.history.push(`/Dashboard?${queryString.stringify(obj)}`);
+    history.push(`/Dashboard?${queryString.stringify(obj)}`);
   };
 
   parseUrlForParams = (search) => {
@@ -188,7 +189,7 @@ class CreatorDashboard extends React.Component {
   };
 
   goToExtended = (contestId) => {
-    this.props.history.push(`/contest/${contestId}`);
+    history.push(`/contest/${contestId}`);
   };
 
   tryLoadAgain = () => {
@@ -272,7 +273,7 @@ class CreatorDashboard extends React.Component {
           <ContestsContainer
             isFetching={this.props.isFetching}
             loadMore={this.loadMore}
-            history={this.props.history}
+            history={history}
             haveMore={haveMore}
           >
             {this.setContestList()}
