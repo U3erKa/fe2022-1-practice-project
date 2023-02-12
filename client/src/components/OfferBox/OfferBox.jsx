@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'hocs';
 import { confirmAlert } from 'react-confirm-alert';
 import Rating from 'react-rating';
 import isEqual from 'lodash/isEqual';

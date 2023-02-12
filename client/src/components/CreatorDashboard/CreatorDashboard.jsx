@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'hocs';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import classNames from 'classnames';
