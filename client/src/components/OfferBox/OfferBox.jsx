@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'hocs';
 import { confirmAlert } from 'react-confirm-alert';
 import Rating from 'react-rating';
 import isEqual from 'lodash/isEqual';
@@ -238,6 +237,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(OfferBox),
-);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferBox);
