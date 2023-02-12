@@ -1,34 +1,27 @@
-import { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { DUMMY_LINK, FOOTER_ITEMS } from 'constants/general';
 import styles from './Footer.module.sass';
 
-class Footer extends Component {
-  topFooterItemsRender = (item) => (
-    <div key={item.title}>
-      <h4>{item.title}</h4>
-      {item.items.map((i) => (
-        <Link key={i} to={DUMMY_LINK}>
-          {i}
+const Footer = () => {
+  const topFooterRender = FOOTER_ITEMS.map(({ title, items }) => (
+    <div key={title}>
+      <h4>{title}</h4>
+      {items.map((item) => (
+        <Link key={item} to={DUMMY_LINK}>
+          {item}
         </Link>
       ))}
     </div>
-  );
+  ));
 
-  topFooterRender() {
-    return FOOTER_ITEMS.map((item) => this.topFooterItemsRender(item));
-  }
-
-  render() {
-    return (
-      <div className={styles.footerContainer}>
-        <div className={styles.footerTop}>
-          <div>{this.topFooterRender()}</div>
-        </div>
+  return (
+    <div className={styles.footerContainer}>
+      <div className={styles.footerTop}>
+        <div>{topFooterRender}</div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Footer;

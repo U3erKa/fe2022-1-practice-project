@@ -1,7 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { clearUserStore } from 'store/slices/userSlice';
 import styles from './ProfileNavBar.module.sass';
 
-export default function ProfileNavBar({ list, logOut }) {
+export default function ProfileNavBar({ list }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.clear();
+    dispatch(clearUserStore());
+    navigate('/login');
+  };
+
   const mapList = list.map(({ id, href, text }) => (
     <li key={id} className={styles.navListItem}>
       <Link
