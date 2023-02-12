@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'hocs';
 
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { Spinner, TryAgain } from 'components';
