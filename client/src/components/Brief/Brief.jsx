@@ -1,4 +1,3 @@
-import { withRouter } from 'hocs';
 import { connect } from 'react-redux';
 import { isEqual } from 'lodash';
 
@@ -148,4 +147,4 @@ const mapDispatchToProps = (dispatch) => ({
   goToExpandedDialog: (data) => dispatch(goToExpandedDialog(data)),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Brief));
+export default connect(mapStateToProps, mapDispatchToProps)(Brief);
