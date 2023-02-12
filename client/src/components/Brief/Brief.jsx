@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { isEqual } from 'lodash';
 
 import {
@@ -13,17 +13,35 @@ import { ContestForm, ContestInfo } from 'components/Contest';
 
 import styles from './Brief.module.sass';
 
-const Brief = (props) => {
+const Brief = () => {
+  const selector = useSelector((state) => {
+    const { contestUpdationStore, userStore, chatStore, contestByIdStore } =
+      state;
+    return { contestUpdationStore, userStore, contestByIdStore, chatStore };
+  });
+  const dispatch = useDispatch();
+
+  const {
+    contestByIdStore: { isEditContest, contestData },
+    contestUpdationStore: { error },
+    userStore: {
+      data: { id: userId, role },
+    },
+    chatStore: { messagesPreview },
+  } = selector;
+
   const setNewContestData = (values) => {
     const data = new FormData();
+
     Object.keys(values).forEach((key) => {
       if (key !== 'file' && values[key]) data.append(key, values[key]);
     });
     if (values.file instanceof File) {
       data.append('file', values.file);
     }
-    data.append('contestId', props.contestData.id);
-    props.update(data);
+    data.append('contestId', contestData.id);
+
+    dispatch(updateContest(data));
   };
 
   const getContestObjInfo = () => {
@@ -39,7 +57,7 @@ const Brief = (props) => {
       typeOfTagline,
       originalFileName,
       contestType,
-    } = props.contestData;
+    } = contestData;
     const data = {
       focusOfWork,
       industry,
@@ -53,6 +71,7 @@ const Brief = (props) => {
       originalFileName,
       contestType,
     };
+
     const defaultData = {};
     Object.keys(data).forEach((key) => {
       if (data[key]) {
@@ -65,19 +84,6 @@ const Brief = (props) => {
     });
     return defaultData;
   };
-
-  const {
-    isEditContest,
-    contestData,
-    changeEditContest,
-    role,
-    clearContestUpdationStore,
-    goToExpandedDialog,
-    chatStore: { messagesPreview },
-    userId,
-  } = props;
-  const { error } = props.contestUpdationStore;
-  const { id } = props.userStore.data;
 
   const findConversationInfo = (interlocutorId) => {
     const participants = [userId, interlocutorId];
@@ -99,18 +105,20 @@ const Brief = (props) => {
 
   const goChat = () => {
     const { User } = contestData;
-    goToExpandedDialog({
-      interlocutor: User,
-      conversationData: findConversationInfo(User.id),
-    });
+    dispatch(
+      goToExpandedDialog({
+        interlocutor: User,
+        conversationData: findConversationInfo(User.id),
+      }),
+    );
   };
 
   if (!isEditContest) {
     return (
       <ContestInfo
-        userId={id}
+        userId={userId}
         contestData={contestData}
-        changeEditContest={changeEditContest}
+        changeEditContest={(data) => dispatch(changeEditContest(data))}
         role={role}
         goChat={goChat}
       />
@@ -122,7 +130,7 @@ const Brief = (props) => {
         <Error
           data={error.data}
           status={error.status}
-          clearError={clearContestUpdationStore}
+          clearError={() => dispatch(clearContestUpdationStore())}
         />
       )}
       <ContestForm
@@ -134,17 +142,4 @@ const Brief = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { isEditContest } = state.contestByIdStore;
-  const { contestUpdationStore, userStore, chatStore } = state;
-  return { contestUpdationStore, userStore, isEditContest, chatStore };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  update: (data) => dispatch(updateContest(data)),
-  changeEditContest: (data) => dispatch(changeEditContest(data)),
-  clearContestUpdationStore: () => dispatch(clearContestUpdationStore()),
-  goToExpandedDialog: (data) => dispatch(goToExpandedDialog(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Brief);
+export default Brief;

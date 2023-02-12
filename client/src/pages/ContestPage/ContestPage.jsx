@@ -93,7 +93,7 @@ const ContestPage = () => {
               </span>
             </div>
             {isBrief ? (
-              <Brief contestData={contestData} role={role} userId={user.id} />
+              <Brief />
             ) : (
               <div className={styles.offersContainer}>
                 {role === CREATOR &&
