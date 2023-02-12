@@ -29,6 +29,51 @@ const types = [
   'name,logo',
 ];
 
+const IndustryType = ({ industries, filter, onChange }) => {
+  const options = industries
+    ? industries.map((industry, i) => (
+        <option key={i + 1} value={industry}>
+          {industry}
+        </option>
+      ))
+    : [];
+
+  options.unshift(
+    <option key={0} value={null}>
+      Choose industry
+    </option>,
+  );
+
+  return (
+    <select onChange={onChange} value={filter} className={styles.input}>
+      {options}
+    </select>
+  );
+};
+
+const ContestList = ({ contests, goToExtended }) => {
+  return contests.map((contest) => (
+    <ContestBox key={contest.id} data={contest} goToExtended={goToExtended} />
+  ));
+};
+
+const ContestTypes = ({ onChange, value }) => {
+  const contestTypes = types.map(
+    (type, i) =>
+      !i || (
+        <option key={i - 1} value={type}>
+          {type}
+        </option>
+      ),
+  );
+
+  return (
+    <select onChange={onChange} value={value} className={styles.input}>
+      {contestTypes}
+    </select>
+  );
+};
+
 const CreatorDashboard = () => {
   const { contestsList, dataForContest } = useSelector(
     ({ contestsList, dataForContest }) => ({ contestsList, dataForContest }),
@@ -38,65 +83,7 @@ const CreatorDashboard = () => {
   const navigate = useNavigate();
 
   const { contests, creatorFilter, error, haveMore } = contestsList;
-
-  const renderSelectType = () => {
-    const array = [];
-    types.forEach(
-      (el, i) =>
-        !i ||
-        array.push(
-          <option key={i - 1} value={el}>
-            {el}
-          </option>,
-        ),
-    );
-    return (
-      <select
-        onChange={({ target }) =>
-          changePredicate({
-            name: 'typeIndex',
-            value: types.indexOf(target.value),
-          })
-        }
-        value={types[creatorFilter.typeIndex]}
-        className={styles.input}
-      >
-        {array}
-      </select>
-    );
-  };
-
-  const renderIndustryType = () => {
-    const array = [];
-    const { industry } = dataForContest.data || {};
-    array.push(
-      <option key={0} value={null}>
-        Choose industry
-      </option>,
-    );
-    industry &&
-      industry.forEach((industry, i) =>
-        array.push(
-          <option key={i + 1} value={industry}>
-            {industry}
-          </option>,
-        ),
-      );
-    return (
-      <select
-        onChange={({ target }) =>
-          changePredicate({
-            name: 'industry',
-            value: target.value,
-          })
-        }
-        value={creatorFilter.industry}
-        className={styles.input}
-      >
-        {array}
-      </select>
-    );
-  };
+  const { industry } = dataForContest.data || {};
 
   useEffect(() => {
     dispatch(getDataForContest());
@@ -181,20 +168,6 @@ const CreatorDashboard = () => {
     navigate(`/contest/${contestId}`);
   };
 
-  const setContestList = () => {
-    const array = [];
-    for (let i = 0; i < contests.length; i++) {
-      array.push(
-        <ContestBox
-          data={contests[i]}
-          key={contests[i].id}
-          goToExtended={goToExtended}
-        />,
-      );
-    }
-    return array;
-  };
-
   const tryLoadAgain = () => {
     dispatch(clearContestsList());
     getContestsMethod({
@@ -226,7 +199,15 @@ const CreatorDashboard = () => {
           </div>
           <div className={styles.inputContainer}>
             <span>By contest type</span>
-            {renderSelectType()}
+            <ContestTypes
+              onChange={({ target }) =>
+                changePredicate({
+                  name: 'typeIndex',
+                  value: types.indexOf(target.value),
+                })
+              }
+              value={types[creatorFilter.typeIndex]}
+            />
           </div>
           <div className={styles.inputContainer}>
             <span>By contest ID</span>
@@ -246,7 +227,16 @@ const CreatorDashboard = () => {
           {!isFetching && (
             <div className={styles.inputContainer}>
               <span>By industry</span>
-              {renderIndustryType()}
+              <IndustryType
+                industries={industry}
+                filter={creatorFilter.industry}
+                onChange={({ target }) =>
+                  changePredicate({
+                    name: 'industry',
+                    value: target.value,
+                  })
+                }
+              />
             </div>
           )}
           <div className={styles.inputContainer}>
@@ -277,7 +267,7 @@ const CreatorDashboard = () => {
           loadMore={loadMore}
           haveMore={haveMore}
         >
-          {setContestList()}
+          <ContestList contests={contests} goToExtended={goToExtended} />
         </ContestsContainer>
       )}
     </div>
