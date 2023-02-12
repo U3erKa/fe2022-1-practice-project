@@ -4,9 +4,10 @@ import { updateBundle } from 'store/slices/bundleSlice';
 import { Header, BundleBox, Footer, ProgressBar } from 'components';
 
 import { CUSTOMER } from 'constants/general';
+import history from 'browserHistory';
 import styles from './StartContestPage.module.sass';
 
-const StartContestPage = ({ history }) => {
+const StartContestPage = () => {
   const userStore = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
 

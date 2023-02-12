@@ -14,7 +14,7 @@ import {
 
 import styles from './RegistrationPage.module.sass';
 
-const RegistrationPage = ({ history }) => {
+const RegistrationPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const RegistrationPage = ({ history }) => {
             </Link>
           </div>
         </div>
-        <RegistrationForm history={history} />
+        <RegistrationForm />
       </div>
       <div className={styles.footer}>
         <div className={styles.articlesMainContainer}>

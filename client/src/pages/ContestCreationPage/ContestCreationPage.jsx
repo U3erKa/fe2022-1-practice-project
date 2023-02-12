@@ -7,8 +7,9 @@ import { ContestForm } from 'components/Contest';
 import { NextButton, BackButton } from 'components/InputComponents';
 
 import styles from './ContestCreationPage.module.sass';
+import history from 'browserHistory';
 
-const ContestCreationPage = ({ contestType, history, title }) => {
+const ContestCreationPage = ({ contestType, title }) => {
   const {
     contestCreationStore: { contests },
     bundleStore: { bundle },

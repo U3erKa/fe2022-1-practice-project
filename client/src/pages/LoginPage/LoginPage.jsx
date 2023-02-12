@@ -9,7 +9,7 @@ import { LoginForm } from 'components/FormComponents';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './LoginPage.module.sass';
 
-const LoginPage = ({ history }) => {
+const LoginPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const LoginPage = ({ history }) => {
           </div>
         </div>
         <div className={styles.loginFormContainer}>
-          <LoginForm history={history} />
+          <LoginForm />
         </div>
       </div>
     </div>

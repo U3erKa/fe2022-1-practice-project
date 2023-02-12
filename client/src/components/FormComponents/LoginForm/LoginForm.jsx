@@ -8,6 +8,7 @@ import { FormInput } from 'components/InputComponents';
 
 import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
+import history from 'browserHistory'
 import styles from './LoginForm.module.sass';
 
 class LoginForm extends React.Component {
@@ -16,7 +17,7 @@ class LoginForm extends React.Component {
   }
 
   clicked = (values) => {
-    this.props.loginRequest({ data: values, history: this.props.history });
+    this.props.loginRequest({ data: values, history });
   };
 
   render() {

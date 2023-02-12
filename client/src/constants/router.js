@@ -10,7 +10,8 @@ import {
   StartContestPage,
   UserProfile,
 } from 'pages';
-// import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST } from 'constants/general';
+
+import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST } from 'constants/general';
 
 export const router = [
   { id: 0, path: '/', element: <Home /> },
@@ -21,21 +22,29 @@ export const router = [
     element: <RegistrationPage />,
   },
   { id: 3, path: '/payment', element: <Payment /> },
-  { id: 4, path: '/startContest', element: <StartContestPage /> },
+  {
+    id: 4,
+    path: '/startContest',
+    element: <StartContestPage />,
+  },
   {
     id: 5,
     path: '/startContest/nameContest',
-    element: <ContestCreationPage />,
+    element: (
+      <ContestCreationPage contestType={NAME_CONTEST} title={'COMPANY NAME'} />
+    ),
   },
   {
     id: 6,
     path: '/startContest/taglineContest',
-    element: <ContestCreationPage />,
+    element: (
+      <ContestCreationPage contestType={TAGLINE_CONTEST} title={'TAGLINE'} />
+    ),
   },
   {
     id: 7,
     path: '/startContest/logoContest',
-    element: <ContestCreationPage />,
+    element: <ContestCreationPage contestType={LOGO_CONTEST} title={'LOGO'} />,
   },
   { id: 8, path: '/dashboard', element: <Dashboard /> },
   { id: 9, path: '/contest/:id', element: <ContestPage /> },

@@ -1,10 +1,11 @@
 import { withRouter } from 'hocs';
 
+import history from 'browserHistory';
 import styles from './BackButton.module.sass';
 
 const BackButton = (props) => {
   function clickHandler() {
-    props.history.goBack();
+    history.back();
   }
 
   return (

@@ -12,6 +12,7 @@ import {
 
 import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
+import history from 'browserHistory';
 import styles from './RegistrationForm.module.sass';
 
 class RegistrationForm extends React.Component {
@@ -29,7 +30,7 @@ class RegistrationForm extends React.Component {
         password: values.password,
         role: values.role,
       },
-      history: this.props.history,
+      history,
     });
   };
 
