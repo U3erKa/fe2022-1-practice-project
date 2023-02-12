@@ -8,7 +8,7 @@ import { FormInput } from 'components/InputComponents';
 
 import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
-import history from 'browserHistory'
+import { withRouter } from 'hocs';
 import styles from './LoginForm.module.sass';
 
 class LoginForm extends React.Component {
@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
   }
 
   clicked = (values) => {
-    this.props.loginRequest({ data: values, history });
+    this.props.loginRequest({ data: values, navigate: this.props.navigate });
   };
 
   render() {
@@ -85,9 +85,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  loginRequest: ({ data, history }) =>
-    dispatch(checkAuth({ data, history, authMode: AUTH_MODE.LOGIN })),
+  loginRequest: ({ data, navigate }) =>
+    dispatch(checkAuth({ data, navigate, authMode: AUTH_MODE.LOGIN })),
   authClear: () => dispatch(clearAuth()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(LoginForm),
+);

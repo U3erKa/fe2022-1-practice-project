@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
@@ -9,12 +9,13 @@ import { PayForm } from 'components/FormComponents';
 import { DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './Payment.module.sass';
 
-const Payment = ({ history }) => {
+const Payment = () => {
   const { error, contests } = useSelector((state) => ({
     error: state.payment.error,
     contests: state.contestCreationStore.contests,
   }));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const payMethod = (values) => {
     const contestArray = [];
@@ -32,15 +33,15 @@ const Payment = ({ history }) => {
     formData.append('cvc', cvc);
     formData.append('contests', JSON.stringify(contestArray));
     formData.append('price', '100');
-    dispatch(pay({ data: { formData }, history }));
+    dispatch(pay({ data: { formData }, navigate }));
   };
 
   const goBack = () => {
-    history.goBack();
+    navigate(-1);
   };
 
   if (isEmpty(contests)) {
-    history.replace('startContest');
+    navigate('startContest', { replace: true });
   }
   return (
     <div>

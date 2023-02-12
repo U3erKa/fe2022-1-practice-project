@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMatch } from 'react-router-dom';
 import classNames from 'classnames';
 import LightBox from 'react-image-lightbox';
 
@@ -18,7 +19,7 @@ import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';
 import styles from './ContestPage.module.sass';
 import 'react-image-lightbox/style.css';
 
-const ContestPage = ({ match }) => {
+const ContestPage = () => {
   const {
     contestByIdStore: {
       isShowOnFull,
@@ -33,6 +34,7 @@ const ContestPage = ({ match }) => {
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
+  const match = useMatch('/contest/:id');
 
   const { role } = user || {};
 

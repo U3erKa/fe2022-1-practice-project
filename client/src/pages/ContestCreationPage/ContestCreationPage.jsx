@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { ProgressBar, Footer, Header } from 'components';
@@ -7,7 +8,6 @@ import { ContestForm } from 'components/Contest';
 import { NextButton, BackButton } from 'components/InputComponents';
 
 import styles from './ContestCreationPage.module.sass';
-import history from 'browserHistory';
 
 const ContestCreationPage = ({ contestType, title }) => {
   const {
@@ -16,6 +16,7 @@ const ContestCreationPage = ({ contestType, title }) => {
   } = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
   const formRef = useRef();
   const contestData = contests[contestType]
     ? contests[contestType]
@@ -27,7 +28,7 @@ const ContestCreationPage = ({ contestType, title }) => {
       bundle[contestType] === 'payment'
         ? '/payment'
         : `${bundle[contestType]}Contest`;
-    history.push(route);
+    navigate(route);
   };
 
   const submitForm = () => {
@@ -36,7 +37,7 @@ const ContestCreationPage = ({ contestType, title }) => {
     }
   };
 
-  !bundle && history.replace('/startContest');
+  !bundle && navigate('/startContest', { replace: true });
 
   return (
     <div>

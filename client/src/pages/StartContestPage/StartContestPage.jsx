@@ -4,15 +4,16 @@ import { updateBundle } from 'store/slices/bundleSlice';
 import { Header, BundleBox, Footer, ProgressBar } from 'components';
 
 import { CUSTOMER } from 'constants/general';
-import history from 'browserHistory';
 import styles from './StartContestPage.module.sass';
+import { useNavigate } from 'react-router-dom';
 
 const StartContestPage = () => {
   const userStore = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   if (userStore.data?.role !== CUSTOMER) {
-    history.replace('/');
+    navigate('/', { replace: true });
   }
 
   const setBundle = (bundleStr) => {
@@ -23,7 +24,7 @@ const StartContestPage = () => {
       bundleList[array[i]] = i === array.length - 1 ? 'payment' : array[i + 1];
     }
     dispatch(updateBundle(bundleList));
-    history.push(`/startContest/${bundleList.first}Contest`);
+    navigate(`/startContest/${bundleList.first}Contest`);
   };
 
   return (
