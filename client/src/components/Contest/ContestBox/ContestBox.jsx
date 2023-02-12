@@ -7,9 +7,9 @@ import {
 } from 'constants/general';
 import styles from './ContestBox.module.sass';
 
-const ContestBox = (props) => {
+const ContestBox = ({ data, goToExtended }) => {
   const getTimeStr = () => {
-    const diff = moment.duration(moment().diff(moment(props.data.createdAt)));
+    const diff = moment.duration(moment().diff(moment(data.createdAt)));
     let str = '';
     if (diff._data.days !== 0) str = `${diff._data.days}d `;
     if (diff._data.hours !== 0) str += `${diff._data.hours}h`;
@@ -18,7 +18,6 @@ const ContestBox = (props) => {
   };
 
   const getPreferenceContest = () => {
-    const { data } = props;
     if (data.contestType === NAME_CONTEST) return data.typeOfName;
     if (data.contestType === LOGO_CONTEST) return data.brandStyle;
     return data.typeOfTagline;
@@ -27,11 +26,11 @@ const ContestBox = (props) => {
   const ucFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
 
-  const { id, title, contestType, prize, count, goToExtended } = props.data;
+  const { id, title, contestType, prize, count } = data;
   return (
     <div
       className={styles.contestBoxContainer}
-      onClick={() => props.goToExtended(id)}
+      onClick={() => goToExtended(id)}
     >
       <div className={styles.mainContestInfo}>
         <div className={styles.titleAndIdContainer}>

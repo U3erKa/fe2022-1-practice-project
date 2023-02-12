@@ -3,6 +3,7 @@ import { useField } from 'formik';
 const FieldFileInput = ({ classes, name, ...rest }) => {
   const { fileUploadContainer, labelClass, fileNameClass, fileInput } = classes;
 
+  // eslint-disable-next-line no-unused-vars
   const [{ value, ...restField }, meta, helpers] = useField(name);
   const getFileName = () => {
     if (value) {

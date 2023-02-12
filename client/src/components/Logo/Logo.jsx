@@ -5,6 +5,7 @@ import { STATIC_IMAGES_PATH } from 'constants/general';
 
 const Logo = ({ to, ...props }) => (
   <Link to={to}>
+    {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img {...props} />
   </Link>
 );

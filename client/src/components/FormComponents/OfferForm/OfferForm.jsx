@@ -12,9 +12,16 @@ import {
 import { LOGO_CONTEST } from 'constants/general';
 import styles from './OfferForm.module.sass';
 
-const OfferForm = (props) => {
+const OfferForm = ({
+  contestId,
+  contestType,
+  customerId,
+  addOfferError,
+  clearOfferError,
+  setNewOffer,
+}) => {
   const renderOfferInput = () => {
-    if (props.contestType === LOGO_CONTEST) {
+    if (contestType === LOGO_CONTEST) {
       return (
         <ImageUpload
           name="offerData"
@@ -42,20 +49,18 @@ const OfferForm = (props) => {
   };
 
   const setOffer = (values, { resetForm }) => {
-    props.clearOfferError();
+    clearOfferError();
     const data = new FormData();
-    const { contestId, contestType, customerId } = props;
     data.append('contestId', contestId);
     data.append('contestType', contestType);
     data.append('offerData', values.offerData);
     data.append('customerId', customerId);
-    props.setNewOffer(data);
+    setNewOffer(data);
     resetForm();
   };
 
-  const { valid, addOfferError, clearOfferError } = props;
   const validationSchema =
-    props.contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema;
+    contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema;
   return (
     <div className={styles.offerContainer}>
       {addOfferError && (
