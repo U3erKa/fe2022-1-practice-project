@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
-import { Error } from 'components';
+import { Error } from 'components/general';
 import { PayForm } from 'components/FormComponents';
 
 import { DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';

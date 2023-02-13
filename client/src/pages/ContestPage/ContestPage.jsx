@@ -11,7 +11,7 @@ import {
   changeShowImage,
 } from 'store/slices/contestByIdSlice';
 
-import { Header, Spinner, TryAgain } from 'components';
+import { Header, Spinner, TryAgain } from 'components/general';
 import { OfferForm } from 'components/FormComponents';
 import { Brief, ContestSideBar, ContestOffersList } from '.';
 

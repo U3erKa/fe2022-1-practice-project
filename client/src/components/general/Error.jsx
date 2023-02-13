@@ -1,4 +1,4 @@
-import styles from './Error.module.sass';
+import styles from './styles/Error.module.sass';
 
 const Error = (props) => {
   const getMessage = () => {

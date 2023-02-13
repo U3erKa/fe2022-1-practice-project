@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { updateBundle } from 'store/slices/bundleSlice';
-import { Header, Footer, ProgressBar } from 'components';
+import { Header, Footer, ProgressBar } from 'components/general';
 import { BundleBox } from '.';
 
 import { CUSTOMER } from 'constants/general';

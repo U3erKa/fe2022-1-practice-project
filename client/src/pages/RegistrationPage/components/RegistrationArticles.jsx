@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
 
-import { TextEntry } from 'components';
+import { TextEntry } from 'components/general';
 import styles from '../styles/RegistrationArticles.module.sass';
 
 /**
  * @typedef {object} Article
- * @property {string | import('components/TextEntry/TextEntry').TextEntryList} article
+ * @property {string | import('components/general/TextEntry/TextEntry').TextEntryList} article
  * @property {number} id
  * @property {string} header
  */

@@ -1,4 +1,4 @@
-import { Spinner } from 'components';
+import { Spinner } from 'components/general';
 import { SelectInput, FormInput } from 'components/InputComponents';
 
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';

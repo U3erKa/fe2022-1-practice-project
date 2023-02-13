@@ -1,9 +1,0 @@
-export { default as Error } from './Error/Error';
-export { default as Footer } from './Footer/Footer';
-export { default as Header } from './Header/Header';
-export { default as Logo } from './Logo/Logo';
-export { default as Notification } from './Notification/Notification';
-export { default as ProgressBar } from './ProgressBar/ProgressBar';
-export { default as Spinner } from './Spinner/Spinner';
-export { default as TextEntry } from './TextEntry/TextEntry';
-export { default as TryAgain } from './TryAgain/TryAgain';

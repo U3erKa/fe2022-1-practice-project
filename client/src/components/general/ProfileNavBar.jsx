@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { clearUserStore } from 'store/slices/userSlice';
-import styles from './ProfileNavBar.module.sass';
+import styles from './styles/ProfileNavBar.module.sass';
 
 export default function ProfileNavBar({ list }) {
   const dispatch = useDispatch();

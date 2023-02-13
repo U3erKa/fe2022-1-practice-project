@@ -9,7 +9,7 @@ import {
   setNewCustomerFilter,
 } from 'store/slices/contestsSlice';
 
-import { TryAgain } from 'components';
+import { TryAgain } from 'components/general';
 import { ContestsContainer, ContestBox } from 'components/Contest';
 
 import {

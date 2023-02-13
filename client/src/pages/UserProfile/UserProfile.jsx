@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 
-import { Header, Error } from 'components';
+import { Header, Error } from 'components/general';
 import { PayForm } from 'components/FormComponents';
 import { UserInfo } from '.';
 

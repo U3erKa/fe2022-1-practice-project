@@ -12,7 +12,7 @@ import {
 } from 'store/slices/contestsSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 
-import { TryAgain } from 'components';
+import { TryAgain } from 'components/general';
 import { ContestsContainer, ContestBox } from 'components/Contest';
 
 import { CREATOR } from 'constants/general';

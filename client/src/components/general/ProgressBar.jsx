@@ -1,4 +1,4 @@
-import styles from './ProgressBar.module.sass';
+import styles from './styles/ProgressBar.module.sass';
 
 const ProgressBar = (props) => {
   const renderProgress = () => {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { Spinner } from 'components';
+import { Spinner } from 'components/general';
 import styles from './ContestContainer.module.sass';
 
 const ContestsContainer = ({ haveMore, isFetching, loadMore, children }) => {

@@ -1,4 +1,4 @@
-import { ProfileNavBar } from 'components/Header';
+import { ProfileNavBar } from '.';
 
 import {
   ANONYM_IMAGE_PATH,
@@ -7,7 +7,7 @@ import {
 } from 'constants/general';
 import { PROFILE_NAVBAR } from 'constants/header';
 
-import styles from './LoginButtons.module.sass';
+import styles from './styles/LoginButtons.module.sass';
 
 export default function LoginButtons({ data }) {
   return (

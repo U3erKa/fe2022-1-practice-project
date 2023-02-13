@@ -2,7 +2,7 @@ import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { clearUserError } from 'store/slices/userSlice';
-import { Error } from 'components';
+import { Error } from 'components/general';
 import { ImageUpload, FormInput } from 'components/InputComponents';
 
 import { UpdateUserSchema } from 'utils/validators/validationSchems';

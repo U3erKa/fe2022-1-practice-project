@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
-import { Error } from 'components';
+import { Error } from 'components/general';
 import { FormInput } from 'components/InputComponents';
 
 import { LoginSchem } from 'utils/validators/validationSchems';

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { DUMMY_LINK, FOOTER_ITEMS } from 'constants/general';
-import styles from './Footer.module.sass';
+import styles from './styles/Footer.module.sass';
 
 const Footer = () => {
   const topFooterRender = FOOTER_ITEMS.map(({ title, items }) => (
