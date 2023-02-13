@@ -1,39 +1,27 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
 import { addChatToCatalog } from 'store/slices/chatSlice';
 import { SelectInput } from 'components/InputComponents';
 import styles from './AddToCatalog.module.sass';
 
-const AddToCatalog = (props) => {
-  const getCatalogsNames = () => {
-    const { catalogList } = props;
-    const namesArray = [];
-    catalogList.forEach((catalog) => {
-      namesArray.push(catalog.catalogName);
-    });
-    return namesArray;
+const AddToCatalog = () => {
+  const { catalogList, addChatId } = useSelector((state) => state.chatStore);
+  const dispatch = useDispatch();
+
+  const catalogNames = catalogList.map((catalog) => catalog.catalogName);
+  const catalogIds = catalogList.map((catalog) => catalog._id);
+
+  const onSubmit = (values) => {
+    dispatch(
+      addChatToCatalog({ chatId: addChatId, catalogId: values.catalogId }),
+    );
   };
 
-  const getValueArray = () => {
-    const { catalogList } = props;
-    const valueArray = [];
-    catalogList.forEach((catalog) => {
-      valueArray.push(catalog._id);
-    });
-    return valueArray;
-  };
-
-  const click = (values) => {
-    const { addChatId } = props;
-    props.addChatToCatalog({ chatId: addChatId, catalogId: values.catalogId });
-  };
-
-  const selectArray = getCatalogsNames();
   return (
     <>
-      {selectArray.length !== 0 ? (
-        <Formik onSubmit={click} initialValues={{ catalogId: '' }}>
+      {catalogNames.length !== 0 ? (
+        <Formik onSubmit={onSubmit} initialValues={{ catalogId: '' }}>
           <Form className={styles.form}>
             <SelectInput
               name="catalogId"
@@ -43,8 +31,8 @@ const AddToCatalog = (props) => {
                 inputHeader: styles.selectHeader,
                 selectInput: styles.select,
               }}
-              optionsArray={selectArray}
-              valueArray={getValueArray()}
+              optionsArray={catalogNames}
+              valueArray={catalogIds}
             />
             <button type="submit">Add</button>
           </Form>
@@ -58,10 +46,4 @@ const AddToCatalog = (props) => {
   );
 };
 
-const mapStateToProps = (state) => state.chatStore;
-
-const mapDispatchToProps = (dispatch) => ({
-  addChatToCatalog: (data) => dispatch(addChatToCatalog(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddToCatalog);
+export default AddToCatalog;
