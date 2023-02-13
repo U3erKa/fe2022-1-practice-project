@@ -10,7 +10,8 @@ import {
   TextOfferSchema,
 } from 'utils/validators/validationSchems';
 import { LOGO_CONTEST } from 'constants/general';
-import styles from './OfferForm.module.sass';
+
+import styles from './styles/OfferForm.module.sass';
 
 const OfferInput = ({ contestType }) => {
   return contestType === LOGO_CONTEST ? (

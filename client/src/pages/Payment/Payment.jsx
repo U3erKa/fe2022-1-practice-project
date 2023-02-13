@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
 import { Error } from 'components/general';
-import { PayForm } from 'components/FormComponents';
+import { PayForm } from 'components/form';
 
 import { DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/Payment.module.sass';

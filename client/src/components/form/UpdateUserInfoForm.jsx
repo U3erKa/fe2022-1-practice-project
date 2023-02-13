@@ -6,7 +6,7 @@ import { Error } from 'components/general';
 import { ImageUpload, FormInput } from 'components/input';
 
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
-import styles from './UpdateUserInfoForm.module.sass';
+import styles from './styles/UpdateUserInfoForm.module.sass';
 
 const UpdateUserInfoForm = ({ onSubmit, submitting }) => {
   const { data: user, error } = useSelector((state) => state.userStore);

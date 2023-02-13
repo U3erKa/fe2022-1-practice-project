@@ -9,7 +9,7 @@ import { PayInput } from 'components/input';
 import { PaymentSchema } from 'utils/validators/validationSchems';
 
 import 'react-credit-cards/es/styles-compiled.css';
-import styles from './PayForm.module.sass';
+import styles from './styles/PayForm.module.sass';
 
 const PayForm = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
