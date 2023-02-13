@@ -3,7 +3,7 @@ import { SelectInput, FormInput } from 'components/input';
 
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import { useSelector } from 'react-redux';
-import styles from '../ContestForm/ContestForm.module.sass';
+import styles from './styles/ContestForm.module.sass';
 
 const OptionalSelects = ({ contestType }) => {
   const { data, isFetching } = useSelector(

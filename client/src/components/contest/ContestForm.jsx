@@ -3,8 +3,9 @@ import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDataForContest } from 'store/slices/dataForContestSlice';
+
 import { Spinner, TryAgain } from 'components/general';
-import { OptionalSelects } from 'components/Contest';
+import { OptionalSelects } from 'components/contest';
 import {
   FormInput,
   SelectInput,
@@ -14,7 +15,7 @@ import {
 
 import { ContestSchem } from 'utils/validators/validationSchems';
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
-import styles from './ContestForm.module.sass';
+import styles from './styles/ContestForm.module.sass';
 
 const variableOptions = {
   [NAME_CONTEST]: {

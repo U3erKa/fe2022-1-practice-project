@@ -13,7 +13,7 @@ import {
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 
 import { TryAgain } from 'components/general';
-import { ContestsContainer, ContestBox } from 'components/Contest';
+import { ContestsContainer, ContestBox } from 'components/contest';
 
 import { CREATOR } from 'constants/general';
 import styles from '../styles/CreatorDashboard.module.sass';
