@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import Rating from 'react-rating';
 import isEqual from 'lodash/isEqual';
@@ -27,10 +27,20 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import './confirmStyle.css';
 import styles from './OfferBox.module.sass';
 
-const OfferBox = (props) => {
+const OfferBox = ({ data, date, contestData, setOfferStatus /* userId */ }) => {
+  const selector = useSelector((state) => {
+    const { id, role } = state.userStore.data;
+    const { messagesPreview } = state.chatStore;
+
+    return { id, role, messagesPreview };
+  });
+  const dispatch = useDispatch();
+
+  const { id: userId, role, messagesPreview } = selector;
+  const { id, avatar, firstName, lastName, email, rating } = data.User;
+
   const findConversationInfo = () => {
-    const { messagesPreview, id } = props;
-    const participants = [id, props.data.User.id];
+    const participants = [userId, id];
     participants.sort(
       (participant1, participant2) => participant1 - participant2,
     );
@@ -54,8 +64,7 @@ const OfferBox = (props) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () =>
-            props.setOfferStatus(props.data.User.id, props.data.id, 'resolve'),
+          onClick: () => setOfferStatus(id, data.id, 'resolve'),
         },
         {
           label: 'No',
@@ -71,8 +80,7 @@ const OfferBox = (props) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () =>
-            props.setOfferStatus(props.data.User.id, props.data.id, 'reject'),
+          onClick: () => setOfferStatus(id, data.id, 'reject'),
         },
         {
           label: 'No',
@@ -81,18 +89,20 @@ const OfferBox = (props) => {
     });
   };
 
-  const changeMark = (value) => {
-    props.clearError();
-    props.changeMark({
-      mark: value,
-      offerId: props.data.id,
-      isFirst: !props.data.mark,
-      creatorId: props.data.User.id,
-    });
+  const changeMarkMethod = (value) => {
+    dispatch(clearChangeMarkError());
+    dispatch(
+      changeMark({
+        mark: value,
+        offerId: data.id,
+        isFirst: !data.mark,
+        creatorId: id,
+      }),
+    );
   };
 
   const offerStatus = () => {
-    const { status } = props.data;
+    const { status } = data;
     if (status === OFFER_STATUS_REJECTED) {
       return (
         <i
@@ -111,24 +121,24 @@ const OfferBox = (props) => {
   };
 
   const goChat = () => {
-    props.goToExpandedDialog({
-      interlocutor: props.data.User,
-      conversationData: findConversationInfo(),
-    });
+    dispatch(
+      goToExpandedDialog({
+        interlocutor: data.User,
+        conversationData: findConversationInfo(),
+      }),
+    );
   };
 
   const needButtons = (offerStatus) => {
-    const contestCreatorId = props.contestData.User.id;
-    const contestStatus = props.contestData.status;
+    const contestCreatorId = contestData.User.id;
+    const contestStatus = contestData.status;
     return (
-      contestCreatorId === props.userId &&
+      contestCreatorId === userId &&
       contestStatus === CONTEST_STATUS_ACTIVE &&
       offerStatus === OFFER_STATUS_PENDING
     );
   };
 
-  const { data, role, id, contestData } = props;
-  const { avatar, firstName, lastName, email, rating } = props.data.User;
   return (
     <div className={styles.offerContainer}>
       {offerStatus()}
@@ -173,10 +183,12 @@ const OfferBox = (props) => {
           {contestData.contestType === LOGO_CONTEST ? (
             <img
               onClick={() =>
-                props.changeShowImage({
-                  imagePath: data.fileName,
-                  isShowOnFull: true,
-                })
+                dispatch(
+                  changeShowImage({
+                    imagePath: data.fileName,
+                    isShowOnFull: true,
+                  }),
+                )
               }
               className={styles.responseLogo}
               src={`${PUBLIC_URL}${data.fileName}`}
@@ -185,7 +197,7 @@ const OfferBox = (props) => {
           ) : (
             <span className={styles.response}>{data.text}</span>
           )}
-          {data.User.id !== id && (
+          {id !== userId && (
             <Rating
               fractions={2}
               fullSymbol={
@@ -197,7 +209,7 @@ const OfferBox = (props) => {
               emptySymbol={
                 <img src={`${STATIC_IMAGES_PATH}star-outline.png`} alt="star" />
               }
-              onClick={changeMark}
+              onClick={changeMarkMethod}
               placeholderRating={data.mark}
             />
           )}
@@ -218,23 +230,4 @@ const OfferBox = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  changeMark: (data) => dispatch(changeMark(data)),
-  clearError: () => dispatch(clearChangeMarkError()),
-  goToExpandedDialog: (data) => dispatch(goToExpandedDialog(data)),
-  changeShowImage: (data) => dispatch(changeShowImage(data)),
-});
-
-const mapStateToProps = (state) => {
-  const { changeMarkError } = state.contestByIdStore;
-  const { id, role } = state.userStore.data;
-  const { messagesPreview } = state.chatStore;
-  return {
-    changeMarkError,
-    id,
-    role,
-    messagesPreview,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(OfferBox);
+export default OfferBox;
