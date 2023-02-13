@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { refresh } from 'store/slices/userSlice';
-import { ChatContainer } from 'components/Chat';
+import { ChatContainer } from 'components/chat';
 
 import { REFRESH_TOKEN } from 'constants/general';
 import { router as routes } from 'constants/router';
