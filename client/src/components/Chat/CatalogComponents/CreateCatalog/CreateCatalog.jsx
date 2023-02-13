@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
 import { createCatalog } from 'store/slices/chatSlice';
@@ -6,11 +6,14 @@ import { FormInput } from 'components/InputComponents';
 import { CatalogSchema } from 'utils/validators/validationSchems';
 import styles from './CreateCatalog.module.sass';
 
-const CreateCatalog = (props) => {
+const CreateCatalog = () => {
+  const { addChatId } = useSelector((state) => state.chatStore);
+  const dispatch = useDispatch();
+
   const click = (values) => {
-    const { createCatalog } = props;
-    const { addChatId } = props;
-    createCatalog({ catalogName: values.catalogName, chatId: addChatId });
+    dispatch(
+      createCatalog({ catalogName: values.catalogName, chatId: addChatId }),
+    );
   };
   return (
     <Formik
@@ -36,10 +39,4 @@ const CreateCatalog = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  createCatalog: (data) => dispatch(createCatalog(data)),
-});
-
-const mapStateToProps = (state) => state.chatStore;
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCatalog);
+export default CreateCatalog;
