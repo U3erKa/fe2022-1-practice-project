@@ -1,47 +1,41 @@
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
 import { Catalog } from 'components/Chat';
 
 import styles from '../CatalogListContainer/CatalogListContainer.module.sass';
 
-const CatalogList = (props) => {
+const CatalogList = ({ catalogList }) => {
+  const dispatch = useDispatch();
+
   const goToCatalog = (event, catalog) => {
-    props.changeShowModeCatalog(catalog);
+    dispatch(changeShowModeCatalog(catalog));
     event.stopPropagation();
   };
 
-  const deleteCatalog = (event, catalogId) => {
-    props.deleteCatalog({ catalogId });
+  const deleteCatalogMethod = (event, catalogId) => {
+    dispatch(deleteCatalog({ catalogId }));
     event.stopPropagation();
   };
 
   const getListCatalog = () => {
-    const { catalogList } = props;
-    const elementList = [];
-    catalogList.forEach((catalog) => {
-      elementList.push(
-        <Catalog
-          catalog={catalog}
-          key={catalog._id}
-          deleteCatalog={deleteCatalog}
-          goToCatalog={goToCatalog}
-        />,
-      );
-    });
-    return elementList.length ? (
-      elementList
-    ) : (
-      <span className={styles.notFound}>Not found</span>
-    );
+    if (!catalogList.length) {
+      <span className={styles.notFound}>Not found</span>;
+    }
+
+    const elementList = catalogList.map((catalog) => (
+      <Catalog
+        catalog={catalog}
+        key={catalog._id}
+        deleteCatalog={deleteCatalogMethod}
+        goToCatalog={goToCatalog}
+      />
+    ));
+
+    return elementList;
   };
 
   return <div className={styles.listContainer}>{getListCatalog()}</div>;
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  changeShowModeCatalog: (data) => dispatch(changeShowModeCatalog(data)),
-  deleteCatalog: (data) => dispatch(deleteCatalog(data)),
-});
-
-export default connect(null, mapDispatchToProps)(CatalogList);
+export default CatalogList;
