@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { clearAuthError } from 'store/slices/authSlice';
-import { Logo } from 'components';
+import { Logo } from 'components/general';
 import { LoginForm } from 'components/FormComponents';
 
 import { STATIC_IMAGES_PATH } from 'constants/general';

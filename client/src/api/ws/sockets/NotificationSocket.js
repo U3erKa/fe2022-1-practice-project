@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
 import WebSocket from './WebSocket';
-import { Notification } from 'components';
+import { Notification } from 'components/general';
 
 class NotificationSocket extends WebSocket {
   anotherSubscribes = () => {

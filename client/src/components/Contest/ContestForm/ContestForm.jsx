@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-import { Spinner, TryAgain } from 'components';
+import { Spinner, TryAgain } from 'components/general';
 import { OptionalSelects } from 'components/Contest';
 import {
   FormInput,

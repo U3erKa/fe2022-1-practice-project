@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { clearAuthError } from 'store/slices/authSlice';
 
-import { Logo } from 'components';
+import { Logo } from 'components/general';
 import { RegistrationForm } from 'components/FormComponents';
 import { RegistrationArticles } from '.';
 

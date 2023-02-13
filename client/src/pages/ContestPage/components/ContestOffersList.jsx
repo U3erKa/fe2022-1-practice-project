@@ -5,7 +5,7 @@ import {
   clearSetOfferStatusError,
 } from 'store/slices/contestByIdSlice';
 
-import { Error } from 'components';
+import { Error } from 'components/general';
 import { OfferBox } from '..';
 
 import styles from '../styles/ContestOfferList.module.sass';

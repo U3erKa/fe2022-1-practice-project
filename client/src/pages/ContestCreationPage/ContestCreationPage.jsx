@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
-import { ProgressBar, Footer, Header } from 'components';
+import { ProgressBar, Footer, Header } from 'components/general';
 import { ContestForm } from 'components/Contest';
 
 import styles from './styles/ContestCreationPage.module.sass';

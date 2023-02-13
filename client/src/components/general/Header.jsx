@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Logo, Spinner } from 'components';
-import { LoginButtons, NavList } from 'components/Header';
+import { Logo, Spinner } from 'components/general';
+import { LoginButtons, NavList } from '.';
 
 import { STATIC_IMAGES_PATH, CREATOR, DUMMY_LINK } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
-import styles from './Header.module.sass';
+import styles from './styles/Header.module.sass';
 
 const Header = () => {
   const { data: user, isFetching } = useSelector((state) => state.userStore);

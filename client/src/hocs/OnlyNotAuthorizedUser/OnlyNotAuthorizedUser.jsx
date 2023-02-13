@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { Spinner } from 'components';
+import { Spinner } from 'components/general';
 
 const OnlyNotAuthorizedUserHoc = (Component, props) => {
   const HocForLoginSignup = ({ isFetching, history }) => {

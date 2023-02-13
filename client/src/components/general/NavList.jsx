@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import styles from './NavList.module.sass';
+import styles from './styles/NavList.module.sass';
 
 export default function NavList({ list }) {
   const mapList = list.map(({ id, text, listItem }) => (

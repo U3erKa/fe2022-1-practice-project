@@ -1,4 +1,4 @@
-import styles from './TryAgain.module.sass';
+import styles from './styles/TryAgain.module.sass';
 
 const TryAgain = (props) => {
   const { getData } = props;

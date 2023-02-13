@@ -1,4 +1,4 @@
-import { Spinner } from 'components';
+import { Spinner } from 'components/general';
 
 const PrivateHoc = (Component, props) => {
   const Hoc = ({ isFetching, history, match }) => {

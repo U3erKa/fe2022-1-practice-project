@@ -1,7 +1,7 @@
 import { ClipLoader } from 'react-spinners';
 import { css } from '@emotion/core';
 
-import styles from './Spinner.module.sass';
+import styles from './styles/Spinner.module.sass';
 
 const override = css`
   border-color: #46568a;
