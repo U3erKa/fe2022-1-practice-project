@@ -5,7 +5,8 @@ import {
   NAME_CONTEST,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-import styles from './ContestBox.module.sass';
+
+import styles from './styles/ContestBox.module.sass';
 
 const ContestBox = ({ data, goToExtended }) => {
   const getTimeStr = () => {

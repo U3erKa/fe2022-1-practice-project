@@ -9,7 +9,7 @@ import { changeEditContest } from 'store/slices/contestByIdSlice';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 
 import { Error } from 'components/general';
-import { ContestForm, ContestInfo } from 'components/Contest';
+import { ContestForm, ContestInfo } from 'components/contest';
 
 import styles from '../styles/Brief.module.sass';
 

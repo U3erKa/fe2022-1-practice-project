@@ -10,7 +10,7 @@ import {
 } from 'store/slices/contestsSlice';
 
 import { TryAgain } from 'components/general';
-import { ContestsContainer, ContestBox } from 'components/Contest';
+import { ContestsContainer, ContestBox } from 'components/contest';
 
 import {
   CONTEST_STATUS_ACTIVE,

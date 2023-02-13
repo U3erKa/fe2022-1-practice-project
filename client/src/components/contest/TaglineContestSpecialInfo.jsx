@@ -1,4 +1,4 @@
-import styles from './ContestInfo.module.sass';
+import styles from './styles/ContestInfo.module.sass';
 
 const TaglineContestSpecialInfo = (props) => {
   const { nameVenture, typeOfTagline } = props;

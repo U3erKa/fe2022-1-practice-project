@@ -1,4 +1,4 @@
-import styles from './ContestInfo.module.sass';
+import styles from './styles/ContestInfo.module.sass';
 
 const NameContestSpecialInfo = (props) => {
   const { typeOfName, styleName } = props;

@@ -9,7 +9,8 @@ import {
   TAGLINE_CONTEST,
   PUBLIC_URL,
 } from 'constants/general';
-import styles from './ContestInfo.module.sass';
+
+import styles from './styles/ContestInfo.module.sass';
 
 const ContestInfo = (props) => {
   const { changeEditContest, userId, contestData, role, goChat } = props;
