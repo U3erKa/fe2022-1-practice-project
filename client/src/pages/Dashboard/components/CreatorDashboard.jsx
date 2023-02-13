@@ -16,7 +16,7 @@ import { TryAgain } from 'components';
 import { ContestsContainer, ContestBox } from 'components/Contest';
 
 import { CREATOR } from 'constants/general';
-import styles from './CreatorDashboard.module.sass';
+import styles from '../styles/CreatorDashboard.module.sass';
 
 const types = [
   '',

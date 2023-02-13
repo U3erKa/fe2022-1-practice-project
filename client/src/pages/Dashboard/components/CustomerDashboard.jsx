@@ -18,7 +18,7 @@ import {
   CONTEST_STATUS_PENDING,
   CUSTOMER,
 } from 'constants/general';
-import styles from './CustomerDashboard.module.sass';
+import styles from '../styles/CustomerDashboard.module.sass';
 
 const CustomerDashboard = () => {
   const { isFetching, error, contests, customerFilter, haveMore } = useSelector(

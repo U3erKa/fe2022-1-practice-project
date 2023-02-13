@@ -1,2 +1,3 @@
 export { default as StartContestPage } from './StartContestPage';
-export { default as BundleBox } from './BundleBox';
+
+export { default as BundleBox } from './components/BundleBox';

@@ -1,5 +1,5 @@
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import styles from './BundleBox.module.sass';
+import styles from '../styles/BundleBox.module.sass';
 
 const BundleBox = (props) => {
   const defaultPathToImages = `${STATIC_IMAGES_PATH}contestLabels/`;

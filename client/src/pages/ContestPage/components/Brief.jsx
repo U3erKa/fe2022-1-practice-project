@@ -11,7 +11,7 @@ import { goToExpandedDialog } from 'store/slices/chatSlice';
 import { Error } from 'components';
 import { ContestForm, ContestInfo } from 'components/Contest';
 
-import styles from './Brief.module.sass';
+import styles from '../styles/Brief.module.sass';
 
 const Brief = () => {
   const selector = useSelector((state) => {

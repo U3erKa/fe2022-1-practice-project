@@ -6,7 +6,7 @@ import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { ProgressBar, Footer, Header } from 'components';
 import { ContestForm } from 'components/Contest';
 
-import styles from './ContestCreationPage.module.sass';
+import styles from './styles/ContestCreationPage.module.sass';
 
 const ContestCreationPage = ({ contestType, title }) => {
   const {
