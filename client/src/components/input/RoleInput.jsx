@@ -1,4 +1,4 @@
-import styles from './RoleInput.module.sass';
+import styles from './styles/RoleInput.module.sass';
 
 const RoleInput = ({ label, id, strRole, infoRole, field, type }) => (
   <label htmlFor={id}>

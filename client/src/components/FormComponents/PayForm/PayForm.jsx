@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Cards from 'react-credit-cards';
 
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
-import { PayInput } from 'components/InputComponents';
+import { PayInput } from 'components/input';
 
 import { PaymentSchema } from 'utils/validators/validationSchems';
 

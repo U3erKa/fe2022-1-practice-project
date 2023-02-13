@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { clearUserError } from 'store/slices/userSlice';
 import { Error } from 'components/general';
-import { ImageUpload, FormInput } from 'components/InputComponents';
+import { ImageUpload, FormInput } from 'components/input';
 
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
 import styles from './UpdateUserInfoForm.module.sass';

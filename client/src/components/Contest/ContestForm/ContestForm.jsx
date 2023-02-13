@@ -10,7 +10,7 @@ import {
   SelectInput,
   FieldFileInput,
   FormTextArea,
-} from 'components/InputComponents';
+} from 'components/input';
 
 import { ContestSchem } from 'utils/validators/validationSchems';
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';

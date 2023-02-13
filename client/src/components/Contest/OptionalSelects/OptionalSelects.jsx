@@ -1,5 +1,5 @@
 import { Spinner } from 'components/general';
-import { SelectInput, FormInput } from 'components/InputComponents';
+import { SelectInput, FormInput } from 'components/input';
 
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import { useSelector } from 'react-redux';
