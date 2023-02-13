@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import { CustomerDashboard, CreatorDashboard, Header } from 'components';
+import { Header } from 'components';
+import { CustomerDashboard, CreatorDashboard } from '.';
 import { CUSTOMER } from 'constants/general';
 
 const Dashboard = () => {

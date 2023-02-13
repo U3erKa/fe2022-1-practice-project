@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { clearAuthError } from 'store/slices/authSlice';
-import { Logo, RegistrationArticles } from 'components';
+
+import { Logo } from 'components';
 import { RegistrationForm } from 'components/FormComponents';
+import { RegistrationArticles } from '.';
 
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import {

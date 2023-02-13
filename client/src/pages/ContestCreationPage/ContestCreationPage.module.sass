@@ -5,34 +5,33 @@
   box-sizing: border-box
   justify-content: center
 
-  .startContestInfo
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    padding-right: 15px
-    padding-left: 15px
-    box-sizing: border-box
-    max-width: 480px
-    @media(max-width: 750px)
-      max-width: none
+.startContestInfo
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  padding-right: 15px
+  padding-left: 15px
+  box-sizing: border-box
+  max-width: 480px
+  @media(max-width: 750px)
+    max-width: none
 
-    h2
-      color: #333333
-      font-weight: 700
-      font-size: 28px
-      text-transform: uppercase
-      margin-top: 20px
-      margin-bottom: 10px
-      line-height: 1.1
+  h2
+    color: #333333
+    font-weight: 700
+    font-size: 28px
+    text-transform: uppercase
+    margin-top: 20px
+    margin-bottom: 10px
+    line-height: 1.1
 
-    span
-      font-weight: 300
-      padding-right: 20px
-      margin-bottom: 10px
-      font-size: 14px
-      line-height: 1.428
-      color: #333333
-
+  span
+    font-weight: 300
+    padding-right: 20px
+    margin-bottom: 10px
+    font-size: 14px
+    line-height: 1.428
+    color: #333333
 
 .container
   padding: 40px 0 15px 0
@@ -43,20 +42,19 @@
   align-items: center
   border-bottom: 1px solid #eee
 
-  .formContainer
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    align-items: center
-    margin: 0 10px
-    width: 1200px
-    @media(max-width: 1300px)
-      width: 1000px
-    @media(max-width: 1100px)
-      width: 800px
-    @media(max-width: 900px)
-      width: auto
-
+.formContainer
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  margin: 0 10px
+  width: 1200px
+  @media(max-width: 1300px)
+    width: 1000px
+  @media(max-width: 1100px)
+    width: 800px
+  @media(max-width: 900px)
+    width: auto
 
 .footerButtonsContainer
   margin: 0 auto
@@ -71,19 +69,63 @@
   @media(max-width: 900px)
     width: auto
 
-  .lastContainer
-    width: 1400px
-    margin: 0 auto
-    margin-top: 30px
-    margin-bottom: 30px
-    display: flex
-    flex-direction: row
-    align-items: center
-    justify-content: flex-end
-    @media(max-width: 900px)
-      justify-content: center
+.lastContainer
+  width: 1400px
+  margin: 0 auto
+  margin-top: 30px
+  margin-bottom: 30px
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-end
+  @media(max-width: 900px)
+    justify-content: center
 
-    .buttonsContainer
-      display: flex
-      justify-content: flex-start
-      align-items: center
+.buttonsContainer
+  display: flex
+  justify-content: flex-start
+  align-items: center
+
+.prevButtonContainer
+  background-color: #888
+  height: 60px
+  border-radius: 8px
+  font-size: 22px
+  line-height: 21px
+  width: 140px
+
+  &:hover
+    font-size: 28px
+
+.nextButtonContainer
+  background-color: #f3875d
+  height: 70px
+  border-radius: 10px
+  font-size: 26px
+  width: 275px
+  min-width: 140px
+
+  &:hover
+    font-size: 32px
+
+  @media (max-width: 700px)
+    font-size: 22px
+    height: 60px
+    border-radius: 0
+    width: auto
+
+.prevButtonContainer,
+.nextButtonContainer
+  display: flex
+  justify-content: center
+  align-items: center
+  font-weight: 700
+  color: white
+  margin: 0 15px
+  cursor: pointer
+
+  &:hover
+    transition: font-size 0.1s ease-in-out
+
+  @media(max-width: 400px)
+    margin: 0 10px
