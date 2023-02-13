@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { Error } from 'components/general';
-import { FormInput } from 'components/InputComponents';
+import { FormInput } from 'components/input';
 
 import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';

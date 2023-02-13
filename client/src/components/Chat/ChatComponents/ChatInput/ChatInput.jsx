@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 
 import { sendMessage } from 'store/slices/chatSlice';
-import { FormInput } from 'components/InputComponents';
+import { FormInput } from 'components/input';
 
 import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';

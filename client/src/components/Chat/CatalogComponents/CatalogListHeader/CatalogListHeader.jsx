@@ -7,7 +7,7 @@ import {
   changeShowModeCatalog,
 } from 'store/slices/chatSlice';
 
-import { FormInput } from 'components/InputComponents';
+import { FormInput } from 'components/input';
 import { CatalogSchema } from 'utils/validators/validationSchems';
 
 import styles from './CatalogHeader.module.sass';

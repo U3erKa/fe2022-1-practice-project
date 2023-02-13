@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 
 import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
 import { Error } from 'components/general';
-import { FormInput, ImageUpload } from 'components/InputComponents';
+import { FormInput, ImageUpload } from 'components/input';
 
 import {
   LogoOfferSchema,

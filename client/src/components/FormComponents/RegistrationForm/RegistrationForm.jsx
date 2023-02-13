@@ -9,7 +9,7 @@ import {
   AgreeTermOfServiceInput,
   FormInput,
   RoleInput,
-} from 'components/InputComponents';
+} from 'components/input';
 
 import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
