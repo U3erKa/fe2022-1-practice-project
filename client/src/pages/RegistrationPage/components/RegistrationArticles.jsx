@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 import { TextEntry } from 'components';
-import styles from './RegistrationArticles.module.sass';
+import styles from '../styles/RegistrationArticles.module.sass';
 
 /**
  * @typedef {object} Article

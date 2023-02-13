@@ -15,7 +15,7 @@ import {
   FEEDBACK_SLIDER,
 } from 'constants/carousel';
 
-import styles from './Home.module.sass';
+import styles from './styles/Home.module.sass';
 
 const Home = () => {
   const { isFetching } = useSelector((state) => state.userStore);

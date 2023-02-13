@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { updateBundle } from 'store/slices/bundleSlice';
 import { Header, Footer, ProgressBar } from 'components';
 import { BundleBox } from '.';
 
 import { CUSTOMER } from 'constants/general';
-import styles from './StartContestPage.module.sass';
-import { useNavigate } from 'react-router-dom';
+import styles from './styles/StartContestPage.module.sass';
 
 const StartContestPage = () => {
   const userStore = useSelector((state) => state.userStore);

@@ -1,4 +1,4 @@
-import styles from './NotFound.module.sass';
+import styles from './styles/NotFound.module.sass';
 
 const NotFound = () => (
   <div className={styles.container}>

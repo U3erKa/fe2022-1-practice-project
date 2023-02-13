@@ -7,7 +7,7 @@ import { Logo } from 'components';
 import { LoginForm } from 'components/FormComponents';
 
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import styles from './LoginPage.module.sass';
+import styles from './styles/LoginPage.module.sass';
 
 const LoginPage = () => {
   const dispatch = useDispatch();

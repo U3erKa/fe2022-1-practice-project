@@ -6,7 +6,7 @@ import {
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
 } from 'constants/general';
-import styles from './ContestSideBar.module.sass';
+import styles from '../styles/ContestSideBar.module.sass';
 
 const ContestSideBar = ({ totalEntries, contestData }) => {
   const { data } = useSelector((state) => state.userStore);

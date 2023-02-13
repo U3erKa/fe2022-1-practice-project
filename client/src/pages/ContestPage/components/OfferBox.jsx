@@ -24,8 +24,8 @@ import {
 } from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import './confirmStyle.css';
-import styles from './OfferBox.module.sass';
+import '../styles/confirmStyle.css';
+import styles from '../styles/OfferBox.module.sass';
 
 const OfferBox = ({ data, date, contestData, setOfferStatus /* userId */ }) => {
   const selector = useSelector((state) => {

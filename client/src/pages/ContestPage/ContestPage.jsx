@@ -16,7 +16,7 @@ import { OfferForm } from 'components/FormComponents';
 import { Brief, ContestSideBar, ContestOffersList } from '.';
 
 import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';
-import styles from './ContestPage.module.sass';
+import styles from './styles/ContestPage.module.sass';
 import 'react-image-lightbox/style.css';
 
 const ContestPage = () => {

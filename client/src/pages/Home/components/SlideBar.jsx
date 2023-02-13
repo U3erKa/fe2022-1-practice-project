@@ -6,10 +6,10 @@ import {
   FEEDBACK_SLIDER,
   FEEDBACK_SLIDER_TEXT,
   MAIN_SLIDER,
-} from '../../constants/carousel';
+} from '../../../constants/carousel';
 
-import style from './SlideBar.module.sass';
-import './flickity.css';
+import style from '../styles/SlideBar.module.sass';
+import '../styles/flickity.css';
 
 const SliderBar = (props) => {
   const options = {

@@ -7,7 +7,7 @@ import { Error } from 'components';
 import { PayForm } from 'components/FormComponents';
 
 import { DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
-import styles from './Payment.module.sass';
+import styles from './styles/Payment.module.sass';
 
 const Payment = () => {
   const { error, contests } = useSelector((state) => ({
