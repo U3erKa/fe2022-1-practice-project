@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { clearUserError } from 'store/slices/userSlice';
 import { Error } from 'components';
@@ -8,12 +8,18 @@ import { ImageUpload, FormInput } from 'components/InputComponents';
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
 import styles from './UpdateUserInfoForm.module.sass';
 
-const UpdateUserInfoForm = (props) => {
-  const { onSubmit, submitting, error, clearUserError } = props;
+const UpdateUserInfoForm = ({ onSubmit, submitting }) => {
+  const { data: user, error } = useSelector((state) => state.userStore);
+  const dispatch = useDispatch();
+
   return (
     <Formik
       onSubmit={onSubmit}
-      initialValues={props.initialValues}
+      initialValues={{
+        firstName: user.firstName,
+        lastName: user.lastName,
+        displayName: user.displayName,
+      }}
       validationSchema={UpdateUserSchema}
     >
       <Form className={styles.updateContainer}>
@@ -21,7 +27,7 @@ const UpdateUserInfoForm = (props) => {
           <Error
             data={error.data}
             status={error.status}
-            clearError={clearUserError}
+            clearError={() => dispatch(clearUserError())}
           />
         )}
         <div className={styles.container}>
@@ -82,20 +88,4 @@ const UpdateUserInfoForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { data, error } = state.userStore;
-  return {
-    error,
-    initialValues: {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      displayName: data.displayName,
-    },
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  clearUserError: () => dispatch(clearUserError()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateUserInfoForm);
+export default UpdateUserInfoForm;
