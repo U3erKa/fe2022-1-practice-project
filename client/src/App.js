@@ -7,7 +7,7 @@ import { refresh } from 'store/slices/userSlice';
 import { ChatContainer } from 'components/chat';
 
 import { REFRESH_TOKEN } from 'constants/general';
-import { router as routes } from 'constants/router';
+import { routes } from 'constants/routes';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';

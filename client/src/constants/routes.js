@@ -13,7 +13,7 @@ import {
 
 import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST } from 'constants/general';
 
-export const router = [
+export const routes = [
   { id: 0, path: '/', element: <Home /> },
   { id: 1, path: '/login', element: <LoginPage /> },
   {
