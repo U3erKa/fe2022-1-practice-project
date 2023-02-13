@@ -13,7 +13,7 @@ import {
 
 import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
-import styles from './RegistrationForm.module.sass';
+import styles from './styles/RegistrationForm.module.sass';
 
 const RegistrationForm = () => {
   const { error, isFetching } = useSelector(({ auth }) => auth);

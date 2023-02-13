@@ -12,7 +12,7 @@ import {
 } from 'store/slices/contestByIdSlice';
 
 import { Header, Spinner, TryAgain } from 'components/general';
-import { OfferForm } from 'components/FormComponents';
+import { OfferForm } from 'components/form';
 import { Brief, ContestSideBar, ContestOffersList } from '.';
 
 import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';

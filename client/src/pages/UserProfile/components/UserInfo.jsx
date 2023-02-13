@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateUser } from 'store/slices/userSlice';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
-import { UpdateUserInfoForm } from 'components/FormComponents';
+import { UpdateUserInfoForm } from 'components/form';
 
 import { ANONYM_IMAGE_PATH, PUBLIC_URL, CREATOR } from 'constants/general';
 import styles from '../styles/UserInfo.module.sass';

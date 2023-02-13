@@ -5,7 +5,7 @@ import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 
 import { Header, Error } from 'components/general';
-import { PayForm } from 'components/FormComponents';
+import { PayForm } from 'components/form';
 import { UserInfo } from '.';
 
 import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';

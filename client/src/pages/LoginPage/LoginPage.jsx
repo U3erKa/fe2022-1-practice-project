@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { clearAuthError } from 'store/slices/authSlice';
 import { Logo } from 'components/general';
-import { LoginForm } from 'components/FormComponents';
+import { LoginForm } from 'components/form';
 
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/LoginPage.module.sass';

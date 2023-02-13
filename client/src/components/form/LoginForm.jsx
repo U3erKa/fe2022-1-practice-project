@@ -9,7 +9,7 @@ import { FormInput } from 'components/input';
 
 import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
-import styles from './LoginForm.module.sass';
+import styles from './styles/LoginForm.module.sass';
 
 const LoginForm = () => {
   const { error, isFetching } = useSelector(({ auth }) => auth);
