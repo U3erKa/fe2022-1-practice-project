@@ -1,3 +1,5 @@
+import { redirect } from 'react-router-dom';
+
 import {
   ContestCreationPage,
   ContestPage,
@@ -11,43 +13,86 @@ import {
   UserProfile,
 } from 'pages';
 
-import { NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST } from 'constants/general';
+import {
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+  LOGO_CONTEST,
+  REFRESH_TOKEN,
+} from 'constants/general';
 
+const isUserLoaded = () => {
+  const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+  return !!refreshToken;
+};
+
+/** @type {import('react-router-dom').LoaderFunction} */
+const allowNotAuthorizedOnly = () => {
+  if (isUserLoaded()) {
+    return redirect('/');
+  }
+  return null;
+};
+
+/** @type {import('react-router-dom').LoaderFunction} */
+const allowAuthorizedOnly = () => {
+  if (!isUserLoaded()) {
+    return redirect('/login');
+  }
+  return null;
+};
+
+/** @type {import('react-router-dom').RouteObject[]} */
 export const routes = [
-  { id: 0, path: '/', element: <Home /> },
-  { id: 1, path: '/login', element: <LoginPage /> },
+  { path: '/', element: <Home /> },
+
   {
-    id: 2,
-    path: '/registration',
-    element: <RegistrationPage />,
+    loader: allowNotAuthorizedOnly,
+    children: [
+      { path: '/login', element: <LoginPage /> },
+      {
+        path: '/registration',
+        element: <RegistrationPage />,
+      },
+    ],
   },
-  { id: 3, path: '/payment', element: <Payment /> },
+
   {
-    id: 4,
-    path: '/startContest',
-    element: <StartContestPage />,
+    loader: allowAuthorizedOnly,
+    children: [
+      { path: '/payment', element: <Payment /> },
+      {
+        path: '/startContest',
+        element: <StartContestPage />,
+      },
+      {
+        path: '/startContest/nameContest',
+        element: (
+          <ContestCreationPage
+            contestType={NAME_CONTEST}
+            title={'COMPANY NAME'}
+          />
+        ),
+      },
+      {
+        path: '/startContest/taglineContest',
+        element: (
+          <ContestCreationPage
+            contestType={TAGLINE_CONTEST}
+            title={'TAGLINE'}
+          />
+        ),
+      },
+      {
+        path: '/startContest/logoContest',
+        element: (
+          <ContestCreationPage contestType={LOGO_CONTEST} title={'LOGO'} />
+        ),
+      },
+      { path: '/dashboard', element: <Dashboard /> },
+      { path: '/contest/:id', element: <ContestPage /> },
+      { path: '/account', element: <UserProfile /> },
+    ],
   },
-  {
-    id: 5,
-    path: '/startContest/nameContest',
-    element: (
-      <ContestCreationPage contestType={NAME_CONTEST} title={'COMPANY NAME'} />
-    ),
-  },
-  {
-    id: 6,
-    path: '/startContest/taglineContest',
-    element: (
-      <ContestCreationPage contestType={TAGLINE_CONTEST} title={'TAGLINE'} />
-    ),
-  },
-  {
-    id: 7,
-    path: '/startContest/logoContest',
-    element: <ContestCreationPage contestType={LOGO_CONTEST} title={'LOGO'} />,
-  },
-  { id: 8, path: '/dashboard', element: <Dashboard /> },
-  { id: 9, path: '/contest/:id', element: <ContestPage /> },
-  { id: 10, path: '/account', element: <UserProfile /> },
-  { id: 999, path: '*', element: <NotFound /> },
+
+  { path: '*', element: <NotFound /> },
 ];
