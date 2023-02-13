@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { ProgressBar, Footer, Header } from 'components';
 import { ContestForm } from 'components/Contest';
-import { NextButton, BackButton } from 'components/InputComponents';
 
 import styles from './ContestCreationPage.module.sass';
 
@@ -65,8 +64,15 @@ const ContestCreationPage = ({ contestType, title }) => {
       <div className={styles.footerButtonsContainer}>
         <div className={styles.lastContainer}>
           <div className={styles.buttonsContainer}>
-            <BackButton />
-            <NextButton submit={submitForm} />
+            <div
+              onClick={() => navigate(-1)}
+              className={styles.prevButtonContainer}
+            >
+              <span>Back</span>
+            </div>
+            <div onClick={submitForm} className={styles.nextButtonContainer}>
+              <span>Next</span>
+            </div>
           </div>
         </div>
       </div>

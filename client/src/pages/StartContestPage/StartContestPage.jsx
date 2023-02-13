@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { updateBundle } from 'store/slices/bundleSlice';
-import { Header, BundleBox, Footer, ProgressBar } from 'components';
+import { Header, Footer, ProgressBar } from 'components';
+import { BundleBox } from '.';
 
 import { CUSTOMER } from 'constants/general';
 import styles from './StartContestPage.module.sass';

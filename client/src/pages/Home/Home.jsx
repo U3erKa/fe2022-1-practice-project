@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Header, SlideBar, Footer, Spinner } from 'components';
+import { Header, Footer, Spinner } from 'components';
+import { SlideBar } from '.';
 
 import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from 'constants/general';
 import {

@@ -11,9 +11,9 @@ import {
   changeShowImage,
 } from 'store/slices/contestByIdSlice';
 
-import { Header, Brief, Spinner, TryAgain } from 'components';
-import { ContestSideBar, ContestOffersList } from 'components/Contest';
+import { Header, Spinner, TryAgain } from 'components';
 import { OfferForm } from 'components/FormComponents';
+import { Brief, ContestSideBar, ContestOffersList } from '.';
 
 import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';
 import styles from './ContestPage.module.sass';

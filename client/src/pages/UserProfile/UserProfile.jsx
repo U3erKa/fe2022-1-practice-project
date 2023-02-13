@@ -3,8 +3,10 @@ import classNames from 'classnames';
 
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
-import { Header, UserInfo, Error } from 'components';
+
+import { Header, Error } from 'components';
 import { PayForm } from 'components/FormComponents';
+import { UserInfo } from '.';
 
 import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';
 import styles from './UserProfile.module.sass';
