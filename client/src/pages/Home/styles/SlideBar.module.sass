@@ -1,3 +1,5 @@
+@import 'styles/common'
+
 @mixin carousel
   width: 1140px
   margin: 30px 0
@@ -25,20 +27,13 @@
     border: none
     color: #333
 
-.mainCarousel
-  @include carousel
-
-.feedbackCarousel
-  @include carousel
-
+.mainCarousel,
+.feedbackCarousel,
 .exampleCarousel
   @include carousel
 
 .example-cell
-  display: flex
-  flex-direction: column
-  justify-content: flex-start
-  align-items: flex-start
+  @include container(flex-start)
   width: 30%
   height: 300px
   margin-right: 30px
@@ -62,9 +57,7 @@
     width: 100%
 
   p
-    display: flex
-    justify-content: center
-    align-items: flex-start
+    @include container(flex-start, center, row)
     cursor: pointer
     width: 100%
     background-color: #333333
@@ -76,10 +69,7 @@
       background-color: #ff6f54
 
 .feedback-cell
-  display: flex
-  flex-direction: column
-  justify-content: flex-start
-  align-items: center
+  @include container
   width: 30%
   font-family: Raleway, sans-serif
   min-height: 310px
