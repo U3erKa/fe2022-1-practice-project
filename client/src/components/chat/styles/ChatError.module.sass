@@ -13,31 +13,31 @@
   cursor: pointer
   left: 80px
 
-  .container
-    align-self: center
-    display: flex
-    flex-direction: row
-    justify-content: space-between
-    align-items: center
-    border-radius: 26px
-    width: 120px
-    background-color: red
-    position: relative
+.container
+  align-self: center
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  border-radius: 26px
+  width: 120px
+  background-color: red
+  position: relative
 
-    span
-      font-size: 16px
+  span
+    font-size: 16px
+    color: white
+
+  i
+    color: blue
+    font-size: 26px
+    position: absolute
+    cursor: pointer
+    top: -4px
+    right: -4px
+    transition: font-size 0.2s
+
+    &:hover
       color: white
-
-    i
-      color: blue
-      font-size: 26px
-      position: absolute
-      cursor: pointer
-      top: -4px
-      right: -4px
+      font-size: 30px
       transition: font-size 0.2s
-
-      &:hover
-        color: white
-        font-size: 30px
-        transition: font-size 0.2s
