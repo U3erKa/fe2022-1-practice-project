@@ -9,52 +9,50 @@
   z-index: 600
   padding-left: 15px
 
-  .buttonContainer
+.buttonContainer
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+
+.infoContainer
+  flex: 1
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-left: 15px
+
+  div
     display: flex
+    flex-direction: row
     justify-content: center
     align-items: center
-    cursor: pointer
 
-  .infoContainer
-    flex: 1
-    display: flex
-    justify-content: space-between
-    align-items: center
-    margin-left: 15px
+    &:last-child
+      margin-right: 15px
 
-    div
-      display: flex
-      flex-direction: row
-      justify-content: center
-      align-items: center
+    i
+      margin-right: 10px
+      font-size: 18px
+      transition: font-size 0.2s ease
 
-      &:last-child
-        margin-right: 15px
-
-      i
-        margin-right: 10px
-        font-size: 18px
+      &:hover
+        font-size: 22px
+        color: red
         transition: font-size 0.2s ease
 
-        &:hover
-          font-size: 22px
-          color: red
-          transition: font-size 0.2s ease
+    img
+      height: 44px
+      width: 44px
+      border-radius: 50%
 
-      img
-        height: 44px
-        width: 44px
-        border-radius: 50%
-
-      span
-        display: inline-block
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
-        width: 100px
-        color: white
-        font-size: 18px
-        font-weight: 500
-        margin-left: 12px
-
-
+    span
+      display: inline-block
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+      width: 100px
+      color: white
+      font-size: 18px
+      font-weight: 500
+      margin-left: 12px
