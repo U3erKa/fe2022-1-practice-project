@@ -10,7 +10,6 @@ import { REFRESH_TOKEN } from 'constants/general';
 import { routes } from 'constants/routes';
 
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
 
 const router = createBrowserRouter(routes);
 
