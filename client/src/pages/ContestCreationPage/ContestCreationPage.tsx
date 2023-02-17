@@ -1,8 +1,9 @@
 import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'hooks';
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
+
 import { ProgressBar, Footer, Header } from 'components/general';
 import { ContestForm } from 'components/contest';
 

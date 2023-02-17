@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 
+import { useDispatch, useSelector } from 'hooks';
 import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
 

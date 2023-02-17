@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { isEqual } from 'lodash';
 
+import { useDispatch, useSelector } from 'hooks';
 import {
   clearContestUpdationStore,
   updateContest,

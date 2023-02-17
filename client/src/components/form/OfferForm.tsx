@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
+import { useDispatch, useSelector } from 'hooks';
 import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
+
 import { Error } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
+import { useDispatch } from 'hooks';
 import { clearAuthError } from 'store/slices/authSlice';
 
 import { Logo } from 'components/general';

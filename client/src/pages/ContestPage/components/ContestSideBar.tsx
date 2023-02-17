@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux';
 import moment from 'moment';
 
+import { useSelector } from 'hooks';
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
 } from 'constants/general';
+
 import styles from '../styles/ContestSideBar.module.sass';
 
 const ContestSideBar = ({ totalEntries, contestData }) => {

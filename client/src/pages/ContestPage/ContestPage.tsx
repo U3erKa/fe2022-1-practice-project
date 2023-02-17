@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import classNames from 'classnames';
 import LightBox from 'react-image-lightbox';
 
+import { useDispatch, useSelector } from 'hooks';
 import {
   getContestById,
   changeEditContest,

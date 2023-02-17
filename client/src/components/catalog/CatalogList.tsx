@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
-
+import { useDispatch } from 'hooks';
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
+
 import { Catalog } from 'components/catalog';
 
 import styles from './styles/CatalogListContainer.module.sass';

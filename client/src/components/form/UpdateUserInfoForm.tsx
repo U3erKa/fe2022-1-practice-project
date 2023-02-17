@@ -1,7 +1,8 @@
 import { Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
+
 import { Error } from 'components/general';
 import { ImageUpload, FormInput } from 'components/input';
 

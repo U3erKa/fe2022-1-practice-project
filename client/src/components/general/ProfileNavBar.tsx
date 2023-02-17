@@ -1,5 +1,6 @@
-import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
 import styles from './styles/ProfileNavBar.module.sass';
 

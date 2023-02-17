@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import Rating from 'react-rating';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
 
+import { useDispatch, useSelector } from 'hooks';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
   changeMark,

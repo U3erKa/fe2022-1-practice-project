@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
+import { useDispatch, useSelector } from 'hooks';
 import { addChatToCatalog } from 'store/slices/chatSlice';
 import { SelectInput } from 'components/input';
 import styles from './styles/AddToCatalog.module.sass';

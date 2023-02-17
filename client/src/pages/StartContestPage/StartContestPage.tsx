@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'hooks';
 import { updateBundle } from 'store/slices/bundleSlice';
+
 import { Header, Footer, ProgressBar } from 'components/general';
 import { BundleBox } from '.';
 

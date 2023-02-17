@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
+import { useDispatch, useSelector } from 'hooks';
 import { createCatalog } from 'store/slices/chatSlice';
+
 import { FormInput } from 'components/input';
 import { CatalogSchema } from 'utils/validators/validationSchems';
 

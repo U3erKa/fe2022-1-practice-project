@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import { useDispatch } from 'hooks';
 import { refresh } from 'store/slices/userSlice';
 import { ChatContainer } from 'components/chat';
 

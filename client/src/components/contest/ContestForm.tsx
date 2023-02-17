@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useDispatch, useSelector } from 'hooks';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 
 import { Spinner, TryAgain } from 'components/general';

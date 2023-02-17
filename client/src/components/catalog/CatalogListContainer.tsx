@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useDispatch, useSelector } from 'hooks';
 import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';
+
 import { CatalogList } from 'components/catalog';
 import { DialogList } from 'components/dialog';
 
