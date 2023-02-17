@@ -292,7 +292,7 @@ module.exports.getContests = async (
     tokenData,
     headers: { status },
     query: {
-      offset,
+      offset: _offset,
       limit,
       typeIndex,
       contestId,
@@ -302,6 +302,7 @@ module.exports.getContests = async (
     },
   } = req;
   const ownEntries = _ownEntries === 'true';
+  const offset = +_offset || 0;
 
   try {
     let predicates;
@@ -342,7 +343,7 @@ module.exports.getContests = async (
       where: predicates.where,
       order: predicates.order,
       limit,
-      offset: offset ? offset : 0,
+      offset,
       include: [
         {
           model: Offer,
@@ -353,11 +354,17 @@ module.exports.getContests = async (
       ],
     });
 
+    const contestsCount = await Contest.count({
+      where: predicates.where,
+      order: predicates.order,
+      offset,
+    });
+
     contests.forEach(
       (contest) =>
         (contest.dataValues.count = contest.dataValues.Offers.length),
     );
-    const haveMore = contests.length === 0;
+    const haveMore = contestsCount > +offset + contests.length;
 
     res.send({ contests, haveMore });
   } catch (error) {

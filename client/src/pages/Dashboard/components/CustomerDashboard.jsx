@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import {
@@ -10,7 +9,7 @@ import {
 } from 'store/slices/contestsSlice';
 
 import { TryAgain } from 'components/general';
-import { ContestsContainer, ContestBox } from 'components/contest';
+import { ContestsContainer } from 'components/contest';
 
 import {
   CONTEST_STATUS_ACTIVE,
@@ -21,14 +20,10 @@ import {
 import styles from '../styles/CustomerDashboard.module.sass';
 
 const CustomerDashboard = () => {
-  const { isFetching, error, contests, customerFilter, haveMore } = useSelector(
-    (state) => state.contestsList,
-  );
+  const { error, customerFilter } = useSelector((state) => state.contestsList);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    getContestsMethod();
     return () => {
       dispatch(clearContestsList());
     };
@@ -40,39 +35,17 @@ const CustomerDashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customerFilter]);
 
-  const loadMore = (startFrom) => {
-    getContests({
-      limit: 8,
-      offset: startFrom,
-      contestStatus: customerFilter,
-    });
-  };
-
-  const getContestsMethod = () => {
+  const getContestsMethod = (startFrom = 0) => {
     dispatch(
       getContests({
-        requestData: { limit: 8, contestStatus: customerFilter },
+        requestData: {
+          limit: 8,
+          offset: startFrom,
+          contestStatus: customerFilter,
+        },
         role: CUSTOMER,
       }),
     );
-  };
-
-  const goToExtended = (contest_id) => {
-    navigate(`/contest/${contest_id}`);
-  };
-
-  const setContestList = () => {
-    const array = [];
-    for (let i = 0; i < contests.length; i++) {
-      array.push(
-        <ContestBox
-          data={contests[i]}
-          key={contests[i].id}
-          goToExtended={goToExtended}
-        />,
-      );
-    }
-    return array;
   };
 
   const tryToGetContest = () => {
@@ -117,13 +90,7 @@ const CustomerDashboard = () => {
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
         ) : (
-          <ContestsContainer
-            isFetching={isFetching}
-            loadMore={loadMore}
-            haveMore={haveMore}
-          >
-            {setContestList()}
-          </ContestsContainer>
+          <ContestsContainer loadMore={getContestsMethod} />
         )}
       </div>
     </div>

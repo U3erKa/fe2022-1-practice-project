@@ -1,25 +1,30 @@
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Spinner } from 'components/general';
 import styles from './styles/ContestContainer.module.sass';
+import { useNavigate } from 'react-router-dom';
+import ContestBox from './ContestBox';
 
-const ContestsContainer = ({ haveMore, isFetching, loadMore, children }) => {
-  useEffect(() => {
-    window.addEventListener('scroll', scrollHandler);
-    return () => {
-      window.removeEventListener('scroll', scrollHandler);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+const ContestsContainer = ({ loadMore }) => {
+  const { isFetching, haveMore, contests } = useSelector(
+    (state) => state.contestsList,
+  );
+  const navigate = useNavigate();
 
-  const scrollHandler = () => {
-    if (
+  const goToExtended = (contest_id) => {
+    navigate(`/contest/${contest_id}`);
+  };
+
+  const onClick = () => {
+    const isScrolledToBottom =
       window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      if (haveMore) {
-        loadMore(children.length);
-      }
+      document.documentElement.offsetHeight;
+
+    if (!contests.length) {
+      return;
+    }
+    if (isScrolledToBottom && haveMore) {
+      loadMore(contests.length);
     }
   };
 
@@ -31,11 +36,24 @@ const ContestsContainer = ({ haveMore, isFetching, loadMore, children }) => {
     );
   }
 
-  if (!isFetching && children.length === 0) {
+  if (contests.length === 0) {
     return <div className={styles.notFound}>Nothing was found</div>;
   }
 
-  return <div>{children}</div>;
+  return (
+    <div>
+      {contests.map((contest) => (
+        <ContestBox
+          data={contest}
+          key={contest.id}
+          goToExtended={goToExtended}
+        />
+      ))}
+      <button onClick={onClick} disabled={!haveMore}>
+        Load more
+      </button>
+    </div>
+  );
 };
 
 export default ContestsContainer;
