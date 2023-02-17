@@ -300,19 +300,12 @@
 
 .button
   @include container(center, center, row)
-  color: #28D2D1
-  border: 2px solid #28D2D1
-  border-radius: 5px
-  height: 60px
+  @include button
+  height: 40px
   cursor: pointer
   background-color: transparent
-  min-width: 300px
   width: 300px
   margin: 40px 0
-
-  &:hover
-    color: white
-    background-color: #28D2D1
 
   &__link
     @include container(center, center, row)

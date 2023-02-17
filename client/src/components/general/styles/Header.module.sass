@@ -1,3 +1,4 @@
+@import 'styles/common'
 
 .headerContainer
   display: flex
@@ -23,20 +24,7 @@
     display: none
 
 .startContestBtn
-  text-align: center
-  text-decoration: none
-  max-width: 340px
-  padding: 10px 22px
-  border: 2px solid #28d2d0
-  color: #28d2d0
-  border-radius: 5px
-  font-size: 14px
-  font-weight: 400
-  margin-bottom: 10px
-
-  &:hover
-    color: white
-    background-color: #28d2d0
+  @include button
 
 .leftNav
   display: flex

@@ -41,7 +41,11 @@ const ContestsContainer = ({ loadMore }) => {
         </div>
       )}
       {contests.length ? (
-        <button onClick={onClick} disabled={!contests.length || !haveMore}>
+        <button
+          className={styles.loadMoreBtn}
+          onClick={onClick}
+          disabled={!contests.length || !haveMore}
+        >
           Load more
         </button>
       ) : (
