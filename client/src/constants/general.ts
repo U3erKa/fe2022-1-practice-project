@@ -16,13 +16,13 @@ export const OFFER_STATUS_PENDING = 'pending';
 
 export const STATIC_IMAGES_PATH = '/staticImages/';
 export const ANONYM_IMAGE_PATH = '/staticImages/anonym.png';
-export const BASE_URL = `http://${serverIP}:${serverPort}/`;
+export const BASE_URL = `http://${serverIP}:${serverPort}/` as const;
 export const REFRESH_TOKEN = 'refreshToken';
 
 export const PUBLIC_URL =
   env === 'production'
-    ? `http://${serverIP}:80/images/`
-    : `http://${serverIP}:${serverPort}/public/images/`;
+    ? (`http://${serverIP}:80/images/` as const)
+    : (`http://${serverIP}:${serverPort}/public/images/` as const);
 
 export const DUMMY_LINK = '/404';
 
@@ -40,7 +40,7 @@ export const CASHOUT_MODE = 'CASHOUT_MODE';
 export const AUTH_MODE = {
   REGISTER: 'REGISTER',
   LOGIN: 'LOGIN',
-};
+} as const;
 
 export const HEADER_ANIMATION_TEXT = [
   'a Company',
