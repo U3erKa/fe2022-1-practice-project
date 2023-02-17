@@ -69,7 +69,7 @@ export const REGISTRATION_ARTICLES_RIGHT = [
     id: 4,
     header: 'I have other questions! How can I get in touch with Squadhelp?',
     article:
-      /** @type {import('components/TextEntry/TextEntry').TextEntryList} */ ([
+      /** @type {import('components/TextEntry/TextEntry').TextEntryList} */ [
         { id: 0, text: 'Check out our ', type: 'plain' },
         { id: 1, text: 'FAQs', type: 'span', className: styles.orangeSpan },
         { id: 2, text: ' or send us a ', type: 'plain' },
@@ -85,6 +85,6 @@ export const REGISTRATION_ARTICLES_RIGHT = [
           type: 'span',
           className: styles.orangeSpan,
         },
-      ]),
+      ],
   },
 ];

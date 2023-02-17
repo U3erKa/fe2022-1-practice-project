@@ -1,49 +1,49 @@
 import { STATIC_IMAGES_PATH } from './general';
 
-export const MAIN_SLIDER = 'MAIN_SLIDER';
-export const EXAMPLE_SLIDER = 'EXAMPLE_SLIDER';
-export const FEEDBACK_SLIDER = 'FEEDBACK_SLIDER';
+export const MAIN_SLIDER = 'main_slider';
+export const EXAMPLE_SLIDER = 'example_slider';
+export const FEEDBACK_SLIDER = '${FEEDBACK_SLIDER}';
 
 export const MAIN_SLIDER_IMAGES = [
-  `${STATIC_IMAGES_PATH}main_slider/21..jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/B_1_01.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/B_2_15.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_AA_48_StyleRevolver.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_AD_32_Monvelli.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_AG_15_Trusthaven.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_AK_03_pawxie.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_L_09_lush.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_P_42_Avanti.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_S_25_Autovity.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_W_33_Quantic.jpg`,
-  `${STATIC_IMAGES_PATH}main_slider/Banner_Visual_Name_Y_29_Vechetti.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/21..jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_1_01.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_2_15.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AA_48_StyleRevolver.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AD_32_Monvelli.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AG_15_Trusthaven.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AK_03_pawxie.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_L_09_lush.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_P_42_Avanti.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_S_25_Autovity.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_W_33_Quantic.jpg`,
+  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_Y_29_Vechetti.jpg`,
 ];
 
 export const EXAMPLE_SLIDER_IMAGES = [
-  `${STATIC_IMAGES_PATH}example_slider/1.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/2.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/3.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/4.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/5.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/6.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/7.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/8.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/9.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/10.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/11.jpg`,
-  `${STATIC_IMAGES_PATH}example_slider/12.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/1.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/2.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/3.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/4.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/5.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/6.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/7.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/8.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/9.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/10.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/11.jpg`,
+  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/12.jpg`,
 ];
 
 export const FEEDBACK_SLIDER_IMAGES = [
-  `${STATIC_IMAGES_PATH}feedback_slider/Blue dress professional Lynne Lowder-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/Bonnie Linked-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/IMG_0232-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/me (5)-avatar.jpeg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/MoonFamily web size-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/nathan2-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/Simon-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/squad-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}feedback_slider/Unbenannt1-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Blue dress professional Lynne Lowder-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Bonnie Linked-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/IMG_0232-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/me (5)-avatar.jpeg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/MoonFamily web size-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/nathan2-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Simon-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/squad-avatar.jpg`,
+  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Unbenannt1-avatar.jpg`,
 ];
 
 export const EXAMPLE_SLIDER_TEXT = [
