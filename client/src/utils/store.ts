@@ -1,5 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import type { AsyncThunk, ActionReducerMapBuilder } from '@reduxjs/toolkit';
+import type { AsyncThunkDecorator, ExtraReducersCreator } from 'types';
+
 export const pendingReducer = (state) => {
   state.isFetching = true;
   state.error = null;
@@ -14,18 +17,14 @@ export const rejectedReducer = (state, { payload }) => {
   state.error = payload;
 };
 
-/**
- * Decorate createAsyncThunk by taking out repeating error catching code
- * @param {Object} thunkOptions - options
- * @param {string} thunkOptions.key - thunk typePrefix
- * @param {Function} thunkOptions.thunk - async thunk
- * @returns {import('@reduxjs/toolkit').AsyncThunk<any, unknown, {}>} Async Thunk object with typePrefix key and async function thunk
- */
-
-export const decorateAsyncThunk = ({ key, thunk }) => {
-  const asyncThunk = createAsyncThunk(
+/** Decorate createAsyncThunk by taking out repeating error catching code */
+export const decorateAsyncThunk: AsyncThunkDecorator = <Return, Payload>({
+  key,
+  thunk,
+}) => {
+  const asyncThunk: AsyncThunk<Return, Payload, {}> = createAsyncThunk(
     key,
-    async (/** @type {unknown} */ payload, thunkAPI) => {
+    async (payload: Payload, thunkAPI) => {
       const { rejectWithValue } = thunkAPI;
       try {
         return await thunk(payload, thunkAPI);
@@ -40,19 +39,10 @@ export const decorateAsyncThunk = ({ key, thunk }) => {
   return asyncThunk;
 };
 
-/**
- * Create extra reducers for async thunk
- * @param {Object} extraReducersOptions - options
- * @param {import('@reduxjs/toolkit').AsyncThunk<any, unknown, {}>} extraReducersOptions.thunk - thunk
- * @param {Function?} [extraReducersOptions.pendingReducer] - pending reducer
- * @param {Function?} [extraReducersOptions.fulfilledReducer] - fulfilled reducer
- * @param {Function?} [extraReducersOptions.rejectedReducer] - rejected reducer
- * @returns {Function} Extra reducers for thunk with pending/fulfilled/rejected reducers
- */
-
-export const createExtraReducers =
+/** Create extra reducers for async thunk */
+export const createExtraReducers: ExtraReducersCreator =
   ({ thunk, pendingReducer, fulfilledReducer, rejectedReducer }) =>
-  (builder) => {
+  (builder: ActionReducerMapBuilder<any>) => {
     pendingReducer && builder.addCase(thunk.pending, pendingReducer);
     fulfilledReducer && builder.addCase(thunk.fulfilled, fulfilledReducer);
     rejectedReducer && builder.addCase(thunk.rejected, rejectedReducer);
