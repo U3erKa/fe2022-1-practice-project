@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
+import { useDispatch, useSelector } from 'hooks';
 import {
   backToDialogList,
   changeChatFavorite,

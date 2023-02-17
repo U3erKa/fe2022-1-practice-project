@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { useDispatch } from 'hooks';
 import { clearAuthError } from 'store/slices/authSlice';
+
 import { Logo } from 'components/general';
 import { LoginForm } from 'components/form';
 

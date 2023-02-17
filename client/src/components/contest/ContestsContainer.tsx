@@ -1,8 +1,9 @@
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
 import ContestBox from './ContestBox';
+
 import styles from './styles/ContestContainer.module.sass';
 
 const ContestsContainer = ({ loadMore }) => {

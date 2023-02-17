@@ -1,8 +1,8 @@
 import { Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Cards from 'react-credit-cards';
 
+import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
 

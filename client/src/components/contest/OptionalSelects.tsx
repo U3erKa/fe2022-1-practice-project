@@ -1,8 +1,9 @@
 import { Spinner } from 'components/general';
 import { SelectInput, FormInput } from 'components/input';
 
+import { useSelector } from 'hooks';
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
-import { useSelector } from 'react-redux';
+
 import styles from './styles/ContestForm.module.sass';
 
 const OptionalSelects = ({ contestType }) => {

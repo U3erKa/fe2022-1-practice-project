@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
+import { useDispatch, useSelector } from 'hooks';
 import {
   changeChatBlock,
   changeChatFavorite,

@@ -1,8 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
+import { useDispatch, useSelector } from 'hooks';
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
+
 import { Error } from 'components/general';
 import { PayForm } from 'components/form';
 

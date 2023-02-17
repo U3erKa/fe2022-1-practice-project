@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
+import { useDispatch, useSelector } from 'hooks';
 import {
   changeCatalogName,
   changeRenameCatalogMode,

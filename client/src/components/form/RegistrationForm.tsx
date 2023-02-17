@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 
+import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
+
 import { Error } from 'components/general';
 import {
   AgreeTermOfServiceInput,

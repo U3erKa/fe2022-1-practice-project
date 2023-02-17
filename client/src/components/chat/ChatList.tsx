@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
+import { useDispatch, useSelector } from 'hooks';
 import { setPreviewChatMode } from 'store/slices/chatSlice';
+
 import { CatalogListContainer, CatalogListHeader } from 'components/catalog';
 import { DialogList } from 'components/dialog';
 

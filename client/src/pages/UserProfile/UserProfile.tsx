@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
+import { useDispatch, useSelector } from 'hooks';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 

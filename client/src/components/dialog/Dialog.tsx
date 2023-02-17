@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useDispatch, useSelector } from 'hooks';
 import { getDialogMessages, clearMessageList } from 'store/slices/chatSlice';
+
 import { ChatHeader, ChatInput } from 'components/chat';
 import { BlockMessage, MainDialog } from 'components/dialog';
 
