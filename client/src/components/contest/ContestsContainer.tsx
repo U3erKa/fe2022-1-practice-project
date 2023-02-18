@@ -10,15 +10,10 @@ const ContestsContainer = ({ loadMore }) => {
   const { isFetching, haveMore, contests } = useSelector(
     (state) => state.contestsList,
   );
-  const navigate = useNavigate();
 
   const contestsList = contests.map((contest) => (
-    <ContestBox data={contest} key={contest.id} goToExtended={goToExtended} />
+    <ContestBox data={contest} key={contest.id} />
   ));
-
-  const goToExtended = (contest_id) => {
-    navigate(`/contest/${contest_id}`);
-  };
 
   const onClick = () => {
     const isScrolledToBottom =

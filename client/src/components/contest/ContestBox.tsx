@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 import {
@@ -8,7 +9,13 @@ import {
 
 import styles from './styles/ContestBox.module.sass';
 
-const ContestBox = ({ data, goToExtended }) => {
+const ContestBox = ({ data }) => {
+  const navigate = useNavigate();
+
+  const goToExtended = (contest_id) => {
+    navigate(`/contest/${contest_id}`);
+  };
+
   const getTimeStr = () => {
     const diff = moment.duration(moment().diff(moment(data.createdAt)));
     let str = '';
