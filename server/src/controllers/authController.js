@@ -1,5 +1,6 @@
 const AuthService = require('../services/authService');
 const { User } = require('../models');
+const UserNotFoundError = require('../errors/UserNotFoundError');
 
 module.exports.login = async (req, res, next) => {
   try {

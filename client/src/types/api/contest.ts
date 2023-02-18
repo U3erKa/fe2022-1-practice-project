@@ -1,4 +1,4 @@
-import { BrandStyle, Contest, Industry } from 'types/contest';
+import type { BrandStyle, Contest, Industry } from 'types/contest';
 
 export type GetCustomersContestsParams = {
   limit?: number;
