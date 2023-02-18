@@ -2,12 +2,26 @@ import queryString from 'query-string';
 
 import http from '../interceptor';
 
-export const dataForContest = (data) => http.post('dataForContest', data);
-export const downloadContestFile = (data) =>
-  http.get(`downloadFile/${data.fileName}`);
+import type {
+  DataForContestParams,
+  DataForContestResponse,
+  DownloadContestFileParams,
+  GetCustomersContestsParams,
+  GetContestsResponse,
+  GetActiveContestsParams,
+  GetContestParams,
+  GetContestResponse,
+  UpdateContestResponse,
+} from 'types/api/contest';
 
-export const getCustomersContests = (data) =>
-  http.get(
+export const dataForContest = (data?: DataForContestParams) =>
+  http.post<DataForContestResponse>('dataForContest', data);
+
+export const downloadContestFile = ({ fileName }: DownloadContestFileParams) =>
+  http.get(`downloadFile/${fileName}`);
+
+export const getCustomersContests = (data: GetCustomersContestsParams) =>
+  http.get<GetContestsResponse>(
     `contests?${queryString.stringify({
       limit: data.limit,
       offset: data.offset,
@@ -19,27 +33,11 @@ export const getCustomersContests = (data) =>
     },
   );
 
-export const getActiveContests = ({
-  offset,
-  limit,
-  typeIndex,
-  contestId,
-  industry,
-  awardSort,
-  ownEntries,
-}) =>
-  http.get(
-    `contests?${queryString.stringify({
-      offset,
-      limit,
-      typeIndex,
-      contestId,
-      industry,
-      awardSort,
-      ownEntries,
-    })}`,
-  );
+export const getActiveContests = (options: GetActiveContestsParams) =>
+  http.get<GetContestsResponse>(`contests?${queryString.stringify(options)}`);
 
-export const getContestById = (data) => http.get(`contests/${data.contestId}`);
-export const updateContest = (/** @type {FormData} */ data) =>
-  http.put(`contests/${data.get('contestId')}`, data);
+export const getContestById = ({ contestId }: GetContestParams) =>
+  http.get<GetContestResponse>(`contests/${contestId}`);
+
+export const updateContest = (data: FormData) =>
+  http.put<UpdateContestResponse>(`contests/${data.get('contestId')}`, data);

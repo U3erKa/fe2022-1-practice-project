@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import type { AsyncThunk, ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import type { AsyncThunkDecorator, ExtraReducersCreator } from 'types';
+import type { AsyncThunkDecorator, ExtraReducersCreator } from 'types/redux';
 
 export const pendingReducer = (state) => {
   state.isFetching = true;
