@@ -3,10 +3,6 @@ import type {
   AsyncThunk,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import type { AxiosResponse } from 'axios';
-import type { NavigateFunction } from 'react-router-dom';
-
-import { AUTH_MODE } from 'constants/general';
 
 export type AsyncThunkDecorator = <Return, Payload>({
   key,
