@@ -1,6 +1,17 @@
+import type {
+  CatalogId,
+  CatalogListId,
+  ChatId,
+  UserId,
+  WithCatalogId,
+  WithChatId,
+  With_id,
+  With__v,
+} from './_common';
+
 export type AddChatToCatalogParams = WithCatalogId & WithChatId;
 export type AddChatToCatalogResponse = Omit<ChatsInCatalog, 'chat'> & {
-  chats: [string];
+  chats: [ChatId];
 };
 
 export type RemoveChatFromCatalogParams = WithCatalogId;
@@ -15,19 +26,16 @@ export type DeleteCatalogResponse = WithCatalogId;
 export type ChangeCatalogNameParams = CreateCatalogParams;
 export type ChangeCatalogNameResponse = ChatsInCatalog;
 
-export type GetCatalogListResponse = With_id &
+export type GetCatalogListResponse = With_id<CatalogListId> &
   WithCatalogName & {
-    chats: { [k: string | number]: string };
+    chats: { [k: string | number]: ChatId };
   };
 
-export type ChatsInCatalog = With_id &
+export type ChatsInCatalog = With_id<CatalogId> &
+  With__v &
   WithCatalogName & {
-    chats: string[];
-    __v: number;
-    userId: number;
+    userId: UserId;
+    chats: ChatId[];
   };
 
-export type With_id = { _id: string };
-export type WithCatalogId = { catalogId: string };
-export type WithChatId = { chatId: number };
 export type WithCatalogName = { catalogName: string };
