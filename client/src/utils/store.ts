@@ -18,7 +18,10 @@ export const rejectedReducer = (state, { payload }) => {
 };
 
 /** Decorate createAsyncThunk by taking out repeating error catching code */
-export const decorateAsyncThunk: AsyncThunkDecorator = <Return, Payload>({
+export const decorateAsyncThunk: AsyncThunkDecorator = <
+  Return,
+  Payload = void,
+>({
   key,
   thunk,
 }) => {

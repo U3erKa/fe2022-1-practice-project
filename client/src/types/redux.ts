@@ -1,10 +1,11 @@
 import type {
   ActionReducerMapBuilder,
   AsyncThunk,
+  CaseReducer,
   PayloadAction,
 } from '@reduxjs/toolkit';
 
-export type AsyncThunkDecorator = <Return, Payload>({
+export type AsyncThunkDecorator = <Return, Payload = void>({
   key,
   thunk,
 }: {
@@ -12,13 +13,18 @@ export type AsyncThunkDecorator = <Return, Payload>({
   thunk: (payload: Payload, thunkAPI?: unknown) => Return;
 }) => AsyncThunk<Return, Payload, {}>;
 
-export type ExtraReducersCreator = (
-  options: ExtraReducersOptions<any>,
-) => (builder: ActionReducerMapBuilder<any>) => void;
+export type ExtraReducersCreator = <State, Return>(
+  options: ExtraReducersOptions<State, Return>,
+) => (builder: ActionReducerMapBuilder<State>) => void;
 
-type ExtraReducersOptions<State> = {
-  thunk: AsyncThunk<any, unknown, {}>;
-  pendingReducer?: (state: State, action: PayloadAction<State>) => void;
-  fulfilledReducer?: (state: State, action: PayloadAction<State>) => void;
-  rejectedReducer?: (state: State, action: PayloadAction<State>) => void;
+type ExtraReducersOptions<State, Return, Payload = void> = {
+  thunk: AsyncThunk<Return, Payload, {}>;
+  pendingReducer?: ExtraReducer<State>;
+  fulfilledReducer?: ExtraReducer<State>;
+  rejectedReducer?: ExtraReducer<State>;
 };
+
+type ExtraReducer<State> = CaseReducer<
+  State,
+  PayloadAction<any, string, unknown, never>
+>;
