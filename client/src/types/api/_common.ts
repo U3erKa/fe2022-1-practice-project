@@ -1,5 +1,7 @@
-export type With_id<T extends _Id = _Id> = { _id: T };
 export type With__v = { __v: __V };
+export type With_id<T extends _Id = _Id, K extends string = '_id'> = {
+  [key in K]: T;
+};
 export type WithId<T extends Id = Id, K extends string = 'id'> = {
   [key in K]: T;
 };
@@ -7,8 +9,6 @@ export type WithUUID<T extends UUID = UUID, K extends string = 'id'> = {
   [key in K]: T;
 };
 
-export type WithCatalogId = { catalogId: CatalogId };
-export type WithChatId = { chatId: ChatId };
 export type WithTimeStamps = { createdAt: TimeStamp; updatedAt: TimeStamp };
 export type WithLifeSpan = { iat: NumTimeStamp; exp: NumTimeStamp };
 export type WithPagination = { limit: number; offset: number };
