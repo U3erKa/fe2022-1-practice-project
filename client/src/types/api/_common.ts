@@ -1,4 +1,3 @@
-export type WithId<T extends Id = Id> = { id: T };
 export type With_id<T extends _Id = _Id> = { _id: T };
 export type With__v = { __v: __V };
 export type WithId<K extends string = 'id', T extends Id = Id> = {
@@ -19,6 +18,10 @@ export type __V = 0;
 export type CatalogId = _Id;
 export type CatalogListId = _Id;
 export type ChatId = _Id;
+export type ConversationId = _Id;
+export type MessageId = _Id;
+export type InterlocutorId = Id;
+export type SenderId = Id;
 export type UserId = Id;
 
 export type TimeStamp = string;
