@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import * as restController from 'api/rest/restController';
+import * as offerController from 'api/rest/offerController';
 import { clearContestStore } from './contestCreationSlice';
 import { changeProfileViewMode } from './userProfileSlice';
 import { updateUser } from './userSlice';
@@ -23,7 +23,7 @@ const initialState = {
 export const pay = decorateAsyncThunk({
   key: `${PAYMENT_SLICE_NAME}/pay`,
   thunk: async ({ data, navigate }, { dispatch }) => {
-    await restController.payMent(data);
+    await offerController.payMent(data);
     navigate('/dashboard', { replace: true });
     dispatch(clearContestStore());
   },
@@ -32,7 +32,7 @@ export const pay = decorateAsyncThunk({
 export const cashOut = decorateAsyncThunk({
   key: `${PAYMENT_SLICE_NAME}/cashOut`,
   thunk: async (payload, { dispatch }) => {
-    const { data } = await restController.cashOut(payload);
+    const { data } = await offerController.cashOut(payload);
     dispatch(updateUser.fulfilled(data));
     dispatch(changeProfileViewMode(USER_INFO_MODE));
   },

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import * as dataForContest from 'api/rest/contestController';
+import * as contestController from 'api/rest/contestController';
 import { updateStoreAfterUpdateContest } from './contestByIdSlice';
 
 import {
@@ -20,7 +20,7 @@ const initialState = {
 export const updateContest = decorateAsyncThunk({
   key: CONTEST_UPDATION_SLICE_NAME,
   thunk: async (payload, { dispatch }) => {
-    const { data } = await dataForContest.updateContest(payload);
+    const { data } = await contestController.updateContest(payload);
     dispatch(updateStoreAfterUpdateContest(data));
   },
 });
