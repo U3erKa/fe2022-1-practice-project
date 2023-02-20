@@ -9,6 +9,7 @@ export type WithUUID<T extends UUID = UUID, K extends string = 'id'> = {
   [key in K]: T;
 };
 
+export type WithFile = { fileName: string; originalFileName: string };
 export type WithTimeStamps = { createdAt: TimeStamp; updatedAt: TimeStamp };
 export type WithLifeSpan = { iat: NumTimeStamp; exp: NumTimeStamp };
 export type WithPagination = { limit: number; offset: number };
@@ -19,7 +20,10 @@ export type Id = number;
 export type _Id = string;
 /** MongoDB's `__v` parameter */
 export type __V = 0;
+/** Universally unique id */
 export type UUID = string;
+/** JSON Web Token */
+export type JWT = string;
 
 export type CatalogId = _Id;
 export type CatalogListId = _Id;
