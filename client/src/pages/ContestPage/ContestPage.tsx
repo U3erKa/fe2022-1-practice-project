@@ -97,7 +97,7 @@ const ContestPage = () => {
             ) : (
               <div className={styles.offersContainer}>
                 {role === CREATOR &&
-                  contestData.status === CONTEST_STATUS_ACTIVE && (
+                  contestData?.status === CONTEST_STATUS_ACTIVE && (
                     <OfferForm
                       contestType={contestData.contestType}
                       contestId={contestData.id}

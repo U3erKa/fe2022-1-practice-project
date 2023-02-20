@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import * as restController from 'api/rest/restController';
+import * as userController from 'api/rest/userController';
 import * as authController from 'api/rest/authController';
 import { controller } from 'api/ws/socketController';
 
@@ -37,9 +37,9 @@ export const refresh = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   `${USER_SLICE_NAME}/updateUser`,
-  async (/** @type {unknown} */ payload, { rejectWithValue, dispatch }) => {
+  async (payload: FormData, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await restController.updateUser(payload);
+      const { data } = await userController.updateUser(payload);
       dispatch(changeEditModeOnUserProfile(false));
       return data;
     } catch (err) {

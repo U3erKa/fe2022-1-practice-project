@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import * as restController from 'api/rest/restController';
-import * as dataForContest from 'api/rest/contestController';
+import * as offerController from 'api/rest/offerController';
+import * as contestController from 'api/rest/contestController';
+
 import {
   decorateAsyncThunk,
   rejectedReducer,
@@ -30,7 +31,7 @@ const initialState = {
 export const getContestById = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/getContest`,
   thunk: async (payload) => {
-    const { data } = await dataForContest.getContestById(payload);
+    const { data } = await contestController.getContestById(payload);
     const { Offers } = data;
     delete data.Offers;
     return { contestData: data, offers: Offers };
@@ -57,8 +58,8 @@ const getContestByIdExtraReducers = createExtraReducers({
 //---------- addOffer
 export const addOffer = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/addOffer`,
-  thunk: async (payload) => {
-    const { data } = await restController.setNewOffer(payload);
+  thunk: async (payload: FormData) => {
+    const { data } = await offerController.setNewOffer(payload);
     return data;
   },
 });
@@ -78,7 +79,7 @@ const addOfferExtraReducers = createExtraReducers({
 export const setOfferStatus = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/setOfferStatus`,
   thunk: async (payload) => {
-    const { data } = await restController.setOfferStatus(payload);
+    const { data } = await offerController.setOfferStatus(payload);
     return data;
   },
 });
@@ -105,7 +106,7 @@ const setOfferStatusExtraReducers = createExtraReducers({
 export const changeMark = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/changeMark`,
   thunk: async (payload) => {
-    const { data } = await restController.changeMark(payload);
+    const { data } = await offerController.changeMark(payload);
     return { data, offerId: payload.offerId, mark: payload.mark };
   },
 });

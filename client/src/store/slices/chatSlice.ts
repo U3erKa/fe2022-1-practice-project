@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { isEqual, remove } from 'lodash';
 
-import * as restController from 'api/rest/restController';
+import * as catalogController from 'api/rest/catalogController';
+import * as chatController from 'api/rest/chatController';
+
 import {
   decorateAsyncThunk,
   createExtraReducers,
@@ -38,7 +40,7 @@ const initialState = {
 export const getPreviewChat = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/getPreviewChat`,
   thunk: async () => {
-    const { data } = await restController.getPreviewChat();
+    const { data } = await chatController.getPreviewChat();
     return data;
   },
 });
@@ -59,7 +61,7 @@ const getPreviewChatExtraReducers = createExtraReducers({
 export const getDialogMessages = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/getDialogMessages`,
   thunk: async (payload) => {
-    const { data } = await restController.getDialog(payload);
+    const { data } = await chatController.getDialog(payload);
     return data;
   },
 });
@@ -81,7 +83,7 @@ const getDialogMessagesExtraReducers = createExtraReducers({
 export const sendMessage = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/sendMessage`,
   thunk: async (payload) => {
-    const { data } = await restController.newMessage(payload);
+    const { data } = await chatController.newMessage(payload);
     return data;
   },
 });
@@ -121,7 +123,7 @@ const sendMessageExtraReducers = createExtraReducers({
 export const changeChatFavorite = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/changeChatFavorite`,
   thunk: async (payload) => {
-    const { data } = await restController.changeChatFavorite(payload);
+    const { data } = await chatController.changeChatFavorite(payload);
     return data;
   },
 });
@@ -146,7 +148,7 @@ const changeChatFavoriteExtraReducers = createExtraReducers({
 export const changeChatBlock = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/changeChatBlock`,
   thunk: async (payload) => {
-    const { data } = await restController.changeChatBlock(payload);
+    const { data } = await chatController.changeChatBlock(payload);
     return data;
   },
 });
@@ -171,7 +173,7 @@ const changeChatBlockExtraReducers = createExtraReducers({
 export const getCatalogList = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/getCatalogList`,
   thunk: async (payload) => {
-    const { data } = await restController.getCatalogList(payload);
+    const { data } = await catalogController.getCatalogList(payload);
     return data;
   },
 });
@@ -189,7 +191,7 @@ const getCatalogListExtraReducers = createExtraReducers({
 export const addChatToCatalog = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/addChatToCatalog`,
   thunk: async (payload) => {
-    const { data } = await restController.addChatToCatalog(payload);
+    const { data } = await catalogController.addChatToCatalog(payload);
     return data;
   },
 });
@@ -217,7 +219,7 @@ const addChatToCatalogExtraReducers = createExtraReducers({
 export const createCatalog = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/createCatalog`,
   thunk: async (payload) => {
-    const { data } = await restController.createCatalog(payload);
+    const { data } = await catalogController.createCatalog(payload);
     return data;
   },
 });
@@ -238,7 +240,7 @@ const createCatalogExtraReducers = createExtraReducers({
 export const deleteCatalog = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/deleteCatalog`,
   thunk: async (payload) => {
-    await restController.deleteCatalog(payload);
+    await catalogController.deleteCatalog(payload);
     return payload;
   },
 });
@@ -262,7 +264,7 @@ const deleteCatalogExtraReducers = createExtraReducers({
 export const removeChatFromCatalog = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/removeChatFromCatalog`,
   thunk: async (payload) => {
-    const { data } = await restController.removeChatFromCatalog(payload);
+    const { data } = await catalogController.removeChatFromCatalog(payload);
     return data;
   },
 });
@@ -289,7 +291,7 @@ const removeChatFromCatalogExtraReducers = createExtraReducers({
 export const changeCatalogName = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/changeCatalogName`,
   thunk: async (payload) => {
-    const { data } = await restController.changeCatalogName(payload);
+    const { data } = await catalogController.changeCatalogName(payload);
     return data;
   },
 });
