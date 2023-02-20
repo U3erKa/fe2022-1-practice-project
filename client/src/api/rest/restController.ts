@@ -1,26 +1,92 @@
 import http from '../interceptor';
 
-export const getUser = () => http.post('getUser');
-export const updateUser = (data) => http.post('updateUser', data);
+import type {
+  SetOfferStatusParams,
+  ChangeMarkParams,
+  CashOutParams,
+  SetNewOfferResponse,
+  SetOfferStatusResponse,
+  ChangeMarkResponse,
+} from 'types/api/offer';
 
-export const setNewOffer = (data) => http.post('setNewOffer', data);
-export const setOfferStatus = (data) => http.post('setOfferStatus', data);
-export const changeMark = (data) => http.post('changeMark', data);
+import type {
+  GetDialogParams,
+  ChangeChatFavoriteParams,
+  ChangeChatBlockParams,
+  NewMessageParams,
+  GetDialogResponse,
+  GetPreviewChatResponse,
+  ChangeChatFavoriteResponse,
+  ChangeChatBlockResponse,
+  NewMessageResponse,
+} from 'types/api/chat';
 
-export const payMent = (data) => http.post('pay', data.formData);
-export const cashOut = (data) => http.post('cashout', data);
+import {
+  AddChatToCatalogParams,
+  AddChatToCatalogResponse,
+  RemoveChatFromCatalogParams,
+  RemoveChatFromCatalogResponse,
+  GetCatalogListResponse,
+  CreateCatalogParams,
+  CreateCatalogResponse,
+  DeleteCatalogParams,
+  DeleteCatalogResponse,
+  ChangeCatalogNameParams,
+  ChangeCatalogNameResponse,
+} from 'types/api/catalog';
 
-export const getDialog = (data) => http.post('getChat', data);
-export const getPreviewChat = () => http.post('getPreview');
-export const changeChatFavorite = (data) => http.post('favorite', data);
-export const changeChatBlock = (data) => http.post('blackList', data);
-export const newMessage = (data) => http.post('newMessage', data);
+import type { UpdateUserResponse } from 'types/api/user';
 
-export const addChatToCatalog = (data) =>
-  http.post('addNewChatToCatalog', data);
-export const removeChatFromCatalog = (data) =>
-  http.post('removeChatFromCatalog', data);
-export const getCatalogList = (data) => http.post('getCatalogs', data);
-export const createCatalog = (data) => http.post('createCatalog', data);
-export const deleteCatalog = (data) => http.post('deleteCatalog', data);
-export const changeCatalogName = (data) => http.post('updateNameCatalog', data);
+export const updateUser = (data: FormData) =>
+  http.post<UpdateUserResponse>('updateUser', data);
+
+export const setNewOffer = (data: FormData) =>
+  http.post<SetNewOfferResponse>('setNewOffer', data);
+
+export const setOfferStatus = <
+  T extends SetOfferStatusParams = SetOfferStatusParams,
+>(
+  data: T,
+) => http.post<SetOfferStatusResponse<T['command']>>('setOfferStatus', data);
+
+export const changeMark = (data: ChangeMarkParams) =>
+  http.post<ChangeMarkResponse>('changeMark', data);
+
+export const payMent = (data: { formData: FormData }) =>
+  http.post<void>('pay', data.formData);
+
+export const cashOut = (data: CashOutParams) =>
+  http.post<void>('cashout', data);
+
+export const getDialog = (data: GetDialogParams) =>
+  http.post<GetDialogResponse>('getChat', data);
+
+export const getPreviewChat = () =>
+  http.post<GetPreviewChatResponse>('getPreview');
+
+export const changeChatFavorite = (data: ChangeChatFavoriteParams) =>
+  http.post<ChangeChatFavoriteResponse>('favorite', data);
+
+export const changeChatBlock = (data: ChangeChatBlockParams) =>
+  http.post<ChangeChatBlockResponse>('blackList', data);
+
+export const newMessage = (data: NewMessageParams) =>
+  http.post<NewMessageResponse>('newMessage', data);
+
+export const addChatToCatalog = (data: AddChatToCatalogParams) =>
+  http.post<AddChatToCatalogResponse>('addNewChatToCatalog', data);
+
+export const removeChatFromCatalog = (data: RemoveChatFromCatalogParams) =>
+  http.post<RemoveChatFromCatalogResponse>('removeChatFromCatalog', data);
+
+export const getCatalogList = () =>
+  http.post<GetCatalogListResponse>('getCatalogs');
+
+export const createCatalog = (data: CreateCatalogParams) =>
+  http.post<CreateCatalogResponse>('createCatalog', data);
+
+export const deleteCatalog = (data: DeleteCatalogParams) =>
+  http.post<DeleteCatalogResponse>('deleteCatalog', data);
+
+export const changeCatalogName = (data: ChangeCatalogNameParams) =>
+  http.post<ChangeCatalogNameResponse>('updateNameCatalog', data);
