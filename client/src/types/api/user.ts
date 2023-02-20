@@ -1,3 +1,4 @@
+import type { UserId, WithId } from './_common';
 import type { CREATOR, CUSTOMER } from 'constants/general';
 
 export type UpdateUserResponse = UserWithoutPassword;
@@ -7,8 +8,7 @@ export type UserWithoutPassword = Omit<
   'password' | 'accessToken' | 'rating'
 >;
 
-export type User = {
-  id: number;
+export type User = WithId<UserId> & {
   firstName: string;
   lastName: string;
   displayName: string;
@@ -16,7 +16,7 @@ export type User = {
   email: string;
   avatar: string;
   role: typeof CUSTOMER | typeof CREATOR;
-  balance: string;
+  balance: string | number;
   accessToken: string;
-  rating: string;
+  rating: number;
 };

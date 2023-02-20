@@ -11,6 +11,7 @@ export type WithCatalogId = { catalogId: CatalogId };
 export type WithChatId = { chatId: ChatId };
 export type WithTimeStamps = { createdAt: TimeStamp; updatedAt: TimeStamp };
 export type WithLifeSpan = { iat: NumTimeStamp; exp: NumTimeStamp };
+export type WithPagination = { limit: number; offset: number };
 
 /** SQL's unique id parameter */
 export type Id = number;
