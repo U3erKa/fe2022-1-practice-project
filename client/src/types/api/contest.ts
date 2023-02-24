@@ -1,6 +1,15 @@
 import type { CREATOR, CUSTOMER } from 'constants/general';
 import type { BrandStyle, Contest, Industry } from 'types/contest';
-import type { ContestId, WithId, WithPagination } from './_common';
+import type { Rating, WithOfferStatus } from './offer';
+import type { UserWithoutPassword } from './user';
+
+import type {
+  ContestId,
+  OfferId,
+  WithFile,
+  WithId,
+  WithPagination,
+} from './_common';
 
 export type GetContestsThunk =
   | {
@@ -26,6 +35,10 @@ export type GetActiveContestsParams = Partial<
 };
 
 export type GetContestParams = WithId<ContestId, 'contestId'>;
+export type GetContestResponse = WithId<OfferId> &
+  Contest & {
+    Offers: Offer[];
+  };
 
 export type DataForContestParams = {
   characteristic1?: 'nameStyle' | 'typeOfTagline' | 'brandStyle';
@@ -39,5 +52,10 @@ export type DataForContestResponse = {
 
 export type DownloadContestFileParams = { fileName: string };
 export type GetContestsResponse = { contests: Contest[]; haveMore: boolean };
-export type GetContestResponse = { contestData: Contest };
 export type UpdateContestResponse = Contest;
+
+export type Offer = Partial<WithFile> &
+  WithOfferStatus & {
+    User: Omit<UserWithoutPassword, 'role' | 'balance'> & { rating: Rating };
+    text: string;
+  };

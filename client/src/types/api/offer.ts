@@ -51,10 +51,8 @@ export type UserInOffer = WithId<UserId> &
 export type Offer = WithId<OfferId> &
   WithId<UserId, 'userId'> &
   WithId<ContestId, 'contestId'> &
-  Partial<WithFile> & {
-    text: string;
-    status: OfferStatus<'resolve'> | OfferStatus<'reject'> | 'pending';
-  };
+  Partial<WithFile> &
+  WithOfferStatus & { text: string };
 
 export type OfferStatus<T extends Commands> = {
   status: T extends 'resolve' ? 'won' : 'rejected';
@@ -63,3 +61,7 @@ export type OfferStatus<T extends Commands> = {
 export type Priority = 1 | 2 | 3;
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
 export type Commands = 'resolve' | 'reject';
+
+export type WithOfferStatus = {
+  status: OfferStatus<'resolve'> | OfferStatus<'reject'> | 'pending';
+};
