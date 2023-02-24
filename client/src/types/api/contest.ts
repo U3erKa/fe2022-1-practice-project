@@ -1,5 +1,6 @@
 import type { CREATOR, CUSTOMER } from 'constants/general';
 import type { BrandStyle, Contest, Industry } from 'types/contest';
+import type { CreatorFilter } from 'types/slices';
 import type { Rating, WithOfferStatus } from './offer';
 import type { UserWithoutPassword } from './user';
 
@@ -25,14 +26,7 @@ export type GetCustomersContestsParams = Partial<WithPagination> & {
   contestStatus?: Contest['status'];
 };
 
-export type GetActiveContestsParams = Partial<
-  WithId<ContestId, 'contestId'> & WithPagination
-> & {
-  typeIndex?: number;
-  industry?: Industry;
-  awardSort?: 'ASC' | 'DESC';
-  ownEntries?: boolean;
-};
+export type GetActiveContestsParams = Partial<WithPagination> & CreatorFilter;
 
 export type GetContestParams = WithId<ContestId, 'contestId'>;
 export type GetContestResponse = WithId<OfferId> &
