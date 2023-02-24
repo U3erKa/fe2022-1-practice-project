@@ -1,10 +1,15 @@
-import type { AxiosResponse } from 'axios';
-import type { NavigateFunction } from 'react-router-dom';
-
 import type { AUTH_MODE } from 'constants/general';
+import type { LoginParams, RegisterParams } from './api/auth';
+import type { WithNavigate } from './_common';
 
-export type CheckAuth = {
-  data: AxiosResponse<object>;
-  navigate: NavigateFunction;
-  authMode: keyof typeof AUTH_MODE;
-};
+export type CheckAuth = WithNavigate &
+  (
+    | {
+        data: LoginParams;
+        authMode: typeof AUTH_MODE.LOGIN;
+      }
+    | {
+        data: RegisterParams;
+        authMode: typeof AUTH_MODE.REGISTER;
+      }
+  );
