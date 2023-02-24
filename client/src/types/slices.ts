@@ -1,3 +1,13 @@
+import type { ChatId } from './api/_common';
+import type { Interlocutor, Message } from './api/chat';
+
+import type {
+  Catalog,
+  CatalogCreationMode,
+  ChatData,
+  ChatMode,
+  MessagePreview,
+} from './chat';
 
 export type AuthState = {
   isFetching: boolean;
@@ -6,6 +16,25 @@ export type AuthState = {
 
 export type BundleState = {
   bundle: Bundle | null;
+};
+
+export type ChatState = {
+  isFetching: boolean;
+  error: Error | null;
+  isShowCatalogCreation: boolean;
+  isExpanded: boolean;
+  isShow: boolean;
+  isRenameCatalog: boolean;
+  isShowChatsInCatalog: boolean;
+  addChatId: ChatId | null;
+  currentCatalog: Catalog | null;
+  chatData: ChatData | null;
+  messages: Message[];
+  interlocutor: Interlocutor | null;
+  messagesPreview: MessagePreview[];
+  catalogList: Catalog[];
+  chatMode: ChatMode;
+  catalogCreationMode: CatalogCreationMode;
 };
 
 export type Bundle = {
