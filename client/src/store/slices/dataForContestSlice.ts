@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import * as contestController from 'api/rest/contestController';
+import { DataForContestParams } from 'types/api/contest';
+import { DataForContestState } from 'types/slices';
 import { decorateAsyncThunk, rejectedReducer } from 'utils/store';
 
 const DATA_FOR_CONTEST_SLICE_NAME = 'dataForContest';
 
-const initialState = {
+const initialState: DataForContestState = {
   isFetching: true,
   data: null,
   error: null,
@@ -13,7 +15,7 @@ const initialState = {
 
 export const getDataForContest = decorateAsyncThunk({
   key: `${DATA_FOR_CONTEST_SLICE_NAME}/getDataForContest`,
-  thunk: async (payload) => {
+  thunk: async (payload?: DataForContestParams) => {
     const { data } = await contestController.dataForContest(payload);
     return data;
   },
