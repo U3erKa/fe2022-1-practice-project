@@ -11,16 +11,19 @@ import {
 } from 'utils/store';
 import { AUTH_MODE } from 'constants/general';
 
+import type { CheckAuth } from 'types/auth';
+import type { AuthState } from 'types/slices';
+
 const AUTH_SLICE_NAME = 'auth';
 
-const initialState = {
+const initialState: AuthState = {
   isFetching: false,
   error: null,
 };
 
 export const checkAuth = decorateAsyncThunk({
   key: `${AUTH_SLICE_NAME}/checkAuth`,
-  thunk: async ({ data: authInfo, navigate, authMode }) => {
+  thunk: async ({ data: authInfo, navigate, authMode }: CheckAuth) => {
     const {
       data: { user },
     } =
@@ -35,7 +38,7 @@ export const checkAuth = decorateAsyncThunk({
 });
 
 const reducers = {
-  clearAuthError: (state) => {
+  clearAuthError: (state: AuthState) => {
     state.error = null;
   },
   clearAuth: () => initialState,
