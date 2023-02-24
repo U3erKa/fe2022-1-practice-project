@@ -1,4 +1,4 @@
-import type { ChatId } from './api/_common';
+import type { ChatId, ContestId } from './api/_common';
 import type { Interlocutor, Message } from './api/chat';
 
 import type {
@@ -11,6 +11,7 @@ import type {
 
 import type { Card, ProfileViewMode, User } from './api/user';
 import type { DataForContest } from './api/contest';
+import type { Contest, Industry, Status } from './contest';
 
 export type AuthState = {
   isFetching: boolean;
@@ -38,6 +39,15 @@ export type ChatState = {
   catalogList: Catalog[];
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
+};
+
+export type ContestsState = {
+  isFetching: boolean;
+  error: Error | null;
+  contests: Contest[];
+  customerFilter: Status;
+  creatorFilter: CreatorFilter;
+  haveMore: boolean;
 };
 
 export type ContestUpdationState = {
@@ -76,3 +86,11 @@ export type Bundle = {
 };
 
 export type ContestsOrder = 'name' | 'logo' | 'tagline' | 'payment';
+
+export type CreatorFilter = {
+  contestId?: string | ContestId;
+  typeIndex?: number;
+  industry?: Industry | '';
+  awardSort?: 'ASC' | 'DESC';
+  ownEntries?: boolean;
+};
