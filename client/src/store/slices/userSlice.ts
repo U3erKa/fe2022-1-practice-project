@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import * as userController from 'api/rest/userController';
 import * as authController from 'api/rest/authController';
@@ -8,6 +8,7 @@ import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';
 import { rejectedReducer } from 'utils/store';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { UserState } from 'types/slices';
 import type { JWT } from 'types/api/_common';
 
