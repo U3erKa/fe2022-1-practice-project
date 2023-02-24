@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 import * as userController from 'api/rest/userController';
 import * as authController from 'api/rest/authController';
@@ -8,9 +8,12 @@ import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';
 import { rejectedReducer } from 'utils/store';
 
+import type { UserState } from 'types/slices';
+import type { JWT } from 'types/api/_common';
+
 const USER_SLICE_NAME = 'user';
 
-const initialState = {
+const initialState: UserState = {
   isFetching: false,
   error: null,
   data: null,
@@ -18,7 +21,7 @@ const initialState = {
 
 export const refresh = createAsyncThunk(
   `${USER_SLICE_NAME}/refresh`,
-  async (/** @type {unknown} */ refreshToken, { rejectWithValue }) => {
+  async (refreshToken: JWT, { rejectWithValue }) => {
     try {
       const {
         data: { user },
@@ -52,46 +55,54 @@ export const updateUser = createAsyncThunk(
 );
 
 const reducers = {
-  clearUserStore: (state) => {
+  clearUserStore: (state: UserState) => {
     state.error = null;
     state.data = null;
   },
-  clearUserError: (state) => {
+  clearUserError: (state: UserState) => {
     state.error = null;
   },
 };
 
 const extraReducers = (builder) => {
-  builder.addCase(checkAuth.pending, (state) => {
+  builder.addCase(checkAuth.pending, (state: UserState) => {
     state.isFetching = true;
     state.error = null;
     state.data = null;
   });
-  builder.addCase(checkAuth.fulfilled, (state, { payload }) => {
+  builder.addCase(checkAuth.fulfilled, (state: UserState, { payload }) => {
     state.data = payload;
     state.isFetching = false;
   });
   builder.addCase(checkAuth.rejected, rejectedReducer);
 
-  builder.addCase(refresh.pending, (state) => {
+  builder.addCase(refresh.pending, (state: UserState) => {
     state.isFetching = true;
     state.error = null;
     state.data = null;
   });
-  builder.addCase(refresh.fulfilled, (state, { payload }) => {
-    state.data = payload;
-    state.isFetching = false;
-  });
-
+  builder.addCase(
+    refresh.fulfilled,
+    (state: UserState, { payload }: PayloadAction<UserState['data']>) => {
+      state.data = payload;
+      state.isFetching = false;
+    },
+  );
   builder.addCase(refresh.rejected, rejectedReducer);
 
-  builder.addCase(updateUser.fulfilled, (state, { payload }) => {
-    state.data = { ...state.data, ...payload };
-    state.error = null;
-  });
-  builder.addCase(updateUser.rejected, (state, { payload }) => {
-    state.error = payload;
-  });
+  builder.addCase(
+    updateUser.fulfilled,
+    (state: UserState, { payload }: PayloadAction<UserState['data']>) => {
+      state.data = { ...state.data, ...payload };
+      state.error = null;
+    },
+  );
+  builder.addCase(
+    updateUser.rejected,
+    (state: UserState, { payload }: PayloadAction<Error>) => {
+      state.error = payload;
+    },
+  );
 };
 
 const userSlice = createSlice({
