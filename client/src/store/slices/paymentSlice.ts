@@ -12,9 +12,13 @@ import {
 } from 'utils/store';
 import { USER_INFO_MODE } from 'constants/general';
 
+import type { PaymentState } from 'types/slices';
+import { WithNavigate } from 'types/_common';
+import { CashOutParams } from 'types/api/offer';
+
 const PAYMENT_SLICE_NAME = 'payment';
 
-const initialState = {
+const initialState: PaymentState = {
   isFetching: false,
   error: null,
   focusOnElement: 'number',
@@ -22,7 +26,10 @@ const initialState = {
 
 export const pay = decorateAsyncThunk({
   key: `${PAYMENT_SLICE_NAME}/pay`,
-  thunk: async ({ data, navigate }, { dispatch }) => {
+  thunk: async (
+    { data, navigate }: WithNavigate & { data: { formData: FormData } },
+    { dispatch },
+  ) => {
     await offerController.payMent(data);
     navigate('/dashboard', { replace: true });
     dispatch(clearContestStore());
@@ -31,7 +38,7 @@ export const pay = decorateAsyncThunk({
 
 export const cashOut = decorateAsyncThunk({
   key: `${PAYMENT_SLICE_NAME}/cashOut`,
-  thunk: async (payload, { dispatch }) => {
+  thunk: async (payload: CashOutParams, { dispatch }) => {
     const { data } = await offerController.cashOut(payload);
     dispatch(updateUser.fulfilled(data));
     dispatch(changeProfileViewMode(USER_INFO_MODE));
@@ -39,7 +46,7 @@ export const cashOut = decorateAsyncThunk({
 });
 
 const reducers = {
-  changeFocusOnCard: (state, { payload }) => {
+  changeFocusOnCard: (state: PaymentState, { payload }) => {
     state.focusOnElement = payload;
   },
   clearPaymentStore: () => initialState,
