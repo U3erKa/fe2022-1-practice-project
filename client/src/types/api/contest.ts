@@ -1,5 +1,16 @@
+import type { CREATOR, CUSTOMER } from 'constants/general';
 import type { BrandStyle, Contest, Industry } from 'types/contest';
 import type { ContestId, WithId, WithPagination } from './_common';
+
+export type GetContestsThunk =
+  | {
+      requestData: GetCustomersContestsParams;
+      role: typeof CUSTOMER;
+    }
+  | {
+      requestData: GetActiveContestsParams;
+      role: typeof CREATOR;
+    };
 
 export type GetCustomersContestsParams = Partial<WithPagination> & {
   contestStatus?: Contest['status'];

@@ -6,6 +6,7 @@ import type {
   MessageId,
   SenderId,
   TimeStamp,
+  WithId,
   WithTimeStamps,
   With_id,
   With__v,
@@ -33,9 +34,10 @@ export type NewMessageParams = WithInterlocutor & {
 
 export type NewMessageResponse = {
   message: Message & WithParticipants & With__v;
-  preview: Omit<Message, 'body' | 'conversation' | 'updatedAt'> & {
-    text: Message['body'];
-  };
+  preview: Omit<Message, 'body' | 'conversation' | 'updatedAt'> &
+    Omit<WithParticipantTuples, '_id'> & {
+      text: Message['body'];
+    };
 };
 
 export type GetPreviewChatResponse = WithParticipantTuples & {
@@ -48,6 +50,14 @@ export type ChangeChatResponse = WithParticipantTuples &
   With__v &
   WithTimeStamps;
 
+export type AddMessage = NewMessageResponse & {
+  preview: { interlocutor: { email: string } };
+};
+
+export type goToExtendedDialog = WithInterlocutor & {
+  conversationData: Omit<WithParticipantTuples, 'interlocutor'>;
+};
+
 export type Interlocutor = {
   id: InterlocutorId;
   firstName: User['firstName'];
@@ -57,16 +67,16 @@ export type Interlocutor = {
 };
 
 export type Message = With_id<MessageId> &
+  With_id<ConversationId, 'conversation'> &
+  WithId<SenderId, 'sender'> &
   WithTimeStamps & {
     body: string;
-    conversation: ConversationId;
-    sender: SenderId;
   };
 
 export type FavoriteFlag = boolean;
 export type BlackListFlag = boolean;
 
-export type WithParticipantTuples = With_id &
+export type WithParticipantTuples = With_id<ConversationId> &
   WithParticipants &
   WithFavoriteList &
   WithBlackList &

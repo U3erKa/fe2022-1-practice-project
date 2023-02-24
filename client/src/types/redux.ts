@@ -14,3 +14,8 @@ export type ExtraReducersCreator = <State, Return, Payload>(options: {
   fulfilledReducer?: any;
   rejectedReducer?: any;
 }) => (builder: ActionReducerMapBuilder<State>) => void;
+
+export type DefaultState = {
+  isFetching: boolean;
+  error: Error | null;
+};
