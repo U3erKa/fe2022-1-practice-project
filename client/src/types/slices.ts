@@ -9,6 +9,8 @@ import type {
   MessagePreview,
 } from './chat';
 
+import type { User } from './api/user';
+
 export type AuthState = {
   isFetching: boolean;
   error: Error | null;
@@ -35,6 +37,12 @@ export type ChatState = {
   catalogList: Catalog[];
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
+};
+
+export type UserState = {
+  isFetching: boolean;
+  error: Error | null;
+  data: User | null;
 };
 
 export type Bundle = {
