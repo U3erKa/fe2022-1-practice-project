@@ -9,7 +9,7 @@ import type {
   MessagePreview,
 } from './chat';
 
-import type { ProfileViewMode, User } from './api/user';
+import type { Card, ProfileViewMode, User } from './api/user';
 
 export type AuthState = {
   isFetching: boolean;
@@ -37,6 +37,11 @@ export type ChatState = {
   catalogList: Catalog[];
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
+};
+export type PaymentState = {
+  isFetching: boolean;
+  error: Error | null;
+  focusOnElement: keyof Omit<Card, 'balance'>;
 };
 
 export type UserProfileState = {
