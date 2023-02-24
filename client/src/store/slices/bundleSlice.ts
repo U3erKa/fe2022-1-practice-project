@@ -1,13 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { BundleState } from 'types/slices';
+
 const BUNDLE_SLICE_NAME = 'bundle';
 
-const initialState = {
+const initialState: BundleState = {
   bundle: null,
 };
 
 const reducers = {
-  updateBundle: (state, { payload }) => {
+  updateBundle: (
+    state: BundleState,
+    { payload }: PayloadAction<BundleState['bundle']>,
+  ) => {
     state.bundle = payload;
   },
 };
