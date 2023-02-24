@@ -9,7 +9,7 @@ import type {
   MessagePreview,
 } from './chat';
 
-import type { User } from './api/user';
+import type { ProfileViewMode, User } from './api/user';
 
 export type AuthState = {
   isFetching: boolean;
@@ -37,6 +37,11 @@ export type ChatState = {
   catalogList: Catalog[];
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
+};
+
+export type UserProfileState = {
+  profileViewMode: ProfileViewMode;
+  isEdit: boolean;
 };
 
 export type UserState = {

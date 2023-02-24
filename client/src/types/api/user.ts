@@ -1,5 +1,10 @@
 import type { JWT, UserId, WithId } from './_common';
-import type { CREATOR, CUSTOMER } from 'constants/general';
+import type {
+  CASHOUT_MODE,
+  CREATOR,
+  CUSTOMER,
+  USER_INFO_MODE,
+} from 'constants/general';
 
 export type UpdateUserResponse = UserWithoutPassword;
 
@@ -7,6 +12,7 @@ export type UserWithoutPassword = Omit<
   User,
   'password' | 'accessToken' | 'rating'
 >;
+export type ProfileViewMode = typeof USER_INFO_MODE | typeof CASHOUT_MODE;
 
 export type User = WithId<UserId> & {
   firstName: string;
