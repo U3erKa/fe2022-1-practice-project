@@ -10,6 +10,7 @@ import type {
 } from './chat';
 
 import type { Card, ProfileViewMode, User } from './api/user';
+import type { DataForContest } from './api/contest';
 
 export type AuthState = {
   isFetching: boolean;
@@ -38,6 +39,13 @@ export type ChatState = {
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
 };
+
+export type DataForContestState = {
+  isFetching: boolean;
+  data: DataForContest | null;
+  error: Error | null;
+};
+
 export type PaymentState = {
   isFetching: boolean;
   error: Error | null;

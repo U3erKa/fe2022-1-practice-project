@@ -45,10 +45,7 @@ export type DataForContestParams = {
   characteristic2?: 'typeOfName';
 };
 
-export type DataForContestResponse = {
-  brandStyle: BrandStyle;
-  industry: Industry;
-};
+export type DataForContestResponse = DataForContest;
 
 export type DownloadContestFileParams = { fileName: string };
 export type GetContestsResponse = { contests: Contest[]; haveMore: boolean };
@@ -59,3 +56,8 @@ export type Offer = Partial<WithFile> &
     User: Omit<UserWithoutPassword, 'role' | 'balance'> & { rating: Rating };
     text: string;
   };
+
+export type DataForContest = {
+  brandStyle: BrandStyle;
+  industry: Industry;
+};
