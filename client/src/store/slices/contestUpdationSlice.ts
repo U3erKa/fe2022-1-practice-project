@@ -10,16 +10,18 @@ import {
   rejectedReducer,
 } from 'utils/store';
 
+import type { ContestUpdationState } from 'types/slices';
+
 const CONTEST_UPDATION_SLICE_NAME = 'contestUpdation';
 
-const initialState = {
+const initialState: ContestUpdationState = {
   isFetching: true,
   error: null,
 };
 
 export const updateContest = decorateAsyncThunk({
   key: CONTEST_UPDATION_SLICE_NAME,
-  thunk: async (payload, { dispatch }) => {
+  thunk: async (payload: FormData, { dispatch }) => {
     const { data } = await contestController.updateContest(payload);
     dispatch(updateStoreAfterUpdateContest(data));
   },

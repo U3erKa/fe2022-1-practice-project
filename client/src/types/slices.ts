@@ -40,6 +40,11 @@ export type ChatState = {
   catalogCreationMode: CatalogCreationMode;
 };
 
+export type ContestUpdationState = {
+  isFetching: boolean;
+  error: Error | null;
+};
+
 export type DataForContestState = {
   isFetching: boolean;
   data: DataForContest | null;
