@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import * as offerController from 'api/rest/offerController';
 import * as contestController from 'api/rest/contestController';
@@ -8,11 +8,22 @@ import {
   rejectedReducer,
   createExtraReducers,
 } from 'utils/store';
+
 import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
+
+import type { GetContestParams, GetContestResponse } from 'types/api/contest';
+import type {
+  ChangeMarkParams,
+  ChangeMarkResponse,
+  SetNewOfferResponse,
+  SetOfferStatusParams,
+  SetOfferStatusResponse,
+} from 'types/api/offer';
+import type { ContestByIdState } from 'types/slices';
 
 const CONTEST_BY_ID_SLICE_NAME = 'getContestById';
 
-const initialState = {
+const initialState: ContestByIdState = {
   isFetching: true,
   contestData: null,
   error: null,
@@ -30,23 +41,30 @@ const initialState = {
 //---------- getContestById
 export const getContestById = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/getContest`,
-  thunk: async (payload) => {
+  thunk: async (payload: GetContestParams) => {
     const { data } = await contestController.getContestById(payload);
-    const { Offers } = data;
-    delete data.Offers;
-    return { contestData: data, offers: Offers };
+    const { Offers, ...contestData } = data;
+    return { contestData, offers: Offers };
   },
 });
 
 const getContestByIdExtraReducers = createExtraReducers({
   thunk: getContestById,
-  pendingReducer: (state) => {
+  pendingReducer: (state: ContestByIdState) => {
     state.isFetching = true;
     state.contestData = null;
     state.error = null;
     state.offers = [];
   },
-  fulfilledReducer: (state, { payload: { contestData, offers } }) => {
+  fulfilledReducer: (
+    state: ContestByIdState,
+    {
+      payload: { contestData, offers },
+    }: PayloadAction<{
+      contestData: Omit<GetContestResponse, 'Offers'>;
+      offers: GetContestResponse['Offers'];
+    }>,
+  ) => {
     state.isFetching = false;
     state.contestData = contestData;
     state.error = null;
@@ -66,11 +84,17 @@ export const addOffer = decorateAsyncThunk({
 
 const addOfferExtraReducers = createExtraReducers({
   thunk: addOffer,
-  fulfilledReducer: (state, { payload }) => {
+  fulfilledReducer: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<SetNewOfferResponse>,
+  ) => {
     state.offers.unshift(payload);
     state.error = null;
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['addOfferError']>,
+  ) => {
     state.addOfferError = payload;
   },
 });
@@ -78,7 +102,7 @@ const addOfferExtraReducers = createExtraReducers({
 //---------- setOfferStatus
 export const setOfferStatus = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/setOfferStatus`,
-  thunk: async (payload) => {
+  thunk: async (payload: SetOfferStatusParams) => {
     const { data } = await offerController.setOfferStatus(payload);
     return data;
   },
@@ -86,7 +110,10 @@ export const setOfferStatus = decorateAsyncThunk({
 
 const setOfferStatusExtraReducers = createExtraReducers({
   thunk: setOfferStatus,
-  fulfilledReducer: (state, { payload }) => {
+  fulfilledReducer: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<SetOfferStatusResponse>,
+  ) => {
     state.offers.forEach((offer) => {
       if (payload.status === OFFER_STATUS_WON) {
         offer.status =
@@ -97,7 +124,10 @@ const setOfferStatusExtraReducers = createExtraReducers({
     });
     state.error = null;
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['setOfferStatusError']>,
+  ) => {
     state.setOfferStatusError = payload;
   },
 });
@@ -105,7 +135,7 @@ const setOfferStatusExtraReducers = createExtraReducers({
 //---------- changeMark
 export const changeMark = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/changeMark`,
-  thunk: async (payload) => {
+  thunk: async (payload: ChangeMarkParams) => {
     const { data } = await offerController.changeMark(payload);
     return { data, offerId: payload.offerId, mark: payload.mark };
   },
@@ -113,7 +143,16 @@ export const changeMark = decorateAsyncThunk({
 
 const changeMarkExtraReducers = createExtraReducers({
   thunk: changeMark,
-  fulfilledReducer: (state, { payload: { data, offerId, mark } }) => {
+  fulfilledReducer: (
+    state: ContestByIdState,
+    {
+      payload: { data, offerId, mark },
+    }: PayloadAction<{
+      data: ChangeMarkResponse;
+      offerId: ChangeMarkParams['offerId'];
+      mark: ChangeMarkParams['mark'];
+    }>,
+  ) => {
     state.offers.forEach((offer) => {
       if (offer.User.id === data.userId) {
         offer.User.rating = data.rating;
@@ -124,7 +163,10 @@ const changeMarkExtraReducers = createExtraReducers({
     });
     state.error = null;
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['changeMarkError']>,
+  ) => {
     state.changeMarkError = payload;
   },
 });
@@ -132,28 +174,45 @@ const changeMarkExtraReducers = createExtraReducers({
 //-----------------------------------------------------
 
 const reducers = {
-  updateStoreAfterUpdateContest: (state, { payload }) => {
+  updateStoreAfterUpdateContest: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['contestData']>,
+  ) => {
     state.error = null;
     state.isEditContest = false;
-    state.contestData = { ...state.contestData, ...payload };
+    state.contestData = { ...state.contestData, ...payload! };
   },
-  changeContestViewMode: (state, { payload }) => {
+  changeContestViewMode: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['isBrief']>,
+  ) => {
     state.isEditContest = false;
     state.isBrief = payload;
   },
-  changeEditContest: (state, { payload }) => {
+  changeEditContest: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['isEditContest']>,
+  ) => {
     state.isEditContest = payload;
   },
-  clearAddOfferError: (state) => {
+  clearAddOfferError: (state: ContestByIdState) => {
     state.addOfferError = null;
   },
-  clearSetOfferStatusError: (state) => {
+  clearSetOfferStatusError: (state: ContestByIdState) => {
     state.setOfferStatusError = null;
   },
-  clearChangeMarkError: (state) => {
+  clearChangeMarkError: (state: ContestByIdState) => {
     state.changeMarkError = null;
   },
-  changeShowImage: (state, { payload: { isShowOnFull, imagePath } }) => {
+  changeShowImage: (
+    state: ContestByIdState,
+    {
+      payload: { isShowOnFull, imagePath },
+    }: PayloadAction<{
+      isShowOnFull: ContestByIdState['isShowOnFull'];
+      imagePath: ContestByIdState['imagePath'];
+    }>,
+  ) => {
     state.isShowOnFull = isShowOnFull;
     state.imagePath = imagePath;
   },
