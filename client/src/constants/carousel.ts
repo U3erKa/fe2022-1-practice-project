@@ -2,7 +2,7 @@ import { STATIC_IMAGES_PATH } from './general';
 
 export const MAIN_SLIDER = 'main_slider';
 export const EXAMPLE_SLIDER = 'example_slider';
-export const FEEDBACK_SLIDER = '${FEEDBACK_SLIDER}';
+export const FEEDBACK_SLIDER = 'feedback_slider';
 
 export const MAIN_SLIDER_IMAGES = [
   `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/21..jpg`,
