@@ -8,7 +8,7 @@ export const LoginSchem = yup.object().shape({
     .test(
       'test-password',
       'min 6 symbols',
-      (value) => value && value.trim().length >= 6,
+      (value) => !!value && value.trim().length >= 6,
     )
     .required('required'),
 });
@@ -20,7 +20,7 @@ export const RegistrationSchem = yup.object().shape({
     .test(
       'test-password',
       'min 6 symbols',
-      (value) => value && value.trim().length >= 6,
+      (value) => !!value && value.trim().length >= 6,
     )
     .required('required'),
   confirmPassword: yup
@@ -32,7 +32,7 @@ export const RegistrationSchem = yup.object().shape({
     .test(
       'test-firstName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('First Name is required'),
   lastName: yup
@@ -40,7 +40,7 @@ export const RegistrationSchem = yup.object().shape({
     .test(
       'test-lastName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('Last Name is required'),
   displayName: yup
@@ -48,7 +48,7 @@ export const RegistrationSchem = yup.object().shape({
     .test(
       'test-displayName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('Display Name is required'),
   role: yup
@@ -72,7 +72,7 @@ export const ContestSchem = yup.object({
     .test(
       'test-title',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('title of contest required'),
   industry: yup.string().required('industry required'),
@@ -81,7 +81,7 @@ export const ContestSchem = yup.object({
     .test(
       'test-focusOfWork',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('focus of work required'),
   targetCustomer: yup
@@ -89,7 +89,7 @@ export const ContestSchem = yup.object({
     .test(
       'test-targetCustomer',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('target customers required'),
   styleName: yup.string().min(1),
@@ -116,7 +116,7 @@ export const TextOfferSchema = yup.object().shape({
     .test(
       'test-offerData',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('suggestion is required'),
 });
@@ -176,7 +176,7 @@ export const UpdateUserSchema = yup.object().shape({
     .test(
       'test-firstName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('required'),
   lastName: yup
@@ -184,7 +184,7 @@ export const UpdateUserSchema = yup.object().shape({
     .test(
       'test-lastName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('required'),
   displayName: yup
@@ -192,7 +192,7 @@ export const UpdateUserSchema = yup.object().shape({
     .test(
       'test-displayName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('required'),
   file: yup.mixed(),
@@ -204,7 +204,7 @@ export const MessageSchema = yup.object({
     .test(
       'test-message',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('required'),
 });
@@ -215,7 +215,7 @@ export const CatalogSchema = yup.object({
     .test(
       'test-catalogName',
       'required',
-      (value) => value && value.trim().length >= 1,
+      (value) => !!value && value.trim().length >= 1,
     )
     .required('required'),
 });
