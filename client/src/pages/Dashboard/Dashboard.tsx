@@ -4,6 +4,7 @@ import { CustomerDashboard, CreatorDashboard } from '.';
 import { CREATOR, CUSTOMER } from 'constants/general';
 
 const Dashboard = () => {
+  // @ts-expect-error
   const { role } = useSelector((state) => state.userStore?.data || {});
 
   return (

@@ -4,7 +4,7 @@ import className from 'classnames';
 import styles from './styles/MainDialog.module.sass';
 
 const MainDialog = ({ messages, userId, messagesEnd }) => {
-  const messagesArray = [];
+  const messagesArray: unknown[] = [];
   let currentTime = moment();
 
   messages.forEach(({ createdAt, sender, body }, i) => {

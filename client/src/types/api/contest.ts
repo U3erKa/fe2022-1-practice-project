@@ -4,7 +4,13 @@ import type { CreatorFilter } from 'types/slices';
 import type { Rating, WithOfferStatus } from './offer';
 import type { UserInOffer } from './user';
 
-import type { ContestId, OfferId, WithFile, WithId, WithPagination } from './_common';
+import type {
+  ContestId,
+  OfferId,
+  WithFile,
+  WithId,
+  WithPagination,
+} from './_common';
 
 export type GetContestsThunk =
   | {

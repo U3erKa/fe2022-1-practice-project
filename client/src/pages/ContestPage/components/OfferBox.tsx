@@ -27,7 +27,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../styles/confirmStyle.css';
 import styles from '../styles/OfferBox.module.sass';
 
-const OfferBox = ({ data, date, contestData, setOfferStatus /* userId */ }) => {
+const OfferBox = ({ data, contestData, setOfferStatus }) => {
   const selector = useSelector((state) => {
     const { id, role } = state.userStore.data;
     const { messagesPreview } = state.chatStore;
@@ -68,6 +68,7 @@ const OfferBox = ({ data, date, contestData, setOfferStatus /* userId */ }) => {
         },
         {
           label: 'No',
+          onClick: () => {},
         },
       ],
     });
@@ -84,6 +85,7 @@ const OfferBox = ({ data, date, contestData, setOfferStatus /* userId */ }) => {
         },
         {
           label: 'No',
+          onClick: () => {},
         },
       ],
     });

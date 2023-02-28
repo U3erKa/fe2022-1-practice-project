@@ -27,7 +27,7 @@ export const rejectedReducer: CaseReducer<
 };
 
 /** Decorate createAsyncThunk by taking out repeating error catching code */
-export const decorateAsyncThunk = <Return, Payload>({
+export const decorateAsyncThunk = <Return, Payload = void>({
   key,
   thunk,
 }: {

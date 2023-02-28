@@ -50,7 +50,7 @@ const reducers = {
   }),
   setNewCreatorFilter: (
     state: ContestsState,
-    { payload }: PayloadAction<ContestsState>,
+    { payload }: PayloadAction<ContestsState['creatorFilter']>,
   ) => ({
     ...initialState,
     isFetching: false,
