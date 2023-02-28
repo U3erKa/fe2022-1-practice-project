@@ -32,7 +32,9 @@ export const refresh = createAsyncThunk(
       return user;
     } catch (err) {
       return rejectWithValue({
+        // @ts-expect-error
         data: err?.response?.data ?? 'Gateway Timeout',
+        // @ts-expect-error
         status: err?.response?.status ?? 504,
       });
     }
@@ -48,7 +50,9 @@ export const updateUser = createAsyncThunk(
       return data;
     } catch (err) {
       return rejectWithValue({
+        // @ts-expect-error
         data: err?.response?.data ?? 'Gateway Timeout',
+        // @ts-expect-error
         status: err?.response?.status ?? 504,
       });
     }

@@ -1,17 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import type {
-  AsyncThunk,
+  AsyncThunkPayloadCreator,
   ActionReducerMapBuilder,
   CaseReducer,
   PayloadAction,
 } from '@reduxjs/toolkit';
 
-import type {
-  AsyncThunkDecorator,
-  DefaultState,
-  ExtraReducersCreator,
-} from 'types/redux';
+import type { DefaultState, ExtraReducersCreator } from 'types/redux';
 
 export const pendingReducer: CaseReducer<DefaultState> = (state) => {
   state.isFetching = true;
@@ -31,16 +27,16 @@ export const rejectedReducer: CaseReducer<
 };
 
 /** Decorate createAsyncThunk by taking out repeating error catching code */
-export const decorateAsyncThunk: AsyncThunkDecorator = <
-  Return,
-  Payload = void,
->({
+export const decorateAsyncThunk = <Return, Payload>({
   key,
   thunk,
+}: {
+  key: string;
+  thunk: AsyncThunkPayloadCreator<Promise<Return>, Payload>;
 }) => {
-  const asyncThunk: AsyncThunk<Return, Payload, {}> = createAsyncThunk(
+  const asyncThunk = createAsyncThunk<Return, Payload>(
     key,
-    async (payload: Payload, thunkAPI) => {
+    async (payload, thunkAPI) => {
       const { rejectWithValue } = thunkAPI;
       try {
         return await thunk(payload, thunkAPI);
