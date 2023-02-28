@@ -1,18 +1,18 @@
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from '../styles/BundleBox.module.sass';
 
-const BundleBox = (props) => {
+const BundleBox = ({ header, path, setBundle, describe }) => {
   const defaultPathToImages = `${STATIC_IMAGES_PATH}contestLabels/`;
 
   const renderImage = () => {
-    const array = [];
-    for (let i = 0; i < props.path.length; i++) {
+    const array: JSX.Element[] = [];
+    for (let i = 0; i < path.length; i++) {
       array.push(
         <img
-          src={defaultPathToImages + props.path[i]}
+          src={defaultPathToImages + path[i]}
           key={i}
           className={styles.imgContainer}
-          alt={props.path[i].replace(/.png/g, 'Contest')}
+          alt={path[i].replace(/.png/g, 'Contest')}
         />,
       );
     }
@@ -20,25 +20,24 @@ const BundleBox = (props) => {
   };
 
   const mouseOverHandler = () => {
-    const element = document.getElementById(props.header);
-    for (let i = 0; i < element.children[0].children.length; i++) {
-      element.children[0].children[
-        i
-      ].src = `${defaultPathToImages}blue_${props.path[i]}`;
+    const element = document.getElementById(header);
+    const { children } = element.children[0];
+    for (let i = 0; i < children.length; i++) {
+      children[i].src = `${defaultPathToImages}blue_${path[i]}`;
     }
   };
 
   const mouseOutHandler = () => {
-    const element = document.getElementById(props.header);
-    for (let i = 0; i < element.children[0].children.length; i++) {
-      element.children[0].children[i].src = defaultPathToImages + props.path[i];
+    const element = document.getElementById(header);
+    const { children } = element.children[0];
+    for (let i = 0; i < children.length; i++) {
+      children[i].src = defaultPathToImages + path[i];
     }
   };
 
   const getBackClass = () =>
-    props.path.length === 1 ? ' ' : ` ${styles.combinedBundle}`;
+    path.length === 1 ? ' ' : ` ${styles.combinedBundle}`;
 
-  const { setBundle, header, describe } = props;
   return (
     <div
       onMouseOver={mouseOverHandler}
