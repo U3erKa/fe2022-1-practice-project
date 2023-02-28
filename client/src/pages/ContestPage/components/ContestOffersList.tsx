@@ -49,10 +49,8 @@ const ContestOffersList = ({ offers, contestData, userId }) => {
             <OfferBox
               data={offer}
               key={offer.id}
-              userId={userId}
               setOfferStatus={setOfferStatusMethod}
               contestData={contestData}
-              date={new Date()}
             />
           ))
         )}

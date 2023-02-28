@@ -15,12 +15,13 @@ const ContestSideBar = ({ totalEntries, contestData }) => {
 
   const getTimeStr = () => {
     const diff = moment.duration(moment().diff(moment(createdAt)));
+    const days = diff.days();
+    const hours = diff.hours();
     let str = '';
 
-    if (diff._data.days !== 0) str = `${diff._data.days} days `;
-    if (diff._data.hours !== 0) str += `${diff._data.hours} hours`;
-    if (str.length === 0) str = 'less than one hour';
-    return str;
+    if (days !== 0) str = `${days} days `;
+    if (hours !== 0) str += `${hours} hours`;
+    return str || 'less than one hour';
   };
 
   return (
@@ -53,7 +54,7 @@ const ContestSideBar = ({ totalEntries, contestData }) => {
           </div>
         </div>
       </div>
-      {data.id !== User.id && (
+      {data?.id !== User.id && (
         <div className={styles.infoCustomerContainer}>
           <span className={styles.labelCustomerInfo}>About Contest Holder</span>
           <div className={styles.customerInfo}>
