@@ -1,5 +1,7 @@
-import type { ChatId, ContestId } from './api/_common';
+import type { ChatId, ContestId, WithId } from './api/_common';
 import type { Interlocutor, Message } from './api/chat';
+import type { DataForContest, Offer } from './api/contest';
+import type { Card, ProfileViewMode, User, UserInOffer } from './api/user';
 
 import type {
   Catalog,
@@ -9,8 +11,6 @@ import type {
   MessagePreview,
 } from './chat';
 
-import type { Card, ProfileViewMode, User } from './api/user';
-import type { DataForContest } from './api/contest';
 import type { Contest, Industry, Status } from './contest';
 
 export type AuthState = {
@@ -39,6 +39,21 @@ export type ChatState = {
   catalogList: Catalog[];
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
+};
+
+export type ContestByIdState = {
+  isFetching: boolean;
+  contestData: ContestData | null;
+  offers: Offer[];
+  error: Error | null;
+  addOfferError: Error | null;
+  setOfferStatusError: Error | null;
+  changeMarkError: Error | null;
+  isEditContest: boolean;
+  isBrief: boolean;
+  isShowOnFull: boolean;
+  isShowModal: boolean;
+  imagePath: string | null;
 };
 
 export type ContestsState = {
@@ -94,3 +109,8 @@ export type CreatorFilter = {
   awardSort?: 'ASC' | 'DESC';
   ownEntries?: boolean;
 };
+
+export type ContestData = WithId<ContestId> &
+  Omit<Contest, 'Offers'> & {
+    User: UserInOffer;
+  };
