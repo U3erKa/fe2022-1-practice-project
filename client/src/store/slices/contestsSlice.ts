@@ -42,7 +42,7 @@ const reducers = {
   },
   setNewCustomerFilter: (
     state: ContestsState,
-    { payload }: PayloadAction<ContestsState>,
+    { payload }: PayloadAction<ContestsState['customerFilter']>,
   ) => ({
     ...initialState,
     isFetching: false,
