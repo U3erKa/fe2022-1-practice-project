@@ -1,6 +1,12 @@
 import { Field } from 'formik';
 
-const AgreeTermOfServiceInput = ({ id, type, classes, label, ...rest }) => (
+const AgreeTermOfServiceInput = ({
+  id,
+  type,
+  classes,
+  label = '',
+  ...rest
+}) => (
   <Field {...rest}>
     {(props) => {
       const {

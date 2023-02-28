@@ -17,7 +17,7 @@ const ContestCreationPage = ({ contestType, title }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const formRef = useRef();
+  const formRef = useRef<HTMLFormElement>();
   const contestData = contests[contestType]
     ? contests[contestType]
     : { contestType: contestType };

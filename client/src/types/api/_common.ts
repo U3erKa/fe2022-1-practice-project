@@ -15,7 +15,7 @@ export type WithLifeSpan = { iat: NumTimeStamp; exp: NumTimeStamp };
 export type WithPagination = { limit: number; offset: number };
 
 /** SQL's unique id parameter */
-export type Id = number;
+export type Id = string | number;
 /** MongoDB's `_id` parameter */
 export type _Id = string;
 /** MongoDB's `__v` parameter */

@@ -108,7 +108,7 @@ const OptionalSelects = ({ contestType }) => {
       );
     }
     default: {
-      break;
+      return null;
     }
   }
 };

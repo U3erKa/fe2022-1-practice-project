@@ -12,19 +12,15 @@ import type {
 } from './chat';
 
 import type { Contest, Industry, Status } from './contest';
+import { AxiosError } from 'axios';
 
-export type AuthState = {
-  isFetching: boolean;
-  error: Error | null;
-};
+export type AuthState = WithFetch;
 
 export type BundleState = {
   bundle: Bundle | null;
 };
 
-export type ChatState = {
-  isFetching: boolean;
-  error: Error | null;
+export type ChatState = WithFetch & {
   isShowCatalogCreation: boolean;
   isExpanded: boolean;
   isShow: boolean;
@@ -41,13 +37,11 @@ export type ChatState = {
   catalogCreationMode: CatalogCreationMode;
 };
 
-export type ContestByIdState = {
-  isFetching: boolean;
+export type ContestByIdState = WithFetch & {
   contestData: ContestData | null;
   offers: Offer[];
-  error: Error | null;
-  addOfferError: Error | null;
-  setOfferStatusError: Error | null;
+  addOfferError: { data; status } | null;
+  setOfferStatusError: { data; status } | null;
   changeMarkError: Error | null;
   isEditContest: boolean;
   isBrief: boolean;
@@ -56,29 +50,20 @@ export type ContestByIdState = {
   imagePath: string | null;
 };
 
-export type ContestsState = {
-  isFetching: boolean;
-  error: Error | null;
+export type ContestsState = WithFetch & {
   contests: Contest[];
   customerFilter: Status;
   creatorFilter: CreatorFilter;
   haveMore: boolean;
 };
 
-export type ContestUpdationState = {
-  isFetching: boolean;
-  error: Error | null;
-};
+export type ContestUpdationState = WithFetch;
 
-export type DataForContestState = {
-  isFetching: boolean;
+export type DataForContestState = WithFetch & {
   data: DataForContest | null;
-  error: Error | null;
 };
 
-export type PaymentState = {
-  isFetching: boolean;
-  error: Error | null;
+export type PaymentState = WithFetch & {
   focusOnElement: keyof Omit<Card, 'balance'>;
 };
 
@@ -87,9 +72,7 @@ export type UserProfileState = {
   isEdit: boolean;
 };
 
-export type UserState = {
-  isFetching: boolean;
-  error: Error | null;
+export type UserState = WithFetch & {
   data: User | null;
 };
 
@@ -103,8 +86,8 @@ export type Bundle = {
 export type ContestsOrder = 'name' | 'logo' | 'tagline' | 'payment';
 
 export type CreatorFilter = {
-  contestId?: string | ContestId;
-  typeIndex?: number;
+  contestId?: ContestId;
+  typeIndex?: string | number;
   industry?: Industry | '';
   awardSort?: 'ASC' | 'DESC';
   ownEntries?: boolean;
@@ -114,3 +97,9 @@ export type ContestData = WithId<ContestId> &
   Omit<Contest, 'Offers'> & {
     User: UserInOffer;
   };
+
+export type WithFetch = { isFetching: boolean; error: { data; status } | null };
+export type Initial = { isFetching: false; error: null };
+export type Fetching = { isFetching: true; error: null };
+export type Fulfulled = { isFetching: false; error: null };
+export type Rejected = { isFetching: false; error: AxiosError };

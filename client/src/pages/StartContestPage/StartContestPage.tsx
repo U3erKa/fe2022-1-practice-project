@@ -9,6 +9,8 @@ import { BundleBox } from '.';
 import { CUSTOMER } from 'constants/general';
 import styles from './styles/StartContestPage.module.sass';
 
+import type { Bundle } from 'types/slices';
+
 const StartContestPage = () => {
   const userStore = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
@@ -20,7 +22,8 @@ const StartContestPage = () => {
 
   const setBundle = (bundleStr) => {
     const array = bundleStr.toLowerCase().split('+');
-    const bundleList = {};
+    const bundleList = {} as Bundle;
+
     bundleList.first = array[0];
     for (let i = 0; i < array.length; i++) {
       bundleList[array[i]] = i === array.length - 1 ? 'payment' : array[i + 1];

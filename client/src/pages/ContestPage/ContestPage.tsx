@@ -34,12 +34,12 @@ const ContestPage = () => {
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  const match = useMatch('/contest/:id');
+  const match = useMatch('/contest/:id')!;
 
-  const { role } = user || {};
+  const { id: userId, role } = user || {};
 
   useEffect(() => {
-    dispatch(getContestById({ contestId: match.params.id }));
+    dispatch(getContestById({ contestId: match.params.id! }));
 
     return () => {
       dispatch(changeEditContest(false));
@@ -49,7 +49,6 @@ const ContestPage = () => {
 
   return (
     <div>
-      {/* <Chat/> */}
       {isShowOnFull && (
         <LightBox
           mainSrc={`${PUBLIC_URL}${imagePath}`}
@@ -63,7 +62,7 @@ const ContestPage = () => {
         <div className={styles.tryContainer}>
           <TryAgain
             getData={() =>
-              dispatch(getContestById({ contestId: match.params.id }))
+              dispatch(getContestById({ contestId: match.params.id! }))
             }
           />
         </div>
@@ -105,7 +104,7 @@ const ContestPage = () => {
                     />
                   )}
                 <ContestOffersList
-                  userId={user.id}
+                  userId={userId}
                   offers={offers}
                   contestData={contestData}
                 />

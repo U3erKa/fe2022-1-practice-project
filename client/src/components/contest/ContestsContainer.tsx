@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-
 import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
 import ContestBox from './ContestBox';
