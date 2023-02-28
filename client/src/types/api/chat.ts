@@ -5,7 +5,6 @@ import type {
   InterlocutorId,
   MessageId,
   SenderId,
-  TimeStamp,
   WithId,
   WithTimeStamps,
   With_id,
@@ -40,11 +39,11 @@ export type NewMessageResponse = {
     };
 };
 
-export type GetPreviewChatResponse = WithParticipantTuples & {
-  sender: SenderId;
-  text: Message['body'];
-  createAt: TimeStamp;
-};
+export type GetPreviewChatResponse = WithParticipantTuples &
+  WithTimeStamps['createdAt'] & {
+    sender: SenderId;
+    text: Message['body'];
+  };
 
 export type ChangeChatResponse = WithParticipantTuples &
   With__v &
