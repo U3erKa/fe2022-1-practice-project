@@ -146,7 +146,7 @@ const sendMessageExtraReducers = createExtraReducers({
       if (isEqual(preview.participants, payload.message.participants)) {
         preview.text = payload.message.body;
         preview.sender = payload.message.sender;
-        preview.createAt = payload.message.createdAt;
+        preview.createdAt = payload.message.createdAt;
         isNew = false;
       }
     });
@@ -411,7 +411,7 @@ const reducers = {
       if (isEqual(preview.participants, message.participants)) {
         preview.text = message.body;
         preview.sender = message.sender;
-        preview.createAt = message.createdAt;
+        preview.createdAt = message.createdAt;
         isNew = false;
       }
     });
