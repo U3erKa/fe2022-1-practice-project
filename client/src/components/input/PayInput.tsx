@@ -4,7 +4,7 @@ import { useField } from 'formik';
 
 const PayInput = (props) => {
   const { label, changeFocus, classes, isInputMask, mask } = props;
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta, helpers] = useField(props.name);
   const { touched, error } = meta;
 
