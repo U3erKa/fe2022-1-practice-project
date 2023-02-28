@@ -1,12 +1,9 @@
-import { isEqual } from 'lodash';
-
 import { useDispatch, useSelector } from 'hooks';
 import {
   clearContestUpdationStore,
   updateContest,
 } from 'store/slices/contestUpdationSlice';
 import { changeEditContest } from 'store/slices/contestByIdSlice';
-import { goToExpandedDialog } from 'store/slices/chatSlice';
 
 import { Error } from 'components/general';
 import { ContestForm, ContestInfo } from 'components/contest';
@@ -15,20 +12,17 @@ import styles from '../styles/Brief.module.sass';
 
 const Brief = () => {
   const selector = useSelector((state) => {
-    const { contestUpdationStore, userStore, chatStore, contestByIdStore } =
-      state;
-    return { contestUpdationStore, userStore, contestByIdStore, chatStore };
+    const { contestUpdationStore, userStore, contestByIdStore } = state;
+    return { contestUpdationStore, userStore, contestByIdStore };
   });
   const dispatch = useDispatch();
 
   const {
     contestByIdStore: { isEditContest, contestData },
     contestUpdationStore: { error },
-    userStore: {
-      data: { id: userId, role },
-    },
-    chatStore: { messagesPreview },
+    userStore: { data: user },
   } = selector;
+  const { id: userId, role } = user ?? {};
 
   const setNewContestData = (values) => {
     const data = new FormData();
@@ -57,7 +51,7 @@ const Brief = () => {
       typeOfTagline,
       originalFileName,
       contestType,
-    } = contestData;
+    } = contestData ?? {};
     const data = {
       focusOfWork,
       industry,
@@ -85,34 +79,6 @@ const Brief = () => {
     return defaultData;
   };
 
-  const findConversationInfo = (interlocutorId) => {
-    const participants = [userId, interlocutorId];
-    participants.sort(
-      (participant1, participant2) => participant1 - participant2,
-    );
-    for (let i = 0; i < messagesPreview.length; i++) {
-      if (isEqual(participants, messagesPreview[i].participants)) {
-        return {
-          participants: messagesPreview[i].participants,
-          _id: messagesPreview[i]._id,
-          blackList: messagesPreview[i].blackList,
-          favoriteList: messagesPreview[i].favoriteList,
-        };
-      }
-    }
-    return null;
-  };
-
-  const goChat = () => {
-    const { User } = contestData;
-    dispatch(
-      goToExpandedDialog({
-        interlocutor: User,
-        conversationData: findConversationInfo(User.id),
-      }),
-    );
-  };
-
   if (!isEditContest) {
     return (
       <ContestInfo
@@ -120,7 +86,6 @@ const Brief = () => {
         contestData={contestData}
         changeEditContest={(data) => dispatch(changeEditContest(data))}
         role={role}
-        goChat={goChat}
       />
     );
   }

@@ -1,7 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { isEqual } from 'lodash';
+
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
 import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 
+import { useSelector } from 'hooks';
 import {
   CONTEST_STATUS_FINISHED,
   CUSTOMER,
@@ -11,9 +15,14 @@ import {
 } from 'constants/general';
 
 import styles from './styles/ContestInfo.module.sass';
+import { goToExpandedDialog } from 'store/slices/chatSlice';
+import { InterlocutorId } from 'types/api/_common';
 
 const ContestInfo = (props) => {
-  const { changeEditContest, userId, contestData, role, goChat } = props;
+  const { messagesPreview } = useSelector((state) => state.chatStore);
+  const dispatch = useDispatch();
+
+  const { changeEditContest, userId, contestData, role } = props;
   const {
     typeOfTagline,
     brandStyle,
@@ -29,6 +38,35 @@ const ContestInfo = (props) => {
     User,
     status,
   } = contestData;
+
+  const findConversationInfo = (interlocutorId: InterlocutorId) => {
+    const participants = [userId, interlocutorId];
+    participants.sort(
+      (participant1, participant2) => +participant1 - +participant2,
+    );
+    for (let i = 0; i < messagesPreview.length; i++) {
+      if (isEqual(participants, messagesPreview[i].participants)) {
+        return {
+          participants: messagesPreview[i].participants,
+          _id: messagesPreview[i]._id,
+          blackList: messagesPreview[i].blackList,
+          favoriteList: messagesPreview[i].favoriteList,
+        };
+      }
+    }
+    return null;
+  };
+
+  const goChat = () => {
+    const { User } = contestData ?? {};
+    dispatch(
+      goToExpandedDialog({
+        interlocutor: User,
+        conversationData: findConversationInfo(User.id),
+      }),
+    );
+  };
+
   return (
     <div className={styles.mainContestInfoContainer}>
       <div className={styles.infoContainer}>
