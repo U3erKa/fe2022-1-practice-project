@@ -12,6 +12,9 @@ export type UserWithoutPassword = Omit<
   User,
   'password' | 'accessToken' | 'rating'
 >;
+
+export type UserInOffer = Omit<UserWithoutPassword, 'role'>;
+
 export type ProfileViewMode = typeof USER_INFO_MODE | typeof CASHOUT_MODE;
 
 export type User = WithId<UserId> & {
