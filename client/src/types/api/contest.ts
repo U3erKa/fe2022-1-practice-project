@@ -1,5 +1,20 @@
-import type { CREATOR, CUSTOMER } from 'constants/general';
-import type { BrandStyle, Contest, Industry } from 'types/contest';
+import type {
+  CREATOR,
+  CUSTOMER,
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+} from 'constants/general';
+
+import type {
+  BrandStyle,
+  Contest,
+  Industry,
+  StyleName,
+  TypeOfName,
+  TypeOfTagline,
+} from 'types/contest';
+
 import type { CreatorFilter } from 'types/slices';
 import type { Rating, WithOfferStatus } from './offer';
 import type { UserInOffer } from './user';
@@ -54,4 +69,37 @@ export type Offer = WithId<OfferId> &
 export type DataForContest = {
   brandStyle: BrandStyle;
   industry: Industry;
+};
+
+export type SaveContestToStore =
+  | { type: typeof NAME_CONTEST; info: NameContestInfo }
+  | { type: typeof LOGO_CONTEST; info: LogoContestInfo }
+  | { type: typeof TAGLINE_CONTEST; info: TaglineContestInfo };
+
+export type ContestInfo =
+  | NameContestInfo
+  | LogoContestInfo
+  | TaglineContestInfo;
+
+export type NameContestInfo = BaseContestInfo & {
+  styleName: StyleName;
+  typeOfName: TypeOfName;
+};
+
+export type LogoContestInfo = BaseContestInfo & {
+  nameVenture: string;
+  brandStyle: BrandStyle;
+};
+
+export type TaglineContestInfo = BaseContestInfo & {
+  nameVenture: string;
+  typeOfTagline: TypeOfTagline;
+};
+
+export type BaseContestInfo = {
+  title: string;
+  industry: string;
+  focusOfWork: string;
+  targetCustomer: string;
+  file: string;
 };

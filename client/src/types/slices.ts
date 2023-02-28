@@ -1,6 +1,14 @@
+import type { AxiosError } from 'axios';
+
 import type { ChatId, ContestId, WithId } from './api/_common';
 import type { Interlocutor, Message } from './api/chat';
-import type { DataForContest, Offer } from './api/contest';
+import type {
+  DataForContest,
+  LogoContestInfo,
+  NameContestInfo,
+  Offer,
+  TaglineContestInfo,
+} from './api/contest';
 import type { Card, ProfileViewMode, User, UserInOffer } from './api/user';
 
 import type {
@@ -12,7 +20,11 @@ import type {
 } from './chat';
 
 import type { Contest, Industry, Status } from './contest';
-import { AxiosError } from 'axios';
+import type {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 
 export type AuthState = WithFetch;
 
@@ -48,6 +60,14 @@ export type ContestByIdState = WithFetch & {
   isShowOnFull: boolean;
   isShowModal: boolean;
   imagePath: string | null;
+};
+
+export type ContestCreationState = {
+  contests: {
+    [NAME_CONTEST]?: NameContestInfo;
+    [LOGO_CONTEST]?: LogoContestInfo;
+    [TAGLINE_CONTEST]?: TaglineContestInfo;
+  };
 };
 
 export type ContestsState = WithFetch & {

@@ -104,3 +104,8 @@ export type Status =
   | typeof CONTEST_STATUS_ACTIVE
   | typeof CONTEST_STATUS_FINISHED
   | typeof CONTEST_STATUS_PENDING;
+
+export type ContestType =
+  | typeof NAME_CONTEST
+  | typeof LOGO_CONTEST
+  | typeof TAGLINE_CONTEST;
