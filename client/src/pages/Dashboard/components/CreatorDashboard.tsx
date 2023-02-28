@@ -13,10 +13,12 @@ import {
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 
 import { TryAgain } from 'components/general';
-import { ContestsContainer, ContestBox } from 'components/contest';
+import { ContestsContainer } from 'components/contest';
 
 import { CREATOR } from 'constants/general';
 import styles from '../styles/CreatorDashboard.module.sass';
+
+import type { CreatorFilter } from 'types/slices';
 
 const types = [
   '',
@@ -39,7 +41,7 @@ const IndustryType = ({ industries, filter, onChange }) => {
     : [];
 
   options.unshift(
-    <option key={0} value={null}>
+    <option key={0} value={''}>
       Choose industry
     </option>,
   );
@@ -49,12 +51,6 @@ const IndustryType = ({ industries, filter, onChange }) => {
       {options}
     </select>
   );
-};
-
-const ContestList = ({ contests, goToExtended }) => {
-  return contests.map((contest) => (
-    <ContestBox key={contest.id} data={contest} goToExtended={goToExtended} />
-  ));
 };
 
 const ContestTypes = ({ onChange, value }) => {
@@ -82,7 +78,7 @@ const CreatorDashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { contests, creatorFilter, error, haveMore } = contestsList;
+  const { contests, creatorFilter, error } = contestsList;
   const { industry } = dataForContest.data || {};
 
   useEffect(() => {
@@ -127,7 +123,7 @@ const CreatorDashboard = () => {
     navigate(`/Dashboard?${queryString.stringify(obj)})`);
   };
 
-  const parseUrlForParams = (search) => {
+  const parseUrlForParams = (search: string) => {
     const obj = queryString.parse(search);
     const filter = {
       typeIndex: obj.typeIndex || 1,
@@ -136,7 +132,7 @@ const CreatorDashboard = () => {
       awardSort: obj.awardSort || 'asc',
       ownEntries:
         typeof obj.ownEntries === 'undefined' ? false : obj.ownEntries,
-    };
+    } as CreatorFilter;
     if (!isEqual(filter, creatorFilter)) {
       dispatch(setNewCreatorFilter(filter));
       dispatch(clearContestsList());
@@ -147,7 +143,7 @@ const CreatorDashboard = () => {
   };
 
   const getPredicateOfRequest = () => {
-    const obj = {};
+    const obj: CreatorFilter = {};
     Object.keys(creatorFilter).forEach((el) => {
       if (creatorFilter[el]) {
         obj[el] = creatorFilter[el];
@@ -163,10 +159,6 @@ const CreatorDashboard = () => {
       offset: startFrom,
       ...getPredicateOfRequest(),
     });
-  };
-
-  const goToExtended = (contestId) => {
-    navigate(`/contest/${contestId}`);
   };
 
   const tryLoadAgain = () => {
@@ -207,7 +199,7 @@ const CreatorDashboard = () => {
                   value: types.indexOf(target.value),
                 })
               }
-              value={types[creatorFilter.typeIndex]}
+              value={types[creatorFilter.typeIndex!]}
             />
           </div>
           <div className={styles.inputContainer}>
@@ -263,13 +255,7 @@ const CreatorDashboard = () => {
           <TryAgain getData={tryLoadAgain} />
         </div>
       ) : (
-        <ContestsContainer
-          isFetching={isFetching}
-          loadMore={loadMore}
-          haveMore={haveMore}
-        >
-          <ContestList contests={contests} goToExtended={goToExtended} />
-        </ContestsContainer>
+        <ContestsContainer loadMore={loadMore} />
       )}
     </div>
   );

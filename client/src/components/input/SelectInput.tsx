@@ -15,19 +15,13 @@ const SelectInput = ({
   } = props;
 
   const getOptionsArray = () => {
-    const array = [];
-    for (let i = 0; optionsArray && i < optionsArray.length; i++) {
-      let option;
-      if (valueArray) {
-        option = (
-          <option key={i} value={valueArray[i]}>
-            {optionsArray[i]}
-          </option>
-        );
-      } else {
-        option = <option key={i}>{optionsArray[i]}</option>;
-      }
-      array.push(option);
+    const array: JSX.Element[] = [];
+    for (let i = 0; i < optionsArray?.length; i++) {
+      array.push(
+        <option key={i} value={valueArray[i] || null}>
+          {optionsArray[i]}
+        </option>,
+      );
     }
     return array;
   };
