@@ -20,29 +20,28 @@ import {
   REFRESH_TOKEN,
 } from 'constants/general';
 
+import type { LoaderFunction, RouteObject } from 'react-router-dom';
+
 const isUserLoaded = () => {
   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
   return !!refreshToken;
 };
 
-/** @type {import('react-router-dom').LoaderFunction} */
-const allowNotAuthorizedOnly = () => {
+const allowNotAuthorizedOnly: LoaderFunction = () => {
   if (isUserLoaded()) {
     return redirect('/');
   }
   return null;
 };
 
-/** @type {import('react-router-dom').LoaderFunction} */
-const allowAuthorizedOnly = () => {
+const allowAuthorizedOnly: LoaderFunction = () => {
   if (!isUserLoaded()) {
     return redirect('/login');
   }
   return null;
 };
 
-/** @type {import('react-router-dom').RouteObject[]} */
-export const routes = [
+export const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
 
   {

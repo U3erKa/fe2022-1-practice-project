@@ -10,10 +10,13 @@ import { REFRESH_TOKEN } from 'constants/general';
 import { routes } from 'routes';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'hooks';
+import { Spinner } from 'components/general';
 
 const router = createBrowserRouter(routes);
 
 const App = () => {
+  const { isFetching } = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,6 +28,10 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (isFetching) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <ToastContainer
@@ -34,6 +41,7 @@ const App = () => {
         newestOnTop={false}
         closeOnClick
         rtl={false}
+        // @ts-expect-error
         pauseOnVisibilityChange
         draggable
         pauseOnHover
