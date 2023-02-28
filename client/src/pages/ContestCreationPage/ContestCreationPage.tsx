@@ -9,7 +9,16 @@ import { ContestForm } from 'components/contest';
 
 import styles from './styles/ContestCreationPage.module.sass';
 
-const ContestCreationPage = ({ contestType, title }) => {
+import type { FC } from 'react';
+import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
+import type { ContestType } from 'types/contest';
+
+type Props = {
+  contestType: ContestType;
+  title: string;
+};
+
+const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
   const {
     contestCreationStore: { contests },
     bundleStore: { bundle },
@@ -22,8 +31,13 @@ const ContestCreationPage = ({ contestType, title }) => {
     ? contests[contestType]
     : { contestType: contestType };
 
-  const handleSubmit = (values) => {
-    dispatch(saveContestToStore({ type: contestType, info: values }));
+  const handleSubmit = (values: ContestInfo) => {
+    dispatch(
+      saveContestToStore({
+        type: contestType,
+        info: values,
+      } as SaveContestToStore),
+    );
     const route =
       bundle[contestType] === 'payment'
         ? '/payment'

@@ -1,13 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { SaveContestToStore } from 'types/api/contest';
+import type { ContestCreationState } from 'types/slices';
+
 const CONTEST_SAVING_SLICE_NAME = 'contestCreation';
 
-const initialState = {
+const initialState: ContestCreationState = {
   contests: {},
 };
 
 const reducers = {
-  saveContestToStore: (state, { payload: { type, info } }) => {
+  saveContestToStore: (
+    state: ContestCreationState,
+    { payload: { type, info } }: PayloadAction<SaveContestToStore>,
+  ) => {
     state.contests = {
       ...state.contests,
       ...{ [type]: info },
