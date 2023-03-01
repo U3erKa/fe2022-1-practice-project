@@ -1,7 +1,15 @@
-import { useLayoutEffect } from 'react';
+import { FC, useLayoutEffect } from 'react';
 import { Field, ErrorMessage } from 'formik';
 
-const SelectInput = ({
+export type Props = {
+  header;
+  classes;
+  optionsArray;
+  valueArray?;
+  [key: string]: any;
+};
+
+const SelectInput: FC<Props> = ({
   header,
   classes,
   optionsArray,
@@ -43,7 +51,7 @@ const SelectInput = ({
   );
 };
 
-const SelectInputWrapper = ({
+const SelectInputWrapper: FC<Props> = ({
   header,
   classes,
   optionsArray,
