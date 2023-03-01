@@ -1,16 +1,21 @@
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 
 import { TextEntry } from 'components/general';
 import styles from '../styles/RegistrationArticles.module.sass';
 
-/**
- * @typedef {object} Article
- * @property {string | import('components/general/TextEntry/TextEntry').TextEntryList} article
- * @property {number} id
- * @property {string} header
- */
-/** @type {import('react').FC<{articles: Article[]}>} */
-const RegistrationArticles = ({ articles }) => {
+import type { TextEntry as TextEntryT } from 'types/general';
+
+export type Props = {
+  articles: Article[];
+};
+
+export type Article = {
+  id: number;
+  header: string;
+  article: string | TextEntryT;
+};
+
+const RegistrationArticles: FC<Props> = ({ articles }) => {
   return (
     <div className={styles.ColumnContainer}>
       {articles.map(({ id, header, article }) => (

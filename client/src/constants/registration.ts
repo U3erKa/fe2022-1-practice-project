@@ -1,4 +1,5 @@
 import styles from 'styles/registration.module.sass';
+import type { TextEntry } from 'types/general';
 
 export const REGISTRATION_ARTICLES_LEFT = [
   {
@@ -68,23 +69,22 @@ export const REGISTRATION_ARTICLES_RIGHT = [
   {
     id: 4,
     header: 'I have other questions! How can I get in touch with Squadhelp?',
-    article:
-      /** @type {import('components/TextEntry/TextEntry').TextEntryList} */ [
-        { id: 0, text: 'Check out our ', type: 'plain' },
-        { id: 1, text: 'FAQs', type: 'span', className: styles.orangeSpan },
-        { id: 2, text: ' or send us a ', type: 'plain' },
-        { id: 3, text: 'message', type: 'span', className: styles.orangeSpan },
-        {
-          id: 4,
-          text: '. For assistance with launching a contest, you can also call us at (877) 355-3585 or schedule a ',
-          type: 'plain',
-        },
-        {
-          id: 5,
-          text: 'Branding Consultation',
-          type: 'span',
-          className: styles.orangeSpan,
-        },
-      ],
+    article: [
+      { id: 0, text: 'Check out our ', type: 'plain' },
+      { id: 1, text: 'FAQs', type: 'span', className: styles.orangeSpan },
+      { id: 2, text: ' or send us a ', type: 'plain' },
+      { id: 3, text: 'message', type: 'span', className: styles.orangeSpan },
+      {
+        id: 4,
+        text: '. For assistance with launching a contest, you can also call us at (877) 355-3585 or schedule a ',
+        type: 'plain',
+      },
+      {
+        id: 5,
+        text: 'Branding Consultation',
+        type: 'span',
+        className: styles.orangeSpan,
+      },
+    ] as unknown as TextEntry,
   },
 ];

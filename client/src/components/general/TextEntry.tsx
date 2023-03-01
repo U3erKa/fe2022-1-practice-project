@@ -1,18 +1,13 @@
 import { Fragment } from 'react';
 
-/**
- * @typedef {TextEntry[]} TextEntryList
- * @typedef {object} TextEntry
- * @property {string | number} id
- * @property {'plain' | 'link' | 'span'} type
- * @property {string} text
- * @property {string?} [href]
- * @property {string?} [className]
- * @property {any[]} [props]
- */
+import type { FC } from 'react';
+import type { TextEntry as TextEntryT } from 'types/general';
 
-/** @type {import('react').FC<{text: TextEntryList}>} */
-const TextEntry = ({ text }) => {
+export type Props = {
+  text: TextEntryT[];
+};
+
+const TextEntry: FC<Props> = ({ text }) => {
   const entries = text.map(
     ({ id: _id, className, text, type, href, ...props }, i) => {
       const id = _id ?? i;
