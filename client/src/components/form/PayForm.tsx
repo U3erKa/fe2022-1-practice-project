@@ -11,7 +11,15 @@ import { PaymentSchema } from 'utils/validators/validationSchems';
 import 'react-credit-cards/es/styles-compiled.css';
 import styles from './styles/PayForm.module.sass';
 
-const PayForm = ({ sendRequest, focusOnElement, isPayForOrder }) => {
+import type { FC } from 'react';
+
+export type Props = {
+  sendRequest: (values: object) => void;
+  focusOnElement?: 'name' | 'number' | 'expiry' | 'cvc';
+  isPayForOrder?: boolean;
+};
+
+const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

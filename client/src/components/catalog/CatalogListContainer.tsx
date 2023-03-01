@@ -19,11 +19,11 @@ const CatalogListContainer = () => {
   }, []);
 
   const removeChatFromCatalogMethod = (event, chatId) => {
-    dispatch(removeChatFromCatalog({ chatId, catalogId: currentCatalog._id }));
+    dispatch(removeChatFromCatalog({ chatId, catalogId: currentCatalog!._id }));
     event.stopPropagation();
   };
 
-  const { id } = userStore.data;
+  const { id } = userStore.data!;
   return (
     <>
       {isShowChatsInCatalog ? (

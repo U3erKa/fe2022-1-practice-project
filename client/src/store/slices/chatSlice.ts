@@ -26,7 +26,7 @@ import type {
   ChangeChatFavoriteResponse,
   GetDialogParams,
   GetDialogResponse,
-  goToExtendedDialog,
+  GoToExtendedDialog,
   NewMessageParams,
   NewMessageResponse,
 } from 'types/api/chat';
@@ -428,7 +428,7 @@ const reducers = {
 
   goToExpandedDialog: (
     state: ChatState,
-    { payload }: PayloadAction<goToExtendedDialog>,
+    { payload }: PayloadAction<GoToExtendedDialog>,
   ) => {
     state.interlocutor = { ...state.interlocutor, ...payload.interlocutor };
     state.chatData = payload.conversationData;

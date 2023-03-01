@@ -13,7 +13,7 @@ import type { FC } from 'react';
 import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
 import type { ContestType } from 'types/contest';
 
-type Props = {
+export type Props = {
   contestType: ContestType;
   title: string;
 };
@@ -39,9 +39,9 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
       } as SaveContestToStore),
     );
     const route =
-      bundle[contestType] === 'payment'
+      bundle![contestType] === 'payment'
         ? '/payment'
-        : `${bundle[contestType]}Contest`;
+        : `${bundle![contestType]}Contest`;
     navigate(route);
   };
 

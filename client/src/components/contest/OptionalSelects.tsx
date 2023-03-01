@@ -27,7 +27,7 @@ const OptionalSelects = ({ contestType }) => {
               selectInput: styles.select,
               warning: styles.warning,
             }}
-            optionsArray={data.typeOfName}
+            optionsArray={data!.typeOfName}
           />
           <SelectInput
             name="styleName"
@@ -38,7 +38,7 @@ const OptionalSelects = ({ contestType }) => {
               selectInput: styles.select,
               warning: styles.warning,
             }}
-            optionsArray={data.nameStyle}
+            optionsArray={data!.nameStyle}
           />
         </>
       );
@@ -70,7 +70,7 @@ const OptionalSelects = ({ contestType }) => {
               warning: styles.warning,
             }}
             header="Brand Style"
-            optionsArray={data.brandStyle}
+            optionsArray={data!.brandStyle}
           />
         </>
       );
@@ -102,7 +102,7 @@ const OptionalSelects = ({ contestType }) => {
               warning: styles.warning,
             }}
             header="Type tagline"
-            optionsArray={data.typeOfTagline}
+            optionsArray={data!.typeOfTagline}
           />
         </>
       );

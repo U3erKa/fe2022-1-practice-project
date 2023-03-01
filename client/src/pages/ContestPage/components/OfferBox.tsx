@@ -29,7 +29,7 @@ import styles from '../styles/OfferBox.module.sass';
 
 const OfferBox = ({ data, contestData, setOfferStatus }) => {
   const selector = useSelector((state) => {
-    const { id, role } = state.userStore.data;
+    const { id, role } = state.userStore.data!;
     const { messagesPreview } = state.chatStore;
 
     return { id, role, messagesPreview };

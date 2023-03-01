@@ -53,7 +53,7 @@ export type AddMessage = NewMessageResponse & {
   preview: { interlocutor: { email: string } };
 };
 
-export type goToExtendedDialog = WithInterlocutor & {
+export type GoToExtendedDialog = WithInterlocutor & {
   conversationData: Omit<WithParticipantTuples, 'interlocutor'>;
 };
 

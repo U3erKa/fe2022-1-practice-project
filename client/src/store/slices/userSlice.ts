@@ -98,6 +98,7 @@ const extraReducers = (builder) => {
   builder.addCase(
     updateUser.fulfilled,
     (state: UserState, { payload }: PayloadAction<UserState['data']>) => {
+      // @ts-expect-error
       state.data = { ...state.data, ...payload };
       state.error = null;
     },

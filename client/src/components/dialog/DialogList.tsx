@@ -51,8 +51,8 @@ const DialogList = ({ userId, removeChat }) => {
     return moment(time).format('MMMM DD, YYYY');
   };
 
-  const renderPreview = (filterFunc) => {
-    const arrayList = [];
+  const renderPreview = (filterFunc?) => {
+    const arrayList: JSX.Element[] = [];
     messagesPreview.forEach((chatPreview, index) => {
       const dialogNode = (
         <DialogBox

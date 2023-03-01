@@ -2,7 +2,7 @@ import styles from './styles/ProgressBar.module.sass';
 
 const ProgressBar = (props) => {
   const renderProgress = () => {
-    const array = [];
+    const array: JSX.Element[] = [];
     for (let i = 1; i <= 3; i++) {
       array.push(renderBar(i));
     }

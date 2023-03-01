@@ -17,9 +17,9 @@ const UpdateUserInfoForm = ({ onSubmit, submitting }) => {
     <Formik
       onSubmit={onSubmit}
       initialValues={{
-        firstName: user.firstName,
-        lastName: user.lastName,
-        displayName: user.displayName,
+        firstName: user!.firstName,
+        lastName: user!.lastName,
+        displayName: user!.displayName,
       }}
       validationSchema={UpdateUserSchema}
     >

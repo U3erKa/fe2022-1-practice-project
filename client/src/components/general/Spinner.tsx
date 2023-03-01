@@ -10,6 +10,7 @@ const override = css`
 const SpinnerLoader = () => (
   <div className={styles.loaderContainer}>
     <ClipLoader
+      // @ts-expect-error
       sizeUnit="px"
       css={override}
       size={50}

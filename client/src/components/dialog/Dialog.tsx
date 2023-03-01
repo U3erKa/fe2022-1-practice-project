@@ -9,13 +9,13 @@ import { BlockMessage, MainDialog } from 'components/dialog';
 const Dialog = ({ userId }) => {
   const {
     chatData,
+    // @ts-expect-error
     interlocutor: { id: interlocutorId },
     messages,
   } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  /** @type {import('react').MutableRefObject<HTMLDivElement>} */
-  const messagesEnd = useRef();
+  const messagesEnd = useRef<HTMLDivElement>();
 
   const scrollToBottom = () => {
     if (messagesEnd.current) {

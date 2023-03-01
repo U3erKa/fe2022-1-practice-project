@@ -16,7 +16,8 @@ const ChatInput = () => {
     dispatch(
       sendMessage({
         messageBody: values.message,
-        recipient: interlocutor.id,
+        recipient: interlocutor!.id,
+        // @ts-expect-error
         interlocutor,
       }),
     );
