@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import * as contestController from 'api/rest/contestController';
-import { DataForContestParams } from 'types/api/contest';
+import { DataForContest, DataForContestParams } from 'types/api/contest';
 import { DataForContestState } from 'types/slices';
 import { decorateAsyncThunk, rejectedReducer } from 'utils/store';
 
@@ -22,15 +22,21 @@ export const getDataForContest = decorateAsyncThunk({
 });
 
 const extraReducers = (builder) => {
-  builder.addCase(getDataForContest.pending, (state) => {
+  builder.addCase(getDataForContest.pending, (state: DataForContestState) => {
     state.isFetching = true;
     state.data = null;
     state.error = null;
   });
-  builder.addCase(getDataForContest.fulfilled, (state, { payload }) => {
-    state.isFetching = false;
-    state.data = payload;
-  });
+  builder.addCase(
+    getDataForContest.fulfilled,
+    (
+      state: DataForContestState,
+      { payload }: PayloadAction<DataForContest>,
+    ) => {
+      state.isFetching = false;
+      state.data = payload;
+    },
+  );
   builder.addCase(getDataForContest.rejected, rejectedReducer);
 };
 

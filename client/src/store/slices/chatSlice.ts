@@ -118,7 +118,10 @@ const getDialogMessagesExtraReducers = createExtraReducers({
     state.messages = payload.messages;
     state.interlocutor = payload.interlocutor;
   },
-  rejectedReducer: (state: ChatState, { payload }: PayloadAction<Error>) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.messages = [];
     state.interlocutor = null;
     state.error = payload;
@@ -270,7 +273,10 @@ const addChatToCatalogExtraReducers = createExtraReducers({
     state.isShowCatalogCreation = false;
     state.catalogList = [...catalogList];
   },
-  rejectedReducer: (state: ChatState, { payload }: PayloadAction<Error>) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.error = payload;
     state.isShowCatalogCreation = false;
   },
@@ -294,7 +300,10 @@ const createCatalogExtraReducers = createExtraReducers({
     state.catalogList = [...state.catalogList, payload];
     state.isShowCatalogCreation = false;
   },
-  rejectedReducer: (state: ChatState, { payload }: PayloadAction<Error>) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.isShowCatalogCreation = false;
     state.error = payload;
   },
@@ -352,7 +361,10 @@ const removeChatFromCatalogExtraReducers = createExtraReducers({
     state.currentCatalog = payload;
     state.catalogList = [...catalogList];
   },
-  rejectedReducer: (state: ChatState, { payload }: PayloadAction<Error>) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.error = payload;
   },
 });

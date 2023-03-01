@@ -1,5 +1,3 @@
-import type { AxiosError } from 'axios';
-
 import type { ChatId, ContestId, WithId } from './api/_common';
 import type { Interlocutor, Message } from './api/chat';
 import type {
@@ -52,8 +50,8 @@ export type ChatState = WithFetch & {
 export type ContestByIdState = WithFetch & {
   contestData: ContestData | null;
   offers: Offer[];
-  addOfferError: { data; status } | null;
-  setOfferStatusError: { data; status } | null;
+  addOfferError: ServerError | null;
+  setOfferStatusError: ServerError | null;
   changeMarkError: Error | null;
   isEditContest: boolean;
   isBrief: boolean;
@@ -118,8 +116,5 @@ export type ContestData = WithId<ContestId> &
     User: UserInOffer;
   };
 
-export type WithFetch = { isFetching: boolean; error: { data; status } | null };
-export type Initial = { isFetching: false; error: null };
-export type Fetching = { isFetching: true; error: null };
-export type Fulfulled = { isFetching: false; error: null };
-export type Rejected = { isFetching: false; error: AxiosError };
+export type ServerError = { data: unknown; status: number };
+export type WithFetch = { isFetching: boolean; error: ServerError | null };
