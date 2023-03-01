@@ -15,6 +15,7 @@ const Chat = () => {
   const {
     chatStore: { isExpanded, isShow, isShowCatalogCreation, error },
     userStore: {
+      // @ts-expect-error
       data: { id: userId },
     },
   } = useSelector(({ chatStore, userStore }) => ({

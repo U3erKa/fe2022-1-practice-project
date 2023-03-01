@@ -14,7 +14,7 @@ const CreateCatalog = () => {
 
   const click = (values) => {
     dispatch(
-      createCatalog({ catalogName: values.catalogName, chatId: addChatId }),
+      createCatalog({ catalogName: values.catalogName, chatId: addChatId! }),
     );
   };
   return (

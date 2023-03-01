@@ -19,6 +19,7 @@ const PayInput = (props) => {
           })}
         />
         {touched && error && (
+          // @ts-expect-error
           <span className={classes.error}>{error.message}!</span>
         )}
       </div>
@@ -38,6 +39,7 @@ const PayInput = (props) => {
           onFocus={() => changeFocus(field.name)}
         />
         {touched && error && (
+          // @ts-expect-error
           <span className={classes.error}>{error.message}!</span>
         )}
       </div>
@@ -54,6 +56,7 @@ const PayInput = (props) => {
         onFocus={() => changeFocus(field.name)}
       />
       {touched && error && (
+        // @ts-expect-error
         <span className={classes.error}>{error.message}!</span>
       )}
     </div>

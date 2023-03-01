@@ -7,15 +7,19 @@ const ImageUpload = (props) => {
   const [{ value, ...restField }, meta, helpers] = useField(props.name);
   const { uploadContainer, inputContainer, imgStyle } = props.classes;
   const onChange = (e) => {
-    const node = window.document.getElementById('imagePreview');
+    const node = window.document.getElementById(
+      'imagePreview',
+    ) as HTMLImageElement;
     const file = e.target.files[0];
     const imageType = /image.*/;
+
     if (!file.type.match(imageType)) {
       e.target.value = '';
     } else {
       helpers.setValue(file, false);
       const reader = new FileReader();
       reader.onload = () => {
+        // @ts-expect-error
         node.src = reader.result;
       };
       reader.readAsDataURL(file);

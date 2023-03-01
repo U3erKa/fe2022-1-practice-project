@@ -19,7 +19,7 @@ const Payment = () => {
   const navigate = useNavigate();
 
   const payMethod = (values) => {
-    const contestArray = [];
+    const contestArray: any[] = [];
     Object.keys(contests).forEach((key) =>
       contestArray.push({ ...contests[key] }),
     );
@@ -35,10 +35,6 @@ const Payment = () => {
     formData.append('contests', JSON.stringify(contestArray));
     formData.append('price', '100');
     dispatch(pay({ data: { formData }, navigate }));
-  };
-
-  const goBack = () => {
-    navigate(-1);
   };
 
   if (isEmpty(contests)) {
@@ -59,7 +55,7 @@ const Payment = () => {
               clearError={() => dispatch(clearPaymentStore())}
             />
           )}
-          <PayForm sendRequest={payMethod} back={goBack} isPayForOrder />
+          <PayForm sendRequest={payMethod} isPayForOrder />
         </div>
         <div className={styles.orderInfoContainer}>
           <span className={styles.orderHeader}>Order Summary</span>
