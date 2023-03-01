@@ -9,7 +9,7 @@ import { changeEditModeOnUserProfile } from './userProfileSlice';
 import { rejectedReducer } from 'utils/store';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { UserState } from 'types/slices';
+import type { ServerError, UserState } from 'types/slices';
 import type { JWT } from 'types/api/_common';
 
 const USER_SLICE_NAME = 'user';
@@ -105,7 +105,7 @@ const extraReducers = (builder) => {
   );
   builder.addCase(
     updateUser.rejected,
-    (state: UserState, { payload }: PayloadAction<Error>) => {
+    (state: UserState, { payload }: PayloadAction<ServerError>) => {
       state.error = payload;
     },
   );
