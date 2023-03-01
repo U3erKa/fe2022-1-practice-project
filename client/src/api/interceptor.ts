@@ -37,7 +37,7 @@ httpClient.interceptors.response.use(
         data: {
           tokenPair: { accessToken: newAccessToken, refreshToken },
         },
-      } = await axios.post(`${BASE_URL}/auth/refresh`, {
+      } = await axios.post(`${BASE_URL}auth/refresh`, {
         refreshToken: oldRefreshToken,
       });
 
