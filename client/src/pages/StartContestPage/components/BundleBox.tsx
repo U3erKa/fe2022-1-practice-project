@@ -20,18 +20,20 @@ const BundleBox = ({ header, path, setBundle, describe }) => {
   };
 
   const mouseOverHandler = () => {
-    const element = document.getElementById(header);
+    const element = document.getElementById(header)!;
     const { children } = element.children[0];
     for (let i = 0; i < children.length; i++) {
-      children[i].src = `${defaultPathToImages}blue_${path[i]}`;
+      (
+        children[i] as HTMLImageElement
+      ).src = `${defaultPathToImages}blue_${path[i]}`;
     }
   };
 
   const mouseOutHandler = () => {
-    const element = document.getElementById(header);
+    const element = document.getElementById(header)!;
     const { children } = element.children[0];
     for (let i = 0; i < children.length; i++) {
-      children[i].src = defaultPathToImages + path[i];
+      (children[i] as HTMLImageElement).src = defaultPathToImages + path[i];
     }
   };
 

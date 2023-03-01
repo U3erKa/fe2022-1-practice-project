@@ -22,7 +22,6 @@ const Brief = () => {
     contestUpdationStore: { error },
     userStore: { data: user },
   } = selector;
-  const { id: userId, role } = user ?? {};
 
   const setNewContestData = (values) => {
     const data = new FormData();
@@ -33,12 +32,18 @@ const Brief = () => {
     if (values.file instanceof File) {
       data.append('file', values.file);
     }
-    data.append('contestId', contestData.id);
+    data.append('contestId', contestData!.id as string);
 
     dispatch(updateContest(data));
   };
 
   const getContestObjInfo = () => {
+    type DefaultData = Omit<typeof data, 'originalFileName'> & {
+      file: {
+        name: typeof data.originalFileName;
+      };
+    };
+
     const {
       focusOfWork,
       industry,
@@ -51,7 +56,7 @@ const Brief = () => {
       typeOfTagline,
       originalFileName,
       contestType,
-    } = contestData ?? {};
+    } = contestData!;
     const data = {
       focusOfWork,
       industry,
@@ -66,7 +71,7 @@ const Brief = () => {
       contestType,
     };
 
-    const defaultData = {};
+    const defaultData: DefaultData = {} as any;
     Object.keys(data).forEach((key) => {
       if (data[key]) {
         if (key === 'originalFileName') {
@@ -78,6 +83,11 @@ const Brief = () => {
     });
     return defaultData;
   };
+
+  if (!contestData || !user) {
+    return null;
+  }
+  const { id: userId, role } = user;
 
   if (!isEditContest) {
     return (
