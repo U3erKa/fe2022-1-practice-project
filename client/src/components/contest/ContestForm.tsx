@@ -44,6 +44,11 @@ const ContestForm = (props) => {
   const { contestType, defaultData, handleSubmit, formRef } = props;
   const { isFetching, error, data: contestData } = dataForContest;
 
+  useEffect(() => {
+    getPreference();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contestType]);
+
   const getPreference = () => {
     switch (contestType) {
       case NAME_CONTEST: {
@@ -68,11 +73,6 @@ const ContestForm = (props) => {
       }
     }
   };
-
-  useEffect(() => {
-    getPreference();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (error) {
     return <TryAgain getData={getPreference} />;
