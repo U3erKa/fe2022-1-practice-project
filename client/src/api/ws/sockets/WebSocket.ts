@@ -13,6 +13,7 @@ class WebSocket {
     this.socket = socketIoClient(`${BASE_URL}${room}`, {
       // @ts-expect-error
       origins: 'localhost:*',
+      transports: ['websocket', 'polling'],
     });
     this.listen();
   }
