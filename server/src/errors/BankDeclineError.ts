@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class BankDeclineError extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class BankDeclineError extends ApplicationError {
   }
 }
 
-module.exports = BankDeclineError;
+export default BankDeclineError;

@@ -1,12 +1,12 @@
-const express = require('express');
-const basicMiddlewares = require('../middlewares/basicMiddlewares');
-const userController = require('../controllers/userController');
-const contestController = require('../controllers/contestController');
-const validators = require('../middlewares/validators');
-const chatController = require('../controllers/chatController');
-const upload = require('../utils/fileUpload');
-const authRouter = require('./authRouter');
-const { checkAccessToken } = require('../middlewares/tokenMiddlewares');
+import express from 'express';
+import * as basicMiddlewares from '../middlewares/basicMiddlewares';
+import * as userController from '../controllers/userController';
+import * as contestController from '../controllers/contestController';
+import * as validators from '../middlewares/validators';
+import * as chatController from '../controllers/chatController';
+import * as upload from '../utils/fileUpload';
+import authRouter from './authRouter';
+import { checkAccessToken } from '../middlewares/tokenMiddlewares';
 const router = express.Router();
 
 router.use('/auth', authRouter);
@@ -85,4 +85,4 @@ router.route('/deleteCatalog').post(chatController.deleteCatalog);
 
 router.route('/getCatalogs').post(chatController.getCatalogs);
 
-module.exports = router;
+export default router;

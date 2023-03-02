@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class UserNotFoundError extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class UserNotFoundError extends ApplicationError {
   }
 }
 
-module.exports = UserNotFoundError;
+export default UserNotFoundError;

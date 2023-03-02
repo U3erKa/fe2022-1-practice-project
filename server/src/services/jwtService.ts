@@ -1,11 +1,11 @@
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
-const {
+import jwt from 'jsonwebtoken';
+import { promisify } from 'util';
+import {
   ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_TIME,
   REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_TIME,
-} = require('../constants');
+} from '../constants';
 
 const jwtSign = promisify(jwt.sign);
 const jwtVerify = promisify(jwt.verify);
@@ -26,14 +26,14 @@ const createToken = async (payload, { secret, expiresIn }) =>
 
 const verifyToken = async (token, { secret }) => jwtVerify(token, secret);
 
-module.exports.generateTokenPair = async (payload) => {
+export const generateTokenPair = async (payload) => {
   return {
     accessToken: await createToken(payload, tokenOptions.access),
     refreshToken: await createToken(payload, tokenOptions.refresh),
   };
 };
 
-module.exports.verifyAccessToken = async (token) =>
+export const verifyAccessToken = async (token) =>
   verifyToken(token, tokenOptions.access);
-module.exports.verifyRefreshToken = async (token) =>
+export const verifyRefreshToken = async (token) =>
   verifyToken(token, tokenOptions.refresh);

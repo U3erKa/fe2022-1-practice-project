@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class TokenExpirationError extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class TokenExpirationError extends ApplicationError {
   }
 }
 
-module.exports = TokenExpirationError;
+export default TokenExpirationError;

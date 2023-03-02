@@ -1,12 +1,12 @@
-const jwt = require('jsonwebtoken');
-const CONSTANTS = require('../constants');
-const { sequelize, Sequelize, Rating, Offer, Contest } = require('../models');
-const moment = require('moment');
-const { v4: uuid } = require('uuid');
-const controller = require('../socketInit');
-const userQueries = require('./queries/userQueries');
-const bankQueries = require('./queries/bankQueries');
-const ratingQueries = require('./queries/ratingQueries');
+import jwt from 'jsonwebtoken';
+import * as CONSTANTS from '../constants';
+import { sequelize, Sequelize, Rating, Offer, Contest } from '../models';
+import moment from 'moment';
+import { v4 as uuid } from 'uuid';
+import * as controller from '../socketInit';
+import * as userQueries from './queries/userQueries';
+import * as bankQueries from './queries/bankQueries';
+import * as ratingQueries from './queries/ratingQueries';
 
 function getQuery(offerId, userId, mark, isFirst, transaction) {
   const getCreateQuery = () =>
@@ -23,7 +23,7 @@ function getQuery(offerId, userId, mark, isFirst, transaction) {
   return isFirst ? getCreateQuery : getUpdateQuery;
 }
 
-module.exports.changeMark = async (req, res, next) => {
+export const changeMark = async (req, res, next) => {
   let sum = 0;
   let avg = 0;
   let transaction;
@@ -60,7 +60,7 @@ module.exports.changeMark = async (req, res, next) => {
   }
 };
 
-module.exports.payment = async (req, res, next) => {
+export const payment = async (req, res, next) => {
   let transaction;
   try {
     transaction = await sequelize.transaction();
@@ -113,7 +113,7 @@ module.exports.payment = async (req, res, next) => {
   }
 };
 
-module.exports.updateUser = async (req, res, next) => {
+export const updateUser = async (req, res, next) => {
   try {
     if (req.file) {
       req.body.avatar = req.file.filename;
@@ -137,7 +137,7 @@ module.exports.updateUser = async (req, res, next) => {
   }
 };
 
-module.exports.cashout = async (req, res, next) => {
+export const cashout = async (req, res, next) => {
   let transaction;
   try {
     transaction = await sequelize.transaction();

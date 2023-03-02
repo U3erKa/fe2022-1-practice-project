@@ -1,4 +1,4 @@
-const {
+import {
   Select,
   Sequelize,
   Rating,
@@ -6,16 +6,16 @@ const {
   Offer,
   User,
   sequelize,
-} = require('../models');
-const ServerError = require('../errors/ServerError');
-const RightsError = require('../errors/RightsError');
-const contestQueries = require('./queries/contestQueries');
-const userQueries = require('./queries/userQueries');
-const controller = require('../socketInit');
-const UtilFunctions = require('../utils/functions');
-const CONSTANTS = require('../constants');
+} from '../models';
+import ServerError from '../errors/ServerError';
+import RightsError from '../errors/RightsError';
+import * as contestQueries from './queries/contestQueries';
+import * as userQueries from './queries/userQueries';
+import * as controller from '../socketInit';
+import * as UtilFunctions from '../utils/functions';
+import * as CONSTANTS from '../constants';
 
-module.exports.dataForContest = async (req, res, next) => {
+export const dataForContest = async (req, res, next) => {
   const response = {};
   try {
     const {
@@ -50,7 +50,7 @@ module.exports.dataForContest = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getContestById = async (
+export const getContestById = async (
   /** @type {import('express').Request & {tokenData: any}} */ req,
   res,
   next,
@@ -113,13 +113,13 @@ module.exports.getContestById = async (
   }
 };
 
-module.exports.downloadFile = async (req, res, next) => {
+export const downloadFile = async (req, res, next) => {
   const file = CONSTANTS.CONTESTS_DEFAULT_DIR + req.params.fileName;
   res.download(file);
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.updateContest = async (
+export const updateContest = async (
   /** @type {import('express').Request & {tokenData: any}} */ req,
   res,
   next,
@@ -146,7 +146,7 @@ module.exports.updateContest = async (
   }
 };
 
-module.exports.setNewOffer = async (req, res, next) => {
+export const setNewOffer = async (req, res, next) => {
   const obj = {};
   if (req.body.contestType === CONSTANTS.LOGO_CONTEST) {
     obj.fileName = req.file.filename;
@@ -250,7 +250,7 @@ const resolveOffer = async (
   return updatedOffers[0].dataValues;
 };
 
-module.exports.setOfferStatus = async (req, res, next) => {
+export const setOfferStatus = async (req, res, next) => {
   let transaction;
   if (req.body.command === 'reject') {
     try {
@@ -283,7 +283,7 @@ module.exports.setOfferStatus = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getContests = async (
+export const getContests = async (
   /** @type {import('express').Request & {tokenData: any}} */ req,
   res,
   next,

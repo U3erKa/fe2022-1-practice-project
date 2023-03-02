@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const multer = require('multer');
-const { FILES_PATH } = require('../constants');
+import fs from 'fs';
+import path from 'path';
+import multer from 'multer';
+import { FILES_PATH } from '../constants';
 const env = process.env.NODE_ENV || 'development';
 
 const devFilePath = path.resolve(FILES_PATH, 'images');
@@ -25,10 +25,10 @@ const storageContestFiles = multer.diskStorage({
 
 const multerInstance = multer({ storage: storageContestFiles });
 
-module.exports.uploadAvatar = multerInstance.single('file');
+export const uploadAvatar = multerInstance.single('file');
 
-module.exports.uploadContestFiles = multerInstance.array('files', 3);
+export const uploadContestFiles = multerInstance.array('files', 3);
 
-module.exports.updateContestFile = multerInstance.single('file');
+export const updateContestFile = multerInstance.single('file');
 
-module.exports.uploadLogoFiles = multerInstance.single('offerData');
+export const uploadLogoFiles = multerInstance.single('offerData');

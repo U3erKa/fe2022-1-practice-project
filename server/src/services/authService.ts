@@ -1,7 +1,7 @@
-const JWTService = require('./jwtService');
-const { RefreshToken } = require('../models');
+import * as JWTService from './jwtService';
+import { RefreshToken } from '../models';
 
-module.exports.createSession = async (user) => {
+export const createSession = async (user) => {
   const tokenPair = await JWTService.generateTokenPair({
     firstName: user.firstName,
     userId: user.id,
@@ -22,7 +22,7 @@ module.exports.createSession = async (user) => {
   return { user, tokenPair };
 };
 
-module.exports.refreshSession = async (refreshTokenInstance) => {
+export const refreshSession = async (refreshTokenInstance) => {
   const user = await refreshTokenInstance.getUser();
 
   const tokenPair = await JWTService.generateTokenPair({

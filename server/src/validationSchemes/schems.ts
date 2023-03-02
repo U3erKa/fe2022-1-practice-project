@@ -1,6 +1,6 @@
-const yup = require('yup');
+import * as yup from 'yup';
 
-module.exports.registrationSchem = yup.object().shape({
+export const registrationSchem = yup.object().shape({
   firstName: yup.string().required().min(1),
   lastName: yup.string().required().min(1),
   displayName: yup.string().required().min(1),
@@ -12,12 +12,12 @@ module.exports.registrationSchem = yup.object().shape({
     .required(),
 });
 
-module.exports.loginSchem = yup.object().shape({
+export const loginSchem = yup.object().shape({
   email: yup.string().email().required().min(4),
   password: yup.string().required().min(1),
 });
 
-module.exports.contestSchem = yup.object().shape({
+export const contestSchem = yup.object().shape({
   contestType: yup
     .string()
     .matches(/(name|logo|tagline)/)

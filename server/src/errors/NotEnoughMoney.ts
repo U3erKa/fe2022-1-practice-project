@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class NotEnoughMoney extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class NotEnoughMoney extends ApplicationError {
   }
 }
 
-module.exports = NotEnoughMoney;
+export default NotEnoughMoney;

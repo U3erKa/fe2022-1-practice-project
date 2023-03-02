@@ -1,7 +1,7 @@
-const { Contest, Offer } = require('../../models');
-const ServerError = require('../../errors/ServerError');
+import { Contest, Offer } from '../../models';
+import ServerError from '../../errors/ServerError';
 
-module.exports.updateContest = async (data, predicate, transaction) => {
+export const updateContest = async (data, predicate, transaction) => {
   const [updatedCount, [updatedContest]] = await Contest.update(data, {
     where: predicate,
     returning: true,
@@ -14,7 +14,7 @@ module.exports.updateContest = async (data, predicate, transaction) => {
   }
 };
 
-module.exports.updateContestStatus = async (data, predicate, transaction) => {
+export const updateContestStatus = async (data, predicate, transaction) => {
   const updateResult = await Contest.update(data, {
     where: predicate,
     returning: true,
@@ -27,7 +27,7 @@ module.exports.updateContestStatus = async (data, predicate, transaction) => {
   }
 };
 
-module.exports.updateOffer = async (data, predicate, transaction) => {
+export const updateOffer = async (data, predicate, transaction) => {
   const [updatedCount, [updatedOffer]] = await Offer.update(data, {
     where: predicate,
     returning: true,
@@ -40,7 +40,7 @@ module.exports.updateOffer = async (data, predicate, transaction) => {
   }
 };
 
-module.exports.updateOfferStatus = async (data, predicate, transaction) => {
+export const updateOfferStatus = async (data, predicate, transaction) => {
   const result = await Offer.update(data, {
     where: predicate,
     returning: true,
@@ -53,7 +53,7 @@ module.exports.updateOfferStatus = async (data, predicate, transaction) => {
   }
 };
 
-module.exports.createOffer = async (data) => {
+export const createOffer = async (data) => {
   const result = await Offer.create(data);
   if (!result) {
     throw new ServerError('cannot create new Offer');

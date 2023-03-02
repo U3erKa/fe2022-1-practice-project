@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const path = require('path');
+import mongoose from 'mongoose';
+import path from 'path';
 const env = process.env.NODE_ENV || 'development';
 const configPath = path.join(__dirname, '..', 'config/mongoConfig.json');
 const config = require(configPath)[env];
@@ -17,4 +17,4 @@ mongoose.connect(
 
 mongoose.set('debug', env === 'development');
 
-module.exports = mongoose;
+export default mongoose;

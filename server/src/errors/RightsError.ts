@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class RightsError extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class RightsError extends ApplicationError {
   }
 }
 
-module.exports = RightsError;
+export default RightsError;

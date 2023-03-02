@@ -1,13 +1,12 @@
-const Conversation = require('../models/mongoModels/conversation');
-const Message = require('../models/mongoModels/Message');
-const Catalog = require('../models/mongoModels/Catalog');
-const moment = require('moment');
-const { User } = require('../models');
-const userQueries = require('./queries/userQueries');
-const controller = require('../socketInit');
-const _ = require('lodash');
+import Conversation from '../models/mongoModels/conversation';
+import Message from '../models/mongoModels/Message';
+import Catalog from '../models/mongoModels/Catalog';
+import { User } from '../models';
+import * as userQueries from './queries/userQueries';
+import * as controller from '../socketInit';
+import _ from 'lodash';
 
-module.exports.addMessage = async (req, res, next) => {
+export const addMessage = async (req, res, next) => {
   const participants = [req.tokenData.userId, req.body.recipient];
   participants.sort(
     (participant1, participant2) => participant1 - participant2,
@@ -73,7 +72,7 @@ module.exports.addMessage = async (req, res, next) => {
   }
 };
 
-module.exports.getChat = async (req, res, next) => {
+export const getChat = async (req, res, next) => {
   const participants = [req.tokenData.userId, req.body.interlocutorId];
   participants.sort(
     (participant1, participant2) => participant1 - participant2,
@@ -120,7 +119,7 @@ module.exports.getChat = async (req, res, next) => {
   }
 };
 
-module.exports.getPreview = async (req, res, next) => {
+export const getPreview = async (req, res, next) => {
   try {
     const conversations = await Message.aggregate([
       {
@@ -189,7 +188,7 @@ module.exports.getPreview = async (req, res, next) => {
   }
 };
 
-module.exports.blackList = async (req, res, next) => {
+export const blackList = async (req, res, next) => {
   const predicate =
     'blackList.' + req.body.participants.indexOf(req.tokenData.userId);
   try {
@@ -208,7 +207,7 @@ module.exports.blackList = async (req, res, next) => {
   }
 };
 
-module.exports.favoriteChat = async (req, res, next) => {
+export const favoriteChat = async (req, res, next) => {
   const predicate =
     'favoriteList.' + req.body.participants.indexOf(req.tokenData.userId);
   try {
@@ -223,7 +222,7 @@ module.exports.favoriteChat = async (req, res, next) => {
   }
 };
 
-module.exports.createCatalog = async (req, res, next) => {
+export const createCatalog = async (req, res, next) => {
   console.log(req.body);
   const catalog = new Catalog({
     userId: req.tokenData.userId,
@@ -238,7 +237,7 @@ module.exports.createCatalog = async (req, res, next) => {
   }
 };
 
-module.exports.updateNameCatalog = async (req, res, next) => {
+export const updateNameCatalog = async (req, res, next) => {
   try {
     const catalog = await Catalog.findOneAndUpdate(
       {
@@ -254,7 +253,7 @@ module.exports.updateNameCatalog = async (req, res, next) => {
   }
 };
 
-module.exports.addNewChatToCatalog = async (req, res, next) => {
+export const addNewChatToCatalog = async (req, res, next) => {
   try {
     const catalog = await Catalog.findOneAndUpdate(
       {
@@ -270,7 +269,7 @@ module.exports.addNewChatToCatalog = async (req, res, next) => {
   }
 };
 
-module.exports.removeChatFromCatalog = async (req, res, next) => {
+export const removeChatFromCatalog = async (req, res, next) => {
   try {
     const catalog = await Catalog.findOneAndUpdate(
       {
@@ -286,7 +285,7 @@ module.exports.removeChatFromCatalog = async (req, res, next) => {
   }
 };
 
-module.exports.deleteCatalog = async (req, res, next) => {
+export const deleteCatalog = async (req, res, next) => {
   try {
     await Catalog.remove({
       _id: req.body.catalogId,
@@ -298,7 +297,7 @@ module.exports.deleteCatalog = async (req, res, next) => {
   }
 };
 
-module.exports.getCatalogs = async (req, res, next) => {
+export const getCatalogs = async (req, res, next) => {
   try {
     const catalogs = await Catalog.aggregate([
       { $match: { userId: req.tokenData.userId } },
