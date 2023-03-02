@@ -24,7 +24,7 @@ const SelectInput: FC<Props> = ({
 
   const getOptionsArray = () => {
     const array: JSX.Element[] = [];
-    for (let i = 0; i < optionsArray.length; i++) {
+    for (let i = 0; optionsArray && i < optionsArray.length; i++) {
       array.push(
         <option key={i} value={valueArray ? valueArray[i] : null}>
           {optionsArray[i]}

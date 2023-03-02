@@ -29,12 +29,11 @@ const ContestsContainer = ({ loadMore }) => {
   return (
     <div>
       {contestsList}
-      {isFetching && (
+      {isFetching ? (
         <div className={styles.spinnerContainer}>
           <Spinner />
         </div>
-      )}
-      {contests.length ? (
+      ) : contests.length ? (
         <button
           className={styles.loadMoreBtn}
           onClick={onClick}

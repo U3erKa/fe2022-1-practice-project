@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'hooks';
@@ -31,6 +31,11 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
     ? contests[contestType]
     : { contestType: contestType };
 
+  useEffect(() => {
+    !bundle && navigate('/startContest', { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bundle]);
+
   const handleSubmit = (values: ContestInfo) => {
     dispatch(
       saveContestToStore({
@@ -41,7 +46,7 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
     const route =
       bundle![contestType] === 'payment'
         ? '/payment'
-        : `${bundle![contestType]}Contest`;
+        : `/startContest/${bundle![contestType]}Contest`;
     navigate(route);
   };
 
@@ -50,8 +55,6 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
       formRef.current.handleSubmit();
     }
   };
-
-  !bundle && navigate('/startContest', { replace: true });
 
   return (
     <div>
