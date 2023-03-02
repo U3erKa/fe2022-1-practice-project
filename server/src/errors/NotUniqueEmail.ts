@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class NotUniqueEmail extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class NotUniqueEmail extends ApplicationError {
   }
 }
 
-module.exports = NotUniqueEmail;
+export default NotUniqueEmail;

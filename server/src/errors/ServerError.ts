@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class ServerError extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class ServerError extends ApplicationError {
   }
 }
 
-module.exports = ServerError;
+export default ServerError;

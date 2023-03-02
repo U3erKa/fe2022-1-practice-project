@@ -1,6 +1,7 @@
 require('dotenv').config();
-const path = require('path');
-const {
+import path from 'path';
+
+export const {
   ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_TIME,
   REFRESH_TOKEN_SECRET,
@@ -11,36 +12,26 @@ const {
   SQUADHELP_BANK_CVC,
 } = process.env;
 
-module.exports = {
-  ACCESS_TOKEN_SECRET,
-  ACCESS_TOKEN_TIME,
-  REFRESH_TOKEN_SECRET,
-  REFRESH_TOKEN_TIME,
-  SALT_ROUNDS: 5,
-  SQUADHELP_BANK_NUMBER,
-  SQUADHELP_BANK_NAME,
-  SQUADHELP_BANK_CVC,
-  SQUADHELP_BANK_EXPIRY,
-  CUSTOMER: 'customer',
-  CREATOR: 'creator',
-  CREATOR_ENTRIES: 'creator_entries',
-  CONTEST_STATUS_ACTIVE: 'active',
-  CONTEST_STATUS_FINISHED: 'finished',
-  CONTEST_STATUS_PENDING: 'pending',
-  CONTESTS_DEFAULT_DIR: 'public/contestFiles/',
-  NAME_CONTEST: 'name',
-  LOGO_CONTEST: 'logo',
-  TAGLINE_CONTEST: 'tagline',
-  OFFER_STATUS_PENDING: 'pending',
-  OFFER_STATUS_REJECTED: 'rejected',
-  OFFER_STATUS_WON: 'won',
-  FILES_PATH: path.resolve(__dirname, '../..', 'public'),
-  SOCKET_CONNECTION: 'connection',
-  SOCKET_SUBSCRIBE: 'subscribe',
-  SOCKET_UNSUBSCRIBE: 'unsubscribe',
-  NOTIFICATION_ENTRY_CREATED: 'onEntryCreated',
-  NOTIFICATION_CHANGE_MARK: 'changeMark',
-  NOTIFICATION_CHANGE_OFFER_STATUS: 'changeOfferStatus',
-  NEW_MESSAGE: 'newMessage',
-  CHANGE_BLOCK_STATUS: 'CHANGE_BLOCK_STATUS',
-};
+export const SALT_ROUNDS = 5;
+export const CUSTOMER = 'customer';
+export const CREATOR = 'creator';
+export const CREATOR_ENTRIES = 'creator_entries';
+export const CONTEST_STATUS_ACTIVE = 'active';
+export const CONTEST_STATUS_FINISHED = 'finished';
+export const CONTEST_STATUS_PENDING = 'pending';
+export const CONTESTS_DEFAULT_DIR = 'public/contestFiles/';
+export const NAME_CONTEST = 'name';
+export const LOGO_CONTEST = 'logo';
+export const TAGLINE_CONTEST = 'tagline';
+export const OFFER_STATUS_PENDING = 'pending';
+export const OFFER_STATUS_REJECTED = 'rejected';
+export const OFFER_STATUS_WON = 'won';
+export const FILES_PATH = path.resolve(__dirname, '../..', 'public');
+export const SOCKET_CONNECTION = 'connection';
+export const SOCKET_SUBSCRIBE = 'subscribe';
+export const SOCKET_UNSUBSCRIBE = 'unsubscribe';
+export const NOTIFICATION_ENTRY_CREATED = 'onEntryCreated';
+export const NOTIFICATION_CHANGE_MARK = 'changeMark';
+export const NOTIFICATION_CHANGE_OFFER_STATUS = 'changeOfferStatus';
+export const NEW_MESSAGE = 'newMessage';
+export const CHANGE_BLOCK_STATUS = 'CHANGE_BLOCK_STATUS';

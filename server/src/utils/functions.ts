@@ -1,7 +1,7 @@
-const { Sequelize } = require('../models');
-const CONSTANTS = require('../constants');
+import { Sequelize } from '../models';
+import * as CONSTANTS from '../constants';
 
-module.exports.createWhereForAllContests = ({
+export const createWhereForAllContests = ({
   typeIndex,
   contestId,
   industry,
@@ -35,7 +35,7 @@ module.exports.createWhereForAllContests = ({
   return { where, order };
 };
 
-module.exports.createWhereForCustomerContests = ({ status, userId }) => {
+export const createWhereForCustomerContests = ({ status, userId }) => {
   const where = {};
   const order = [];
 

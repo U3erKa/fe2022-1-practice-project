@@ -1,15 +1,15 @@
 require('dotenv').config();
-const http = require('http');
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
+import http from 'http';
+import path from 'path';
+import express from 'express';
+import cors from 'cors';
 require('./dbMongo/mongoose');
-const router = require('./router');
-const controller = require('./socketInit');
-const handlerError = require('./handlerError/handler');
-const tokenErrorHandler = require('./handlerError/tokenHandler');
-const multerErrorHandler = require('./handlerError/multerHandler');
-const { FILES_PATH } = require('./constants');
+import router from './router';
+import * as controller from './socketInit';
+import handlerError from './handlerError/handler';
+import tokenErrorHandler from './handlerError/tokenHandler';
+import multerErrorHandler from './handlerError/multerHandler';
+import { FILES_PATH } from './constants';
 
 const PORT = process.env.PORT || 3000;
 const app = express();

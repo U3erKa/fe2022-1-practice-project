@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class DevAlreadyExistError extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class DevAlreadyExistError extends ApplicationError {
   }
 }
 
-module.exports = DevAlreadyExistError;
+export default DevAlreadyExistError;

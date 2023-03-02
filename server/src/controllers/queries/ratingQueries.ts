@@ -1,7 +1,7 @@
-const { Rating } = require('../../models');
-const ServerError = require('../../errors/ServerError');
+import { Rating } from '../../models';
+import ServerError from '../../errors/ServerError';
 
-module.exports.updateRating = async (data, predicate, transaction) => {
+export const updateRating = async (data, predicate, transaction) => {
   const [updatedCount, [updatedRating]] = await Rating.update(data, {
     where: predicate,
     returning: true,
@@ -13,7 +13,7 @@ module.exports.updateRating = async (data, predicate, transaction) => {
   return updatedRating.dataValues;
 };
 
-module.exports.createRating = async (data, transaction) => {
+export const createRating = async (data, transaction) => {
   const result = await Rating.create(data, { transaction });
   if (!result) {
     throw new ServerError('cannot mark offer');

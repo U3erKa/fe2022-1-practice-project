@@ -1,8 +1,8 @@
-const JWTService = require('../services/jwtService');
-const { RefreshToken } = require('../models');
-const TokenError = require('../errors/TokenError');
+import * as JWTService from '../services/jwtService';
+import { RefreshToken } from '../models';
+import TokenError from '../errors/TokenError';
 
-module.exports.checkAccessToken = async (req, res, next) => {
+export const checkAccessToken = async (req, res, next) => {
   try {
     const {
       headers: { authorization },
@@ -22,7 +22,7 @@ module.exports.checkAccessToken = async (req, res, next) => {
   }
 };
 
-module.exports.checkRefreshToken = async (req, res, next) => {
+export const checkRefreshToken = async (req, res, next) => {
   try {
     const {
       body: { refreshToken },

@@ -1,4 +1,4 @@
-const ApplicationError = require('./ApplicationError');
+import ApplicationError from './ApplicationError';
 
 class UncorrectPassword extends ApplicationError {
   constructor(message) {
@@ -6,4 +6,4 @@ class UncorrectPassword extends ApplicationError {
   }
 }
 
-module.exports = UncorrectPassword;
+export default UncorrectPassword;

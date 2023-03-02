@@ -1,8 +1,8 @@
-const AuthService = require('../services/authService');
-const { User } = require('../models');
-const UserNotFoundError = require('../errors/UserNotFoundError');
+import * as AuthService from '../services/authService';
+import { User } from '../models';
+import UserNotFoundError from '../errors/UserNotFoundError';
 
-module.exports.login = async (req, res, next) => {
+export const login = async (req, res, next) => {
   try {
     const {
       body: { email, password },
@@ -22,7 +22,7 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
-module.exports.registration = async (req, res, next) => {
+export const registration = async (req, res, next) => {
   try {
     const { body } = req;
 
@@ -36,7 +36,7 @@ module.exports.registration = async (req, res, next) => {
   }
 };
 
-module.exports.refresh = async (req, res, next) => {
+export const refresh = async (req, res, next) => {
   try {
     const { refreshTokenInstance } = req;
 

@@ -1,6 +1,6 @@
-const { Server } = require('socket.io');
-const ChatController = require('./controllers/sockets/ChatController');
-const NotificationController = require('./controllers/sockets/NotificationController');
+import { Server } from 'socket.io';
+import ChatController from './controllers/sockets/ChatController';
+import NotificationController from './controllers/sockets/NotificationController';
 
 let notificationController;
 let chatController;
@@ -9,7 +9,7 @@ const cors = {
   origin: '*',
 };
 
-module.exports.createConnection = (httpServer) => {
+export const createConnection = (httpServer) => {
   const io = new Server(httpServer, { cors });
   notificationController = new NotificationController();
   notificationController.connect('/notifications', io);
@@ -17,10 +17,10 @@ module.exports.createConnection = (httpServer) => {
   chatController.connect('/chat', io);
 };
 
-module.exports.getChatController = () => {
+export const getChatController = () => {
   return chatController;
 };
 
-module.exports.getNotificationController = () => {
+export const getNotificationController = () => {
   return notificationController;
 };

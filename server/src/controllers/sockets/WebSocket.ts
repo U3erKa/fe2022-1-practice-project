@@ -1,4 +1,8 @@
-const CONSTANTS = require('../../constants');
+import {
+  SOCKET_CONNECTION,
+  SOCKET_SUBSCRIBE,
+  SOCKET_UNSUBSCRIBE,
+} from '../../constants';
 
 class WebSocket {
   connect(namespace, io) {
@@ -7,7 +11,7 @@ class WebSocket {
   }
 
   listen() {
-    this.io.on(CONSTANTS.SOCKET_CONNECTION, (socket) => {
+    this.io.on(SOCKET_CONNECTION, (socket) => {
       this.onSubscribe(socket);
       this.onUnsubscribe(socket);
       this.anotherSubscribes(socket);
@@ -17,16 +21,16 @@ class WebSocket {
   anotherSubscribes(socket) {}
 
   onSubscribe(socket) {
-    socket.on(CONSTANTS.SOCKET_SUBSCRIBE, (id) => {
+    socket.on(SOCKET_SUBSCRIBE, (id) => {
       socket.join(id);
     });
   }
 
   onUnsubscribe(socket) {
-    socket.on(CONSTANTS.SOCKET_UNSUBSCRIBE, (id) => {
+    socket.on(SOCKET_UNSUBSCRIBE, (id) => {
       socket.leave(id);
     });
   }
 }
 
-module.exports = WebSocket;
+export default WebSocket;
