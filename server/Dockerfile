@@ -14,7 +14,9 @@ RUN npm install -g sequelize-cli nodemon
 
 RUN npm install
 
-RUN chown -R node:node /server/node_modules
+RUN chown -R node:node /server/node_modules \
+    && chown -R node:node /var/www/html/images \
+    && chown -R node:node /public
 
 EXPOSE 3000
 
