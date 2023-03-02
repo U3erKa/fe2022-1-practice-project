@@ -26,7 +26,9 @@ const sequelize = new Sequelize(
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
-      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
+      file.indexOf('.') !== 0 &&
+      file !== basename &&
+      ['.js', '.ts'].includes(file.slice(-3))
     );
   })
   .forEach((file) => {
