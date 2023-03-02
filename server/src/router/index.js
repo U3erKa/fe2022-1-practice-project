@@ -13,16 +13,17 @@ router.use('/auth', authRouter);
 
 router.use(checkAccessToken);
 
-router.post('/dataForContest', contestController.dataForContest);
+router.route('/dataForContest').post(contestController.dataForContest);
 
-router.post(
-  '/pay',
-  basicMiddlewares.onlyForCustomer,
-  upload.uploadContestFiles,
-  basicMiddlewares.parseBody,
-  validators.validateContestCreation,
-  userController.payment,
-);
+router
+  .route('/pay')
+  .post(
+    basicMiddlewares.onlyForCustomer,
+    upload.uploadContestFiles,
+    basicMiddlewares.parseBody,
+    validators.validateContestCreation,
+    userController.payment,
+  );
 
 router.route('/contests').get(contestController.getContests);
 
@@ -31,55 +32,57 @@ router
   .get(basicMiddlewares.canGetContest, contestController.getContestById)
   .put(upload.updateContestFile, contestController.updateContest);
 
-router.get('/downloadFile/:fileName', contestController.downloadFile);
+router.route('/downloadFile/:fileName').get(contestController.downloadFile);
 
-router.post(
-  '/setNewOffer',
-  upload.uploadLogoFiles,
-  basicMiddlewares.canSendOffer,
-  contestController.setNewOffer,
-);
+router
+  .route('/setNewOffer')
+  .post(
+    upload.uploadLogoFiles,
+    basicMiddlewares.canSendOffer,
+    contestController.setNewOffer,
+  );
 
-router.post(
-  '/setOfferStatus',
-  basicMiddlewares.onlyForCustomerWhoCreateContest,
-  contestController.setOfferStatus,
-);
+router
+  .route('/setOfferStatus')
+  .post(
+    basicMiddlewares.onlyForCustomerWhoCreateContest,
+    contestController.setOfferStatus,
+  );
 
-router.post(
-  '/changeMark',
-  basicMiddlewares.onlyForCustomer,
-  userController.changeMark,
-);
+router
+  .route('/changeMark')
+  .post(basicMiddlewares.onlyForCustomer, userController.changeMark);
 
-router.post('/updateUser', upload.uploadAvatar, userController.updateUser);
+router
+  .route('/updateUser')
+  .post(upload.uploadAvatar, userController.updateUser);
 
-router.post(
-  '/cashout',
-  basicMiddlewares.onlyForCreative,
-  userController.cashout,
-);
+router
+  .route('/cashout')
+  .post(basicMiddlewares.onlyForCreative, userController.cashout);
 
-router.post('/newMessage', chatController.addMessage);
+router.route('/newMessage').post(chatController.addMessage);
 
-router.post('/getChat', chatController.getChat);
+router.route('/getChat').post(chatController.getChat);
 
-router.post('/getPreview', chatController.getPreview);
+router.route('/getPreview').post(chatController.getPreview);
 
-router.post('/blackList', chatController.blackList);
+router.route('/blackList').post(chatController.blackList);
 
-router.post('/favorite', chatController.favoriteChat);
+router.route('/favorite').post(chatController.favoriteChat);
 
-router.post('/createCatalog', chatController.createCatalog);
+router.route('/createCatalog').post(chatController.createCatalog);
 
-router.post('/updateNameCatalog', chatController.updateNameCatalog);
+router.route('/updateNameCatalog').post(chatController.updateNameCatalog);
 
-router.post('/addNewChatToCatalog', chatController.addNewChatToCatalog);
+router.route('/addNewChatToCatalog').post(chatController.addNewChatToCatalog);
 
-router.post('/removeChatFromCatalog', chatController.removeChatFromCatalog);
+router
+  .route('/removeChatFromCatalog')
+  .post(chatController.removeChatFromCatalog);
 
-router.post('/deleteCatalog', chatController.deleteCatalog);
+router.route('/deleteCatalog').post(chatController.deleteCatalog);
 
-router.post('/getCatalogs', chatController.getCatalogs);
+router.route('/getCatalogs').post(chatController.getCatalogs);
 
 module.exports = router;
