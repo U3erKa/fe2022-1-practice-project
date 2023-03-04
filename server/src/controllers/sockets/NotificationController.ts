@@ -6,15 +6,19 @@ import {
 } from '../../constants';
 
 class NotificationController extends WebSocket {
-  emitEntryCreated(target) {
+  emitEntryCreated(target: string | string[]) {
     this.io.to(target).emit(NOTIFICATION_ENTRY_CREATED);
   }
 
-  emitChangeMark(target) {
+  emitChangeMark(target: string | string[]) {
     this.io.to(target).emit(NOTIFICATION_CHANGE_MARK);
   }
 
-  emitChangeOfferStatus(target, message, contestId) {
+  emitChangeOfferStatus(
+    target: string | string[],
+    message: string,
+    contestId: string | number,
+  ) {
     this.io
       .to(target)
       .emit(NOTIFICATION_CHANGE_OFFER_STATUS, { message, contestId });
