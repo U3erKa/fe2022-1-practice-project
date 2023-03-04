@@ -1,14 +1,21 @@
-'use strict';
 import { Model } from 'sequelize';
-const Rating = (sequelize, DataTypes) => {
-  class Rating extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({ User, Offer }) {
-      // define association here
+// prettier-ignore
+import type { 
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
+} from 'sequelize';
+import type { DB } from '../types/models';
+
+const Rating = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+  class Rating extends Model<
+    InferAttributes<Rating>,
+    InferCreationAttributes<Rating>
+  > {
+    declare mark: number;
+
+    declare offerId: number;
+    declare userId: number;
+
+    static associate({ User, Offer }: DB) {
       Rating.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
       Rating.belongsTo(Offer, {
         foreignKey: 'offerId',
@@ -47,5 +54,4 @@ const Rating = (sequelize, DataTypes) => {
   return Rating;
 };
 
-// @ts-expect-error
 export = Rating;

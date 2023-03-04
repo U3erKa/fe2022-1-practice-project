@@ -1,14 +1,25 @@
-'use strict';
 import { Model } from 'sequelize';
-const Offer = (sequelize, DataTypes) => {
-  class Offer extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({ User, Contest, Rating }) {
-      // define association here
+// prettier-ignore
+import type { 
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+} from 'sequelize';
+import type { DB } from '../types/models';
+
+const Offer = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+  class Offer extends Model<
+    InferAttributes<Offer>,
+    InferCreationAttributes<Offer>
+  > {
+    declare text?: string;
+    declare fileName?: string;
+    declare originalFileName?: string;
+    declare status?: string;
+
+    declare id: CreationOptional<number>;
+    declare userId: number;
+    declare contestId: number;
+
+    static associate({ User, Contest, Rating }: DB) {
       Offer.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
       Offer.belongsTo(Contest, { foreignKey: 'contestId', sourceKey: 'id' });
       Offer.hasOne(Rating, { foreignKey: 'offerId', targetKey: 'id' });
@@ -57,5 +68,4 @@ const Offer = (sequelize, DataTypes) => {
   return Offer;
 };
 
-// @ts-expect-error
 export = Offer;

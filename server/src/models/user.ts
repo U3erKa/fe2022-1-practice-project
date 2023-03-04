@@ -1,22 +1,41 @@
-'use strict';
 import { Model } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from '../constants';
+// prettier-ignore
+import type { 
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+} from 'sequelize';
+import type { DB } from '../types/models';
 
-const hashPassword = async (user, options) => {
+const hashPassword = async (user: InstanceType<DB['User']>) => {
   if (user.changed('password')) {
     const passwordHash = await bcrypt.hash(user.password, SALT_ROUNDS);
     user.password = passwordHash;
   }
 };
 
-const User = (sequelize, DataTypes) => {
-  class User extends Model {
+const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+  class User extends Model<
+    InferAttributes<User>,
+    InferCreationAttributes<User>
+  > {
+    declare firstName: string;
+    declare lastName: string;
+    declare displayName: string;
+    declare password: string;
+    declare email: string;
+    declare avatar: string;
+    declare role: 'customer' | 'creator';
+    declare balance: number;
+    declare accessToken?: string;
+    declare rating: number;
+
+    declare id: CreationOptional<number>;
+
     async comparePassword(password) {
       return bcrypt.compare(password, this.password);
     }
     static associate({ Offer, Contest, Rating, RefreshToken }) {
-      // define association here
       User.hasMany(Offer, {
         foreignKey: 'userId',
         targetKey: 'id',
@@ -104,5 +123,4 @@ const User = (sequelize, DataTypes) => {
   return User;
 };
 
-// @ts-expect-error
 export = User;
