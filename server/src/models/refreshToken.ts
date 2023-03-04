@@ -1,18 +1,31 @@
-'use strict';
 import { Model } from 'sequelize';
-const RefreshToken = (sequelize, DataTypes) => {
-  class RefreshToken extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({ User }) {
-      // define association here
+// prettier-ignore
+import type { 
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+} from 'sequelize';
+import type { DB } from '../types/models';
+
+const RefreshToken = (
+  sequelize: DB['sequelize'],
+  DataTypes: typeof _DataTypes,
+) => {
+  class RefreshToken extends Model<
+    InferAttributes<RefreshToken>,
+    InferCreationAttributes<RefreshToken>
+  > {
+    declare token: string;
+
+    declare id: CreationOptional<number>;
+    declare userId: number;
+    declare createdAt: CreationOptional<Date>;
+    declare updatedAt: CreationOptional<Date>;
+
+    static associate({ User }: DB) {
       RefreshToken.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
     }
   }
   RefreshToken.init(
+    // @ts-expect-error
     {
       token: {
         type: DataTypes.TEXT,
@@ -31,5 +44,4 @@ const RefreshToken = (sequelize, DataTypes) => {
   return RefreshToken;
 };
 
-// @ts-expect-error
 export = RefreshToken;

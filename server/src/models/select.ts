@@ -1,15 +1,19 @@
-'use strict';
 import { Model } from 'sequelize';
-const Select = (sequelize, DataTypes) => {
-  class Select extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+// prettier-ignore
+import type { 
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
+} from 'sequelize';
+import type { DB } from '../types/models';
+
+const Select = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+  class Select extends Model<
+    InferAttributes<Select>,
+    InferCreationAttributes<Select>
+  > {
+    declare type: string;
+    declare describe: string;
+
+    static associate(models: DB) {}
   }
   Select.init(
     {
@@ -33,5 +37,4 @@ const Select = (sequelize, DataTypes) => {
   return Select;
 };
 
-// @ts-expect-error
 export = Select;

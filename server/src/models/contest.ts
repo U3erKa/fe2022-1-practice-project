@@ -1,14 +1,37 @@
-'use strict';
 import { Model } from 'sequelize';
-const Contest = (sequelize, DataTypes) => {
-  class Contest extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({ User, Offer }) {
-      // define association here
+// prettier-ignore
+import type { 
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+} from 'sequelize';
+import type { DB } from '../types/models';
+
+const Contest = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+  class Contest extends Model<
+    InferAttributes<Contest>,
+    InferCreationAttributes<Contest>
+  > {
+    declare contestType: 'name' | 'tagline' | 'logo';
+    declare fileName?: string;
+    declare originalFileName?: string;
+    declare title?: string;
+    declare typeOfName?: string;
+    declare industry?: string;
+    declare focusOfWork?: string;
+    declare targetCustomer?: string;
+    declare styleName?: string;
+    declare nameVenture?: string;
+    declare typeOfTagline?: string;
+    declare brandStyle?: string;
+    declare status: string;
+    declare prize: number;
+    declare priority: number;
+
+    declare id: CreationOptional<number>;
+    declare orderId: string;
+    declare userId: number;
+    declare createdAt: CreationOptional<Date>;
+
+    static associate({ User, Offer }: DB) {
       Contest.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
       Contest.hasMany(Offer, { foreignKey: 'contestId', targetKey: 'id' });
     }
@@ -107,5 +130,4 @@ const Contest = (sequelize, DataTypes) => {
   return Contest;
 };
 
-// @ts-expect-error
 export = Contest;
