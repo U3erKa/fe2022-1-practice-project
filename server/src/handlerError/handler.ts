@@ -1,4 +1,6 @@
-export default (err, req, res, next) => {
+import type { ErrorRequestHandler } from 'express';
+
+const handleError: ErrorRequestHandler = (err, req, res, next) => {
   console.log(err);
   if (
     err.message ===
@@ -15,3 +17,5 @@ export default (err, req, res, next) => {
     res.status(err.code).send(err.message);
   }
 };
+
+export default handleError;
