@@ -1,7 +1,6 @@
 import { CREATOR, CUSTOMER } from '../constants';
 import { WithId, UserId } from './index';
 
-
 export type User = WithId<UserId> & UserData;
 export type TokenData = WithId<UserId, 'userId'> & UserData;
 

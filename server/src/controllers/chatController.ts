@@ -75,10 +75,14 @@ export const addMessage: RequestHandler = async (req, res, next) => {
 };
 
 export const getChat: RequestHandler = async (req, res, next) => {
-  const participants = [req.tokenData.userId, req.body.interlocutorId];
-  participants.sort(
+  const {
+    tokenData,
+    body: { interlocutorId },
+  } = req;
+  const participants = [tokenData.userId, interlocutorId].sort(
     (participant1, participant2) => participant1 - participant2,
   );
+
   try {
     const messages = await Message.aggregate([
       {
@@ -104,7 +108,7 @@ export const getChat: RequestHandler = async (req, res, next) => {
     ]);
 
     const interlocutor = await userQueries.findUser({
-      id: req.body.interlocutorId,
+      id: interlocutorId,
     });
     res.send({
       messages,
@@ -122,6 +126,7 @@ export const getChat: RequestHandler = async (req, res, next) => {
 };
 
 export const getPreview: RequestHandler = async (req, res, next) => {
+  const { tokenData } = req;
   try {
     const conversations = await Message.aggregate([
       {
@@ -137,7 +142,7 @@ export const getPreview: RequestHandler = async (req, res, next) => {
       },
       {
         $match: {
-          'conversationData.participants': req.tokenData.userId,
+          'conversationData.participants': tokenData.userId,
         },
       },
       {
@@ -157,11 +162,11 @@ export const getPreview: RequestHandler = async (req, res, next) => {
         },
       },
     ]);
-    const interlocutors = [];
+    const interlocutors: unknown[] = [];
     conversations.forEach((conversation) => {
       interlocutors.push(
         conversation.participants.find(
-          (participant) => participant !== req.tokenData.userId,
+          (participant) => participant !== tokenData.userId,
         ),
       );
     });

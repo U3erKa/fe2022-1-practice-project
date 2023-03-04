@@ -18,12 +18,12 @@ import * as CONSTANTS from '../constants';
 import type { RequestHandler } from 'express';
 
 export const dataForContest: RequestHandler = async (req, res, next) => {
+  const {
+    body: { characteristic1, characteristic2 },
+  } = req;
   const response = {};
+
   try {
-    const {
-      body: { characteristic1, characteristic2 },
-    } = req;
-    console.log(req.body, characteristic1, characteristic2);
     const types = [characteristic1, characteristic2, 'industry'].filter(
       Boolean,
     );
@@ -46,17 +46,11 @@ export const dataForContest: RequestHandler = async (req, res, next) => {
     });
     res.send(response);
   } catch (err) {
-    console.log(err);
     next(new ServerError('cannot get contest preferences'));
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getContestById = async (
-  /** @type {import('express').Request & {tokenData: any}} */ req,
-  res,
-  next,
-) => {
+export const getContestById: RequestHandler = async (req, res, next) => {
   const {
     tokenData,
     params: { contestId },
@@ -120,12 +114,7 @@ export const downloadFile: RequestHandler = async (req, res, next) => {
   res.download(file);
 };
 
-/** @type {import('express').RequestHandler} */
-export const updateContest = async (
-  /** @type {import('express').Request & {tokenData: any}} */ req,
-  res,
-  next,
-) => {
+export const updateContest: RequestHandler = async (req, res, next) => {
   const {
     tokenData,
     file,
@@ -149,23 +138,28 @@ export const updateContest = async (
 };
 
 export const setNewOffer: RequestHandler = async (req, res, next) => {
-  const obj = {};
-  if (req.body.contestType === CONSTANTS.LOGO_CONTEST) {
-    obj.fileName = req.file.filename;
-    obj.originalFileName = req.file.originalname;
+  const {
+    tokenData,
+    file,
+    body: { contestType, offerData, contestId, customerId },
+  } = req;
+  const obj: { [key: string]: unknown } = {};
+
+  if (contestType === CONSTANTS.LOGO_CONTEST) {
+    obj.fileName = file?.filename;
+    obj.originalFileName = file?.originalname;
   } else {
-    obj.text = req.body.offerData;
+    obj.text = offerData;
   }
-  obj.userId = req.tokenData.userId;
-  obj.contestId = req.body.contestId;
+  obj.userId = tokenData.userId;
+  obj.contestId = contestId;
+
   try {
     const result = await contestQueries.createOffer(obj);
     delete result.contestId;
     delete result.userId;
-    controller
-      .getNotificationController()
-      .emitEntryCreated(req.body.customerId);
-    const User = Object.assign({}, req.tokenData, { id: req.tokenData.userId });
+    controller.getNotificationController().emitEntryCreated(customerId);
+    const User = Object.assign({}, tokenData, { id: tokenData.userId });
     res.send(Object.assign({}, result, { User }));
   } catch (e) {
     return next(new ServerError());
@@ -197,16 +191,15 @@ const resolveOffer = async (
 ) => {
   const finishedContest = await contestQueries.updateContestStatus(
     {
-      status: sequelize.literal(`   CASE
-            WHEN "id"=${contestId}  AND "orderId"='${orderId}' THEN '${
-        CONSTANTS.CONTEST_STATUS_FINISHED
-      }'
-            WHEN "orderId"='${orderId}' AND "priority"=${priority + 1}  THEN '${
-        CONSTANTS.CONTEST_STATUS_ACTIVE
-      }'
-            ELSE '${CONSTANTS.CONTEST_STATUS_PENDING}'
-            END
-    `),
+      status: sequelize.literal(`
+CASE
+  WHEN "id"=${contestId} AND "orderId"='${orderId}'
+  THEN '${CONSTANTS.CONTEST_STATUS_FINISHED}'
+  WHEN "orderId"='${orderId}' AND "priority"=${priority + 1}
+  THEN '${CONSTANTS.CONTEST_STATUS_ACTIVE}'
+  ELSE '${CONSTANTS.CONTEST_STATUS_PENDING}'
+END
+      `),
     },
     { orderId },
     transaction,
@@ -218,11 +211,13 @@ const resolveOffer = async (
   );
   const updatedOffers = await contestQueries.updateOfferStatus(
     {
-      status: sequelize.literal(` CASE
-            WHEN "id"=${offerId} THEN '${CONSTANTS.OFFER_STATUS_WON}'
-            ELSE '${CONSTANTS.OFFER_STATUS_REJECTED}'
-            END
-    `),
+      // prettier-ignore
+      status: sequelize.literal(`
+CASE
+  WHEN "id"=${offerId} THEN '${CONSTANTS.OFFER_STATUS_WON}'
+  ELSE '${CONSTANTS.OFFER_STATUS_REJECTED}'
+END
+      `),
     },
     {
       contestId,
@@ -230,7 +225,8 @@ const resolveOffer = async (
     transaction,
   );
   transaction.commit();
-  const arrayRoomsId = [];
+
+  const arrayRoomsId: unknown[] = [];
   updatedOffers.forEach((offer) => {
     if (
       offer.status === CONSTANTS.OFFER_STATUS_REJECTED &&
@@ -243,37 +239,37 @@ const resolveOffer = async (
     .getNotificationController()
     .emitChangeOfferStatus(
       arrayRoomsId,
-      'Someone of yours offers was rejected',
+      'Some of your offers was rejected',
       contestId,
     );
   controller
     .getNotificationController()
-    .emitChangeOfferStatus(creatorId, 'Someone of your offers WIN', contestId);
+    .emitChangeOfferStatus(creatorId, 'Some of your offers WIN', contestId);
   return updatedOffers[0].dataValues;
 };
 
 export const setOfferStatus: RequestHandler = async (req, res, next) => {
+  const {
+    body: { command, offerId, creatorId, contestId, orderId, priority },
+  } = req;
   let transaction;
-  if (req.body.command === 'reject') {
+
+  if (command === 'reject') {
     try {
-      const offer = await rejectOffer(
-        req.body.offerId,
-        req.body.creatorId,
-        req.body.contestId,
-      );
+      const offer = await rejectOffer(offerId, creatorId, contestId);
       res.send(offer);
     } catch (err) {
       next(err);
     }
-  } else if (req.body.command === 'resolve') {
+  } else if (command === 'resolve') {
     try {
       transaction = await sequelize.transaction();
       const winningOffer = await resolveOffer(
-        req.body.contestId,
-        req.body.creatorId,
-        req.body.orderId,
-        req.body.offerId,
-        req.body.priority,
+        contestId,
+        creatorId,
+        orderId,
+        offerId,
+        priority,
         transaction,
       );
       res.send(winningOffer);
@@ -284,12 +280,7 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getContests = async (
-  /** @type {import('express').Request & {tokenData: any}} */ req,
-  res,
-  next,
-) => {
+export const getContests: RequestHandler = async (req, res, next) => {
   const {
     tokenData,
     headers: { status },
@@ -304,11 +295,14 @@ export const getContests = async (
     },
   } = req;
   const ownEntries = _ownEntries === 'true';
-  const offset = +_offset || 0;
+  const offset = +_offset! ?? 0;
 
   try {
-    let predicates;
-    let isRequiredOffer;
+    let predicates: ReturnType<
+      | typeof UtilFunctions.createWhereForAllContests
+      | typeof UtilFunctions.createWhereForCustomerContests
+    >;
+    let isRequiredOffer: boolean;
     const offerFilter = {};
 
     switch (tokenData.role) {
@@ -342,14 +336,14 @@ export const getContests = async (
     }
 
     const contests = await Contest.findAll({
-      where: predicates.where,
-      order: predicates.order,
+      where: predicates!.where,
+      order: predicates!.order,
       limit,
       offset,
       include: [
         {
           model: Offer,
-          required: isRequiredOffer,
+          required: isRequiredOffer!,
           where: offerFilter,
           attributes: ['id'],
         },
@@ -357,8 +351,8 @@ export const getContests = async (
     });
 
     const contestsCount = await Contest.count({
-      where: predicates.where,
-      order: predicates.order,
+      where: predicates!.where,
+      order: predicates!.order,
       offset,
     });
 
@@ -370,6 +364,6 @@ export const getContests = async (
 
     res.send({ contests, haveMore });
   } catch (error) {
-    next(new ServerError(error.message));
+    next(new ServerError((error as Error).message));
   }
 };

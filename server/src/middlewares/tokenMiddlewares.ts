@@ -10,13 +10,13 @@ export const checkAccessToken: RequestHandler = async (req, res, next) => {
       headers: { authorization },
     } = req;
 
-    const [tokenType, accessToken] = authorization.split(' ');
+    const [tokenType, accessToken] = authorization?.split(' ') ?? [];
 
     if (!accessToken) {
       return next(new TokenError('Access token is missing'));
     }
 
-    req.tokenData = await JWTService.verifyAccessToken(accessToken);
+    (req.tokenData as any) = await JWTService.verifyAccessToken(accessToken);
 
     next();
   } catch (error) {
