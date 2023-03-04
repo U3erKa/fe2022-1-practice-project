@@ -1,6 +1,6 @@
 'use strict';
 import { Model } from 'sequelize';
-module.exports = (sequelize, DataTypes) => {
+const RefreshToken = (sequelize, DataTypes) => {
   class RefreshToken extends Model {
     /**
      * Helper method for defining associations.
@@ -30,3 +30,6 @@ module.exports = (sequelize, DataTypes) => {
   );
   return RefreshToken;
 };
+
+// @ts-expect-error
+export = RefreshToken;

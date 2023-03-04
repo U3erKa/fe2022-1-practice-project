@@ -10,7 +10,7 @@ const hashPassword = async (user, options) => {
   }
 };
 
-module.exports = (sequelize, DataTypes) => {
+const User = (sequelize, DataTypes) => {
   class User extends Model {
     async comparePassword(password) {
       return bcrypt.compare(password, this.password);
@@ -103,3 +103,6 @@ module.exports = (sequelize, DataTypes) => {
 
   return User;
 };
+
+// @ts-expect-error
+export = User;
