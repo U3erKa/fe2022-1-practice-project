@@ -2,7 +2,7 @@ import { User } from '../../models';
 import NotFound from '../../errors/UserNotFoundError';
 import ServerError from '../../errors/ServerError';
 
-export const updateUser = async (data, userId, transaction) => {
+export const updateUser = async (data, userId, transaction?) => {
   const [updatedCount, [updatedUser]] = await User.update(data, {
     where: { id: userId },
     returning: true,
@@ -14,7 +14,7 @@ export const updateUser = async (data, userId, transaction) => {
   return updatedUser.dataValues;
 };
 
-export const findUser = async (predicate, transaction) => {
+export const findUser = async (predicate, transaction?) => {
   const result = await User.findOne({ where: predicate, transaction });
   if (!result) {
     throw new NotFound('user with this data didn`t exist');

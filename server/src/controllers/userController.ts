@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import * as CONSTANTS from '../constants';
 import { sequelize, Sequelize, Rating, Offer, Contest } from '../models';
 import moment from 'moment';
@@ -8,7 +7,7 @@ import * as userQueries from './queries/userQueries';
 import * as bankQueries from './queries/bankQueries';
 import * as ratingQueries from './queries/ratingQueries';
 
-function getQuery(offerId, userId, mark, isFirst, transaction) {
+function getQuery(offerId, userId, mark, isFirst, transaction?) {
   const getCreateQuery = () =>
     ratingQueries.createRating(
       {

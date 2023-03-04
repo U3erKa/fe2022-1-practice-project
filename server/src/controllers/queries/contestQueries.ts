@@ -1,7 +1,7 @@
 import { Contest, Offer } from '../../models';
 import ServerError from '../../errors/ServerError';
 
-export const updateContest = async (data, predicate, transaction) => {
+export const updateContest = async (data, predicate, transaction?) => {
   const [updatedCount, [updatedContest]] = await Contest.update(data, {
     where: predicate,
     returning: true,
@@ -14,7 +14,7 @@ export const updateContest = async (data, predicate, transaction) => {
   }
 };
 
-export const updateContestStatus = async (data, predicate, transaction) => {
+export const updateContestStatus = async (data, predicate, transaction?) => {
   const updateResult = await Contest.update(data, {
     where: predicate,
     returning: true,
@@ -27,7 +27,7 @@ export const updateContestStatus = async (data, predicate, transaction) => {
   }
 };
 
-export const updateOffer = async (data, predicate, transaction) => {
+export const updateOffer = async (data, predicate, transaction?) => {
   const [updatedCount, [updatedOffer]] = await Offer.update(data, {
     where: predicate,
     returning: true,
@@ -40,7 +40,7 @@ export const updateOffer = async (data, predicate, transaction) => {
   }
 };
 
-export const updateOfferStatus = async (data, predicate, transaction) => {
+export const updateOfferStatus = async (data, predicate, transaction?) => {
   const result = await Offer.update(data, {
     where: predicate,
     returning: true,
