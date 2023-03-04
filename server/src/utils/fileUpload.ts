@@ -26,9 +26,6 @@ const storageContestFiles = multer.diskStorage({
 const multerInstance = multer({ storage: storageContestFiles });
 
 export const uploadAvatar = multerInstance.single('file');
-
 export const uploadContestFiles = multerInstance.array('files', 3);
-
 export const updateContestFile = multerInstance.single('file');
-
 export const uploadLogoFiles = multerInstance.single('offerData');
