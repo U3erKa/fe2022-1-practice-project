@@ -1,5 +1,6 @@
 import { Sequelize } from '../models';
 import * as CONSTANTS from '../constants';
+import type { OrderPredicate } from '../types';
 
 export const createWhereForAllContests = ({
   typeIndex,
@@ -7,8 +8,8 @@ export const createWhereForAllContests = ({
   industry,
   awardSort,
 }) => {
-  const where = {};
-  const order = [];
+  const where: { contestType?; id?; industry?; status: string[] } = {} as any;
+  const order: OrderPredicate = [['id', 'desc']];
 
   if (typeIndex) {
     Object.assign(where, { contestType: getPredicateTypes(typeIndex) });
@@ -31,13 +32,12 @@ export const createWhereForAllContests = ({
     },
   });
 
-  order.push(['id', 'desc']);
   return { where, order };
 };
 
 export const createWhereForCustomerContests = ({ status, userId }) => {
   const where = {};
-  const order = [];
+  const order: OrderPredicate = [['id', 'desc']];
 
   if (status) {
     Object.assign(where, { status });
@@ -45,7 +45,6 @@ export const createWhereForCustomerContests = ({ status, userId }) => {
   if (userId) {
     Object.assign(where, { userId });
   }
-  order.push(['id', 'desc']);
 
   return { where, order };
 };
