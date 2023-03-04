@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class TokenExpirationError extends ApplicationError {
-  constructor(message) {
-    super(message || 'token expired', 419);
+  constructor(public message = 'Token expired') {
+    super(message, 419);
   }
 }
 

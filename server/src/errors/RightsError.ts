@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class RightsError extends ApplicationError {
-  constructor(message) {
-    super(message || 'not enough rights', 423);
+  constructor(public message = 'Not enough rights') {
+    super(message, 423);
   }
 }
 

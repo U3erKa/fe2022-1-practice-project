@@ -1,10 +1,11 @@
 class ApplicationError extends Error {
-  constructor(message, status) {
+  constructor(
+    public message = 'Something went wrong. Please try again',
+    public code = 500,
+  ) {
     super();
     Error.captureStackTrace(this, this.constructor);
     this.name = this.constructor.name;
-    this.message = message || 'Something went wrong. Please try again';
-    this.code = status || 500;
   }
 }
 

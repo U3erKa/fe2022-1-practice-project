@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class DevAlreadyExistError extends ApplicationError {
-  constructor(message) {
-    super(message || 'Dev with this login already exist', 406);
+  constructor(public message = 'Dev with this login already exists') {
+    super(message, 406);
   }
 }
 

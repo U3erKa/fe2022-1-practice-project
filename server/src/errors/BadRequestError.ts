@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class BadRequestError extends ApplicationError {
-  constructor(message) {
-    super(message || 'bad request', 400);
+  constructor(public message = 'Bad request') {
+    super(message, 400);
   }
 }
 

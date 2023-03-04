@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class NotEnoughMoney extends ApplicationError {
-  constructor(message) {
-    super(message || 'Not enough money', 417);
+  constructor(public message = 'Not enough money') {
+    super(message, 417);
   }
 }
 
