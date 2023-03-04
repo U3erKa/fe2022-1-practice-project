@@ -3,9 +3,12 @@ import {
   SOCKET_SUBSCRIBE,
   SOCKET_UNSUBSCRIBE,
 } from '../../constants';
+import type { Server, Socket } from 'socket.io';
 
 class WebSocket {
-  connect(namespace, io) {
+  // @ts-expect-error
+  io: ReturnType<Server['of']>;
+  connect(namespace, io: Server) {
     this.io = io.of(namespace);
     this.listen();
   }
@@ -18,15 +21,15 @@ class WebSocket {
     });
   }
 
-  anotherSubscribes(socket) {}
+  anotherSubscribes(socket: Socket) {}
 
-  onSubscribe(socket) {
+  onSubscribe(socket: Socket) {
     socket.on(SOCKET_SUBSCRIBE, (id) => {
       socket.join(id);
     });
   }
 
-  onUnsubscribe(socket) {
+  onUnsubscribe(socket: Socket) {
     socket.on(SOCKET_UNSUBSCRIBE, (id) => {
       socket.leave(id);
     });

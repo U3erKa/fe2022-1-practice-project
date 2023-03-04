@@ -1,30 +1,35 @@
 import WebSocket from './WebSocket';
 import { NEW_MESSAGE, CHANGE_BLOCK_STATUS } from '../../constants';
+import type { Socket } from 'socket.io';
 
 class ChatController extends WebSocket {
-  anotherSubscribes(socket) {
+  anotherSubscribes(socket: Socket) {
     this.onSubscribeChat(socket);
     this.onUnsubscribeChat(socket);
   }
 
-  onSubscribeChat(socket) {
+  onSubscribeChat(socket: Socket) {
     socket.on('subscribeChat', (id) => {
       socket.join(id);
     });
   }
 
-  onUnsubscribeChat(socket) {
+  onUnsubscribeChat(socket: Socket) {
     socket.on('unsubscribeChat', (id) => {
       socket.join(id);
     });
   }
 
-  emitNewMessage(target, message) {
-    this.io.to(parseInt(target)).emit(NEW_MESSAGE, { message });
+  emitNewMessage(target: string, message: string) {
+    this.io
+      .to(parseInt(target) as unknown as string)
+      .emit(NEW_MESSAGE, { message });
   }
 
-  emitChangeBlockStatus(target, message) {
-    this.io.to(parseInt(target)).emit(CHANGE_BLOCK_STATUS, { message });
+  emitChangeBlockStatus(target: string, message: string) {
+    this.io
+      .to(parseInt(target) as unknown as string)
+      .emit(CHANGE_BLOCK_STATUS, { message });
   }
 }
 
