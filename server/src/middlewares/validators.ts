@@ -1,7 +1,13 @@
 import * as schems from '../validationSchemes/schems';
 import BadRequestError from '../errors/BadRequestError';
 
-export const validateRegistrationData = async (req, res, next) => {
+import type { RequestHandler } from 'express';
+
+export const validateRegistrationData: RequestHandler = async (
+  req,
+  res,
+  next,
+) => {
   const validationResult = await schems.registrationSchem.isValid(req.body);
   if (!validationResult) {
     return next(new BadRequestError('Invalid data for registration'));
@@ -10,7 +16,7 @@ export const validateRegistrationData = async (req, res, next) => {
   }
 };
 
-export const validateLogin = async (req, res, next) => {
+export const validateLogin: RequestHandler = async (req, res, next) => {
   const validationResult = await schems.loginSchem.isValid(req.body);
   if (validationResult) {
     next();
@@ -19,7 +25,7 @@ export const validateLogin = async (req, res, next) => {
   }
 };
 
-export const validateContestCreation = (req, res, next) => {
+export const validateContestCreation: RequestHandler = (req, res, next) => {
   const promiseArray = [];
   req.body.contests.forEach((el) => {
     promiseArray.push(schems.contestSchem.isValid(el));

@@ -1,3 +1,11 @@
+import { TokenData } from './user';
+
+declare global {
+  namespace Express {
+    interface Request extends RefreshTokenInstance, WithTokenData {}
+  }
+}
+
 export type WithId<T extends Id = Id, K extends string = 'id'> = {
   [key in K]: T;
 };
@@ -7,3 +15,6 @@ export type Id = string | number;
 export type _Id = string;
 
 export type UserId = Id;
+
+export type RefreshTokenInstance = { refreshTokenInstance };
+export type WithTokenData = { tokenData: TokenData };

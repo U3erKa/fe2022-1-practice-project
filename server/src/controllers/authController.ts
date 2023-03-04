@@ -2,7 +2,9 @@ import * as AuthService from '../services/authService';
 import { User } from '../models';
 import UserNotFoundError from '../errors/UserNotFoundError';
 
-export const login = async (req, res, next) => {
+import type { RequestHandler } from 'express';
+
+export const login: RequestHandler = async (req, res, next) => {
   try {
     const {
       body: { email, password },
@@ -22,7 +24,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-export const registration = async (req, res, next) => {
+export const registration: RequestHandler = async (req, res, next) => {
   try {
     const { body } = req;
 
@@ -36,7 +38,7 @@ export const registration = async (req, res, next) => {
   }
 };
 
-export const refresh = async (req, res, next) => {
+export const refresh: RequestHandler = async (req, res, next) => {
   try {
     const { refreshTokenInstance } = req;
 
