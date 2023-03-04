@@ -3,7 +3,9 @@ import RightsError from '../errors/RightsError';
 import ServerError from '../errors/ServerError';
 import * as CONSTANTS from '../constants';
 
-export const parseBody = (req, res, next) => {
+import type { RequestHandler } from 'express';
+
+export const parseBody: RequestHandler = (req, res, next) => {
   req.body.contests = JSON.parse(req.body.contests);
   for (let i = 0; i < req.body.contests.length; i++) {
     if (req.body.contests[i].haveFile) {
@@ -15,12 +17,7 @@ export const parseBody = (req, res, next) => {
   next();
 };
 
-/** @type {import('express').RequestHandler} */
-export const canGetContest = async (
-  /** @type {import('express').Request & {tokenData: any}} */ req,
-  res,
-  next,
-) => {
+export const canGetContest: RequestHandler = async (req, res, next) => {
   const {
     tokenData,
     params: { contestId },
@@ -51,7 +48,7 @@ export const canGetContest = async (
   }
 };
 
-export const onlyForCreative = (req, res, next) => {
+export const onlyForCreative: RequestHandler = (req, res, next) => {
   if (req.tokenData.role === CONSTANTS.CUSTOMER) {
     next(new RightsError());
   } else {
@@ -59,7 +56,7 @@ export const onlyForCreative = (req, res, next) => {
   }
 };
 
-export const onlyForCustomer = (req, res, next) => {
+export const onlyForCustomer: RequestHandler = (req, res, next) => {
   if (req.tokenData.role === CONSTANTS.CREATOR) {
     return next(new RightsError('this page only for customers'));
   } else {
@@ -67,7 +64,7 @@ export const onlyForCustomer = (req, res, next) => {
   }
 };
 
-export const canSendOffer = async (req, res, next) => {
+export const canSendOffer: RequestHandler = async (req, res, next) => {
   if (req.tokenData.role === CONSTANTS.CUSTOMER) {
     return next(new RightsError());
   }
@@ -90,7 +87,11 @@ export const canSendOffer = async (req, res, next) => {
   }
 };
 
-export const onlyForCustomerWhoCreateContest = async (req, res, next) => {
+export const onlyForCustomerWhoCreateContest: RequestHandler = async (
+  req,
+  res,
+  next,
+) => {
   try {
     const result = await Contest.findOne({
       where: {
@@ -108,7 +109,7 @@ export const onlyForCustomerWhoCreateContest = async (req, res, next) => {
   }
 };
 
-export const canUpdateContest = async (req, res, next) => {
+export const canUpdateContest: RequestHandler = async (req, res, next) => {
   try {
     const result = Contest.findOne({
       where: {

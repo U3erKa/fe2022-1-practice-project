@@ -15,7 +15,9 @@ import * as controller from '../socketInit';
 import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
 
-export const dataForContest = async (req, res, next) => {
+import type { RequestHandler } from 'express';
+
+export const dataForContest: RequestHandler = async (req, res, next) => {
   const response = {};
   try {
     const {
@@ -113,7 +115,7 @@ export const getContestById = async (
   }
 };
 
-export const downloadFile = async (req, res, next) => {
+export const downloadFile: RequestHandler = async (req, res, next) => {
   const file = CONSTANTS.CONTESTS_DEFAULT_DIR + req.params.fileName;
   res.download(file);
 };
@@ -146,7 +148,7 @@ export const updateContest = async (
   }
 };
 
-export const setNewOffer = async (req, res, next) => {
+export const setNewOffer: RequestHandler = async (req, res, next) => {
   const obj = {};
   if (req.body.contestType === CONSTANTS.LOGO_CONTEST) {
     obj.fileName = req.file.filename;
@@ -250,7 +252,7 @@ const resolveOffer = async (
   return updatedOffers[0].dataValues;
 };
 
-export const setOfferStatus = async (req, res, next) => {
+export const setOfferStatus: RequestHandler = async (req, res, next) => {
   let transaction;
   if (req.body.command === 'reject') {
     try {

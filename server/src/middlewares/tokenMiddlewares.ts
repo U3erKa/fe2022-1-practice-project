@@ -2,7 +2,9 @@ import * as JWTService from '../services/jwtService';
 import { RefreshToken } from '../models';
 import TokenError from '../errors/TokenError';
 
-export const checkAccessToken = async (req, res, next) => {
+import type { RequestHandler } from 'express';
+
+export const checkAccessToken: RequestHandler = async (req, res, next) => {
   try {
     const {
       headers: { authorization },
@@ -22,7 +24,7 @@ export const checkAccessToken = async (req, res, next) => {
   }
 };
 
-export const checkRefreshToken = async (req, res, next) => {
+export const checkRefreshToken: RequestHandler = async (req, res, next) => {
   try {
     const {
       body: { refreshToken },
