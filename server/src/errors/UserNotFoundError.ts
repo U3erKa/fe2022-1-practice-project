@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class UserNotFoundError extends ApplicationError {
-  constructor(message) {
-    super(message || 'user with email not found', 404);
+  constructor(public message = 'User with email was not found') {
+    super(message, 404);
   }
 }
 

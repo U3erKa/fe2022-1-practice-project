@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class NotUniqueEmail extends ApplicationError {
-  constructor(message) {
-    super(message || 'this email were already exist', 409);
+  constructor(public message = 'This email already exists') {
+    super(message, 409);
   }
 }
 

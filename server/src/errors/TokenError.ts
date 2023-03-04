@@ -1,8 +1,8 @@
 import ApplicationError from './ApplicationError';
 
 class TokenError extends ApplicationError {
-  constructor(message) {
-    super(message || 'invalid token', 401);
+  constructor(public message = 'Invalid token') {
+    super(message, 401);
   }
 }
 
