@@ -1,7 +1,9 @@
 import * as JWTService from './jwtService';
 import { RefreshToken } from '../models';
 
-export const createSession = async (user) => {
+import type { User } from '../types/user';
+
+export const createSession = async (user: User) => {
   const tokenPair = await JWTService.generateTokenPair({
     firstName: user.firstName,
     userId: user.id,
