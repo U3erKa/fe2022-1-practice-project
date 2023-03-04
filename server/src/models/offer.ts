@@ -1,6 +1,6 @@
 'use strict';
 import { Model } from 'sequelize';
-module.exports = (sequelize, DataTypes) => {
+const Offer = (sequelize, DataTypes) => {
   class Offer extends Model {
     /**
      * Helper method for defining associations.
@@ -56,3 +56,6 @@ module.exports = (sequelize, DataTypes) => {
   );
   return Offer;
 };
+
+// @ts-expect-error
+export = Offer;
