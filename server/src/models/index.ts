@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
+import type { DB } from '../types/models';
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const configPath =
@@ -14,8 +16,9 @@ const configPath =
       )
     : path.join(__dirname, '..', '/config/postgresConfig.json');
 const config = require(configPath)[env];
-const db = {};
+const db: DB = {} as any;
 
+// @ts-expect-error
 const sequelize = new Sequelize(
   config.database,
   config.username,
@@ -51,4 +54,4 @@ db.Sequelize = Sequelize;
 console.log('db is =>>>>>>>>>>');
 console.log(Object.keys(db));
 
-module.exports = db;
+export = db;
