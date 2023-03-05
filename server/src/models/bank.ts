@@ -6,16 +6,7 @@ import type {
 import type { DB } from '../types/models';
 
 const Bank = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
-  class Bank extends Model<
-    InferAttributes<Bank>,
-    InferCreationAttributes<Bank>
-  > {
-    declare cardNumber: string;
-    declare name: string;
-    declare expiry: string;
-    declare cvc: string;
-    declare balance: number;
-
+  class Bank extends _Bank {
     static associate(models: DB) {}
   }
   Bank.init(
@@ -51,5 +42,16 @@ const Bank = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   );
   return Bank;
 };
+
+abstract class _Bank extends Model<
+  InferAttributes<_Bank>,
+  InferCreationAttributes<_Bank>
+> {
+  declare cardNumber: string;
+  declare name: string;
+  declare expiry: string;
+  declare cvc: string;
+  declare balance: number;
+}
 
 export = Bank;

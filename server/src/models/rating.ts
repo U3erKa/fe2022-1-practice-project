@@ -8,37 +8,11 @@ import type {
 import type { DB } from '../types/models';
 
 const Rating = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
-  class Rating extends Model<
-    InferAttributes<Rating>,
-    InferCreationAttributes<Rating>
-  > {
+  class Rating extends _Rating {
     static associate({ User, Offer }: DB) {
       Rating.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
       Rating.belongsTo(Offer, { foreignKey: 'offerId', targetKey: 'id' });
     }
-
-    //#region Model declarations
-    declare mark: number;
-
-    declare offerId: ForeignKey<InstanceType<DB['Offer']>['id']>;
-    declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
-
-    declare user?: NonAttribute<DB['User'][]>;
-    declare offer?: NonAttribute<DB['Offer'][]>;
-
-    declare static associations: {
-      user: Association<DB['Rating'], DB['User']>;
-      offer: Association<DB['Rating'], DB['Offer']>;
-    };
-
-    declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
-    declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-    declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
-
-    declare createOffer: BelongsToCreateAssociationMixin<DB['Offer']>;
-    declare getOffer: BelongsToGetAssociationMixin<DB['Offer']>;
-    declare addOffer: BelongsToSetAssociationMixin<DB['Offer'], number>;
-    //#endregion
   }
   Rating.init(
     {
@@ -70,5 +44,31 @@ const Rating = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   );
   return Rating;
 };
+
+abstract class _Rating extends Model<
+  InferAttributes<_Rating>,
+  InferCreationAttributes<_Rating>
+> {
+  declare mark: number;
+
+  declare offerId: ForeignKey<InstanceType<DB['Offer']>['id']>;
+  declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+
+  declare user?: NonAttribute<DB['User'][]>;
+  declare offer?: NonAttribute<DB['Offer'][]>;
+
+  declare static associations: {
+    user: Association<DB['Rating'], DB['User']>;
+    offer: Association<DB['Rating'], DB['Offer']>;
+  };
+
+  declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
+  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+
+  declare createOffer: BelongsToCreateAssociationMixin<DB['Offer']>;
+  declare getOffer: BelongsToGetAssociationMixin<DB['Offer']>;
+  declare addOffer: BelongsToSetAssociationMixin<DB['Offer'], number>;
+}
 
 export = Rating;

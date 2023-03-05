@@ -11,32 +11,10 @@ const RefreshToken = (
   sequelize: DB['sequelize'],
   DataTypes: typeof _DataTypes,
 ) => {
-  class RefreshToken extends Model<
-    InferAttributes<RefreshToken>,
-    InferCreationAttributes<RefreshToken>
-  > {
+  class RefreshToken extends _RefreshToken {
     static associate({ User }: DB) {
       RefreshToken.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
     }
-
-    //#region Model declarations
-    declare token: string;
-
-    declare id: CreationOptional<number>;
-    declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
-    declare createdAt: CreationOptional<Date>;
-    declare updatedAt: CreationOptional<Date>;
-
-    declare user?: NonAttribute<DB['User'][]>;
-
-    declare static associations: {
-      user: Association<DB['RefreshToken'], DB['User']>;
-    };
-
-    declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
-    declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-    declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
-    //#endregion
   }
   RefreshToken.init(
     // @ts-expect-error
@@ -57,5 +35,27 @@ const RefreshToken = (
   );
   return RefreshToken;
 };
+
+abstract class _RefreshToken extends Model<
+  InferAttributes<_RefreshToken>,
+  InferCreationAttributes<_RefreshToken>
+> {
+  declare token: string;
+
+  declare id: CreationOptional<number>;
+  declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+  declare createdAt: CreationOptional<Date>;
+  declare updatedAt: CreationOptional<Date>;
+
+  declare user?: NonAttribute<DB['User'][]>;
+
+  declare static associations: {
+    user: Association<DB['RefreshToken'], DB['User']>;
+  };
+
+  declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
+  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+}
 
 export = RefreshToken;
