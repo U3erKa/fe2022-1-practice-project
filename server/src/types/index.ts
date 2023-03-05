@@ -1,4 +1,5 @@
-import { TokenData } from './user';
+import type { RefreshToken, User } from './models';
+import type { TokenData } from './user';
 
 declare global {
   namespace Express {
@@ -14,9 +15,9 @@ export type Id = string | number;
 /** MongoDB's `_id` parameter */
 export type _Id = string;
 
-export type UserId = Id;
+export type UserId = User['id'];
 
 export type OrderPredicate = [string, 'asc' | 'desc' | 'ASC' | 'DESC'][];
 
-export type RefreshTokenInstance = { refreshTokenInstance };
+export type RefreshTokenInstance = { refreshTokenInstance: RefreshToken };
 export type WithTokenData = { tokenData: TokenData };
