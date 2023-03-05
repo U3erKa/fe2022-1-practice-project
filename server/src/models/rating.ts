@@ -17,10 +17,7 @@ const Rating = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
 
     static associate({ User, Offer }: DB) {
       Rating.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
-      Rating.belongsTo(Offer, {
-        foreignKey: 'offerId',
-        targetKey: 'id',
-      });
+      Rating.belongsTo(Offer, { foreignKey: 'offerId', targetKey: 'id' });
     }
   }
   Rating.init(

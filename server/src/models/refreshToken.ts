@@ -21,7 +21,7 @@ const RefreshToken = (
     declare updatedAt: CreationOptional<Date>;
 
     static associate({ User }: DB) {
-      RefreshToken.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
+      RefreshToken.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
     }
   }
   RefreshToken.init(

@@ -11,17 +11,17 @@ const Contest = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     InferCreationAttributes<Contest>
   > {
     declare contestType: 'name' | 'tagline' | 'logo';
-    declare fileName?: string;
-    declare originalFileName?: string;
-    declare title?: string;
-    declare typeOfName?: string;
-    declare industry?: string;
-    declare focusOfWork?: string;
-    declare targetCustomer?: string;
-    declare styleName?: string;
-    declare nameVenture?: string;
-    declare typeOfTagline?: string;
-    declare brandStyle?: string;
+    declare fileName?: CreationOptional<string>;
+    declare originalFileName?: CreationOptional<string>;
+    declare title?: CreationOptional<string>;
+    declare typeOfName?: CreationOptional<string>;
+    declare industry?: CreationOptional<string>;
+    declare focusOfWork?: CreationOptional<string>;
+    declare targetCustomer?: CreationOptional<string>;
+    declare styleName?: CreationOptional<string>;
+    declare nameVenture?: CreationOptional<string>;
+    declare typeOfTagline?: CreationOptional<string>;
+    declare brandStyle?: CreationOptional<string>;
     declare status: string;
     declare prize: number;
     declare priority: number;
@@ -32,8 +32,8 @@ const Contest = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     declare createdAt: CreationOptional<Date>;
 
     static associate({ User, Offer }: DB) {
-      Contest.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
-      Contest.hasMany(Offer, { foreignKey: 'contestId', targetKey: 'id' });
+      Contest.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
+      Contest.hasMany(Offer, { foreignKey: 'contestId', sourceKey: 'id' });
     }
   }
   Contest.init(

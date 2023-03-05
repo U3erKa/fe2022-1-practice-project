@@ -27,7 +27,7 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     declare avatar: string;
     declare role: 'customer' | 'creator';
     declare balance: number;
-    declare accessToken?: string;
+    declare accessToken?: CreationOptional<string>;
     declare rating: number;
 
     declare id: CreationOptional<number>;
@@ -35,23 +35,11 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     async comparePassword(password) {
       return bcrypt.compare(password, this.password);
     }
-    static associate({ Offer, Contest, Rating, RefreshToken }) {
-      User.hasMany(Offer, {
-        foreignKey: 'userId',
-        targetKey: 'id',
-      });
-      User.hasMany(Contest, {
-        foreignKey: 'userId',
-        targetKey: 'id',
-      });
-      User.hasMany(Rating, {
-        foreignKey: 'userId',
-        targetKey: 'id',
-      });
-      User.hasMany(RefreshToken, {
-        foreignKey: 'userId',
-        targetKey: 'id',
-      });
+    static associate({ Offer, Contest, Rating, RefreshToken }: DB) {
+      User.hasMany(Offer, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(Contest, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(Rating, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(RefreshToken, { foreignKey: 'userId', sourceKey: 'id' });
     }
   }
   User.init(

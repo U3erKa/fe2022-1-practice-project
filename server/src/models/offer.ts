@@ -10,19 +10,19 @@ const Offer = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     InferAttributes<Offer>,
     InferCreationAttributes<Offer>
   > {
-    declare text?: string;
-    declare fileName?: string;
-    declare originalFileName?: string;
-    declare status?: string;
+    declare text?: CreationOptional<string>;
+    declare fileName?: CreationOptional<string>;
+    declare originalFileName?: CreationOptional<string>;
+    declare status?: CreationOptional<string>;
 
     declare id: CreationOptional<number>;
     declare userId: number;
     declare contestId: number;
 
     static associate({ User, Contest, Rating }: DB) {
-      Offer.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
-      Offer.belongsTo(Contest, { foreignKey: 'contestId', sourceKey: 'id' });
-      Offer.hasOne(Rating, { foreignKey: 'offerId', targetKey: 'id' });
+      Offer.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
+      Offer.belongsTo(Contest, { foreignKey: 'contestId', targetKey: 'id' });
+      Offer.hasOne(Rating, { foreignKey: 'offerId', sourceKey: 'id' });
     }
   }
   Offer.init(
