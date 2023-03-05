@@ -10,7 +10,7 @@ import type {
   HasManyHasAssociationMixin, HasManyHasAssociationsMixin,
   HasManyCountAssociationsMixin, HasManyCreateAssociationMixin,
 } from 'sequelize';
-import type { DB } from '../types/models';
+import type { DB, User } from '../types/models';
 
 const Contest = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   class Contest extends _Contest {
@@ -135,7 +135,7 @@ abstract class _Contest extends Model<
 
   declare id: CreationOptional<number>;
   declare orderId: string;
-  declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+  declare userId: ForeignKey<User['id']>;
   declare createdAt: CreationOptional<Date>;
 
   declare user?: NonAttribute<DB['User'][]>;

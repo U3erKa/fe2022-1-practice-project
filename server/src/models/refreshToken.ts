@@ -5,7 +5,7 @@ import type {
   NonAttribute, ForeignKey, Association,
   BelongsToCreateAssociationMixin, BelongsToGetAssociationMixin, BelongsToSetAssociationMixin,
 } from 'sequelize';
-import type { DB } from '../types/models';
+import type { DB, User } from '../types/models';
 
 const RefreshToken = (
   sequelize: DB['sequelize'],
@@ -43,7 +43,7 @@ abstract class _RefreshToken extends Model<
   declare token: string;
 
   declare id: CreationOptional<number>;
-  declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+  declare userId: ForeignKey<User['id']>;
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
 

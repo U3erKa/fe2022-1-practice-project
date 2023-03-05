@@ -11,9 +11,9 @@ import type {
   HasManyHasAssociationMixin, HasManyHasAssociationsMixin,
   HasManyCountAssociationsMixin, HasManyCreateAssociationMixin,
 } from 'sequelize';
-import type { DB } from '../types/models';
+import type { DB, User } from '../types/models';
 
-const hashPassword = async (user: InstanceType<DB['User']>) => {
+const hashPassword = async (user: User) => {
   if (user.changed('password')) {
     const passwordHash = await bcrypt.hash(user.password, SALT_ROUNDS);
     user.password = passwordHash;

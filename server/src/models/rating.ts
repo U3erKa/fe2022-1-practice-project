@@ -5,7 +5,7 @@ import type {
   NonAttribute, ForeignKey, Association,
   BelongsToCreateAssociationMixin, BelongsToGetAssociationMixin, BelongsToSetAssociationMixin,
 } from 'sequelize';
-import type { DB } from '../types/models';
+import type { DB, Offer, User } from '../types/models';
 
 const Rating = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   class Rating extends _Rating {
@@ -51,8 +51,8 @@ abstract class _Rating extends Model<
 > {
   declare mark: number;
 
-  declare offerId: ForeignKey<InstanceType<DB['Offer']>['id']>;
-  declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+  declare offerId: ForeignKey<Offer['id']>;
+  declare userId: ForeignKey<User['id']>;
 
   declare user?: NonAttribute<DB['User'][]>;
   declare offer?: NonAttribute<DB['Offer'][]>;
