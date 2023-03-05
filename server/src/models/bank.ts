@@ -1,7 +1,7 @@
 import { Model } from 'sequelize';
 // prettier-ignore
 import type { 
-  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
 } from 'sequelize';
 import type { DB } from '../types/models';
 
