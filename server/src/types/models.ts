@@ -1,4 +1,5 @@
 import type Sequelize from 'sequelize';
+import type { Model } from 'sequelize';
 import type Bank from '../models/bank';
 import type Contest from '../models/contest';
 import type Offer from '../models/offer';
@@ -10,11 +11,11 @@ import type User from '../models/user';
 export type DB = {
   sequelize: InstanceType<(typeof Sequelize)['Sequelize']>;
   Sequelize: typeof Sequelize;
-  Bank: ReturnType<typeof Bank>;
-  Contest: ReturnType<typeof Contest>;
-  Offer: ReturnType<typeof Offer>;
-  Rating: ReturnType<typeof Rating>;
-  RefreshToken: ReturnType<typeof RefreshToken>;
-  Select: ReturnType<typeof Select>;
-  User: ReturnType<typeof User>;
+  Bank: ReturnType<typeof Bank> & Model;
+  Contest: ReturnType<typeof Contest> & Model;
+  Offer: ReturnType<typeof Offer> & Model;
+  Rating: ReturnType<typeof Rating> & Model;
+  RefreshToken: ReturnType<typeof RefreshToken> & Model;
+  Select: ReturnType<typeof Select> & Model;
+  User: ReturnType<typeof User> & Model;
 };
