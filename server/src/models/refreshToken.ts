@@ -2,6 +2,8 @@ import { Model } from 'sequelize';
 // prettier-ignore
 import type { 
   DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+  NonAttribute, ForeignKey, Association,
+  BelongsToCreateAssociationMixin, BelongsToGetAssociationMixin, BelongsToSetAssociationMixin,
 } from 'sequelize';
 import type { DB } from '../types/models';
 
@@ -13,16 +15,28 @@ const RefreshToken = (
     InferAttributes<RefreshToken>,
     InferCreationAttributes<RefreshToken>
   > {
-    declare token: string;
-
-    declare id: CreationOptional<number>;
-    declare userId: number;
-    declare createdAt: CreationOptional<Date>;
-    declare updatedAt: CreationOptional<Date>;
-
     static associate({ User }: DB) {
       RefreshToken.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
     }
+
+    //#region Model declarations
+    declare token: string;
+
+    declare id: CreationOptional<number>;
+    declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+    declare createdAt: CreationOptional<Date>;
+    declare updatedAt: CreationOptional<Date>;
+
+    declare user?: NonAttribute<DB['User'][]>;
+
+    declare static associations: {
+      user: Association<DB['RefreshToken'], DB['User']>;
+    };
+
+    declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+    declare getUser: BelongsToGetAssociationMixin<DB['User']>;
+    declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+    //#endregion
   }
   RefreshToken.init(
     // @ts-expect-error
