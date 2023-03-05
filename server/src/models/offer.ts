@@ -9,48 +9,12 @@ import type {
 import type { DB } from '../types/models';
 
 const Offer = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
-  class Offer extends Model<
-    InferAttributes<Offer>,
-    InferCreationAttributes<Offer>
-  > {
+  class Offer extends _Offer {
     static associate({ User, Contest, Rating }: DB) {
       Offer.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
       Offer.belongsTo(Contest, { foreignKey: 'contestId', targetKey: 'id' });
       Offer.hasOne(Rating, { foreignKey: 'offerId', sourceKey: 'id' });
     }
-
-    //#region Model declarations
-    declare text?: CreationOptional<string>;
-    declare fileName?: CreationOptional<string>;
-    declare originalFileName?: CreationOptional<string>;
-    declare status?: CreationOptional<string>;
-
-    declare id: CreationOptional<number>;
-    declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
-    declare contestId: ForeignKey<InstanceType<DB['Contest']>['id']>;
-
-    declare user?: NonAttribute<DB['User'][]>;
-    declare contest?: NonAttribute<DB['Contest'][]>;
-    declare rating?: NonAttribute<DB['Rating'][]>;
-
-    declare static associations: {
-      user: Association<DB['Offer'], DB['User']>;
-      contest: Association<DB['Offer'], DB['Contest']>;
-      rating: Association<DB['Offer'], DB['Rating']>;
-    };
-
-    declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
-    declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-    declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
-
-    declare createContest: BelongsToCreateAssociationMixin<DB['Contest']>;
-    declare getContest: BelongsToGetAssociationMixin<DB['Contest']>;
-    declare addContest: BelongsToSetAssociationMixin<DB['Contest'], number>;
-
-    declare createRating: HasOneCreateAssociationMixin<DB['Rating']>;
-    declare getRating: HasOneGetAssociationMixin<DB['Rating']>;
-    declare addRating: HasOneSetAssociationMixin<DB['Rating'], number>;
-    //#endregion
   }
   Offer.init(
     {
@@ -94,5 +58,41 @@ const Offer = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   );
   return Offer;
 };
+
+abstract class _Offer extends Model<
+  InferAttributes<_Offer>,
+  InferCreationAttributes<_Offer>
+> {
+  declare text?: CreationOptional<string>;
+  declare fileName?: CreationOptional<string>;
+  declare originalFileName?: CreationOptional<string>;
+  declare status?: CreationOptional<string>;
+
+  declare id: CreationOptional<number>;
+  declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
+  declare contestId: ForeignKey<InstanceType<DB['Contest']>['id']>;
+
+  declare user?: NonAttribute<DB['User'][]>;
+  declare contest?: NonAttribute<DB['Contest'][]>;
+  declare rating?: NonAttribute<DB['Rating'][]>;
+
+  declare static associations: {
+    user: Association<DB['Offer'], DB['User']>;
+    contest: Association<DB['Offer'], DB['Contest']>;
+    rating: Association<DB['Offer'], DB['Rating']>;
+  };
+
+  declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
+  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+
+  declare createContest: BelongsToCreateAssociationMixin<DB['Contest']>;
+  declare getContest: BelongsToGetAssociationMixin<DB['Contest']>;
+  declare addContest: BelongsToSetAssociationMixin<DB['Contest'], number>;
+
+  declare createRating: HasOneCreateAssociationMixin<DB['Rating']>;
+  declare getRating: HasOneGetAssociationMixin<DB['Rating']>;
+  declare addRating: HasOneSetAssociationMixin<DB['Rating'], number>;
+}
 
 export = Offer;

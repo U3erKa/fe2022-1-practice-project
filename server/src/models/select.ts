@@ -6,13 +6,7 @@ import type {
 import type { DB } from '../types/models';
 
 const Select = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
-  class Select extends Model<
-    InferAttributes<Select>,
-    InferCreationAttributes<Select>
-  > {
-    declare type: string;
-    declare describe: string;
-
+  class Select extends _Select {
     static associate(models: DB) {}
   }
   Select.init(
@@ -36,5 +30,13 @@ const Select = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   );
   return Select;
 };
+
+class _Select extends Model<
+  InferAttributes<_Select>,
+  InferCreationAttributes<_Select>
+> {
+  declare type: string;
+  declare describe: string;
+}
 
 export = Select;
