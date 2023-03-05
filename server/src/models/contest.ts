@@ -2,6 +2,13 @@ import { Model } from 'sequelize';
 // prettier-ignore
 import type { 
   DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
+  NonAttribute, ForeignKey, Association,
+  BelongsToCreateAssociationMixin, BelongsToGetAssociationMixin, BelongsToSetAssociationMixin,
+  HasManyGetAssociationsMixin, HasManyAddAssociationMixin,
+  HasManyAddAssociationsMixin, HasManySetAssociationsMixin,
+  HasManyRemoveAssociationMixin, HasManyRemoveAssociationsMixin,
+  HasManyHasAssociationMixin, HasManyHasAssociationsMixin,
+  HasManyCountAssociationsMixin, HasManyCreateAssociationMixin,
 } from 'sequelize';
 import type { DB } from '../types/models';
 
@@ -10,6 +17,12 @@ const Contest = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     InferAttributes<Contest>,
     InferCreationAttributes<Contest>
   > {
+    static associate({ User, Offer }: DB) {
+      Contest.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
+      Contest.hasMany(Offer, { foreignKey: 'contestId', sourceKey: 'id' });
+    }
+
+    //#region Model declarations
     declare contestType: 'name' | 'tagline' | 'logo';
     declare fileName?: CreationOptional<string>;
     declare originalFileName?: CreationOptional<string>;
@@ -28,13 +41,35 @@ const Contest = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
 
     declare id: CreationOptional<number>;
     declare orderId: string;
-    declare userId: number;
+    declare userId: ForeignKey<InstanceType<DB['User']>['id']>;
     declare createdAt: CreationOptional<Date>;
 
-    static associate({ User, Offer }: DB) {
-      Contest.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
-      Contest.hasMany(Offer, { foreignKey: 'contestId', sourceKey: 'id' });
-    }
+    declare user?: NonAttribute<DB['User'][]>;
+    declare offers?: NonAttribute<DB['Offer'][]>;
+
+    declare static associations: {
+      user: Association<DB['Contest'], DB['User']>;
+      offers: Association<DB['Contest'], DB['Offer']>;
+    };
+
+    declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+    declare getUser: BelongsToGetAssociationMixin<DB['User']>;
+    declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+
+    declare getOffers: HasManyGetAssociationsMixin<DB['Offer']>;
+    declare addOffer: HasManyAddAssociationMixin<DB['Offer'], number>;
+    declare addOffers: HasManyAddAssociationsMixin<DB['Offer'], number>;
+    declare setOffers: HasManySetAssociationsMixin<DB['Offer'], number>;
+    declare removeOffer: HasManyRemoveAssociationMixin<DB['Offer'], number>;
+    declare removeOffers: HasManyRemoveAssociationsMixin<DB['Offer'], number>;
+    declare hasOffer: HasManyHasAssociationMixin<DB['Offer'], number>;
+    declare hasOffers: HasManyHasAssociationsMixin<DB['Offer'], number>;
+    declare countOffers: HasManyCountAssociationsMixin;
+    declare createOffer: HasManyCreateAssociationMixin<
+      DB['Offer'],
+      'contestId'
+    >;
+    //#endregion
   }
   Contest.init(
     {
