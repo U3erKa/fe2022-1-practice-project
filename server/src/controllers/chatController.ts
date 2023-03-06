@@ -7,6 +7,10 @@ import * as controller from '../socketInit';
 import _ from 'lodash';
 
 import type { RequestHandler } from 'express';
+import type {
+  Conversation as _Conversation,
+  ConversationSchema,
+} from '../types/models';
 
 export const addMessage: RequestHandler = async (req, res, next) => {
   const participants = [req.tokenData.userId, req.body.recipient];
@@ -32,6 +36,7 @@ export const addMessage: RequestHandler = async (req, res, next) => {
       conversation: newConversation._id,
     });
     await message.save();
+    // @ts-expect-error
     message._doc.participants = participants;
     const interlocutorId = participants.filter(
       (participant) => participant !== req.tokenData.userId,
@@ -162,8 +167,8 @@ export const getPreview: RequestHandler = async (req, res, next) => {
         },
       },
     ]);
-    const interlocutors: unknown[] = [];
-    conversations.forEach((conversation) => {
+    const interlocutors: Partial<ConversationSchema['participants']> = [];
+    conversations.forEach((conversation: _Conversation) => {
       interlocutors.push(
         conversation.participants.find(
           (participant) => participant !== tokenData.userId,
@@ -171,6 +176,7 @@ export const getPreview: RequestHandler = async (req, res, next) => {
       );
     });
     const senders = await User.findAll({
+      // @ts-ignore
       where: {
         id: interlocutors,
       },
