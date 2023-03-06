@@ -77,20 +77,20 @@ abstract class _Offer extends Model<
   declare rating?: NonAttribute<DB['Rating'][]>;
 
   declare static associations: {
-    user: Association<DB['Offer'], DB['User']>;
-    contest: Association<DB['Offer'], DB['Contest']>;
-    rating: Association<DB['Offer'], DB['Rating']>;
+    user: Association<DB['Offer'] & Model, DB['User'] & Model>;
+    contest: Association<DB['Offer'] & Model, DB['Contest'] & Model>;
+    rating: Association<DB['Offer'] & Model, DB['Rating'] & Model>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
   declare getUser: BelongsToGetAssociationMixin<DB['User']>;
   declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
 
-  declare createContest: BelongsToCreateAssociationMixin<DB['Contest']>;
+  declare createContest: BelongsToCreateAssociationMixin<DB['Contest'] & Model>;
   declare getContest: BelongsToGetAssociationMixin<DB['Contest']>;
   declare addContest: BelongsToSetAssociationMixin<DB['Contest'], number>;
 
-  declare createRating: HasOneCreateAssociationMixin<DB['Rating']>;
+  declare createRating: HasOneCreateAssociationMixin<DB['Rating'] & Model>;
   declare getRating: HasOneGetAssociationMixin<DB['Rating']>;
   declare addRating: HasOneSetAssociationMixin<DB['Rating'], number>;
 }

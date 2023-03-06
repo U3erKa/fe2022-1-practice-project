@@ -50,10 +50,10 @@ abstract class _RefreshToken extends Model<
   declare user?: NonAttribute<DB['User'][]>;
 
   declare static associations: {
-    user: Association<DB['RefreshToken'], DB['User']>;
+    user: Association<DB['RefreshToken'] & Model, DB['User'] & Model>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
   declare getUser: BelongsToGetAssociationMixin<DB['User']>;
   declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
 }

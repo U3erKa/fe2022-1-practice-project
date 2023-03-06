@@ -124,10 +124,10 @@ abstract class _User extends Model<
   declare refreshTokens?: NonAttribute<DB['RefreshToken'][]>;
 
   declare static associations: {
-    offers: Association<DB['User'], DB['Offer']>;
-    contests: Association<DB['User'], DB['Contest']>;
-    ratings: Association<DB['User'], DB['Rating']>;
-    refreshTokens: Association<DB['User'], DB['RefreshToken']>;
+    offers: Association<DB['User'] & Model, DB['Offer'] & Model>;
+    contests: Association<DB['User'] & Model, DB['Contest'] & Model>;
+    ratings: Association<DB['User'] & Model, DB['Rating'] & Model>;
+    refreshTokens: Association<DB['User'] & Model, DB['RefreshToken'] & Model>;
   };
 
   declare getOffers: HasManyGetAssociationsMixin<DB['Offer']>;
@@ -139,7 +139,10 @@ abstract class _User extends Model<
   declare hasOffer: HasManyHasAssociationMixin<DB['Offer'], number>;
   declare hasOffers: HasManyHasAssociationsMixin<DB['Offer'], number>;
   declare countOffers: HasManyCountAssociationsMixin;
-  declare createOffer: HasManyCreateAssociationMixin<DB['Offer'], 'userId'>;
+  declare createOffer: HasManyCreateAssociationMixin<
+    DB['Offer'] & Model,
+    'userId'
+  >;
 
   declare getContests: HasManyGetAssociationsMixin<DB['Contest']>;
   declare addContest: HasManyAddAssociationMixin<DB['Contest'], number>;
@@ -150,7 +153,10 @@ abstract class _User extends Model<
   declare hasContest: HasManyHasAssociationMixin<DB['Contest'], number>;
   declare hasContests: HasManyHasAssociationsMixin<DB['Contest'], number>;
   declare countContests: HasManyCountAssociationsMixin;
-  declare createContest: HasManyCreateAssociationMixin<DB['Contest'], 'userId'>;
+  declare createContest: HasManyCreateAssociationMixin<
+    DB['Contest'] & Model,
+    'userId'
+  >;
 
   declare getRatings: HasManyGetAssociationsMixin<DB['Rating']>;
   declare addRating: HasManyAddAssociationMixin<DB['Rating'], number>;
@@ -161,7 +167,10 @@ abstract class _User extends Model<
   declare hasRating: HasManyHasAssociationMixin<DB['Rating'], number>;
   declare hasRatings: HasManyHasAssociationsMixin<DB['Rating'], number>;
   declare countRatings: HasManyCountAssociationsMixin;
-  declare createRating: HasManyCreateAssociationMixin<DB['Rating'], 'userId'>;
+  declare createRating: HasManyCreateAssociationMixin<
+    DB['Rating'] & Model,
+    'userId'
+  >;
 
   declare getRefreshTokens: HasManyGetAssociationsMixin<DB['RefreshToken']>;
   declare addRefreshToken: HasManyAddAssociationMixin<
@@ -194,7 +203,7 @@ abstract class _User extends Model<
   >;
   declare countRefreshTokens: HasManyCountAssociationsMixin;
   declare createRefreshToken: HasManyCreateAssociationMixin<
-    DB['RefreshToken'],
+    DB['RefreshToken'] & Model,
     'userId'
   >;
 }
