@@ -467,8 +467,9 @@ const reducers = {
 
   changeShowModeCatalog: (
     state: ChatState,
-    { payload }: PayloadAction<Catalog>,
+    { payload }: PayloadAction<Catalog | void>,
   ) => {
+    // @ts-expect-error
     state.currentCatalog = { ...state.currentCatalog, ...payload };
     state.isShowChatsInCatalog = !state.isShowChatsInCatalog;
     state.isRenameCatalog = false;
@@ -483,9 +484,9 @@ const reducers = {
 
   changeShowAddChatToCatalogMenu: (
     state: ChatState,
-    { payload }: PayloadAction<string>,
+    { payload }: PayloadAction<string | null | undefined>,
   ) => {
-    state.addChatId = payload;
+    state.addChatId = payload ?? null;
     state.isShowCatalogCreation = !state.isShowCatalogCreation;
   },
 
