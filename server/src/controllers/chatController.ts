@@ -1,4 +1,4 @@
-import Conversation from '../models/mongoModels/conversation';
+import Conversation from '../models/mongoModels/Conversation';
 import Message from '../models/mongoModels/Message';
 import Catalog from '../models/mongoModels/Catalog';
 import { User } from '../models';
