@@ -11,13 +11,13 @@ import type _User from '../models/user';
 export type DB = {
   sequelize: InstanceType<(typeof Sequelize)['Sequelize']>;
   Sequelize: typeof Sequelize;
-  Bank: ReturnType<typeof _Bank> & Model;
-  Contest: ReturnType<typeof _Contest> & Model;
-  Offer: ReturnType<typeof _Offer> & Model;
-  Rating: ReturnType<typeof _Rating> & Model;
-  RefreshToken: ReturnType<typeof _RefreshToken> & Model;
-  Select: ReturnType<typeof _Select> & Model;
-  User: ReturnType<typeof _User> & Model;
+  Bank: ReturnType<typeof _Bank>;
+  Contest: ReturnType<typeof _Contest>;
+  Offer: ReturnType<typeof _Offer>;
+  Rating: ReturnType<typeof _Rating>;
+  RefreshToken: ReturnType<typeof _RefreshToken>;
+  Select: ReturnType<typeof _Select>;
+  User: ReturnType<typeof _User>;
 };
 
 export type Bank = InstanceType<DB['Bank']>;

@@ -142,11 +142,11 @@ abstract class _Contest extends Model<
   declare offers?: NonAttribute<DB['Offer'][]>;
 
   declare static associations: {
-    user: Association<DB['Contest'], DB['User']>;
-    offers: Association<DB['Contest'], DB['Offer']>;
+    user: Association<DB['Contest'] & Model, DB['User'] & Model>;
+    offers: Association<DB['Contest'] & Model, DB['Offer'] & Model>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User']>;
+  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
   declare getUser: BelongsToGetAssociationMixin<DB['User']>;
   declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
 
@@ -159,7 +159,10 @@ abstract class _Contest extends Model<
   declare hasOffer: HasManyHasAssociationMixin<DB['Offer'], number>;
   declare hasOffers: HasManyHasAssociationsMixin<DB['Offer'], number>;
   declare countOffers: HasManyCountAssociationsMixin;
-  declare createOffer: HasManyCreateAssociationMixin<DB['Offer'], 'contestId'>;
+  declare createOffer: HasManyCreateAssociationMixin<
+    DB['Offer'] & Model,
+    'contestId'
+  >;
 }
 
 export = Contest;
