@@ -8,14 +8,15 @@ import {
   sequelize,
 } from '../models';
 import ServerError from '../errors/ServerError';
+import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
 import * as contestQueries from './queries/contestQueries';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
-
 import type { RequestHandler } from 'express';
+import type { Offer as _Offer } from '../types/models';
 
 export const dataForContest: RequestHandler = async (req, res, next) => {
   const {
@@ -95,7 +96,12 @@ export const getContestById: RequestHandler = async (req, res, next) => {
       ],
     });
 
+    if (!contests) {
+      return next(new NotFoundError('Contests not found'));
+    }
+
     const contestInfo = contests.get({ plain: true });
+    // @ts-expect-error
     contestInfo.Offers.forEach((offer) => {
       if (offer.Rating) {
         offer.mark = offer.Rating.mark;
@@ -156,7 +162,9 @@ export const setNewOffer: RequestHandler = async (req, res, next) => {
 
   try {
     const result = await contestQueries.createOffer(obj);
+    // @ts-ignore
     delete result.contestId;
+    // @ts-ignore
     delete result.userId;
     controller.getNotificationController().emitEntryCreated(customerId);
     const User = Object.assign({}, tokenData, { id: tokenData.userId });
@@ -338,6 +346,7 @@ export const getContests: RequestHandler = async (req, res, next) => {
     const contests = await Contest.findAll({
       where: predicates!.where,
       order: predicates!.order,
+      // @ts-ignore
       limit,
       offset,
       include: [
@@ -350,14 +359,16 @@ export const getContests: RequestHandler = async (req, res, next) => {
       ],
     });
 
-    const contestsCount = await Contest.count({
+    const contestsCount = (await Contest.count({
       where: predicates!.where,
+      // @ts-expect-error
       order: predicates!.order,
       offset,
-    });
+    })) as unknown as number;
 
     contests.forEach(
       (contest) =>
+        // @ts-expect-error
         (contest.dataValues.count = contest.dataValues.Offers.length),
     );
     const haveMore = contestsCount > +offset + contests.length;

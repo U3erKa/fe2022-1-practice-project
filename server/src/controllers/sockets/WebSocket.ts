@@ -8,7 +8,7 @@ import type { Server, Socket } from 'socket.io';
 class WebSocket {
   // @ts-expect-error
   io: ReturnType<Server['of']>;
-  connect(namespace, io: Server) {
+  connect(namespace: string | RegExp, io: Server) {
     this.io = io.of(namespace);
     this.listen();
   }
