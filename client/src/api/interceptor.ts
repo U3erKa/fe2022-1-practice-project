@@ -6,7 +6,7 @@ const httpClient = axios.create({
   baseURL: BASE_URL,
 });
 
-let accessToken = null;
+let accessToken: string | null = null;
 
 httpClient.interceptors.request.use(
   (config) => {
@@ -32,7 +32,14 @@ httpClient.interceptors.response.use(
   async (err) => {
     const oldRefreshToken = localStorage.getItem(REFRESH_TOKEN);
 
-    if (err.response.status === 419 && oldRefreshToken) {
+    if (!oldRefreshToken) {
+      return Promise.reject(err);
+    }
+    if (err.response.status === 401) {
+      accessToken = null;
+      localStorage.removeItem(REFRESH_TOKEN);
+    }
+    if (err.response.status === 419) {
       const {
         data: {
           tokenPair: { accessToken: newAccessToken, refreshToken },
@@ -48,7 +55,6 @@ httpClient.interceptors.response.use(
 
       return axios.request(err.config);
     }
-    return Promise.reject(err);
   },
 );
 
