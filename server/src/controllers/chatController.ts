@@ -13,7 +13,10 @@ import type {
 } from '../types/models';
 
 export const addMessage: RequestHandler = async (req, res, next) => {
-  const participants = [req.tokenData.userId, req.body.recipient];
+  const participants: [number, number] = [
+    req.tokenData.userId,
+    req.body.recipient,
+  ];
   participants.sort(
     (participant1, participant2) => participant1 - participant2,
   );

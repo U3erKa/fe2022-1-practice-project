@@ -26,13 +26,13 @@ function getQuery(offerId, userId, mark, isFirst, transaction?) {
 export const changeMark: RequestHandler = async (req, res, next) => {
   let sum = 0;
   let avg = 0;
-  let transaction;
   const { isFirst, offerId, mark, creatorId } = req.body;
   const userId = req.tokenData.userId;
+  const transaction = await sequelize.transaction({
+    isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
+  });
+
   try {
-    transaction = await sequelize.transaction({
-      isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
-    });
     const query = getQuery(offerId, userId, mark, isFirst, transaction);
     await query();
 
@@ -67,9 +67,9 @@ export const payment: RequestHandler = async (req, res, next) => {
     tokenData,
     body: { number, cvc, expiry, price, contests },
   } = req;
-  let transaction;
+  const transaction = await sequelize.transaction();
+
   try {
-    transaction = await sequelize.transaction();
     await bankQueries.updateBankBalance(
       {
         balance: sequelize.literal(`
@@ -111,7 +111,7 @@ END
         prize,
       });
     });
-    await Contest.bulkCreate(contests, transaction);
+    await Contest.bulkCreate(contests, { transaction });
     transaction.commit();
     res.send();
   } catch (err) {
@@ -146,10 +146,9 @@ export const cashout: RequestHandler = async (req, res, next) => {
   const {
     body: { number, expiry, cvc, sum },
   } = req;
-  let transaction;
+  const transaction = await sequelize.transaction();
 
   try {
-    transaction = await sequelize.transaction();
     const updatedUser = await userQueries.updateUser(
       { balance: sequelize.literal('balance - ' + sum) },
       req.tokenData.userId,

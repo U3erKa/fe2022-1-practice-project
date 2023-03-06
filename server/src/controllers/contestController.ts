@@ -260,8 +260,6 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
   const {
     body: { command, offerId, creatorId, contestId, orderId, priority },
   } = req;
-  let transaction;
-
   if (command === 'reject') {
     try {
       const offer = await rejectOffer(offerId, creatorId, contestId);
@@ -269,9 +267,11 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-  } else if (command === 'resolve') {
+  }
+  const transaction = await sequelize.transaction();
+
+  if (command === 'resolve') {
     try {
-      transaction = await sequelize.transaction();
       const winningOffer = await resolveOffer(
         contestId,
         creatorId,
