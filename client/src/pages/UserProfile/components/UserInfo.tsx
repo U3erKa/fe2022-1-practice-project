@@ -66,6 +66,7 @@ const UserInfo = () => {
   return (
     <div className={styles.mainContainer}>
       {isEdit ? (
+        // @ts-ignore
         <UpdateUserInfoForm onSubmit={updateUserData} />
       ) : (
         <div className={styles.infoContainer}>

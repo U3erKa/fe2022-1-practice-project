@@ -23,6 +23,7 @@ export const updateContest = decorateAsyncThunk({
   key: CONTEST_UPDATION_SLICE_NAME,
   thunk: async (payload: FormData, { dispatch }) => {
     const { data } = await contestController.updateContest(payload);
+    // @ts-ignore
     dispatch(updateStoreAfterUpdateContest(data));
   },
 });

@@ -126,6 +126,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
     dispatch(
       goToExpandedDialog({
         interlocutor: data.User,
+        // @ts-ignore
         conversationData: findConversationInfo(),
       }),
     );
