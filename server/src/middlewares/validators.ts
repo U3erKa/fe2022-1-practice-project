@@ -25,21 +25,21 @@ export const validateLogin: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const validateContestCreation: RequestHandler = (req, res, next) => {
-  const promiseArray = [];
-  req.body.contests.forEach((el) => {
-    promiseArray.push(schems.contestSchem.isValid(el));
-  });
-  return Promise.all(promiseArray)
-    .then((results) => {
-      results.forEach((result) => {
-        if (!result) {
-          return next(new BadRequestError());
-        }
-      });
-      next();
-    })
-    .catch((err) => {
-      next(err);
-    });
+export const validateContestCreation: RequestHandler = async (
+  req,
+  res,
+  next,
+) => {
+  try {
+    const promiseArray: Promise<boolean>[] = req.body.contests.map((el) =>
+      schems.contestSchem.isValid(el),
+    );
+    const results = await Promise.all(promiseArray);
+    if (results.includes(false)) {
+      return next(new BadRequestError('Invalid contest creation data'));
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
 };
