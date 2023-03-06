@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import type { MessageSchema } from '../../types/models';
 
 const Schema = new mongoose.Schema(
   {
@@ -21,6 +22,6 @@ const Schema = new mongoose.Schema(
   },
 );
 
-const Message = mongoose.model('Message', Schema);
+const Message = mongoose.model<MessageSchema>('Message', Schema);
 
 export default Message;

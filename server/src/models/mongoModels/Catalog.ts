@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import type { CatalogSchema } from '../../types/models';
 
 const Schema = new mongoose.Schema({
   userId: {
@@ -19,5 +20,5 @@ const Schema = new mongoose.Schema({
   ],
 });
 
-const Catalog = mongoose.model('Catalog', Schema);
+const Catalog = mongoose.model<CatalogSchema>('Catalog', Schema);
 export default Catalog;
