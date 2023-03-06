@@ -8,18 +8,20 @@ import type { RequestHandler } from 'express';
 import type { Contest as _Contest } from '../types/models';
 
 export const parseBody: RequestHandler = (req, res, next) => {
+  req.body.contests = JSON.parse(req.body.contests);
   let {
-    body: { contests },
     files,
+    body: { contests },
   } = req;
-  contests = JSON.parse(contests);
-  for (let i = 0; i < contests.length; i++) {
-    if (contests[i].haveFile) {
-      const file = files!.splice(0, 1);
-      contests[i].fileName = file[0].filename;
-      contests[i].originalFileName = file[0].originalname;
+
+  (contests as any[]).forEach((contest) => {
+    if (contest.haveFile) {
+      const [file] = (files as Express.Multer.File[]).splice(0, 1);
+      contest.fileName = file.filename;
+      contest.originalFileName = file.originalname;
     }
-  }
+  });
+  
   next();
 };
 
