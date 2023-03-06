@@ -32,15 +32,12 @@
 .exampleCarousel
   @include carousel
 
-.example-cell
-  @include container(flex-start)
+.example-cell,
+.feedback-cell,
+.carousel-cell
   width: 30%
-  height: 300px
+  min-height: 300px
   margin-right: 30px
-  border-top: 2px solid grey
-  border-left: 1px solid grey
-  border-right: 1px solid grey
-  border-bottom: 0
   cursor: pointer
   @media(max-width: 950px)
     height: 250px
@@ -51,6 +48,16 @@
     height: 250px
   @media(max-width: 480px)
     height: 150px
+
+.carousel-cell
+  border-radius: 3px
+
+.example-cell
+  @include container(flex-start)
+  border-top: 2px solid grey
+  border-left: 1px solid grey
+  border-right: 1px solid grey
+  border-bottom: 0
 
   img
     flex: 1
@@ -70,20 +77,10 @@
 
 .feedback-cell
   @include container
-  width: 30%
   font-family: Raleway, sans-serif
-  min-height: 310px
-  margin-right: 30px
   padding: 20px 20px 0 20px
   background-color: white
   color: black
-  cursor: pointer
-  @media(max-width: 680px)
-    width: 45%
-  @media(max-width: 320px)
-    width: 100%
-  @media(max-width: 320px)
-    width: 100%
 
   img
     height: 80px
@@ -105,21 +102,3 @@
     padding: 20px
     font-size: 16px
     margin-top: auto
-
-.carousel-cell
-  width: 30%
-  height: 300px
-  margin-right: 30px
-  border-radius: 3px
-  cursor: pointer
-  @media(max-width: 950px)
-    height: 250px
-  @media(max-width: 680px)
-    width: 45%
-  @media(max-width: 320px)
-    width: 100%
-  @media(max-width: 320px)
-    width: 100%
-    height: 250px
-  @media(max-width: 480px)
-    height: 150px
