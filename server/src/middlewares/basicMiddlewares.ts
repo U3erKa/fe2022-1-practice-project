@@ -21,7 +21,7 @@ export const parseBody: RequestHandler = (req, res, next) => {
       contest.originalFileName = file.originalname;
     }
   });
-  
+
   next();
 };
 
@@ -30,18 +30,26 @@ export const canGetContest: RequestHandler = async (req, res, next) => {
     tokenData,
     params: { contestId },
   } = req;
+  const err = new RightsError();
 
-  let result: _Contest | null = null;
+  let result: number | boolean = [
+    CONSTANTS.CUSTOMER,
+    CONSTANTS.CREATOR,
+  ].includes(tokenData.role);
+  if (!result) {
+    return next(err);
+  }
+
   try {
     switch (tokenData.role) {
       case CONSTANTS.CUSTOMER: {
-        result = await Contest.findOne({
+        result = await Contest.count({
           where: { id: contestId, userId: tokenData.userId },
         });
         break;
       }
       case CONSTANTS.CREATOR: {
-        result = await Contest.findOne({
+        result = await Contest.count({
           where: {
             id: contestId,
             status: {
@@ -54,12 +62,9 @@ export const canGetContest: RequestHandler = async (req, res, next) => {
         });
         break;
       }
-      default: {
-        return next(new RightsError());
-      }
     }
 
-    next();
+    result ? next() : next(err);
   } catch (e) {
     next(new ServerError((e as Error).message));
   }
