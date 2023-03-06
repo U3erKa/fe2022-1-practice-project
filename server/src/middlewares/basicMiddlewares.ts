@@ -1,9 +1,11 @@
 import { Contest, Sequelize } from '../models';
 import RightsError from '../errors/RightsError';
 import ServerError from '../errors/ServerError';
+import NotFoundError from '../errors/NotFoundError';
 import * as CONSTANTS from '../constants';
 
 import type { RequestHandler } from 'express';
+import type { Contest as _Contest } from '../types/models';
 
 export const parseBody: RequestHandler = (req, res, next) => {
   let {
@@ -13,7 +15,7 @@ export const parseBody: RequestHandler = (req, res, next) => {
   contests = JSON.parse(contests);
   for (let i = 0; i < contests.length; i++) {
     if (contests[i].haveFile) {
-      const file = files.splice(0, 1);
+      const file = files!.splice(0, 1);
       contests[i].fileName = file[0].filename;
       contests[i].originalFileName = file[0].originalname;
     }
@@ -27,28 +29,37 @@ export const canGetContest: RequestHandler = async (req, res, next) => {
     params: { contestId },
   } = req;
 
-  let result = null;
+  let result: _Contest | null = null;
   try {
-    if (tokenData.role === CONSTANTS.CUSTOMER) {
-      result = await Contest.findOne({
-        where: { id: contestId, userId: tokenData.userId },
-      });
-    } else if (tokenData.role === CONSTANTS.CREATOR) {
-      result = await Contest.findOne({
-        where: {
-          id: contestId,
-          status: {
-            [Sequelize.Op.or]: [
-              CONSTANTS.CONTEST_STATUS_ACTIVE,
-              CONSTANTS.CONTEST_STATUS_FINISHED,
-            ],
+    switch (tokenData.role) {
+      case CONSTANTS.CUSTOMER: {
+        result = await Contest.findOne({
+          where: { id: contestId, userId: tokenData.userId },
+        });
+        break;
+      }
+      case CONSTANTS.CREATOR: {
+        result = await Contest.findOne({
+          where: {
+            id: contestId,
+            status: {
+              [Sequelize.Op.or]: [
+                CONSTANTS.CONTEST_STATUS_ACTIVE,
+                CONSTANTS.CONTEST_STATUS_FINISHED,
+              ],
+            },
           },
-        },
-      });
+        });
+        break;
+      }
+      default: {
+        return next(new RightsError());
+      }
     }
-    result ? next() : next(new RightsError());
+
+    next();
   } catch (e) {
-    next(new ServerError(e));
+    next(new ServerError((e as Error).message));
   }
 };
 
@@ -62,7 +73,7 @@ export const onlyForCreative: RequestHandler = (req, res, next) => {
 
 export const onlyForCustomer: RequestHandler = (req, res, next) => {
   if (req.tokenData.role !== CONSTANTS.CUSTOMER) {
-    return next(new RightsError('this page only for customers'));
+    return next(new RightsError('This page is only for customers'));
   } else {
     next();
   }
@@ -79,13 +90,17 @@ export const canSendOffer: RequestHandler = async (req, res, next) => {
       },
       attributes: ['status'],
     });
+
+    if (!result) {
+      return next(new NotFoundError('Contest not found'));
+    }
     if (
-      result.get({ plain: true }).status === CONSTANTS.CONTEST_STATUS_ACTIVE
+      !(result.get({ plain: true }).status === CONSTANTS.CONTEST_STATUS_ACTIVE)
     ) {
-      next();
-    } else {
       return next(new RightsError());
     }
+
+    next();
   } catch (e) {
     next(new ServerError());
   }

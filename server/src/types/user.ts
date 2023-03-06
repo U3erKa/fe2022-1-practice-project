@@ -1,6 +1,6 @@
 import type { User } from './models';
 
-export type TokenData = User['id'] & UserData;
+export type TokenData = { userId: User['id'] } & UserData;
 
 export type UserData = Pick<
   User,
