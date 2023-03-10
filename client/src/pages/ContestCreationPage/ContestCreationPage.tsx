@@ -37,10 +37,12 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
   }, [bundle]);
 
   const handleSubmit = (values: ContestInfo) => {
+    const { file, ...restValues } = values;
+
     dispatch(
       saveContestToStore({
         type: contestType,
-        info: values,
+        info: restValues,
       } as SaveContestToStore),
     );
     const route =
