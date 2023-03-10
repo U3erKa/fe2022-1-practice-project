@@ -1,7 +1,8 @@
 @import 'styles/common'
 
-@mixin carousel
-  width: 1140px
+.mainCarousel,
+.feedbackCarousel,
+.exampleCarousel
   margin: 30px 0
   overflow-x: hidden
   position: relative
@@ -26,11 +27,6 @@
     background: hsla(0, 0%, 100%, 0.75)
     border: none
     color: #333
-
-.mainCarousel,
-.feedbackCarousel,
-.exampleCarousel
-  @include carousel
 
 .example-cell,
 .feedback-cell,
