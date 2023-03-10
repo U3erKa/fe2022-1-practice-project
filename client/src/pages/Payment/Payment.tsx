@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
@@ -18,6 +19,13 @@ const Payment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (isEmpty(contests)) {
+      navigate('/startContest', { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contests]);
+
   const payMethod = (values) => {
     const contestArray: any[] = [];
     Object.keys(contests).forEach((key) =>
@@ -37,9 +45,6 @@ const Payment = () => {
     dispatch(pay({ data: { formData }, navigate }));
   };
 
-  if (isEmpty(contests)) {
-    navigate('startContest', { replace: true });
-  }
   return (
     <div>
       <div className={styles.header}>
