@@ -58,13 +58,23 @@ const reducers = {
   }),
 };
 
+export type GetContests = {
+  contests: ContestsState['contests'];
+  haveMore: ContestsState['haveMore'];
+};
+
 const extraReducers = (builder) => {
   builder.addCase(getContests.pending, pendingReducer);
   builder.addCase(
     getContests.fulfilled,
-    (state: ContestsState, { payload }) => {
+    (state: ContestsState, { payload }: PayloadAction<GetContests>) => {
+      const newContestIds = payload.contests.map((contest) => contest.id);
+      const uniqueContests = state.contests.filter(
+        (contest) => !newContestIds.includes(contest.id),
+      );
+
       state.isFetching = false;
-      state.contests = [...state.contests, ...payload.contests];
+      state.contests = [...uniqueContests, ...payload.contests];
       state.haveMore = payload.haveMore;
     },
   );
