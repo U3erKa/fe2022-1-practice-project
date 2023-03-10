@@ -4,7 +4,7 @@
     "checkJs": true,
     "baseUrl": "src",
     "jsx": "react-jsx",
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
