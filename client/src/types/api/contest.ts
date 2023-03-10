@@ -104,5 +104,5 @@ export type BaseContestInfo = {
   industry: string;
   focusOfWork: string;
   targetCustomer: string;
-  file: string;
+  file?: File;
 };
