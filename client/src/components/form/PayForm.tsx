@@ -8,7 +8,7 @@ import { PayInput } from 'components/input';
 
 import { PaymentSchema } from 'utils/validators/validationSchems';
 
-import 'react-credit-cards-2/es/styles-compiled.css';
+import 'react-credit-cards-2/lib/styles.scss';
 import styles from './styles/PayForm.module.sass';
 
 import type { FC } from 'react';
