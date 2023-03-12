@@ -1,22 +1,14 @@
 import { useEffect } from 'react';
-import classNames from 'classnames';
 
 import { useDispatch, useSelector } from 'hooks';
-import {
-  getContests,
-  clearContestsList,
-  setNewCustomerFilter,
-} from 'store/slices/contestsSlice';
+import { getContests, clearContestsList } from 'store/slices/contestsSlice';
 
 import { TryAgain } from 'components/general';
 import { ContestsContainer } from 'components/contest';
+import { CustomerFilter } from './CustomerFilter';
 
-import {
-  CONTEST_STATUS_ACTIVE,
-  CONTEST_STATUS_FINISHED,
-  CONTEST_STATUS_PENDING,
-  CUSTOMER,
-} from 'constants/general';
+import { CUSTOMER } from 'constants/general';
+
 import styles from '../styles/CustomerDashboard.module.sass';
 
 const CustomerDashboard = () => {
@@ -55,37 +47,7 @@ const CustomerDashboard = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.filterContainer}>
-        <div
-          onClick={() => dispatch(setNewCustomerFilter(CONTEST_STATUS_ACTIVE))}
-          className={classNames({
-            [styles.activeFilter]: CONTEST_STATUS_ACTIVE === customerFilter,
-            [styles.filter]: CONTEST_STATUS_ACTIVE !== customerFilter,
-          })}
-        >
-          Active Contests
-        </div>
-        <div
-          onClick={() =>
-            dispatch(setNewCustomerFilter(CONTEST_STATUS_FINISHED))
-          }
-          className={classNames({
-            [styles.activeFilter]: CONTEST_STATUS_FINISHED === customerFilter,
-            [styles.filter]: CONTEST_STATUS_FINISHED !== customerFilter,
-          })}
-        >
-          Completed contests
-        </div>
-        <div
-          onClick={() => dispatch(setNewCustomerFilter(CONTEST_STATUS_PENDING))}
-          className={classNames({
-            [styles.activeFilter]: CONTEST_STATUS_PENDING === customerFilter,
-            [styles.filter]: CONTEST_STATUS_PENDING !== customerFilter,
-          })}
-        >
-          Inactive contests
-        </div>
-      </div>
+      <CustomerFilter />
       <div className={styles.contestsContainer}>
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
