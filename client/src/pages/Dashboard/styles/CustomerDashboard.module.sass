@@ -8,8 +8,8 @@
 
 .filterContainer
   min-width: 250px
-  height: 350px
-  padding-top: 30px
+  max-height: 350px
+  padding: 30px
   margin-right: 50px
   display: flex
   flex-direction: column
@@ -18,11 +18,10 @@
   background-color: white
   margin-bottom: 15px
   @media(max-width: 1000px)
-    padding-top: 10px
+    padding: 10px
     flex-direction: row
     margin-right: 0
     justify-content: center
-    height: 80px
 
 .filter
   margin-top: 15px
@@ -33,7 +32,7 @@
   border-radius: 10px
   padding: 10px
   @media(max-width: 1000px)
-    height: 20px
+    height: 30px
     margin: 0 5px
 
   &:hover
@@ -50,5 +49,5 @@
   background-color: #4e618d
   color: white
   @media(max-width: 1000px)
-    height: 20px
+    height: 30px
     margin: 0 5px
