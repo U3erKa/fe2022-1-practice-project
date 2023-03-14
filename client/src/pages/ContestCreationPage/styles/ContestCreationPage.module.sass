@@ -56,19 +56,11 @@
   display: flex
   justify-content: center
   align-items: center
-  width: 1200px
-  @media(max-width: 1300px)
-    width: 1000px
-  @media(max-width: 1100px)
-    width: 800px
-  @media(max-width: 900px)
-    width: auto
 
 .lastContainer
-  width: 1400px
-  margin: 0 auto
-  margin-top: 30px
-  margin-bottom: 30px
+  width: 100%
+  max-width: 768px
+  margin: 30px
   display: flex
   flex-direction: row
   align-items: center
@@ -80,34 +72,33 @@
   display: flex
   justify-content: flex-start
   align-items: center
+  @media(max-width: 512px)
+    flex-direction: column
+    gap: 10px
 
 .prevButtonContainer
   background-color: #888
-  height: 60px
-  border-radius: 8px
   font-size: 22px
   line-height: 21px
   width: 140px
+  @media(max-width: 512px)
+    width: 275px
+    min-width: 140px
 
   &:hover
     font-size: 28px
 
 .nextButtonContainer
   background-color: #f3875d
-  height: 70px
-  border-radius: 10px
   font-size: 26px
   width: 275px
   min-width: 140px
-
-  &:hover
-    font-size: 32px
-
   @media (max-width: 700px)
     font-size: 22px
     height: 60px
-    border-radius: 0
-    width: auto
+
+  &:hover
+    font-size: 32px
 
 .prevButtonContainer,
 .nextButtonContainer
@@ -117,10 +108,11 @@
   font-weight: 700
   color: white
   margin: 0 15px
+  height: 70px
+  border-radius: 8px
   cursor: pointer
+  @media(max-width: 400px)
+    margin: 0 10px
 
   &:hover
     transition: font-size 0.1s ease-in-out
-
-  @media(max-width: 400px)
-    margin: 0 10px
