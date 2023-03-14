@@ -1,3 +1,5 @@
+@import 'styles/auth.module'
+
 .signUpFormContainer
   width: 60%
   display: flex
@@ -22,27 +24,6 @@
   @media(max-width: 850px)
     align-self: auto
 
-.submitContainer
-  align-self: stretch
-  min-width: 260px
-  border-radius: 5px
-  display: flex
-  justify-content: center
-  align-items: center
-  background-color: #28d2d0
-  height: 64px
-  margin-left: 20px
-  padding: 0
-  border: 0
-  width: stretch
-  margin-right: 20px
-  @media(max-width: 850px)
-    align-self: auto
-
-.inscription
-  font-size: 16px
-  color: white
-
 .termsOfService
   position: relative
   text-align: center
@@ -53,49 +34,12 @@
   margin-right: 20px
   margin-left: 20px
   margin-bottom: 10px
-
   @media(max-width: 850px)
     align-self: auto
 
   a
     color: white
     font-size: 16px
-
-.fieldWarning
-  position: absolute
-  bottom: -50px
-  right: 0
-  left: 0
-  z-index: 1
-  background: #f7542c
-  font-size: 15px
-  display: flex
-  flex-direction: row
-  justify-content: center
-  align-items: center
-  color: white
-  border: 1px solid #b72522
-  margin-bottom: 15px
-  padding-bottom: 5px
-  padding-top: 5px
-  text-align: center
-
-.error
-  text-align: center
-  color: white
-  font-size: 20px
-  min-width: 260px
-  align-self: stretch
-  margin-right: 20px
-  margin-left: 20px
-  border: 1px solid white
-  background-color: red
-  padding-top: 5px
-  padding-bottom: 5px
-  border-radius: 6px
-  margin-bottom: 10px
-  @media(max-width: 850px)
-    align-self: auto
 
 .row
   width: 100%
@@ -109,52 +53,8 @@
     width: auto
 
 .inputContainer
-  display: flex
-  position: relative
-  flex-direction: column
-  justify-content: center
   align-self: flex-start
-  margin-right: 20px
-  margin-left: 20px
   flex: 1 1
-
-.fieldWarning
-  position: absolute
-  bottom: -25px
-  right: 0
-  left: 0
-  z-index: 1
-  background: #f7542c
-  font-size: 15px
-  display: flex
-  flex-direction: row
-  justify-content: center
-  align-items: center
-  color: white
-  border: 1px solid #b72522
-  margin-bottom: 15px
-  padding-bottom: 5px
-  padding-top: 5px
-  text-align: center
-
-.input
-  background-color: white
-  border: 2px solid white
-  border-radius: 4px
-  color: #9ca8b7
-  font-size: 18px
-  padding: 23px 20px 23px 20px
-  outline: none
-  margin-bottom: 15px
-  flex: 1
-  @media(max-width: 1400px)
-    align-self: normal
-
-.notValid
-  border: 2px solid red !important
-
-.valid
-  border: 2px solid green
 
 .headerFormContainer
   display: flex
