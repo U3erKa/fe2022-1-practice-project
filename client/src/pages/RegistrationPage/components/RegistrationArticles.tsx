@@ -26,7 +26,7 @@ const RegistrationArticles: FC<Props> = ({ articles }) => {
               <TextEntry text={article} />
             </div>
           ) : (
-            <div className={styles.article}>{article}</div>
+            <div className={styles.article}>{article as string}</div>
           )}
         </Fragment>
       ))}

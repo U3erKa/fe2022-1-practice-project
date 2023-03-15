@@ -3,4 +3,4 @@ export type TextEntry = {
   text: string;
   className?: string;
   [key: string]: any;
-} & ({ type: 'plain' | 'link' | 'span' } | { type: 'link'; href: string });
+} & ({ type: 'plain' | 'span' } | { type: 'link'; href: string });
