@@ -6,6 +6,7 @@ import NameContestSpecialInfo from './NameContestSpecialInfo';
 import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 
 import { useSelector } from 'hooks';
+import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
   CONTEST_STATUS_FINISHED,
   CUSTOMER,
@@ -15,8 +16,7 @@ import {
 } from 'constants/general';
 
 import styles from './styles/ContestInfo.module.sass';
-import { goToExpandedDialog } from 'store/slices/chatSlice';
-import { InterlocutorId } from 'types/api/_common';
+import type { InterlocutorId, UserId } from 'types/api/_common';
 
 const ContestInfo = (props) => {
   const { messagesPreview } = useSelector((state) => state.chatStore);
@@ -62,7 +62,7 @@ const ContestInfo = (props) => {
     dispatch(
       goToExpandedDialog({
         interlocutor: User,
-        conversationData: findConversationInfo(User.id),
+        conversationData: findConversationInfo(User.id as UserId)!,
       }),
     );
   };

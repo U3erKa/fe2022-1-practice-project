@@ -1,10 +1,10 @@
 import moment from 'moment';
 import className from 'classnames';
-
 import styles from './styles/MainDialog.module.sass';
+import type { ReactNode } from 'react';
 
 const MainDialog = ({ messages, userId, messagesEnd }) => {
-  const messagesArray: unknown[] = [];
+  const messagesArray: ReactNode[] = [];
   let currentTime = moment();
 
   messages.forEach(({ createdAt, sender, body }, i) => {
