@@ -50,7 +50,7 @@ const StartContestPage = () => {
       <div className={styles.baseBundleContainer}>
         <div className={styles.infoBaseBundles}>
           <span className={styles.headerInfo}>
-            Our Most Popular
+            Our Most Popular{' '}
             <span>Categories</span>
           </span>
           <span className={styles.info}>
