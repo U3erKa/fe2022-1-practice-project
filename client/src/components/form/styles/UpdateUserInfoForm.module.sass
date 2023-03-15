@@ -77,11 +77,11 @@
   justify-content: center
   align-items: flex-start
   margin-bottom: 20px
-
-.notValid
-  border: 1px solid red !important
+  position: relative
 
 .error
+  position: absolute
+  bottom: -20px
   display: inline-block
   align-self: stretch
   margin-bottom: 5px
@@ -100,3 +100,6 @@
 
   &:focus
     border-color: #66afe9
+
+.notValid
+  border: 1px solid red
