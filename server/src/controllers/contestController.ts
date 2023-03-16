@@ -183,7 +183,7 @@ const rejectOffer = async (offerId, creatorId, contestId) => {
     .getNotificationController()
     .emitChangeOfferStatus(
       creatorId,
-      'Someone of yours offers was rejected',
+      'Some of yours offers was rejected',
       contestId,
     );
   return rejectedOffer;
@@ -243,13 +243,6 @@ END
       arrayRoomsId.push(offer.userId);
     }
   });
-  controller
-    .getNotificationController()
-    .emitChangeOfferStatus(
-      arrayRoomsId,
-      'Some of your offers was rejected',
-      contestId,
-    );
   controller
     .getNotificationController()
     .emitChangeOfferStatus(creatorId, 'Some of your offers WIN', contestId);
