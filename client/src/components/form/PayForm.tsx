@@ -1,12 +1,15 @@
 import { Form, Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Cards from 'react-credit-cards-2';
 
 import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
 
-import { PaymentSchema } from 'utils/validators/validationSchems';
+import {
+  CashoutSchema,
+  PaymentSchema,
+} from 'utils/validators/validationSchems';
 
 import 'react-credit-cards-2/lib/styles.scss';
 import styles from './styles/PayForm.module.sass';
@@ -22,6 +25,7 @@ export type Props = {
 const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const changeFocusOnCardMethod = (name) => {
     dispatch(changeFocusOnCard(name));
@@ -43,7 +47,9 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
           expiry: '',
         }}
         onSubmit={pay}
-        validationSchema={PaymentSchema}
+        validationSchema={
+          location.pathname === '/account' ? CashoutSchema : PaymentSchema
+        }
       >
         {({ values }) => {
           const { name, number, expiry, cvc } = values;
