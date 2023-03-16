@@ -31,25 +31,24 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
     dispatch(changeFocusOnCard(name));
   };
 
-  const pay = (values) => {
-    sendRequest(values);
+  const isCashoutPage = location.pathname === '/account';
+  const initialValues = {
+    focusOnElement: '',
+    name: '',
+    number: '',
+    cvc: '',
+    expiry: '',
   };
+
+  if (isCashoutPage) Object.assign(initialValues, { sum: '' });
 
   return (
     <div className={styles.payFormContainer}>
       <span className={styles.headerInfo}>Payment Information</span>
       <Formik
-        initialValues={{
-          focusOnElement: '',
-          name: '',
-          number: '',
-          cvc: '',
-          expiry: '',
-        }}
-        onSubmit={pay}
-        validationSchema={
-          location.pathname === '/account' ? CashoutSchema : PaymentSchema
-        }
+        initialValues={initialValues}
+        onSubmit={sendRequest}
+        validationSchema={isCashoutPage ? CashoutSchema : PaymentSchema}
       >
         {({ values }) => {
           const { name, number, expiry, cvc } = values;
@@ -58,10 +57,10 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
             <>
               <div className={styles.cardContainer}>
                 <Cards
-                  number={number || ''}
-                  name={name || ''}
-                  expiry={expiry || ''}
-                  cvc={cvc || ''}
+                  number={number}
+                  name={name}
+                  expiry={expiry}
+                  cvc={cvc}
                   focused={focusOnElement}
                 />
               </div>
