@@ -75,7 +75,7 @@ export const CreatorFilter = () => {
       if (creatorFilter[el]) obj[el] = creatorFilter[el];
     });
 
-    navigate(`/dashboard?${queryString.stringify(obj)})`);
+    navigate(`/dashboard?${queryString.stringify(obj)}`);
   };
 
   const changePredicate = ({ name, value }) => {
