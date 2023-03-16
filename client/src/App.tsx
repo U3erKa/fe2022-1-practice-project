@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
 import { useDispatch } from 'hooks';
 import { refresh } from 'store/slices/userSlice';
-import { ChatContainer } from 'components/chat';
 
 import { REFRESH_TOKEN } from 'constants/general';
 import { routes } from 'routes';
@@ -32,24 +30,7 @@ const App = () => {
     return <Spinner />;
   }
 
-  return (
-    <>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        // @ts-expect-error
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
-      />
-      <RouterProvider router={router} />
-      <ChatContainer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

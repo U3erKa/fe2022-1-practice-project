@@ -1,4 +1,5 @@
-import { redirect } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { Outlet, redirect } from 'react-router-dom';
 
 import {
   ContestCreationPage,
@@ -21,6 +22,7 @@ import {
 } from 'constants/general';
 
 import type { LoaderFunction, RouteObject } from 'react-router-dom';
+import { ChatContainer } from 'components/chat';
 
 const isUserLoaded = () => {
   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
@@ -42,56 +44,79 @@ const allowAuthorizedOnly: LoaderFunction = () => {
 };
 
 export const routes: RouteObject[] = [
-  { path: '/', element: <Home /> },
-
   {
-    loader: allowNotAuthorizedOnly,
+    path: '/',
+    element: (
+      <>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          // @ts-expect-error
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
+        <Outlet />
+        <ChatContainer />
+      </>
+    ),
     children: [
-      { path: '/login', element: <LoginPage /> },
+      { index: true, element: <Home /> },
+
       {
-        path: '/registration',
-        element: <RegistrationPage />,
+        loader: allowNotAuthorizedOnly,
+        children: [
+          { path: '/login', element: <LoginPage /> },
+          {
+            path: '/registration',
+            element: <RegistrationPage />,
+          },
+        ],
       },
+
+      {
+        loader: allowAuthorizedOnly,
+        children: [
+          { path: '/payment', element: <Payment /> },
+          {
+            path: '/startContest',
+            element: <StartContestPage />,
+          },
+          {
+            path: '/startContest/nameContest',
+            element: (
+              <ContestCreationPage
+                contestType={NAME_CONTEST}
+                title={'COMPANY NAME'}
+              />
+            ),
+          },
+          {
+            path: '/startContest/taglineContest',
+            element: (
+              <ContestCreationPage
+                contestType={TAGLINE_CONTEST}
+                title={'TAGLINE'}
+              />
+            ),
+          },
+          {
+            path: '/startContest/logoContest',
+            element: (
+              <ContestCreationPage contestType={LOGO_CONTEST} title={'LOGO'} />
+            ),
+          },
+          { path: '/dashboard', element: <Dashboard /> },
+          { path: '/contest/:id', element: <ContestPage /> },
+          { path: '/account', element: <UserProfile /> },
+        ],
+      },
+
+      { path: '*', element: <NotFound /> },
     ],
   },
-
-  {
-    loader: allowAuthorizedOnly,
-    children: [
-      { path: '/payment', element: <Payment /> },
-      {
-        path: '/startContest',
-        element: <StartContestPage />,
-      },
-      {
-        path: '/startContest/nameContest',
-        element: (
-          <ContestCreationPage
-            contestType={NAME_CONTEST}
-            title={'COMPANY NAME'}
-          />
-        ),
-      },
-      {
-        path: '/startContest/taglineContest',
-        element: (
-          <ContestCreationPage
-            contestType={TAGLINE_CONTEST}
-            title={'TAGLINE'}
-          />
-        ),
-      },
-      {
-        path: '/startContest/logoContest',
-        element: (
-          <ContestCreationPage contestType={LOGO_CONTEST} title={'LOGO'} />
-        ),
-      },
-      { path: '/dashboard', element: <Dashboard /> },
-      { path: '/contest/:id', element: <ContestPage /> },
-      { path: '/account', element: <UserProfile /> },
-    ],
-  },
-
-  { path: '*', element: <NotFound /> },
 ];
