@@ -17,9 +17,12 @@ import {
 } from 'constants/general';
 
 import styles from './styles/DialogList.module.sass';
+import type { MessagePreview } from 'types/chat';
+import type { UserId } from 'types/api/_common';
 
 const DialogList = ({ userId, removeChat }) => {
-  const { chatMode, messagesPreview } = useSelector((state) => state.chatStore);
+  const { chatMode, messagesPreview, isShowChatsInCatalog, currentCatalog } =
+    useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
   const changeFavorite = (data, event) => {
@@ -37,17 +40,20 @@ const DialogList = ({ userId, removeChat }) => {
     event.stopPropagation();
   };
 
-  const onlyFavoriteDialogs = (chatPreview, userId) =>
+  const onlyChatsInCatalog = (chatPreview: MessagePreview, _userId: UserId) =>
+    currentCatalog?.chats.includes(chatPreview._id);
+
+  const onlyFavoriteDialogs = (chatPreview: MessagePreview, userId: UserId) =>
     chatPreview.favoriteList[chatPreview.participants.indexOf(userId)];
 
-  const onlyBlockDialogs = (chatPreview, userId) =>
+  const onlyBlockDialogs = (chatPreview: MessagePreview, userId: UserId) =>
     chatPreview.blackList[chatPreview.participants.indexOf(userId)];
 
   const getTimeStr = (time) => {
     const currentTime = moment();
     if (currentTime.isSame(time, 'day')) return moment(time).format('HH:mm');
     if (currentTime.isSame(time, 'week')) return moment(time).format('dddd');
-    if (currentTime.isSame(time, 'year')) return moment(time).format('MM DD');
+    if (currentTime.isSame(time, 'year')) return moment(time).format('MM.DD');
     return moment(time).format('MMMM DD, YYYY');
   };
 
@@ -84,6 +90,9 @@ const DialogList = ({ userId, removeChat }) => {
   };
 
   const renderChatPreview = () => {
+    if (isShowChatsInCatalog) {
+      return renderPreview(onlyChatsInCatalog);
+    }
     if (chatMode === FAVORITE_PREVIEW_CHAT_MODE)
       return renderPreview(onlyFavoriteDialogs);
     if (chatMode === BLOCKED_PREVIEW_CHAT_MODE)
