@@ -2,6 +2,7 @@ export { default as ContestCreationPage } from './ContestCreationPage/ContestCre
 export { default as ContestPage } from './ContestPage/ContestPage';
 export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as Home } from './Home/Home';
+export { default as HowItWorksPage } from './HowItWorksPage/HowItWorksPage';
 export { default as LoginPage } from './LoginPage/LoginPage';
 export { default as Payment } from './Payment/Payment';
 export { default as RegistrationPage } from './RegistrationPage/RegistrationPage';

@@ -6,6 +6,7 @@ import {
   ContestPage,
   Dashboard,
   Home,
+  HowItWorksPage,
   LoginPage,
   NotFound,
   Payment,
@@ -116,6 +117,7 @@ export const routes: RouteObject[] = [
         ],
       },
 
+      { path: '/how-it-works', element: <HowItWorksPage /> },
       { path: '*', element: <NotFound /> },
     ],
   },
