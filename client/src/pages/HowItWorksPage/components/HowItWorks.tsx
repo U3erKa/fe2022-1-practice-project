@@ -17,21 +17,37 @@ import type { FC } from 'react';
 export const HowItWorksIntro: FC = () => {
   return (
     <article>
-      <h4>World's #1 Naming Platform</h4>
-      <h1>How Does Squadhelp Work?</h1>
-      <p>
-        Squadhelp helps you come up with a great name for your business by
-        combining the power of crowdsourcing with sophisticated technology and
-        Agency-level validation services.
-      </p>
-      <a href="https://vimeo.com/368584367" target="_blank" rel="noreferrer">
-        Play video
-      </a>
+      <section>
+        <h4>World's #1 Naming Platform</h4>
+        <h1>How Does Squadhelp Work?</h1>
+        <p>
+          Squadhelp helps you come up with a great name for your business by
+          combining the power of crowdsourcing with sophisticated technology and
+          Agency-level validation services.
+        </p>
+        <a href="https://vimeo.com/368584367" target="_blank" rel="noreferrer">
+          Play video
+        </a>
+      </section>
+      <figure>
         <img src={`${HOW_IT_WORKS_PATH}main.svg`} alt="main icon" />
+      </figure>
     </article>
   );
 };
+
 export const HowItWorksCards: FC = () => {
+  const cards = HOW_IT_WORKS_CARDS.map(
+    ({ heading, text, src, href, linkText }) => (
+      <section key={src}>
+        <img src={src} alt={`${heading.toLowerCase()} icon`} />
+        <h3>{heading}</h3>
+        <p>{text}</p>
+        <Link to={href ?? DUMMY_LINK}>{linkText ?? heading}</Link>
+      </section>
+    ),
+  );
+
   return (
     <article>
       <h4>Our Services</h4>
@@ -39,33 +55,35 @@ export const HowItWorksCards: FC = () => {
       <p>
         Squadhelp offers 3 ways to get you a perfect name for your business.
       </p>
-      {HOW_IT_WORKS_CARDS.map(({ heading, text, src, href, linkText }, i) => (
-        <section key={i}>
-          <img src={src} alt="icon" />
-          <h3>{heading}</h3>
-          <p>{text}</p>
-          <Link to={href ?? DUMMY_LINK}>{linkText ?? heading}</Link>
-        </section>
-      ))}
+      {cards}
     </article>
   );
 };
+
 export const HowContestsWork: FC = () => {
+  const howContestsWork = HOW_CONTESTS_WORK.map((listEntry) => (
+    <li key={uniqueId()}>
+      <p>{listEntry}</p>
+    </li>
+  ));
+
   return (
     <article>
+      <section>
+        <figure>
           <img src={`${HOW_IT_WORKS_PATH}howContestsWork1.svg`} alt="icon" />
-      <h2>How Do Naming Contests Work?</h2>
+        </figure>
+        <h2>How Do Naming Contests Work?</h2>
+      </section>
+      <figure>
         <img
           src={`${HOW_IT_WORKS_PATH}howContestsWork2.svg`}
           alt="how contests work icon"
         />
-      <ol>
-        {HOW_CONTESTS_WORK.map((listEntry, i) => (
-          <li key={i}>
-            <p>{listEntry}</p>
-          </li>
-        ))}
-      </ol>
+      </figure>
+      <section>
+        <ol>{howContestsWork}</ol>
+      </section>
     </article>
   );
 };
@@ -137,14 +155,16 @@ export const ContactUs: FC = () => {
 };
 
 export const Featured: FC = () => {
+  const featuredLinks = FEATURED.map(({ src, alt, href }) => (
+    <a key={alt} href={href}>
+      <img src={src} alt={alt} />
+    </a>
+  ));
+
   return (
     <article>
       <h2>Featured In</h2>
-      {FEATURED.map(({ src, alt, href }) => (
-        <a key={alt} href={href}>
-          <img src={src} alt={alt} />
-        </a>
-      ))}
+      {featuredLinks}
     </article>
   );
 };
