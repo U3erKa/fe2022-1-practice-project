@@ -1,0 +1,35 @@
+$mainColor: #377dff
+$backgroundColor: rgba(55,125,255,.1)
+$textColorDark: #1e2022
+$textColorLight: #77838f
+$buttonTextColor: #fff
+$getStartedHeadingColor: #00dffc
+$getStartedTextColor: #fff
+
+$fontSize: 16px
+$gap: 8px
+$padding: calc($gap * 2)
+
+.heading
+
+.subHeading
+  font-size: calc($fontSize * 0.7)
+  margin-bottom: $gap
+  padding: $gap calc($gap * 2)
+  color: $mainColor
+  background-color: $backgroundColor
+  border-radius: 1rem
+  width: fit-content
+
+.mainIcon
+
+@mixin button($color, $backgroundColor, $borderRadius)
+  color: $color
+  background-color: $backgroundColor
+  border-radius: $borderRadius
+  padding: calc($gap * 1.5) calc($gap * 2)
+  text-decoration: none
+  font-weight: 500
+
+  &:hover
+    transform: translateY(-3px)

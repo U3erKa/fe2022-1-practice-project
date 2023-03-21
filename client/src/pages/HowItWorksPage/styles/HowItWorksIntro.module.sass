@@ -1,0 +1,30 @@
+@import './common.module'
+
+.container
+  display: flex
+  justify-content: center
+  align-items: center
+  width: clamp(320px, 100%, 1280px)
+  margin: 0 auto
+  padding: $padding calc($padding * 2)
+  font-family: "Poppins", Helvetica, Arial, sans-serif
+
+.contents
+  width: clamp(320px, 60%, 900px)
+
+.imageContainer
+  width: clamp(320px, 40%, 500px)
+
+.mainHeading
+  margin-bottom: $gap
+  font-size: calc($fontSize * 2.5)
+  font-weight: 600
+  color: $textColorDark
+
+.text
+  margin-bottom: calc($gap * 2)
+  line-height: 1.7
+  color: $textColorLight
+
+.button
+  @include button($color: $buttonTextColor, $backgroundColor: $mainColor, $borderRadius: 25px)
