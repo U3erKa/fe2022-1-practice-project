@@ -16,6 +16,7 @@ export const HowItWorksIntro: FC = () => {
       <a href="https://vimeo.com/368584367" target="_blank" rel="noreferrer">
         Play video
       </a>
+        <img src={`${HOW_IT_WORKS_PATH}main.svg`} alt="main icon" />
     </article>
   );
 };
@@ -41,9 +42,12 @@ export const HowItWorksCards: FC = () => {
 export const HowContestsWork: FC = () => {
   return (
     <article>
-      <img src="" alt="icon" />
+          <img src={`${HOW_IT_WORKS_PATH}howContestsWork1.svg`} alt="icon" />
       <h2>How Do Naming Contests Work?</h2>
-      <img src="" alt="person using laptop" />
+        <img
+          src={`${HOW_IT_WORKS_PATH}howContestsWork2.svg`}
+          alt="how contests work icon"
+        />
       <ol>
         {HOW_CONTESTS_WORK.map((listEntry, i) => (
           <li key={i}>

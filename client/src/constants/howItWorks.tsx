@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { uniqueId } from 'lodash';
-import { DUMMY_LINK } from 'constants/general';
+import { DUMMY_LINK, HOW_IT_WORKS_PATH } from 'constants/general';
 import type { QNATuples } from 'types/general';
 
 const LINK_ID_PREFIX = 'link';
@@ -12,14 +12,14 @@ export const HOW_IT_WORKS_CARDS = [
       'Work with hundreds of creative experts to get custom name suggestions for your business or brand. ' +
       'All names are auto-checked for URL availability.',
     href: '/startContest',
-    src: '',
+    src: `${HOW_IT_WORKS_PATH}launchContest.svg`,
   },
   {
     heading: 'Explore Names For Sale',
     text:
       'Our branding team has curated thousands of pre-made names that you can purchase instantly. ' +
       'All names include a matching URL and a complimentary Logo Design',
-    src: '',
+    src: `${HOW_IT_WORKS_PATH}exploreNames.svg`,
   },
   {
     heading: 'Agency-level Managed Contests',
@@ -27,7 +27,7 @@ export const HOW_IT_WORKS_CARDS = [
       'Our Managed contests combine the power of crowdsourcing with the rich experience of our branding consultants. ' +
       'Get a complete agency-level experience at a fraction of Agency costs',
     linkText: 'Learn more',
-    src: '',
+    src: `${HOW_IT_WORKS_PATH}managedContest.svg`,
   },
 ];
 
