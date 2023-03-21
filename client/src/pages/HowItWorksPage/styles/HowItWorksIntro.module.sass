@@ -1,23 +1,38 @@
 @import './common.module'
 
+$minWidth: 320px
+$containerWidth: 1280px
+$imageWidth: 500px
+$contentWidth: calc($containerWidth - $imageWidth)
+
 .container
+  box-sizing: border-box
   display: flex
   justify-content: center
   align-items: center
-  width: clamp(320px, 100%, 1280px)
+  width: clamp($minWidth, 100%, $containerWidth)
   margin: 0 auto
-  padding: $padding calc($padding * 2)
+  padding: calc($padding * 2)
   font-family: "Poppins", Helvetica, Arial, sans-serif
+  font-size: $fontSize
 
 .contents
-  width: clamp(320px, 60%, 900px)
+  width: clamp($minWidth, 60%, $contentWidth)
+  @media (width < 1000px)
+    width: clamp($minWidth, 80%, 900px)
+  @media (width < 768px)
+    width: 90%
+  @media (width < 480px)
+    width: 100%
 
 .imageContainer
-  width: clamp(320px, 40%, 500px)
+  width: clamp($minWidth, 40%, $imageWidth)
+  @media (width < 1000px)
+    display: none
 
 .mainHeading
   margin-bottom: $gap
-  font-size: calc($fontSize * 2.5)
+  font-size: 2.5rem
   font-weight: 600
   color: $textColorDark
 

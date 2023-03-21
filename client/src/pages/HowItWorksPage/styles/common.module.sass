@@ -30,6 +30,9 @@ $padding: calc($gap * 2)
   padding: calc($gap * 1.5) calc($gap * 2)
   text-decoration: none
   font-weight: 500
+  @media (width < 480px)
+    display: block
+    max-width: 100%
 
   &:hover
     transform: translateY(-3px)
