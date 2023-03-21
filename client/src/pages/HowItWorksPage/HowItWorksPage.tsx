@@ -4,6 +4,9 @@ import {
   HowItWorksCards,
   HowContestsWork,
   HowItWorksQnA,
+  GetStarted,
+  ContactUs,
+  Featured,
 } from '.';
 import type { FC } from 'react';
 
@@ -16,6 +19,9 @@ const HowItWorksPage: FC = () => {
         <HowItWorksCards />
         <HowContestsWork />
         <HowItWorksQnA />
+        <GetStarted />
+        <ContactUs />
+        <Featured />
       </main>
       <Footer />
     </>

@@ -1,6 +1,17 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { DUMMY_LINK } from 'constants/general';
-import { HOW_IT_WORKS_CARDS, HOW_CONTESTS_WORK } from 'constants/howItWorks';
+import { uniqueId } from 'lodash';
+import {
+  DUMMY_LINK,
+  HOW_IT_WORKS_PATH,
+  STATIC_IMAGES_PATH,
+} from 'constants/general';
+import {
+  HOW_IT_WORKS_CARDS,
+  HOW_CONTESTS_WORK,
+  GET_STARTED_IMAGES,
+  FEATURED,
+} from 'constants/howItWorks';
 import type { FC } from 'react';
 
 export const HowItWorksIntro: FC = () => {
@@ -55,6 +66,85 @@ export const HowContestsWork: FC = () => {
           </li>
         ))}
       </ol>
+    </article>
+  );
+};
+
+export const GetStarted: FC = () => {
+  const images = GET_STARTED_IMAGES.map(({ src, alt, caption }) => {
+    const captionElement = caption.map((entry) => (
+      <Fragment key={uniqueId('caption')}>{entry}</Fragment>
+    ));
+
+    return (
+      <figure key={uniqueId('img')}>
+        <img src={src} alt={alt} />
+        <figcaption>{captionElement}</figcaption>
+      </figure>
+    );
+  });
+
+  return (
+    <article>
+      <section>
+        <h2>Ready to get started?</h2>
+        <p>
+          Fill out your contest brief and begin receiving custom name
+          suggestions within minutes.
+        </p>
+        <Link to={'/startContest'}>Start A Contest</Link>
+      </section>
+      <section>{images}</section>
+    </article>
+  );
+};
+
+export const ContactUs: FC = () => {
+  return (
+    <article>
+      <div>
+        <section>
+          <h3>Pay a Fraction of cost vs hiring an agency</h3>
+          <p>
+            For as low as $199, our naming contests and marketplace allow you to
+            get an amazing brand quickly and affordably.
+          </p>
+        </section>
+        <section>
+          <h3>Satisfaction Guarantee</h3>
+          <p>
+            Of course! We have policies in place to ensure that you are
+            satisfied with your experience.{' '}
+            <Link to={'/how-it-works#satisfaction'}>Learn more</Link>
+          </p>
+        </section>
+      </div>
+      <section>
+        <h3>Questions?</h3>
+        <p>
+          Speak with a Squadhelp platform expert to learn more and get your
+          questions answered.
+        </p>
+        <button>Schedule Consultation</button>
+        <a href="tel:+8773553585">
+          <img src={`${STATIC_IMAGES_PATH}phone.png`} alt="phone" />
+          (877) 355-3585
+        </a>
+        <p>Call us for assistance</p>
+      </section>
+    </article>
+  );
+};
+
+export const Featured: FC = () => {
+  return (
+    <article>
+      <h2>Featured In</h2>
+      {FEATURED.map(({ src, alt, href }) => (
+        <a key={alt} href={href}>
+          <img src={src} alt={alt} />
+        </a>
+      ))}
     </article>
   );
 };
