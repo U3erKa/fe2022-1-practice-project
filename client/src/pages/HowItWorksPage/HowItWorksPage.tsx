@@ -3,7 +3,8 @@ import {
   HowItWorksIntro,
   HowItWorksCards,
   HowContestsWork,
-} from './components/HowItWorks';
+  HowItWorksQnA,
+} from '.';
 import type { FC } from 'react';
 
 const HowItWorksPage: FC = () => {
@@ -14,6 +15,7 @@ const HowItWorksPage: FC = () => {
         <HowItWorksIntro />
         <HowItWorksCards />
         <HowContestsWork />
+        <HowItWorksQnA />
       </main>
       <Footer />
     </>
