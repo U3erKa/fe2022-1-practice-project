@@ -6,9 +6,13 @@ export type Props = {
   contents: string | AnswerProps | ReactNode;
 };
 
+const isAnswer = (contents): contents is AnswerProps => {
+  return isEqual(Object.keys(contents), ['description', 'list'].sort());
+};
+
 export const Answer: FC<Props> = ({ contents }) => {
-  if (isEqual(Object.keys(contents as any), ['description', 'list'].sort())) {
-    const { description, list } = contents as AnswerProps;
+  if (isAnswer(contents)) {
+    const { description, list } = contents;
     return (
       <>
         <p>{description}</p>
@@ -23,7 +27,7 @@ export const Answer: FC<Props> = ({ contents }) => {
     );
   }
 
-  return <p>{contents as ReactNode}</p>;
+  return <p>{contents}</p>;
 };
 
 export default Answer;

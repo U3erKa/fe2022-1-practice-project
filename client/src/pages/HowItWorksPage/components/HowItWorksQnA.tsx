@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { uniqueId } from 'lodash';
 import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
+import { Answer } from '..';
 import type { FC } from 'react';
-import { Answer } from './Answer';
 
 export const HowItWorksQnA: FC = () => {
   const links: JSX.Element[] = [];
