@@ -305,3 +305,49 @@ export const HOW_IT_WORKS_QNA = [
     questions: CREATIVES_QUESTIONS,
   },
 ];
+
+export const GET_STARTED_IMAGES = [
+  {
+    src: `${HOW_IT_WORKS_PATH}stars.svg`,
+    alt: 'stars icon',
+    caption: [<b>4.9 out of 5 stars</b>, ' from 25,000+ customers.'],
+  },
+  {
+    src: `${HOW_IT_WORKS_PATH}brandingCommunity.webp`,
+    alt: 'community icon',
+    caption: ['Our branding community stands ', <b>200,000+</b>, ' strong.'],
+  },
+  {
+    src: `${HOW_IT_WORKS_PATH}industries.svg`,
+    alt: 'industries icon',
+    caption: [
+      <b>140+ Industries</b>,
+      ' supported across more than ',
+      <b>85 countries</b>,
+      '- and counting.',
+    ],
+  },
+];
+
+export const FEATURED = [
+  {
+    src: `${HOW_IT_WORKS_PATH}Forbes.svg`,
+    alt: 'Forbes',
+    href: 'http://www.forbes.com/sites/forbestreptalks/2016/07/11/not-sure-how-to-name-a-startup-squadhelp-will-crowdsource-it-for-199',
+  },
+  {
+    src: `${HOW_IT_WORKS_PATH}TheNextWeb.svg`,
+    alt: 'The Next Web',
+    href: 'http://thenextweb.com/contributors/crowdsource-startup-name-with-squadhelp/',
+  },
+  {
+    src: `${HOW_IT_WORKS_PATH}ChicagoTribune.svg`,
+    alt: 'Chicago Tribune',
+    href: 'http://www.chicagotribune.com/bluesky/originals/ct-squadhelp-startup-names-bsi-20170331-story.html',
+  },
+  {
+    src: `${HOW_IT_WORKS_PATH}Mashable.svg`,
+    alt: 'Mashable',
+    href: 'http://mashable.com/2011/04/01/make-money-crowdworking/',
+  },
+];
