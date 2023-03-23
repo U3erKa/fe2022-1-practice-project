@@ -1,5 +1,6 @@
 $mainColor: #377dff
 $backgroundColor: rgba(55,125,255,.1)
+$borderColor: #e7eaf3
 $textColorDark: #1e2022
 $textColorLight: #77838f
 $buttonTextColor: #fff
@@ -9,6 +10,7 @@ $getStartedTextColor: #fff
 $fontSize: 16px
 $gap: 8px
 $padding: calc($gap * 2)
+$borderRadius: 5px
 
 $minWidth: 320px
 $containerWidth: 1280px
@@ -25,17 +27,17 @@ $containerWidth: 1280px
   font-size: $fontSize
 
 .heading
+  font-size: 2rem
+  margin: $padding
 
 .subHeading
-  font-size: calc($fontSize * 0.7)
+  font-size: 0.7rem
   margin-bottom: $gap
   padding: $gap calc($gap * 2)
   color: $mainColor
   background-color: $backgroundColor
   border-radius: 1rem
   width: fit-content
-
-.mainIcon
 
 .text
   margin-bottom: calc($gap * 2)
@@ -49,6 +51,7 @@ $containerWidth: 1280px
   padding: calc($gap * 1.5) calc($gap * 2)
   text-decoration: none
   font-weight: 500
+  line-height: 1.5
   @media (width < 480px)
     display: block
     max-width: 100%
