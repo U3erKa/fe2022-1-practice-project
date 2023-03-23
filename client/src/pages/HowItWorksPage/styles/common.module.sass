@@ -10,6 +10,20 @@ $fontSize: 16px
 $gap: 8px
 $padding: calc($gap * 2)
 
+$minWidth: 320px
+$containerWidth: 1280px
+
+.container
+  box-sizing: border-box
+  display: flex
+  justify-content: center
+  align-items: center
+  width: clamp($minWidth, 100%, $containerWidth)
+  margin: 0 auto
+  padding: calc($padding * 2)
+  font-family: "Poppins", Helvetica, Arial, sans-serif
+  font-size: $fontSize
+
 .heading
 
 .subHeading
@@ -22,6 +36,11 @@ $padding: calc($gap * 2)
   width: fit-content
 
 .mainIcon
+
+.text
+  margin-bottom: calc($gap * 2)
+  line-height: 1.7
+  color: $textColorLight
 
 @mixin button($color, $backgroundColor, $borderRadius)
   color: $color

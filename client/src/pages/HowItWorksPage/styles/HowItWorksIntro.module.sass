@@ -1,20 +1,7 @@
 @import './common.module'
 
-$minWidth: 320px
-$containerWidth: 1280px
 $imageWidth: 500px
 $contentWidth: calc($containerWidth - $imageWidth)
-
-.container
-  box-sizing: border-box
-  display: flex
-  justify-content: center
-  align-items: center
-  width: clamp($minWidth, 100%, $containerWidth)
-  margin: 0 auto
-  padding: calc($padding * 2)
-  font-family: "Poppins", Helvetica, Arial, sans-serif
-  font-size: $fontSize
 
 .contents
   width: clamp($minWidth, 60%, $contentWidth)
@@ -35,11 +22,6 @@ $contentWidth: calc($containerWidth - $imageWidth)
   font-size: 2.5rem
   font-weight: 600
   color: $textColorDark
-
-.text
-  margin-bottom: calc($gap * 2)
-  line-height: 1.7
-  color: $textColorLight
 
 .button
   @include button($color: $buttonTextColor, $backgroundColor: $mainColor, $borderRadius: 25px)
