@@ -1,9 +1,10 @@
+require('dotenv').config()
 const {
   SQUADHELP_BANK_NUMBER,
   SQUADHELP_BANK_NAME,
   SQUADHELP_BANK_EXPIRY,
   SQUADHELP_BANK_CVC,
-} = require('../constants');
+} = process.env;
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
