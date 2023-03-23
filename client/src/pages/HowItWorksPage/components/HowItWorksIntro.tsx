@@ -19,6 +19,7 @@ export const HowItWorksIntro: FC = () => {
           target="_blank"
           rel="noreferrer"
         >
+          <i className="fas fa-play"></i>
           Play video
         </a>
       </section>
