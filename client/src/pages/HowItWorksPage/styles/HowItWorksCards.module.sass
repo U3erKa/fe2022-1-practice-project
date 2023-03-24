@@ -3,6 +3,7 @@
 $columnWidth: minmax(260px, 1fr)
 
 .container
+  @include container
   flex-direction: column
   text-align: center
   gap: calc($gap * 8)
@@ -26,9 +27,6 @@ $columnWidth: minmax(260px, 1fr)
   border: 1px solid $borderColor
   border-radius: $borderRadius
   padding: calc($padding * 4) $padding
-
-.icon
-  width: 72px
 
 .button
   @include button($color: $buttonTextColor, $backgroundColor: $mainColor, $borderRadius: $borderRadius)

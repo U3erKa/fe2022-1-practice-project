@@ -3,6 +3,9 @@
 $imageWidth: 500px
 $contentWidth: calc($containerWidth - $imageWidth)
 
+.container
+  @include container
+
 .contents
   width: clamp($minWidth, 60%, $contentWidth)
   @media (width < 1000px)

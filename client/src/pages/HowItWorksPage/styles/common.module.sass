@@ -15,14 +15,14 @@ $borderRadius: 5px
 $minWidth: 320px
 $containerWidth: 1280px
 
-.container
+@mixin container
   box-sizing: border-box
   display: flex
   justify-content: center
   align-items: center
   width: clamp($minWidth, 100%, $containerWidth)
   margin: 0 auto
-  padding: calc($padding * 2)
+  padding: calc($padding * 4) calc($padding * 2)
   font-family: "Poppins", Helvetica, Arial, sans-serif
   font-size: $fontSize
 
@@ -43,6 +43,9 @@ $containerWidth: 1280px
   margin-bottom: calc($gap * 2)
   line-height: 1.7
   color: $textColorLight
+
+.icon
+  width: 72px
 
 @mixin button($color, $backgroundColor, $borderRadius)
   color: $color
