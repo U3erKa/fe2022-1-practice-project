@@ -43,16 +43,17 @@ $lineHeight: 0.0625rem
       position: absolute
       inset: 0
       margin: auto auto auto 0
-      border: 1px solid $borderColor
 
     &::before
       left: calc($lineWidth * -1)
       width: $lineWidth
       height: $lineHeight
+      border-top: 1px solid $borderColor
 
     &::after
       left: calc($lineWidth * -1 - 0.1rem)
       width: $lineHeight
+      border-right: 1px solid $borderColor
 
     &:first-child::after
       height: 50%
