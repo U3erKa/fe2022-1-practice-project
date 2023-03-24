@@ -1,0 +1,49 @@
+@import './common.module'
+
+.container
+  @include container
+  gap: calc($gap * 8)
+  flex-direction: column
+
+.headingContainer,
+.listContainer
+  display: flex
+  align-items: center
+  gap: calc($gap * 2)
+
+.headingContainer
+  flex-direction: column
+
+.listContainer
+  width: 100%
+
+.listIcon
+  width: 75%
+  padding: 0 $padding
+
+.howToContainer
+  padding: 0 $padding
+
+.howTo
+  display: flex
+  flex-direction: column
+  counter-reset: how-to
+  gap: calc($gap * 4)
+
+  &Item
+    padding: calc($padding * 2 / 3) calc($padding * 2)
+    border: 1px solid $borderColor
+    border-radius: $borderRadius
+
+.text
+  display: flex
+  align-items: center
+  margin-bottom: 0
+  counter-increment: how-to
+
+  &::before
+    content: counter(how-to) "."
+    display: block
+    width: 64px
+    font-size: 4rem
+    color: $mainColor
