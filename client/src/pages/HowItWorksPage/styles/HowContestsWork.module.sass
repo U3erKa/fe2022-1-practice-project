@@ -20,10 +20,14 @@ $lineHeight: 0.0625rem
 .listContainer
   width: 100%
   gap: calc($gap * 8)
+  @media (width < 1024px)
+    flex-direction: column-reverse
 
 .listIcon
   width: 75%
   padding: 0 $padding
+  @media (width < 768px)
+    display: none
 
 .howToContainer
   padding: 0 $padding
