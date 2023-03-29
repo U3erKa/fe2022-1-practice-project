@@ -5,6 +5,7 @@ import {
   HowContestsWork,
   HowItWorksQnA,
   GetStarted,
+  GetStartedImages,
   ContactUs,
   Featured,
 } from '.';
@@ -20,6 +21,7 @@ const HowItWorksPage: FC = () => {
         <HowContestsWork />
         <HowItWorksQnA />
         <GetStarted />
+        <GetStartedImages />
         <ContactUs />
         <Featured />
       </main>
