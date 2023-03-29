@@ -2,24 +2,32 @@
 
 .container
   @include container
-  justify-content: space-between
   padding: 0
   width: 100%
   background-image: linear-gradient(150deg,#2d1582 0%,#19a0ff 100%)
+  position: relative
+  z-index: 1
 
 .icon
+  position: absolute
   width: 200px
+  z-index: -1
 
   &:first-child
+    top: 0
+    left: 0
     align-self: flex-start
 
   &:last-child
+    bottom: 0
+    right: 0
     align-self: flex-end
 
 .headingContainer
   display: flex
   flex-direction: column
   align-items: center
+  text-align: center
   padding: calc($padding * 2) $padding
 
 .getStartedHeading
@@ -35,3 +43,5 @@
 
 .button
   @include button($color: $textColorDark, $backgroundColor: $getStartedTextColor, $borderRadius: $borderRadius)
+  @media (width < 480px)
+    width: calc(100% - $padding * 2)
