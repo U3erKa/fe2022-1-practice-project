@@ -324,7 +324,7 @@ export const GET_STARTED_IMAGES = [
       <b>140+ Industries</b>,
       ' supported across more than ',
       <b>85 countries</b>,
-      '- and counting.',
+      ' – and counting.',
     ],
   },
 ];
