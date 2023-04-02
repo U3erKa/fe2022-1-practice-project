@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { STATIC_IMAGES_PATH } from 'constants/general';
+import { HOW_IT_WORKS_PATH } from 'constants/general';
 import styles from '../styles/ContactUs.module.sass';
 import type { FC } from 'react';
 
@@ -39,7 +39,7 @@ export const ContactUs: FC = () => {
         </p>
         <button>Schedule Consultation</button>
         <a href="tel:+8773553585">
-          <img src={`${STATIC_IMAGES_PATH}phone.png`} alt="phone" />
+          <img src={`${HOW_IT_WORKS_PATH}phone.svg`} alt="phone" />
           (877) 355-3585
         </a>
         <p>Call us for assistance</p>
