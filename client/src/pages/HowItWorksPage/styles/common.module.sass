@@ -30,6 +30,9 @@ $containerWidth: 1280px
   font-family: "Poppins", Helvetica, Arial, sans-serif
   font-size: $fontSize
 
+  & a, button
+    font-family: "Poppins", Helvetica, Arial, sans-serif
+
 .heading
   font-weight: 500
   font-size: 2rem
@@ -55,10 +58,10 @@ $containerWidth: 1280px
 @mixin button($color, $backgroundColor, $borderRadius)
   color: $color
   background-color: $backgroundColor
+  border: none
   border-radius: $borderRadius
   padding: calc($gap * 1.5) calc($gap * 2)
   text-decoration: none
-  font-weight: 500
   line-height: 1.5
   @media (width < 480px)
     display: block
