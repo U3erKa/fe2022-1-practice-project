@@ -1,0 +1,38 @@
+@import './common.module'
+
+.container
+  @include container
+
+.contentsContainer
+  padding: calc($padding * 4) calc($padding * 4) calc($padding * 3) calc($padding * 4)
+  box-shadow: 0 10px 40px 10px rgba(140,152,164,.175)
+
+.contents
+  display: flex
+  gap: $padding
+
+  & > i
+    width: 2rem
+    height: 2rem
+    flex-shrink: 0
+    text-align: center
+    line-height: 2
+    color: $mainColor
+    background-color: $backgroundColor
+    border-radius: 1rem
+
+.smallHeading,
+.bigHeading
+  font-weight: 500
+  margin-bottom: $padding
+
+.smallHeading
+  font-size: 1.25rem
+
+.bigHeading
+  font-size: 1.5rem
+
+.text > a
+  color: $mainColor
+  text-decoration: none
+
