@@ -32,13 +32,13 @@ export const ContactUs: FC = () => {
         </li>
       </ul>
       <section className={styles.contactsContainer}>
-        <h3>Questions?</h3>
-        <p>
+        <h3 className={styles.heading}>Questions?</h3>
+        <p className={styles.text}>
           Speak with a Squadhelp platform expert to learn more and get your
           questions answered.
         </p>
-        <button>Schedule Consultation</button>
-        <a href="tel:+8773553585">
+        <button className={styles.button}>Schedule Consultation</button>
+        <a className={styles.link} href="tel:+8773553585">
           <img src={`${HOW_IT_WORKS_PATH}phone.svg`} alt="phone" />
           (877) 355-3585
         </a>
