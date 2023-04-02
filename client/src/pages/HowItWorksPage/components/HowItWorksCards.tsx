@@ -13,7 +13,9 @@ export const HowItWorksCards: FC = () => {
           src={src}
           alt={`${heading.toLowerCase()} icon`}
         />
-        <h3 className={styles.heading}>{heading}</h3>
+        <h3 className={`${styles.heading} ${styles.smallHeading}`}>
+          {heading}
+        </h3>
         <p className={styles.text}>{text}</p>
         <Link className={styles.button} to={href ?? DUMMY_LINK}>
           {linkText ?? heading}
