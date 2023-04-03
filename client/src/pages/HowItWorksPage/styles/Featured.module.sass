@@ -2,6 +2,8 @@
 
 .container
   @include container
+  @media (width < 1024px)
+    flex-direction: column
 
 .linksContainer
   display: flex
@@ -11,9 +13,12 @@
   padding: calc($padding * 2)
   gap: $gap
   border-top: 1px solid $borderColor
+  @media (width < 768px)
+    flex-direction: column
 
 .heading
-  width: 30%
+  @media (width >= 1024px)
+    width: 30%
 
 .link
   display: flex
