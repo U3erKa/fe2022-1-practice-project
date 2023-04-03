@@ -1,0 +1,22 @@
+@import './common.module'
+
+.container
+  @include container
+  align-items: flex-start
+  gap: calc($gap * 4)
+
+.linksContainer
+  width: 25%
+  background-color: $mainColor
+  border-radius: $borderRadius
+  padding: $padding
+
+.link
+  padding: $padding
+
+  & > a
+    color: $buttonTextColor
+    text-decoration: none
+
+.answersContainer
+  width: 75%
