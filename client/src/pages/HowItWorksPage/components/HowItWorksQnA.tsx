@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { uniqueId } from 'lodash';
 import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Answer } from '..';
@@ -11,15 +10,13 @@ export const HowItWorksQnA: FC = () => {
   HOW_IT_WORKS_QNA.forEach(({ id, title, questions }) => {
     links.push(
       <p key={id}>
-        <Link to={`#${id}`} relative="path">
-          {title}
-        </Link>
+        <a href={`#${id}`}>{title}</a>
       </p>,
     );
 
     answers.push(
-      <section key={id}>
-        <h2 id={id}>{title}</h2>
+      <section id={id} key={id}>
+        <h2>{title}</h2>
         {questions.map(([question, answer]) => {
           return (
             <div key={uniqueId()}>
