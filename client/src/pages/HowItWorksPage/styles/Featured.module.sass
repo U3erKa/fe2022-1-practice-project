@@ -1,0 +1,25 @@
+@import './common.module'
+
+.container
+  @include container
+
+.linksContainer
+  display: flex
+  flex-direction: row
+  align-items: center
+  width: 100%
+  padding: calc($padding * 2)
+  gap: $gap
+  border-top: 1px solid $borderColor
+
+.heading
+  width: 30%
+
+.link
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 25%
+
+  & > a
+    padding: calc($padding * 1)
