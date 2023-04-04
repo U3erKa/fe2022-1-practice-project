@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { uniqueId } from 'lodash';
 import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Answer } from '..';
@@ -9,14 +10,15 @@ type QuestionProps = {
 };
 
 const Questions: FC<QuestionProps> = ({ questions }) => {
+  const [activeQuestion, setActiveQuestion] = useState(0);
   return (
     <>
       {questions.map(([question, answer], i) => {
         return (
-          <div key={uniqueId()}>
-            <button>{question}</button>
-            <Answer contents={answer} />
-          </div>
+          <section key={uniqueId()}>
+            <button onClick={() => setActiveQuestion(i)}>{question}</button>
+            <Answer active={activeQuestion === i} contents={answer} />
+          </section>
         );
       })}
     </>
@@ -45,7 +47,7 @@ export const HowItWorksQnA: FC = () => {
   return (
     <article className={styles.container}>
       <section className={styles.linksContainer}>{links}</section>
-      <section className={styles.answersContainer}>{answers}</section>
+      <article className={styles.answersContainer}>{answers}</article>
     </article>
   );
 };
