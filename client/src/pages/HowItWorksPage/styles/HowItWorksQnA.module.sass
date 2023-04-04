@@ -4,13 +4,18 @@
   @include container
   align-items: flex-start
   gap: calc($gap * 4)
+  @media (width < 1024px)
+    flex-direction: column
 
 .linksContainer
-  width: 25%
+  box-sizing: border-box
+  width: 100%
   background-color: $mainColor
   border-radius: $borderRadius
-  margin-top: calc($padding * 4)
   padding: $padding
+  @media (width >= 1024px)
+  margin-top: calc($padding * 4)
+    width: 25%
 
 .link
   padding: $padding
@@ -20,6 +25,7 @@
     text-decoration: none
 
 .answersContainer
+  @media (width >= 1024px)
   width: 75%
 
 .heading
