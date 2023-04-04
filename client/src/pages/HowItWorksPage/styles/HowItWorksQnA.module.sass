@@ -9,6 +9,7 @@
   width: 25%
   background-color: $mainColor
   border-radius: $borderRadius
+  margin-top: calc($padding * 4)
   padding: $padding
 
 .link
@@ -20,3 +21,21 @@
 
 .answersContainer
   width: 75%
+
+.heading
+  margin: 0
+  margin-bottom: $padding
+  color: $mainColor
+
+.answers
+  padding: calc($padding * 4) 0
+  &:nth-child(n + 2)
+    border-top: 1px solid $borderColor
+
+.question
+  width: 100%
+  text-align: start
+  background-color: $buttonTextColor
+  border: 1px solid $borderColor
+  border-radius: $borderRadius $borderRadius 0 0
+  padding: $padding

@@ -14,7 +14,10 @@ const isAnswer = (contents): contents is AnswerProps => {
 };
 
 export const Answer: FC<Props> = ({ active, contents }) => {
-  const containerStyles = cx({ [styles.inactive]: !active });
+  const containerStyles = cx({
+    [styles.inactive]: !active,
+    [styles.container]: true,
+  });
 
   if (isAnswer(contents)) {
     const { description, list } = contents;

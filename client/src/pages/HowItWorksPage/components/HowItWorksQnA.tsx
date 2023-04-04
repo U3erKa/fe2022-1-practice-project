@@ -12,11 +12,12 @@ type QuestionProps = {
 const Questions: FC<QuestionProps> = ({ questions }) => {
   const [activeQuestion, setActiveQuestion] = useState(0);
   return (
-    <>
+    <section className={styles.questions}>
       {questions.map(([question, answer], i) => {
         return (
           <section key={uniqueId()}>
             <button
+              className={styles.question}
               onClick={() => setActiveQuestion(activeQuestion === i ? -1 : i)}
             >
               {question}
@@ -25,7 +26,7 @@ const Questions: FC<QuestionProps> = ({ questions }) => {
           </section>
         );
       })}
-    </>
+    </section>
   );
 };
 
@@ -41,7 +42,7 @@ export const HowItWorksQnA: FC = () => {
     );
 
     answers.push(
-      <section id={id} key={id}>
+      <section className={styles.answers} id={id} key={id}>
         <h2 className={styles.heading}>{title}</h2>
         <Questions questions={questions} />
       </section>,
