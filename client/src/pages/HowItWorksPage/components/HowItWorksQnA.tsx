@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { uniqueId } from 'lodash';
+import cx from 'classnames';
 import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Answer } from '..';
 import styles from '../styles/HowItWorksQnA.module.sass';
@@ -14,15 +15,21 @@ const Questions: FC<QuestionProps> = ({ questions }) => {
   return (
     <section className={styles.questions}>
       {questions.map(([question, answer], i) => {
+        const active = activeQuestion === i;
+        const buttonStyles = cx({
+          [styles.activeButton]: active,
+          [styles.question]: true,
+        });
+
         return (
           <section key={uniqueId()}>
             <button
-              className={styles.question}
-              onClick={() => setActiveQuestion(activeQuestion === i ? -1 : i)}
+              className={buttonStyles}
+              onClick={() => setActiveQuestion(active ? -1 : i)}
             >
               {question}
             </button>
-            <Answer active={activeQuestion === i} contents={answer} />
+            <Answer active={active} contents={answer} />
           </section>
         );
       })}
