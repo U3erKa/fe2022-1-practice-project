@@ -4,6 +4,25 @@ import { Answer } from '..';
 import styles from '../styles/HowItWorksQnA.module.sass';
 import type { FC } from 'react';
 
+type QuestionProps = {
+  questions: (typeof HOW_IT_WORKS_QNA)[0]['questions'];
+};
+
+const Questions: FC<QuestionProps> = ({ questions }) => {
+  return (
+    <>
+      {questions.map(([question, answer], i) => {
+        return (
+          <div key={uniqueId()}>
+            <button>{question}</button>
+            <Answer contents={answer} />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
 export const HowItWorksQnA: FC = () => {
   const links: JSX.Element[] = [];
   const answers: JSX.Element[] = [];
@@ -18,14 +37,7 @@ export const HowItWorksQnA: FC = () => {
     answers.push(
       <section id={id} key={id}>
         <h2 className={styles.heading}>{title}</h2>
-        {questions.map(([question, answer]) => {
-          return (
-            <div key={uniqueId()}>
-              <button>{question}</button>
-              <Answer contents={answer} />
-            </div>
-          );
-        })}
+        <Questions questions={questions} />
       </section>,
     );
   });
