@@ -16,7 +16,11 @@ const Questions: FC<QuestionProps> = ({ questions }) => {
       {questions.map(([question, answer], i) => {
         return (
           <section key={uniqueId()}>
-            <button onClick={() => setActiveQuestion(i)}>{question}</button>
+            <button
+              onClick={() => setActiveQuestion(activeQuestion === i ? -1 : i)}
+            >
+              {question}
+            </button>
             <Answer active={activeQuestion === i} contents={answer} />
           </section>
         );
