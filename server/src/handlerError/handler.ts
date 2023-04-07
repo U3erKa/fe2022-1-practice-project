@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import type ApplicationError from '../errors/ApplicationError';
 import type { ErrorRequestHandler } from 'express';
 
 const LOG_PATH = path.resolve(__dirname, '../logs/latest.log');
@@ -13,6 +14,7 @@ const LOG_PATH = path.resolve(__dirname, '../logs/latest.log');
 
 const handleError: ErrorRequestHandler = (err, req, res, next) => {
   console.log(err);
+  saveErrorToLog(err);
   if (
     err.message ===
       'new row for relation "Banks" violates check constraint "Banks_balance_ck"' ||
@@ -27,6 +29,18 @@ const handleError: ErrorRequestHandler = (err, req, res, next) => {
   } else {
     res.status(err.code).send(err.message);
   }
+};
+
+const saveErrorToLog = async ({
+  message,
+  stack: stackTrace,
+  code = 500,
+}: ApplicationError) => {
+  const errorToLog = { message, stackTrace, code, time: Date.now() };
+
+  fs.appendFile(LOG_PATH, `${JSON.stringify(errorToLog, undefined, 2)},\n`, {
+    encoding: 'utf8',
+  });
 };
 
 export default handleError;
