@@ -1,7 +1,9 @@
 import moment from 'moment';
+import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
 import type ApplicationError from './errors/ApplicationError';
+import type Mail from 'nodemailer/lib/mailer';
 
 const READ_FILE_OPTIONS = { encoding: 'utf8' } as const;
 
@@ -47,3 +49,30 @@ export const saveErrorToLog = async ({
     READ_FILE_OPTIONS,
   );
 };
+
+const sendEmail = (async () => {
+  const testAccount = await nodemailer.createTestAccount();
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass,
+    },
+  });
+
+  const _sendEmail = async (attachments: Mail.Attachment[]) => {
+    const info = await transporter.sendMail({
+      from: '"NodeMailer" <email@example.com>',
+      to: 'log.recipient@example.com',
+      subject: "Node server's error logs",
+      attachments,
+    });
+
+    console.log(`Message sent: ${info.messageId}`);
+    console.log(`Preview URL: ${nodemailer.getTestMessageUrl(info)}`);
+  };
+
+  return _sendEmail;
+})();
