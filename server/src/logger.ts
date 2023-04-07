@@ -41,7 +41,9 @@ export const saveErrorToLog = async ({
 }: ApplicationError) => {
   const errorToLog = { message, stackTrace, code, time: Date.now() };
 
-  fs.appendFile(LOG_PATH, `${JSON.stringify(errorToLog, undefined, 2)},\n`, {
-    encoding: 'utf8',
-  });
+  fs.appendFile(
+    path.resolve(LOG_PATH, 'latest.log'),
+    `${JSON.stringify(errorToLog, undefined, 2)},\n`,
+    READ_FILE_OPTIONS,
+  );
 };
