@@ -1,11 +1,14 @@
 import moment from 'moment';
+import cron from 'node-cron';
 import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
+import { CRON_DAILY_AT_MIDNIGHT, LOG_PATH } from './constants';
 import type ApplicationError from './errors/ApplicationError';
 import type Mail from 'nodemailer/lib/mailer';
 
 const READ_FILE_OPTIONS = { encoding: 'utf8' } as const;
+const CRON_EVERY_MINUTE = '* * * * *';
 
 (async (filename: string) => {
   try {
@@ -76,3 +79,14 @@ const sendEmail = (async () => {
 
   return _sendEmail;
 })();
+
+cron.schedule(CRON_DAILY_AT_MIDNIGHT, async () => {
+  const log = await flushLogs();
+  if (!log) {
+    console.log('Nothing to send via email');
+    return;
+  }
+  console.log('Sending email...');
+
+  (await sendEmail)([{ path: path.resolve(LOG_PATH, log) }]);
+});
