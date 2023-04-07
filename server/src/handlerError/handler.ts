@@ -1,4 +1,15 @@
+import fs from 'fs/promises';
+import path from 'path';
 import type { ErrorRequestHandler } from 'express';
+
+const LOG_PATH = path.resolve(__dirname, '../logs/latest.log');
+(async () => {
+  try {
+    await fs.readFile(LOG_PATH);
+  } catch (error) {
+    await fs.writeFile(LOG_PATH, '', { encoding: 'utf8' });
+  }
+})();
 
 const handleError: ErrorRequestHandler = (err, req, res, next) => {
   console.log(err);
