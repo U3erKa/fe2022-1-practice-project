@@ -23,13 +23,16 @@ const flushLogs = async () => {
   const data = await fs.readFile(`${LOG_PATH}/latest.log`, READ_FILE_OPTIONS);
   if (!data) return;
 
-  const logs = JSON.parse(`[${data.substring(0, data.length - 2)}]`);
+  const dataWithoutTrailingComma = data.substring(0, data.length - 2);
   const newLogTimestamp = moment().format('YYYY-MM-DD-x');
   const logPath = path.resolve(LOG_PATH, `${newLogTimestamp}.log`);
 
+  const logs: any[] = JSON.parse(`[${dataWithoutTrailingComma}]`);
+  const strippedLogs = logs.map(({ stackTrace, ...data }) => data);
+
   await fs.writeFile(
     logPath,
-    JSON.stringify(logs, undefined, 2),
+    JSON.stringify(strippedLogs, undefined, 2),
     READ_FILE_OPTIONS,
   );
   await fs.writeFile(
