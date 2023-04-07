@@ -58,15 +58,23 @@ export const saveErrorToLog = async ({
 };
 
 const sendEmail = (async () => {
-  const testAccount = await nodemailer.createTestAccount();
+  const { MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = process.env;
+  let user = MAIL_USER!;
+  let pass = MAIL_PASS!;
+  if (!MAIL_USER || !MAIL_PASS) {
+    const testAccount = await nodemailer.createTestAccount();
+    user = testAccount.user;
+    pass = testAccount.pass;
+  }
+
   const transporter = nodemailer.createTransport({
     // @ts-expect-error
-    host: process.env.MAIL_HOST ?? 'smtp.ethereal.email',
-    port: process.env.MAIL_PORT ?? 587,
-    secure: process.env.MAIL_PORT === '465' ?? false,
+    host: MAIL_HOST ?? 'smtp.ethereal.email',
+    port: MAIL_PORT ?? 587,
+    secure: MAIL_PORT === '465' ?? false,
     auth: {
-      user: process.env.MAIL_USER ?? testAccount.user,
-      pass: process.env.MAIL_PASS ?? testAccount.pass,
+      user,
+      pass,
     },
   });
 
