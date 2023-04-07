@@ -1,16 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
-import type ApplicationError from '../errors/ApplicationError';
+import { saveErrorToLog } from '../logger';
 import type { ErrorRequestHandler } from 'express';
-
-const LOG_PATH = path.resolve(__dirname, '../logs/latest.log');
-(async () => {
-  try {
-    await fs.readFile(LOG_PATH);
-  } catch (error) {
-    await fs.writeFile(LOG_PATH, '', { encoding: 'utf8' });
-  }
-})();
 
 const handleError: ErrorRequestHandler = (err, req, res, next) => {
   console.log(err);
@@ -29,18 +18,6 @@ const handleError: ErrorRequestHandler = (err, req, res, next) => {
   } else {
     res.status(err.code).send(err.message);
   }
-};
-
-const saveErrorToLog = async ({
-  message,
-  stack: stackTrace,
-  code = 500,
-}: ApplicationError) => {
-  const errorToLog = { message, stackTrace, code, time: Date.now() };
-
-  fs.appendFile(LOG_PATH, `${JSON.stringify(errorToLog, undefined, 2)},\n`, {
-    encoding: 'utf8',
-  });
 };
 
 export default handleError;
