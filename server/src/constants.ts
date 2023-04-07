@@ -35,4 +35,5 @@ export const NOTIFICATION_CHANGE_MARK = 'changeMark';
 export const NOTIFICATION_CHANGE_OFFER_STATUS = 'changeOfferStatus';
 export const NEW_MESSAGE = 'newMessage';
 export const CHANGE_BLOCK_STATUS = 'CHANGE_BLOCK_STATUS';
-export const LOG_PATH = path.resolve(__dirname, 'logs/latest.log');
+export const LOG_PATH = path.resolve(__dirname, 'logs');
+export const CRON_DAILY_AT_MIDNIGHT = '0 0 * * *';
