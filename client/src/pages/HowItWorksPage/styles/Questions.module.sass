@@ -1,10 +1,12 @@
 @import './common.module'
 
-.container
-
 .questionContainer
+  margin: $padding 0
 
 .question
+  display: flex
+  justify-content: space-between
+  align-items: center
   width: 100%
   text-align: start
   background-color: $buttonTextColor
@@ -12,6 +14,13 @@
   border-radius: $borderRadius $borderRadius 0 0
   padding: $padding
 
-.activeButton
+  &:hover
+    color: $mainColor
+    background-color: $backgroundColor
+
+.arrowIcon
+  font-size: 0.8rem
   color: $mainColor
-  background-color: $backgroundColor
+
+.activeIcon
+  transform: rotate(90deg)

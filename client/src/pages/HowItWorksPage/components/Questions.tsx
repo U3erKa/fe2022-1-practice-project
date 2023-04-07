@@ -12,21 +12,23 @@ export type Props = {
 export const Questions: FC<Props> = ({ questions }) => {
   const [activeQuestion, setActiveQuestion] = useState(0);
   return (
-    <section className={styles.container}>
+    <section>
       {questions.map(([question, answer], i) => {
         const active = activeQuestion === i;
-        const buttonStyles = cx({
-          [styles.activeButton]: active,
-          [styles.question]: true,
+        const iconStyles = cx({
+          [styles.activeIcon]: active,
+          [styles.arrowIcon]: true,
+          'fas fa-arrow-right small': true,
         });
 
         return (
           <section className={styles.questionContainer} key={uniqueId()}>
             <button
-              className={buttonStyles}
+              className={styles.question}
               onClick={() => setActiveQuestion(active ? -1 : i)}
             >
               {question}
+              <i className={iconStyles}></i>
             </button>
             <Answer active={active} contents={answer} />
           </section>
