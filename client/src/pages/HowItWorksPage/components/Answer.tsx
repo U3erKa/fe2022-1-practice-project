@@ -23,11 +23,11 @@ export const Answer: FC<Props> = ({ active, contents }) => {
     const { description, list } = contents;
     return (
       <section className={containerStyles}>
-        <p>{description}</p>
-        <ul>
+        <p className={styles.text}>{description}</p>
+        <ul className={styles.list}>
           {list.map((text) => (
             <li key={uniqueId()}>
-              <p>{text}</p>
+              <p className={styles.text}>{text}</p>
             </li>
           ))}
         </ul>
@@ -37,7 +37,7 @@ export const Answer: FC<Props> = ({ active, contents }) => {
 
   return (
     <section className={containerStyles}>
-      <p>{contents}</p>
+      <p className={styles.text}>{contents}</p>
     </section>
   );
 };
