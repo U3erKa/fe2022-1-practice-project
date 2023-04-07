@@ -63,11 +63,13 @@ $containerWidth: 1280px
   padding: calc($gap * 1.5) calc($gap * 2)
   text-decoration: none
   line-height: 1.5
+  transition: all 0.3s ease-in-out
   @media (width < 480px)
     display: block
     max-width: 100%
 
   &:hover
+    box-shadow: 0 4px 11px rgba(55,125,255,.35)
     transform: translateY(-3px)
 
   & > i
