@@ -37,3 +37,5 @@ export const NEW_MESSAGE = 'newMessage';
 export const CHANGE_BLOCK_STATUS = 'CHANGE_BLOCK_STATUS';
 export const LOG_PATH = path.resolve(__dirname, 'logs');
 export const CRON_DAILY_AT_MIDNIGHT = '0 0 * * *';
+export const CRON_EVERY_MINUTE = '* * * * *';
+export const READ_FILE_OPTIONS = { encoding: 'utf8' } as const;

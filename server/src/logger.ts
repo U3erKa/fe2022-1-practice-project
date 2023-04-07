@@ -3,12 +3,13 @@ import cron from 'node-cron';
 import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
-import { CRON_DAILY_AT_MIDNIGHT, LOG_PATH } from './constants';
+import {
+  CRON_DAILY_AT_MIDNIGHT,
+  LOG_PATH,
+  READ_FILE_OPTIONS,
+} from './constants';
 import type ApplicationError from './errors/ApplicationError';
 import type Mail from 'nodemailer/lib/mailer';
-
-const READ_FILE_OPTIONS = { encoding: 'utf8' } as const;
-const CRON_EVERY_MINUTE = '* * * * *';
 
 (async (filename: string) => {
   try {
