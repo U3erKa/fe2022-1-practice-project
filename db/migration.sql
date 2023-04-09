@@ -19,3 +19,10 @@ CREATE TABLE "catalogs" (
   "userId" INT NOT NULL REFERENCES "Users",
   "catalogName" VARCHAR(255) NOT NULL
 );
+-- @block Catalogs_to_conversations
+CREATE TABLE "catalogs_to_conversations" (
+  "id" SERIAL PRIMARY KEY,
+  "catalogId" INT NOT NULL REFERENCES "catalogs",
+  "conversationId" INT NOT NULL REFERENCES "conversations",
+  UNIQUE ("catalogId", "conversationId")
+);
