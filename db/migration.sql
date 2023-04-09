@@ -26,3 +26,12 @@ CREATE TABLE "catalogs_to_conversations" (
   "conversationId" INT NOT NULL REFERENCES "conversations",
   UNIQUE ("catalogId", "conversationId")
 );
+-- @block Message
+CREATE TABLE "messages" (
+  "_id" SERIAL PRIMARY KEY,
+  "sender" INT NOT NULL UNIQUE REFERENCES "Users",
+  "body" TEXT NOT NULL,
+  "conversation" INTEGER NOT NULL REFERENCES "conversations",
+  "createdAt" DATE NOT NULL DEFAULT current_date,
+  "updatedAt" DATE NOT NULL DEFAULT current_date
+);
