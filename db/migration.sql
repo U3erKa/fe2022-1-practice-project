@@ -13,3 +13,9 @@ CREATE TABLE "Users_to_conversations" (
   "conversationId" INTEGER NOT NULL REFERENCES "conversations",
   UNIQUE ("userId", "conversationId")
 );
+-- @block Catalog
+CREATE TABLE "catalogs" (
+  "_id" SERIAL PRIMARY KEY,
+  "userId" INT NOT NULL REFERENCES "Users",
+  "catalogName" VARCHAR(255) NOT NULL
+);
