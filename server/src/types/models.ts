@@ -30,18 +30,21 @@ export type DB = {
   User: ReturnType<typeof _User>;
 };
 
+/** @deprecated */
 export type CatalogSchema = {
   userId: User['id'];
   catalogName: string;
   chats: Types.ObjectId;
 };
 
+/** @deprecated */
 export type ConversationSchema = WithTimeStamps & {
   participants: [number, number];
   blackList: [boolean, boolean];
   favoriteList: [boolean, boolean];
 };
 
+/** @deprecated */
 export type MessageSchema = WithTimeStamps & {
   sender: User['id'];
   body: string;
@@ -59,6 +62,9 @@ export type RefreshToken = InstanceType<DB['RefreshToken']>;
 export type Select = InstanceType<DB['Select']>;
 export type User = InstanceType<DB['User']>;
 
+/** @deprecated */
 export type _Catalog = InstanceType<typeof __Catalog>;
+/** @deprecated */
 export type _Conversation = InstanceType<typeof __Conversation>;
+/** @deprecated */
 export type _Message = InstanceType<typeof __Message>;

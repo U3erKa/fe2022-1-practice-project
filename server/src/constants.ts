@@ -35,3 +35,6 @@ export const NOTIFICATION_CHANGE_MARK = 'changeMark';
 export const NOTIFICATION_CHANGE_OFFER_STATUS = 'changeOfferStatus';
 export const NEW_MESSAGE = 'newMessage';
 export const CHANGE_BLOCK_STATUS = 'CHANGE_BLOCK_STATUS';
+
+export const MONGO_DEPRECATED_MESSAGE =
+  'Mongoose models are deprecated. Use sequelize models instead';
