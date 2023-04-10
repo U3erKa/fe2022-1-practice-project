@@ -7,10 +7,7 @@ import * as controller from '../socketInit';
 import _ from 'lodash';
 
 import type { RequestHandler } from 'express';
-import type {
-  Conversation as _Conversation,
-  ConversationSchema,
-} from '../types/models';
+import type { _Conversation, ConversationSchema } from '../types/models';
 
 export const addMessage: RequestHandler = async (req, res, next) => {
   const participants: [number, number] = [
