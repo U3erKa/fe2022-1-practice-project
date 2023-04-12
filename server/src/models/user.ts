@@ -34,20 +34,17 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
       Rating,
       RefreshToken,
     }: DB) {
-      User.hasMany(Offer, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(Catalog, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(Contest, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(Message, { foreignKey: 'sender', sourceKey: 'id' });
-      User.hasMany(Rating, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(RefreshToken, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(Conversation, {
-        foreignKey: 'participant1',
-        sourceKey: 'id',
-      });
-      User.hasMany(Conversation, {
-        foreignKey: 'participant2',
-        sourceKey: 'id',
-      });
+      const foreignKey = 'userId';
+      const sourceKey = 'id';
+
+      User.hasMany(Offer, { foreignKey, sourceKey });
+      User.hasMany(Catalog, { foreignKey, sourceKey });
+      User.hasMany(Contest, { foreignKey, sourceKey });
+      User.hasMany(Message, { foreignKey: 'sender', sourceKey });
+      User.hasMany(Rating, { foreignKey, sourceKey });
+      User.hasMany(RefreshToken, { foreignKey, sourceKey });
+      User.hasMany(Conversation, { foreignKey: 'participant1', sourceKey });
+      User.hasMany(Conversation, { foreignKey: 'participant2', sourceKey });
     }
   }
   User.init(
