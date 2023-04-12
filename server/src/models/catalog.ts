@@ -2,7 +2,13 @@ import { Model } from 'sequelize';
 // prettier-ignore
 import type { 
   DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
-  ForeignKey, CreationOptional,
+  ForeignKey, CreationOptional, NonAttribute, Association,
+  BelongsToGetAssociationMixin, BelongsToSetAssociationMixin, BelongsToCreateAssociationMixin,
+  BelongsToManyGetAssociationsMixin, BelongsToManyAddAssociationMixin,
+  BelongsToManyAddAssociationsMixin, BelongsToManySetAssociationsMixin,
+  BelongsToManyRemoveAssociationMixin, BelongsToManyRemoveAssociationsMixin,
+  BelongsToManyHasAssociationMixin, BelongsToManyHasAssociationsMixin,
+  BelongsToManyCountAssociationsMixin, BelongsToManyCreateAssociationMixin,
 } from 'sequelize';
 import type { DB, User } from '../types/models';
 
@@ -40,6 +46,57 @@ abstract class _Catalog extends Model<
 
   declare _id: CreationOptional<number>;
   declare userId: ForeignKey<User['id']>;
+
+  declare conversations?: NonAttribute<DB['Conversation'][]>;
+  declare users?: NonAttribute<DB['User'][]>;
+
+  declare static associations: {
+    conversations: Association<
+      DB['Catalog'] & Model,
+      DB['Conversation'] & Model
+    >;
+    users: Association<DB['Catalog'] & Model, DB['User'] & Model>;
+  };
+
+  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
+  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
+
+  declare getConversations: BelongsToManyGetAssociationsMixin<
+    DB['Conversation']
+  >;
+  declare addConversation: BelongsToManyAddAssociationMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare addConversations: BelongsToManyAddAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare setConversations: BelongsToManySetAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare removeConversation: BelongsToManyRemoveAssociationMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare removeConversations: BelongsToManyRemoveAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare hasConversation: BelongsToManyHasAssociationMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare hasConversations: BelongsToManyHasAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare countConversations: BelongsToManyCountAssociationsMixin;
+  declare createConversation: BelongsToManyCreateAssociationMixin<
+    DB['Conversation'] & Model
+  >;
 }
 
 export = Catalog;
