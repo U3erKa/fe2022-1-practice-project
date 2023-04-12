@@ -11,7 +11,7 @@ module.exports = {
       participant1: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        unique: true,
         references: {
           model: 'Users',
           key: 'id',
@@ -20,7 +20,7 @@ module.exports = {
       participant2: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        unique: true,
         references: {
           model: 'Users',
           key: 'id',

@@ -11,6 +11,7 @@ module.exports = {
       conversation: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        unique: true,
         references: {
           key: '_id',
           model: 'conversations',
