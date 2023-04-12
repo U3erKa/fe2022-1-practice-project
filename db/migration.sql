@@ -6,12 +6,6 @@ CREATE TABLE "conversations" (
   "createdAt" DATE NOT NULL DEFAULT current_date,
   "updatedAt" DATE NOT NULL DEFAULT current_date
 );
--- @block Users_to_conversations
-CREATE TABLE "Users_to_conversations" (
-  "userId" INT NOT NULL REFERENCES "Users",
-  "conversationId" INT NOT NULL REFERENCES "conversations",
-  PRIMARY KEY ("userId", "conversationId")
-);
 -- @block Catalog
 CREATE TABLE "catalogs" (
   "_id" SERIAL PRIMARY KEY,
