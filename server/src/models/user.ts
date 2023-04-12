@@ -5,11 +5,6 @@ import { SALT_ROUNDS } from '../constants';
 import type { 
   DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
   NonAttribute, Association,
-  BelongsToManyGetAssociationsMixin, BelongsToManyAddAssociationMixin,
-  BelongsToManyAddAssociationsMixin, BelongsToManySetAssociationsMixin,
-  BelongsToManyRemoveAssociationMixin, BelongsToManyRemoveAssociationsMixin,
-  BelongsToManyHasAssociationMixin, BelongsToManyHasAssociationsMixin,
-  BelongsToManyCountAssociationsMixin, BelongsToManyCreateAssociationMixin,
   HasManyGetAssociationsMixin, HasManyAddAssociationMixin,
   HasManyAddAssociationsMixin, HasManySetAssociationsMixin,
   HasManyRemoveAssociationMixin, HasManyRemoveAssociationsMixin,
@@ -30,11 +25,29 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     async comparePassword(password: string | Buffer) {
       return bcrypt.compare(password, this.password);
     }
-    static associate({ Offer, Contest, Rating, RefreshToken }: DB) {
+    static associate({
+      Offer,
+      Catalog,
+      Contest,
+      Conversation,
+      Message,
+      Rating,
+      RefreshToken,
+    }: DB) {
       User.hasMany(Offer, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(Catalog, { foreignKey: 'userId', sourceKey: 'id' });
       User.hasMany(Contest, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(Message, { foreignKey: 'sender', sourceKey: 'id' });
       User.hasMany(Rating, { foreignKey: 'userId', sourceKey: 'id' });
       User.hasMany(RefreshToken, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(Conversation, {
+        foreignKey: 'participant1',
+        sourceKey: 'id',
+      });
+      User.hasMany(Conversation, {
+        foreignKey: 'participant2',
+        sourceKey: 'id',
+      });
     }
   }
   User.init(
@@ -123,10 +136,10 @@ abstract class _User extends Model<
 
   declare id: CreationOptional<number>;
 
-  declare catalogs?: NonAttribute<DB['Catalog'][]>
+  declare catalogs?: NonAttribute<DB['Catalog'][]>;
   declare contests?: NonAttribute<DB['Contest'][]>;
-  declare conversations?: NonAttribute<DB['Conversation'][]>
-  declare messages?: NonAttribute<DB['Message'][]>
+  declare conversations?: NonAttribute<DB['Conversation'][]>;
+  declare messages?: NonAttribute<DB['Message'][]>;
   declare offers?: NonAttribute<DB['Offer'][]>;
   declare ratings?: NonAttribute<DB['Rating'][]>;
   declare refreshTokens?: NonAttribute<DB['RefreshToken'][]>;
@@ -246,39 +259,37 @@ abstract class _User extends Model<
     'userId'
   >;
 
-  declare getConversations: BelongsToManyGetAssociationsMixin<
-    DB['Conversation']
-  >;
-  declare addConversation: BelongsToManyAddAssociationMixin<
+  declare getConversations: HasManyGetAssociationsMixin<DB['Conversation']>;
+  declare addConversation: HasManyAddAssociationMixin<
     DB['Conversation'],
     number
   >;
-  declare addConversations: BelongsToManyAddAssociationsMixin<
+  declare addConversations: HasManyAddAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare setConversations: BelongsToManySetAssociationsMixin<
+  declare setConversations: HasManySetAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare removeConversation: BelongsToManyRemoveAssociationMixin<
+  declare removeConversation: HasManyRemoveAssociationMixin<
     DB['Conversation'],
     number
   >;
-  declare removeConversations: BelongsToManyRemoveAssociationsMixin<
+  declare removeConversations: HasManyRemoveAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare hasConversation: BelongsToManyHasAssociationMixin<
+  declare hasConversation: HasManyHasAssociationMixin<
     DB['Conversation'],
     number
   >;
-  declare hasConversations: BelongsToManyHasAssociationsMixin<
+  declare hasConversations: HasManyHasAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare countConversations: BelongsToManyCountAssociationsMixin;
-  declare createConversation: BelongsToManyCreateAssociationMixin<
+  declare countConversations: HasManyCountAssociationsMixin;
+  declare createConversation: HasManyCreateAssociationMixin<
     DB['Conversation'] & Model
   >;
 }

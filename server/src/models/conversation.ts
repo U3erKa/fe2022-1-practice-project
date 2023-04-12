@@ -22,7 +22,22 @@ const Conversation = (
   DataTypes: typeof _DataTypes,
 ) => {
   class Conversation extends _Conversation {
-    static associate(models: DB) {}
+    static associate({ Catalog, Message, User }: DB) {
+      Conversation.hasMany(Message, {
+        foreignKey: 'conversation',
+        sourceKey: '_id',
+      });
+      Conversation.belongsToMany(Catalog, {
+        through: 'catalogs_to_conversations',
+        foreignKey: 'conversationId',
+        targetKey: '_id',
+      });
+      Conversation.belongsToMany(User, {
+        through: 'Users_to_conversations',
+        foreignKey: 'conversationId',
+        targetKey: 'id',
+      });
+    }
   }
   Conversation.init(
     {

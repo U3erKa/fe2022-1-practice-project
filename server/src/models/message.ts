@@ -9,7 +9,13 @@ import type { Conversation, DB, User } from '../types/models';
 
 const Message = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   class Message extends _Message {
-    static associate(models: DB) {}
+    static associate({ Conversation, User }: DB) {
+      Message.belongsTo(User, { foreignKey: 'sender', targetKey: 'id' });
+      Message.belongsTo(Conversation, {
+        foreignKey: 'conversation',
+        targetKey: '_id',
+      });
+    }
   }
   Message.init(
     {

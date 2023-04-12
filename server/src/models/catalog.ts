@@ -14,7 +14,14 @@ import type { DB, User } from '../types/models';
 
 const Catalog = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   class Catalog extends _Catalog {
-    static associate(models: DB) {}
+    static associate({ Conversation, User }: DB) {
+      Catalog.belongsTo(User, { foreignKey: 'catalogId', targetKey: 'id' });
+      Catalog.belongsToMany(Conversation, {
+        through: 'catalogs_to_conversations',
+        foreignKey: 'catalogId',
+        targetKey: '_id',
+      });
+    }
   }
   Catalog.init(
     {
