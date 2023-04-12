@@ -4,23 +4,13 @@ import type {
   DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
   ForeignKey, CreationOptional,
 } from 'sequelize';
+import { isTuple } from '../validationSchemes/functions';
 import type { DB } from '../types/models';
 
 const Conversation = (
   sequelize: DB['sequelize'],
   DataTypes: typeof _DataTypes,
 ) => {
-  function isTuple(list: boolean[]) {
-    if (!(list instanceof Array)) {
-      // throw ApplicationError?
-      throw new Error('Must be an array');
-    }
-    if (list.length !== 2) {
-      // throw ApplicationError?
-      throw new Error('Must be tuple of 2 booleans');
-    }
-  }
-
   class Conversation extends _Conversation {
     static associate(models: DB) {}
   }
