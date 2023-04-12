@@ -8,10 +8,9 @@ CREATE TABLE "conversations" (
 );
 -- @block Users_to_conversations
 CREATE TABLE "Users_to_conversations" (
-  "id" SERIAL PRIMARY KEY,
   "userId" INT NOT NULL REFERENCES "Users",
   "conversationId" INT NOT NULL REFERENCES "conversations",
-  UNIQUE ("userId", "conversationId")
+  PRIMARY KEY ("userId", "conversationId")
 );
 -- @block Catalog
 CREATE TABLE "catalogs" (
@@ -21,10 +20,9 @@ CREATE TABLE "catalogs" (
 );
 -- @block Catalogs_to_conversations
 CREATE TABLE "catalogs_to_conversations" (
-  "id" SERIAL PRIMARY KEY,
   "catalogId" INT NOT NULL REFERENCES "catalogs",
   "conversationId" INT NOT NULL REFERENCES "conversations",
-  UNIQUE ("catalogId", "conversationId")
+  PRIMARY KEY ("catalogId", "conversationId")
 );
 -- @block Message
 CREATE TABLE "messages" (
