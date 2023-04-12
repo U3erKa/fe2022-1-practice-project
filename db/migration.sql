@@ -9,8 +9,8 @@ CREATE TABLE "conversations" (
 -- @block Users_to_conversations
 CREATE TABLE "Users_to_conversations" (
   "id" SERIAL PRIMARY KEY,
-  "userId" INTEGER NOT NULL REFERENCES "Users",
-  "conversationId" INTEGER NOT NULL REFERENCES "conversations",
+  "userId" INT NOT NULL REFERENCES "Users",
+  "conversationId" INT NOT NULL REFERENCES "conversations",
   UNIQUE ("userId", "conversationId")
 );
 -- @block Catalog
@@ -31,7 +31,7 @@ CREATE TABLE "messages" (
   "_id" SERIAL PRIMARY KEY,
   "sender" INT NOT NULL UNIQUE REFERENCES "Users",
   "body" TEXT NOT NULL,
-  "conversation" INTEGER NOT NULL REFERENCES "conversations",
+  "conversation" INT NOT NULL REFERENCES "conversations",
   "createdAt" DATE NOT NULL DEFAULT current_date,
   "updatedAt" DATE NOT NULL DEFAULT current_date
 );
