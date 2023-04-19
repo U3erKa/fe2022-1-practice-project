@@ -15,7 +15,7 @@ import type {
   BelongsToManyCountAssociationsMixin, BelongsToManyCreateAssociationMixin,
 } from 'sequelize';
 import { isTuple } from '../validationSchemes/functions';
-import type { DB } from '../types/models';
+import type { DB, User } from '../types/models';
 
 const Conversation = (
   sequelize: DB['sequelize'],
@@ -46,6 +46,26 @@ const Conversation = (
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
+      },
+      participant1: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+      participant2: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       blackList: {
         type: DataTypes.ARRAY(DataTypes.BOOLEAN),
@@ -84,6 +104,8 @@ abstract class _Conversation extends Model<
   InferCreationAttributes<_Conversation>
 > {
   declare _id: CreationOptional<number>;
+  declare participant1?: ForeignKey<User['id']>;
+  declare participant2?: ForeignKey<User['id']>;
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
   declare blackList: [boolean, boolean];
@@ -91,8 +113,6 @@ abstract class _Conversation extends Model<
 
   declare catalogs?: NonAttribute<DB['Catalog'][]>;
   declare messages?: NonAttribute<DB['Message'][]>;
-  declare participant1?: NonAttribute<DB['User'][]>;
-  declare participant2?: NonAttribute<DB['User'][]>;
 
   declare static associations: {
     catalogs: Association<DB['Conversation'] & Model, DB['Catalog'] & Model>;
