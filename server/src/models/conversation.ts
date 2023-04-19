@@ -24,10 +24,12 @@ const Conversation = (
   class Conversation extends _Conversation {
     static associate({ Catalog, Message, User }: DB) {
       Conversation.hasMany(Message, {
+        as: 'messages',
         foreignKey: 'conversation',
         sourceKey: '_id',
       });
       Conversation.belongsToMany(Catalog, {
+        as: 'catalogs',
         through: 'catalogs_to_conversations',
         foreignKey: 'conversationId',
         targetKey: '_id',

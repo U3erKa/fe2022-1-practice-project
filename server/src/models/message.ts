@@ -12,6 +12,7 @@ const Message = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     static associate({ Conversation, User }: DB) {
       Message.belongsTo(User, { foreignKey: 'sender', targetKey: 'id' });
       Message.belongsTo(Conversation, {
+        as: 'conversations',
         foreignKey: 'conversation',
         targetKey: '_id',
       });
