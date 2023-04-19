@@ -11,7 +11,6 @@ module.exports = {
       conversation: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           key: '_id',
           model: 'conversations',
@@ -20,7 +19,6 @@ module.exports = {
       sender: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           key: 'id',
           model: 'Users',
