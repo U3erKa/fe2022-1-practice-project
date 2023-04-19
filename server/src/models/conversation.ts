@@ -93,6 +93,7 @@ const Conversation = (
     {
       sequelize,
       modelName: 'Conversation',
+      tableName: 'conversations',
       timestamps: true,
     },
   );

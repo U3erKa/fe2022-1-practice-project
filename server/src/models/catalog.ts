@@ -39,6 +39,7 @@ const Catalog = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     {
       sequelize,
       modelName: 'Catalog',
+      tableName: 'catalogs',
       timestamps: false,
     },
   );

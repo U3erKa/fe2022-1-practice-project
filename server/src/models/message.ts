@@ -41,6 +41,7 @@ const Message = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     {
       sequelize,
       modelName: 'Message',
+      tableName: 'messages',
       timestamps: true,
     },
   );
