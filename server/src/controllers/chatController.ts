@@ -334,7 +334,7 @@ export const deleteCatalog: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    await Catalog.remove({ _id: catalogId, userId });
+    await Catalog.destroy({ where: { _id: catalogId, userId } });
     res.end();
   } catch (err) {
     next(err);
