@@ -1,7 +1,4 @@
-import Conversation from '../models/mongoModels/Conversation';
-import Message from '../models/mongoModels/Message';
-import Catalog from '../models/mongoModels/Catalog';
-import { User } from '../models';
+import { Conversation, Message, Catalog, User } from '../models';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import _ from 'lodash';
@@ -80,35 +77,30 @@ export const getChat: RequestHandler = async (req, res, next) => {
     body: { interlocutorId },
   } = req;
 
-  const participants = [userId, interlocutorId].sort(
+  const [participant1, participant2] = [userId, interlocutorId].sort(
     (participant1, participant2) => participant1 - participant2,
-  );
+  ) as [number, number];
   try {
-    const messages = await Message.aggregate([
-      {
-        $lookup: {
-          from: 'conversations',
-          localField: 'conversation',
-          foreignField: '_id',
-          as: 'conversationData',
+    const conversation = await Conversation.findOne({
+      include: {
+        model: Message,
+        as: 'messages',
+        order: [['createdAt', 'ASC']],
         },
-      },
-      { $match: { 'conversationData.participants': participants } },
-      { $sort: { createdAt: 1 } },
-      {
-        $project: {
-          _id: 1,
-          sender: 1,
-          body: 1,
-          conversation: 1,
-          createdAt: 1,
-          updatedAt: 1,
-        },
-      },
-    ]);
+      attributes: ['participant1', 'participant2'],
+      where: { participant1, participant2 },
+    });
+
+    const { messages } = conversation!.dataValues as unknown as {
+      messages: _Message[];
+    };
 
     const { id, firstName, lastName, displayName, avatar } =
       await userQueries.findUser({ id: interlocutorId });
+
+    Object.assign(conversation!, {
+      participants: [conversation!.participant1, conversation!.participant2],
+    });
 
     res.send({
       messages,
