@@ -2,7 +2,7 @@ import { Op } from 'sequelize';
 import { Conversation, Message, Catalog, User } from '../models';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
-import _ from 'lodash';
+import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
 import type { RequestHandler } from 'express';
 import type { _Conversation, ConversationSchema } from '../types/models';
@@ -208,12 +208,29 @@ export const favoriteChat: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const predicate = 'favoriteList.' + participants.indexOf(userId);
-    const chat = await Conversation.findOneAndUpdate(
-      { participants },
-      { $set: { [predicate]: favoriteFlag } },
-      { new: true },
+    const [participant1, participant2] = participants;
+    const predicate = participants.indexOf(userId);
+
+    const foundChat = await Conversation.findOne({
+      where: { participant1, participant2 },
+    });
+    if (!foundChat) {
+      throw new NotFoundError('Conversation was not found');
+    }
+    foundChat.favoriteList[predicate] = favoriteFlag;
+
+    const [count, [chat]] = await Conversation.update(
+      { favoriteList: foundChat.favoriteList },
+      { where: { participant1, participant2 }, returning: true },
     );
+    if (!count) {
+      throw new NotFoundError('Conversation could not be modified');
+    }
+
+    Object.assign(chat.dataValues, {
+      participants: [participant1, participant2],
+    });
+
     res.send(chat);
   } catch (err) {
     res.send(err);
