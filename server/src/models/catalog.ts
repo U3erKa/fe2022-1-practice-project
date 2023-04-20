@@ -15,7 +15,7 @@ import type { DB, User } from '../types/models';
 const Catalog = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
   class Catalog extends _Catalog {
     static associate({ Conversation, User }: DB) {
-      Catalog.belongsTo(User, { foreignKey: 'catalogId', targetKey: 'id' });
+      Catalog.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
       Catalog.belongsToMany(Conversation, {
         as: 'conversations',
         through: 'catalogs_to_conversations',
