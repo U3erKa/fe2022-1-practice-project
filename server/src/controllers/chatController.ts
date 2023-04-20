@@ -260,11 +260,12 @@ export const createCatalog: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const catalog = await Catalog.create({
-      userId,
-      catalogName,
-      chats: [chatId],
-    });
+    const catalog = await Catalog.create(
+      { userId, catalogName },
+      { returning: true },
+    );
+    await catalog.addConversation(chatId);
+    Object.assign(catalog.dataValues, { chats: [chatId] });
 
     res.send(catalog);
   } catch (err) {
