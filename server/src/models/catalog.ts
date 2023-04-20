@@ -71,39 +71,34 @@ abstract class _Catalog extends Model<
   declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
   declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
 
-  declare getConversations: BelongsToManyGetAssociationsMixin<
-    DB['Conversation']
-  >;
-  declare addConversation: BelongsToManyAddAssociationMixin<
+  declare getChats: BelongsToManyGetAssociationsMixin<DB['Conversation']>;
+  declare addChat: BelongsToManyAddAssociationMixin<DB['Conversation'], number>;
+  declare addChats: BelongsToManyAddAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare addConversations: BelongsToManyAddAssociationsMixin<
+  declare setChats: BelongsToManySetAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare setConversations: BelongsToManySetAssociationsMixin<
+  declare removeChat: BelongsToManyRemoveAssociationMixin<
     DB['Conversation'],
     number
   >;
-  declare removeConversation: BelongsToManyRemoveAssociationMixin<
+  declare removeChats: BelongsToManyRemoveAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare removeConversations: BelongsToManyRemoveAssociationsMixin<
+  declare hasChat: BelongsToManyHasAssociationMixin<
     DB['Conversation'],
     number
   >;
-  declare hasConversation: BelongsToManyHasAssociationMixin<
+  declare hasChats: BelongsToManyHasAssociationsMixin<
     DB['Conversation'],
     number
   >;
-  declare hasConversations: BelongsToManyHasAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare countConversations: BelongsToManyCountAssociationsMixin;
-  declare createConversation: BelongsToManyCreateAssociationMixin<
+  declare countChats: BelongsToManyCountAssociationsMixin;
+  declare createChat: BelongsToManyCreateAssociationMixin<
     DB['Conversation'] & Model
   >;
 }

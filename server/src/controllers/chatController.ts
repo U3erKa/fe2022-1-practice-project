@@ -264,7 +264,7 @@ export const createCatalog: RequestHandler = async (req, res, next) => {
       { userId, catalogName },
       { returning: true },
     );
-    await catalog.addConversation(chatId);
+    await catalog.addChat(chatId);
     Object.assign(catalog.dataValues, { chats: [chatId] });
 
     res.send(catalog);
