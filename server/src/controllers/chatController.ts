@@ -3,7 +3,7 @@ import { Conversation, Message, Catalog, User } from '../models';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import _ from 'lodash';
-
+import RightsError from '../errors/RightsError';
 import type { RequestHandler } from 'express';
 import type { _Conversation, ConversationSchema } from '../types/models';
 
@@ -16,27 +16,32 @@ export const addMessage: RequestHandler = async (req, res, next) => {
   const participants = [userId, recipient].sort(
     (participant1, participant2) => participant1 - participant2,
   ) as [number, number];
+  const [participant1, participant2] = participants;
   try {
-    const newConversation = await Conversation.findOneAndUpdate(
-      { participants },
-      { participants, blackList: [false, false], favoriteList: [false, false] },
-      {
-        upsert: true,
-        new: true,
-        setDefaultsOnInsert: true,
-        useFindAndModify: false,
+    const [newConversation, isCreated] = await Conversation.findOrCreate({
+      where: { participant1, participant2 },
+      defaults: {
+        participant1,
+        participant2,
+        blackList: [false, false],
+        favoriteList: [false, false],
       },
-    );
+    });
+
     const { _id, blackList, favoriteList } = newConversation;
+    if (blackList.includes(true)) {
+      throw new RightsError(
+        'Cannot send message while one of the interlocutors is blacklisted',
+      );
+    }
 
     const message = await Message.create({
       sender: userId,
       body: messageBody,
       conversation: _id,
     });
-    // @ts-expect-error
-    message._doc.participants = participants;
 
+    Object.assign(message.dataValues, { participants });
     const [interlocutorId] = participants.filter(
       (participant) => participant !== userId,
     );
