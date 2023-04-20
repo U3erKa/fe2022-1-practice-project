@@ -232,6 +232,11 @@ export const getCatalogList = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/getCatalogList`,
   thunk: async () => {
     const { data } = await catalogController.getCatalogList();
+    data.forEach(({ chats }) => {
+      // @ts-expect-error
+      const chatIds = chats.map(({ _id }) => _id);
+      Object.assign(chats, chatIds);
+    });
     return data;
   },
 });

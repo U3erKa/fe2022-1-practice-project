@@ -5,7 +5,11 @@ import * as controller from '../socketInit';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
 import type { RequestHandler } from 'express';
-import type { _Conversation, ConversationSchema } from '../types/models';
+import type {
+  Catalog as _Catalog,
+  Conversation as _Conversation,
+  Message as _Message,
+} from '../types/models';
 
 export const addMessage: RequestHandler = async (req, res, next) => {
   const {
@@ -359,11 +363,16 @@ export const getCatalogs: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const catalogs = await Catalog.findAll({
+    const catalogs = (await Catalog.findAll({
       where: { userId },
       attributes: ['_id', 'catalogName'],
-      include: { model: Conversation, as: 'chats' },
-    });
+      include: {
+        model: Conversation,
+        as: 'chats',
+        attributes: ['_id'],
+        through: { attributes: [] },
+      },
+    })) as unknown as _Catalog[];
 
     res.send(catalogs);
   } catch (err) {
