@@ -17,7 +17,7 @@ const Catalog = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     static associate({ Conversation, User }: DB) {
       Catalog.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
       Catalog.belongsToMany(Conversation, {
-        as: 'conversations',
+        as: 'chats',
         through: 'catalogs_to_conversations',
         foreignKey: 'catalogId',
         targetKey: '_id',

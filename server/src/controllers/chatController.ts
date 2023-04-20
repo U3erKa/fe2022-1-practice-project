@@ -347,10 +347,12 @@ export const getCatalogs: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const catalogs = await Catalog.aggregate([
-      { $match: { userId } },
-      { $project: { _id: 1, catalogName: 1, chats: 1 } },
-    ]);
+    const catalogs = await Catalog.findAll({
+      where: { userId },
+      attributes: ['_id', 'catalogName'],
+      include: { model: Conversation, as: 'chats' },
+    });
+
     res.send(catalogs);
   } catch (err) {
     next(err);
