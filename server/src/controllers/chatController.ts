@@ -184,12 +184,28 @@ export const blackList: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const predicate = 'blackList.' + participants.indexOf(userId);
-    const chat = await Conversation.findOneAndUpdate(
-      { participants },
-      { $set: { [predicate]: blackListFlag } },
-      { new: true },
+    const [participant1, participant2] = participants;
+    const predicate = participants.indexOf(userId);
+
+    const foundChat = await Conversation.findOne({
+      where: { participant1, participant2 },
+    });
+    if (!foundChat) {
+      throw new NotFoundError('Conversation was not found');
+    }
+    foundChat.blackList[predicate] = blackListFlag;
+
+    const [count, [chat]] = await Conversation.update(
+      { blackList: foundChat.blackList },
+      { where: { participant1, participant2 }, returning: true },
     );
+    if (!count) {
+      throw new NotFoundError('Conversation could not be modified');
+    }
+
+    Object.assign(chat.dataValues, {
+      participants: [participant1, participant2],
+    });
     res.send(chat);
 
     const [interlocutorId] = participants.filter(
