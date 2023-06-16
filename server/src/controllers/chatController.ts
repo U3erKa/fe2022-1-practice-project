@@ -332,11 +332,16 @@ export const removeChatFromCatalog: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const catalog = await Catalog.findOneAndUpdate(
-      { _id: catalogId, userId },
-      { $pull: { chats: chatId } },
-      { new: true },
-    );
+    const catalog = await Catalog.findOne({
+      where: { _id: catalogId, userId },
+      include: { model: Conversation, as: 'chats', attributes: ['_id'] },
+    });
+
+    if (!catalog) {
+      throw new NotFoundError('Catalog not found');
+    }
+    await catalog.removeChat(chatId);
+
     res.send(catalog);
   } catch (err) {
     next(err);
