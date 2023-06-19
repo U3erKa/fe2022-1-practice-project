@@ -91,7 +91,7 @@ export const getChat: RequestHandler = async (req, res, next) => {
     (participant1, participant2) => participant1 - participant2,
   ) as [number, number];
   try {
-    const conversation = await Conversation.findOne({
+    const [conversation, isCreated] = await Conversation.findOrCreate({
       include: {
         model: Message,
         as: 'messages',
@@ -99,17 +99,23 @@ export const getChat: RequestHandler = async (req, res, next) => {
         },
       attributes: ['participant1', 'participant2'],
       where: { participant1, participant2 },
+      defaults: {
+        blackList: [false, false],
+        favoriteList: [false, false],
+        participant1,
+        participant2,
+      },
     });
 
-    const { messages } = conversation!.dataValues as unknown as {
+    const { messages } = conversation.dataValues as unknown as {
       messages: _Message[];
     };
 
     const { id, firstName, lastName, displayName, avatar } =
       await userQueries.findUser({ id: interlocutorId });
 
-    Object.assign(conversation!, {
-      participants: [conversation!.participant1, conversation!.participant2],
+    Object.assign(conversation, {
+      participants: [conversation.participant1, conversation.participant2],
     });
 
     res.send({
@@ -160,7 +166,7 @@ export const getPreview: RequestHandler = async (req, res, next) => {
       const { participant1, participant2, dataValues, messages } = conversation;
       Object.assign(dataValues, {
         // @ts-expect-error
-        text: messages[0].body,
+        text: messages[0]?.body,
         participants: [participant1, participant2],
       });
 
