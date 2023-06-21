@@ -96,7 +96,7 @@ export const getChat: RequestHandler = async (req, res, next) => {
         model: Message,
         as: 'messages',
         order: [['createdAt', 'ASC']],
-        },
+      },
       attributes: ['participant1', 'participant2'],
       where: { participant1, participant2 },
       defaults: {
@@ -138,7 +138,7 @@ export const getPreview: RequestHandler = async (req, res, next) => {
         model: Message,
         as: 'messages',
         attributes: ['body', 'sender', 'createdAt'],
-        },
+      },
       order: [['createdAt', 'DESC']],
       attributes: [
         '_id',
@@ -290,11 +290,19 @@ export const updateNameCatalog: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const catalog = await Catalog.findOneAndUpdate(
-      { _id: catalogId, userId },
+    const [count, [catalog]] = await Catalog.update(
       { catalogName },
-      { new: true },
+      { where: { _id: catalogId, userId }, returning: true },
     );
+    if (!count) {
+      throw new NotFoundError('Catalog not found');
+    }
+    const chats = (await catalog.getChats({
+      attributes: ['_id'],
+    })) as unknown as _Conversation[];
+    const chatIds = chats.map(({ _id }) => _id);
+    Object.assign(catalog.dataValues, { chats: chatIds });
+
     res.send(catalog);
   } catch (err) {
     next(err);

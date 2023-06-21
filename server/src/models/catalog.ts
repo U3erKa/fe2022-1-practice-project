@@ -89,10 +89,7 @@ abstract class _Catalog extends Model<
     DB['Conversation'],
     number
   >;
-  declare hasChat: BelongsToManyHasAssociationMixin<
-    DB['Conversation'],
-    number
-  >;
+  declare hasChat: BelongsToManyHasAssociationMixin<DB['Conversation'], number>;
   declare hasChats: BelongsToManyHasAssociationsMixin<
     DB['Conversation'],
     number
