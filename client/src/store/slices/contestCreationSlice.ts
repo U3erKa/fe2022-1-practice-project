@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { SIMILAR_CHOISE } from 'constants/buttonGroup';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { SaveContestToStore } from 'types/api/contest';
-import type { ContestCreationState } from 'types/slices';
+import type { ContestCreationState, NameMatchesDomain } from 'types/slices';
 
 const CONTEST_SAVING_SLICE_NAME = 'contestCreation';
 
 const initialState: ContestCreationState = {
   contests: {},
+  nameMathesDomain: SIMILAR_CHOISE,
 };
 
 const reducers = {
@@ -20,6 +22,12 @@ const reducers = {
       ...{ [type]: info },
     };
   },
+  changeNameMathesDomain: (
+    state: ContestCreationState,
+    { payload }: PayloadAction<NameMatchesDomain>,
+  ) => {
+    state.nameMathesDomain = payload;
+  },
   clearContestStore: () => initialState,
 };
 
@@ -31,6 +39,7 @@ const contestSavingSlice = createSlice({
 
 const { actions, reducer } = contestSavingSlice;
 
-export const { saveContestToStore, clearContestStore } = actions;
+export const { saveContestToStore, changeNameMathesDomain, clearContestStore } =
+  actions;
 
 export default reducer;
