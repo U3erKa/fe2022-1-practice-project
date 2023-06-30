@@ -59,6 +59,7 @@ export const HEADER_LIST = [
 export const PROFILE_NAVBAR = [
   { id: 0, href: '/dashboard', text: 'View Dashboard' },
   { id: 1, href: '/account', text: 'My Account' },
-  { id: 2, href: DUMMY_LINK, text: 'Messages' },
-  { id: 3, href: DUMMY_LINK, text: 'Affiliate Dashboard' },
+  { id: 2, href: '/events', text: 'My Events' },
+  { id: 3, href: DUMMY_LINK, text: 'Messages' },
+  { id: 4, href: DUMMY_LINK, text: 'Affiliate Dashboard' },
 ];

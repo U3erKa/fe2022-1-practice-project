@@ -12,7 +12,7 @@ export const login: RequestHandler = async (req, res, next) => {
 
     const user = await User.findOne({ where: { email } });
 
-    if (!user || !await user.comparePassword(password)) {
+    if (!user || !(await user.comparePassword(password))) {
       return next(new UserNotFoundError('Invalid login data'));
     }
 
