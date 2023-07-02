@@ -90,3 +90,11 @@ export const FOOTER_ITEMS = [
     items: ['Terms of Service', 'Privacy Policy', 'Cookie Policy'],
   },
 ];
+
+export const notifyOptions = [
+  'never',
+  'when event starts',
+  '1 hour before',
+  '1 day before',
+  '1 week before',
+] as const;
