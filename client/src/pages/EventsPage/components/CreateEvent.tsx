@@ -17,6 +17,15 @@ export const onSubmit = (
   formikBag.resetForm();
 };
 
+function NotifyEventField() {
+  const options = notifyOptions.map((option) => (
+    <option key={uniqueId('notify')} value={option}>
+      {option}
+    </option>
+  ));
+  return <>{options}</>;
+}
+
 export default function CreateEvent() {
   return (
     <Formik
@@ -38,6 +47,7 @@ export default function CreateEvent() {
         <label>
           When to remind me about the event:
           <Field name="notify" as="select">
+            <NotifyEventField />
           </Field>
           <ErrorMessage name="notify" />
         </label>
