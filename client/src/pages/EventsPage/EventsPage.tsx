@@ -1,10 +1,12 @@
 import { Footer, Header } from 'components/general';
+import { CreateEvent } from '.';
 
 export default function EventsPage() {
   return (
     <>
       <Header />
-      <div>EventsPage</div>
+      <h1>My Events</h1>
+      <CreateEvent />
       <Footer />
     </>
   );
