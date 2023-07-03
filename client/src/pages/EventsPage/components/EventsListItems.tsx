@@ -34,3 +34,15 @@ export const events: (typeof initialValues & {
   },
 ];
 
+export default function EventsListItems() {
+  const eventsList = events
+    .map(({ id, name, date, notify, progress, time }) => (
+      <section key={id}>
+        <p>{name}</p>
+        <p>{date}</p>
+        <p>{time}</p>
+        <progress value={progress}></progress>
+      </section>
+    ));
+  return <article>{eventsList}</article>;
+}
