@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import uniqueId from 'lodash/uniqueId';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
+import { events } from './EventsListItems';
 
 export const initialValues = {
   name: '',
@@ -13,7 +14,8 @@ export const onSubmit = (
   values: typeof initialValues,
   formikBag: FormikHelpers<typeof initialValues>,
 ) => {
-  console.log(values);
+  // @ts-ignore
+  events.push(values);
   formikBag.resetForm();
 };
 
