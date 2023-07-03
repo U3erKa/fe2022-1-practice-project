@@ -34,8 +34,15 @@ export const events: (typeof initialValues & {
   },
 ];
 
+const closestEventFirst = (
+  { date }: (typeof events)[number],
+  { date: other }: (typeof events)[number],
+) => new Date(date).valueOf() - new Date(other).valueOf();
+
 export default function EventsListItems() {
   const eventsList = events
+    .sort(closestEventFirst)
+    // @ts-expect-error
     .map(({ id, name, date, notify, progress, time }) => (
       <section key={id}>
         <p>{name}</p>
