@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { type initialValues } from './CreateEvent';
 
 export const events: (typeof initialValues & {
@@ -71,17 +72,36 @@ const closestEventFirst = (
   { date: other }: (typeof events)[number],
 ) => Date.parse(date) - Date.parse(other);
 
-export default function EventsListItems() {
+function Event({ id, name, date, notify, createdAt }) {
+  const [time, setTime] = useState('');
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // @ts-ignore
+      const { progress, time } = getEventProgress({ date, createdAt });
+      setTime(time);
+      setProgress(progress);
+    }, 1000);
+    if (time === '0s') clearInterval(interval);
+
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <section key={id}>
+      <p>{name}</p>
+      <p>{date}</p>
+      <p>{time}</p>
+      <progress value={progress}></progress>
+    </section>
+  );
+}
+
+export default function EventListItems() {
   const eventsList = events
     .sort(closestEventFirst)
-    // @ts-expect-error
-    .map(({ id, name, date, notify, progress, time }) => (
-      <section key={id}>
-        <p>{name}</p>
-        <p>{date}</p>
-        <p>{time}</p>
-        <progress value={progress}></progress>
-      </section>
-    ));
+    .map((event) => <Event {...event} />);
   return <article>{eventsList}</article>;
 }
