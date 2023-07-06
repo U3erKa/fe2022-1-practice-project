@@ -103,5 +103,13 @@ export default function EventListItems() {
   const eventsList = events
     .sort(closestEventFirst)
     .map((event) => <Event {...event} />);
-  return <article>{eventsList}</article>;
+  return (
+    <article>
+      {eventsList.length !== 0 ? (
+        eventsList
+      ) : (
+        <section>No event here yet. Feel Free to create one!</section>
+      )}
+    </article>
+  );
 }
