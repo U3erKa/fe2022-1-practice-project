@@ -5,7 +5,6 @@ export default function EventsPage() {
   return (
     <>
       <Header />
-      <h1>My Events</h1>
       <EventsList />
       <CreateEvent />
       <Footer />
