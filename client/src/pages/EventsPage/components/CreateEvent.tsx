@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import uniqueId from 'lodash/uniqueId';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
-import { events } from './EventsListItems';
+import { events } from './EventListItems';
 
 export const initialValues = {
   name: '',

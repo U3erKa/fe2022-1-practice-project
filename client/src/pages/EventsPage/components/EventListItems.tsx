@@ -8,30 +8,30 @@ export const events: (typeof initialValues & {
   {
     id: 1,
     name: 'test event 1',
-    date: '2023-07-03',
+    date: '2023-07-03T21:30',
     notify: 'never',
     createdAt: '2023-07-01',
   },
   {
     id: 2,
     name: 'test event 2',
-    date: '2023-07-04',
+    date: '2023-07-08T21:30',
     notify: '1 day before',
-    createdAt: '2023-07-01',
+    createdAt: '2023-07-05',
   },
   {
     id: 3,
     name: 'test event 3',
-    date: '2023-07-05',
+    date: '2023-07-10T21:30',
     notify: '1 hour before',
-    createdAt: '2023-07-01',
+    createdAt: '2023-07-04',
   },
   {
     id: 4,
     name: 'test event 4',
-    date: '2023-07-02',
+    date: '2023-07-09T21:30',
     notify: 'never',
-    createdAt: '2023-07-01',
+    createdAt: '2023-07-03',
   },
 ];
 
@@ -103,6 +103,7 @@ export default function EventListItems() {
   const eventsList = events
     .sort(closestEventFirst)
     .map((event) => <Event {...event} />);
+
   return (
     <article>
       {eventsList.length !== 0 ? (
