@@ -34,3 +34,29 @@ export const contestSchem = yup.object().shape({
   typeOfTagline: yup.string().min(1),
   brandStyle: yup.string().min(1),
 });
+
+export const eventSchem = yup.object().shape({
+  name: yup
+    .string()
+    .required()
+    .test('is-not-empty', 'Name cannot be empty', (name) => !!name?.trim()),
+  date: yup
+    .string()
+    .required()
+    .min(1)
+    .test(
+      'is-date',
+      'Must be date',
+      (date) => !!date?.trim() && !isNaN(Date.parse(date)),
+    ),
+  notify: yup
+    .string()
+    .required()
+    .oneOf([
+      'never',
+      'when event starts',
+      '1 hour before',
+      '1 day before',
+      '1 week before',
+    ]),
+});
