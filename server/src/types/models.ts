@@ -2,6 +2,7 @@ import type Sequelize from 'sequelize';
 import type { Types } from 'mongoose';
 import type _Bank from '../models/bank';
 import type _Contest from '../models/contest';
+import type _Event from '../models/event';
 import type _Offer from '../models/offer';
 import type _Rating from '../models/rating';
 import type _RefreshToken from '../models/refreshToken';
@@ -17,6 +18,7 @@ export type DB = {
   Sequelize: typeof Sequelize;
   Bank: ReturnType<typeof _Bank>;
   Contest: ReturnType<typeof _Contest>;
+  Event: ReturnType<typeof _Event>;
   Offer: ReturnType<typeof _Offer>;
   Rating: ReturnType<typeof _Rating>;
   RefreshToken: ReturnType<typeof _RefreshToken>;

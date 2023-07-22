@@ -25,9 +25,10 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     async comparePassword(password: string | Buffer) {
       return bcrypt.compare(password, this.password);
     }
-    static associate({ Offer, Contest, Rating, RefreshToken }: DB) {
+    static associate({ Offer, Contest, Event, Rating, RefreshToken }: DB) {
       User.hasMany(Offer, { foreignKey: 'userId', sourceKey: 'id' });
       User.hasMany(Contest, { foreignKey: 'userId', sourceKey: 'id' });
+      User.hasMany(Event, { foreignKey: 'userId', sourceKey: 'id' });
       User.hasMany(Rating, { foreignKey: 'userId', sourceKey: 'id' });
       User.hasMany(RefreshToken, { foreignKey: 'userId', sourceKey: 'id' });
     }
@@ -120,12 +121,14 @@ abstract class _User extends Model<
 
   declare offers?: NonAttribute<DB['Offer'][]>;
   declare contests?: NonAttribute<DB['Contest'][]>;
+  declare events?: NonAttribute<DB['Event'][]>;
   declare ratings?: NonAttribute<DB['Rating'][]>;
   declare refreshTokens?: NonAttribute<DB['RefreshToken'][]>;
 
   declare static associations: {
     offers: Association<DB['User'] & Model, DB['Offer'] & Model>;
     contests: Association<DB['User'] & Model, DB['Contest'] & Model>;
+    events: Association<DB['User'] & Model, DB['Event'] & Model>;
     ratings: Association<DB['User'] & Model, DB['Rating'] & Model>;
     refreshTokens: Association<DB['User'] & Model, DB['RefreshToken'] & Model>;
   };
@@ -155,6 +158,20 @@ abstract class _User extends Model<
   declare countContests: HasManyCountAssociationsMixin;
   declare createContest: HasManyCreateAssociationMixin<
     DB['Contest'] & Model,
+    'userId'
+  >;
+
+  declare getEvents: HasManyGetAssociationsMixin<DB['Event']>;
+  declare addEvent: HasManyAddAssociationMixin<DB['Event'], number>;
+  declare addEvents: HasManyAddAssociationsMixin<DB['Event'], number>;
+  declare setEvents: HasManySetAssociationsMixin<DB['Event'], number>;
+  declare removeEvent: HasManyRemoveAssociationMixin<DB['Event'], number>;
+  declare removeEvents: HasManyRemoveAssociationsMixin<DB['Event'], number>;
+  declare hasEvent: HasManyHasAssociationMixin<DB['Event'], number>;
+  declare hasEvents: HasManyHasAssociationsMixin<DB['Event'], number>;
+  declare countEvents: HasManyCountAssociationsMixin;
+  declare createEvent: HasManyCreateAssociationMixin<
+    DB['Event'] & Model,
     'userId'
   >;
 
