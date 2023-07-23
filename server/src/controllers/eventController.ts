@@ -1,5 +1,6 @@
 import { Event } from '../models';
 import ServerError from '../errors/ServerError';
+import NotFoundError from '../errors/NotFoundError';
 import ApplicationError from '../errors/ApplicationError';
 import { type RequestHandler } from 'express';
 import type { InferType } from 'yup';
@@ -24,3 +25,21 @@ export const createEvent: RequestHandler<
   }
 };
 
+export const getEvents: RequestHandler = async (req, res, next) => {
+  try {
+    const {
+      tokenData: { userId },
+    } = req;
+
+    const events = await Event.findAll({ where: { userId } });
+    if (!events?.length) {
+      throw new NotFoundError('Events not found');
+    }
+    res.send(events);
+  } catch (error) {
+    if (error instanceof ApplicationError) {
+      return next(error);
+    }
+    next(new ServerError((error as any)?.message ?? 'Could not create event'));
+  }
+};
