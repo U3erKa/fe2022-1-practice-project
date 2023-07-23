@@ -6,10 +6,12 @@ import * as validators from '../middlewares/validators';
 import * as chatController from '../controllers/chatController';
 import * as upload from '../utils/fileUpload';
 import authRouter from './authRouter';
+import eventsRouter from './eventsRouter';
 import { checkAccessToken } from '../middlewares/tokenMiddlewares';
 const router = express.Router();
 
 router.use('/auth', authRouter);
+router.use('/events', eventsRouter);
 
 router.use(checkAccessToken);
 
