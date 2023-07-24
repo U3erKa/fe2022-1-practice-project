@@ -6,7 +6,7 @@ const eventsRouter = Router();
 
 eventsRouter
   .route('/')
-  .get(validators.validateEvent, eventController.getEvents)
+  .get(eventController.getEvents)
   .post(validators.validateEvent, eventController.createEvent);
 
 export = eventsRouter;

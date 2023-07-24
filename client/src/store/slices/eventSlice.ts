@@ -14,6 +14,7 @@ import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 import type {
   CreateEventRequest,
   CreateEventResponse,
+  Event,
   EventState,
   GetEventsResponse,
 } from 'types/api/event';
@@ -28,14 +29,22 @@ const initialState: EventState = {
 
 export const getEvents = decorateAsyncThunk({
   key: `${EVENT_SLICE_NAME}/getEvents`,
-  thunk: async () => await eventController.getEvents(),
+  thunk: async () => {
+    const { data } = await eventController.getEvents();
+    return data;
+  },
 });
 
 export const createEvent = decorateAsyncThunk({
   key: `${EVENT_SLICE_NAME}/createEvent`,
-  thunk: async (payload: CreateEventRequest) =>
-    await eventController.createEvent(payload),
+  thunk: async (payload: CreateEventRequest) => {
+    const { data } = await eventController.createEvent(payload);
+    return data;
+  },
 });
+
+const closestEventFirst = ({ date }: Event, { date: other }: Event) =>
+  Date.parse(date) - Date.parse(other);
 
 const getEventsExtraReducers = createExtraReducers({
   thunk: getEvents,
@@ -48,6 +57,7 @@ const getEventsExtraReducers = createExtraReducers({
     state.isFetching = false;
     state.error = null;
     state.events = payload;
+    state.events.sort(closestEventFirst);
   },
 });
 
@@ -62,6 +72,7 @@ const createEventExtraReducers = createExtraReducers({
     state.isFetching = false;
     state.error = null;
     state.events.push(payload);
+    state.events.sort(closestEventFirst);
   },
 });
 

@@ -36,9 +36,6 @@ function getEventProgress({ date, createdAt }: _Event) {
   return { progress, time };
 }
 
-const closestEventFirst = ({ date }: _Event, { date: other }: _Event) =>
-  Date.parse(date) - Date.parse(other);
-
 function Event({ id, name, date, notify, createdAt }) {
   const [time, setTime] = useState('');
   const [progress, setProgress] = useState(0);
@@ -74,17 +71,15 @@ export default function EventListItems() {
   }, []);
 
   const events = useSelector(({ events }) => events.events);
-  const eventsList = events
-    .sort(closestEventFirst)
-    .map((event) => <Event {...event} />);
+
+  if (!events?.length)
+    return <section>No events here yet. Feel Free to create one!</section>;
 
   return (
     <article>
-      {eventsList.length !== 0 ? (
-        eventsList
-      ) : (
-        <section>No event here yet. Feel Free to create one!</section>
-      )}
+      {events.map((event) => (
+        <Event key={event.id} {...event} />
+      ))}
     </article>
   );
 }
