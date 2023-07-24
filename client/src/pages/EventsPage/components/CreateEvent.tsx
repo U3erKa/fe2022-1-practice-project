@@ -2,21 +2,14 @@ import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import uniqueId from 'lodash/uniqueId';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
-import { events } from './EventListItems';
+import { createEvent } from 'store/slices/eventSlice';
+import type { Event } from 'types/api/event';
+import { useDispatch } from 'hooks';
 
 export const initialValues = {
   name: '',
   date: '',
   notify: notifyOptions[0] as (typeof notifyOptions)[number],
-};
-
-export const onSubmit = (
-  values: typeof initialValues,
-  formikBag: FormikHelpers<typeof initialValues>,
-) => {
-  // @ts-ignore
-  events.push(values);
-  formikBag.resetForm();
 };
 
 function NotifyEventField() {
@@ -29,9 +22,16 @@ function NotifyEventField() {
 }
 
 export default function CreateEvent() {
+  const dispatch = useDispatch();
+
+  const onSubmit = (values: Event, formikBag: FormikHelpers<Event>) => {
+    dispatch(createEvent(values));
+    formikBag.resetForm();
+  };
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initialValues as any}
       validationSchema={newEventSchema}
       onSubmit={onSubmit}
     >

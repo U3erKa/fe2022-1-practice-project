@@ -8,5 +8,5 @@ export type GetEventsResponse = CreateEventResponse[];
 export type CreateEventRequest = InferType<typeof newEventSchema>;
 export type CreateEventResponse = WithId<UserId> & WithTimeStamps & Event;
 
-export type EventState = DefaultState & { events: Event[] };
+export type EventState = DefaultState & { events: CreateEventResponse[] };
 export type Event = InferType<typeof newEventSchema>;
