@@ -1,39 +1,8 @@
 import { useEffect, useState } from 'react';
-import { type initialValues } from './CreateEvent';
-
-export const events: (typeof initialValues & {
-  id: number;
-  createdAt: string;
-})[] = [
-  {
-    id: 1,
-    name: 'test event 1',
-    date: '2023-07-03T21:30',
-    notify: 'never',
-    createdAt: '2023-07-01',
-  },
-  {
-    id: 2,
-    name: 'test event 2',
-    date: '2023-07-08T21:30',
-    notify: '1 day before',
-    createdAt: '2023-07-05',
-  },
-  {
-    id: 3,
-    name: 'test event 3',
-    date: '2023-07-10T21:30',
-    notify: '1 hour before',
-    createdAt: '2023-07-04',
-  },
-  {
-    id: 4,
-    name: 'test event 4',
-    date: '2023-07-09T21:30',
-    notify: 'never',
-    createdAt: '2023-07-03',
-  },
-];
+import styles from '../styles/EventListItems.module.sass';
+import type { Event as _Event } from 'types/api/event';
+import { useDispatch, useSelector } from 'hooks';
+import { getEvents } from 'store/slices/eventSlice';
 
 const getDays = (time: number) => Math.floor(time / (1000 * 60 * 60 * 24));
 const getHours = (time: number) => Math.floor((time / (1000 * 60 * 60)) % 24);
@@ -54,7 +23,7 @@ const getRemainingTime = (time: number) => {
   return result.join(' ') || '0s';
 };
 
-function getEventProgress({ date, createdAt }: (typeof events)[number]) {
+function getEventProgress({ date, createdAt }: _Event) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);
   const createdAtDate = Date.parse(createdAt);
@@ -67,10 +36,8 @@ function getEventProgress({ date, createdAt }: (typeof events)[number]) {
   return { progress, time };
 }
 
-const closestEventFirst = (
-  { date }: (typeof events)[number],
-  { date: other }: (typeof events)[number],
-) => Date.parse(date) - Date.parse(other);
+const closestEventFirst = ({ date }: _Event, { date: other }: _Event) =>
+  Date.parse(date) - Date.parse(other);
 
 function Event({ id, name, date, notify, createdAt }) {
   const [time, setTime] = useState('');
@@ -100,6 +67,13 @@ function Event({ id, name, date, notify, createdAt }) {
 }
 
 export default function EventListItems() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getEvents());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const events = useSelector(({ events }) => events.events);
   const eventsList = events
     .sort(closestEventFirst)
     .map((event) => <Event {...event} />);
