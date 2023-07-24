@@ -1,4 +1,8 @@
+import {
+  ActionReducerMapBuilder,
   PayloadAction,
+  createSlice,
+} from '@reduxjs/toolkit';
 import * as eventController from 'api/rest/eventController';
 import {
   decorateAsyncThunk,
@@ -6,6 +10,7 @@ import {
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
+import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 import type {
   CreateEventRequest,
   CreateEventResponse,
@@ -60,3 +65,20 @@ const createEventExtraReducers = createExtraReducers({
   },
 });
 
+const extraReducers = (
+  builder: ActionReducerMapBuilder<NoInfer<EventState>>,
+) => {
+  getEventsExtraReducers(builder);
+  createEventExtraReducers(builder);
+};
+
+const eventSlice = createSlice({
+  name: EVENT_SLICE_NAME,
+  initialState,
+  reducers: {},
+  extraReducers,
+});
+
+const { reducer } = eventSlice;
+
+export default reducer;
