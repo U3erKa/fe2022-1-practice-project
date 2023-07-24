@@ -11,9 +11,10 @@ import { checkAccessToken } from '../middlewares/tokenMiddlewares';
 const router = express.Router();
 
 router.use('/auth', authRouter);
-router.use('/events', eventsRouter);
 
 router.use(checkAccessToken);
+
+router.use('/events', eventsRouter);
 
 router.route('/dataForContest').post(contestController.dataForContest);
 

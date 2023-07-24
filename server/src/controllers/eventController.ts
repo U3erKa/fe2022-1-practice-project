@@ -1,4 +1,4 @@
-import { Event } from '../models';
+import { Event, User } from '../models';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
 import ApplicationError from '../errors/ApplicationError';
@@ -12,10 +12,18 @@ export const createEvent: RequestHandler<
   InferType<typeof eventSchem>
 > = async (req, res, next) => {
   try {
-    const { body } = req;
+    const {
+      tokenData: { userId },
+      body,
+    } = req;
     Object.assign(body, { date: new Date(body.date) });
 
-    const event = await Event.create(body as typeof body & { date: Date });
+    const user = await User.findByPk(userId);
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
+
+    const event = await user.createEvent(body);
     res.send(event);
   } catch (error) {
     if (error instanceof ApplicationError) {
