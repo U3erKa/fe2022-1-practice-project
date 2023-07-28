@@ -15,6 +15,20 @@ $colorDarkGray: #555
   overflow: auto
   max-height: 300px
 
+  &::-webkit-scrollbar
+    width: calc($padding * 3 / 4)
+
+  &::-webkit-scrollbar-track
+    border-radius: 1rem
+    background: $colorLightGray
+
+  &::-webkit-scrollbar-thumb
+    border-radius: 1rem
+    background: $colorGray
+
+    &:hover
+      background: $colorDarkGray
+
 .eventContainer
   @include container($align: center, $justify: space-between, $dir: row)
   position: relative
