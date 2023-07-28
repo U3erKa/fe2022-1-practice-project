@@ -1,28 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'hooks';
-import { getEvents } from 'store/slices/eventSlice';
+import { useSelector } from 'hooks';
 import type { Event as _Event } from 'types/api/event';
 import styles from '../styles/EventListItems.module.sass';
 import { Spinner } from 'components/general';
-
-const getDays = (time: number) => Math.floor(time / (1000 * 60 * 60 * 24));
-const getHours = (time: number) => Math.floor((time / (1000 * 60 * 60)) % 24);
-const getMinutes = (time: number) => Math.floor((time / (1000 * 60)) % 60);
-const getSeconds = (time: number) => Math.floor((time / 1000) % 60);
-
-const getRemainingTime = (time: number) => {
-  const days = getDays(time);
-  const hours = getHours(time);
-  const minutes = getMinutes(time);
-  const seconds = getSeconds(time);
-  const result: string[] = [];
-
-  if (days > 0) result.push(`${days}d`);
-  if (hours > 0) result.push(`${hours}h`);
-  if (minutes > 0) result.push(`${minutes}m`);
-  if (seconds > 0) result.push(`${seconds}s`);
-  return result.join(' ') || '0s';
-};
+import { getRemainingTime } from '../../../utils/functions';
 
 function getEventProgress({ date, createdAt }: _Event) {
   const currentDate = Date.now();
