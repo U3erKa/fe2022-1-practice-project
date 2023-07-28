@@ -54,11 +54,10 @@ function Event({ id, name, date, notify, createdAt }) {
   }, []);
 
   return (
-    <section key={id}>
-      <p>{name}</p>
-      <p>{date}</p>
-      <p>{time}</p>
-      <progress value={progress}></progress>
+    <section key={id} className={styles.eventContainer}>
+      <p className={styles.name}>{name}</p>
+      <p className={styles.time}>{time}</p>
+      <progress className={styles.progress} value={progress}></progress>
     </section>
   );
 }
@@ -76,7 +75,7 @@ export default function EventListItems() {
     return <section>No events here yet. Feel Free to create one!</section>;
 
   return (
-    <article>
+    <article className={styles.container}>
       {events.map((event) => (
         <Event key={event.id} {...event} />
       ))}
