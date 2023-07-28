@@ -12,23 +12,35 @@ import styles from './styles/LoginButtons.module.sass';
 export default function LoginButtons({ data }) {
   const { events } = useSelector(({ events }) => events);
   const currentDate = Date.now();
+  let activeEvents = 0;
+  let shouldNotifyAboutEvents = false;
 
-  const shouldNotifyAboutEvents = events.some(({ date, notify }) => {
+  events.forEach(({ date, notify }) => {
+    if (notify === 'never') return;
     const plannedDate = Date.parse(date);
     const timeframe = plannedDate - currentDate;
 
+    let shouldNotify = false;
     switch (notify) {
       case 'when event starts':
-        return getRemainingTime(timeframe) === '0s';
+        shouldNotify = getRemainingTime(timeframe) === '0s';
+        break;
       case '1 hour before':
-        return getDays(timeframe) === 0 && getHours(timeframe) < 1;
+        shouldNotify = getDays(timeframe) === 0 && getHours(timeframe) < 1;
+        break;
       case '1 day before':
-        return getDays(timeframe) < 1;
+        shouldNotify = getDays(timeframe) < 1;
+        break;
       case '1 week before':
-        return getDays(timeframe) < 7;
-      case 'never':
+        shouldNotify = getDays(timeframe) < 7;
+        break;
       default:
-        return false;
+        shouldNotify = false;
+    }
+
+    if (shouldNotify) {
+      activeEvents++;
+      shouldNotifyAboutEvents = true;
     }
   });
 
@@ -43,7 +55,9 @@ export default function LoginButtons({ data }) {
           }
           alt="user"
         />
-        {shouldNotifyAboutEvents && <div className={styles.badge}></div>}
+        {shouldNotifyAboutEvents && (
+          <div className={styles.badge}>{activeEvents}</div>
+        )}
         <span>{`Hi, ${data.displayName}`}</span>
         <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
         <ProfileNavBar list={PROFILE_NAVBAR} />
