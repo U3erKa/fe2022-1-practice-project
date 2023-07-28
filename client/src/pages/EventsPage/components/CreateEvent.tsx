@@ -5,7 +5,7 @@ import { createEvent } from 'store/slices/eventSlice';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
 import type { Event } from 'types/api/event';
-import { useDispatch } from 'hooks';
+import styles from '../styles/CreateEvent.module.sass';
 
 export const initialValues = {
   name: '',
@@ -36,25 +36,28 @@ export default function CreateEvent() {
       validationSchema={newEventSchema}
       onSubmit={onSubmit}
     >
-      <Form>
-        <label>
-          Name of event:
-          <Field name="name" />
+      <Form className={styles.container}>
+        <h2 className={styles.heading}>Create new event:</h2>
+        <label className={styles.inputContainer}>
+          <p className={styles.text}>Name of event:</p>
+          <Field className={styles.input} name="name" />
           <ErrorMessage name="name" />
         </label>
-        <label>
-          Date & time of the event:
-          <Field name="date" type="datetime-local" />
+        <label className={styles.inputContainer}>
+          <p className={styles.text}>Date & time of the event:</p>
+          <Field className={styles.input} name="date" type="datetime-local" />
           <ErrorMessage name="date" />
         </label>
-        <label>
-          When to remind me about the event:
-          <Field name="notify" as="select">
+        <label className={styles.inputContainer}>
+          <p className={styles.text}>When to remind me about the event:</p>
+          <Field className={styles.input} name="notify" as="select">
             <NotifyEventField />
           </Field>
           <ErrorMessage name="notify" />
         </label>
-        <button type="submit">Create event</button>
+        <button type="submit" className={styles.submit}>
+          Create event
+        </button>
       </Form>
     </Formik>
   );
