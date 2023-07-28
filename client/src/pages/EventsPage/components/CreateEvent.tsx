@@ -1,8 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import uniqueId from 'lodash/uniqueId';
+import { useDispatch } from 'hooks';
+import { createEvent } from 'store/slices/eventSlice';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
-import { createEvent } from 'store/slices/eventSlice';
 import type { Event } from 'types/api/event';
 import { useDispatch } from 'hooks';
 

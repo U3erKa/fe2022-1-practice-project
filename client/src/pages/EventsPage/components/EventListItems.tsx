@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import styles from '../styles/EventListItems.module.sass';
-import type { Event as _Event } from 'types/api/event';
 import { useDispatch, useSelector } from 'hooks';
 import { getEvents } from 'store/slices/eventSlice';
+import type { Event as _Event } from 'types/api/event';
+import styles from '../styles/EventListItems.module.sass';
 
 const getDays = (time: number) => Math.floor(time / (1000 * 60 * 60 * 24));
 const getHours = (time: number) => Math.floor((time / (1000 * 60 * 60)) % 24);
