@@ -56,11 +56,11 @@ export default function LoginButtons({ data }) {
           alt="user"
         />
         {shouldNotifyAboutEvents && (
-          <div className={styles.badge}>{activeEvents}</div>
+          <div className={styles.badge}></div>
         )}
         <span>{`Hi, ${data.displayName}`}</span>
         <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
-        <ProfileNavBar list={PROFILE_NAVBAR} />
+        <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />
       </div>
       <img
         src={`${STATIC_IMAGES_PATH}email.png`}
