@@ -7,6 +7,7 @@ export default function EventsPage() {
       <Header />
       <EventsList />
       <CreateEvent />
+      <EventsList isPast={true} />
       <Footer />
     </>
   );

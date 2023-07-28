@@ -44,17 +44,26 @@ function Event({ id, name, date, notify, createdAt }) {
   );
 }
 
-export default function EventListItems() {
+export default function EventListItems({ isPast = false }) {
   const { isFetching, events } = useSelector(({ events }) => events);
 
   if (isFetching) return <Spinner />;
 
-  if (!events?.length)
+  const currentDate = Date.now();
+  const filteredEvents = events.filter(({ date }) => {
+    const plannedDate = Date.parse(date);
+    const timeframe = plannedDate - currentDate;
+    const eventIsPast = (getRemainingTime(timeframe) === '0s') === isPast;
+
+    return eventIsPast;
+  });
+
+  if (!filteredEvents?.length)
     return <section>No events here yet. Feel Free to create one!</section>;
 
   return (
     <article className={styles.container}>
-      {events.map((event) => (
+      {filteredEvents.map((event) => (
         <Event key={event.id} {...event} />
       ))}
     </article>
