@@ -21,3 +21,26 @@ $colorDarkGray: #555
   width: calc(100% - $padding * 2)
   padding: $padding
 
+.progress
+  appearance: none
+  position: absolute
+  inset: 0
+  height: 100%
+  width: 100%
+  z-index: -1
+
+  &::-webkit-progress-bar
+    border-radius: $borderRadius
+    background-color: $colorLightGray
+
+  &::-webkit-progress-value
+    border-radius: $borderRadius
+    background-color: #d1e9cf
+
+.name,
+.time
+  font-size: 1.25rem
+  font-weight: 500
+
+.time
+  color: $colorGray
