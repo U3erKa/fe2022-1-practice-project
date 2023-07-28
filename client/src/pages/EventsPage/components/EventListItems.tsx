@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { getEvents } from 'store/slices/eventSlice';
 import type { Event as _Event } from 'types/api/event';
 import styles from '../styles/EventListItems.module.sass';
+import { Spinner } from 'components/general';
 
 const getDays = (time: number) => Math.floor(time / (1000 * 60 * 60 * 24));
 const getHours = (time: number) => Math.floor((time / (1000 * 60 * 60)) % 24);
@@ -63,13 +64,9 @@ function Event({ id, name, date, notify, createdAt }) {
 }
 
 export default function EventListItems() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getEvents());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { isFetching, events } = useSelector(({ events }) => events);
 
-  const events = useSelector(({ events }) => events.events);
+  if (isFetching) return <Spinner />;
 
   if (!events?.length)
     return <section>No events here yet. Feel Free to create one!</section>;
