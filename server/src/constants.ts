@@ -10,9 +10,12 @@ export const {
   SQUADHELP_BANK_NAME,
   SQUADHELP_BANK_EXPIRY,
   SQUADHELP_BANK_CVC,
+  SALT_ROUNDS: _SALT_ROUNDS,
 } = process.env;
 
-export const SALT_ROUNDS = 5;
+export const SALT_ROUNDS = isNaN(+_SALT_ROUNDS!)
+  ? _SALT_ROUNDS!
+  : +_SALT_ROUNDS!;
 export const CUSTOMER = 'customer';
 export const CREATOR = 'creator';
 export const CREATOR_ENTRIES = 'creator_entries';
