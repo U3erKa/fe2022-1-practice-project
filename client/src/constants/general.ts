@@ -4,6 +4,7 @@ const serverPort = 3000;
 
 export const CUSTOMER = 'customer';
 export const CREATOR = 'creator';
+export const MODERATOR = 'moderator';
 export const CONTEST_STATUS_ACTIVE = 'active';
 export const CONTEST_STATUS_FINISHED = 'finished';
 export const CONTEST_STATUS_PENDING = 'pending';

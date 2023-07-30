@@ -18,6 +18,7 @@ export const SALT_ROUNDS = isNaN(+_SALT_ROUNDS!)
   : +_SALT_ROUNDS!;
 export const CUSTOMER = 'customer';
 export const CREATOR = 'creator';
+export const MODERATOR = 'moderator';
 export const CREATOR_ENTRIES = 'creator_entries';
 export const CONTEST_STATUS_ACTIVE = 'active';
 export const CONTEST_STATUS_FINISHED = 'finished';
