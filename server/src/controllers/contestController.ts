@@ -10,6 +10,7 @@ import {
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
+import ApplicationError from '../errors/ApplicationError';
 import * as contestQueries from './queries/contestQueries';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
@@ -287,7 +288,7 @@ export const getContests: RequestHandler = async (req, res, next) => {
     headers: { status },
     query: {
       offset: _offset,
-      limit,
+      limit: _limit,
       typeIndex,
       contestId,
       industry,
@@ -297,6 +298,7 @@ export const getContests: RequestHandler = async (req, res, next) => {
   } = req;
   const ownEntries = _ownEntries === 'true';
   const offset = +_offset! ?? 0;
+  const limit = +_limit! ?? 0;
 
   try {
     let predicates: ReturnType<
@@ -339,7 +341,6 @@ export const getContests: RequestHandler = async (req, res, next) => {
     const contests = await Contest.findAll({
       where: predicates!.where,
       order: predicates!.order,
-      // @ts-ignore
       limit,
       offset,
       include: [
@@ -369,5 +370,28 @@ export const getContests: RequestHandler = async (req, res, next) => {
     res.send({ contests, haveMore });
   } catch (error) {
     next(new ServerError((error as Error).message));
+  }
+};
+
+export const getOffers: RequestHandler = async (req, res, next) => {
+  try {
+    const {
+      tokenData,
+      query: { offset: _offset, limit: _limit },
+    } = req;
+    const offset = +_offset! ?? 0;
+    const limit = +_limit! ?? 0;
+
+    const offers = await Offer.findAll({ limit, offset });
+
+    if (!offers.length) {
+      throw new NotFoundError('Offers not found');
+    }
+    res.send(offers);
+  } catch (error) {
+    if (error instanceof ApplicationError) {
+      return next(error);
+    }
+    next(new ServerError((error as any)?.message ?? 'Could not get offers'));
   }
 };
