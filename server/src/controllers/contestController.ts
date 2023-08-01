@@ -307,7 +307,7 @@ export const getContests: RequestHandler = async (req, res, next) => {
   } = req;
   const ownEntries = _ownEntries === 'true';
   const offset = +_offset! ?? 0;
-  const limit = +_limit! ?? 0;
+  const limit = +_limit! ?? 8;
 
   try {
     let predicates: ReturnType<
@@ -389,7 +389,7 @@ export const getOffers: RequestHandler = async (req, res, next) => {
       query: { offset: _offset, limit: _limit },
     } = req;
     const offset = +_offset! ?? 0;
-    const limit = +_limit! ?? 0;
+    const limit = +_limit! ?? 8;
 
     const offers = await Offer.findAll({ limit, offset });
 
