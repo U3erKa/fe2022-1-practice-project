@@ -86,6 +86,14 @@ export const onlyForCustomer: RequestHandler = (req, res, next) => {
   }
 };
 
+export const onlyForModerator: RequestHandler = (req, res, next) => {
+  if (req.tokenData.role !== CONSTANTS.MODERATOR) {
+    return next(new RightsError('This page is only for moderators'));
+  } else {
+    next();
+  }
+};
+
 export const canSendOffer: RequestHandler = async (req, res, next) => {
   if (req.tokenData.role !== CONSTANTS.CREATOR) {
     return next(new RightsError());
