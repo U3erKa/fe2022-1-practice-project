@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import {
   Select,
   Sequelize,
@@ -76,7 +77,14 @@ export const getContestById: RequestHandler = async (req, res, next) => {
           where:
             tokenData.role === CONSTANTS.CREATOR
               ? { userId: tokenData.userId }
-              : {},
+              : {
+                  status: {
+                    [Op.and]: [
+                      { [Op.ne]: CONSTANTS.OFFER_STATUS_PENDING },
+                      { [Op.ne]: CONSTANTS.OFFER_STATUS_DISCARDED },
+                    ],
+                  },
+                },
           attributes: { exclude: ['userId', 'contestId'] },
           include: [
             {
@@ -224,7 +232,8 @@ END
       status: sequelize.literal(`
 CASE
   WHEN "id"=${offerId} THEN '${CONSTANTS.OFFER_STATUS_WON}'
-  ELSE '${CONSTANTS.OFFER_STATUS_REJECTED}'
+  WHEN "status"=${CONSTANTS.OFFER_STATUS_APPROVED} THEN '${CONSTANTS.OFFER_STATUS_REJECTED}'
+  ELSE '${CONSTANTS.OFFER_STATUS_DISCARDED}'
 END
       `),
     },

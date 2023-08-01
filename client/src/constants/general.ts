@@ -13,7 +13,7 @@ export const LOGO_CONTEST = 'logo';
 export const TAGLINE_CONTEST = 'tagline';
 export const OFFER_STATUS_REJECTED = 'rejected';
 export const OFFER_STATUS_WON = 'won';
-export const OFFER_STATUS_PENDING = 'pending';
+export const OFFER_STATUS_PENDING = 'approved';
 
 export const STATIC_IMAGES_PATH = '/staticImages/';
 export const ANONYM_IMAGE_PATH = '/staticImages/anonym.png';
