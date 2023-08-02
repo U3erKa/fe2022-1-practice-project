@@ -261,6 +261,7 @@ END
 
 export const setOfferStatus: RequestHandler = async (req, res, next) => {
   const {
+    tokenData: { role },
     body: { command, offerId, creatorId, contestId, orderId, priority },
   } = req;
   if (command === 'reject') {
@@ -287,6 +288,32 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
     } catch (err) {
       transaction.rollback();
       next(err);
+    }
+  }
+
+  if (role === 'moderator') {
+    if (command === 'approve') {
+      try {
+        const offer = await contestQueries.updateOfferStatus(
+          { status: CONSTANTS.OFFER_STATUS_APPROVED },
+          { id: offerId },
+        );
+        return res.send(offer);
+      } catch (error) {
+        next(error);
+      }
+    }
+
+    if (command === 'discard') {
+      try {
+        const offer = await contestQueries.updateOfferStatus(
+          { status: CONSTANTS.OFFER_STATUS_DISCARDED },
+          { id: offerId },
+        );
+        return res.send(offer);
+      } catch (error) {
+        next(error);
+      }
     }
   }
 };
