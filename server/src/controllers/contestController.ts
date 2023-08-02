@@ -11,6 +11,7 @@ import {
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
+import BadRequestError from '../errors/BadRequestError';
 import ApplicationError from '../errors/ApplicationError';
 import * as contestQueries from './queries/contestQueries';
 import * as userQueries from './queries/userQueries';
@@ -264,34 +265,35 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
     tokenData: { role },
     body: { command, offerId, creatorId, contestId, orderId, priority },
   } = req;
-  if (command === 'reject') {
-    try {
-      const offer = await rejectOffer(offerId, creatorId, contestId);
-      res.send(offer);
-    } catch (err) {
-      next(err);
-    }
-  }
-  const transaction = await sequelize.transaction();
 
-  if (command === 'resolve') {
-    try {
-      const winningOffer = await resolveOffer(
-        contestId,
-        creatorId,
-        orderId,
-        offerId,
-        priority,
-        transaction,
-      );
-      res.send(winningOffer);
-    } catch (err) {
-      transaction.rollback();
-      next(err);
+  if (role === 'customer') {
+    if (command === 'reject') {
+      try {
+        const offer = await rejectOffer(offerId, creatorId, contestId);
+        return res.send(offer);
+      } catch (err) {
+        next(err);
+      }
     }
-  }
+    const transaction = await sequelize.transaction();
 
-  if (role === 'moderator') {
+    if (command === 'resolve') {
+      try {
+        const winningOffer = await resolveOffer(
+          contestId,
+          creatorId,
+          orderId,
+          offerId,
+          priority,
+          transaction,
+        );
+        return res.send(winningOffer);
+      } catch (err) {
+        transaction.rollback();
+        next(err);
+      }
+    }
+  } else if (role === 'moderator') {
     if (command === 'approve') {
       try {
         const offer = await contestQueries.updateOfferStatus(
@@ -316,6 +318,8 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
       }
     }
   }
+
+  next(new BadRequestError('Invalid command'));
 };
 
 export const getContests: RequestHandler = async (req, res, next) => {
