@@ -63,15 +63,18 @@ export type Offer = WithId<OfferId> &
 
 export type OfferStatus<T extends Commands> = T extends 'resolve'
   ? typeof OFFER_STATUS_WON
-  : typeof OFFER_STATUS_REJECTED;
+  : T extends 'reject'
+  ? typeof OFFER_STATUS_REJECTED
+  : T extends 'approve'
+  ? typeof OFFER_STATUS_APPROVED
+  : T extends 'discard'
+  ? typeof OFFER_STATUS_DISCARDED
+  : typeof OFFER_STATUS_PENDING;
 
 export type Priority = 1 | 2 | 3;
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-export type Commands = 'resolve' | 'reject';
+export type Commands = 'resolve' | 'reject' | 'approve' | 'discard';
 
-export type WithOfferStatus = {
-  status:
-    | OfferStatus<'resolve'>
-    | OfferStatus<'reject'>
-    | typeof OFFER_STATUS_PENDING;
+export type WithOfferStatus<T extends Commands = Commands> = {
+  status: OfferStatus<T>;
 };
