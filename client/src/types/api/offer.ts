@@ -17,6 +17,7 @@ import type {
   WithFile,
   WithId,
   WithLifeSpan,
+  WithPagination,
   WithUUID,
 } from './_common';
 
@@ -50,6 +51,14 @@ export type SetNewOfferResponse = WithId<OfferId> &
     User: UserInOffer;
   };
 
+export type GetOffersParams = Partial<WithPagination> & {
+  isReviewed?: boolean;
+};
+
+export type GetOffersResponse<IsReviewed> = Offer & IsReviewed extends true
+  ? WithOfferStatus<'approve' | 'discard'>
+  : WithOfferStatus<'resolve' | 'reject' | ''>;
+
 export type UserInOffer = WithId<UserId> &
   WithId<UserId, 'userId'> &
   Omit<User, 'password' | 'accessToken'> &
@@ -61,7 +70,7 @@ export type Offer = WithId<OfferId> &
   Partial<WithFile> &
   WithOfferStatus & { text: string };
 
-export type OfferStatus<T extends Commands> = T extends 'resolve'
+export type OfferStatus<T = Commands> = T extends 'resolve'
   ? typeof OFFER_STATUS_WON
   : T extends 'reject'
   ? typeof OFFER_STATUS_REJECTED
@@ -75,6 +84,6 @@ export type Priority = 1 | 2 | 3;
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
 export type Commands = 'resolve' | 'reject' | 'approve' | 'discard';
 
-export type WithOfferStatus<T extends Commands = Commands> = {
+export type WithOfferStatus<T = Commands> = {
   status: OfferStatus<T>;
 };
