@@ -1,4 +1,4 @@
-import { Op } from 'sequelize';
+import { type Filterable, type InferAttributes, Op } from 'sequelize';
 import {
   Select,
   Sequelize,
@@ -416,13 +416,19 @@ export const getContests: RequestHandler = async (req, res, next) => {
 export const getOffers: RequestHandler = async (req, res, next) => {
   try {
     const {
-      tokenData,
-      query: { offset: _offset, limit: _limit },
+      query: { offset: _offset, limit: _limit, isReviewed: _isReviewed },
     } = req;
     const offset = +_offset! ?? 0;
     const limit = +_limit! ?? 8;
+    const isReviewed = _isReviewed === 'true';
 
-    const offers = await Offer.findAll({ limit, offset });
+    const where: Filterable<InferAttributes<_Offer>>['where'] = {
+      [Op.or]: isReviewed
+        ? [{ status: 'pending' }, { status: 'won' }, { status: 'rejected' }]
+        : [{ status: 'approved' }, { status: 'discarded' }],
+    };
+
+    const offers = await Offer.findAll({ limit, offset, where });
 
     if (!offers.length) {
       throw new NotFoundError('Offers not found');
