@@ -20,7 +20,7 @@ import {
   LOGO_CONTEST,
   CREATOR,
   CONTEST_STATUS_ACTIVE,
-  OFFER_STATUS_PENDING,
+  OFFER_STATUS_APPROVED,
 } from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -138,7 +138,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
     return (
       contestCreatorId === userId &&
       contestStatus === CONTEST_STATUS_ACTIVE &&
-      offerStatus === OFFER_STATUS_PENDING
+      offerStatus === OFFER_STATUS_APPROVED
     );
   };
 

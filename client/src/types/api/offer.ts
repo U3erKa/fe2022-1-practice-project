@@ -1,4 +1,6 @@
 import type {
+  OFFER_STATUS_APPROVED,
+  OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
@@ -43,7 +45,7 @@ export type CashOutParams = Omit<Card, 'name' | 'balance'> & {
 
 export type SetNewOfferResponse = WithId<OfferId> &
   Partial<WithFile> & {
-    status: typeof OFFER_STATUS_PENDING;
+    status: typeof OFFER_STATUS_APPROVED;
     text: Offer['text'];
     User: UserInOffer;
   };
