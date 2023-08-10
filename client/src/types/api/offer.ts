@@ -55,9 +55,7 @@ export type GetOffersParams = Partial<WithPagination> & {
   isReviewed?: boolean;
 };
 
-export type GetOffersResponse<IsReviewed> = Offer & IsReviewed extends true
-  ? WithOfferStatus<'approve' | 'discard'>
-  : WithOfferStatus<'resolve' | 'reject' | ''>;
+export type GetOffersResponse<IsReviewed> = ModeratorOffer<IsReviewed>[];
 
 export type UserInOffer = WithId<UserId> &
   WithId<UserId, 'userId'> &
@@ -69,6 +67,11 @@ export type Offer = WithId<OfferId> &
   WithId<ContestId, 'contestId'> &
   Partial<WithFile> &
   WithOfferStatus & { text: string };
+
+export type ModeratorOffer<IsReviewed> = Offer &
+  (IsReviewed extends true
+    ? WithOfferStatus<'approve' | 'discard'>
+    : WithOfferStatus<'resolve' | 'reject' | ''>);
 
 export type OfferStatus<T = Commands> = T extends 'resolve'
   ? typeof OFFER_STATUS_WON
