@@ -5,6 +5,7 @@ import * as contestController from 'api/rest/contestController';
 
 import {
   decorateAsyncThunk,
+  pendingReducer,
   rejectedReducer,
   createExtraReducers,
 } from 'utils/store';
@@ -15,6 +16,8 @@ import type { GetContestParams, GetContestResponse } from 'types/api/contest';
 import type {
   ChangeMarkParams,
   ChangeMarkResponse,
+  GetOffersParams,
+  GetOffersResponse,
   SetNewOfferResponse,
   SetOfferStatusParams,
   SetOfferStatusResponse,
@@ -171,6 +174,31 @@ const changeMarkExtraReducers = createExtraReducers({
   },
 });
 
+//-----------getOffers
+export const getOffers = decorateAsyncThunk({
+  key: `${CONTEST_BY_ID_SLICE_NAME}/getOffers`,
+  thunk: async (payload: GetOffersParams) => {
+    const { data } = await offerController.getOffers<typeof payload.isReviewed>(
+      payload,
+    );
+    return data;
+  },
+});
+
+const getOffersExtraReducers = createExtraReducers({
+  thunk: getOffers,
+  pendingReducer,
+  fulfilledReducer: <IsReviewed>(
+    state: ContestByIdState,
+    { payload }: PayloadAction<GetOffersResponse<IsReviewed>>,
+  ) => {
+    state.isFetching = false;
+    state.offers = payload as any;
+    state.error = null;
+  },
+  rejectedReducer,
+});
+
 //-----------------------------------------------------
 
 const reducers = {
@@ -223,6 +251,7 @@ const extraReducers = (builder) => {
   addOfferExtraReducers(builder);
   setOfferStatusExtraReducers(builder);
   changeMarkExtraReducers(builder);
+  getOffersExtraReducers(builder);
 };
 
 const contestByIdSlice = createSlice({
