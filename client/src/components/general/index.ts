@@ -1,6 +1,7 @@
 export { default as Error } from './Error';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
+export { default as ItemsContainer } from './ItemsContainer';
 export { default as Logo } from './Logo';
 export { default as Notification } from './Notification';
 export { default as ProgressBar } from './ProgressBar';

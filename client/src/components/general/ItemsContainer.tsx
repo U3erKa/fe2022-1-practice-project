@@ -3,7 +3,7 @@ import { Spinner } from 'components/general';
 
 import styles from './styles/ContestContainer.module.sass';
 
-const ContestsContainer = ({ items, loadMore }) => {
+const ItemsContainer = ({ items, loadMore }) => {
   const { isFetching, haveMore, contests } = useSelector(
     (state) => state.contestsList,
   );
@@ -43,4 +43,4 @@ const ContestsContainer = ({ items, loadMore }) => {
   );
 };
 
-export default ContestsContainer;
+export default ItemsContainer;

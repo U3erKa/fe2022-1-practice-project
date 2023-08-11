@@ -5,8 +5,8 @@ import {
   clearContestsList,
   setNewCustomerFilter,
 } from 'store/slices/contestsSlice';
-import { TryAgain } from 'components/general';
-import { ContestBox, ContestsContainer } from 'components/contest';
+import { TryAgain, ItemsContainer } from 'components/general';
+import { ContestBox } from 'components/contest';
 import { CustomFilter } from './CustomFilter';
 import {
   CONTEST_STATUS_ACTIVE,
@@ -74,10 +74,7 @@ const CustomerDashboard = () => {
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
         ) : (
-          <ContestsContainer
-            items={contestsList}
-            loadMore={getContestsMethod}
-          />
+          <ItemsContainer items={contestsList} loadMore={getContestsMethod} />
         )}
       </div>
     </div>
