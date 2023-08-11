@@ -34,6 +34,7 @@ const initialState: ContestByIdState = {
   addOfferError: null,
   setOfferStatusError: null,
   changeMarkError: null,
+  isReviewed: false,
   isEditContest: false,
   isBrief: true,
   isShowOnFull: false,

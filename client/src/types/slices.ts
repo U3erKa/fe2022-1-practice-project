@@ -53,6 +53,7 @@ export type ContestByIdState = WithFetch & {
   addOfferError: ServerError | null;
   setOfferStatusError: ServerError | null;
   changeMarkError: Error | null;
+  isReviewed: boolean;
   isEditContest: boolean;
   isBrief: boolean;
   isShowOnFull: boolean;
