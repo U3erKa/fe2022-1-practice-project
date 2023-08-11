@@ -1,17 +1,12 @@
 import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
-import ContestBox from './ContestBox';
 
 import styles from './styles/ContestContainer.module.sass';
 
-const ContestsContainer = ({ loadMore }) => {
+const ContestsContainer = ({ items, loadMore }) => {
   const { isFetching, haveMore, contests } = useSelector(
     (state) => state.contestsList,
   );
-
-  const contestsList = contests.map((contest) => (
-    <ContestBox data={contest} key={contest.id} />
-  ));
 
   const onClick = () => {
     const isScrolledToBottom =
@@ -28,7 +23,7 @@ const ContestsContainer = ({ loadMore }) => {
 
   return (
     <div>
-      {contestsList}
+      {items}
       {isFetching ? (
         <div className={styles.spinnerContainer}>
           <Spinner />

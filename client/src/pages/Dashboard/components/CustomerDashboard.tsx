@@ -6,7 +6,7 @@ import {
   setNewCustomerFilter,
 } from 'store/slices/contestsSlice';
 import { TryAgain } from 'components/general';
-import { ContestsContainer } from 'components/contest';
+import { ContestBox, ContestsContainer } from 'components/contest';
 import { CustomFilter } from './CustomFilter';
 import {
   CONTEST_STATUS_ACTIVE,
@@ -24,7 +24,9 @@ const buttons: { name: string; filter: Status }[] = [
 ];
 
 const CustomerDashboard = () => {
-  const { error, customerFilter } = useSelector((state) => state.contestsList);
+  const { error, customerFilter, contests } = useSelector(
+    (state) => state.contestsList,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +40,10 @@ const CustomerDashboard = () => {
     getContestsMethod();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customerFilter]);
+
+  const contestsList = contests.map((contest) => (
+    <ContestBox data={contest} key={contest.id} />
+  ));
 
   const getContestsMethod = (startFrom = 0) => {
     dispatch(
@@ -68,7 +74,10 @@ const CustomerDashboard = () => {
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
         ) : (
-          <ContestsContainer loadMore={getContestsMethod} />
+          <ContestsContainer
+            items={contestsList}
+            loadMore={getContestsMethod}
+          />
         )}
       </div>
     </div>
