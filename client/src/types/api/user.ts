@@ -3,6 +3,7 @@ import type {
   CASHOUT_MODE,
   CREATOR,
   CUSTOMER,
+  MODERATOR,
   USER_INFO_MODE,
 } from 'constants/general';
 
@@ -27,7 +28,7 @@ export type User = WithId<UserId> & {
   avatar: string;
   email: string;
   password: string;
-  role: typeof CUSTOMER | typeof CREATOR;
+  role: typeof CUSTOMER | typeof CREATOR | typeof MODERATOR;
   balance: Card['balance'];
   accessToken: JWT;
   rating: number;

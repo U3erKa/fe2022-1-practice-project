@@ -21,6 +21,7 @@ import {
   CREATOR,
   CONTEST_STATUS_ACTIVE,
   OFFER_STATUS_APPROVED,
+  MODERATOR,
 } from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -64,7 +65,12 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => setOfferStatus(id, data.id, 'resolve'),
+          onClick: () =>
+            setOfferStatus(
+              id,
+              data.id,
+              role === MODERATOR ? 'approve' : 'resolve',
+            ),
         },
         {
           label: 'No',
@@ -81,7 +87,12 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => setOfferStatus(id, data.id, 'reject'),
+          onClick: () =>
+            setOfferStatus(
+              id,
+              data.id,
+              role === MODERATOR ? 'discard' : 'reject',
+            ),
         },
         {
           label: 'No',
