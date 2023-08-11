@@ -7,7 +7,7 @@ import {
 } from 'store/slices/contestsSlice';
 import { TryAgain } from 'components/general';
 import { ContestsContainer } from 'components/contest';
-import { CustomerFilter } from './CustomerFilter';
+import { CustomFilter } from './CustomFilter';
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
@@ -59,7 +59,7 @@ const CustomerDashboard = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <CustomerFilter
+      <CustomFilter
         filterAction={setNewCustomerFilter}
         buttons={buttons}
         predicate={customerFilter}

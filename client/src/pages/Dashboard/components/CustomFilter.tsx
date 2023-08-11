@@ -4,14 +4,14 @@ import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { FC } from 'react';
 import styles from '../styles/CustomerDashboard.module.sass';
 
-export type Props = {
-  buttons: { name: string; filter: string }[];
-  filterAction: ActionCreatorWithPayload<any>;
-  predicate: string;
+export type Props<Filter = any> = {
+  buttons: { name: string; filter: Filter }[];
+  filterAction: ActionCreatorWithPayload<Filter>;
+  predicate: Filter;
   [key: string]: any;
 } & JSX.IntrinsicElements['div'];
 
-export const CustomerFilter: FC<Props> = ({
+export const CustomFilter: FC<Props> = ({
   buttons,
   filterAction,
   predicate,
