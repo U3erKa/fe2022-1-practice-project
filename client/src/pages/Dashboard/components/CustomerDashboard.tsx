@@ -1,15 +1,27 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'hooks';
-import { getContests, clearContestsList } from 'store/slices/contestsSlice';
-
+import {
+  getContests,
+  clearContestsList,
+  setNewCustomerFilter,
+} from 'store/slices/contestsSlice';
 import { TryAgain } from 'components/general';
 import { ContestsContainer } from 'components/contest';
 import { CustomerFilter } from './CustomerFilter';
-
-import { CUSTOMER } from 'constants/general';
-
+import {
+  CONTEST_STATUS_ACTIVE,
+  CONTEST_STATUS_FINISHED,
+  CONTEST_STATUS_PENDING,
+  CUSTOMER,
+} from 'constants/general';
+import type { Status } from 'types/contest';
 import styles from '../styles/CustomerDashboard.module.sass';
+
+const buttons: { name: string; filter: Status }[] = [
+  { name: 'Active Contests', filter: CONTEST_STATUS_ACTIVE },
+  { name: 'Completed contests', filter: CONTEST_STATUS_FINISHED },
+  { name: 'Inactive contests', filter: CONTEST_STATUS_PENDING },
+];
 
 const CustomerDashboard = () => {
   const { error, customerFilter } = useSelector((state) => state.contestsList);
@@ -47,7 +59,11 @@ const CustomerDashboard = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <CustomerFilter />
+      <CustomerFilter
+        filterAction={setNewCustomerFilter}
+        buttons={buttons}
+        predicate={customerFilter}
+      />
       <div className={styles.contestsContainer}>
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
