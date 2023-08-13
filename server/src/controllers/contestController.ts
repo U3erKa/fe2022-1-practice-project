@@ -424,8 +424,8 @@ export const getOffers: RequestHandler = async (req, res, next) => {
 
     const where: Filterable<InferAttributes<_Offer>>['where'] = {
       [Op.or]: isReviewed
-        ? [{ status: 'pending' }, { status: 'won' }, { status: 'rejected' }]
-        : [{ status: 'approved' }, { status: 'discarded' }],
+        ? [{ status: 'approved' }, { status: 'discarded' }]
+        : [{ status: 'pending' }, { status: 'won' }, { status: 'rejected' }],
     };
 
     const offers = await Offer.findAll({
