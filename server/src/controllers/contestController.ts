@@ -428,11 +428,33 @@ export const getOffers: RequestHandler = async (req, res, next) => {
         : [{ status: 'approved' }, { status: 'discarded' }],
     };
 
-    const offers = await Offer.findAll({ limit, offset, where });
+    const offers = await Offer.findAll({
+      limit,
+      offset,
+      where,
+      include: [
+        {
+          model: Contest,
+          required: true,
+          attributes: ['status', 'contestType'],
+        },
+        {
+          model: User,
+          required: true,
+          attributes: { exclude: ['password', 'accessToken'] },
+        },
+      ],
+    });
 
     if (!offers.length) {
       throw new NotFoundError('Offers not found');
     }
+    offers.forEach((offer) => {
+      // @ts-expect-error
+      Object.assign(offer.dataValues, offer.Contest.dataValues);
+      // @ts-expect-error
+      delete offer.Contest.dataValues;
+    });
     res.send(offers);
   } catch (error) {
     if (error instanceof ApplicationError) {
