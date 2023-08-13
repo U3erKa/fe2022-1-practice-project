@@ -50,6 +50,7 @@ export type ChatState = WithFetch & {
 export type ContestByIdState = WithFetch & {
   contestData: ContestData | null;
   offers: Offer[];
+  haveMore: boolean;
   addOfferError: ServerError | null;
   setOfferStatusError: ServerError | null;
   changeMarkError: Error | null;

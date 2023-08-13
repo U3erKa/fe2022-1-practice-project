@@ -449,13 +449,16 @@ export const getOffers: RequestHandler = async (req, res, next) => {
     if (!offers.length) {
       throw new NotFoundError('Offers not found');
     }
+    const offersCount = await Offer.count({ where });
+    const haveMore = offersCount > offset + offers.length;
+
     offers.forEach((offer) => {
       // @ts-expect-error
       Object.assign(offer.dataValues, offer.Contest.dataValues);
       // @ts-expect-error
       delete offer.Contest.dataValues;
     });
-    res.send(offers);
+    res.send({ offers, haveMore });
   } catch (error) {
     if (error instanceof ApplicationError) {
       return next(error);

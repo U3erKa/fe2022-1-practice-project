@@ -55,7 +55,10 @@ export type GetOffersParams = Partial<WithPagination> & {
   isReviewed?: boolean;
 };
 
-export type GetOffersResponse<IsReviewed> = ModeratorOffer<IsReviewed>[];
+export type GetOffersResponse<IsReviewed> = {
+  offers: ModeratorOffer<IsReviewed>[];
+  haveMore: boolean;
+};
 
 export type UserInOffer = WithId<UserId> &
   WithId<UserId, 'userId'> &
