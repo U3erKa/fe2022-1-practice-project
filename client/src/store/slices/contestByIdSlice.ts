@@ -31,6 +31,7 @@ const initialState: ContestByIdState = {
   contestData: null,
   error: null,
   offers: [],
+  haveMore: false,
   addOfferError: null,
   setOfferStatusError: null,
   changeMarkError: null,
@@ -194,7 +195,8 @@ const getOffersExtraReducers = createExtraReducers({
     { payload }: PayloadAction<GetOffersResponse<IsReviewed>>,
   ) => {
     state.isFetching = false;
-    state.offers = payload as any;
+    state.offers = payload.offers;
+    state.haveMore = payload.haveMore;
     state.error = null;
   },
   rejectedReducer,
@@ -223,6 +225,12 @@ const reducers = {
     { payload }: PayloadAction<ContestByIdState['isEditContest']>,
   ) => {
     state.isEditContest = payload;
+  },
+  setIsReviewed: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['isReviewed']>,
+  ) => {
+    state.isReviewed = payload;
   },
   clearAddOfferError: (state: ContestByIdState) => {
     state.addOfferError = null;
@@ -268,6 +276,7 @@ export const {
   updateStoreAfterUpdateContest,
   changeContestViewMode,
   changeEditContest,
+  setIsReviewed,
   clearAddOfferError,
   clearSetOfferStatusError,
   clearChangeMarkError,
