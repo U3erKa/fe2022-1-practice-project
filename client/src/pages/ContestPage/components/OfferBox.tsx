@@ -19,6 +19,7 @@ import {
   STATIC_IMAGES_PATH,
   LOGO_CONTEST,
   CREATOR,
+  CUSTOMER,
   CONTEST_STATUS_ACTIVE,
   OFFER_STATUS_APPROVED,
   MODERATOR,
@@ -144,6 +145,8 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
   };
 
   const needButtons = (offerStatus) => {
+    if (role === MODERATOR) return true;
+
     const contestCreatorId = contestData.User.id;
     const contestStatus = contestData.status;
     return (
@@ -195,7 +198,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {contestData.contestType === LOGO_CONTEST ? (
+          {contestData?.contestType === LOGO_CONTEST ? (
             <img
               onClick={() =>
                 dispatch(
@@ -212,7 +215,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           ) : (
             <span className={styles.response}>{data.text}</span>
           )}
-          {id !== userId && (
+          {id !== userId && role === CUSTOMER && (
             // @ts-expect-error
             <Rating
               fractions={2}
