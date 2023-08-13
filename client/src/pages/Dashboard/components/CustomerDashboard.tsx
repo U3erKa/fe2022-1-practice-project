@@ -24,7 +24,7 @@ const buttons: { name: string; filter: Status }[] = [
 ];
 
 const CustomerDashboard = () => {
-  const { error, customerFilter, contests } = useSelector(
+  const { isFetching, haveMore, error, customerFilter, contests } = useSelector(
     (state) => state.contestsList,
   );
   const dispatch = useDispatch();
@@ -74,7 +74,12 @@ const CustomerDashboard = () => {
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
         ) : (
-          <ItemsContainer items={contestsList} loadMore={getContestsMethod} />
+          <ItemsContainer
+            isFetching={isFetching}
+            haveMore={haveMore}
+            items={contestsList}
+            loadMore={getContestsMethod}
+          />
         )}
       </div>
     </div>

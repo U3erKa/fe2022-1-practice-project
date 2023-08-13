@@ -1,23 +1,30 @@
-import { useSelector } from 'hooks';
+import { type FC, type ReactNode } from 'react';
 import { Spinner } from 'components/general';
-
 import styles from './styles/ContestContainer.module.sass';
 
-const ItemsContainer = ({ items, loadMore }) => {
-  const { isFetching, haveMore, contests } = useSelector(
-    (state) => state.contestsList,
-  );
+export type Props = {
+  isFetching?: boolean;
+  haveMore: boolean
+  items: ReactNode[]
+  loadMore: (offset: number) => void
+};
 
+const ItemsContainer: FC<Props> = ({
+  isFetching,
+  haveMore,
+  items,
+  loadMore,
+}) => {
   const onClick = () => {
     const isScrolledToBottom =
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight;
 
-    if (!contests.length) {
+    if (!items.length) {
       return;
     }
     if (isScrolledToBottom && haveMore) {
-      loadMore(contests.length);
+      loadMore(items.length);
     }
   };
 
@@ -28,11 +35,11 @@ const ItemsContainer = ({ items, loadMore }) => {
         <div className={styles.spinnerContainer}>
           <Spinner />
         </div>
-      ) : contests.length ? (
+      ) : items.length ? (
         <button
           className={styles.loadMoreBtn}
           onClick={onClick}
-          disabled={!contests.length || !haveMore}
+          disabled={!items.length || !haveMore}
         >
           Load more
         </button>
