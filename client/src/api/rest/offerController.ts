@@ -35,5 +35,5 @@ export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
   isReviewed,
 }: GetOffersParams) =>
   http.get<GetOffersResponse<IsReviewed>>(
-    `contests?${queryString.stringify({ limit, offset, isReviewed })}`,
+    `offers?${queryString.stringify({ limit, offset, isReviewed })}`,
   );
