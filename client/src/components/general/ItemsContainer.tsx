@@ -22,7 +22,7 @@ const ItemsContainer = ({ items, loadMore }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {items}
       {isFetching ? (
         <div className={styles.spinnerContainer}>
