@@ -21,13 +21,16 @@ import type {
   WithUUID,
 } from './_common';
 
-export type SetOfferStatusParams = WithId<ContestId, 'contestId'> &
-  WithId<CreatorId, 'creatorId'> &
-  WithId<OfferId, 'offerId'> &
-  WithUUID<OrderId, 'orderId'> & {
-    command: Commands;
-    priority: Priority;
-  };
+export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
+  (
+    | (WithId<ContestId, 'contestId'> &
+        WithId<CreatorId, 'creatorId'> &
+        WithUUID<OrderId, 'orderId'> & {
+          command: CustomerCommand;
+          priority: Priority;
+        })
+    | { command: ModeratorCommand }
+  );
 
 export type SetOfferStatusResponse<T extends Commands = Commands> = Offer &
   OfferStatus<T>;
@@ -73,8 +76,8 @@ export type Offer = WithId<OfferId> &
 
 export type ModeratorOffer<IsReviewed> = Offer &
   (IsReviewed extends true
-    ? WithOfferStatus<'approve' | 'discard'>
-    : WithOfferStatus<'resolve' | 'reject' | ''>);
+    ? WithOfferStatus<ModeratorCommand>
+    : WithOfferStatus<CustomerCommand | ''>);
 
 export type OfferStatus<T = Commands> = T extends 'resolve'
   ? typeof OFFER_STATUS_WON
@@ -88,7 +91,9 @@ export type OfferStatus<T = Commands> = T extends 'resolve'
 
 export type Priority = 1 | 2 | 3;
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-export type Commands = 'resolve' | 'reject' | 'approve' | 'discard';
+export type Commands = CustomerCommand | ModeratorCommand;
+export type CustomerCommand = 'resolve' | 'reject';
+export type ModeratorCommand = 'approve' | 'discard';
 
 export type WithOfferStatus<T = Commands> = {
   status: OfferStatus<T>;
