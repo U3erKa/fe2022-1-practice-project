@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import * as contestController from 'api/rest/contestController';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';
 import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
-
+import { addNewItems } from 'utils/functions';
 import type { GetContestsThunk } from 'types/api/contest';
 import type { ContestsState } from 'types/slices';
 
@@ -68,13 +67,8 @@ const extraReducers = (builder) => {
   builder.addCase(
     getContests.fulfilled,
     (state: ContestsState, { payload }: PayloadAction<GetContests>) => {
-      const newContestIds = payload.contests.map((contest) => contest.id);
-      const uniqueContests = state.contests.filter(
-        (contest) => !newContestIds.includes(contest.id),
-      );
-
       state.isFetching = false;
-      state.contests = [...uniqueContests, ...payload.contests];
+      state.contests = addNewItems(state.contests, payload.contests);
       state.haveMore = payload.haveMore;
     },
   );
