@@ -1,17 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import * as offerController from 'api/rest/offerController';
 import * as contestController from 'api/rest/contestController';
-
 import {
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
   createExtraReducers,
 } from 'utils/store';
-
 import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
-
+import { addNewItems } from 'utils/functions';
 import type { GetContestParams, GetContestResponse } from 'types/api/contest';
 import type {
   ChangeMarkParams,
@@ -195,7 +192,7 @@ const getOffersExtraReducers = createExtraReducers({
     { payload }: PayloadAction<GetOffersResponse<IsReviewed>>,
   ) => {
     state.isFetching = false;
-    state.offers = payload.offers;
+    state.offers = addNewItems(state.offers, payload.offers as any[]);
     state.haveMore = payload.haveMore;
     state.error = null;
   },
@@ -231,6 +228,7 @@ const reducers = {
     { payload }: PayloadAction<ContestByIdState['isReviewed']>,
   ) => {
     state.isReviewed = payload;
+    state.offers = [];
   },
   clearAddOfferError: (state: ContestByIdState) => {
     state.addOfferError = null;
