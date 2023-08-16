@@ -23,6 +23,7 @@ import {
   CONTEST_STATUS_ACTIVE,
   OFFER_STATUS_APPROVED,
   MODERATOR,
+  OFFER_STATUS_DISCARDED,
 } from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -117,14 +118,17 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
 
   const offerStatus = () => {
     const { status } = data;
-    if (status === OFFER_STATUS_REJECTED) {
+    if (status === OFFER_STATUS_REJECTED || status === OFFER_STATUS_DISCARDED) {
       return (
         <i
           className={classNames('fas fa-times-circle reject', styles.reject)}
         />
       );
     }
-    if (status === OFFER_STATUS_WON) {
+    if (
+      status === OFFER_STATUS_WON ||
+      (role === MODERATOR && status === OFFER_STATUS_APPROVED)
+    ) {
       return (
         <i
           className={classNames('fas fa-check-circle resolve', styles.resolve)}
