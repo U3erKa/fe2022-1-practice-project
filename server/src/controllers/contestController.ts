@@ -436,7 +436,7 @@ export const getOffers: RequestHandler = async (req, res, next) => {
         {
           model: Contest,
           required: true,
-          attributes: ['status', 'contestType'],
+          attributes: ['contestType'],
         },
         {
           model: User,
