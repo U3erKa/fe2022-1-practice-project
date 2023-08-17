@@ -7,7 +7,12 @@ import {
   rejectedReducer,
   createExtraReducers,
 } from 'utils/store';
-import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
+import {
+  OFFER_STATUS_WON,
+  OFFER_STATUS_REJECTED,
+  OFFER_STATUS_APPROVED,
+  OFFER_STATUS_DISCARDED,
+} from 'constants/general';
 import { addNewItems } from 'utils/functions';
 import type { GetContestParams, GetContestResponse } from 'types/api/contest';
 import type {
@@ -117,11 +122,18 @@ const setOfferStatusExtraReducers = createExtraReducers({
     { payload }: PayloadAction<SetOfferStatusResponse>,
   ) => {
     state.offers.forEach((offer) => {
-      if (payload.status === OFFER_STATUS_WON) {
-        offer.status =
-          payload.id === offer.id ? OFFER_STATUS_WON : OFFER_STATUS_REJECTED;
-      } else if (payload.id === offer.id) {
-        offer.status = OFFER_STATUS_REJECTED;
+      switch (payload.status) {
+        case OFFER_STATUS_WON:
+          offer.status =
+            payload.id === offer.id ? OFFER_STATUS_WON : OFFER_STATUS_REJECTED;
+          break;
+        case OFFER_STATUS_REJECTED:
+        case OFFER_STATUS_APPROVED:
+        case OFFER_STATUS_DISCARDED:
+          if (payload.id === offer.id) offer.status = payload.status;
+          break;
+        default:
+          break;
       }
     });
     state.error = null;

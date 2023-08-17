@@ -4,9 +4,9 @@ import styles from './styles/ContestContainer.module.sass';
 
 export type Props = {
   isFetching?: boolean;
-  haveMore: boolean
-  items: ReactNode[]
-  loadMore: (offset: number) => void
+  haveMore: boolean;
+  items: ReactNode[];
+  loadMore: (offset: number) => void;
 };
 
 const ItemsContainer: FC<Props> = ({
