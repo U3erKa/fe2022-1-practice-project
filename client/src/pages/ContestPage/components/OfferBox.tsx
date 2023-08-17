@@ -24,6 +24,7 @@ import {
   OFFER_STATUS_APPROVED,
   MODERATOR,
   OFFER_STATUS_DISCARDED,
+  OFFER_STATUS_PENDING,
 } from 'constants/general';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -135,6 +136,13 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
         />
       );
     }
+    if (role === CREATOR && status === OFFER_STATUS_PENDING) {
+      return (
+        <i
+          className={classNames('fas fa-clock', styles.pending)}
+        />
+      );
+    }
     return null;
   };
 
@@ -202,7 +210,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {contestData?.contestType === LOGO_CONTEST ? (
+          {(contestData?.contestType ?? data?.contestType) === LOGO_CONTEST ? (
             <img
               onClick={() =>
                 dispatch(
