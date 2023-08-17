@@ -119,31 +119,29 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
 
   const offerStatus = () => {
     const { status } = data;
-    if (status === OFFER_STATUS_REJECTED || status === OFFER_STATUS_DISCARDED) {
-      return (
-        <i
-          className={classNames('fas fa-times-circle reject', styles.reject)}
-        />
-      );
+    switch (status) {
+      case OFFER_STATUS_REJECTED:
+      case OFFER_STATUS_DISCARDED:
+        return (
+          <i
+            className={classNames('fas fa-times-circle reject', styles.reject)}
+          />
+        );
+      case OFFER_STATUS_WON:
+      case role === MODERATOR && OFFER_STATUS_APPROVED:
+        return (
+          <i
+            className={classNames(
+              'fas fa-check-circle resolve',
+              styles.resolve,
+            )}
+          />
+        );
+      case role === CREATOR && OFFER_STATUS_PENDING:
+        return <i className={classNames('fas fa-clock', styles.pending)} />;
+      default:
+        return null;
     }
-    if (
-      status === OFFER_STATUS_WON ||
-      (role === MODERATOR && status === OFFER_STATUS_APPROVED)
-    ) {
-      return (
-        <i
-          className={classNames('fas fa-check-circle resolve', styles.resolve)}
-        />
-      );
-    }
-    if (role === CREATOR && status === OFFER_STATUS_PENDING) {
-      return (
-        <i
-          className={classNames('fas fa-clock', styles.pending)}
-        />
-      );
-    }
-    return null;
   };
 
   const goChat = () => {
