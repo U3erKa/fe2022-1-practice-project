@@ -296,7 +296,7 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
   } else if (role === 'moderator') {
     if (command === 'approve') {
       try {
-        const offer = await contestQueries.updateOfferStatus(
+        const [offer] = await contestQueries.updateOfferStatus(
           { status: CONSTANTS.OFFER_STATUS_APPROVED },
           { id: offerId },
         );
@@ -308,7 +308,7 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
 
     if (command === 'discard') {
       try {
-        const offer = await contestQueries.updateOfferStatus(
+        const [offer] = await contestQueries.updateOfferStatus(
           { status: CONSTANTS.OFFER_STATUS_DISCARDED },
           { id: offerId },
         );
