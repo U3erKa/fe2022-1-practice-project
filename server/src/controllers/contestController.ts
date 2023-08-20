@@ -8,6 +8,7 @@ import {
   User,
   sequelize,
 } from '../models';
+import _sendEmail from '../email';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
@@ -19,7 +20,7 @@ import * as controller from '../socketInit';
 import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
 import type { RequestHandler } from 'express';
-import type { Offer as _Offer } from '../types/models';
+import type { Offer as _Offer, User as _User } from '../types/models';
 
 export const dataForContest: RequestHandler = async (req, res, next) => {
   const {
@@ -294,29 +295,48 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
       }
     }
   } else if (role === 'moderator') {
+    let offer: _Offer;
     if (command === 'approve') {
       try {
-        const [offer] = await contestQueries.updateOfferStatus(
+        const [_offer] = await contestQueries.updateOfferStatus(
           { status: CONSTANTS.OFFER_STATUS_APPROVED },
           { id: offerId },
         );
-        return res.send(offer);
+        offer = _offer;
+        res.send(offer);
       } catch (error) {
-        next(error);
+        return next(error);
       }
-    }
-
-    if (command === 'discard') {
+    } else if (command === 'discard') {
       try {
-        const [offer] = await contestQueries.updateOfferStatus(
+        const [_offer] = await contestQueries.updateOfferStatus(
           { status: CONSTANTS.OFFER_STATUS_DISCARDED },
           { id: offerId },
         );
-        return res.send(offer);
+        offer = _offer;
+        res.send(offer);
       } catch (error) {
-        next(error);
+        return next(error);
       }
+    } else {
+      return next(new BadRequestError('Invalid command'));
     }
+
+    const sendEmail = await _sendEmail;
+    const user = (await offer.getUser()) as unknown as _User;
+    const fullName = `${user.firstName} ${user.lastName}`;
+
+    return sendEmail({
+      to: `"${fullName}" <${user.email}>`,
+      subject: `We decided to ${command} your offer`,
+      text: `Hello ${fullName}!\nYou have sent offer "${
+        offer.text ?? offer.originalFileName
+      }". Our moderator reviewed it and ${
+        command === 'approve'
+          ? 'approved it. The offer is visible to customers now!'
+          : 'discarded it. Please send appropriate offer next time.'
+      }`,
+    });
   }
 
   next(new BadRequestError('Invalid command'));
