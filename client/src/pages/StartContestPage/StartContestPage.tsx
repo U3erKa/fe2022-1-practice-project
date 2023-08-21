@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { updateBundle } from 'store/slices/bundleSlice';
 
 import { Header, Footer, ProgressBar } from 'components/general';
-import { BundleBox } from '.';
+import { BundleBox, ButtonGroup } from '.';
 
 import { CUSTOMER } from 'constants/general';
 import styles from './styles/StartContestPage.module.sass';
@@ -115,6 +115,9 @@ const StartContestPage = () => {
             setBundle={setBundle}
           />
         </div>
+      </div>
+      <div className={styles.buttonGroup}>
+        <ButtonGroup />
       </div>
       <Footer />
     </div>

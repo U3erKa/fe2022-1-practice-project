@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { deprecate } from 'util';
+import { MONGO_DEPRECATED_MESSAGE } from '../../constants';
 import type { CatalogSchema } from '../../types/models';
 
 const Schema = new mongoose.Schema({
@@ -20,5 +22,9 @@ const Schema = new mongoose.Schema({
   ],
 });
 
-const Catalog = mongoose.model<CatalogSchema>('Catalog', Schema);
+/** @deprecated */
+const Catalog = deprecate(
+  mongoose.model<CatalogSchema>('Catalog', Schema),
+  MONGO_DEPRECATED_MESSAGE,
+);
 export default Catalog;

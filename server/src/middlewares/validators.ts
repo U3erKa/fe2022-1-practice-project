@@ -43,3 +43,12 @@ export const validateContestCreation: RequestHandler = async (
     next(err);
   }
 };
+
+export const validateEvent: RequestHandler = async (req, res, next) => {
+  const validationResult = await schems.eventSchem.isValid(req.body);
+  if (validationResult) {
+    next();
+  } else {
+    return next(new BadRequestError('Invalid event data'));
+  }
+};

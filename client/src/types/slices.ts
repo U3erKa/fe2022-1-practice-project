@@ -23,6 +23,11 @@ import type {
   NAME_CONTEST,
   TAGLINE_CONTEST,
 } from 'constants/general';
+import type {
+  EXACT_CHOISE,
+  SIMILAR_CHOISE,
+  NAME_ONLY_CHOISE,
+} from 'constants/buttonGroup';
 
 export type AuthState = WithFetch;
 
@@ -68,6 +73,7 @@ export type ContestCreationState = {
     [LOGO_CONTEST]?: LogoContestInfo;
     [TAGLINE_CONTEST]?: TaglineContestInfo;
   };
+  nameMathesDomain: NameMatchesDomain;
 };
 
 export type ContestsState = WithFetch & {
@@ -120,3 +126,8 @@ export type ContestData = WithId<ContestId> &
 
 export type ServerError = { data: unknown; status: number };
 export type WithFetch = { isFetching: boolean; error: ServerError | null };
+
+export type NameMatchesDomain =
+  | typeof EXACT_CHOISE
+  | typeof SIMILAR_CHOISE
+  | typeof NAME_ONLY_CHOISE;

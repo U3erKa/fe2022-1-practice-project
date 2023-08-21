@@ -1,0 +1,35 @@
+$padding: 8px
+$colorCyan: #28d2d1
+$colorWhite: #fff
+$colorGray: #ccc
+$colorDarkGray: #333
+
+.button
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: calc($padding * 2)
+  padding: calc($padding * 2)
+  background-color: $colorWhite
+  border: 2px solid $colorGray
+  border-radius: 5px
+
+  &:hover
+    box-shadow: 1px 1px 1px 1px #00000022
+
+  &.active
+    border-color: $colorCyan
+    & > .choise
+      background-color: $colorCyan
+
+.choise
+  padding: $padding
+  border-radius: 2rem
+  color: $colorWhite
+  background-color: $colorGray
+  width: 40px
+
+.text
+  color: $colorDarkGray
+  font-size: 14px

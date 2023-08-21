@@ -4,7 +4,7 @@ import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
 import styles from './styles/ProfileNavBar.module.sass';
 
-export default function ProfileNavBar({ list }) {
+export default function ProfileNavBar({ list, activeEvents }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,6 +22,9 @@ export default function ProfileNavBar({ list }) {
         style={{ textDecoration: 'none' }}
       >
         <span className={styles.navListLinkText}>{text}</span>
+        {href === '/events' && (
+          <div className={styles.badge}>{activeEvents}</div>
+        )}
       </Link>
     </li>
   ));

@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { deprecate } from 'util';
+import { MONGO_DEPRECATED_MESSAGE } from '../../constants';
 import type { ConversationSchema } from '../../types/models';
 
 const Schema = new mongoose.Schema(
@@ -21,5 +23,9 @@ const Schema = new mongoose.Schema(
   },
 );
 
-const Conversation = mongoose.model<ConversationSchema>('Conversation', Schema);
+/** @deprecated */
+const Conversation = deprecate(
+  mongoose.model<ConversationSchema>('Conversation', Schema),
+  MONGO_DEPRECATED_MESSAGE,
+);
 export default Conversation;
