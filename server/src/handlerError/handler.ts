@@ -1,7 +1,9 @@
+import { saveErrorToLog } from '../logger';
 import type { ErrorRequestHandler } from 'express';
 
 const handleError: ErrorRequestHandler = (err, req, res, next) => {
   console.log(err);
+  saveErrorToLog(err);
   if (
     err.message ===
       'new row for relation "Banks" violates check constraint "Banks_balance_ck"' ||
