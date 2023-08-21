@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>We decided to {{command}} your offer</title>
+    <style>
+      body {
+        padding: 20px;
+        background-color: #28d2d1;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+          'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+          'Helvetica Neue', sans-serif;
+      }
+      .contents {
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #f9fafb;
+      }
+      .heading {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      .text {
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+      .end {
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="contents">
+      <h1 class="heading">Hello {{fullName}}!</h1>
+      <p class="text">
+        You have sent offer "{{offer}}". Our moderator reviewed it and
+        {{action}}
+      </p>
+      <p class="end">Sincerely,<br />Squadhelp team.</p>
+    </article>
+  </body>
+</html>
