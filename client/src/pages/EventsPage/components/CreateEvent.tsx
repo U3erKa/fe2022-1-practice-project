@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import uniqueId from 'lodash/uniqueId';
-import { useDispatch } from 'hooks';
+import { useDispatch, type useForceUpdate } from 'hooks';
 import { createEvent } from 'store/slices/eventSlice';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
@@ -22,12 +22,17 @@ function NotifyEventField() {
   return <>{options}</>;
 }
 
-export default function CreateEvent() {
+export default function CreateEvent({
+  forceUpdate,
+}: {
+  forceUpdate: ReturnType<typeof useForceUpdate>;
+}) {
   const dispatch = useDispatch();
 
   const onSubmit = (values: Event, formikBag: FormikHelpers<Event>) => {
     dispatch(createEvent(values));
     formikBag.resetForm();
+    forceUpdate();
   };
 
   return (
