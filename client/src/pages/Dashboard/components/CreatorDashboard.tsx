@@ -17,7 +17,7 @@ import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from '../styles/CreatorDashboard.module.sass';
 
 const CreatorDashboard = () => {
-  const { contests, creatorFilter, error } = useSelector(
+  const { contests, creatorFilter, error, haveMore } = useSelector(
     ({ contestsList }) => contestsList,
   );
   const dispatch = useDispatch();
@@ -103,7 +103,11 @@ const CreatorDashboard = () => {
           <TryAgain getData={tryLoadAgain} />
         </div>
       ) : (
-        <ItemsContainer items={contestsList} loadMore={loadMore} />
+        <ItemsContainer
+          haveMore={haveMore}
+          items={contestsList}
+          loadMore={loadMore}
+        />
       )}
     </div>
   );
