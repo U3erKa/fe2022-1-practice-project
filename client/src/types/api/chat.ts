@@ -37,7 +37,7 @@ export type NewMessageResponse = {
     Omit<WithParticipantTuples, '_id'> & {
       text: Message['body'];
     };
-};
+}[];
 
 export type GetPreviewChatResponse = WithParticipantTuples &
   WithTimeStamps['createdAt'] & {

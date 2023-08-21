@@ -15,7 +15,8 @@ export const OFFER_STATUS_WON = 'won';
 export const OFFER_STATUS_PENDING = 'pending';
 
 export const STATIC_IMAGES_PATH = '/staticImages/';
-export const ANONYM_IMAGE_PATH = '/staticImages/anonym.png';
+export const ANONYM_IMAGE_PATH = `${STATIC_IMAGES_PATH}anonym.png` as const;
+export const HOW_IT_WORKS_PATH = `${STATIC_IMAGES_PATH}howItWorks/` as const;
 export const BASE_URL = `http://${serverIP}:${serverPort}/` as const;
 export const REFRESH_TOKEN = 'refreshToken';
 

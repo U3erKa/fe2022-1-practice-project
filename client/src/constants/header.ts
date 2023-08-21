@@ -12,7 +12,7 @@ const NAME_IDEAS = [
 ];
 
 const CONTESTS = [
-  { id: 0, href: DUMMY_LINK, text: 'How it Works' },
+  { id: 0, href: '/how-it-works', text: 'How it Works' },
   { id: 1, href: DUMMY_LINK, text: 'Pricing' },
   { id: 2, href: DUMMY_LINK, text: 'Agency Service' },
   { id: 3, href: DUMMY_LINK, text: 'Active Contests' },

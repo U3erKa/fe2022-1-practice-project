@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { deprecate } from 'util';
+import { MONGO_DEPRECATED_MESSAGE } from '../../constants';
 import type { MessageSchema } from '../../types/models';
 
 const Schema = new mongoose.Schema(
@@ -22,6 +24,9 @@ const Schema = new mongoose.Schema(
   },
 );
 
-const Message = mongoose.model<MessageSchema>('Message', Schema);
-
+/** @deprecated */
+const Message = deprecate(
+  mongoose.model<MessageSchema>('Message', Schema),
+  MONGO_DEPRECATED_MESSAGE,
+);
 export default Message;

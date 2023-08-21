@@ -21,7 +21,7 @@ export type RemoveChatFromCatalogResponse = With_id<ChatId> &
   WithId<UserId, 'userId'> &
   With__v &
   WithCatalogName &
-  WithChats;
+  WithChatObjs;
 
 export type CreateCatalogParams = With_id<ChatId, 'chatId'> & WithCatalogName;
 export type CreateCatalogResponse = ChatsInCatalog;
@@ -44,4 +44,5 @@ export type ChatsInCatalog = With_id<CatalogId> &
   WithChats;
 
 export type WithChats = { chats: ChatId[] };
+export type WithChatObjs = { chats: { _id: ChatId }[] };
 export type WithCatalogName = { catalogName: string };

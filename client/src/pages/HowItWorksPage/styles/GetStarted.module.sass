@@ -1,0 +1,47 @@
+@import './common.module'
+
+.container
+  @include container
+  padding: 0
+  width: 100%
+  background-image: linear-gradient(150deg, $gradientStartColor 0%, $gradientEndColor 100%)
+  position: relative
+  z-index: 1
+
+.icon
+  position: absolute
+  width: 200px
+  z-index: -1
+
+  &:first-child
+    top: 0
+    left: 0
+    align-self: flex-start
+
+  &:last-child
+    bottom: 0
+    right: 0
+    align-self: flex-end
+
+.headingContainer
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  padding: calc($padding * 2) $padding
+
+.getStartedHeading
+  font-size: 2rem
+  font-weight: 600
+  margin-bottom: $padding
+  color: $getStartedHeadingColor
+
+.getStartedText
+  font-size: 1.25rem
+  margin-bottom: $padding
+  color: $getStartedTextColor
+
+.button
+  @include button($color: $textColorDark, $backgroundColor: $getStartedTextColor, $borderRadius: $borderRadius)
+  @media (width < 480px)
+    width: calc(100% - $padding * 2)
