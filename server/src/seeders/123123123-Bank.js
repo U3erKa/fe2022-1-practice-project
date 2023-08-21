@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+
 const {
   SQUADHELP_BANK_NUMBER,
   SQUADHELP_BANK_NAME,
