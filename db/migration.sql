@@ -23,7 +23,7 @@ CREATE TABLE "messages" (
   "_id" SERIAL PRIMARY KEY,
   "sender" INT NOT NULL UNIQUE REFERENCES "Users",
   "body" TEXT NOT NULL,
-  "conversation" INT NOT NULL REFERENCES "conversations",
+  "conversation" INT NOT NULL UNIQUE REFERENCES "conversations",
   "createdAt" DATE NOT NULL DEFAULT current_date,
   "updatedAt" DATE NOT NULL DEFAULT current_date
 );

@@ -25,11 +25,26 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     async comparePassword(password: string | Buffer) {
       return bcrypt.compare(password, this.password);
     }
-    static associate({ Offer, Contest, Rating, RefreshToken }: DB) {
-      User.hasMany(Offer, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(Contest, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(Rating, { foreignKey: 'userId', sourceKey: 'id' });
-      User.hasMany(RefreshToken, { foreignKey: 'userId', sourceKey: 'id' });
+    static associate({
+      Offer,
+      Catalog,
+      Contest,
+      Conversation,
+      Message,
+      Rating,
+      RefreshToken,
+    }: DB) {
+      const foreignKey = 'userId';
+      const sourceKey = 'id';
+
+      User.hasMany(Offer, { foreignKey, sourceKey });
+      User.hasMany(Catalog, { foreignKey, sourceKey });
+      User.hasMany(Contest, { foreignKey, sourceKey });
+      User.hasMany(Message, { foreignKey: 'sender', sourceKey });
+      User.hasMany(Rating, { foreignKey, sourceKey });
+      User.hasMany(RefreshToken, { foreignKey, sourceKey });
+      User.hasMany(Conversation, { foreignKey: 'participant1', sourceKey });
+      User.hasMany(Conversation, { foreignKey: 'participant2', sourceKey });
     }
   }
   User.init(
@@ -118,14 +133,20 @@ abstract class _User extends Model<
 
   declare id: CreationOptional<number>;
 
-  declare offers?: NonAttribute<DB['Offer'][]>;
+  declare catalogs?: NonAttribute<DB['Catalog'][]>;
   declare contests?: NonAttribute<DB['Contest'][]>;
+  declare conversations?: NonAttribute<DB['Conversation'][]>;
+  declare messages?: NonAttribute<DB['Message'][]>;
+  declare offers?: NonAttribute<DB['Offer'][]>;
   declare ratings?: NonAttribute<DB['Rating'][]>;
   declare refreshTokens?: NonAttribute<DB['RefreshToken'][]>;
 
   declare static associations: {
-    offers: Association<DB['User'] & Model, DB['Offer'] & Model>;
+    catalogs: Association<DB['User'] & Model, DB['Catalog'] & Model>;
     contests: Association<DB['User'] & Model, DB['Contest'] & Model>;
+    conversations: Association<DB['User'] & Model, DB['Conversation'] & Model>;
+    messages: Association<DB['User'] & Model, DB['Message'] & Model>;
+    offers: Association<DB['User'] & Model, DB['Offer'] & Model>;
     ratings: Association<DB['User'] & Model, DB['Rating'] & Model>;
     refreshTokens: Association<DB['User'] & Model, DB['RefreshToken'] & Model>;
   };
@@ -144,6 +165,20 @@ abstract class _User extends Model<
     'userId'
   >;
 
+  declare getCatalogs: HasManyGetAssociationsMixin<DB['Catalog']>;
+  declare addCatalog: HasManyAddAssociationMixin<DB['Catalog'], number>;
+  declare addCatalogs: HasManyAddAssociationsMixin<DB['Catalog'], number>;
+  declare setCatalogs: HasManySetAssociationsMixin<DB['Catalog'], number>;
+  declare removeCatalog: HasManyRemoveAssociationMixin<DB['Catalog'], number>;
+  declare removeCatalogs: HasManyRemoveAssociationsMixin<DB['Catalog'], number>;
+  declare hasCatalog: HasManyHasAssociationMixin<DB['Catalog'], number>;
+  declare hasCatalogs: HasManyHasAssociationsMixin<DB['Catalog'], number>;
+  declare countCatalogs: HasManyCountAssociationsMixin;
+  declare createCatalog: HasManyCreateAssociationMixin<
+    DB['Catalog'] & Model,
+    'userId'
+  >;
+
   declare getContests: HasManyGetAssociationsMixin<DB['Contest']>;
   declare addContest: HasManyAddAssociationMixin<DB['Contest'], number>;
   declare addContests: HasManyAddAssociationsMixin<DB['Contest'], number>;
@@ -156,6 +191,20 @@ abstract class _User extends Model<
   declare createContest: HasManyCreateAssociationMixin<
     DB['Contest'] & Model,
     'userId'
+  >;
+
+  declare getMessages: HasManyGetAssociationsMixin<DB['Message']>;
+  declare addMessage: HasManyAddAssociationMixin<DB['Message'], number>;
+  declare addMessages: HasManyAddAssociationsMixin<DB['Message'], number>;
+  declare setMessages: HasManySetAssociationsMixin<DB['Message'], number>;
+  declare removeMessage: HasManyRemoveAssociationMixin<DB['Message'], number>;
+  declare removeMessages: HasManyRemoveAssociationsMixin<DB['Message'], number>;
+  declare hasMessage: HasManyHasAssociationMixin<DB['Message'], number>;
+  declare hasMessages: HasManyHasAssociationsMixin<DB['Message'], number>;
+  declare countMessages: HasManyCountAssociationsMixin;
+  declare createMessage: HasManyCreateAssociationMixin<
+    DB['Message'] & Model,
+    'sender'
   >;
 
   declare getRatings: HasManyGetAssociationsMixin<DB['Rating']>;
@@ -205,6 +254,40 @@ abstract class _User extends Model<
   declare createRefreshToken: HasManyCreateAssociationMixin<
     DB['RefreshToken'] & Model,
     'userId'
+  >;
+
+  declare getConversations: HasManyGetAssociationsMixin<DB['Conversation']>;
+  declare addConversation: HasManyAddAssociationMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare addConversations: HasManyAddAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare setConversations: HasManySetAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare removeConversation: HasManyRemoveAssociationMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare removeConversations: HasManyRemoveAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare hasConversation: HasManyHasAssociationMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare hasConversations: HasManyHasAssociationsMixin<
+    DB['Conversation'],
+    number
+  >;
+  declare countConversations: HasManyCountAssociationsMixin;
+  declare createConversation: HasManyCreateAssociationMixin<
+    DB['Conversation'] & Model
   >;
 }
 

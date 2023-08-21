@@ -1,3 +1,4 @@
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('RefreshTokens', {
@@ -14,7 +15,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        refrences: {
+        references: {
           model: 'Users',
           key: 'id',
         },
