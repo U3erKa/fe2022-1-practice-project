@@ -1,15 +1,14 @@
 import moment from 'moment';
 import cron from 'node-cron';
-import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
+import _sendEmail from './email';
 import {
   CRON_DAILY_AT_MIDNIGHT,
   LOG_PATH,
   READ_FILE_OPTIONS,
 } from './constants';
 import type ApplicationError from './errors/ApplicationError';
-import type Mail from 'nodemailer/lib/mailer';
 
 (async (filename: string) => {
   try {
@@ -57,42 +56,6 @@ export const saveErrorToLog = async ({
   );
 };
 
-const sendEmail = (async () => {
-  const { MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = process.env;
-  let user = MAIL_USER!;
-  let pass = MAIL_PASS!;
-  if (!MAIL_USER || !MAIL_PASS) {
-    const testAccount = await nodemailer.createTestAccount();
-    user = testAccount.user;
-    pass = testAccount.pass;
-  }
-
-  const transporter = nodemailer.createTransport({
-    // @ts-expect-error
-    host: MAIL_HOST ?? 'smtp.ethereal.email',
-    port: MAIL_PORT ?? 587,
-    secure: MAIL_PORT === '465' ?? false,
-    auth: {
-      user,
-      pass,
-    },
-  });
-
-  const _sendEmail = async (attachments: Mail.Attachment[]) => {
-    const info = await transporter.sendMail({
-      from: '"NodeMailer" <email@example.com>',
-      to: 'log.recipient@example.com',
-      subject: "Node server's error logs",
-      attachments,
-    });
-
-    console.log(`Message sent: ${info.messageId}`);
-    console.log(`Preview URL: ${nodemailer.getTestMessageUrl(info)}`);
-  };
-
-  return _sendEmail;
-})();
-
 cron.schedule(CRON_DAILY_AT_MIDNIGHT, async () => {
   const log = await flushLogs();
   if (!log) {
@@ -101,5 +64,10 @@ cron.schedule(CRON_DAILY_AT_MIDNIGHT, async () => {
   }
   console.log('Sending email...');
 
-  (await sendEmail)([{ path: path.resolve(LOG_PATH, log) }]);
+  const sendEmail = await _sendEmail;
+  sendEmail({
+    to: 'log.recipient@example.com',
+    subject: "Node server's error logs",
+    attachments: [{ path: path.resolve(LOG_PATH, log) }],
+  });
 });
