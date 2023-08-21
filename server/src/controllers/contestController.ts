@@ -1,4 +1,5 @@
 import { type Filterable, type InferAttributes, Op } from 'sequelize';
+import fs from 'fs/promises';
 import {
   Select,
   Sequelize,
@@ -322,23 +323,38 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
       return next(new BadRequestError('Invalid command'));
     }
 
-    const sendEmail = await _sendEmail;
-    const user = (await offer.getUser()) as unknown as _User;
-    const fullName = `${user.firstName} ${user.lastName}`;
-    const offerText = offer.text ?? offer.originalFileName;
-    const action =
-      command === 'approve'
-        ? 'approved it. The offer is visible to customers now!'
-        : 'discarded it. Please send appropriate offer next time.';
+    try {
+      const sendEmail = await _sendEmail;
+      const user = (await offer.getUser()) as unknown as _User;
+      const fullName = `${user.firstName} ${user.lastName}`;
+      const offerText = offer.text ?? (offer.originalFileName as string);
+      const action =
+        command === 'approve'
+          ? 'approved it. The offer is visible to customers now!'
+          : 'discarded it. Please send appropriate offer next time.';
 
-    return sendEmail({
-      to: `"${fullName}" <${user.email}>`,
-      subject: `We decided to ${command} your offer`,
-      text: `Hello ${fullName}!
+      const email = await fs.readFile(
+        './src/email/moderatedCreatorOffer.html',
+        'utf8',
+      );
+      const html = email
+        .replaceAll('{{command}}', command)
+        .replaceAll('{{fullName}}', fullName)
+        .replaceAll('{{offer}}', offerText)
+        .replaceAll('{{action}}', action);
+
+      return sendEmail({
+        to: `"${fullName}" <${user.email}>`,
+        subject: `We decided to ${command} your offer`,
+        text: `Hello ${fullName}!
 You have sent offer "${offerText}". Our moderator reviewed it and ${action}
 Sincerely,
 Squadhelp team.`,
-    });
+        html,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   next(new BadRequestError('Invalid command'));
