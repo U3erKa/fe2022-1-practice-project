@@ -1,5 +1,11 @@
 import { Contest, Offer } from '../../models';
 import ServerError from '../../errors/ServerError';
+// prettier-ignore
+import type {
+  InferAttributes, Attributes, Transaction, WhereOptions,
+} from 'sequelize';
+import type { Col, Fn, Literal } from 'sequelize/types/utils';
+import type { Offer as _Offer } from '../../types/models';
 
 export const updateContest = async (data, predicate, transaction?) => {
   const [updatedCount, [updatedContest]] = await Contest.update(data, {
@@ -27,7 +33,17 @@ export const updateContestStatus = async (data, predicate, transaction?) => {
   }
 };
 
-export const updateOffer = async (data, predicate, transaction?) => {
+export const updateOffer = async (
+  data: {
+    [key in keyof Attributes<_Offer>]?:
+      | Attributes<_Offer>[key]
+      | Fn
+      | Col
+      | Literal;
+  },
+  predicate: WhereOptions<InferAttributes<_Offer>>,
+  transaction?: Transaction,
+) => {
   const [updatedCount, [updatedOffer]] = await Offer.update(data, {
     where: predicate,
     returning: true,
@@ -40,17 +56,26 @@ export const updateOffer = async (data, predicate, transaction?) => {
   }
 };
 
-export const updateOfferStatus = async (data, predicate, transaction?) => {
-  const result = await Offer.update(data, {
+export const updateOfferStatus = async (
+  data: {
+    [key in keyof Attributes<_Offer>]?:
+      | Attributes<_Offer>[key]
+      | Fn
+      | Col
+      | Literal;
+  },
+  predicate: WhereOptions<InferAttributes<_Offer>>,
+  transaction?: Transaction,
+) => {
+  const [approvedOffers, offers] = await Offer.update(data, {
     where: predicate,
     returning: true,
     transaction,
   });
-  if (result[0] < 1) {
+  if (!approvedOffers) {
     throw new ServerError('cannot update offer!');
-  } else {
-    return result[1];
   }
+  return offers;
 };
 
 export const createOffer = async (data) => {

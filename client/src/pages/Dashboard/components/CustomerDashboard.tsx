@@ -1,18 +1,32 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'hooks';
-import { getContests, clearContestsList } from 'store/slices/contestsSlice';
-
-import { TryAgain } from 'components/general';
-import { ContestsContainer } from 'components/contest';
-import { CustomerFilter } from './CustomerFilter';
-
-import { CUSTOMER } from 'constants/general';
-
+import {
+  getContests,
+  clearContestsList,
+  setNewCustomerFilter,
+} from 'store/slices/contestsSlice';
+import { TryAgain, ItemsContainer } from 'components/general';
+import { ContestBox } from 'components/contest';
+import { CustomFilter } from './CustomFilter';
+import {
+  CONTEST_STATUS_ACTIVE,
+  CONTEST_STATUS_FINISHED,
+  CONTEST_STATUS_PENDING,
+  CUSTOMER,
+} from 'constants/general';
+import type { Status } from 'types/contest';
 import styles from '../styles/CustomerDashboard.module.sass';
 
+const buttons: { name: string; filter: Status }[] = [
+  { name: 'Active Contests', filter: CONTEST_STATUS_ACTIVE },
+  { name: 'Completed contests', filter: CONTEST_STATUS_FINISHED },
+  { name: 'Inactive contests', filter: CONTEST_STATUS_PENDING },
+];
+
 const CustomerDashboard = () => {
-  const { error, customerFilter } = useSelector((state) => state.contestsList);
+  const { isFetching, haveMore, error, customerFilter, contests } = useSelector(
+    (state) => state.contestsList,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +40,10 @@ const CustomerDashboard = () => {
     getContestsMethod();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customerFilter]);
+
+  const contestsList = contests.map((contest) => (
+    <ContestBox data={contest} key={contest.id} />
+  ));
 
   const getContestsMethod = (startFrom = 0) => {
     dispatch(
@@ -47,12 +65,21 @@ const CustomerDashboard = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <CustomerFilter />
+      <CustomFilter
+        filterAction={setNewCustomerFilter}
+        buttons={buttons}
+        predicate={customerFilter}
+      />
       <div className={styles.contestsContainer}>
         {error ? (
           <TryAgain getData={() => tryToGetContest()} />
         ) : (
-          <ContestsContainer loadMore={getContestsMethod} />
+          <ItemsContainer
+            isFetching={isFetching}
+            haveMore={haveMore}
+            items={contestsList}
+            loadMore={getContestsMethod}
+          />
         )}
       </div>
     </div>

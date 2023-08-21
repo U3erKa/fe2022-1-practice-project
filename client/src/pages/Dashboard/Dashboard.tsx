@@ -1,7 +1,7 @@
 import { useSelector } from 'hooks';
 import { Header } from 'components/general';
-import { CustomerDashboard, CreatorDashboard } from '.';
-import { CREATOR, CUSTOMER } from 'constants/general';
+import { CustomerDashboard, CreatorDashboard, ModeratorDashboard } from '.';
+import { CREATOR, CUSTOMER, MODERATOR } from 'constants/general';
 
 const Dashboard = () => {
   // @ts-expect-error
@@ -12,6 +12,7 @@ const Dashboard = () => {
       <Header />
       {role === CUSTOMER && <CustomerDashboard />}
       {role === CREATOR && <CreatorDashboard />}
+      {role === MODERATOR && <ModeratorDashboard />}
     </div>
   );
 };

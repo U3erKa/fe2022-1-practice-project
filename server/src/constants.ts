@@ -10,11 +10,15 @@ export const {
   SQUADHELP_BANK_NAME,
   SQUADHELP_BANK_EXPIRY,
   SQUADHELP_BANK_CVC,
+  SALT_ROUNDS: _SALT_ROUNDS,
 } = process.env;
 
-export const SALT_ROUNDS = 5;
+export const SALT_ROUNDS = isNaN(+_SALT_ROUNDS!)
+  ? _SALT_ROUNDS!
+  : +_SALT_ROUNDS!;
 export const CUSTOMER = 'customer';
 export const CREATOR = 'creator';
+export const MODERATOR = 'moderator';
 export const CREATOR_ENTRIES = 'creator_entries';
 export const CONTEST_STATUS_ACTIVE = 'active';
 export const CONTEST_STATUS_FINISHED = 'finished';
@@ -24,6 +28,8 @@ export const NAME_CONTEST = 'name';
 export const LOGO_CONTEST = 'logo';
 export const TAGLINE_CONTEST = 'tagline';
 export const OFFER_STATUS_PENDING = 'pending';
+export const OFFER_STATUS_APPROVED = 'approved';
+export const OFFER_STATUS_DISCARDED = 'discarded';
 export const OFFER_STATUS_REJECTED = 'rejected';
 export const OFFER_STATUS_WON = 'won';
 export const FILES_PATH = path.resolve(__dirname, '../..', 'public');

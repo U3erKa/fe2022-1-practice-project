@@ -19,7 +19,11 @@ import {
   STATIC_IMAGES_PATH,
   LOGO_CONTEST,
   CREATOR,
+  CUSTOMER,
   CONTEST_STATUS_ACTIVE,
+  OFFER_STATUS_APPROVED,
+  MODERATOR,
+  OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
 } from 'constants/general';
 
@@ -64,7 +68,12 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => setOfferStatus(id, data.id, 'resolve'),
+          onClick: () =>
+            setOfferStatus(
+              id,
+              data.id,
+              role === MODERATOR ? 'approve' : 'resolve',
+            ),
         },
         {
           label: 'No',
@@ -81,7 +90,12 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => setOfferStatus(id, data.id, 'reject'),
+          onClick: () =>
+            setOfferStatus(
+              id,
+              data.id,
+              role === MODERATOR ? 'discard' : 'reject',
+            ),
         },
         {
           label: 'No',
@@ -105,21 +119,29 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
 
   const offerStatus = () => {
     const { status } = data;
-    if (status === OFFER_STATUS_REJECTED) {
-      return (
-        <i
-          className={classNames('fas fa-times-circle reject', styles.reject)}
-        />
-      );
+    switch (status) {
+      case OFFER_STATUS_REJECTED:
+      case OFFER_STATUS_DISCARDED:
+        return (
+          <i
+            className={classNames('fas fa-times-circle reject', styles.reject)}
+          />
+        );
+      case OFFER_STATUS_WON:
+      case role === MODERATOR && OFFER_STATUS_APPROVED:
+        return (
+          <i
+            className={classNames(
+              'fas fa-check-circle resolve',
+              styles.resolve,
+            )}
+          />
+        );
+      case role === CREATOR && OFFER_STATUS_PENDING:
+        return <i className={classNames('fas fa-clock', styles.pending)} />;
+      default:
+        return null;
     }
-    if (status === OFFER_STATUS_WON) {
-      return (
-        <i
-          className={classNames('fas fa-check-circle resolve', styles.resolve)}
-        />
-      );
-    }
-    return null;
   };
 
   const goChat = () => {
@@ -133,12 +155,14 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
   };
 
   const needButtons = (offerStatus) => {
+    if (role === MODERATOR) return true;
+
     const contestCreatorId = contestData.User.id;
     const contestStatus = contestData.status;
     return (
       contestCreatorId === userId &&
       contestStatus === CONTEST_STATUS_ACTIVE &&
-      offerStatus === OFFER_STATUS_PENDING
+      offerStatus === OFFER_STATUS_APPROVED
     );
   };
 
@@ -184,7 +208,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {contestData.contestType === LOGO_CONTEST ? (
+          {(contestData?.contestType ?? data?.contestType) === LOGO_CONTEST ? (
             <img
               onClick={() =>
                 dispatch(
@@ -201,7 +225,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           ) : (
             <span className={styles.response}>{data.text}</span>
           )}
-          {id !== userId && (
+          {id !== userId && role === CUSTOMER && (
             // @ts-expect-error
             <Rating
               fractions={2}

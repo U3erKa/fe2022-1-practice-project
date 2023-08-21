@@ -86,6 +86,14 @@ export const onlyForCustomer: RequestHandler = (req, res, next) => {
   }
 };
 
+export const onlyForModerator: RequestHandler = (req, res, next) => {
+  if (req.tokenData.role !== CONSTANTS.MODERATOR) {
+    return next(new RightsError('This page is only for moderators'));
+  } else {
+    next();
+  }
+};
+
 export const canSendOffer: RequestHandler = async (req, res, next) => {
   if (req.tokenData.role !== CONSTANTS.CREATOR) {
     return next(new RightsError());
@@ -119,12 +127,15 @@ export const onlyForCustomerWhoCreateContest: RequestHandler = async (
   next,
 ) => {
   try {
+    const {
+      tokenData: { role, userId },
+      body: { contestId },
+    } = req;
+    if (role === 'moderator') return next();
+    if (role !== 'customer') return next(new RightsError());
+
     const result = await Contest.findOne({
-      where: {
-        userId: req.tokenData.userId,
-        id: req.body.contestId,
-        status: CONSTANTS.CONTEST_STATUS_ACTIVE,
-      },
+      where: { userId, id: contestId, status: CONSTANTS.CONTEST_STATUS_ACTIVE },
     });
     if (!result) {
       return next(new RightsError());

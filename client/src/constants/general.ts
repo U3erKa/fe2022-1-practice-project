@@ -4,6 +4,7 @@ const serverPort = 3000;
 
 export const CUSTOMER = 'customer';
 export const CREATOR = 'creator';
+export const MODERATOR = 'moderator';
 export const CONTEST_STATUS_ACTIVE = 'active';
 export const CONTEST_STATUS_FINISHED = 'finished';
 export const CONTEST_STATUS_PENDING = 'pending';
@@ -12,6 +13,8 @@ export const LOGO_CONTEST = 'logo';
 export const TAGLINE_CONTEST = 'tagline';
 export const OFFER_STATUS_REJECTED = 'rejected';
 export const OFFER_STATUS_WON = 'won';
+export const OFFER_STATUS_DISCARDED = 'discarded';
+export const OFFER_STATUS_APPROVED = 'approved';
 export const OFFER_STATUS_PENDING = 'pending';
 
 export const STATIC_IMAGES_PATH = '/staticImages/';

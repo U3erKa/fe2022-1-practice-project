@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import isEqual from 'lodash/isEqual';
-
 import { useDispatch, useSelector } from 'hooks';
 import {
   getContests,
@@ -10,14 +9,12 @@ import {
   setNewCreatorFilter,
 } from 'store/slices/contestsSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-
-import { TryAgain } from 'components/general';
-import { ContestsContainer } from 'components/contest';
+import { TryAgain, ItemsContainer } from 'components/general';
+import { ContestBox } from 'components/contest';
 import { CreatorFilter } from './CreatorFilter';
 import { CREATOR } from 'constants/general';
-
-import styles from '../styles/CreatorDashboard.module.sass';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
+import styles from '../styles/CreatorDashboard.module.sass';
 
 const CreatorDashboard = () => {
   const { contests, creatorFilter, error } = useSelector(
@@ -37,6 +34,10 @@ const CreatorDashboard = () => {
     parseUrlForParams(location.search);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
+
+  const contestsList = contests.map((contest) => (
+    <ContestBox data={contest} key={contest.id} />
+  ));
 
   const getContestsMethod = (filter) => {
     dispatch(
@@ -102,7 +103,7 @@ const CreatorDashboard = () => {
           <TryAgain getData={tryLoadAgain} />
         </div>
       ) : (
-        <ContestsContainer loadMore={loadMore} />
+        <ItemsContainer items={contestsList} loadMore={loadMore} />
       )}
     </div>
   );

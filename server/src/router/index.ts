@@ -88,4 +88,8 @@ router.route('/deleteCatalog').post(chatController.deleteCatalog);
 
 router.route('/getCatalogs').post(chatController.getCatalogs);
 
+router
+  .route('/offers')
+  .get(basicMiddlewares.onlyForModerator, contestController.getOffers);
+
 export default router;

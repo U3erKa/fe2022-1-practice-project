@@ -1,3 +1,5 @@
+import { type Filterable, type InferAttributes, Op } from 'sequelize';
+import fs from 'fs/promises';
 import {
   Select,
   Sequelize,
@@ -7,16 +9,19 @@ import {
   User,
   sequelize,
 } from '../models';
+import _sendEmail from '../email';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
+import BadRequestError from '../errors/BadRequestError';
+import ApplicationError from '../errors/ApplicationError';
 import * as contestQueries from './queries/contestQueries';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
 import type { RequestHandler } from 'express';
-import type { Offer as _Offer } from '../types/models';
+import type { Offer as _Offer, User as _User } from '../types/models';
 
 export const dataForContest: RequestHandler = async (req, res, next) => {
   const {
@@ -75,7 +80,14 @@ export const getContestById: RequestHandler = async (req, res, next) => {
           where:
             tokenData.role === CONSTANTS.CREATOR
               ? { userId: tokenData.userId }
-              : {},
+              : {
+                  status: {
+                    [Op.and]: [
+                      { [Op.ne]: CONSTANTS.OFFER_STATUS_PENDING },
+                      { [Op.ne]: CONSTANTS.OFFER_STATUS_DISCARDED },
+                    ],
+                  },
+                },
           attributes: { exclude: ['userId', 'contestId'] },
           include: [
             {
@@ -223,7 +235,8 @@ END
       status: sequelize.literal(`
 CASE
   WHEN "id"=${offerId} THEN '${CONSTANTS.OFFER_STATUS_WON}'
-  ELSE '${CONSTANTS.OFFER_STATUS_REJECTED}'
+  WHEN "status"=${CONSTANTS.OFFER_STATUS_APPROVED} THEN '${CONSTANTS.OFFER_STATUS_REJECTED}'
+  ELSE '${CONSTANTS.OFFER_STATUS_DISCARDED}'
 END
       `),
     },
@@ -251,34 +264,100 @@ END
 
 export const setOfferStatus: RequestHandler = async (req, res, next) => {
   const {
+    tokenData: { role },
     body: { command, offerId, creatorId, contestId, orderId, priority },
   } = req;
-  if (command === 'reject') {
-    try {
-      const offer = await rejectOffer(offerId, creatorId, contestId);
-      res.send(offer);
-    } catch (err) {
-      next(err);
-    }
-  }
-  const transaction = await sequelize.transaction();
 
-  if (command === 'resolve') {
+  if (role === 'customer') {
+    if (command === 'reject') {
+      try {
+        const offer = await rejectOffer(offerId, creatorId, contestId);
+        return res.send(offer);
+      } catch (err) {
+        next(err);
+      }
+    }
+    const transaction = await sequelize.transaction();
+
+    if (command === 'resolve') {
+      try {
+        const winningOffer = await resolveOffer(
+          contestId,
+          creatorId,
+          orderId,
+          offerId,
+          priority,
+          transaction,
+        );
+        return res.send(winningOffer);
+      } catch (err) {
+        transaction.rollback();
+        next(err);
+      }
+    }
+  } else if (role === 'moderator') {
+    let offer: _Offer;
+    if (command === 'approve') {
+      try {
+        const [_offer] = await contestQueries.updateOfferStatus(
+          { status: CONSTANTS.OFFER_STATUS_APPROVED },
+          { id: offerId },
+        );
+        offer = _offer;
+        res.send(offer);
+      } catch (error) {
+        return next(error);
+      }
+    } else if (command === 'discard') {
+      try {
+        const [_offer] = await contestQueries.updateOfferStatus(
+          { status: CONSTANTS.OFFER_STATUS_DISCARDED },
+          { id: offerId },
+        );
+        offer = _offer;
+        res.send(offer);
+      } catch (error) {
+        return next(error);
+      }
+    } else {
+      return next(new BadRequestError('Invalid command'));
+    }
+
     try {
-      const winningOffer = await resolveOffer(
-        contestId,
-        creatorId,
-        orderId,
-        offerId,
-        priority,
-        transaction,
+      const sendEmail = await _sendEmail;
+      const user = (await offer.getUser()) as unknown as _User;
+      const fullName = `${user.firstName} ${user.lastName}`;
+      const offerText = offer.text ?? (offer.originalFileName as string);
+      const action =
+        command === 'approve'
+          ? 'approved it. The offer is visible to customers now!'
+          : 'discarded it. Please send appropriate offer next time.';
+
+      const email = await fs.readFile(
+        './src/email/moderatedCreatorOffer.html',
+        'utf8',
       );
-      res.send(winningOffer);
-    } catch (err) {
-      transaction.rollback();
-      next(err);
+      const html = email
+        .replaceAll('{{command}}', command)
+        .replaceAll('{{fullName}}', fullName)
+        .replaceAll('{{offer}}', offerText)
+        .replaceAll('{{action}}', action);
+
+      return sendEmail({
+        to: `"${fullName}" <${user.email}>`,
+        subject: `We decided to ${command} your offer`,
+        text: `Hello ${fullName}!
+You have sent offer "${offerText}". Our moderator reviewed it and ${action}
+Sincerely,
+Squadhelp team.`,
+        html,
+      });
+    } catch (error) {
+      console.log(error);
     }
   }
+
+  next(new BadRequestError('Invalid command'));
 };
 
 export const getContests: RequestHandler = async (req, res, next) => {
@@ -287,7 +366,7 @@ export const getContests: RequestHandler = async (req, res, next) => {
     headers: { status },
     query: {
       offset: _offset,
-      limit,
+      limit: _limit,
       typeIndex,
       contestId,
       industry,
@@ -297,6 +376,7 @@ export const getContests: RequestHandler = async (req, res, next) => {
   } = req;
   const ownEntries = _ownEntries === 'true';
   const offset = +_offset! ?? 0;
+  const limit = +_limit! ?? 8;
 
   try {
     let predicates: ReturnType<
@@ -339,7 +419,6 @@ export const getContests: RequestHandler = async (req, res, next) => {
     const contests = await Contest.findAll({
       where: predicates!.where,
       order: predicates!.order,
-      // @ts-ignore
       limit,
       offset,
       include: [
@@ -369,5 +448,64 @@ export const getContests: RequestHandler = async (req, res, next) => {
     res.send({ contests, haveMore });
   } catch (error) {
     next(new ServerError((error as Error).message));
+  }
+};
+
+export const getOffers: RequestHandler = async (req, res, next) => {
+  try {
+    const {
+      query: { offset: _offset, limit: _limit, isReviewed: _isReviewed },
+    } = req;
+    const offset = +_offset! ?? 0;
+    const limit = +_limit! ?? 8;
+    const isReviewed = _isReviewed === 'true';
+
+    const where: Filterable<InferAttributes<_Offer>>['where'] = {
+      [Op.or]: isReviewed
+        ? [
+            { status: 'approved' },
+            { status: 'discarded' },
+            { status: 'won' },
+            { status: 'rejected' },
+          ]
+        : [{ status: 'pending' }],
+    };
+
+    const offers = await Offer.findAll({
+      limit,
+      offset,
+      where,
+      include: [
+        {
+          model: Contest,
+          required: true,
+          attributes: ['contestType'],
+        },
+        {
+          model: User,
+          required: true,
+          attributes: { exclude: ['password', 'accessToken'] },
+        },
+      ],
+    });
+
+    if (!offers.length) {
+      throw new NotFoundError('Offers not found');
+    }
+    const offersCount = await Offer.count({ where });
+    const haveMore = offersCount > offset + offers.length;
+
+    offers.forEach((offer) => {
+      // @ts-expect-error
+      Object.assign(offer.dataValues, offer.Contest.dataValues);
+      // @ts-expect-error
+      delete offer.Contest.dataValues;
+    });
+    res.send({ offers, haveMore });
+  } catch (error) {
+    if (error instanceof ApplicationError) {
+      return next(error);
+    }
+    next(new ServerError((error as any)?.message ?? 'Could not get offers'));
   }
 };

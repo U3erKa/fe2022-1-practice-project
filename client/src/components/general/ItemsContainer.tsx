@@ -1,43 +1,45 @@
-import { useSelector } from 'hooks';
+import { type FC, type ReactNode } from 'react';
 import { Spinner } from 'components/general';
-import ContestBox from './ContestBox';
-
 import styles from './styles/ContestContainer.module.sass';
 
-const ContestsContainer = ({ loadMore }) => {
-  const { isFetching, haveMore, contests } = useSelector(
-    (state) => state.contestsList,
-  );
+export type Props = {
+  isFetching?: boolean;
+  haveMore: boolean;
+  items: ReactNode[];
+  loadMore: (offset: number) => void;
+};
 
-  const contestsList = contests.map((contest) => (
-    <ContestBox data={contest} key={contest.id} />
-  ));
-
+const ItemsContainer: FC<Props> = ({
+  isFetching,
+  haveMore,
+  items,
+  loadMore,
+}) => {
   const onClick = () => {
     const isScrolledToBottom =
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight;
 
-    if (!contests.length) {
+    if (!items.length) {
       return;
     }
     if (isScrolledToBottom && haveMore) {
-      loadMore(contests.length);
+      loadMore(items.length);
     }
   };
 
   return (
-    <div>
-      {contestsList}
+    <div className={styles.container}>
+      {items}
       {isFetching ? (
         <div className={styles.spinnerContainer}>
           <Spinner />
         </div>
-      ) : contests.length ? (
+      ) : items.length ? (
         <button
           className={styles.loadMoreBtn}
           onClick={onClick}
-          disabled={!contests.length || !haveMore}
+          disabled={!items.length || !haveMore}
         >
           Load more
         </button>
@@ -48,4 +50,4 @@ const ContestsContainer = ({ loadMore }) => {
   );
 };
 
-export default ContestsContainer;
+export default ItemsContainer;

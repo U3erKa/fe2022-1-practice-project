@@ -1,5 +1,5 @@
+import queryString from 'query-string';
 import http from '../interceptor';
-
 import type {
   SetOfferStatusParams,
   ChangeMarkParams,
@@ -7,6 +7,8 @@ import type {
   SetNewOfferResponse,
   SetOfferStatusResponse,
   ChangeMarkResponse,
+  GetOffersParams,
+  GetOffersResponse,
 } from 'types/api/offer';
 
 export const setNewOffer = (data: FormData) =>
@@ -26,3 +28,12 @@ export const payMent = (data: { formData: FormData }) =>
 
 export const cashOut = (data: CashOutParams) =>
   http.post<void>('cashout', data);
+
+export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
+  limit,
+  offset,
+  isReviewed,
+}: GetOffersParams) =>
+  http.get<GetOffersResponse<IsReviewed>>(
+    `offers?${queryString.stringify({ limit, offset, isReviewed })}`,
+  );

@@ -1,20 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import * as offerController from 'api/rest/offerController';
 import * as contestController from 'api/rest/contestController';
-
 import {
   decorateAsyncThunk,
+  pendingReducer,
   rejectedReducer,
   createExtraReducers,
 } from 'utils/store';
-
-import { OFFER_STATUS_WON, OFFER_STATUS_REJECTED } from 'constants/general';
-
+import {
+  OFFER_STATUS_WON,
+  OFFER_STATUS_REJECTED,
+  OFFER_STATUS_APPROVED,
+  OFFER_STATUS_DISCARDED,
+} from 'constants/general';
+import { addNewItems } from 'utils/functions';
 import type { GetContestParams, GetContestResponse } from 'types/api/contest';
 import type {
   ChangeMarkParams,
   ChangeMarkResponse,
+  GetOffersParams,
+  GetOffersResponse,
   SetNewOfferResponse,
   SetOfferStatusParams,
   SetOfferStatusResponse,
@@ -28,9 +33,11 @@ const initialState: ContestByIdState = {
   contestData: null,
   error: null,
   offers: [],
+  haveMore: false,
   addOfferError: null,
   setOfferStatusError: null,
   changeMarkError: null,
+  isReviewed: false,
   isEditContest: false,
   isBrief: true,
   isShowOnFull: false,
@@ -115,11 +122,18 @@ const setOfferStatusExtraReducers = createExtraReducers({
     { payload }: PayloadAction<SetOfferStatusResponse>,
   ) => {
     state.offers.forEach((offer) => {
-      if (payload.status === OFFER_STATUS_WON) {
-        offer.status =
-          payload.id === offer.id ? OFFER_STATUS_WON : OFFER_STATUS_REJECTED;
-      } else if (payload.id === offer.id) {
-        offer.status = OFFER_STATUS_REJECTED;
+      switch (payload.status) {
+        case OFFER_STATUS_WON:
+          offer.status =
+            payload.id === offer.id ? OFFER_STATUS_WON : OFFER_STATUS_REJECTED;
+          break;
+        case OFFER_STATUS_REJECTED:
+        case OFFER_STATUS_APPROVED:
+        case OFFER_STATUS_DISCARDED:
+          if (payload.id === offer.id) offer.status = payload.status;
+          break;
+        default:
+          break;
       }
     });
     state.error = null;
@@ -171,6 +185,32 @@ const changeMarkExtraReducers = createExtraReducers({
   },
 });
 
+//-----------getOffers
+export const getOffers = decorateAsyncThunk({
+  key: `${CONTEST_BY_ID_SLICE_NAME}/getOffers`,
+  thunk: async (payload: GetOffersParams) => {
+    const { data } = await offerController.getOffers<typeof payload.isReviewed>(
+      payload,
+    );
+    return data;
+  },
+});
+
+const getOffersExtraReducers = createExtraReducers({
+  thunk: getOffers,
+  pendingReducer,
+  fulfilledReducer: <IsReviewed>(
+    state: ContestByIdState,
+    { payload }: PayloadAction<GetOffersResponse<IsReviewed>>,
+  ) => {
+    state.isFetching = false;
+    state.offers = addNewItems(state.offers, payload.offers as any[]);
+    state.haveMore = payload.haveMore;
+    state.error = null;
+  },
+  rejectedReducer,
+});
+
 //-----------------------------------------------------
 
 const reducers = {
@@ -194,6 +234,13 @@ const reducers = {
     { payload }: PayloadAction<ContestByIdState['isEditContest']>,
   ) => {
     state.isEditContest = payload;
+  },
+  setIsReviewed: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['isReviewed']>,
+  ) => {
+    state.isReviewed = payload;
+    state.offers = [];
   },
   clearAddOfferError: (state: ContestByIdState) => {
     state.addOfferError = null;
@@ -223,6 +270,7 @@ const extraReducers = (builder) => {
   addOfferExtraReducers(builder);
   setOfferStatusExtraReducers(builder);
   changeMarkExtraReducers(builder);
+  getOffersExtraReducers(builder);
 };
 
 const contestByIdSlice = createSlice({
@@ -238,6 +286,7 @@ export const {
   updateStoreAfterUpdateContest,
   changeContestViewMode,
   changeEditContest,
+  setIsReviewed,
   clearAddOfferError,
   clearSetOfferStatusError,
   clearChangeMarkError,
