@@ -3,6 +3,7 @@ import type { Types } from 'mongoose';
 import type _Bank from '../models/bank';
 import type _Catalog from '../models/catalog';
 import type _Contest from '../models/contest';
+import type _Event from '../models/event';
 import type _Conversation from '../models/conversation';
 import type _Message from '../models/message';
 import type _Offer from '../models/offer';
@@ -21,6 +22,7 @@ export type DB = {
   Bank: ReturnType<typeof _Bank>;
   Catalog: ReturnType<typeof _Catalog>;
   Contest: ReturnType<typeof _Contest>;
+  Event: ReturnType<typeof _Event>;
   Conversation: ReturnType<typeof _Conversation>;
   Message: ReturnType<typeof _Message>;
   Offer: ReturnType<typeof _Offer>;

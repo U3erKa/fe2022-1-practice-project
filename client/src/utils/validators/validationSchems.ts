@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import valid from 'card-validator';
+import { notifyOptions } from 'constants/general';
 
 export const LoginSchem = yup.object().shape({
   email: yup.string().email('check email').required('required'),
@@ -218,4 +219,30 @@ export const CatalogSchema = yup.object({
       (value) => !!value && value.trim().length >= 1,
     )
     .required('required'),
+});
+
+export const newEventSchema = yup.object().shape({
+  name: yup
+    .string()
+    .test(
+      'event-name-length',
+      'Minimum 6 symbols',
+      (value) => !!value && value.trim().length >= 6,
+    )
+    .required(),
+  date: yup
+    .string()
+    .test(
+      'not-from-the-past',
+      'Event time cannot be in the past',
+      (value) =>
+        !!value &&
+        value.trim().length !== 0 &&
+        Date.now() - new Date(value).valueOf() <= 5 * 60 * 1000,
+    )
+    .required(),
+  notify: yup
+    .string()
+    .oneOf([...notifyOptions])
+    .required(),
 });

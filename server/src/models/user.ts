@@ -25,11 +25,13 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
     async comparePassword(password: string | Buffer) {
       return bcrypt.compare(password, this.password);
     }
+
     static associate({
       Offer,
       Catalog,
       Contest,
       Conversation,
+      Event,
       Message,
       Rating,
       RefreshToken,
@@ -40,6 +42,7 @@ const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
       User.hasMany(Offer, { foreignKey, sourceKey });
       User.hasMany(Catalog, { foreignKey, sourceKey });
       User.hasMany(Contest, { foreignKey, sourceKey });
+      User.hasMany(Event, { foreignKey, sourceKey });
       User.hasMany(Message, { foreignKey: 'sender', sourceKey });
       User.hasMany(Rating, { foreignKey, sourceKey });
       User.hasMany(RefreshToken, { foreignKey, sourceKey });
@@ -135,6 +138,7 @@ abstract class _User extends Model<
 
   declare catalogs?: NonAttribute<DB['Catalog'][]>;
   declare contests?: NonAttribute<DB['Contest'][]>;
+  declare events?: NonAttribute<DB['Event'][]>;
   declare conversations?: NonAttribute<DB['Conversation'][]>;
   declare messages?: NonAttribute<DB['Message'][]>;
   declare offers?: NonAttribute<DB['Offer'][]>;
@@ -144,6 +148,7 @@ abstract class _User extends Model<
   declare static associations: {
     catalogs: Association<DB['User'] & Model, DB['Catalog'] & Model>;
     contests: Association<DB['User'] & Model, DB['Contest'] & Model>;
+    events: Association<DB['User'] & Model, DB['Event'] & Model>;
     conversations: Association<DB['User'] & Model, DB['Conversation'] & Model>;
     messages: Association<DB['User'] & Model, DB['Message'] & Model>;
     offers: Association<DB['User'] & Model, DB['Offer'] & Model>;
@@ -190,6 +195,21 @@ abstract class _User extends Model<
   declare countContests: HasManyCountAssociationsMixin;
   declare createContest: HasManyCreateAssociationMixin<
     DB['Contest'] & Model,
+    'userId'
+  >;
+
+
+  declare getEvents: HasManyGetAssociationsMixin<DB['Event']>;
+  declare addEvent: HasManyAddAssociationMixin<DB['Event'], number>;
+  declare addEvents: HasManyAddAssociationsMixin<DB['Event'], number>;
+  declare setEvents: HasManySetAssociationsMixin<DB['Event'], number>;
+  declare removeEvent: HasManyRemoveAssociationMixin<DB['Event'], number>;
+  declare removeEvents: HasManyRemoveAssociationsMixin<DB['Event'], number>;
+  declare hasEvent: HasManyHasAssociationMixin<DB['Event'], number>;
+  declare hasEvents: HasManyHasAssociationsMixin<DB['Event'], number>;
+  declare countEvents: HasManyCountAssociationsMixin;
+  declare createEvent: HasManyCreateAssociationMixin<
+    DB['Event'] & Model,
     'userId'
   >;
 

@@ -1,10 +1,12 @@
 import { ToastContainer } from 'react-toastify';
 import { Outlet, redirect } from 'react-router-dom';
 
+import { useDispatch } from 'hooks';
 import {
   ContestCreationPage,
   ContestPage,
   Dashboard,
+  EventsPage,
   Home,
   HowItWorksPage,
   LoginPage,
@@ -14,16 +16,16 @@ import {
   StartContestPage,
   UserProfile,
 } from 'pages';
-
+import { ChatContainer } from 'components/chat';
 import {
   NAME_CONTEST,
   TAGLINE_CONTEST,
   LOGO_CONTEST,
   REFRESH_TOKEN,
 } from 'constants/general';
-
 import type { LoaderFunction, RouteObject } from 'react-router-dom';
-import { ChatContainer } from 'components/chat';
+import { useEffect } from 'react';
+import { getEvents } from 'store/slices/eventSlice';
 
 const isUserLoaded = () => {
   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
@@ -47,24 +49,7 @@ const allowAuthorizedOnly: LoaderFunction = () => {
 export const routes: RouteObject[] = [
   {
     path: '/',
-    element: (
-      <>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          // @ts-expect-error
-          pauseOnVisibilityChange
-          draggable
-          pauseOnHover
-        />
-        <Outlet />
-        <ChatContainer />
-      </>
-    ),
+    element: <RootLayout />,
     children: [
       { index: true, element: <Home /> },
 
@@ -112,6 +97,7 @@ export const routes: RouteObject[] = [
             ),
           },
           { path: '/dashboard', element: <Dashboard /> },
+          { path: '/events', element: <EventsPage /> },
           { path: '/contest/:id', element: <ContestPage /> },
           { path: '/account', element: <UserProfile /> },
         ],
@@ -122,3 +108,31 @@ export const routes: RouteObject[] = [
     ],
   },
 ];
+
+function RootLayout() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getEvents());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        // @ts-expect-error
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
+      <Outlet />
+      <ChatContainer />
+    </>
+  );
+}

@@ -6,13 +6,14 @@
   display: flex
   justify-content: center
   align-items: center
+  position: relative
   padding: 10px 15px
   border-right: 1px solid #ebebeb
 
   &:hover > ul
     display: block
     position: absolute
-    top: 70px
+    top: 40px
 
   & > ul
     border: 1px solid #eee
@@ -40,3 +41,12 @@
     font-weight: 400
     font-size: 14px
     border-right: 1px solid #ebebeb
+
+.badge
+  position: absolute
+  left: 30px
+  bottom: 8px
+  width: 8px
+  height: 8px
+  background-color: #ff0000
+  border-radius: 1rem
