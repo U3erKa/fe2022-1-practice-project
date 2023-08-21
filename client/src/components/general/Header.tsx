@@ -4,7 +4,7 @@ import { useSelector } from 'hooks';
 import { Logo, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
 
-import { STATIC_IMAGES_PATH, CREATOR, DUMMY_LINK } from 'constants/general';
+import { STATIC_IMAGES_PATH, CUSTOMER, DUMMY_LINK } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import styles from './styles/Header.module.sass';
 
@@ -55,7 +55,7 @@ const Header = () => {
           <div className={styles.nav}>
             <NavList list={HEADER_LIST} />
           </div>
-          {user && user.role !== CREATOR && (
+          {user && user.role === CUSTOMER && (
             <Link to="/startContest" className={styles.startContestBtn}>
               START CONTEST
             </Link>
