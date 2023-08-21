@@ -41,6 +41,8 @@ export const CREATE_NEW_CATALOG_AND_ADD_CHAT =
 export const USER_INFO_MODE = 'USER_INFO_MODE';
 export const CASHOUT_MODE = 'CASHOUT_MODE';
 
+export const timezoneOffsetInMs = new Date().getTimezoneOffset() * 1000 * 60;
+
 export const AUTH_MODE = {
   REGISTER: 'REGISTER',
   LOGIN: 'LOGIN',

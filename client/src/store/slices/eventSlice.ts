@@ -10,6 +10,7 @@ import {
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
+import { timezoneOffsetInMs } from 'constants/general';
 import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 import type {
   CreateEventRequest,
@@ -31,6 +32,12 @@ export const getEvents = decorateAsyncThunk({
   key: `${EVENT_SLICE_NAME}/getEvents`,
   thunk: async () => {
     const { data } = await eventController.getEvents();
+    data.forEach((event) => {
+      const date = new Date(Date.parse(event.date) + timezoneOffsetInMs);
+      Object.assign(event, {
+        date: date.toString(),
+      });
+    });
     return data;
   },
 });
