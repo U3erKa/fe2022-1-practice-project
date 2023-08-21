@@ -1,7 +1,7 @@
 import * as JWTService from './jwtService';
 import { RefreshToken } from '../models';
 
-import type { User } from '../types/user';
+import User from '../models/user';
 
 export const createSession = async (user: User) => {
   const tokenPair = await JWTService.generateTokenPair({
@@ -18,7 +18,7 @@ export const createSession = async (user: User) => {
 
   await RefreshToken.create({
     userId: user.id,
-    token: tokenPair.refreshToken,
+    token: tokenPair.refreshToken!,
   });
 
   return { user, tokenPair };
