@@ -65,8 +65,9 @@ cron.schedule(CRON_DAILY_AT_MIDNIGHT, async () => {
   console.log('Sending email...');
 
   const sendEmail = await _sendEmail;
+  const { MAIL_LOG_RECIPIENT, MAIL_USER } = process.env;
   sendEmail({
-    to: 'log.recipient@example.com',
+    to: MAIL_LOG_RECIPIENT ?? MAIL_USER,
     subject: "Node server's error logs",
     attachments: [{ path: path.resolve(LOG_PATH, log) }],
   });
