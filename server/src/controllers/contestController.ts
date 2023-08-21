@@ -325,17 +325,19 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
     const sendEmail = await _sendEmail;
     const user = (await offer.getUser()) as unknown as _User;
     const fullName = `${user.firstName} ${user.lastName}`;
+    const offerText = offer.text ?? offer.originalFileName;
+    const action =
+      command === 'approve'
+        ? 'approved it. The offer is visible to customers now!'
+        : 'discarded it. Please send appropriate offer next time.';
 
     return sendEmail({
       to: `"${fullName}" <${user.email}>`,
       subject: `We decided to ${command} your offer`,
-      text: `Hello ${fullName}!\nYou have sent offer "${
-        offer.text ?? offer.originalFileName
-      }". Our moderator reviewed it and ${
-        command === 'approve'
-          ? 'approved it. The offer is visible to customers now!'
-          : 'discarded it. Please send appropriate offer next time.'
-      }`,
+      text: `Hello ${fullName}!
+You have sent offer "${offerText}". Our moderator reviewed it and ${action}
+Sincerely,
+Squadhelp team.`,
     });
   }
 
