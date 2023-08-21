@@ -1,5 +1,6 @@
 import { type Filterable, type InferAttributes, Op } from 'sequelize';
 import fs from 'fs/promises';
+import path from 'path';
 import {
   Select,
   Sequelize,
@@ -334,7 +335,7 @@ export const setOfferStatus: RequestHandler = async (req, res, next) => {
           : 'discarded it. Please send appropriate offer next time.';
 
       const email = await fs.readFile(
-        './src/email/moderatedCreatorOffer.html',
+        path.resolve(__dirname, '../email/moderatedCreatorOffer.html'),
         'utf8',
       );
       const html = email
