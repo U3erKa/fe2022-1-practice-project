@@ -198,7 +198,6 @@ abstract class _User extends Model<
     'userId'
   >;
 
-
   declare getEvents: HasManyGetAssociationsMixin<DB['Event']>;
   declare addEvent: HasManyAddAssociationMixin<DB['Event'], number>;
   declare addEvents: HasManyAddAssociationsMixin<DB['Event'], number>;

@@ -55,9 +55,7 @@ export default function LoginButtons({ data }) {
           }
           alt="user"
         />
-        {shouldNotifyAboutEvents && (
-          <div className={styles.badge}></div>
-        )}
+        {shouldNotifyAboutEvents && <div className={styles.badge}></div>}
         <span>{`Hi, ${data.displayName}`}</span>
         <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
         <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />
