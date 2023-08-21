@@ -157,7 +157,6 @@ export const getPreview: RequestHandler = async (req, res, next) => {
     ) as [number, number];
 
     const senders = await User.findAll({
-      // @ts-ignore
       where: { id: interlocutors },
       attributes: ['id', 'firstName', 'lastName', 'displayName', 'avatar'],
     });

@@ -347,6 +347,7 @@ export const removeChatFromCatalog = decorateAsyncThunk({
   thunk: async (payload: RemoveChatFromCatalogParams) => {
     const { data } = await catalogController.removeChatFromCatalog(payload);
     const chatIds: string[] = [];
+    // @ts-expect-error
     data.chats.forEach(({ _id }) => {
       if (_id !== payload.chatId) chatIds.push(_id);
     });
