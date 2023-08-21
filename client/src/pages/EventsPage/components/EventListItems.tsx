@@ -29,7 +29,10 @@ function Event({ id, name, date, notify, createdAt }) {
       setTime(time);
       setProgress(progress);
     }, 1000);
-    if (time === '0s') clearInterval(interval);
+    if (time === '0s') {
+      setProgress(1);
+      clearInterval(interval);
+    }
 
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps

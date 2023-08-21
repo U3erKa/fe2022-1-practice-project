@@ -34,9 +34,7 @@ export const getEvents = decorateAsyncThunk({
     const { data } = await eventController.getEvents();
     data.forEach((event) => {
       const date = new Date(Date.parse(event.date) + timezoneOffsetInMs);
-      Object.assign(event, {
-        date: date.toString(),
-      });
+      Object.assign(event, { date: date.toString() });
     });
     return data;
   },
@@ -46,6 +44,8 @@ export const createEvent = decorateAsyncThunk({
   key: `${EVENT_SLICE_NAME}/createEvent`,
   thunk: async (payload: CreateEventRequest) => {
     const { data } = await eventController.createEvent(payload);
+    const date = new Date(Date.parse(data.date) + timezoneOffsetInMs);
+    Object.assign(data, { date: date.toString() });
     return data;
   },
 });
