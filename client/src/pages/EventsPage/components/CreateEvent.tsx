@@ -1,9 +1,11 @@
-import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import uniqueId from 'lodash/uniqueId';
-import { useDispatch, type useForceUpdate } from 'hooks';
+import { useDispatch } from 'hooks';
 import { createEvent } from 'store/slices/eventSlice';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
+import type { FormikHelpers } from 'formik';
+import type { useForceUpdate } from 'hooks';
 import type { Event } from 'types/api/event';
 import styles from '../styles/CreateEvent.module.sass';
 

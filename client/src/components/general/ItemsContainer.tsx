@@ -1,5 +1,5 @@
-import { type FC, type ReactNode } from 'react';
 import { Spinner } from 'components/general';
+import type { FC, ReactNode } from 'react';
 import styles from './styles/ContestContainer.module.sass';
 
 export type Props = {

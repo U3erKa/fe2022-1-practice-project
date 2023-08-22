@@ -1,8 +1,9 @@
-import { useState, type FC } from 'react';
+import { useState } from 'react';
 import { uniqueId } from 'lodash';
 import cx from 'classnames';
 import { Answer } from '..';
 import styles from '../styles/Questions.module.sass';
+import type { FC } from 'react';
 import type { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 
 export type Props = {
