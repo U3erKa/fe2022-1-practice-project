@@ -22,7 +22,7 @@ export default function ProfileNavBar({ list, activeEvents }) {
         style={{ textDecoration: 'none' }}
       >
         <span className={styles.navListLinkText}>{text}</span>
-        {href === '/events' && (
+        {href === '/events' && !!activeEvents && (
           <div className={styles.badge}>{activeEvents}</div>
         )}
       </Link>
