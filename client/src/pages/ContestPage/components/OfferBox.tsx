@@ -187,7 +187,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           </div>
           <div className={styles.creativeRating}>
             <span className={styles.userScoreLabel}>Creative Rating </span>
-            {/* @ts-expect-error */}
+            {/* @ts-ignore */}
             <Rating
               initialRating={rating}
               fractions={2}
@@ -226,7 +226,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
             <span className={styles.response}>{data.text}</span>
           )}
           {id !== userId && role === CUSTOMER && (
-            // @ts-expect-error
+            // @ts-ignore
             <Rating
               fractions={2}
               fullSymbol={

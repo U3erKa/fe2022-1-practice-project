@@ -3,7 +3,7 @@ import { useForceUpdate } from 'hooks';
 import { CreateEvent, EventsList } from '.';
 
 export default function EventsPage() {
-  const forceUpdate = useForceUpdate()
+  const forceUpdate = useForceUpdate();
   return (
     <>
       <Header />
