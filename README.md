@@ -154,3 +154,25 @@ Assuming you have done everything correctly, web app can be accessed via the fol
 - server: `http://localhost:3000`
 - PostgreSQL database: `http://localhost:5432`
 - MongoDB database: `http://localhost:27017`
+
+## What was made in the project
+
+- `bugfix` branch starts off of `dev` branch. All other branches start from this branch. It contains:
+  - many bug fixes,
+  - significant code refactoring,
+  - migration of the codebase to Typescript,
+  - update of dependencies to their newer version.
+- `sql-query` contains SQL queries to interact with PostgreSQL database. Specifically, it allows us to:
+  - Count users by role,
+  - Send 10% cashback for customers' contests made during holidays,
+  - Add $10 for top 3 rated creators.
+- `nosql-query` branch adds single query to MongoDB NO-SQL database which allows us to count how many messages contain a specific word.
+- `how-it-works` branch adds page on the client at '/how-it-works' route. This page explains how contests work and has a QnA section.
+- `error-logger` branch implements saving error messages into *.log files. This allows for easier troubleshooting.
+- `error-mailer` branch stems from `error-logger` branch and adds sending daily error logs to a certain email address. It also saves logs to separate files on the server to allow further inspection.
+- `nosql-to-sql` branch defines SQL database queries required to migrate from MongoDB to PostgreSQL. It also has visual representation of table relations that were modified during migration.
+- `mongoose-to-sequelize` branch expands the idea of migration to SQL even further. For that, new Sequelize models and migrations were created and Mongoose models were marked as deprecated to discourage their further usage in favour of newly created Sequelize ones.
+- `button-group` branch add simple `<ButtonGroup />` React component to '/startContest' page. This component allows customer to choose if they want to have their domain match the name in the name contest.
+- `dynamic-branding` branch adds '/events' page which allows logged in users to schedule their events. Created events are then sent to server which then stores them in the database. The user also can choose whether they want to get notified when an event is about to start.
+- `moderation` branch adds new user role - `moderator`. User with this role can view creators' offers and choose to either approve or discard them. Since moderator is very responsible role, user with this role cannot be created through '/register' page. Instead, it's added via Sequelize's seeder. Customer cannot see non-approved or discarded offers. Creator can see if their offer have been moderated and thay receive emails when they do.
+- `main` branch combines all of the above branches' work together and adds a little extra. Apparently, it contains few fixes and reformats everything with Prettier.
