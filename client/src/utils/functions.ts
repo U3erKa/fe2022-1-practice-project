@@ -45,8 +45,18 @@ export function getEventProgress({ date, createdAt }: _Event) {
   return { progress, time };
 }
 
-let _uniqueIdNum = 0
+let _uniqueIdNum = 0;
 /** Generates a unique ID. If `prefix` is given, the ID is appended to it */
 export function uniqueId(prefix?: any) {
-  return `${prefix?.toString() ?? ''}${++_uniqueIdNum}`
+  return `${prefix?.toString() ?? ''}${++_uniqueIdNum}`;
+}
+
+export function parseQueryString(query: string) {
+  const result: Record<string, string> = {};
+  const searchParams = new URLSearchParams(query);
+
+  searchParams.forEach((value, key) => {
+    result[key] = value;
+  });
+  return result;
 }
