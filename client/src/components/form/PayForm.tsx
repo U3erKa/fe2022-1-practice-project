@@ -11,7 +11,7 @@ import {
   PaymentSchema,
 } from 'utils/validators/validationSchems';
 
-import 'react-credit-cards-2/lib/styles.scss';
+import 'react-credit-cards-2/dist/es/styles.scss';
 import styles from './styles/PayForm.module.sass';
 
 import type { FC } from 'react';
