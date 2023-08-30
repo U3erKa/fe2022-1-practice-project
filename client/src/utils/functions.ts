@@ -44,3 +44,9 @@ export function getEventProgress({ date, createdAt }: _Event) {
   const time = getRemainingTime(currentDateTimeframe);
   return { progress, time };
 }
+
+let _uniqueIdNum = 0
+/** Generates a unique ID. If `prefix` is given, the ID is appended to it */
+export function uniqueId(prefix?: any) {
+  return `${prefix?.toString() ?? ''}${++_uniqueIdNum}`
+}
