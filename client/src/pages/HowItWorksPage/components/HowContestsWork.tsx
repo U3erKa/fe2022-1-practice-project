@@ -1,4 +1,4 @@
-import { uniqueId } from 'lodash';
+import { uniqueId } from 'utils/functions';
 import { HOW_IT_WORKS_PATH } from 'constants/general';
 import { HOW_CONTESTS_WORK } from 'constants/howItWorks';
 import styles from '../styles/HowContestsWork.module.sass';

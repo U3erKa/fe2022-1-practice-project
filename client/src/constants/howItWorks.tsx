@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { uniqueId } from 'lodash';
+import { uniqueId } from 'utils/functions';
 import { DUMMY_LINK, HOW_IT_WORKS_PATH } from 'constants/general';
 import type { QNATuples } from 'types/general';
 

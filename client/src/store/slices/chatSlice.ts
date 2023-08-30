@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { isEqual, remove } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import remove from 'lodash/remove';
 
 import * as catalogController from 'api/rest/catalogController';
 import * as chatController from 'api/rest/chatController';

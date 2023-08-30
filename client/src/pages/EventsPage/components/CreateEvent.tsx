@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import uniqueId from 'lodash/uniqueId';
+import { uniqueId } from 'utils/functions';
 import { useDispatch } from 'hooks';
 import { createEvent } from 'store/slices/eventSlice';
 import { newEventSchema } from 'utils/validators/validationSchems';
