@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
 import { isEqual } from 'radash';
 import { useDispatch, useSelector } from 'hooks';
 import {
@@ -12,6 +11,7 @@ import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { TryAgain, ItemsContainer } from 'components/general';
 import { ContestBox } from 'components/contest';
 import { CreatorFilter } from './CreatorFilter';
+import { parseQueryString } from 'utils/functions';
 import { CREATOR } from 'constants/general';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from '../styles/CreatorDashboard.module.sass';
@@ -49,7 +49,7 @@ const CreatorDashboard = () => {
   };
 
   const parseUrlForParams = (search: string) => {
-    const obj = queryString.parse(search);
+    const obj = parseQueryString(search);
     const filter = {
       typeIndex: obj.typeIndex || 1,
       contestId: obj.contestId ? obj.contestId : '',

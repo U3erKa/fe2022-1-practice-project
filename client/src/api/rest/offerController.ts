@@ -1,4 +1,3 @@
-import queryString from 'query-string';
 import http from '../interceptor';
 import type {
   SetOfferStatusParams,
@@ -35,5 +34,5 @@ export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
   isReviewed,
 }: GetOffersParams) =>
   http.get<GetOffersResponse<IsReviewed>>(
-    `offers?${queryString.stringify({ limit, offset, isReviewed })}`,
+    `offers?${new URLSearchParams({ limit, offset, isReviewed } as any)}`,
   );

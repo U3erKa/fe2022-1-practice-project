@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'hooks';
 
@@ -70,12 +69,12 @@ export const CreatorFilter = () => {
   const navigate = useNavigate();
 
   const parseParamsToUrl = (creatorFilter) => {
-    const obj = {};
+    const obj: Record<string, string> = {};
     Object.keys(creatorFilter).forEach((el) => {
       if (creatorFilter[el]) obj[el] = creatorFilter[el];
     });
 
-    navigate(`/dashboard?${queryString.stringify(obj)}`);
+    navigate(`/dashboard?${new URLSearchParams(obj)}`);
   };
 
   const changePredicate = ({ name, value }) => {
