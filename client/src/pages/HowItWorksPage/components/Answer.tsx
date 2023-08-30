@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'radash';
 import { uniqueId } from 'utils/functions';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
