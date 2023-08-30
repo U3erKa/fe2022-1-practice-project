@@ -9,7 +9,7 @@ import {
 
 import type { TokenData } from '../types/user';
 import type { JwtSign, JwtVerify, TokenOptions } from '../types/services';
-
+// @ts-expect-error
 const jwtSign: JwtSign = promisify(jwt.sign);
 const jwtVerify: JwtVerify = promisify(jwt.verify);
 
