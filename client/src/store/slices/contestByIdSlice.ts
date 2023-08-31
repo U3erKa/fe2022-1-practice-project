@@ -189,9 +189,8 @@ const changeMarkExtraReducers = createExtraReducers({
 export const getOffers = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/getOffers`,
   thunk: async (payload: GetOffersParams) => {
-    const { data } = await offerController.getOffers<typeof payload.isReviewed>(
-      payload,
-    );
+    const { data } =
+      await offerController.getOffers<typeof payload.isReviewed>(payload);
     return data;
   },
 });
