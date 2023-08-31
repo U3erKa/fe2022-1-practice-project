@@ -1,4 +1,4 @@
-import type { Event as _Event } from 'types/api/event';
+import type { CreateEventResponse } from 'types/api/event';
 
 /**
  * Filters old items by id and appends new items. Returns new array
@@ -32,7 +32,7 @@ export const getRemainingTime = (time: number) => {
   return result.join(' ') || '0s';
 };
 
-export function getEventProgress({ date, createdAt }: _Event) {
+export function getEventProgress({ date, createdAt }: CreateEventResponse) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);
   const createdAtDate = Date.parse(createdAt);
