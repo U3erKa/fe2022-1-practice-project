@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'radash';
 
 import { useDispatch, useSelector } from 'hooks';
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';

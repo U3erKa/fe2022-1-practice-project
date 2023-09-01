@@ -2,8 +2,8 @@ import cx from 'classnames';
 import { useSelector, useDispatch } from 'hooks';
 import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
+import { uniqueId } from 'utils/functions';
 import styles from '../styles/ButtonGroup.module.sass';
-import { uniqueId } from 'lodash';
 
 export default function ButtonGroup() {
   const { nameMathesDomain } = useSelector(

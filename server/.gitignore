@@ -3,3 +3,4 @@ node_modules/
 uploadFiles/
 .env
 *.log
+dist/

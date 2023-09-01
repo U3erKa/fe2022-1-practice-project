@@ -1,8 +1,9 @@
 import cx from 'classnames';
-import { isEqual, uniqueId } from 'lodash';
-import styles from '../styles/Answer.module.sass';
+import { isEqual } from 'radash';
+import { uniqueId } from 'utils/functions';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
+import styles from '../styles/Answer.module.sass';
 
 export type Props = {
   active: boolean;

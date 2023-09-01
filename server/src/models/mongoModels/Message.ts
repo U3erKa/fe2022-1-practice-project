@@ -14,7 +14,6 @@ const Schema = new mongoose.Schema(
       required: true,
     },
     conversation: {
-      // @ts-expect-error
       type: mongoose.Schema.ObjectId,
       required: true,
     },

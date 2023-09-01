@@ -1,4 +1,4 @@
-import type { NativeDate } from 'mongoose';
+import type { Date } from 'mongoose';
 import type { RefreshToken, User } from './models';
 import type { TokenData } from './user';
 
@@ -22,4 +22,4 @@ export type OrderPredicate = [string, 'asc' | 'desc' | 'ASC' | 'DESC'][];
 
 export type RefreshTokenInstance = { refreshTokenInstance: RefreshToken };
 export type WithTokenData = { tokenData: TokenData };
-export type WithTimeStamps = { createdAt: NativeDate; updatedAt: NativeDate };
+export type WithTimeStamps = { createdAt: Date; updatedAt: Date };

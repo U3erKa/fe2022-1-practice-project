@@ -1,6 +1,6 @@
 import { confirmAlert } from 'react-confirm-alert';
 import Rating from 'react-rating';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'radash';
 import classNames from 'classnames';
 
 import { useDispatch, useSelector } from 'hooks';

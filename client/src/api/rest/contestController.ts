@@ -1,5 +1,3 @@
-import queryString from 'query-string';
-
 import http from '../interceptor';
 
 import type {
@@ -22,10 +20,10 @@ export const downloadContestFile = ({ fileName }: DownloadContestFileParams) =>
 
 export const getCustomersContests = (data: GetCustomersContestsParams) =>
   http.get<GetContestsResponse>(
-    `contests?${queryString.stringify({
+    `contests?${new URLSearchParams({
       limit: data.limit,
       offset: data.offset,
-    })}`,
+    } as any)}`,
     {
       headers: {
         status: data.contestStatus,
@@ -34,7 +32,9 @@ export const getCustomersContests = (data: GetCustomersContestsParams) =>
   );
 
 export const getActiveContests = (options: GetActiveContestsParams) =>
-  http.get<GetContestsResponse>(`contests?${queryString.stringify(options)}`);
+  http.get<GetContestsResponse>(
+    `contests?${new URLSearchParams(options as any)}`,
+  );
 
 export const getContestById = ({ contestId }: GetContestParams) =>
   http.get<GetContestResponse>(`contests/${contestId}`);

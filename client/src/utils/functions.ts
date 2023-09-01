@@ -1,4 +1,4 @@
-import type { Event as _Event } from 'types/api/event';
+import type { CreateEventResponse } from 'types/api/event';
 
 /**
  * Filters old items by id and appends new items. Returns new array
@@ -32,7 +32,7 @@ export const getRemainingTime = (time: number) => {
   return result.join(' ') || '0s';
 };
 
-export function getEventProgress({ date, createdAt }: _Event) {
+export function getEventProgress({ date, createdAt }: CreateEventResponse) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);
   const createdAtDate = Date.parse(createdAt);
@@ -43,4 +43,20 @@ export function getEventProgress({ date, createdAt }: _Event) {
   const progress = Math.min(isNaN(progressValue) ? 0 : progressValue, 1);
   const time = getRemainingTime(currentDateTimeframe);
   return { progress, time };
+}
+
+let _uniqueIdNum = 0;
+/** Generates a unique ID. If `prefix` is given, the ID is appended to it */
+export function uniqueId(prefix?: any) {
+  return `${prefix?.toString() ?? ''}${++_uniqueIdNum}`;
+}
+
+export function parseQueryString(query: string) {
+  const result: Record<string, string> = {};
+  const searchParams = new URLSearchParams(query);
+
+  searchParams.forEach((value, key) => {
+    result[key] = value;
+  });
+  return result;
 }

@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { uniqueId } from 'lodash';
+import { uniqueId } from 'utils/functions';
 import { GET_STARTED_IMAGES } from 'constants/howItWorks';
 import styles from '../styles/GetStartedImages.module.sass';
 

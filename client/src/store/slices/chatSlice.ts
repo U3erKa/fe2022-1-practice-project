@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { isEqual, remove } from 'lodash';
+import { isEqual } from 'radash';
 
 import * as catalogController from 'api/rest/catalogController';
 import * as chatController from 'api/rest/chatController';
@@ -330,8 +330,7 @@ const deleteCatalogExtraReducers = createExtraReducers({
     { payload }: PayloadAction<DeleteCatalogResponse>,
   ) => {
     const { catalogList } = state;
-    const newCatalogList = remove(
-      catalogList,
+    const newCatalogList = catalogList.filter(
       (catalog) => payload.catalogId !== catalog._id,
     );
     state.catalogList = [...newCatalogList];

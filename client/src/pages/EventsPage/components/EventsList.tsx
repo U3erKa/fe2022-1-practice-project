@@ -1,7 +1,7 @@
 import { EventListItems } from '..';
 import styles from '../styles/EventsList.module.sass';
 
-export default function EventsList({ isPast = false }) {
+export default function EventsList({ isPast = false, events }) {
   return (
     <article className={styles.container}>
       <section className={styles.headingContainer}>
@@ -13,7 +13,7 @@ export default function EventsList({ isPast = false }) {
           <i className="fas fa-user-clock"></i>
         </p>
       </section>
-      <EventListItems isPast={isPast} />
+      <EventListItems events={events} />
     </article>
   );
 }
