@@ -25,14 +25,14 @@ services:
       - /var/www/html/images:/var/www/html/images
 
   db-prod:
-    image: postgres:13.2-alpine
+    image: postgres:13-alpine
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
       - POSTGRES_DB=todo-prod
 
   mongo-prod:
-    image: mongo:4.4.6-bionic
+    image: mongo:4.4-focal
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
