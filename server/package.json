@@ -51,5 +51,6 @@
     "prettier": "^3.0.3",
     "sequelize-cli": "^6.6.1",
     "typescript": "^5.2.2"
-  }
+  },
+  "browserslist": "node >= 16"
 }
