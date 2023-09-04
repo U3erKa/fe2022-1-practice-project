@@ -29,11 +29,6 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.22.10",
-    "@babel/core": "^7.22.11",
-    "@babel/node": "^7.22.10",
-    "@babel/plugin-transform-typescript": "^7.22.11",
-    "@babel/preset-env": "^7.22.14",
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.82",
     "@types/bcrypt": "^5.0.0",
@@ -45,7 +40,6 @@
     "@types/nodemailer": "^6.4.9",
     "@types/sequelize": "^4.28.15",
     "@types/uuid": "^9.0.3",
-    "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.1",
     "eslint": "^8.48.0",
@@ -56,6 +50,5 @@
     "prettier": "^3.0.3",
     "sequelize-cli": "^6.6.1",
     "typescript": "^5.2.2"
-  },
-  "browserslist": "node >= 16"
+  }
 }
