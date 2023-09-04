@@ -2,12 +2,13 @@
   "name": "todo-list",
   "version": "0.0.0",
   "private": true,
+  "main": "dist/index.js",
   "scripts": {
     "babel-node": "babel-node",
-    "start": "nodemon --trace-deprecation --exec babel-node --extensions \".ts\" ./src/index.ts",
-    "test": "jest",
-    "build": "babel src -d dist --copy-files --extensions \".ts,.js\"",
-    "format": "prettier --write ."
+    "start": "concurrently \"nodemon --trace-deprecation .\" \"swc src/ -d dist/ --copy-files --watch\"",
+    "build": "swc src/ -d dist/ --copy-files",
+    "format": "prettier --write .",
+    "install": "npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
