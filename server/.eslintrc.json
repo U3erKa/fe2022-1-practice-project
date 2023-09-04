@@ -37,5 +37,8 @@
       2,
       "never"
     ]
-  }
+  },
+  "ignorePatterns": [
+    "dist/"
+  ]
 }
