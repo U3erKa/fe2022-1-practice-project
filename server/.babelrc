@@ -1,9 +1,0 @@
-{
-  "presets": [
-    "@babel/preset-env"
-  ],
-  "plugins": [
-    "babel-plugin-replace-ts-export-assignment",
-    ["@babel/plugin-transform-typescript", { "allowDeclareFields": true }]
-  ]
-}
