@@ -4,7 +4,6 @@
   "private": true,
   "main": "dist/index.js",
   "scripts": {
-    "babel-node": "babel-node",
     "start": "concurrently \"nodemon --trace-deprecation .\" \"swc src/ -d dist/ --copy-files --watch\"",
     "build": "swc src/ -d dist/ --copy-files",
     "format": "prettier --write .",
