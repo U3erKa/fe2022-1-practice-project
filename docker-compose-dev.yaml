@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   front-react:
     build:
       context: ./client
@@ -12,7 +11,7 @@ services:
       - ./client:/client
       - /client/node_modules
     ports:
-      - "5000:3000"
+      - '5173:5173'
 
   server-dev:
     build:
@@ -21,22 +20,19 @@ services:
     environment:
       NODE_ENV: development
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db-dev
-      - mongo-dev
+      # - mongo-dev
     volumes:
       - ./var/www/html/images:/var/www/html/images
       - ./server:/server
       - /server/node_modules
 
-
-  mongo-dev:
-    image: mongo:4.4-focal
-    ports:
-      - "27017:27017"
-
-
+  # mongo-dev:
+  #   image: mongo:4.4-focal
+  #   ports:
+  #     - '27017:27017'
 
   db-dev:
     image: postgres:13-alpine
@@ -45,7 +41,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=todo-dev
     ports:
-      - "5432:5432"
+      - '5432:5432'
 
 volumes:
   server-dev:

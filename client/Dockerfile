@@ -8,7 +8,7 @@ WORKDIR /client
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 5173
 
 RUN npm install
 

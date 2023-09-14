@@ -1,12 +1,11 @@
 version: '3'
 services:
-
   client-prod:
     build:
       context: ./client
       dockerfile: Dockerfile-production
     ports:
-      - "80:80"
+      - '80:80'
     depends_on:
       - server-prod
     volumes_from:
@@ -20,7 +19,7 @@ services:
       NODE_ENV: production
     depends_on:
       - db-prod
-      - mongo-prod
+      # - mongo-prod
     volumes:
       - /var/www/html/images:/var/www/html/images
 
@@ -31,14 +30,14 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=todo-prod
 
-  mongo-prod:
-    image: mongo:4.4-focal
-    environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-    volumes:
-      - ./data/db:/data/db
-    command: mongod --smallfiles --logpath=/dev/null
+  # mongo-prod:
+  #   image: mongo:4.4-focal
+  #   environment:
+  #     - MONGO_DATA_DIR=/data/db
+  #     - MONGO_LOG_DIR=/dev/null
+  #   volumes:
+  #     - ./data/db:/data/db
+  #   command: mongod --smallfiles --logpath=/dev/null
 
 volumes:
   server-prod:
