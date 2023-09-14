@@ -60,10 +60,9 @@ And then wait until the required containers are created. This will take a while.
 
 When containers are built, they can be accessed via the following links:
 
-- client: `http://localhost:5000`
+- client: `http://localhost:5173`
 - server: `http://localhost:3000`
 - PostgreSQL database: `http://localhost:5432`
-- MongoDB database: `http://localhost:27017`
 
 ### Node.js
 
@@ -143,17 +142,14 @@ cd ../client
 12. Start the client:
 
 ```bash
-npm start
+npm run dev
 ```
-
-*Note: You should receive the following prompt: `Would you like to run the app on another port instead? › (Y/n)`. Press `Y` or `Enter` to proceed.*
 
 Assuming you have done everything correctly, web app can be accessed via the following links:
 
-- client: `http://localhost:3001`
+- client: `http://localhost:5173`
 - server: `http://localhost:3000`
 - PostgreSQL database: `http://localhost:5432`
-- MongoDB database: `http://localhost:27017`
 
 ## What was made in the project
 
@@ -177,4 +173,5 @@ Assuming you have done everything correctly, web app can be accessed via the fol
 - `moderation` branch adds new user role - `moderator`. User with this role can view creators' offers and choose to either approve or discard them. Since moderator is very responsible role, user with this role cannot be created through '/register' page. Instead, it's added via Sequelize's seeder. Customer cannot see non-approved or discarded offers. Creator can see if their offer have been moderated and thay receive emails when they do.
 - `dependencies` branch updates all depencencies on the server and most of them on the client. This allows us to mitigate many security issues.
 - `swc-compiler` branch replaces `babel` with `swc` on the server. `swc` is a lot faster compiler than `babel` and supports Typescript out of the box.
+- `vite-bundler` branch replaces inherently bulky and vulnerable `react-scripts` installed by `create-react-app` with `vite` on the client. `vite` is faster and more modern than `webpack` and it can use `swc` under the hood.
 - `main` branch combines all of the above branches' work together and adds a little extra. Apparently, it contains few fixes and reformats everything with Prettier.
