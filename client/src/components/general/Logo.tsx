@@ -13,7 +13,6 @@ export type Props = {
 
 const Logo: FC<Props> = ({ to, ...props }) => (
   <Link to={to!}>
-    {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img {...props} />
   </Link>
 );

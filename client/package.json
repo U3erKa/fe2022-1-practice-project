@@ -7,16 +7,11 @@
     "start": "vite --host",
     "dev": "vite --host",
     "build": "vite build",
-    "lint": "tsc; eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0; tsc",
     "preview": "vite preview",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -s public",
     "format": "prettier --write ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
   },
   "browserslist": [
     ">0.2%",

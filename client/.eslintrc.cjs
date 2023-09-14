@@ -1,39 +1,20 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true, jest: true },
+  env: { browser: true, es2020: true },
   extends: [
-    'eslint-config-airbnb',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  // parser: 'babel-eslint',
-  // parserOptions: {
-  //   ecmaVersion: 6,
-  //   sourceType: 'module',
-  //   ecmaFeatures: {
-  //     jsx: true,
-  //   },
-  // },
-  plugins: ['react-refresh', 'jest'],
+  plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
-    'react/jsx-filename-extension': [
-      1,
-      {
-        extensions: ['.js', '.jsx'],
-      },
-    ],
-    'no-underscore-dangle': [
-      'error',
-      {
-        allow: ['_id'],
-      },
-    ],
+    'no-param-reassign': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/ban-types': 'off'
   },
 };
