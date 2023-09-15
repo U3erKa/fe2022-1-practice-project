@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
@@ -7,13 +7,12 @@ import store from './store';
 import App from './App';
 import './index.css';
 
-ReactDOM.render(
+createRoot(document.getElementById('root') as HTMLDivElement).render(
   <StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
   </StrictMode>,
-  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
