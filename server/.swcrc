@@ -7,7 +7,7 @@
       "decorators": false,
       "dynamicImport": false
     },
-    "target": "es2022"
+    "target": "esnext"
   },
   "module": { "type": "commonjs" }
 }
