@@ -54,7 +54,7 @@ const LoginForm = () => {
         onSubmit={onSubmit}
         validationSchema={LoginSchem}
       >
-        <Form>
+        <Form className={styles.form}>
           <FormInput
             classes={formInputClasses}
             name="email"

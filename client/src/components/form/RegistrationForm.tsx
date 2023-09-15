@@ -68,7 +68,7 @@ const RegistrationForm = () => {
         onSubmit={onSubmit}
         validationSchema={RegistrationSchem}
       >
-        <Form>
+        <Form className={styles.form}>
           <div className={styles.row}>
             <FormInput
               name="firstName"
