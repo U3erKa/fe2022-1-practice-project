@@ -31,7 +31,10 @@ const ContestPage = () => {
       offers,
     },
     userStore: { data: user },
-  } = useSelector((state) => state);
+  } = useSelector(({ contestByIdStore, userStore }) => ({
+    contestByIdStore,
+    userStore,
+  }));
 
   const dispatch = useDispatch();
   const match = useMatch('/contest/:id')!;

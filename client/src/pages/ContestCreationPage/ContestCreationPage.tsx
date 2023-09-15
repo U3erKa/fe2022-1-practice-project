@@ -22,7 +22,10 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
   const {
     contestCreationStore: { contests },
     bundleStore: { bundle },
-  } = useSelector((state) => state);
+  } = useSelector(({ contestCreationStore, bundleStore }) => ({
+    contestCreationStore,
+    bundleStore,
+  }));
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
