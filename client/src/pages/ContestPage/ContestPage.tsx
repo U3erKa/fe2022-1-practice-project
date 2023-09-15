@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useMatch } from 'react-router-dom';
 import classNames from 'classnames';
-import LightBox from 'react-image-lightbox';
+import LightBox from 'yet-another-react-lightbox';
 
 import { useDispatch, useSelector } from 'hooks';
 import {
@@ -17,7 +17,7 @@ import { Brief, ContestSideBar, ContestOffersList } from '.';
 
 import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';
 import styles from './styles/ContestPage.module.sass';
-import 'react-image-lightbox/style.css';
+import 'yet-another-react-lightbox/styles.css';
 
 const ContestPage = () => {
   const {
@@ -51,8 +51,9 @@ const ContestPage = () => {
     <div>
       {isShowOnFull && (
         <LightBox
-          mainSrc={`${PUBLIC_URL}${imagePath}`}
-          onCloseRequest={() =>
+          open
+          slides={[{ src: `${PUBLIC_URL}${imagePath}` }]}
+          close={() =>
             dispatch(changeShowImage({ isShowOnFull: false, imagePath: null }))
           }
         />
