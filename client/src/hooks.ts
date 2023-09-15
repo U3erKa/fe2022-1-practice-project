@@ -3,13 +3,14 @@ import {
   useSelector as _useSelector,
   useDispatch as _useDispatch,
 } from 'react-redux';
-
+import { isEqual } from 'radash';
 import type { RootState, AppDispatch } from 'store';
 
 export const useSelector: <TSelected = unknown>(
   selector: (state: RootState) => TSelected,
   equalityFn?: ((left: TSelected, right: TSelected) => boolean) | undefined,
-) => TSelected = _useSelector;
+) => TSelected = (state, equalityFn = isEqual) =>
+  _useSelector(state, equalityFn);
 
 export const useDispatch: () => AppDispatch = _useDispatch;
 
