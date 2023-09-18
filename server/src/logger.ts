@@ -10,6 +10,12 @@ import {
 } from './constants';
 import type ApplicationError from './errors/ApplicationError';
 
+(async () => {
+  try {
+    await fs.mkdir(path.resolve(LOG_PATH), {});
+  } catch (error) {}
+})();
+
 (async (filename: string) => {
   try {
     await fs.readFile(path.resolve(LOG_PATH, filename), READ_FILE_OPTIONS);
