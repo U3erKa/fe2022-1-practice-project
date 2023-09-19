@@ -22,23 +22,22 @@
 .feedback-cell,
 .carousel-cell
   width: 30%
-  min-height: 300px
+  aspect-ratio: 1
   margin: 0 20px
   cursor: pointer
   @media(max-width: 1000px)
     width: 40%
   @media(max-width: 580px)
     width: 75%
-    height: 250px
   @media(max-width: 480px)
     width: 90%
-    height: 150px
 
 .carousel-cell
   border-radius: 3px
 
 .example-cell
   @include container(flex-start)
+  aspect-ratio: 1.67
   border-top: 2px solid grey
   border-left: 1px solid grey
   border-right: 1px solid grey
