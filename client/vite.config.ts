@@ -6,11 +6,15 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  build: { target: browserslistToEsbuild() },
+  build: { target: browserslistToEsbuild(), sourcemap: true },
   css: { devSourcemap: true },
   plugins: [
     react(),
     tsconfigPaths(),
-    VitePWA({ devOptions: { enabled: true }, registerType: 'autoUpdate' }),
+    VitePWA({
+      devOptions: { enabled: true },
+      registerType: 'autoUpdate',
+      manifest: false,
+    }),
   ],
 });

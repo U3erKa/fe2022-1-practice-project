@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "short_name": "React App",
   "name": "Vite + React App Sample",
+  "lang": "en",
   "icons": [
     {
       "src": "vite.svg",
@@ -16,6 +17,7 @@
     }
   ],
   "start_url": ".",
+  "scope": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
