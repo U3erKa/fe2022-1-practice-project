@@ -15,7 +15,7 @@ const initialState: DataForContestState = {
 
 export const getDataForContest = decorateAsyncThunk({
   key: `${DATA_FOR_CONTEST_SLICE_NAME}/getDataForContest`,
-  thunk: async (payload?: DataForContestParams) => {
+  thunk: async (payload?: DataForContestParams | undefined) => {
     const { data } = await contestController.dataForContest(payload);
     return data;
   },
