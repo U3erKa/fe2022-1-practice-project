@@ -10,7 +10,7 @@
     },
     {
       "src": "vite.png",
-      "sizes": "512x512 256x256 128x128 64x64 32x32 24x24 16x16",
+      "sizes": "512x512",
       "purpose": "maskable",
       "type": "image/png"
     }
