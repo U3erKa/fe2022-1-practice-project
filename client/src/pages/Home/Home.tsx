@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'hooks';
-import { Header, Footer, Spinner } from 'components/general';
+import { Header, Footer, Spinner, Picture } from 'components/general';
 import { SlideBar } from '.';
 
 import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from 'constants/general';
@@ -71,7 +71,11 @@ const Home = () => {
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
               <div className={styles.cardContainer}>
                 <div className={styles.card}>
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}more-benifits-world-icon.avif`,
+                      `${STATIC_IMAGES_PATH}more-benifits-world-icon.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}more-benifits-world-icon.png`}
                     alt="globe"
                   />
@@ -85,7 +89,11 @@ const Home = () => {
                   </p>
                 </div>
                 <div className={styles.card}>
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.avif`,
+                      `${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.png`}
                     alt="desktop"
                   />
@@ -98,7 +106,11 @@ const Home = () => {
                   </p>
                 </div>
                 <div className={styles.card}>
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}more-benifits-trademark-icon.avif`,
+                      `${STATIC_IMAGES_PATH}more-benifits-trademark-icon.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}more-benifits-trademark-icon.png`}
                     alt="cards"
                   />
@@ -116,31 +128,55 @@ const Home = () => {
             <div className={styles.greyContainer}>
               <div className={styles.adv}>
                 <div className={styles.images}>
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.avif`,
+                      `${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.png`}
                     alt="forbes"
                   />
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}sponsors/Forbes-active.avif`,
+                      `${STATIC_IMAGES_PATH}sponsors/Forbes-active.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}sponsors/Forbes-active.png`}
                     alt="forbes"
                   />
                 </div>
                 <div className={styles.images}>
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.avif`,
+                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.png`}
                     alt="web"
                   />
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_active.avif`,
+                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_active.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}sponsors/the_next_web_active.png`}
                     alt="web"
                   />
                 </div>
                 <div className={styles.images}>
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}sponsors/mashable-inactive.avif`,
+                      `${STATIC_IMAGES_PATH}sponsors/mashable-inactive.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}sponsors/mashable-inactive.png`}
                     alt="mashable"
                   />
-                  <img
+                  <Picture
+                    srcSet={[
+                      `${STATIC_IMAGES_PATH}sponsors/mashable-active.avif`,
+                      `${STATIC_IMAGES_PATH}sponsors/mashable-active.webp`,
+                    ]}
                     src={`${STATIC_IMAGES_PATH}sponsors/mashable-active.png`}
                     alt="mashable"
                   />
@@ -181,7 +217,8 @@ const Home = () => {
                     </span>
                   </p>
                 </div>
-                <img
+                <Picture
+                  srcSet={[`${STATIC_IMAGES_PATH}gif/1-compressed.avif`]}
                   src={`${STATIC_IMAGES_PATH}gif/1-compressed.gif`}
                   alt="compressed"
                 />
@@ -189,7 +226,8 @@ const Home = () => {
             </div>
             <div className={styles.greenContainer}>
               <div className={styles.step}>
-                <img
+                <Picture
+                  srcSet={[`${STATIC_IMAGES_PATH}gif/2-compressed-new.avif`]}
                   src={`${STATIC_IMAGES_PATH}gif/2-compressed-new.gif`}
                   alt="compressed"
                 />
@@ -232,7 +270,8 @@ const Home = () => {
                     </span>
                   </p>
                 </div>
-                <img
+                <Picture
+                  srcSet={[`${STATIC_IMAGES_PATH}gif/3-compressed.avif`]}
                   src={`${STATIC_IMAGES_PATH}gif/3-compressed.gif`}
                   alt="compressed"
                 />

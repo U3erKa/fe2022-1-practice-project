@@ -13,6 +13,7 @@ import {
 import { dialogButtons } from 'constants/chat';
 
 import styles from './styles/ChatList.module.sass';
+import { Picture } from 'components/general';
 
 const ChatList = () => {
   const {
@@ -47,7 +48,14 @@ const ChatList = () => {
       ) : (
         <>
           <div className={styles.chatHeader}>
-            <img src={`${STATIC_IMAGES_PATH}logo.png`} alt="logo" />
+            <Picture
+              srcSet={[
+                `${STATIC_IMAGES_PATH}logo.avif`,
+                `${STATIC_IMAGES_PATH}logo.webp`,
+              ]}
+              src={`${STATIC_IMAGES_PATH}logo.png`}
+              alt="logo"
+            />
           </div>
           <div className={styles.buttonsContainer}>{dialogs}</div>
         </>

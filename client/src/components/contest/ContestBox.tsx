@@ -8,6 +8,7 @@ import {
 } from 'constants/general';
 
 import styles from './styles/ContestBox.module.sass';
+import { Picture } from 'components/general';
 
 const ContestBox = ({ data }) => {
   const navigate = useNavigate();
@@ -61,12 +62,26 @@ const ContestBox = ({ data }) => {
         <div className={styles.prizeContainer}>
           <div className={styles.guaranteedContainer}>
             <div>
-              <img src={`${STATIC_IMAGES_PATH}smallCheck.png`} alt="check" />
+              <Picture
+                srcSet={[
+                  `${STATIC_IMAGES_PATH}smallCheck.avif`,
+                  `${STATIC_IMAGES_PATH}smallCheck.webp`,
+                ]}
+                src={`${STATIC_IMAGES_PATH}smallCheck.png`}
+                alt="check"
+              />
             </div>
             <span>Guaranteed prize</span>
           </div>
           <div className={styles.prize}>
-            <img src={`${STATIC_IMAGES_PATH}diamond.png`} alt="diamond" />
+            <Picture
+              srcSet={[
+                `${STATIC_IMAGES_PATH}diamond.avif`,
+                `${STATIC_IMAGES_PATH}diamond.webp`,
+              ]}
+              src={`${STATIC_IMAGES_PATH}diamond.png`}
+              alt="diamond"
+            />
             <span>{`$${prize}`}</span>
           </div>
         </div>
@@ -74,7 +89,14 @@ const ContestBox = ({ data }) => {
       <div className={styles.entryAndTimeContainer}>
         <div className={styles.entriesContainer}>
           <div className={styles.entriesCounter}>
-            <img src={`${STATIC_IMAGES_PATH}entrieImage.png`} alt="logo" />
+            <Picture
+              srcSet={[
+                `${STATIC_IMAGES_PATH}entrieImage.avif`,
+                `${STATIC_IMAGES_PATH}entrieImage.webp`,
+              ]}
+              src={`${STATIC_IMAGES_PATH}entrieImage.png`}
+              alt="logo"
+            />
             <span>{count}</span>
           </div>
           <span>Entries</span>

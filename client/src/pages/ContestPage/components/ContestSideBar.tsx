@@ -1,12 +1,11 @@
 import moment from 'moment';
-
 import { useSelector } from 'hooks';
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
 } from 'constants/general';
-
+import { Picture } from 'components/general';
 import styles from '../styles/ContestSideBar.module.sass';
 
 const ContestSideBar = ({ totalEntries, contestData }) => {
@@ -29,19 +28,40 @@ const ContestSideBar = ({ totalEntries, contestData }) => {
       <div className={styles.contestInfo}>
         <div className={styles.awardAndTimeContainer}>
           <div className={styles.prizeContainer}>
-            <img src={`${STATIC_IMAGES_PATH}big-diamond.png`} alt="diamond" />
+            <Picture
+              srcSet={[
+                `${STATIC_IMAGES_PATH}big-diamond.avif`,
+                `${STATIC_IMAGES_PATH}big-diamond.webp`,
+              ]}
+              src={`${STATIC_IMAGES_PATH}big-diamond.png`}
+              alt="diamond"
+            />
             <span>{`$ ${prize}`}</span>
           </div>
           <div className={styles.timeContainer}>
             <div className={styles.timeDesc}>
-              <img src={`${STATIC_IMAGES_PATH}clock.png`} alt="clock" />
+              <Picture
+                srcSet={[
+                  `${STATIC_IMAGES_PATH}clock.avif`,
+                  `${STATIC_IMAGES_PATH}clock.webp`,
+                ]}
+                src={`${STATIC_IMAGES_PATH}clock.png`}
+                alt="clock"
+              />
               <span>Going</span>
             </div>
             <span className={styles.time}>{getTimeStr()}</span>
           </div>
           <div className={styles.guaranteedPrize}>
             <div>
-              <img src={`${STATIC_IMAGES_PATH}smallCheck.png`} alt="check" />
+              <Picture
+                srcSet={[
+                  `${STATIC_IMAGES_PATH}smallCheck.avif`,
+                  `${STATIC_IMAGES_PATH}smallCheck.webp`,
+                ]}
+                src={`${STATIC_IMAGES_PATH}smallCheck.png`}
+                alt="check"
+              />
             </div>
             <span>Guaranteed prize</span>
           </div>

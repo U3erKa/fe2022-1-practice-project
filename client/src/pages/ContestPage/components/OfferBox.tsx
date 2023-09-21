@@ -10,6 +10,7 @@ import {
   clearChangeMarkError,
   changeShowImage,
 } from 'store/slices/contestByIdSlice';
+import { Picture } from 'components/general';
 
 import {
   OFFER_STATUS_REJECTED,
@@ -192,13 +193,31 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
               initialRating={rating}
               fractions={2}
               fullSymbol={
-                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
+                <Picture
+                  srcSet={[
+                    `${STATIC_IMAGES_PATH}star.avif`,
+                    `${STATIC_IMAGES_PATH}star.webp`,
+                  ]}
+                  src={`${STATIC_IMAGES_PATH}star.png`}
+                  alt="star"
+                />
               }
               placeholderSymbol={
-                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
+                <Picture
+                  srcSet={[
+                    `${STATIC_IMAGES_PATH}star.avif`,
+                    `${STATIC_IMAGES_PATH}star.webp`,
+                  ]}
+                  src={`${STATIC_IMAGES_PATH}star.png`}
+                  alt="star"
+                />
               }
               emptySymbol={
-                <img
+                <Picture
+                  srcSet={[
+                    `${STATIC_IMAGES_PATH}star-outline.avif`,
+                    `${STATIC_IMAGES_PATH}star-outline.webp`,
+                  ]}
                   src={`${STATIC_IMAGES_PATH}star-outline.png`}
                   alt="star-outline"
                 />
@@ -209,7 +228,8 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
         </div>
         <div className={styles.responseConainer}>
           {(contestData?.contestType ?? data?.contestType) === LOGO_CONTEST ? (
-            <img
+            <Picture
+              srcSet={[]}
               onClick={() =>
                 dispatch(
                   changeShowImage({
@@ -230,13 +250,34 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
             <Rating
               fractions={2}
               fullSymbol={
-                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
+                <Picture
+                  srcSet={[
+                    `${STATIC_IMAGES_PATH}star.avif`,
+                    `${STATIC_IMAGES_PATH}star.webp`,
+                  ]}
+                  src={`${STATIC_IMAGES_PATH}star.png`}
+                  alt="star"
+                />
               }
               placeholderSymbol={
-                <img src={`${STATIC_IMAGES_PATH}star.png`} alt="star" />
+                <Picture
+                  srcSet={[
+                    `${STATIC_IMAGES_PATH}star.avif`,
+                    `${STATIC_IMAGES_PATH}star.webp`,
+                  ]}
+                  src={`${STATIC_IMAGES_PATH}star.png`}
+                  alt="star"
+                />
               }
               emptySymbol={
-                <img src={`${STATIC_IMAGES_PATH}star-outline.png`} alt="star" />
+                <Picture
+                  srcSet={[
+                    `${STATIC_IMAGES_PATH}star-outline.avif`,
+                    `${STATIC_IMAGES_PATH}star-outline.webp`,
+                  ]}
+                  src={`${STATIC_IMAGES_PATH}star-outline.png`}
+                  alt="star-outline"
+                />
               }
               onClick={changeMarkMethod}
               placeholderRating={data.mark}

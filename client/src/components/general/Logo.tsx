@@ -1,11 +1,12 @@
+import { type FC } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import { FC } from 'react';
 
 export type Props = {
   to?: string;
+  srcSet?: string[],
   src?: string;
   alt?: string;
   className?: string;
@@ -13,7 +14,7 @@ export type Props = {
 
 const Logo: FC<Props> = ({ to, ...props }) => (
   <Link to={to!}>
-    <img {...props} />
+    <Picture {...props} />
   </Link>
 );
 
@@ -26,6 +27,10 @@ Logo.propTypes = {
 
 Logo.defaultProps = {
   to: '/',
+  srcSet: [
+    `${STATIC_IMAGES_PATH}blue-logo.avif`,
+    `${STATIC_IMAGES_PATH}blue-logo.webp`,
+  ],
   src: `${STATIC_IMAGES_PATH}blue-logo.png`,
   alt: 'logo',
 };

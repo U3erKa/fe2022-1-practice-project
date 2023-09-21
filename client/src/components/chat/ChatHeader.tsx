@@ -14,6 +14,7 @@ import {
 } from 'constants/general';
 
 import styles from './styles/ChatHeader.module.sass';
+import { Picture } from 'components/general';
 
 const ChatHeader = ({ userId }) => {
   const { interlocutor, chatData } = useSelector(({ chatStore }) => chatStore);
@@ -47,7 +48,14 @@ const ChatHeader = ({ userId }) => {
         className={styles.buttonContainer}
         onClick={() => dispatch(backToDialogList())}
       >
-        <img src={`${STATIC_IMAGES_PATH}arrow-left-thick.png`} alt="back" />
+        <Picture
+          srcSet={[
+            `${STATIC_IMAGES_PATH}arrow-left-thick.avif`,
+            `${STATIC_IMAGES_PATH}arrow-left-thick.webp`,
+          ]}
+          src={`${STATIC_IMAGES_PATH}arrow-left-thick.png`}
+          alt="back"
+        />
       </div>
       <div className={styles.infoContainer}>
         <div>

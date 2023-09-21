@@ -5,10 +5,10 @@ import { isEmpty } from 'radash';
 import { useDispatch, useSelector } from 'hooks';
 import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
 
-import { Error } from 'components/general';
+import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
 
-import { DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
+import { DUMMY_LINK } from 'constants/general';
 import styles from './styles/Payment.module.sass';
 
 const Payment = () => {
@@ -48,7 +48,7 @@ const Payment = () => {
   return (
     <div>
       <div className={styles.header}>
-        <img src={`${STATIC_IMAGES_PATH}blue-logo.png`} alt="blue-logo" />
+        <Logo />
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.paymentContainer}>

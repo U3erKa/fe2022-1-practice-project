@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'hooks';
-import { Logo, Spinner } from 'components/general';
+import { Logo, Picture, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
 
 import { STATIC_IMAGES_PATH, CUSTOMER, DUMMY_LINK } from 'constants/general';
@@ -42,7 +42,14 @@ const Header = () => {
       </div>
       <div className={styles.loginSignnUpHeaders}>
         <div className={styles.numberContainer}>
-          <img src={`${STATIC_IMAGES_PATH}phone.png`} alt="phone" />
+          <Picture
+            srcSet={[
+              `${STATIC_IMAGES_PATH}phone.avif`,
+              `${STATIC_IMAGES_PATH}phone.webp`,
+            ]}
+            src={`${STATIC_IMAGES_PATH}phone.png`}
+            alt="phone"
+          />
           <a href="tel:8773553585">(877)&nbsp;355-3585</a>
         </div>
         <div className={styles.userButtonsContainer}>

@@ -109,4 +109,5 @@ export const MIME_TYPE = {
   AVIF: 'image/avif',
   SVG: 'image/svg+xml',
   PNG: 'image/png',
+  WEBP: 'image/webp',
 } as const;

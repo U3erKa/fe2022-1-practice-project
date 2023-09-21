@@ -28,7 +28,13 @@ const RegistrationPage = () => {
     <div className={styles.signUpPage}>
       <div className={styles.signUpContainer}>
         <div className={styles.headerSignUpPage}>
-          <Logo src={`${STATIC_IMAGES_PATH}logo.png`} />
+          <Logo
+            srcSet={[
+              `${STATIC_IMAGES_PATH}logo.avif`,
+              `${STATIC_IMAGES_PATH}logo.webp`,
+            ]}
+            src={`${STATIC_IMAGES_PATH}logo.png`}
+          />
           <div className={styles.linkLoginContainer}>
             <Link to="/login" style={{ textDecoration: 'none' }}>
               <span>Login</span>

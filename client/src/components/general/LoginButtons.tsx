@@ -1,5 +1,5 @@
-import { ProfileNavBar } from '.';
 import { useSelector } from 'hooks';
+import { Picture, ProfileNavBar } from 'components/general';
 import { getDays, getHours, getRemainingTime } from 'utils/functions';
 import {
   ANONYM_IMAGE_PATH,
@@ -57,10 +57,21 @@ export default function LoginButtons({ data }) {
         />
         {shouldNotifyAboutEvents && <div className={styles.badge}></div>}
         <span>{`Hi, ${data.displayName}`}</span>
-        <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
+        <Picture
+          srcSet={[
+            `${STATIC_IMAGES_PATH}menu-down.avif`,
+            `${STATIC_IMAGES_PATH}menu-down.webp`,
+          ]}
+          src={`${STATIC_IMAGES_PATH}menu-down.png`}
+          alt="menu"
+        />
         <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />
       </div>
-      <img
+      <Picture
+        srcSet={[
+          `${STATIC_IMAGES_PATH}email.avif`,
+          `${STATIC_IMAGES_PATH}email.webp`,
+        ]}
         src={`${STATIC_IMAGES_PATH}email.png`}
         className={styles.emailIcon}
         alt="email"

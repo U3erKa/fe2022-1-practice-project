@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/NavList.module.sass';
 
@@ -7,7 +7,14 @@ export default function NavList({ list }) {
   const mapList = list.map(({ id, text, listItem }) => (
     <li key={id}>
       <span>{text}</span>
-      <img src={`${STATIC_IMAGES_PATH}menu-down.png`} alt="menu" />
+      <Picture
+        srcSet={[
+          `${STATIC_IMAGES_PATH}menu-down.avif`,
+          `${STATIC_IMAGES_PATH}menu-down.webp`,
+        ]}
+        src={`${STATIC_IMAGES_PATH}menu-down.png`}
+        alt="menu"
+      />
       <NavListItem list={listItem} />
     </li>
   ));

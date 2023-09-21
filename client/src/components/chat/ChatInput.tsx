@@ -7,6 +7,7 @@ import { FormInput } from 'components/input';
 import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/ChatInput.module.sass';
+import { Picture } from 'components/general';
 
 const ChatInput = () => {
   const interlocutor = useSelector(({ chatStore }) => chatStore.interlocutor);
@@ -43,7 +44,14 @@ const ChatInput = () => {
             }}
           />
           <button type="submit">
-            <img src={`${STATIC_IMAGES_PATH}send.png`} alt="send Message" />
+            <Picture
+              srcSet={[
+                `${STATIC_IMAGES_PATH}send.avif`,
+                `${STATIC_IMAGES_PATH}send.webp`,
+              ]}
+              src={`${STATIC_IMAGES_PATH}send.png`}
+              alt="send Message"
+            />
           </button>
         </Form>
       </Formik>
