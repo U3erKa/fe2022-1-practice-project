@@ -1,12 +1,11 @@
-import { uniqueId } from 'utils/functions';
 import { HOW_IT_WORKS_PATH } from 'constants/general';
 import { HOW_CONTESTS_WORK } from 'constants/howItWorks';
 import styles from '../styles/HowContestsWork.module.sass';
 import type { FC } from 'react';
 
 export const HowContestsWork: FC = () => {
-  const howContestsWork = HOW_CONTESTS_WORK.map((listEntry) => (
-    <li className={styles.howToItem} key={uniqueId()}>
+  const howContestsWork = HOW_CONTESTS_WORK.map((listEntry, i) => (
+    <li className={styles.howToItem} key={i}>
       <p className={styles.text}>{listEntry}</p>
     </li>
   ));

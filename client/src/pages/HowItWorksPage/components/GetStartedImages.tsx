@@ -1,12 +1,11 @@
 import { Fragment } from 'react';
-import { uniqueId } from 'utils/functions';
 import { GET_STARTED_IMAGES } from 'constants/howItWorks';
 import styles from '../styles/GetStartedImages.module.sass';
 
 const GetStartedImages = () => {
   const images = GET_STARTED_IMAGES.map(({ id, src, alt, caption }) => {
-    const captionElement = caption.map((entry) => (
-      <Fragment key={uniqueId('caption')}>{entry}</Fragment>
+    const captionElement = caption.map((entry, i) => (
+      <Fragment key={i}>{entry}</Fragment>
     ));
 
     return (

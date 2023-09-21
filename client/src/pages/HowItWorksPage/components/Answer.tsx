@@ -1,6 +1,5 @@
 import cx from 'classnames';
 import { isEqual } from 'radash';
-import { uniqueId } from 'utils/functions';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
 import styles from '../styles/Answer.module.sass';
@@ -26,8 +25,8 @@ export const Answer: FC<Props> = ({ active, contents }) => {
       <section className={containerStyles}>
         <p className={styles.text}>{description}</p>
         <ul className={styles.list}>
-          {list.map((text) => (
-            <li key={uniqueId()}>
+          {list.map((text, i) => (
+            <li key={i}>
               <p className={styles.text}>{text}</p>
             </li>
           ))}

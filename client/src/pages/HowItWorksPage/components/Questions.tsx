@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { uniqueId } from 'utils/functions';
 import cx from 'classnames';
 import { Answer } from '..';
 import styles from '../styles/Questions.module.sass';
