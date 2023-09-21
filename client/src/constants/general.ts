@@ -104,3 +104,9 @@ export const notifyOptions = [
   '1 day before',
   '1 week before',
 ] as const;
+
+export const MIME_TYPE = {
+  AVIF: 'image/avif',
+  SVG: 'image/svg+xml',
+  PNG: 'image/png',
+} as const;
