@@ -1,6 +1,7 @@
+import { Suspense, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Outlet, redirect } from 'react-router-dom';
-
+import { getEvents } from 'store/slices/eventSlice';
 import { useDispatch } from 'hooks';
 import {
   ContestCreationPage,
@@ -16,6 +17,7 @@ import {
   StartContestPage,
   UserProfile,
 } from 'pages';
+import { Spinner } from 'components/general';
 import { ChatContainer } from 'components/chat';
 import {
   NAME_CONTEST,
@@ -24,8 +26,6 @@ import {
   REFRESH_TOKEN,
 } from 'constants/general';
 import type { LoaderFunction, RouteObject } from 'react-router-dom';
-import { useEffect } from 'react';
-import { getEvents } from 'store/slices/eventSlice';
 
 const isUserLoaded = () => {
   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
@@ -51,15 +51,33 @@ export const routes: RouteObject[] = [
     path: '/',
     element: <RootLayout />,
     children: [
-      { index: true, element: <Home /> },
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Home />
+          </Suspense>
+        ),
+      },
 
       {
         loader: allowNotAuthorizedOnly,
         children: [
-          { path: '/login', element: <LoginPage /> },
+          {
+            path: '/login',
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <LoginPage />
+              </Suspense>
+            ),
+          },
           {
             path: '/registration',
-            element: <RegistrationPage />,
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <RegistrationPage />
+              </Suspense>
+            ),
           },
         ],
       },
@@ -67,44 +85,106 @@ export const routes: RouteObject[] = [
       {
         loader: allowAuthorizedOnly,
         children: [
-          { path: '/payment', element: <Payment /> },
+          {
+            path: '/payment',
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <Payment />
+              </Suspense>
+            ),
+          },
           {
             path: '/startContest',
-            element: <StartContestPage />,
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <StartContestPage />
+              </Suspense>
+            ),
           },
           {
             path: '/startContest/nameContest',
             element: (
-              <ContestCreationPage
-                contestType={NAME_CONTEST}
-                title={'COMPANY NAME'}
-              />
+              <Suspense fallback={<Spinner />}>
+                <ContestCreationPage
+                  contestType={NAME_CONTEST}
+                  title={'COMPANY NAME'}
+                />
+              </Suspense>
             ),
           },
           {
             path: '/startContest/taglineContest',
             element: (
-              <ContestCreationPage
-                contestType={TAGLINE_CONTEST}
-                title={'TAGLINE'}
-              />
+              <Suspense fallback={<Spinner />}>
+                <ContestCreationPage
+                  contestType={TAGLINE_CONTEST}
+                  title={'TAGLINE'}
+                />
+              </Suspense>
             ),
           },
           {
             path: '/startContest/logoContest',
             element: (
-              <ContestCreationPage contestType={LOGO_CONTEST} title={'LOGO'} />
+              <Suspense fallback={<Spinner />}>
+                <ContestCreationPage
+                  contestType={LOGO_CONTEST}
+                  title={'LOGO'}
+                />
+              </Suspense>
             ),
           },
-          { path: '/dashboard', element: <Dashboard /> },
-          { path: '/events', element: <EventsPage /> },
-          { path: '/contest/:id', element: <ContestPage /> },
-          { path: '/account', element: <UserProfile /> },
+          {
+            path: '/dashboard',
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <Dashboard />
+              </Suspense>
+            ),
+          },
+          {
+            path: '/events',
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <EventsPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: '/contest/:id',
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <ContestPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: '/account',
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <UserProfile />
+              </Suspense>
+            ),
+          },
         ],
       },
 
-      { path: '/how-it-works', element: <HowItWorksPage /> },
-      { path: '*', element: <NotFound /> },
+      {
+        path: '/how-it-works',
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <HowItWorksPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: '*',
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <NotFound />
+          </Suspense>
+        ),
+      },
     ],
   },
 ];

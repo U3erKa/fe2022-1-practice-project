@@ -1,12 +1,22 @@
-export { default as ContestCreationPage } from './ContestCreationPage/ContestCreationPage';
-export { default as ContestPage } from './ContestPage/ContestPage';
-export { default as Dashboard } from './Dashboard/Dashboard';
-export { default as EventsPage } from './EventsPage/EventsPage';
-export { default as Home } from './Home/Home';
-export { default as HowItWorksPage } from './HowItWorksPage/HowItWorksPage';
-export { default as LoginPage } from './LoginPage/LoginPage';
-export { default as Payment } from './Payment/Payment';
-export { default as RegistrationPage } from './RegistrationPage/RegistrationPage';
-export { default as StartContestPage } from './StartContestPage/StartContestPage';
-export { default as UserProfile } from './UserProfile/UserProfile';
-export { default as NotFound } from './NotFound/NotFound';
+import { lazy } from 'react';
+
+export const ContestCreationPage = lazy(
+  () => import('./ContestCreationPage/ContestCreationPage'),
+);
+export const ContestPage = lazy(() => import('./ContestPage/ContestPage'));
+export const Dashboard = lazy(() => import('./Dashboard/Dashboard'));
+export const EventsPage = lazy(() => import('./EventsPage/EventsPage'));
+export const Home = lazy(() => import('./Home/Home'));
+export const HowItWorksPage = lazy(
+  () => import('./HowItWorksPage/HowItWorksPage'),
+);
+export const LoginPage = lazy(() => import('./LoginPage/LoginPage'));
+export const Payment = lazy(() => import('./Payment/Payment'));
+export const RegistrationPage = lazy(
+  () => import('./RegistrationPage/RegistrationPage'),
+);
+export const StartContestPage = lazy(
+  () => import('./StartContestPage/StartContestPage'),
+);
+export const UserProfile = lazy(() => import('./UserProfile/UserProfile'));
+export const NotFound = lazy(() => import('./NotFound/NotFound'));
