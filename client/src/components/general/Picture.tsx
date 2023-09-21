@@ -11,7 +11,13 @@ export default function Picture({ srcSet, className, ...restProps }: Props) {
       .substring(source.lastIndexOf('.') + 1)
       .toUpperCase();
 
-    return <source key={source} srcSet={source} type={MIME_TYPE[extension]} />;
+    return (
+      <source
+        key={source}
+        srcSet={encodeURI(source)}
+        type={MIME_TYPE[extension]}
+      />
+    );
   });
 
   return (
