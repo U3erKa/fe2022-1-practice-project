@@ -12,7 +12,11 @@ export type TextEntry = {
   | ({ type: 'anchor' } & LinkProps)
 );
 
-export type QNATuples = [string, string | string[] | AnswerProps | ReactNode][];
+export type QNAItems = {
+  id: string,
+  question: string;
+  answer: string | string[] | AnswerProps | ReactNode;
+}[];
 
 export type AnswerProps = {
   description: string;

@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { uniqueId } from 'utils/functions';
 import { useDispatch } from 'hooks';
 import { createEvent } from 'store/slices/eventSlice';
 import { newEventSchema } from 'utils/validators/validationSchems';
@@ -17,7 +16,7 @@ export const initialValues = {
 
 function NotifyEventField() {
   const options = notifyOptions.map((option) => (
-    <option key={uniqueId('notify')} value={option}>
+    <option key={option} value={option}>
       {option}
     </option>
   ));

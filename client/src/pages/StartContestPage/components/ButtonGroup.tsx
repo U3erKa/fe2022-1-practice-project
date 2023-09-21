@@ -2,7 +2,6 @@ import cx from 'classnames';
 import { useSelector, useDispatch } from 'hooks';
 import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
-import { uniqueId } from 'utils/functions';
 import styles from '../styles/ButtonGroup.module.sass';
 
 export default function ButtonGroup() {
@@ -11,9 +10,9 @@ export default function ButtonGroup() {
   );
   const dispatch = useDispatch();
 
-  const buttons = BUTTONS.map(({ choise, text }) => (
+  const buttons = BUTTONS.map(({ id, choise, text }) => (
     <button
-      key={uniqueId('button')}
+      key={id}
       className={cx({
         [styles.button]: true,
         [styles.active]: nameMathesDomain === choise,

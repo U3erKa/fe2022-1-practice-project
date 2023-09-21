@@ -14,7 +14,7 @@ export const Questions: FC<Props> = ({ questions }) => {
   const [activeQuestion, setActiveQuestion] = useState(0);
   return (
     <section>
-      {questions.map(([question, answer], i) => {
+      {questions.map(({ id, question, answer }, i) => {
         const active = activeQuestion === i;
         const iconStyles = cx({
           [styles.activeIcon]: active,
@@ -23,7 +23,7 @@ export const Questions: FC<Props> = ({ questions }) => {
         });
 
         return (
-          <section className={styles.questionContainer} key={uniqueId()}>
+          <section className={styles.questionContainer} key={id}>
             <button
               className={styles.question}
               onClick={() => setActiveQuestion(active ? -1 : i)}
