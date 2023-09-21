@@ -28,7 +28,7 @@ const ImageUpload = (props) => {
   return (
     <div className={uploadContainer}>
       <div className={inputContainer}>
-        <span>Support only images (*.png, *.gif, *.jpeg)</span>
+        <span>Support only images (*.jpg, *.png, *.jpeg)</span>
         <input
           {...restField}
           id="fileInput"
