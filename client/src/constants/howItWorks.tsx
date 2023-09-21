@@ -336,7 +336,11 @@ export const FEATURED = [
     href: 'http://www.forbes.com/sites/forbestreptalks/2016/07/11/not-sure-how-to-name-a-startup-squadhelp-will-crowdsource-it-for-199',
   },
   {
-    src: `${HOW_IT_WORKS_PATH}TheNextWeb.svg`,
+    src: `${HOW_IT_WORKS_PATH}TheNextWeb.png`,
+    srcSet: [
+      `${HOW_IT_WORKS_PATH}TheNextWeb.webp`,
+      `${HOW_IT_WORKS_PATH}TheNextWeb.avif`,
+    ],
     alt: 'The Next Web',
     href: 'http://thenextweb.com/contributors/crowdsource-startup-name-with-squadhelp/',
   },
