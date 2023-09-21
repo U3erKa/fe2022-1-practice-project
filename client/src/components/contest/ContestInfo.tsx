@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { isEqual } from 'lodash';
+import { isEqual } from 'radash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
 
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
@@ -84,7 +86,7 @@ const ContestInfo = (props) => {
             </div>
           )}
           {role !== CUSTOMER && (
-            <i onClick={goChat} className="fas fa-comments" />
+            <FontAwesomeIcon icon={faComments} onClick={goChat} />
           )}
         </div>
         <div className={styles.dataContainer}>

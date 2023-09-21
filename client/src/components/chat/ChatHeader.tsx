@@ -1,12 +1,17 @@
-import classNames from 'classnames';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUnlock,
+  faUserLock,
+  faHeart as fasFaHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farFaHeart } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch, useSelector } from 'hooks';
 import {
   backToDialogList,
   changeChatFavorite,
   changeChatBlock,
 } from 'store/slices/chatSlice';
-
+import { Picture } from 'components/general';
 import {
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
@@ -14,7 +19,6 @@ import {
 } from 'constants/general';
 
 import styles from './styles/ChatHeader.module.sass';
-import { Picture } from 'components/general';
 
 const ChatHeader = ({ userId }) => {
   const { interlocutor, chatData } = useSelector(({ chatStore }) => chatStore);
@@ -71,7 +75,8 @@ const ChatHeader = ({ userId }) => {
         </div>
         {chatData && (
           <div>
-            <i
+            <FontAwesomeIcon
+              icon={isFavorite(chatData, userId) ? fasFaHeart : farFaHeart}
               onClick={(event) =>
                 changeFavorite(
                   {
@@ -81,12 +86,9 @@ const ChatHeader = ({ userId }) => {
                   event,
                 )
               }
-              className={classNames({
-                'far fa-heart': !isFavorite(chatData, userId),
-                'fas fa-heart': isFavorite(chatData, userId),
-              })}
             />
-            <i
+            <FontAwesomeIcon
+              icon={isBlocked(chatData, userId) ? faUnlock : faUserLock}
               onClick={(event) =>
                 changeBlackList(
                   {
@@ -96,10 +98,6 @@ const ChatHeader = ({ userId }) => {
                   event,
                 )
               }
-              className={classNames({
-                'fas fa-user-lock': !isBlocked(chatData, userId),
-                'fas fa-unlock': isBlocked(chatData, userId),
-              })}
             />
           </div>
         )}

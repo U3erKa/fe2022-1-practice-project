@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import cx from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Answer } from '..';
 import styles from '../styles/Questions.module.sass';
 import type { FC } from 'react';
@@ -18,7 +20,6 @@ export const Questions: FC<Props> = ({ questions }) => {
         const iconStyles = cx({
           [styles.activeIcon]: active,
           [styles.arrowIcon]: true,
-          'fas fa-arrow-right small': true,
         });
 
         return (
@@ -28,7 +29,7 @@ export const Questions: FC<Props> = ({ questions }) => {
               onClick={() => setActiveQuestion(active ? -1 : i)}
             >
               {question}
-              <i className={iconStyles}></i>
+              <FontAwesomeIcon icon={faArrowRight} className={iconStyles} />
             </button>
             <Answer active={active} contents={answer} />
           </section>

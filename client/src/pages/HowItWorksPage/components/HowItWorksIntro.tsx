@@ -1,6 +1,8 @@
 import { HOW_IT_WORKS_PATH } from 'constants/general';
-import styles from '../styles/HowItWorksIntro.module.sass';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import type { FC } from 'react';
+import styles from '../styles/HowItWorksIntro.module.sass';
 
 export const HowItWorksIntro: FC = () => {
   return (
@@ -19,7 +21,7 @@ export const HowItWorksIntro: FC = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <i className="fas fa-play"></i>
+          <FontAwesomeIcon icon={faPlay} />
           Play video
         </a>
       </section>

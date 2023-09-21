@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles/Catalog.module.sass';
 
 const Catalog = (props) => {
@@ -12,8 +14,8 @@ const Catalog = (props) => {
       <div className={styles.infoContainer}>
         <span>Chats number: </span>
         <span className={styles.numbers}>{chats.length}</span>
-        <i
-          className="fas fa-trash-alt"
+        <FontAwesomeIcon
+          icon={faTrashCan}
           onClick={(event) => deleteCatalog(event, _id)}
         />
       </div>

@@ -1,7 +1,13 @@
 import { confirmAlert } from 'react-confirm-alert';
 import Rating from 'react-rating';
 import { isEqual } from 'radash';
-import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCircleCheck,
+  faCircleXmark,
+  faClock,
+  faComments,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch, useSelector } from 'hooks';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
@@ -124,22 +130,17 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
       case OFFER_STATUS_REJECTED:
       case OFFER_STATUS_DISCARDED:
         return (
-          <i
-            className={classNames('fas fa-times-circle reject', styles.reject)}
-          />
+          <FontAwesomeIcon icon={faCircleXmark} className={styles.reject} />
         );
       case OFFER_STATUS_WON:
       case role === MODERATOR && OFFER_STATUS_APPROVED:
         return (
-          <i
-            className={classNames(
-              'fas fa-check-circle resolve',
-              styles.resolve,
-            )}
-          />
+          <FontAwesomeIcon icon={faCircleCheck} className={styles.resolve} />
         );
       case role === CREATOR && OFFER_STATUS_PENDING:
-        return <i className={classNames('fas fa-clock', styles.pending)} />;
+        return (
+          <FontAwesomeIcon icon={faClock} className={styles.pending} />
+        );
       default:
         return null;
     }
@@ -284,7 +285,10 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
             />
           )}
         </div>
-        {role !== CREATOR && <i onClick={goChat} className="fas fa-comments" />}
+
+        {role !== CREATOR && (
+          <FontAwesomeIcon icon={faComments} onClick={goChat} />
+        )}
       </div>
       {needButtons(data.status) && (
         <div className={styles.btnsContainer}>

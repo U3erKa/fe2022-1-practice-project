@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { EventListItems } from '..';
 import styles from '../styles/EventsList.module.sass';
 
@@ -10,7 +12,7 @@ export default function EventsList({ isPast = false, events }) {
         </h1>
         <p className={styles.textContainer}>
           <span>Remaining time</span>
-          <i className="fas fa-user-clock"></i>
+          <FontAwesomeIcon icon={faClock} className={styles.pending} />
         </p>
       </section>
       <EventListItems events={events} />

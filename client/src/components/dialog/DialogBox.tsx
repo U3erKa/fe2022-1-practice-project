@@ -1,5 +1,14 @@
-import classNames from 'classnames';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCircleMinus,
+  faUnlock,
+  faUserLock,
+  faHeart as fasFaHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faSquarePlus,
+  faHeart as farFaHeart,
+} from '@fortawesome/free-regular-svg-icons';
 import {
   ANONYM_IMAGE_PATH,
   CATALOG_PREVIEW_CHAT_MODE,
@@ -55,7 +64,8 @@ const DialogBox = (props) => {
         </div>
         <div className={styles.buttonsContainer}>
           <span className={styles.time}>{getTimeStr(createdAt)}</span>
-          <i
+          <FontAwesomeIcon
+            icon={isFavorite ? fasFaHeart : farFaHeart}
             onClick={(event) =>
               changeFavorite(
                 {
@@ -65,12 +75,9 @@ const DialogBox = (props) => {
                 event,
               )
             }
-            className={classNames({
-              'far fa-heart': !isFavorite,
-              'fas fa-heart': isFavorite,
-            })}
           />
-          <i
+          <FontAwesomeIcon
+            icon={isBlocked ? faUnlock : faUserLock}
             onClick={(event) =>
               changeBlackList(
                 {
@@ -80,17 +87,14 @@ const DialogBox = (props) => {
                 event,
               )
             }
-            className={classNames({
-              'fas fa-user-lock': !isBlocked,
-              'fas fa-unlock': isBlocked,
-            })}
           />
-          <i
+          <FontAwesomeIcon
+            icon={
+              chatMode === CATALOG_PREVIEW_CHAT_MODE
+                ? faCircleMinus
+                : faSquarePlus
+            }
             onClick={(event) => catalogOperation(event, _id)}
-            className={classNames({
-              'far fa-plus-square': chatMode !== CATALOG_PREVIEW_CHAT_MODE,
-              'fas fa-minus-circle': chatMode === CATALOG_PREVIEW_CHAT_MODE,
-            })}
           />
         </div>
       </div>

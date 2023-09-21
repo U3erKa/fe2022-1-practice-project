@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'hooks';
 import { Header, Footer, Spinner, Picture } from 'components/general';
 import { SlideBar } from '.';
-
 import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from 'constants/general';
 import {
   MAIN_SLIDER_IMAGES,
@@ -14,7 +14,6 @@ import {
   FEEDBACK_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
 } from 'constants/carousel';
-
 import styles from './styles/Home.module.sass';
 
 const Home = () => {
@@ -203,14 +202,20 @@ const Home = () => {
                 <div>
                   <h3>Step 1: Launch a Naming Contest</h3>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>
                       Start your project right with our proven Naming Brief
                       template
                     </span>
                   </p>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>
                       We’ll walk you through exactly what you need to share
                       about your project in order to get an awesome Name
@@ -234,13 +239,19 @@ const Home = () => {
                 <div className={styles.greenStep}>
                   <h3>Step 2: Ideas start pouring in within minutes</h3>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>
                       100s of naming experts start submitting name ideas
                     </span>
                   </p>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>
                       Names automatically checked for URL availability
                     </span>
@@ -253,17 +264,26 @@ const Home = () => {
                 <div>
                   <h3>Step 3: Rate Entries & Brainstorm with Creatives</h3>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>Provide instant feedback on Names</span>
                   </p>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>
                       Send private feedback or public messages to all creatives
                     </span>
                   </p>
                   <p>
-                    <i className="fas fa-check" />
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ color: '#006d00' }}
+                    />
                     <span>
                       The more entries you rate - the submissions get better and
                       better

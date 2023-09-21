@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles/Error.module.sass';
 
 const Error = (props) => {
@@ -23,7 +25,7 @@ const Error = (props) => {
   return (
     <div className={styles.errorContainer}>
       <span>{getMessage()}</span>
-      <i className="far fa-times-circle" onClick={() => clearError()} />
+      <FontAwesomeIcon icon={faCircleXmark} onClick={() => clearError()} />
     </div>
   );
 };

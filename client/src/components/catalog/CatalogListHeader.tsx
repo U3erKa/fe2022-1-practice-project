@@ -1,4 +1,6 @@
 import { Formik, Form } from 'formik';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch, useSelector } from 'hooks';
 import {
@@ -28,15 +30,15 @@ const CatalogListHeader = () => {
 
   return (
     <div className={styles.headerContainer}>
-      <i
-        className="fas fa-long-arrow-alt-left"
+      <FontAwesomeIcon
+        icon={faLeftLong}
         onClick={() => dispatch(changeShowModeCatalog())}
       />
       {!isRenameCatalog ? (
         <div className={styles.infoContainer}>
           <span>{catalogName}</span>
-          <i
-            className="fas fa-edit"
+          <FontAwesomeIcon
+            icon={faPenToSquare}
             onClick={() => dispatch(changeRenameCatalogMode())}
           />
         </div>

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { HOW_IT_WORKS_PATH } from 'constants/general';
 import styles from '../styles/ContactUs.module.sass';
 import type { FC } from 'react';
@@ -8,7 +10,7 @@ export const ContactUs: FC = () => {
     <article className={styles.container}>
       <ul className={styles.contentsContainer}>
         <li className={styles.contents}>
-          <i className="fas fa-angle-right"></i>
+          <FontAwesomeIcon icon={faAngleRight} />
           <section>
             <h3 className={styles.smallHeading}>
               Pay a Fraction of cost vs hiring an agency
@@ -20,7 +22,7 @@ export const ContactUs: FC = () => {
           </section>
         </li>
         <li className={styles.contents}>
-          <i className="fas fa-angle-right"></i>
+          <FontAwesomeIcon icon={faAngleRight} />
           <section>
             <h3 className={styles.bigHeading}>Satisfaction Guarantee</h3>
             <p className={styles.text}>

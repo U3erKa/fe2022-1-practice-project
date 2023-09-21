@@ -16,6 +16,8 @@ import {
 } from 'constants/general';
 
 import styles from './styles/CatalogCreation.module.sass';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const CatalogCreation = () => {
   const { catalogCreationMode, isFetching } = useSelector(
@@ -34,8 +36,8 @@ const CatalogCreation = () => {
 
   return (
     <div className={styles.catalogCreationContainer}>
-      <i
-        className="far fa-times-circle"
+      <FontAwesomeIcon
+        icon={faCircleXmark}
         onClick={() => dispatch(changeShowAddChatToCatalogMenu())}
       />
       <div className={styles.buttonsContainer}>
