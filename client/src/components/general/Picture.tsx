@@ -5,7 +5,7 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'srcSet'> & {
   srcSet?: string[];
 };
 
-export default function Picture({ srcSet, ...restProps }: Props) {
+export default function Picture({ srcSet, className, ...restProps }: Props) {
   const sources = srcSet?.map((source) => {
     const extension = source
       .substring(source.lastIndexOf('.') + 1)
@@ -15,7 +15,7 @@ export default function Picture({ srcSet, ...restProps }: Props) {
   });
 
   return (
-    <picture>
+    <picture className={className}>
       {sources}
       <img {...restProps} />
     </picture>

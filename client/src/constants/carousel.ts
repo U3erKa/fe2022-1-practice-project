@@ -5,45 +5,243 @@ export const EXAMPLE_SLIDER = 'example_slider';
 export const FEEDBACK_SLIDER = 'feedback_slider';
 
 export const MAIN_SLIDER_IMAGES = [
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/21..jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_1_01.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_2_15.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AA_48_StyleRevolver.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AD_32_Monvelli.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AG_15_Trusthaven.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AK_03_pawxie.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_L_09_lush.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_P_42_Avanti.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_S_25_Autovity.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_W_33_Quantic.jpg`,
-  `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_Y_29_Vechetti.jpg`,
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/21..jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/21..avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/21..webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_1_01.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_1_01.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_1_01.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_2_15.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_2_15.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/B_2_15.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AA_48_StyleRevolver.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AA_48_StyleRevolver.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AA_48_StyleRevolver.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AD_32_Monvelli.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AD_32_Monvelli.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AD_32_Monvelli.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AG_15_Trusthaven.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AG_15_Trusthaven.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AG_15_Trusthaven.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AK_03_pawxie.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AK_03_pawxie.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_AK_03_pawxie.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_L_09_lush.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_L_09_lush.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_L_09_lush.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_P_42_Avanti.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_P_42_Avanti.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_P_42_Avanti.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_S_25_Autovity.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_S_25_Autovity.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_S_25_Autovity.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_W_33_Quantic.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_W_33_Quantic.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_W_33_Quantic.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_Y_29_Vechetti.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_Y_29_Vechetti.avif`,
+      `${STATIC_IMAGES_PATH}${MAIN_SLIDER}/Banner_Visual_Name_Y_29_Vechetti.webp`,
+    ],
+  },
 ];
 
 export const EXAMPLE_SLIDER_IMAGES = [
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/1.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/2.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/3.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/4.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/5.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/6.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/7.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/8.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/9.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/10.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/11.jpg`,
-  `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/12.jpg`,
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/1.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/1.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/1.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/2.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/2.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/2.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/3.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/3.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/3.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/4.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/4.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/4.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/5.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/5.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/5.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/6.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/6.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/6.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/7.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/7.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/7.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/8.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/8.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/8.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/9.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/9.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/9.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/10.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/10.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/10.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/11.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/11.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/11.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/12.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/12.avif`,
+      `${STATIC_IMAGES_PATH}${EXAMPLE_SLIDER}/12.webp`,
+    ],
+  },
 ];
 
 export const FEEDBACK_SLIDER_IMAGES = [
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Blue dress professional Lynne Lowder-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Bonnie Linked-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/IMG_0232-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/me (5)-avatar.jpeg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/MoonFamily web size-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/nathan2-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Simon-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/squad-avatar.jpg`,
-  `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Unbenannt1-avatar.jpg`,
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Blue dress professional Lynne Lowder-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Blue dress professional Lynne Lowder-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Blue dress professional Lynne Lowder-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Bonnie Linked-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Bonnie Linked-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Bonnie Linked-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/IMG_0232-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/IMG_0232-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/IMG_0232-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/me (5)-avatar.jpeg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/me (5)-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/me (5)-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/MoonFamily web size-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/MoonFamily web size-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/MoonFamily web size-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/nathan2-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/nathan2-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/nathan2-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Simon-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Simon-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Simon-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/squad-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/squad-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/squad-avatar.webp`,
+    ],
+  },
+  {
+    src: `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Unbenannt1-avatar.jpg`,
+    srcSet: [
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Unbenannt1-avatar.avif`,
+      `${STATIC_IMAGES_PATH}${FEEDBACK_SLIDER}/Unbenannt1-avatar.webp`,
+    ],
+  },
 ];
 
 export const EXAMPLE_SLIDER_TEXT = [

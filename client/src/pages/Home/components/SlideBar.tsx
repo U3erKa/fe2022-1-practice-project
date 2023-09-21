@@ -6,19 +6,20 @@ import {
   FEEDBACK_SLIDER,
   FEEDBACK_SLIDER_TEXT,
   MAIN_SLIDER,
-} from '../../../constants/carousel';
+} from 'constants/carousel';
 
 import style from '../styles/SlideBar.module.sass';
 import '../styles/flickity.css';
 
 import type { FC } from 'react';
+import { Picture } from 'components/general';
 
 export type Props = {
   carouselType:
     | typeof MAIN_SLIDER
     | typeof EXAMPLE_SLIDER
     | typeof FEEDBACK_SLIDER;
-  images: string[];
+  images: { src: string; srcSet?: string[] }[];
 };
 
 const SliderBar: FC<Props> = ({ carouselType, images }) => {
@@ -49,27 +50,28 @@ const SliderBar: FC<Props> = ({ carouselType, images }) => {
   const renderSlides = () => {
     switch (carouselType) {
       case MAIN_SLIDER: {
-        return images.map((image, index) => (
-          <img
-            src={image}
-            alt="slide"
-            key={index}
-            className={style['carousel-cell']}
-          />
+        return images.map(({ src, srcSet }, index) => (
+          <div className={style['carousel-cell']} key={index}>
+            <Picture
+              src={src}
+              srcSet={srcSet}
+              alt="slide"
+            />
+          </div>
         ));
       }
       case EXAMPLE_SLIDER: {
-        return images.map((image, index) => (
+        return images.map(({ src, srcSet }, index) => (
           <div className={style['example-cell']} key={index}>
-            <img src={image} alt="slide" />
+            <Picture src={src} srcSet={srcSet} alt="slide" />
             <p>{EXAMPLE_SLIDER_TEXT[index]}</p>
           </div>
         ));
       }
       case FEEDBACK_SLIDER: {
-        return images.map((image, index) => (
+        return images.map(({ src, srcSet }, index) => (
           <div className={style['feedback-cell']} key={index}>
-            <img src={image} alt="slide" />
+            <Picture src={src} srcSet={srcSet} alt="slide" />
             <p>{FEEDBACK_SLIDER_TEXT[index].feedback}</p>
             <span>{FEEDBACK_SLIDER_TEXT[index].name}</span>
           </div>
