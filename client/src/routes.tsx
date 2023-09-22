@@ -24,6 +24,7 @@ import {
   TAGLINE_CONTEST,
   LOGO_CONTEST,
   REFRESH_TOKEN,
+  ROUTE,
 } from 'constants/general';
 import type { LoaderFunction, RouteObject } from 'react-router-dom';
 
@@ -34,21 +35,21 @@ const isUserLoaded = () => {
 
 const allowNotAuthorizedOnly: LoaderFunction = () => {
   if (isUserLoaded()) {
-    return redirect('/');
+    return redirect(ROUTE.HOME);
   }
   return null;
 };
 
 const allowAuthorizedOnly: LoaderFunction = () => {
   if (!isUserLoaded()) {
-    return redirect('/login');
+    return redirect(ROUTE.LOGIN);
   }
   return null;
 };
 
 export const routes: RouteObject[] = [
   {
-    path: '/',
+    path: ROUTE.HOME,
     element: <RootLayout />,
     children: [
       {
@@ -64,7 +65,7 @@ export const routes: RouteObject[] = [
         loader: allowNotAuthorizedOnly,
         children: [
           {
-            path: '/login',
+            path: ROUTE.LOGIN,
             element: (
               <Suspense fallback={<Spinner />}>
                 <LoginPage />
@@ -72,7 +73,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/registration',
+            path: ROUTE.REGISTER,
             element: (
               <Suspense fallback={<Spinner />}>
                 <RegistrationPage />
@@ -86,7 +87,7 @@ export const routes: RouteObject[] = [
         loader: allowAuthorizedOnly,
         children: [
           {
-            path: '/payment',
+            path: ROUTE.PAYMENT,
             element: (
               <Suspense fallback={<Spinner />}>
                 <Payment />
@@ -94,7 +95,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/startContest',
+            path: ROUTE.START_CONTEST,
             element: (
               <Suspense fallback={<Spinner />}>
                 <StartContestPage />
@@ -102,7 +103,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/startContest/nameContest',
+            path: ROUTE.START_NAME_CONTEST,
             element: (
               <Suspense fallback={<Spinner />}>
                 <ContestCreationPage
@@ -113,7 +114,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/startContest/taglineContest',
+            path: ROUTE.START_TAGLINE_CONTEST,
             element: (
               <Suspense fallback={<Spinner />}>
                 <ContestCreationPage
@@ -124,7 +125,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/startContest/logoContest',
+            path: ROUTE.START_LOGO_CONTEST,
             element: (
               <Suspense fallback={<Spinner />}>
                 <ContestCreationPage
@@ -135,7 +136,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/dashboard',
+            path: ROUTE.DASHBOARD,
             element: (
               <Suspense fallback={<Spinner />}>
                 <Dashboard />
@@ -143,7 +144,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/events',
+            path: ROUTE.EVENTS,
             element: (
               <Suspense fallback={<Spinner />}>
                 <EventsPage />
@@ -151,7 +152,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/contest/:id',
+            path: ROUTE.CONTEST_BY_ID,
             element: (
               <Suspense fallback={<Spinner />}>
                 <ContestPage />
@@ -159,7 +160,7 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            path: '/account',
+            path: ROUTE.ACCOUNT,
             element: (
               <Suspense fallback={<Spinner />}>
                 <UserProfile />
@@ -170,7 +171,7 @@ export const routes: RouteObject[] = [
       },
 
       {
-        path: '/how-it-works',
+        path: ROUTE.HOW_IT_WORKS,
         element: (
           <Suspense fallback={<Spinner />}>
             <HowItWorksPage />
@@ -178,7 +179,7 @@ export const routes: RouteObject[] = [
         ),
       },
       {
-        path: '*',
+        path: ROUTE.NOT_FOUND,
         element: (
           <Suspense fallback={<Spinner />}>
             <NotFound />

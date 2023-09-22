@@ -8,7 +8,7 @@ import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
 import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
 
-import { DUMMY_LINK } from 'constants/general';
+import { DUMMY_LINK, ROUTE } from 'constants/general';
 import styles from './styles/Payment.module.sass';
 
 const Payment = () => {
@@ -21,7 +21,7 @@ const Payment = () => {
 
   useEffect(() => {
     if (isEmpty(contests)) {
-      navigate('/startContest', { replace: true });
+      navigate(ROUTE.START_CONTEST, { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contests]);

@@ -111,3 +111,20 @@ export const MIME_TYPE = {
   PNG: 'image/png',
   WEBP: 'image/webp',
 } as const;
+
+export const ROUTE = {
+  HOME: '/',
+  LOGIN: '/login',
+  REGISTER: '/registration',
+  PAYMENT: '/payment',
+  START_CONTEST: '/startContest',
+  START_NAME_CONTEST: '/startContest/nameContest',
+  START_TAGLINE_CONTEST: '/startContest/taglineContest',
+  START_LOGO_CONTEST: '/startContest/logoContest',
+  DASHBOARD: '/dashboard',
+  EVENTS: '/events',
+  CONTEST_BY_ID: '/contest/:id',
+  ACCOUNT: '/account',
+  HOW_IT_WORKS: '/how-it-works',
+  NOT_FOUND: '*',
+} as const;

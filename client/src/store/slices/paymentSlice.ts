@@ -10,7 +10,7 @@ import {
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import { USER_INFO_MODE } from 'constants/general';
+import { ROUTE, USER_INFO_MODE } from 'constants/general';
 
 import type { PaymentState } from 'types/slices';
 import { WithNavigate } from 'types/_common';
@@ -31,7 +31,7 @@ export const pay = decorateAsyncThunk({
     { dispatch },
   ) => {
     await offerController.payMent(data);
-    navigate('/dashboard', { replace: true });
+    navigate(ROUTE.DASHBOARD, { replace: true });
     dispatch(clearContestStore());
   },
 });

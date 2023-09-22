@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'hooks';
-
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
-
+import { ROUTE } from 'constants/general';
 import styles from '../styles/CreatorDashboard.module.sass';
 
 export const types = [
@@ -74,7 +73,7 @@ export const CreatorFilter = () => {
       if (creatorFilter[el]) obj[el] = creatorFilter[el];
     });
 
-    navigate(`/dashboard?${new URLSearchParams(obj)}`);
+    navigate(`${ROUTE.DASHBOARD}?${new URLSearchParams(obj)}`);
   };
 
   const changePredicate = ({ name, value }) => {

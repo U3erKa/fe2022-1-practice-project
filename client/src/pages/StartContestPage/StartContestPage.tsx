@@ -6,7 +6,7 @@ import { updateBundle } from 'store/slices/bundleSlice';
 import { Header, Footer, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from '.';
 
-import { CUSTOMER } from 'constants/general';
+import { CUSTOMER, ROUTE } from 'constants/general';
 import styles from './styles/StartContestPage.module.sass';
 
 import type { Bundle } from 'types/slices';
@@ -17,7 +17,7 @@ const StartContestPage = () => {
   const navigate = useNavigate();
 
   if (userStore.data?.role !== CUSTOMER) {
-    navigate('/', { replace: true });
+    navigate(ROUTE.HOME, { replace: true });
   }
 
   const setBundle = (bundleStr) => {
@@ -29,7 +29,7 @@ const StartContestPage = () => {
       bundleList[array[i]] = i === array.length - 1 ? 'payment' : array[i + 1];
     }
     dispatch(updateBundle(bundleList));
-    navigate(`/startContest/${bundleList.first}Contest`);
+    navigate(`${ROUTE.START_CONTEST}/${bundleList.first}Contest`);
   };
 
   return (

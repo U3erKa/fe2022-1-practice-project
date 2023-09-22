@@ -9,7 +9,7 @@ import {
   fulfilledReducer,
   rejectedReducer,
 } from 'utils/store';
-import { AUTH_MODE } from 'constants/general';
+import { AUTH_MODE, ROUTE } from 'constants/general';
 
 import type { CheckAuth } from 'types/auth';
 import type { AuthState } from 'types/slices';
@@ -31,7 +31,7 @@ export const checkAuth = decorateAsyncThunk({
         ? await authController.login(authInfo)
         : await authController.registration(authInfo);
 
-    navigate('/', { replace: true });
+    navigate(ROUTE.HOME, { replace: true });
     controller.subscribe(user.id);
     return user;
   },

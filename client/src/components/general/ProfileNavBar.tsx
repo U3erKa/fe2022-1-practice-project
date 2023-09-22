@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
+import { ROUTE } from 'constants/general';
 import styles from './styles/ProfileNavBar.module.sass';
 
 export default function ProfileNavBar({ list, activeEvents }) {
@@ -11,7 +12,7 @@ export default function ProfileNavBar({ list, activeEvents }) {
   const logOut = () => {
     localStorage.clear();
     dispatch(clearUserStore());
-    navigate('/login');
+    navigate(ROUTE.LOGIN);
   };
 
   const mapList = list.map(({ id, href, text }) => (

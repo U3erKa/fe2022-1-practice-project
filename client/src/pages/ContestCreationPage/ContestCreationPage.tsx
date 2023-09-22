@@ -6,7 +6,7 @@ import { saveContestToStore } from 'store/slices/contestCreationSlice';
 
 import { ProgressBar, Footer, Header } from 'components/general';
 import { ContestForm } from 'components/contest';
-
+import { ROUTE } from 'constants/general';
 import styles from './styles/ContestCreationPage.module.sass';
 
 import type { FC } from 'react';
@@ -35,7 +35,7 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
     : { contestType: contestType };
 
   useEffect(() => {
-    !bundle && navigate('/startContest', { replace: true });
+    !bundle && navigate(ROUTE.START_CONTEST, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bundle]);
 
@@ -50,8 +50,8 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
     );
     const route =
       bundle![contestType] === 'payment'
-        ? '/payment'
-        : `/startContest/${bundle![contestType]}Contest`;
+        ? ROUTE.PAYMENT
+        : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
     navigate(route);
   };
 
