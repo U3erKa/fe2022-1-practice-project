@@ -9,7 +9,6 @@ const CatalogList = ({ catalogList }) => {
   const dispatch = useDispatch();
 
   const goToCatalog = (event, catalog) => {
-    // @ts-ignore
     dispatch(changeShowModeCatalog(catalog));
     event.stopPropagation();
   };

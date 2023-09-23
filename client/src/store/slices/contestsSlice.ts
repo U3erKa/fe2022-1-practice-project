@@ -15,7 +15,7 @@ const initialState: ContestsState = {
   customerFilter: CONTEST_STATUS_ACTIVE,
   creatorFilter: {
     typeIndex: 1,
-    contestId: -1,
+    contestId: '' as any,
     industry: '',
     awardSort: 'ASC',
     ownEntries: false,
