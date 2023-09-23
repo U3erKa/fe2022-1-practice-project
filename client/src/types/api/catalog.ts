@@ -5,7 +5,6 @@ import type {
   UserId,
   WithId,
   With_id,
-  With__v,
 } from './_common';
 
 export type AddChatToCatalogParams = With_id<CatalogId, 'catalogId'> &
@@ -19,7 +18,6 @@ export type RemoveChatFromCatalogParams = With_id<CatalogId, 'catalogId'> &
 
 export type RemoveChatFromCatalogResponse = With_id<ChatId> &
   WithId<UserId, 'userId'> &
-  With__v &
   WithCatalogName &
   WithChats;
 
@@ -39,7 +37,6 @@ export type GetCatalogListResponse = (With_id<CatalogListId> &
 
 export type ChatsInCatalog = With_id<CatalogId> &
   WithId<UserId, 'userId'> &
-  With__v &
   WithCatalogName &
   WithChats;
 

@@ -13,7 +13,7 @@ export type TextEntry = {
 );
 
 export type QNAItems = {
-  id: string,
+  id: string;
   question: string;
   answer: string | string[] | AnswerProps | ReactNode;
 }[];

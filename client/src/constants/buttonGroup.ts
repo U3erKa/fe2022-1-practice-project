@@ -1,4 +1,4 @@
-import { uniqueId } from "utils/functions";
+import { uniqueId } from 'utils/functions';
 
 export const EXACT_CHOISE = 'EXACT';
 export const SIMILAR_CHOISE = 'SIMILAR';

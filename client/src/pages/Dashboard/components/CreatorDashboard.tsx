@@ -52,7 +52,7 @@ const CreatorDashboard = () => {
     const obj = parseQueryString(search);
     const filter = {
       typeIndex: obj.typeIndex || 1,
-      contestId: obj.contestId ? obj.contestId : '',
+      contestId: obj.contestId ? obj.contestId : -1,
       industry: obj.industry ? obj.industry : '',
       awardSort: obj.awardSort || 'asc',
       ownEntries:

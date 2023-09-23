@@ -32,7 +32,7 @@ const Brief = () => {
     if (values.file instanceof File) {
       data.append('file', values.file);
     }
-    data.append('contestId', contestData!.id as string);
+    data.append('contestId', contestData!.id as unknown as string);
 
     dispatch(updateContest(data));
   };

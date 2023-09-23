@@ -8,7 +8,6 @@ import type {
   WithId,
   WithTimeStamps,
   With_id,
-  With__v,
 } from './_common';
 
 export type GetDialogParams = {
@@ -32,7 +31,7 @@ export type NewMessageParams = WithInterlocutor & {
 };
 
 export type NewMessageResponse = {
-  message: Message & WithParticipants & With__v;
+  message: Message & WithParticipants;
   preview: Omit<Message, 'body' | 'conversation' | 'updatedAt'> &
     Omit<WithParticipantTuples, '_id'> & {
       text: Message['body'];
@@ -45,9 +44,7 @@ export type GetPreviewChatResponse = WithParticipantTuples &
     text: Message['body'];
   };
 
-export type ChangeChatResponse = WithParticipantTuples &
-  With__v &
-  WithTimeStamps;
+export type ChangeChatResponse = WithParticipantTuples & WithTimeStamps;
 
 export type AddMessage = NewMessageResponse & {
   preview: { interlocutor: { email: string } };

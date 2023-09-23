@@ -38,7 +38,7 @@ const CatalogCreation = () => {
     <div className={styles.catalogCreationContainer}>
       <FontAwesomeIcon
         icon={faCircleXmark}
-        onClick={() => dispatch(changeShowAddChatToCatalogMenu())}
+        onClick={() => dispatch(changeShowAddChatToCatalogMenu(null))}
       />
       <div className={styles.buttonsContainer}>
         <span

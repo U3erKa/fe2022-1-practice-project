@@ -138,9 +138,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
           <FontAwesomeIcon icon={faCircleCheck} className={styles.resolve} />
         );
       case role === CREATOR && OFFER_STATUS_PENDING:
-        return (
-          <FontAwesomeIcon icon={faClock} className={styles.pending} />
-        );
+        return <FontAwesomeIcon icon={faClock} className={styles.pending} />;
       default:
         return null;
     }

@@ -52,11 +52,7 @@ const SliderBar: FC<Props> = ({ carouselType, images }) => {
       case MAIN_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
           <div className={style['carousel-cell']} key={index}>
-            <Picture
-              src={src}
-              srcSet={srcSet}
-              alt="slide"
-            />
+            <Picture src={src} srcSet={srcSet} alt="slide" />
           </div>
         ));
       }

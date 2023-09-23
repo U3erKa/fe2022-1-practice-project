@@ -1,4 +1,3 @@
-export type With__v = { __v: __V };
 export type With_id<T extends _Id = _Id, K extends string = '_id'> = {
   [key in K]: T;
 };
@@ -15,9 +14,9 @@ export type WithLifeSpan = { iat: NumTimeStamp; exp: NumTimeStamp };
 export type WithPagination = { limit: number; offset: number };
 
 /** SQL's unique id parameter */
-export type Id = string | number;
+export type Id = number;
 /** MongoDB's `_id` parameter */
-export type _Id = string;
+export type _Id = number;
 /** MongoDB's `__v` parameter */
 export type __V = 0;
 /** Universally unique id */

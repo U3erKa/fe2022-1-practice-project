@@ -6,7 +6,7 @@ import { STATIC_IMAGES_PATH } from 'constants/general';
 
 export type Props = {
   to?: string;
-  srcSet?: string[],
+  srcSet?: string[];
   src?: string;
   alt?: string;
   className?: string;

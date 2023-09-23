@@ -496,9 +496,9 @@ const reducers = {
 
   changeShowAddChatToCatalogMenu: (
     state: ChatState,
-    { payload }: PayloadAction<string | null | undefined>,
+    { payload }: PayloadAction<ChatState['addChatId']>,
   ) => {
-    state.addChatId = payload ?? null;
+    state.addChatId = payload;
     state.isShowCatalogCreation = !state.isShowCatalogCreation;
   },
 

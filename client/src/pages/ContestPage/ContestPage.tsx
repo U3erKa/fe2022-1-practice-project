@@ -38,11 +38,12 @@ const ContestPage = () => {
 
   const dispatch = useDispatch();
   const match = useMatch('/contest/:id')!;
+  const contestId = match.params.id as unknown as number;
 
   const { id: userId, role } = user || {};
 
   useEffect(() => {
-    dispatch(getContestById({ contestId: match.params.id! }));
+    dispatch(getContestById({ contestId }));
 
     return () => {
       dispatch(changeEditContest(false));
@@ -64,11 +65,7 @@ const ContestPage = () => {
       <Header />
       {error ? (
         <div className={styles.tryContainer}>
-          <TryAgain
-            getData={() =>
-              dispatch(getContestById({ contestId: match.params.id! }))
-            }
-          />
+          <TryAgain getData={() => dispatch(getContestById({ contestId }))} />
         </div>
       ) : isFetching ? (
         <div className={styles.containerSpinner}>

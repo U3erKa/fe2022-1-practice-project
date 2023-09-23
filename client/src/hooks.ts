@@ -6,11 +6,10 @@ import {
 import { isEqual } from 'radash';
 import type { RootState, AppDispatch } from 'store';
 
-export const useSelector: <TSelected = unknown>(
+export const useSelector = <TSelected = unknown>(
   selector: (state: RootState) => TSelected,
-  equalityFn?: ((left: TSelected, right: TSelected) => boolean) | undefined,
-) => TSelected = (state, equalityFn = isEqual) =>
-  _useSelector(state, equalityFn);
+  equalityFn: (left: TSelected, right: TSelected) => boolean = isEqual,
+) => _useSelector(selector, equalityFn);
 
 export const useDispatch: () => AppDispatch = _useDispatch;
 
