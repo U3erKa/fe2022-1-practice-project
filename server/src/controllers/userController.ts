@@ -1,6 +1,5 @@
 import * as CONSTANTS from '../constants';
 import { sequelize, Sequelize, Rating, Offer, Contest } from '../models';
-import moment from 'moment';
 import { v4 as uuid } from 'uuid';
 import * as controller from '../socketInit';
 import * as userQueries from './queries/userQueries';
@@ -107,7 +106,7 @@ END
         userId: tokenData.userId,
         priority: index + 1,
         orderId,
-        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        createdAt: new Date().toISOString(),
         prize,
       });
     });

@@ -1,4 +1,3 @@
-import moment from 'moment';
 import cron from 'node-cron';
 import fs from 'fs/promises';
 import path from 'path';
@@ -29,7 +28,7 @@ const flushLogs = async () => {
   if (!data) return;
 
   const dataWithoutTrailingComma = data.substring(0, data.length - 2);
-  const newLogTimestamp = moment().format('YYYY-MM-DD-x');
+  const newLogTimestamp = new Date().toISOString().replaceAll(":", "-");
   const logPath = path.resolve(LOG_PATH, `${newLogTimestamp}.log`);
 
   const logs: any[] = JSON.parse(`[${dataWithoutTrailingComma}]`);
