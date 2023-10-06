@@ -1,6 +1,6 @@
 import { useSelector } from 'hooks';
 import { Picture } from 'components/general';
-import { getDays, getHours } from 'utils/functions';
+import { getLongTimeStr } from 'utils/functions';
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
@@ -11,17 +11,6 @@ import styles from '../styles/ContestSideBar.module.sass';
 const ContestSideBar = ({ totalEntries, contestData }) => {
   const { data } = useSelector((state) => state.userStore);
   const { User, prize, createdAt } = contestData;
-
-  const getTimeStr = () => {
-    const diff = new Date().valueOf() - new Date(createdAt).valueOf();
-    const days = getDays(diff);
-    const hours = getHours(diff);
-    let str = '';
-
-    if (days !== 0) str = `${days} days `;
-    if (hours !== 0) str += `${hours} hours`;
-    return str || 'less than one hour';
-  };
 
   return (
     <div className={styles.contestSideBarInfo}>
@@ -50,7 +39,7 @@ const ContestSideBar = ({ totalEntries, contestData }) => {
               />
               <span>Going</span>
             </div>
-            <span className={styles.time}>{getTimeStr()}</span>
+            <span className={styles.time}>{getLongTimeStr(createdAt)}</span>
           </div>
           <div className={styles.guaranteedPrize}>
             <div>

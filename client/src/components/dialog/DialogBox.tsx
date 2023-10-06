@@ -15,12 +15,12 @@ import {
   PUBLIC_URL,
 } from 'constants/general';
 import styles from './styles/DialogBox.module.sass';
+import { getShortTimeStr } from 'utils/functions';
 
 const DialogBox = (props) => {
   const {
     chatPreview,
     userId,
-    getTimeStr,
     changeFavorite,
     changeBlackList,
     catalogOperation,
@@ -63,7 +63,7 @@ const DialogBox = (props) => {
           <span className={styles.interlocutorMessage}>{text}</span>
         </div>
         <div className={styles.buttonsContainer}>
-          <span className={styles.time}>{getTimeStr(createdAt)}</span>
+          <span className={styles.time}>{getShortTimeStr(createdAt)}</span>
           <FontAwesomeIcon
             icon={isFavorite ? fasFaHeart : farFaHeart}
             onClick={(event) =>

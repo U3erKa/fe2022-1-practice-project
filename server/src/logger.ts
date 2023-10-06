@@ -28,7 +28,7 @@ const flushLogs = async () => {
   if (!data) return;
 
   const dataWithoutTrailingComma = data.substring(0, data.length - 2);
-  const newLogTimestamp = new Date().toISOString().replaceAll(":", "-");
+  const newLogTimestamp = new Date().toISOString().replaceAll(':', '-');
   const logPath = path.resolve(LOG_PATH, `${newLogTimestamp}.log`);
 
   const logs: any[] = JSON.parse(`[${dataWithoutTrailingComma}]`);

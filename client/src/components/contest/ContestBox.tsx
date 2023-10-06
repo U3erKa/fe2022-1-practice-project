@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Picture } from 'components/general';
-import { getDays, getHours } from 'utils/functions';
+import { getLongTimeStr } from 'utils/functions';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
@@ -13,17 +13,6 @@ const ContestBox = ({ data }) => {
 
   const goToExtended = (contest_id) => {
     navigate(`/contest/${contest_id}`);
-  };
-
-  const getTimeStr = () => {
-    const diff = new Date().valueOf() - new Date(data.createdAt).valueOf();
-    const days = getDays(diff);
-    const hours = getHours(diff);
-    let str = '';
-
-    if (days !== 0) str = `${days}d `;
-    if (hours !== 0) str += `${hours}h`;
-    return str || 'less than one hour';
   };
 
   const getPreferenceContest = () => {
@@ -100,7 +89,9 @@ const ContestBox = ({ data }) => {
           <span>Entries</span>
         </div>
         <div className={styles.timeContainer}>
-          <span className={styles.timeContest}>{getTimeStr()}</span>
+          <span className={styles.timeContest}>
+            {getLongTimeStr(data.createdAt)}
+          </span>
           <span>Going</span>
         </div>
       </div>

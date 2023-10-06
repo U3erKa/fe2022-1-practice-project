@@ -32,6 +32,28 @@ export const getRemainingTime = (time: number) => {
   return result.join(' ') || '0s';
 };
 
+export const getLongTimeStr = (date: string | number | Date) => {
+  const diff = Date.now() - new Date(date).valueOf();
+  const days = getDays(diff);
+  const hours = getHours(diff);
+  const result: string[] = [];
+
+  if (days !== 0) result.push(`${days} days`);
+  if (hours !== 0) result.push(`${hours} hours`);
+  return result.join(' ') || 'less than one hour';
+};
+
+export const getShortTimeStr = (time: number) => {
+  const currentTime = Date.now();
+  const days = getDays(currentTime) - getDays(time);
+  const date = new Date(time);
+
+  if (days <= 0) return `${date.getHours()}:${date.getMinutes()}`;
+  if (days <= 7) return date.toDateString().substring(0, 3);
+  if (days <= 365) return date.toDateString().substring(4, 10);
+  return date.toDateString();
+};
+
 export function getEventProgress({ date, createdAt }: CreateEventResponse) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);

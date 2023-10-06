@@ -6,7 +6,6 @@ import {
   goToExpandedDialog,
 } from 'store/slices/chatSlice';
 import { DialogBox } from 'components/dialog';
-import { getDays } from 'utils/functions';
 import {
   BLOCKED_PREVIEW_CHAT_MODE,
   CATALOG_PREVIEW_CHAT_MODE,
@@ -45,17 +44,6 @@ const DialogList = ({ userId, removeChat }) => {
   const onlyBlockDialogs = (chatPreview: MessagePreview, userId: UserId) =>
     chatPreview.blackList[chatPreview.participants.indexOf(userId)];
 
-  const getTimeStr = (time: number) => {
-    const currentTime = Date.now();
-    const days = getDays(currentTime) - getDays(time);
-    const date = new Date(time);
-
-    if (days <= 0) return `${date.getHours()}:${date.getMinutes()}`;
-    if (days <= 7) return date.toDateString().substring(0, 3);
-    if (days <= 365) return date.toDateString().substring(4, 10);
-    return date.toDateString();
-  };
-
   const renderPreview = (filterFunc?) => {
     const arrayList: JSX.Element[] = [];
     messagesPreview.forEach((chatPreview, index) => {
@@ -65,7 +53,6 @@ const DialogList = ({ userId, removeChat }) => {
           chatPreview={chatPreview}
           userId={userId}
           key={index}
-          getTimeStr={getTimeStr}
           changeFavorite={changeFavorite}
           changeBlackList={changeBlackList}
           chatMode={chatMode}
