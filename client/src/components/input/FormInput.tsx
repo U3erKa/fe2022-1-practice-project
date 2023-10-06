@@ -1,5 +1,5 @@
 import { Field, ErrorMessage } from 'formik';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 const FormInput = ({ classes, label, name, ...rest }) => (
   <Field name={name}>
@@ -9,7 +9,7 @@ const FormInput = ({ classes, label, name, ...rest }) => (
         meta: { touched, error },
       } = props;
 
-      const inputClassName = classNames(classes.input, {
+      const inputClassName = clsx(classes.input, {
         [classes.notValid]: touched && error,
         [classes.valid]: touched && !error,
       });

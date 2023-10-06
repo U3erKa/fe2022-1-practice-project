@@ -1,17 +1,13 @@
-import classNames from 'classnames';
-
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { setPreviewChatMode } from 'store/slices/chatSlice';
-
 import { CatalogListContainer, CatalogListHeader } from 'components/catalog';
 import { DialogList } from 'components/dialog';
-
 import {
   CATALOG_PREVIEW_CHAT_MODE,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
 import { dialogButtons } from 'constants/chat';
-
 import styles from './styles/ChatList.module.sass';
 import { Picture } from 'components/general';
 
@@ -33,7 +29,7 @@ const ChatList = () => {
       key={id}
       // @ts-ignore
       onClick={() => dispatch(setPreviewChatMode(mode))}
-      className={classNames(styles.button, {
+      className={clsx(styles.button, {
         [styles.activeButton]: chatMode === mode,
       })}
     >

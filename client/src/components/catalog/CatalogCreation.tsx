@@ -1,23 +1,19 @@
 import { useEffect } from 'react';
-import classNames from 'classnames';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import {
   changeShowAddChatToCatalogMenu,
   changeTypeOfChatAdding,
   getCatalogList,
 } from 'store/slices/chatSlice';
-
 import { CreateCatalog, AddToCatalog } from 'components/catalog';
-
 import {
   ADD_CHAT_TO_OLD_CATALOG,
   CREATE_NEW_CATALOG_AND_ADD_CHAT,
 } from 'constants/general';
-
 import styles from './styles/CatalogCreation.module.sass';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const CatalogCreation = () => {
   const { catalogCreationMode, isFetching } = useSelector(
@@ -45,7 +41,7 @@ const CatalogCreation = () => {
           onClick={() =>
             dispatch(changeTypeOfChatAdding(ADD_CHAT_TO_OLD_CATALOG))
           }
-          className={classNames({
+          className={clsx({
             [styles.active]: catalogCreationMode === ADD_CHAT_TO_OLD_CATALOG,
           })}
         >
@@ -55,7 +51,7 @@ const CatalogCreation = () => {
           onClick={() =>
             dispatch(changeTypeOfChatAdding(CREATE_NEW_CATALOG_AND_ADD_CHAT))
           }
-          className={classNames({
+          className={clsx({
             [styles.active]:
               catalogCreationMode === CREATE_NEW_CATALOG_AND_ADD_CHAT,
           })}

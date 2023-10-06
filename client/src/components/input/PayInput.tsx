@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import InputMask from 'react-input-mask';
 import { useField } from 'formik';
 
@@ -14,7 +14,7 @@ const PayInput = (props) => {
         <input
           {...field}
           placeholder={label}
-          className={classNames(classes.input, {
+          className={clsx(classes.input, {
             [classes.notValid]: touched && error,
           })}
         />
@@ -33,7 +33,7 @@ const PayInput = (props) => {
           maskChar={null}
           {...field}
           placeholder={label}
-          className={classNames(classes.input, {
+          className={clsx(classes.input, {
             [classes.notValid]: touched && error,
           })}
           onFocus={() => changeFocus(field.name)}
@@ -50,7 +50,7 @@ const PayInput = (props) => {
       <input
         {...field}
         placeholder={label}
-        className={classNames(classes.input, {
+        className={clsx(classes.input, {
           [classes.notValid]: touched && error,
         })}
         onFocus={() => changeFocus(field.name)}

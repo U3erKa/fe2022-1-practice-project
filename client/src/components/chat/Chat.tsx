@@ -1,14 +1,11 @@
 import { useEffect } from 'react';
-import classNames from 'classnames';
-
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { changeChatShow, getPreviewChat } from 'store/slices/chatSlice';
 import { chatController } from 'api/ws/socketController';
-
 import { CatalogCreation } from 'components/catalog';
 import { ChatError, ChatList } from 'components/chat';
 import { Dialog } from 'components/dialog';
-
 import styles from './styles/Chat.module.sass';
 
 const Chat = () => {
@@ -36,7 +33,7 @@ const Chat = () => {
 
   return (
     <div
-      className={classNames(styles.chatContainer, {
+      className={clsx(styles.chatContainer, {
         [styles.showChat]: isShow,
       })}
     >

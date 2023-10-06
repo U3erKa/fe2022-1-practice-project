@@ -1,13 +1,10 @@
-import classNames from 'classnames';
-
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
-
 import { Header, Error } from 'components/general';
 import { PayForm } from 'components/form';
 import { UserInfo } from '.';
-
 import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';
 import styles from './styles/UserProfile.module.sass';
 
@@ -35,7 +32,7 @@ const UserProfile = () => {
           <span className={styles.headerAside}>Select Option</span>
           <div className={styles.optionsContainer}>
             <div
-              className={classNames(styles.optionContainer, {
+              className={clsx(styles.optionContainer, {
                 [styles.currentOption]: profileViewMode === USER_INFO_MODE,
               })}
               onClick={() => dispatch(changeProfileViewMode(USER_INFO_MODE))}
@@ -44,7 +41,7 @@ const UserProfile = () => {
             </div>
             {role === CREATOR && (
               <div
-                className={classNames(styles.optionContainer, {
+                className={clsx(styles.optionContainer, {
                   [styles.currentOption]: profileViewMode === CASHOUT_MODE,
                 })}
                 onClick={() => dispatch(changeProfileViewMode(CASHOUT_MODE))}

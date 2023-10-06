@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useMatch } from 'react-router-dom';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import LightBox from 'yet-another-react-lightbox';
-
 import { useDispatch, useSelector } from 'hooks';
 import {
   getContestById,
@@ -10,11 +9,9 @@ import {
   changeContestViewMode,
   changeShowImage,
 } from 'store/slices/contestByIdSlice';
-
 import { Header, Spinner, TryAgain } from 'components/general';
 import { OfferForm } from 'components/form';
 import { Brief, ContestSideBar, ContestOffersList } from '.';
-
 import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';
 import styles from './styles/ContestPage.module.sass';
 import 'yet-another-react-lightbox/styles.css';
@@ -77,7 +74,7 @@ const ContestPage = () => {
             <div className={styles.buttonsContainer}>
               <span
                 onClick={() => dispatch(changeContestViewMode(true))}
-                className={classNames(styles.btn, {
+                className={clsx(styles.btn, {
                   [styles.activeBtn]: isBrief,
                 })}
               >
@@ -85,7 +82,7 @@ const ContestPage = () => {
               </span>
               <span
                 onClick={() => dispatch(changeContestViewMode(false))}
-                className={classNames(styles.btn, {
+                className={clsx(styles.btn, {
                   [styles.activeBtn]: !isBrief,
                 })}
               >

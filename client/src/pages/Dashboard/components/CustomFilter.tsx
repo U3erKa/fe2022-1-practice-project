@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { useDispatch } from 'hooks';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { FC } from 'react';
@@ -23,7 +23,7 @@ export const CustomFilter: FC<Props> = ({
     <div
       key={i}
       onClick={() => dispatch(filterAction(filter))}
-      className={classNames({
+      className={clsx({
         [styles.activeFilter]: filter === predicate,
         [styles.filter]: filter !== predicate,
       })}

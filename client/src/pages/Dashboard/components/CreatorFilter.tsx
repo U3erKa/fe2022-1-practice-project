@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import { ROUTE } from 'constants/general';
@@ -99,7 +99,7 @@ export const CreatorFilter = () => {
               value: !creatorFilter.ownEntries,
             })
           }
-          className={classNames(styles.myEntries, {
+          className={clsx(styles.myEntries, {
             [styles.activeMyEntries]: creatorFilter.ownEntries,
           })}
         >

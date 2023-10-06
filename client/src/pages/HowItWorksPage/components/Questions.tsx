@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import cx from 'classnames';
+import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Answer } from '..';
@@ -17,7 +17,7 @@ export const Questions: FC<Props> = ({ questions }) => {
     <section>
       {questions.map(({ id, question, answer }, i) => {
         const active = activeQuestion === i;
-        const iconStyles = cx({
+        const iconStyles = clsx({
           [styles.activeIcon]: active,
           [styles.arrowIcon]: true,
         });

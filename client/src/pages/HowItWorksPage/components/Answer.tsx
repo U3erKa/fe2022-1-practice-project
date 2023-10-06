@@ -1,4 +1,4 @@
-import cx from 'classnames';
+import clsx from 'clsx';
 import { isEqual } from 'radash';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
@@ -14,7 +14,7 @@ const isAnswer = (contents): contents is AnswerProps => {
 };
 
 export const Answer: FC<Props> = ({ active, contents }) => {
-  const containerStyles = cx({
+  const containerStyles = clsx({
     [styles.inactive]: !active,
     [styles.container]: true,
   });

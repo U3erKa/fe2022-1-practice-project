@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import yup from 'yup';
 import valid from 'card-validator';
 import { notifyOptions } from 'constants/general';
 

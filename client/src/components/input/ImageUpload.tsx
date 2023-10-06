@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { useField } from 'formik';
 
 const ImageUpload = (props) => {
@@ -40,7 +40,7 @@ const ImageUpload = (props) => {
       </div>
       <img
         id="imagePreview"
-        className={classNames({ [imgStyle]: !!value })}
+        className={clsx({ [imgStyle]: !!value })}
         alt="user"
       />
     </div>

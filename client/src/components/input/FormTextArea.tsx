@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { Field, ErrorMessage } from 'formik';
 
 const FormTextArea = ({ label, classes, type, ...rest }) => (
@@ -14,7 +14,7 @@ const FormTextArea = ({ label, classes, type, ...rest }) => (
           <textarea
             {...field}
             placeholder={label}
-            className={classNames(inputStyle, {
+            className={clsx(inputStyle, {
               [notValid]: touched && error,
             })}
           />

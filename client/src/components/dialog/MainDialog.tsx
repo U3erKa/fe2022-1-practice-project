@@ -1,5 +1,5 @@
 import moment from 'moment';
-import className from 'classnames';
+import className from 'clsx';
 import styles from './styles/MainDialog.module.sass';
 import type { ReactNode } from 'react';
 
