@@ -1,32 +1,30 @@
-import moment from 'moment';
-import className from 'clsx';
-import styles from './styles/MainDialog.module.sass';
+import clsx from 'clsx';
+import { getDays } from 'utils/functions';
 import type { ReactNode } from 'react';
+import styles from './styles/MainDialog.module.sass';
 
 const MainDialog = ({ messages, userId, messagesEnd }) => {
   const messagesArray: ReactNode[] = [];
-  let currentTime = moment();
+  let currentTime = Date.now();
 
   messages.forEach(({ createdAt, sender, body }, i) => {
-    if (!currentTime.isSame(createdAt, 'date')) {
+    if (getDays(currentTime) !== getDays(createdAt)) {
       messagesArray.push(
         <div key={createdAt} className={styles.date}>
-          {moment(createdAt).format('MMMM DD, YYYY')}
+          {new Date(createdAt).toDateString()}
         </div>,
       );
-      currentTime = moment(createdAt);
+      currentTime = new Date(createdAt).valueOf();
     }
 
     messagesArray.push(
       <div
         key={i}
-        className={className(
-          userId === sender ? styles.ownMessage : styles.message,
-        )}
+        className={clsx(userId === sender ? styles.ownMessage : styles.message)}
       >
         <span>{body}</span>
         <span className={styles.messageTime}>
-          {moment(createdAt).format('HH:mm')}
+          {new Date(createdAt).toLocaleTimeString('uk')}
         </span>
         <div ref={messagesEnd} />
       </div>,

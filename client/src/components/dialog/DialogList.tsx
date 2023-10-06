@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 import { useDispatch, useSelector } from 'hooks';
 import {
   changeChatBlock,
@@ -7,18 +5,16 @@ import {
   changeShowAddChatToCatalogMenu,
   goToExpandedDialog,
 } from 'store/slices/chatSlice';
-
 import { DialogBox } from 'components/dialog';
-
+import { getDays } from 'utils/functions';
 import {
   BLOCKED_PREVIEW_CHAT_MODE,
   CATALOG_PREVIEW_CHAT_MODE,
   FAVORITE_PREVIEW_CHAT_MODE,
 } from 'constants/general';
-
-import styles from './styles/DialogList.module.sass';
 import type { MessagePreview } from 'types/chat';
 import type { UserId } from 'types/api/_common';
+import styles from './styles/DialogList.module.sass';
 
 const DialogList = ({ userId, removeChat }) => {
   const { chatMode, messagesPreview, isShowChatsInCatalog, currentCatalog } =
@@ -49,12 +45,15 @@ const DialogList = ({ userId, removeChat }) => {
   const onlyBlockDialogs = (chatPreview: MessagePreview, userId: UserId) =>
     chatPreview.blackList[chatPreview.participants.indexOf(userId)];
 
-  const getTimeStr = (time) => {
-    const currentTime = moment();
-    if (currentTime.isSame(time, 'day')) return moment(time).format('HH:mm');
-    if (currentTime.isSame(time, 'week')) return moment(time).format('dddd');
-    if (currentTime.isSame(time, 'year')) return moment(time).format('MM.DD');
-    return moment(time).format('MMMM DD, YYYY');
+  const getTimeStr = (time: number) => {
+    const currentTime = Date.now();
+    const days = getDays(currentTime) - getDays(time);
+    const date = new Date(time);
+
+    if (days <= 0) return `${date.getHours()}:${date.getMinutes()}`;
+    if (days <= 7) return date.toDateString().substring(0, 3);
+    if (days <= 365) return date.toDateString().substring(4, 10);
+    return date.toDateString();
   };
 
   const renderPreview = (filterFunc?) => {

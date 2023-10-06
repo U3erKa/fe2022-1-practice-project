@@ -1,14 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
-
+import { Picture } from 'components/general';
+import { getDays, getHours } from 'utils/functions';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-
 import styles from './styles/ContestBox.module.sass';
-import { Picture } from 'components/general';
 
 const ContestBox = ({ data }) => {
   const navigate = useNavigate();
@@ -18,9 +16,9 @@ const ContestBox = ({ data }) => {
   };
 
   const getTimeStr = () => {
-    const diff = moment.duration(moment().diff(moment(data.createdAt)));
-    const days = diff.days();
-    const hours = diff.hours();
+    const diff = new Date().valueOf() - new Date(data.createdAt).valueOf();
+    const days = getDays(diff);
+    const hours = getHours(diff);
     let str = '';
 
     if (days !== 0) str = `${days}d `;

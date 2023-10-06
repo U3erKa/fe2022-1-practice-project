@@ -1,11 +1,11 @@
-import moment from 'moment';
 import { useSelector } from 'hooks';
+import { Picture } from 'components/general';
+import { getDays, getHours } from 'utils/functions';
 import {
   STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
 } from 'constants/general';
-import { Picture } from 'components/general';
 import styles from '../styles/ContestSideBar.module.sass';
 
 const ContestSideBar = ({ totalEntries, contestData }) => {
@@ -13,9 +13,9 @@ const ContestSideBar = ({ totalEntries, contestData }) => {
   const { User, prize, createdAt } = contestData;
 
   const getTimeStr = () => {
-    const diff = moment.duration(moment().diff(moment(createdAt)));
-    const days = diff.days();
-    const hours = diff.hours();
+    const diff = new Date().valueOf() - new Date(createdAt).valueOf();
+    const days = getDays(diff);
+    const hours = getHours(diff);
     let str = '';
 
     if (days !== 0) str = `${days} days `;
