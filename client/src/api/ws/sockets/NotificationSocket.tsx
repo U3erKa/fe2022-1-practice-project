@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
-
 import WebSocket from './WebSocket';
 import { Notification } from 'components/general';
+import type { UserId, WithId } from 'types/api/_common';
 
 class NotificationSocket extends WebSocket {
   anotherSubscribes = () => {
@@ -33,11 +33,11 @@ class NotificationSocket extends WebSocket {
     });
   };
 
-  subscribe = (id) => {
+  subscribe = (id: WithId<UserId>) => {
     this.socket.emit('subscribe', id);
   };
 
-  unsubsctibe = (id) => {
+  unsubscribe = (id: WithId<UserId>) => {
     this.socket.emit('unsubscribe', id);
   };
 }
