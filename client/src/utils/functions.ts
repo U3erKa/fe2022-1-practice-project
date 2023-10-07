@@ -45,8 +45,8 @@ export const getLongTimeStr = (date: string | number | Date) => {
 
 export const getShortTimeStr = (time: number) => {
   const currentTime = Date.now();
-  const days = getDays(currentTime) - getDays(time);
   const date = new Date(time);
+  const days = getDays(currentTime) - getDays(date.valueOf());
 
   if (days <= 0) return `${date.getHours()}:${date.getMinutes()}`;
   if (days <= 7) return date.toDateString().substring(0, 3);

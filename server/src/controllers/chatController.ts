@@ -146,6 +146,7 @@ export const getPreview: RequestHandler = async (req, res, next) => {
         'participant2',
         'blackList',
         'favoriteList',
+        'createdAt',
       ],
       where: {
         [Op.or]: [{ participant1: userId }, { participant2: userId }],
