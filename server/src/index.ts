@@ -1,9 +1,10 @@
-require('dotenv').config();
+import { config } from 'dotenv';
+config();
 import http from 'http';
 import path from 'path';
 import express from 'express';
 import cors from 'cors';
-require('./dbMongo/mongoose');
+// import './dbMongo/mongoose';
 import router from './router';
 import * as controller from './socketInit';
 import handlerError from './handlerError/handler';

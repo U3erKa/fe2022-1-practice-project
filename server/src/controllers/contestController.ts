@@ -7,6 +7,7 @@ import {
 import type { RequestHandler } from 'express';
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { Contest, Offer, Rating, Select, User, sequelize } from '../models';
 import _sendEmail from '../email';
 import ServerError from '../errors/ServerError';
@@ -20,6 +21,9 @@ import * as controller from '../socketInit';
 import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
 import type { Offer as _Offer, User as _User } from '../types/models';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const dataForContest: RequestHandler = async (req, res, next) => {
   const {

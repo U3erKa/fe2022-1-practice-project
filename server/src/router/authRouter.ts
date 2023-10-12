@@ -1,7 +1,9 @@
-const authRouter = require('express').Router();
+import { Router } from 'express';
 import * as AuthController from '../controllers/authController';
 import { checkRefreshToken } from '../middlewares/tokenMiddlewares';
 import * as validators from '../middlewares/validators';
+
+const authRouter = Router();
 
 authRouter.route('/login').post(validators.validateLogin, AuthController.login);
 authRouter

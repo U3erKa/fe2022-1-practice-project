@@ -9,4 +9,4 @@ eventsRouter
   .get(eventController.getEvents)
   .post(validators.validateEvent, eventController.createEvent);
 
-export = eventsRouter;
+export default eventsRouter;

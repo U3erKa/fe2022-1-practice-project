@@ -1,7 +1,9 @@
-import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import TokenError from '../errors/TokenError';
 import TokenExpirationError from '../errors/TokenExpirationError';
 import type { ErrorRequestHandler } from 'express';
+
+const { JsonWebTokenError, TokenExpiredError } = jwt;
 
 const handleTokenError: ErrorRequestHandler = async (err, req, res, next) => {
   if (err instanceof TokenExpiredError) {

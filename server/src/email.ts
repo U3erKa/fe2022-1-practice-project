@@ -33,4 +33,4 @@ const sendEmail = (async () => {
   return _sendEmail;
 })();
 
-export = sendEmail;
+export default sendEmail;

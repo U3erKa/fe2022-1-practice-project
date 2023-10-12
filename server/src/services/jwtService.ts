@@ -1,4 +1,4 @@
-import jwt, { Secret } from 'jsonwebtoken';
+import jwt, { type Secret } from 'jsonwebtoken';
 import { promisify } from 'util';
 import {
   ACCESS_TOKEN_SECRET,

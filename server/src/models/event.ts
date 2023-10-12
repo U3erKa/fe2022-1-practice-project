@@ -75,4 +75,4 @@ abstract class _Event extends Model<
   declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
 }
 
-export = Event;
+export default Event;
