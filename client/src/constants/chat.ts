@@ -10,4 +10,4 @@ export const dialogButtons = [
   { id: 1, name: 'Favorite', mode: FAVORITE_PREVIEW_CHAT_MODE },
   { id: 2, name: 'Blocked', mode: BLOCKED_PREVIEW_CHAT_MODE },
   { id: 3, name: 'Catalog', mode: CATALOG_PREVIEW_CHAT_MODE },
-];
+] as const;

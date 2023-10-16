@@ -1,3 +1,4 @@
+import { type FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleMinus,
@@ -17,17 +18,27 @@ import {
 import styles from './styles/DialogBox.module.sass';
 import { getShortTimeStr } from 'utils/functions';
 
-const DialogBox = (props) => {
-  const {
-    chatPreview,
-    userId,
-    changeFavorite,
-    changeBlackList,
-    catalogOperation,
-    goToExpandedDialog,
-    chatMode,
-    interlocutor,
-  } = props;
+export type Props = {
+  chatPreview,
+  userId,
+  changeFavorite,
+  changeBlackList,
+  catalogOperation,
+  goToExpandedDialog,
+  chatMode,
+  interlocutor,
+}
+
+const DialogBox: FC<Props> = ({
+  chatPreview,
+  userId,
+  changeFavorite,
+  changeBlackList,
+  catalogOperation,
+  goToExpandedDialog,
+  chatMode,
+  interlocutor,
+}) => {
   const { favoriteList, participants, blackList, _id, text, createdAt } =
     chatPreview;
   const isFavorite = favoriteList[participants.indexOf(userId)];

@@ -73,26 +73,26 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
   ) => {
     const arrayList: JSX.Element[] = [];
     messagesPreview.forEach((chatPreview, index) => {
-      const dialogNode = (
-        <DialogBox
-          interlocutor={chatPreview.interlocutor}
-          chatPreview={chatPreview}
-          userId={userId}
-          key={index}
-          changeFavorite={changeFavorite}
-          changeBlackList={changeBlackList}
-          chatMode={chatMode}
-          catalogOperation={
-            chatMode === CATALOG_PREVIEW_CHAT_MODE
-              ? removeChat
-              : changeShowCatalogCreation
-          }
-          goToExpandedDialog={(data: GoToExtendedDialog) =>
-            dispatch(goToExpandedDialog(data))
-          }
-        />
-      );
       if (!filterFunc || (filterFunc && filterFunc(chatPreview, userId))) {
+        const dialogNode = (
+          <DialogBox
+            interlocutor={chatPreview.interlocutor}
+            chatPreview={chatPreview}
+            userId={userId}
+            key={index}
+            changeFavorite={changeFavorite}
+            changeBlackList={changeBlackList}
+            chatMode={chatMode}
+            catalogOperation={
+              chatMode === CATALOG_PREVIEW_CHAT_MODE
+                ? removeChat
+                : changeShowCatalogCreation
+            }
+            goToExpandedDialog={(data: GoToExtendedDialog) =>
+              dispatch(goToExpandedDialog(data))
+            }
+          />
+        );
         arrayList.push(dialogNode);
       }
     });

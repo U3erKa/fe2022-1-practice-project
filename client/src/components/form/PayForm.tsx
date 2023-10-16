@@ -21,6 +21,13 @@ export type Props = {
   isPayForOrder?: boolean;
 };
 
+const classes = {
+  container: styles.inputContainer,
+  input: styles.input,
+  notValid: styles.notValid,
+  error: styles.error,
+};
+
 const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,12 +75,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
                   <span>Name</span>
                   <PayInput
                     name="name"
-                    classes={{
-                      container: styles.inputContainer,
-                      input: styles.input,
-                      notValid: styles.notValid,
-                      error: styles.error,
-                    }}
+                    classes={classes}
                     type="text"
                     label="name"
                     changeFocus={changeFocusOnCardMethod}
@@ -84,12 +86,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
                     <span>Sum</span>
                     <PayInput
                       name="sum"
-                      classes={{
-                        container: styles.inputContainer,
-                        input: styles.input,
-                        notValid: styles.notValid,
-                        error: styles.error,
-                      }}
+                      classes={classes}
                       type="text"
                       label="sum"
                       changeFocus={changeFocusOnCardMethod}
@@ -102,12 +99,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
                     isInputMask
                     mask="9999 9999 9999 9999 999"
                     name="number"
-                    classes={{
-                      container: styles.inputContainer,
-                      input: styles.input,
-                      notValid: styles.notValid,
-                      error: styles.error,
-                    }}
+                    classes={classes}
                     type="text"
                     label="card number"
                     changeFocus={changeFocusOnCardMethod}
@@ -120,12 +112,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
                       isInputMask
                       mask="99/99"
                       name="expiry"
-                      classes={{
-                        container: styles.inputContainer,
-                        input: styles.input,
-                        notValid: styles.notValid,
-                        error: styles.error,
-                      }}
+                      classes={classes}
                       type="text"
                       label="expiry"
                       changeFocus={changeFocusOnCardMethod}
@@ -137,12 +124,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
                       isInputMask
                       mask="9999"
                       name="cvc"
-                      classes={{
-                        container: styles.inputContainer,
-                        input: styles.input,
-                        notValid: styles.notValid,
-                        error: styles.error,
-                      }}
+                      classes={classes}
                       type="text"
                       label="cvc"
                       changeFocus={changeFocusOnCardMethod}

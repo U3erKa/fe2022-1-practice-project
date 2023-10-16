@@ -1,8 +1,9 @@
 import { type FC } from 'react';
 import { Field, type FieldAttributes } from 'formik';
+import { DUMMY_LINK } from 'constants/general';
 
 export type Props = FieldAttributes<unknown> & {
-  label: string;
+  label?: string;
   classes: Record<string, string>;
 };
 
@@ -26,7 +27,7 @@ const AgreeTermOfServiceInput: FC<Props> = ({
             <input {...field} placeholder={label} id={id} type={type} />
             <label htmlFor={id}>
               By clicking this checkbox, you agree to our{' '}
-              <a href="https://www.google.com" target="_blank" rel="noreferrer">
+              <a href={DUMMY_LINK} target="_blank" rel="noreferrer">
                 Terms of Service.
               </a>
             </label>

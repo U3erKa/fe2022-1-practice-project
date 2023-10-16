@@ -2,11 +2,9 @@ import { useDispatch } from 'react-redux';
 import { isEqual } from 'radash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
-
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
 import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
-
 import { useSelector } from 'hooks';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
@@ -16,15 +14,22 @@ import {
   TAGLINE_CONTEST,
   PUBLIC_URL,
 } from 'constants/general';
-
-import styles from './styles/ContestInfo.module.sass';
 import type { InterlocutorId, UserId } from 'types/api/_common';
+import styles from './styles/ContestInfo.module.sass';
 
-const ContestInfo = (props) => {
+function DataContainer({ label, value }: { label: string; value: string }) {
+  return (
+    <div className={styles.dataContainer}>
+      <span className={styles.label}>{label}</span>
+      <span className={styles.data}>{value}</span>
+    </div>
+  );
+}
+
+const ContestInfo = ({ changeEditContest, userId, contestData, role }) => {
   const { messagesPreview } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  const { changeEditContest, userId, contestData, role } = props;
   const {
     typeOfTagline,
     brandStyle,
@@ -60,7 +65,6 @@ const ContestInfo = (props) => {
   };
 
   const goChat = () => {
-    const { User } = contestData ?? {};
     dispatch(
       goToExpandedDialog({
         interlocutor: User,
@@ -73,10 +77,7 @@ const ContestInfo = (props) => {
     <div className={styles.mainContestInfoContainer}>
       <div className={styles.infoContainer}>
         <div className={styles.contestTypeContainer}>
-          <div className={styles.dataContainer}>
-            <span className={styles.label}>Contest Type</span>
-            <span className={styles.data}>{contestType}</span>
-          </div>
+          <DataContainer label="Contest Type" value={contestType} />
           {User.id === userId && status !== CONTEST_STATUS_FINISHED && (
             <div
               onClick={() => changeEditContest(true)}
@@ -89,10 +90,7 @@ const ContestInfo = (props) => {
             <FontAwesomeIcon icon={faComments} onClick={goChat} />
           )}
         </div>
-        <div className={styles.dataContainer}>
-          <span className={styles.label}>Title of the Project</span>
-          <span className={styles.data}>{title}</span>
-        </div>
+        <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
             typeOfName={typeOfName}
@@ -109,22 +107,15 @@ const ContestInfo = (props) => {
             nameVenture={contestData.nameVenture}
           />
         )}
-        <div className={styles.dataContainer}>
-          <span className={styles.label}>
-            What is your Business/ Brand about?
-          </span>
-          <span className={styles.data}>{focusOfWork}</span>
-        </div>
-        <div className={styles.dataContainer}>
-          <span className={styles.label}>
-            Description target customers of company{' '}
-          </span>
-          <span className={styles.data}>{targetCustomer}</span>
-        </div>
-        <div className={styles.dataContainer}>
-          <span className={styles.label}>Industry of company</span>
-          <span className={styles.data}>{industry}</span>
-        </div>
+        <DataContainer
+          label="What is your Business/ Brand about?"
+          value={focusOfWork}
+        />
+        <DataContainer
+          label="Description target customers of company"
+          value={targetCustomer}
+        />
+        <DataContainer label="Industry of company" value={industry} />
         {originalFileName && (
           <div className={styles.dataContainer}>
             <span className={styles.label}>Additional File</span>

@@ -1,5 +1,6 @@
 import { type ChangeEventHandler, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { select } from 'radash';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
@@ -25,13 +26,14 @@ export const types = [
 ];
 
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {
-  const contestTypes = types.map(
-    (type, i) =>
-      !i || (
-        <option key={i - 1} value={type}>
-          {type}
-        </option>
-      ),
+  const contestTypes = select(
+    types,
+    (type, i) => (
+      <option key={i} value={type}>
+        {type}
+      </option>
+    ),
+    (_, i) => !!i,
   );
 
   return (

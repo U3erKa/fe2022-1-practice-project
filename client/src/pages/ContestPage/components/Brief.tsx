@@ -73,11 +73,12 @@ const Brief = () => {
 
     const defaultData: DefaultData = {} as any;
     Object.keys(data).forEach((key) => {
-      if (data[key]) {
+      if (data[key as keyof typeof data]) {
         if (key === 'originalFileName') {
           defaultData.file = { name: data[key] };
         } else {
-          defaultData[key] = data[key];
+          // @ts-expect-error
+          defaultData[key] = data[key as keyof typeof data];
         }
       }
     });

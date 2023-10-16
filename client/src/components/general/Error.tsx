@@ -12,26 +12,23 @@ export type Props = {
 const Error: FC<Props> = ({ status, data, clearError }) => {
   const getMessage = () => {
     switch (status) {
-      case 404:
-        return data;
       case 400:
         return 'Check the input data';
-      case 409:
-        return data;
       case 403:
         return 'Bank decline transaction';
+      case 404:
       case 406:
+      case 409:
         return data;
       default:
         return 'Server Error';
     }
   };
 
-  const { clearError } = props;
   return (
     <div className={styles.errorContainer}>
       <span>{getMessage()}</span>
-      <FontAwesomeIcon icon={faCircleXmark} onClick={() => clearError()} />
+      <FontAwesomeIcon icon={faCircleXmark} onClick={clearError} />
     </div>
   );
 };

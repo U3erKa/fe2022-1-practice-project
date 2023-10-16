@@ -20,8 +20,7 @@ const ProgressBar: FC<Props> = ({ currentStep }) => {
       classOuter = styles.outerActive;
       classInner = styles.innerActive;
       classProgress = styles.progressContainer;
-    }
-    if (count < currentStep) {
+    } else if (count < currentStep) {
       classOuter = styles.outerComplete;
       classInner = styles.innerComplete;
     }

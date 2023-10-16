@@ -1,12 +1,15 @@
-import { useEffect, useRef } from 'react';
-
+import { useEffect, useRef, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { getDialogMessages, clearMessageList } from 'store/slices/chatSlice';
-
 import { ChatHeader, ChatInput } from 'components/chat';
 import { BlockMessage, MainDialog } from 'components/dialog';
+import type { UserId } from 'types/api/_common';
 
-const Dialog = ({ userId }) => {
+type Props = {
+  userId: UserId;
+};
+
+const Dialog: FC<Props> = ({ userId }) => {
   const {
     chatData,
     // @ts-expect-error

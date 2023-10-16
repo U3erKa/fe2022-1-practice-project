@@ -70,8 +70,8 @@ const CreatorDashboard = () => {
   const getPredicateOfRequest = () => {
     const obj: _CreatorFilter = {};
     Object.keys(creatorFilter).forEach((el) => {
-      if (creatorFilter[el]) {
-        obj[el] = creatorFilter[el];
+      if (creatorFilter[el as keyof _CreatorFilter]) {
+        obj[el] = creatorFilter[el as keyof _CreatorFilter];
       }
     });
     obj.ownEntries = creatorFilter.ownEntries;

@@ -1,4 +1,4 @@
-import { ImgHTMLAttributes } from 'react';
+import { type ImgHTMLAttributes } from 'react';
 import { MIME_TYPE } from 'constants/general';
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'srcSet'> & {
@@ -9,7 +9,7 @@ export default function Picture({ srcSet, className, ...restProps }: Props) {
   const sources = srcSet?.map((source) => {
     const extension = source
       .substring(source.lastIndexOf('.') + 1)
-      .toUpperCase();
+      .toUpperCase() as keyof typeof MIME_TYPE;
 
     return (
       <source

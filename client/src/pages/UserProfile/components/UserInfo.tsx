@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { updateUser } from 'store/slices/userSlice';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
 import { UpdateUserInfoForm } from 'components/form';
+import { uniqueId } from 'utils/functions';
 import { ANONYM_IMAGE_PATH, PUBLIC_URL, CREATOR } from 'constants/general';
 import type { User } from 'types/api/user';
 import styles from '../styles/UserInfo.module.sass';
@@ -11,36 +12,33 @@ export type Props = {
   userData: Omit<User, 'avatar'>;
 };
 
+const InfoBlock: FC<{ label: string; value: string }> = ({ label, value }) => {
+  return (
+    <div className={styles.infoBlock}>
+      <span className={styles.label}>{label}</span>
+      <span className={styles.info}>{value}</span>
+    </div>
+  );
+};
+
 const UserInfoData: FC<Props> = ({ userData }) => {
   const { firstName, lastName, displayName, email, role, balance } = userData;
 
+  const userInfo = [
+    { id: uniqueId(), label: 'First Name', value: firstName },
+    { id: uniqueId(), label: 'Last Name', value: lastName },
+    { id: uniqueId(), label: 'Display Name', value: displayName },
+    { id: uniqueId(), label: 'Email', value: email },
+    { id: uniqueId(), label: 'Role', value: role },
+  ];
+
   return (
     <div className={styles.infoContainer}>
-      <div className={styles.infoBlock}>
-        <span className={styles.label}>First Name</span>
-        <span className={styles.info}>{firstName}</span>
-      </div>
-      <div className={styles.infoBlock}>
-        <span className={styles.label}>Last Name</span>
-        <span className={styles.info}>{lastName}</span>
-      </div>
-      <div className={styles.infoBlock}>
-        <span className={styles.label}>Display Name</span>
-        <span className={styles.info}>{displayName}</span>
-      </div>
-      <div className={styles.infoBlock}>
-        <span className={styles.label}>Email</span>
-        <span className={styles.info}>{email}</span>
-      </div>
-      <div className={styles.infoBlock}>
-        <span className={styles.label}>Role</span>
-        <span className={styles.info}>{role}</span>
-      </div>
+      {userInfo.map(({ id, label, value }) => (
+        <InfoBlock key={id} label={label} value={value} />
+      ))}
       {role === CREATOR && (
-        <div className={styles.infoBlock}>
-          <span className={styles.label}>Balance</span>
-          <span className={styles.info}>{`${balance}$`}</span>
-        </div>
+        <InfoBlock label={'Balance'} value={`${balance}$`} />
       )}
     </div>
   );

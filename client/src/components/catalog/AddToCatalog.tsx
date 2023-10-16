@@ -9,8 +9,12 @@ const AddToCatalog = () => {
   const { catalogList, addChatId } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  const catalogNames = catalogList.map((catalog) => catalog.catalogName);
-  const catalogIds = catalogList.map((catalog) => catalog._id);
+  const catalogNames: string[] = [];
+  const catalogIds: CatalogId[] = [];
+  catalogList.forEach(({ catalogName, _id }) => {
+    catalogNames.push(catalogName);
+    catalogIds.push(_id);
+  });
 
   const onSubmit = (values: { catalogId: CatalogId }) => {
     dispatch(

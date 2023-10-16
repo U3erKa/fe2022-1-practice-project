@@ -12,12 +12,6 @@ const FieldFileInput: FC<Props> = ({ classes, name, ...rest }) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [{ value, ...restField }, meta, helpers] = useField(name);
-  const getFileName = () => {
-    if (value) {
-      return value.name;
-    }
-    return '';
-  };
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const file = e.target.files![0];
@@ -30,7 +24,7 @@ const FieldFileInput: FC<Props> = ({ classes, name, ...rest }) => {
         Choose file
       </label>
       <span id="fileNameContainer" className={fileNameClass}>
-        {getFileName()}
+        {value?.name ?? ''}
       </span>
       <input
         {...restField}

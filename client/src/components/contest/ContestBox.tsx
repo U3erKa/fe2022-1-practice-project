@@ -1,5 +1,6 @@
 import { type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { capitalize } from 'radash';
 import { Picture } from 'components/general';
 import { getLongTimeStr } from 'utils/functions';
 import {
@@ -26,9 +27,6 @@ const ContestBox: FC<Props> = ({ data }) => {
     return data.typeOfTagline;
   };
 
-  const ucFirstLetter = (string) =>
-    string.charAt(0).toUpperCase() + string.slice(1);
-
   const { id, title, contestType, prize, count } = data;
   return (
     <div
@@ -41,7 +39,7 @@ const ContestBox: FC<Props> = ({ data }) => {
           <span className={styles.id}>{`(#${id})`}</span>
         </div>
         <div className={styles.contestType}>
-          <span>{`${ucFirstLetter(
+          <span>{`${capitalize(
             contestType,
           )} / ${getPreferenceContest()}`}</span>
         </div>

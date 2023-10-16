@@ -7,6 +7,7 @@ import { Error } from 'components/general';
 import { ImageUpload, FormInput } from 'components/input';
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
 import styles from './styles/UpdateUserInfoForm.module.sass';
+import { uniqueId } from 'utils/functions';
 
 export type Props = {
   onSubmit: (
@@ -16,9 +17,35 @@ export type Props = {
   submitting?: boolean;
 };
 
+const INPUT_CONTAINERS = [
+  { id: uniqueId(), label: 'First Name', name: 'firstName' },
+  { id: uniqueId(), label: 'Last Name', name: 'lastName' },
+  { id: uniqueId(), label: 'Display Name', name: 'displayName' },
+] as const;
+
+const inputClasses = {
+  container: styles.inputContainer,
+  input: styles.input,
+  warning: styles.error,
+  notValid: styles.notValid,
+};
+
+const imageUploadClasses = {
+  uploadContainer: styles.imageUploadContainer,
+  inputContainer: styles.uploadInputContainer,
+  imgStyle: styles.imgStyle,
+};
+
 const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   const { data: user, error } = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
+
+  const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
+    <div key={id} className={styles.container}>
+      <span className={styles.label}>{label}</span>
+      <FormInput type="text" name={name} label={label} classes={inputClasses} />
+    </div>
+  ));
 
   return (
     <Formik
@@ -38,56 +65,8 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
             clearError={() => dispatch(clearUserError())}
           />
         )}
-        <div className={styles.container}>
-          <span className={styles.label}>First Name</span>
-          <FormInput
-            name="firstName"
-            type="text"
-            label="First Name"
-            classes={{
-              container: styles.inputContainer,
-              input: styles.input,
-              warning: styles.error,
-              notValid: styles.notValid,
-            }}
-          />
-        </div>
-        <div className={styles.container}>
-          <span className={styles.label}>Last Name</span>
-          <FormInput
-            name="lastName"
-            type="text"
-            label="LastName"
-            classes={{
-              container: styles.inputContainer,
-              input: styles.input,
-              warning: styles.error,
-              notValid: styles.notValid,
-            }}
-          />
-        </div>
-        <div className={styles.container}>
-          <span className={styles.label}>Display Name</span>
-          <FormInput
-            name="displayName"
-            type="text"
-            label="Display Name"
-            classes={{
-              container: styles.inputContainer,
-              input: styles.input,
-              warning: styles.error,
-              notValid: styles.notValid,
-            }}
-          />
-        </div>
-        <ImageUpload
-          name="file"
-          classes={{
-            uploadContainer: styles.imageUploadContainer,
-            inputContainer: styles.uploadInputContainer,
-            imgStyle: styles.imgStyle,
-          }}
-        />
+        {inputContainers}
+        <ImageUpload name="file" classes={imageUploadClasses} />
         <button type="submit" disabled={submitting}>
           Submit
         </button>

@@ -82,7 +82,6 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
         },
         {
           label: 'No',
-          onClick: () => {},
         },
       ],
     });
@@ -104,7 +103,6 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
         },
         {
           label: 'No',
-          onClick: () => {},
         },
       ],
     });
@@ -164,6 +162,39 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
     );
   };
 
+  const fullSymbol = (
+    <Picture
+      srcSet={[
+        `${STATIC_IMAGES_PATH}star.avif`,
+        `${STATIC_IMAGES_PATH}star.webp`,
+      ]}
+      src={`${STATIC_IMAGES_PATH}star.png`}
+      alt="star"
+    />
+  );
+
+  const placeholderSymbol = (
+    <Picture
+      srcSet={[
+        `${STATIC_IMAGES_PATH}star.avif`,
+        `${STATIC_IMAGES_PATH}star.webp`,
+      ]}
+      src={`${STATIC_IMAGES_PATH}star.png`}
+      alt="star"
+    />
+  );
+
+  const emptySymbol = (
+    <Picture
+      srcSet={[
+        `${STATIC_IMAGES_PATH}star-outline.avif`,
+        `${STATIC_IMAGES_PATH}star-outline.webp`,
+      ]}
+      src={`${STATIC_IMAGES_PATH}star-outline.png`}
+      alt="star-outline"
+    />
+  );
+
   return (
     <div className={styles.offerContainer}>
       {offerStatus()}
@@ -187,38 +218,11 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
             <span className={styles.userScoreLabel}>Creative Rating </span>
             {/* @ts-ignore */}
             <Rating
-              initialRating={rating}
               fractions={2}
-              fullSymbol={
-                <Picture
-                  srcSet={[
-                    `${STATIC_IMAGES_PATH}star.avif`,
-                    `${STATIC_IMAGES_PATH}star.webp`,
-                  ]}
-                  src={`${STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
-              }
-              placeholderSymbol={
-                <Picture
-                  srcSet={[
-                    `${STATIC_IMAGES_PATH}star.avif`,
-                    `${STATIC_IMAGES_PATH}star.webp`,
-                  ]}
-                  src={`${STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
-              }
-              emptySymbol={
-                <Picture
-                  srcSet={[
-                    `${STATIC_IMAGES_PATH}star-outline.avif`,
-                    `${STATIC_IMAGES_PATH}star-outline.webp`,
-                  ]}
-                  src={`${STATIC_IMAGES_PATH}star-outline.png`}
-                  alt="star-outline"
-                />
-              }
+              fullSymbol={fullSymbol}
+              placeholderSymbol={placeholderSymbol}
+              emptySymbol={emptySymbol}
+              initialRating={rating}
               readonly
             />
           </div>
@@ -246,36 +250,9 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
             // @ts-ignore
             <Rating
               fractions={2}
-              fullSymbol={
-                <Picture
-                  srcSet={[
-                    `${STATIC_IMAGES_PATH}star.avif`,
-                    `${STATIC_IMAGES_PATH}star.webp`,
-                  ]}
-                  src={`${STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
-              }
-              placeholderSymbol={
-                <Picture
-                  srcSet={[
-                    `${STATIC_IMAGES_PATH}star.avif`,
-                    `${STATIC_IMAGES_PATH}star.webp`,
-                  ]}
-                  src={`${STATIC_IMAGES_PATH}star.png`}
-                  alt="star"
-                />
-              }
-              emptySymbol={
-                <Picture
-                  srcSet={[
-                    `${STATIC_IMAGES_PATH}star-outline.avif`,
-                    `${STATIC_IMAGES_PATH}star-outline.webp`,
-                  ]}
-                  src={`${STATIC_IMAGES_PATH}star-outline.png`}
-                  alt="star-outline"
-                />
-              }
+              fullSymbol={fullSymbol}
+              placeholderSymbol={placeholderSymbol}
+              emptySymbol={emptySymbol}
               onClick={changeMarkMethod}
               placeholderRating={data.mark}
             />

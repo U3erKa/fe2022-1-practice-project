@@ -55,8 +55,7 @@ const UserProfile = () => {
           <UserInfo />
         ) : (
           <div className={styles.container}>
-            {/* @ts-expect-error */}
-            {parseInt(balance) === 0 ? (
+            {balance ? (
               <span className={styles.notMoney}>
                 There is no money on your balance
               </span>
