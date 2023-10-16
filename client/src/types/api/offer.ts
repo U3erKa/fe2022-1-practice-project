@@ -94,6 +94,7 @@ export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
 export type Commands = CustomerCommand | ModeratorCommand;
 export type CustomerCommand = 'resolve' | 'reject';
 export type ModeratorCommand = 'approve' | 'discard';
+export type CardField = keyof Omit<Card, 'balance'>;
 
 export type WithOfferStatus<T = Commands> = {
   status: OfferStatus<T>;

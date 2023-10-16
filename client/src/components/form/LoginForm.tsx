@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
-
 import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
-
 import { Error } from 'components/general';
 import { FormInput } from 'components/input';
-
 import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
+import type { LoginParams } from 'types/api/auth';
 import styles from './styles/LoginForm.module.sass';
 
 const LoginForm = () => {
@@ -24,7 +22,7 @@ const LoginForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: LoginParams) => {
     dispatch(checkAuth({ data: values, navigate, authMode: AUTH_MODE.LOGIN }));
   };
 

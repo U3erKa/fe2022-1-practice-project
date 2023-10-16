@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
-import { Form, Formik } from 'formik';
-
+import { type FC, useEffect, type Ref } from 'react';
+import { Form, Formik, type FormikProps, type FormikHelpers } from 'formik';
 import { useDispatch, useSelector } from 'hooks';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-
 import { Spinner, TryAgain } from 'components/general';
 import { OptionalSelects } from 'components/contest';
 import {
@@ -12,9 +10,10 @@ import {
   FieldFileInput,
   FormTextArea,
 } from 'components/input';
-
 import { ContestSchem } from 'utils/validators/validationSchems';
 import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
+import type { ContestType } from 'types/contest';
+import type { ContestInfo } from 'types/api/contest';
 import styles from './styles/ContestForm.module.sass';
 
 const variableOptions = {
@@ -32,7 +31,18 @@ const variableOptions = {
   },
 };
 
-const ContestForm = (props) => {
+export type Props = {
+  name: string;
+  contestType: ContestType;
+  defaultData: Partial<ContestInfo>;
+  handleSubmit: (
+    values: ContestInfo,
+    { resetForm }: FormikHelpers<ContestInfo>,
+  ) => void;
+  formRef: Ref<FormikProps<ContestInfo>>;
+};
+
+const ContestForm: FC<Props> = (props) => {
   const { isEditContest, dataForContest } = useSelector(
     ({ contestByIdStore, dataForContest }) => ({
       isEditContest: contestByIdStore.isEditContest,
@@ -90,7 +100,7 @@ const ContestForm = (props) => {
             industry: '',
             focusOfWork: '',
             targetCustomer: '',
-            file: '',
+            file: '' as any,
             ...variableOptions[contestType],
             ...defaultData,
           }}

@@ -1,8 +1,8 @@
 import { Formik, Form } from 'formik';
-
 import { useDispatch, useSelector } from 'hooks';
 import { addChatToCatalog } from 'store/slices/chatSlice';
 import { SelectInput } from 'components/input';
+import type { CatalogId } from 'types/api/_common';
 import styles from './styles/AddToCatalog.module.sass';
 
 const AddToCatalog = () => {
@@ -12,7 +12,7 @@ const AddToCatalog = () => {
   const catalogNames = catalogList.map((catalog) => catalog.catalogName);
   const catalogIds = catalogList.map((catalog) => catalog._id);
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: { catalogId: CatalogId }) => {
     dispatch(
       addChatToCatalog({ chatId: addChatId!, catalogId: values.catalogId }),
     );
@@ -21,7 +21,7 @@ const AddToCatalog = () => {
   return (
     <>
       {catalogNames.length !== 0 ? (
-        <Formik onSubmit={onSubmit} initialValues={{ catalogId: '' }}>
+        <Formik onSubmit={onSubmit} initialValues={{ catalogId: '' as any }}>
           <Form className={styles.form}>
             <SelectInput
               name="catalogId"

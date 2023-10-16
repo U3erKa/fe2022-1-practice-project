@@ -6,6 +6,7 @@ import { Header, Error } from 'components/general';
 import { PayForm } from 'components/form';
 import { UserInfo } from '.';
 import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';
+import type { CashOutParams } from 'types/api/offer';
 import styles from './styles/UserProfile.module.sass';
 
 const UserProfile = () => {
@@ -19,8 +20,7 @@ const UserProfile = () => {
 
   const dispatch = useDispatch();
 
-  const pay = (values) => {
-    const { number, expiry, cvc, sum } = values;
+  const pay = ({ number, expiry, cvc, sum }: CashOutParams) => {
     dispatch(cashOut({ number, expiry, cvc, sum }));
   };
 

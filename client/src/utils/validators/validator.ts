@@ -1,7 +1,7 @@
 import type { ValidationError, AnySchema } from 'yup';
 
-const validator = (schema: AnySchema) => (values) => {
-  const errors = {};
+const validator = (schema: AnySchema) => (values: Record<string, string>) => {
+  const errors: Record<string, string> = {};
   try {
     schema.validateSync(values, { abortEarly: false });
     return errors;

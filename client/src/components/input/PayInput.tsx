@@ -1,11 +1,29 @@
-import clsx from 'clsx';
+import { type FC } from 'react';
 import InputMask from 'react-input-mask';
-import { useField } from 'formik';
+import { type FieldAttributes, useField } from 'formik';
+import clsx from 'clsx';
+import type { CardField } from 'types/api/offer';
 
-const PayInput = (props) => {
-  const { label, changeFocus, classes, isInputMask, mask } = props;
+export type Props = FieldAttributes<unknown> & {
+  label: string;
+  changeFocus: (name: CardField) => void;
+  classes: Record<string, string>;
+  isInputMask?: boolean;
+} & (
+    | { isInputMask?: false; mask?: undefined }
+    | { isInputMask?: true; mask: string }
+  );
+
+const PayInput: FC<Props> = ({
+  label,
+  changeFocus,
+  classes,
+  isInputMask,
+  mask,
+  name,
+}) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [field, meta, helpers] = useField(props.name);
+  const [field, meta, helpers] = useField<CardField>(name);
   const { touched, error } = meta;
 
   if (field.name === 'sum') {
@@ -36,7 +54,7 @@ const PayInput = (props) => {
           className={clsx(classes.input, {
             [classes.notValid]: touched && error,
           })}
-          onFocus={() => changeFocus(field.name)}
+          onFocus={() => changeFocus(field.name as CardField)}
         />
         {touched && error && (
           // @ts-expect-error
@@ -53,7 +71,7 @@ const PayInput = (props) => {
         className={clsx(classes.input, {
           [classes.notValid]: touched && error,
         })}
-        onFocus={() => changeFocus(field.name)}
+        onFocus={() => changeFocus(field.name as CardField)}
       />
       {touched && error && (
         // @ts-expect-error

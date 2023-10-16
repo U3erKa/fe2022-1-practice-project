@@ -1,20 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
-
+import {
+  type ActionReducerMapBuilder,
+  type PayloadAction,
+  createSlice,
+} from '@reduxjs/toolkit';
 import * as offerController from 'api/rest/offerController';
 import { clearContestStore } from './contestCreationSlice';
 import { changeProfileViewMode } from './userProfileSlice';
 import { updateUser } from './userSlice';
-
 import {
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
 import { ROUTE, USER_INFO_MODE } from 'constants/general';
-
 import type { PaymentState } from 'types/slices';
-import { WithNavigate } from 'types/_common';
-import { CashOutParams } from 'types/api/offer';
+import type { WithNavigate } from 'types/_common';
+import type { CashOutParams } from 'types/api/offer';
 
 const PAYMENT_SLICE_NAME = 'payment';
 
@@ -47,13 +48,16 @@ export const cashOut = decorateAsyncThunk({
 });
 
 const reducers = {
-  changeFocusOnCard: (state: PaymentState, { payload }) => {
+  changeFocusOnCard: (
+    state: PaymentState,
+    { payload }: PayloadAction<PaymentState['focusOnElement']>,
+  ) => {
     state.focusOnElement = payload;
   },
   clearPaymentStore: () => initialState,
 };
 
-const extraReducers = (builder) => {
+const extraReducers = (builder: ActionReducerMapBuilder<any>) => {
   builder.addCase(pay.pending, pendingReducer);
   builder.addCase(pay.fulfilled, () => initialState);
   builder.addCase(pay.rejected, rejectedReducer);

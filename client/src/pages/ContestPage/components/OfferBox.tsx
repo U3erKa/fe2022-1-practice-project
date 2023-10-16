@@ -8,7 +8,6 @@ import {
   faClock,
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
-
 import { useDispatch, useSelector } from 'hooks';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
@@ -17,7 +16,6 @@ import {
   changeShowImage,
 } from 'store/slices/contestByIdSlice';
 import { Picture } from 'components/general';
-
 import {
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
@@ -33,10 +31,10 @@ import {
   OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
 } from 'constants/general';
-
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../styles/confirmStyle.css';
 import styles from '../styles/OfferBox.module.sass';
+import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
 
 const OfferBox = ({ data, contestData, setOfferStatus }) => {
   const selector = useSelector((state) => {
@@ -112,11 +110,11 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
     });
   };
 
-  const changeMarkMethod = (value) => {
+  const changeMarkMethod = (value: number) => {
     dispatch(clearChangeMarkError());
     dispatch(
       changeMark({
-        mark: value,
+        mark: value as _Rating,
         offerId: data.id,
         isFirst: !data.mark,
         creatorId: id,
@@ -154,7 +152,7 @@ const OfferBox = ({ data, contestData, setOfferStatus }) => {
     );
   };
 
-  const needButtons = (offerStatus) => {
+  const needButtons = (offerStatus: OfferStatus) => {
     if (role === MODERATOR) return true;
 
     const contestCreatorId = contestData.User.id;

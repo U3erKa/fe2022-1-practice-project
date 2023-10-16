@@ -1,15 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-
+import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
 import { updateStoreAfterUpdateContest } from './contestByIdSlice';
-
 import {
   decorateAsyncThunk,
   pendingReducer,
   fulfilledReducer,
   rejectedReducer,
 } from 'utils/store';
-
 import type { ContestUpdationState } from 'types/slices';
 
 const CONTEST_UPDATION_SLICE_NAME = 'contestUpdation';
@@ -32,7 +29,9 @@ const reducers = {
   clearContestUpdationStore: () => initialState,
 };
 
-const extraReducers = (builder) => {
+const extraReducers = (
+  builder: ActionReducerMapBuilder<ContestUpdationState>,
+) => {
   builder.addCase(updateContest.pending, pendingReducer);
   builder.addCase(updateContest.fulfilled, fulfilledReducer);
   builder.addCase(updateContest.rejected, rejectedReducer);

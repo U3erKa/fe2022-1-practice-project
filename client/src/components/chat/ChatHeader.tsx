@@ -1,3 +1,4 @@
+import { type FC, type MouseEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUnlock,
@@ -17,31 +18,46 @@ import {
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-
+import type {
+  ChangeChatBlockParams,
+  ChangeChatFavoriteParams,
+} from 'types/api/chat';
+import type { UserId } from 'types/api/_common';
 import styles from './styles/ChatHeader.module.sass';
+import type { ChatData } from 'types/chat';
 
-const ChatHeader = ({ userId }) => {
+export type Props = {
+  userId: UserId;
+};
+
+const ChatHeader: FC<Props> = ({ userId }) => {
   const { interlocutor, chatData } = useSelector(({ chatStore }) => chatStore);
   const dispatch = useDispatch();
 
   const { avatar, firstName } = interlocutor || {};
 
-  const changeFavorite = (data, event) => {
+  const changeFavorite = (
+    data: ChangeChatFavoriteParams,
+    event: MouseEvent<SVGSVGElement>,
+  ) => {
     dispatch(changeChatFavorite(data));
     event.stopPropagation();
   };
 
-  const changeBlackList = (data, event) => {
+  const changeBlackList = (
+    data: ChangeChatBlockParams,
+    event: MouseEvent<SVGSVGElement>,
+  ) => {
     dispatch(changeChatBlock(data));
     event.stopPropagation();
   };
 
-  const isFavorite = (chatData, userId) => {
+  const isFavorite = (chatData: ChatData, userId: UserId) => {
     const { favoriteList, participants } = chatData;
     return favoriteList[participants.indexOf(userId)];
   };
 
-  const isBlocked = (chatData, userId) => {
+  const isBlocked = (chatData: ChatData, userId: UserId) => {
     const { participants, blackList } = chatData;
     return blackList[participants.indexOf(userId)];
   };

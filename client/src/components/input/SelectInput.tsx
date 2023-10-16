@@ -1,32 +1,41 @@
-import { FC, useLayoutEffect } from 'react';
-import { Field, ErrorMessage } from 'formik';
+import { type FC, useLayoutEffect } from 'react';
+import {
+  Field,
+  ErrorMessage,
+  type FieldMetaProps,
+  type FieldInputProps,
+  type FormikProps,
+} from 'formik';
+import type { JSX } from 'react/jsx-runtime';
 
 export type Props = {
-  header;
-  classes;
-  optionsArray;
-  valueArray?;
-  [key: string]: any;
+  header: string;
+  classes: Record<string, string>;
+  optionsArray: string[];
+  valueArray?: number[];
+  [key: string]: unknown;
 };
 
-const SelectInput: FC<Props> = ({
+export type FieldProps<T = string> = {
+  form: FormikProps<T>;
+  meta: FieldMetaProps<T>;
+  field: FieldInputProps<T>;
+};
+
+const SelectInput: FC<Props & FieldProps> = ({
   header,
   classes,
   optionsArray,
   valueArray,
-  ...props
+  form: { setFieldValue },
+  meta: { initialValue },
+  field,
 }) => {
-  const {
-    form: { setFieldValue },
-    meta: { initialValue },
-    field,
-  } = props;
-
   const getOptionsArray = () => {
     const array: JSX.Element[] = [];
     for (let i = 0; optionsArray && i < optionsArray.length; i++) {
       array.push(
-        <option key={i} value={valueArray ? valueArray[i] : null}>
+        <option key={i} value={valueArray ? valueArray[i] : undefined}>
           {optionsArray[i]}
         </option>,
       );
@@ -59,7 +68,7 @@ const SelectInputWrapper: FC<Props> = ({
   ...rest
 }) => (
   <Field {...rest}>
-    {(fieldProps) => (
+    {(fieldProps: FieldProps) => (
       <>
         <SelectInput
           {...fieldProps}

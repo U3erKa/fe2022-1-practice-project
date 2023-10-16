@@ -1,21 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  type ActionReducerMapBuilder,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
 import { isEqual } from 'radash';
-
 import * as catalogController from 'api/rest/catalogController';
 import * as chatController from 'api/rest/chatController';
-
 import {
   decorateAsyncThunk,
   createExtraReducers,
   rejectedReducer,
 } from 'utils/store';
-
 import {
   NORMAL_PREVIEW_CHAT_MODE,
   ADD_CHAT_TO_OLD_CATALOG,
 } from 'constants/general';
 
-import type { PayloadAction } from '@reduxjs/toolkit';
 import type { ChatState } from 'types/slices';
 
 import type {
@@ -166,7 +166,10 @@ const sendMessageExtraReducers = createExtraReducers({
     state.messagesPreview = messagesPreview;
     state.messages = [...state.messages, payload.message];
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.error = payload;
   },
 });
@@ -194,7 +197,10 @@ const changeChatFavoriteExtraReducers = createExtraReducers({
     state.chatData = payload;
     state.messagesPreview = messagesPreview;
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.error = payload;
   },
 });
@@ -222,7 +228,10 @@ const changeChatBlockExtraReducers = createExtraReducers({
     state.chatData = payload;
     state.messagesPreview = messagesPreview;
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.error = payload;
   },
 });
@@ -335,7 +344,10 @@ const deleteCatalogExtraReducers = createExtraReducers({
     );
     state.catalogList = [...newCatalogList];
   },
-  rejectedReducer: (state, { payload }) => {
+  rejectedReducer: (
+    state: ChatState,
+    { payload }: PayloadAction<ChatState['error']>,
+  ) => {
     state.error = payload;
   },
 });
@@ -407,7 +419,7 @@ const changeCatalogNameExtraReducers = createExtraReducers({
     state.currentCatalog = payload;
     state.isRenameCatalog = false;
   },
-  rejectedReducer: (state) => {
+  rejectedReducer: (state: ChatState) => {
     state.isRenameCatalog = false;
   },
 });
@@ -479,7 +491,7 @@ const reducers = {
 
   changeShowModeCatalog: (
     state: ChatState,
-    { payload }: PayloadAction<Catalog | void>,
+    { payload }: PayloadAction<Catalog | undefined>,
   ) => {
     // @ts-expect-error
     state.currentCatalog = { ...state.currentCatalog, ...payload };
@@ -511,7 +523,7 @@ const reducers = {
   },
 };
 
-const extraReducers = (builder) => {
+const extraReducers = (builder: ActionReducerMapBuilder<ChatState>) => {
   getPreviewChatExtraReducers(builder);
   getDialogMessagesExtraReducers(builder);
   sendMessageExtraReducers(builder);

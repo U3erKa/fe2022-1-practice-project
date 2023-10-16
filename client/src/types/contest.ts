@@ -7,7 +7,7 @@ import type {
   WithTimeStamps,
   WithUUID,
 } from './api/_common';
-
+import type { Priority } from './api/offer';
 import type {
   NAME_CONTEST,
   TAGLINE_CONTEST,
@@ -16,7 +16,6 @@ import type {
   CONTEST_STATUS_FINISHED,
   CONTEST_STATUS_PENDING,
 } from 'constants/general';
-import { Priority } from './api/offer';
 
 export type Contest = NameContest | LogoContest | TaglineContest;
 

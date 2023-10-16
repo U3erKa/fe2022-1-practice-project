@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
 
 import * as authController from 'api/rest/authController';
 import { controller } from 'api/ws/socketController';
@@ -44,7 +44,7 @@ const reducers = {
   clearAuth: () => initialState,
 };
 
-const extraReducers = (builder) => {
+const extraReducers = (builder: ActionReducerMapBuilder<AuthState>) => {
   builder.addCase(checkAuth.pending, pendingReducer);
   builder.addCase(checkAuth.fulfilled, fulfilledReducer);
   builder.addCase(checkAuth.rejected, rejectedReducer);

@@ -31,7 +31,7 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
   const navigate = useNavigate();
   const formRef = useRef<HTMLFormElement>();
   const contestData = contests[contestType]
-    ? contests[contestType]
+    ? contests[contestType]!
     : { contestType: contestType };
 
   useEffect(() => {

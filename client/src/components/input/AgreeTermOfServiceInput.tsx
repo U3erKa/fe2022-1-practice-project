@@ -1,6 +1,12 @@
-import { Field } from 'formik';
+import { type FC } from 'react';
+import { Field, type FieldAttributes } from 'formik';
 
-const AgreeTermOfServiceInput = ({
+export type Props = FieldAttributes<unknown> & {
+  label: string;
+  classes: Record<string, string>;
+};
+
+const AgreeTermOfServiceInput: FC<Props> = ({
   id,
   type,
   classes,
@@ -8,7 +14,7 @@ const AgreeTermOfServiceInput = ({
   ...rest
 }) => (
   <Field {...rest}>
-    {(props) => {
+    {(props: any) => {
       const {
         meta: { touched, error },
         field,

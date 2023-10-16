@@ -1,4 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  type ActionReducerMapBuilder,
+  type PayloadAction,
+  createSlice,
+} from '@reduxjs/toolkit';
 import * as offerController from 'api/rest/offerController';
 import * as contestController from 'api/rest/contestController';
 import {
@@ -254,17 +258,14 @@ const reducers = {
     state: ContestByIdState,
     {
       payload: { isShowOnFull, imagePath },
-    }: PayloadAction<{
-      isShowOnFull: ContestByIdState['isShowOnFull'];
-      imagePath: ContestByIdState['imagePath'];
-    }>,
+    }: PayloadAction<Pick<ContestByIdState, 'isShowOnFull' | 'imagePath'>>,
   ) => {
     state.isShowOnFull = isShowOnFull;
     state.imagePath = imagePath;
   },
 };
 
-const extraReducers = (builder) => {
+const extraReducers = (builder: ActionReducerMapBuilder<ContestByIdState>) => {
   getContestByIdExtraReducers(builder);
   addOfferExtraReducers(builder);
   setOfferStatusExtraReducers(builder);

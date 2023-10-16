@@ -1,14 +1,15 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+import {
+  createSlice,
+  createAsyncThunk,
+  type ActionReducerMapBuilder,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
 import * as userController from 'api/rest/userController';
 import * as authController from 'api/rest/authController';
 import { controller } from 'api/ws/socketController';
-
 import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';
 import { rejectedReducer } from 'utils/store';
-
-import type { PayloadAction } from '@reduxjs/toolkit';
 import type { ServerError, UserState } from 'types/slices';
 import type { JWT } from 'types/api/_common';
 
@@ -69,7 +70,7 @@ const reducers = {
   },
 };
 
-const extraReducers = (builder) => {
+const extraReducers = (builder: ActionReducerMapBuilder<UserState>) => {
   builder.addCase(checkAuth.pending, (state: UserState) => {
     state.isFetching = true;
     state.error = null;

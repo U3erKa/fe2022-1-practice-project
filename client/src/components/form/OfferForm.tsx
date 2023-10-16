@@ -1,20 +1,24 @@
-import { Formik, Form } from 'formik';
-
+import { type FC } from 'react';
+import { Formik, Form, type FormikHelpers } from 'formik';
 import { useDispatch, useSelector } from 'hooks';
 import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
-
 import { Error } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
-
 import {
   LogoOfferSchema,
   TextOfferSchema,
 } from 'utils/validators/validationSchems';
 import { LOGO_CONTEST } from 'constants/general';
-
+import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.sass';
+import { Id, WithId } from 'types/api/_common';
 
-const OfferInput = ({ contestType }) => {
+export type Props = {
+  contestType: ContestType;
+};
+export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & Props;
+
+const OfferInput: FC<Props> = ({ contestType }) => {
   return contestType === LOGO_CONTEST ? (
     <ImageUpload
       name="offerData"
@@ -39,20 +43,27 @@ const OfferInput = ({ contestType }) => {
   );
 };
 
-const OfferForm = ({ contestId, contestType, customerId }) => {
+const OfferForm: FC<OfferFormProps> = ({
+  contestId,
+  contestType,
+  customerId,
+}) => {
   const { addOfferError } = useSelector((state) => state.contestByIdStore);
   const dispatch = useDispatch();
 
   const validationSchema =
     contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema;
 
-  const setOffer = (values, { resetForm }) => {
+  const setOffer = (
+    values: { offerData: string },
+    { resetForm }: FormikHelpers<{ offerData: string }>,
+  ) => {
     dispatch(clearAddOfferError());
     const data = new FormData();
 
-    data.append('contestId', contestId);
+    data.append('contestId', contestId as unknown as string);
     data.append('contestType', contestType);
-    data.append('customerId', customerId);
+    data.append('customerId', customerId as unknown as string);
     data.append('offerData', values.offerData);
 
     dispatch(addOffer(data));

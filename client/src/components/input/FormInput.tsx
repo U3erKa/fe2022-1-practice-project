@@ -1,9 +1,15 @@
-import { Field, ErrorMessage } from 'formik';
+import { type FC } from 'react';
+import { Field, ErrorMessage, type FieldAttributes } from 'formik';
 import clsx from 'clsx';
 
-const FormInput = ({ classes, label, name, ...rest }) => (
+export type Props = FieldAttributes<unknown> & {
+  label: string;
+  classes: Record<string, string>;
+};
+
+const FormInput: FC<Props> = ({ classes, label, name, ...rest }) => (
   <Field name={name}>
-    {(props) => {
+    {(props: any) => {
       const {
         field,
         meta: { touched, error },

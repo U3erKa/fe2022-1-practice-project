@@ -7,12 +7,13 @@ import { FormInput } from 'components/input';
 import { CatalogSchema } from 'utils/validators/validationSchems';
 
 import styles from './styles/CreateCatalog.module.sass';
+import type { Catalog } from 'types/chat';
 
 const CreateCatalog = () => {
   const { addChatId } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  const click = (values) => {
+  const click = (values: Pick<Catalog, 'catalogName'>) => {
     dispatch(
       createCatalog({ catalogName: values.catalogName, chatId: addChatId! }),
     );

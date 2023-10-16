@@ -1,13 +1,13 @@
 import socketIoClient from 'socket.io-client';
 
 import { BASE_URL } from 'constants/general';
-import type { AppDispatch, RootState } from 'store';
+import type { AppDispatch, default as store } from 'store';
 
 class WebSocket {
   socket: ReturnType<typeof socketIoClient>;
   constructor(
     public dispatch: AppDispatch,
-    public getState: RootState,
+    public getState: typeof store['getState'],
     room: string,
   ) {
     this.socket = socketIoClient(`${BASE_URL}${room}`, {

@@ -1,6 +1,9 @@
+import { type FC } from 'react';
 import styles from './styles/ProgressBar.module.sass';
 
-const ProgressBar = (props) => {
+export type Props = { currentStep: number };
+
+const ProgressBar: FC<Props> = ({ currentStep }) => {
   const renderProgress = () => {
     const array: JSX.Element[] = [];
     for (let i = 1; i <= 3; i++) {
@@ -9,8 +12,7 @@ const ProgressBar = (props) => {
     return array;
   };
 
-  const renderBar = (count) => {
-    const { currentStep } = props;
+  const renderBar = (count: number) => {
     let classOuter = styles.outerNotActive;
     let classInner = styles.innerNotActive;
     let classProgress = '';

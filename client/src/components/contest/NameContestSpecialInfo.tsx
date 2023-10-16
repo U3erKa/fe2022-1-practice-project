@@ -1,7 +1,10 @@
+import { type FC } from 'react';
+import type { NameContestInfo } from 'types/api/contest';
 import styles from './styles/ContestInfo.module.sass';
 
-const NameContestSpecialInfo = (props) => {
-  const { typeOfName, styleName } = props;
+export type Props = Pick<NameContestInfo, 'typeOfName' | 'styleName'>;
+
+const NameContestSpecialInfo: FC<Props> = ({ typeOfName, styleName }) => {
   return (
     <>
       <div className={styles.dataContainer}>

@@ -1,13 +1,17 @@
+import { type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { updateUser } from 'store/slices/userSlice';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
-
 import { UpdateUserInfoForm } from 'components/form';
 import { ANONYM_IMAGE_PATH, PUBLIC_URL, CREATOR } from 'constants/general';
-
+import type { User } from 'types/api/user';
 import styles from '../styles/UserInfo.module.sass';
 
-const UserInfoData = ({ userData }) => {
+export type Props = {
+  userData: Omit<User, 'avatar'>;
+};
+
+const UserInfoData: FC<Props> = ({ userData }) => {
   const { firstName, lastName, displayName, email, role, balance } = userData;
 
   return (
@@ -42,7 +46,7 @@ const UserInfoData = ({ userData }) => {
   );
 };
 
-const UserInfo = () => {
+const UserInfo: FC = () => {
   const { data, isEdit } = useSelector((state) => {
     const { data } = state.userStore;
     const { isEdit } = state.userProfile;
@@ -50,9 +54,13 @@ const UserInfo = () => {
   });
   const dispatch = useDispatch();
 
-  const { avatar, ...userData } = data || {};
+  const { avatar, ...userData } = data || ({} as User);
 
-  const updateUserData = (values) => {
+  const updateUserData = (
+    values: Pick<User, 'firstName' | 'lastName' | 'displayName'> & {
+      file: string | Blob;
+    },
+  ) => {
     const formData = new FormData();
 
     formData.append('file', values.file);

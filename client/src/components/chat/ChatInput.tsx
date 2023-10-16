@@ -1,19 +1,21 @@
-import { Form, Formik } from 'formik';
-
+import { Form, Formik, type FormikHelpers } from 'formik';
 import { useDispatch, useSelector } from 'hooks';
 import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
-
+import { Picture } from 'components/general';
 import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
+import type { InferType } from 'yup';
 import styles from './styles/ChatInput.module.sass';
-import { Picture } from 'components/general';
 
 const ChatInput = () => {
   const interlocutor = useSelector(({ chatStore }) => chatStore.interlocutor);
   const dispatch = useDispatch();
 
-  const submitHandler = (values, { resetForm }) => {
+  const submitHandler = (
+    values: InferType<typeof MessageSchema>,
+    { resetForm }: FormikHelpers<InferType<typeof MessageSchema>>,
+  ) => {
     dispatch(
       sendMessage({
         messageBody: values.message,

@@ -1,4 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  type ActionReducerMapBuilder,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';
 import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
@@ -57,12 +61,9 @@ const reducers = {
   }),
 };
 
-export type GetContests = {
-  contests: ContestsState['contests'];
-  haveMore: ContestsState['haveMore'];
-};
+export type GetContests = Pick<ContestsState, 'contests' | 'haveMore'>;
 
-const extraReducers = (builder) => {
+const extraReducers = (builder: ActionReducerMapBuilder<ContestsState>) => {
   builder.addCase(getContests.pending, pendingReducer);
   builder.addCase(
     getContests.fulfilled,

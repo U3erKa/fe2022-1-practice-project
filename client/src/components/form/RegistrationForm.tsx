@@ -11,9 +11,9 @@ import {
   FormInput,
   RoleInput,
 } from 'components/input';
-
 import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
+import type { RegisterParams } from 'types/api/auth';
 import styles from './styles/RegistrationForm.module.sass';
 
 const RegistrationForm = () => {
@@ -28,7 +28,7 @@ const RegistrationForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: RegisterParams) => {
     dispatch(
       checkAuth({ data: values, navigate, authMode: AUTH_MODE.REGISTER }),
     );

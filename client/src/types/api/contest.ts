@@ -71,7 +71,7 @@ export type DataForContest = {
   typeOfName?: TypeOfName;
   brandStyle?: BrandStyle;
   typeOfTagline?: TypeOfTagline;
-  industry?: Industry;
+  industry?: Industry[];
 };
 
 export type SaveContestToStore =

@@ -1,9 +1,17 @@
+import { type ChangeEventHandler, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import { ROUTE } from 'constants/general';
+import type { Industry } from 'types/contest';
+import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from '../styles/CreatorDashboard.module.sass';
+
+export type Props = {
+  onChange: ChangeEventHandler<HTMLSelectElement>;
+  value: (typeof types)[number];
+};
 
 export const types = [
   '',
@@ -16,7 +24,7 @@ export const types = [
   'name,logo',
 ];
 
-export const ContestTypes = ({ onChange, value }) => {
+export const ContestTypes: FC<Props> = ({ onChange, value }) => {
   const contestTypes = types.map(
     (type, i) =>
       !i || (
@@ -33,7 +41,12 @@ export const ContestTypes = ({ onChange, value }) => {
   );
 };
 
-export const IndustryType = ({ industries, filter, onChange }) => {
+export type Props2 = Pick<Props, 'onChange'> & {
+  industries?: Industry[];
+  filter?: Industry | '';
+};
+
+export const IndustryType: FC<Props2> = ({ industries, filter, onChange }) => {
   const options = industries
     ? industries.map((industry, i) => (
         <option key={i + 1} value={industry}>
@@ -67,16 +80,18 @@ export const CreatorFilter = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const parseParamsToUrl = (creatorFilter) => {
-    const obj: Record<string, string> = {};
+  const parseParamsToUrl = (creatorFilter: _CreatorFilter) => {
+    const obj: Record<string, any> = {};
     Object.keys(creatorFilter).forEach((el) => {
-      if (creatorFilter[el]) obj[el] = creatorFilter[el];
+      if (creatorFilter[el as keyof _CreatorFilter]) {
+        obj[el] = creatorFilter[el as keyof _CreatorFilter];
+      }
     });
 
     navigate(`${ROUTE.DASHBOARD}?${new URLSearchParams(obj)}`);
   };
 
-  const changePredicate = ({ name, value }) => {
+  const changePredicate = ({ name, value }: { name: string; value: any }) => {
     dispatch(
       setNewCreatorFilter({
         [name]: value === 'Choose industry' ? null : value,
@@ -114,7 +129,7 @@ export const CreatorFilter = () => {
                 value: types.indexOf(target.value),
               })
             }
-            value={types[creatorFilter.typeIndex!]}
+            value={types[creatorFilter.typeIndex as number]}
           />
         </div>
         <div className={styles.inputContainer}>

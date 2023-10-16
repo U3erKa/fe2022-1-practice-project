@@ -1,19 +1,30 @@
+import { type MouseEvent, type FC } from 'react';
 import { useDispatch } from 'hooks';
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
-
 import { Catalog } from 'components/catalog';
-
+import type { Catalog as _Catalog } from 'types/chat';
+import type { CatalogId } from 'types/api/_common';
 import styles from './styles/CatalogListContainer.module.sass';
 
-const CatalogList = ({ catalogList }) => {
+export type Props = {
+  catalogList: _Catalog[];
+};
+
+const CatalogList: FC<Props> = ({ catalogList }) => {
   const dispatch = useDispatch();
 
-  const goToCatalog = (event, catalog) => {
+  const goToCatalog = (
+    event: MouseEvent<HTMLDivElement>,
+    catalog: _Catalog,
+  ) => {
     dispatch(changeShowModeCatalog(catalog));
     event.stopPropagation();
   };
 
-  const deleteCatalogMethod = (event, catalogId) => {
+  const deleteCatalogMethod = (
+    event: MouseEvent<SVGSVGElement>,
+    catalogId: CatalogId,
+  ) => {
     dispatch(deleteCatalog({ catalogId }));
     event.stopPropagation();
   };

@@ -1,6 +1,13 @@
-import { useField } from 'formik';
+import { type ChangeEventHandler, type FC } from 'react';
+import { type FieldAttributes, useField } from 'formik';
 
-const FieldFileInput = ({ classes, name, ...rest }) => {
+export type Props = FieldAttributes<unknown> & {
+  label: string;
+  classes: Record<string, string>;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const FieldFileInput: FC<Props> = ({ classes, name, ...rest }) => {
   const { fileUploadContainer, labelClass, fileNameClass, fileInput } = classes;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -12,8 +19,8 @@ const FieldFileInput = ({ classes, name, ...rest }) => {
     return '';
   };
 
-  const onChange = (e) => {
-    const file = e.target.files[0];
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const file = e.target.files![0];
     helpers.setValue(file, false);
   };
 

@@ -1,17 +1,15 @@
 import { Formik, Form } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-
 import { useDispatch, useSelector } from 'hooks';
 import {
   changeCatalogName,
   changeRenameCatalogMode,
   changeShowModeCatalog,
 } from 'store/slices/chatSlice';
-
 import { FormInput } from 'components/input';
 import { CatalogSchema } from 'utils/validators/validationSchems';
-
+import type { Catalog } from 'types/chat';
 import styles from './styles/CatalogHeader.module.sass';
 
 const CatalogListHeader = () => {
@@ -22,7 +20,7 @@ const CatalogListHeader = () => {
   } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  const changeCatalogNameMethod = (values) => {
+  const changeCatalogNameMethod = (values: Pick<Catalog, 'catalogName'>) => {
     dispatch(
       changeCatalogName({ catalogName: values.catalogName, catalogId: _id }),
     );

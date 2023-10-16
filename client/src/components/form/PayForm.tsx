@@ -1,24 +1,23 @@
+import { type FC } from 'react';
 import { Form, Formik } from 'formik';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Cards from 'react-credit-cards-2';
-
 import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
-
 import {
   CashoutSchema,
   PaymentSchema,
 } from 'utils/validators/validationSchems';
-
+import { ROUTE } from 'constants/general';
+import type { Card } from 'types/api/user';
+import type { CardField } from 'types/api/offer';
 import 'react-credit-cards-2/dist/es/styles.scss';
 import styles from './styles/PayForm.module.sass';
 
-import type { FC } from 'react';
-
 export type Props = {
-  sendRequest: (values: object) => void;
-  focusOnElement?: 'name' | 'number' | 'expiry' | 'cvc';
+  sendRequest: (values: Card) => void;
+  focusOnElement?: CardField;
   isPayForOrder?: boolean;
 };
 
@@ -27,11 +26,11 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const changeFocusOnCardMethod = (name) => {
+  const changeFocusOnCardMethod = (name: CardField) => {
     dispatch(changeFocusOnCard(name));
   };
 
-  const isCashoutPage = location.pathname === '/account';
+  const isCashoutPage = location.pathname === ROUTE.ACCOUNT;
   const initialValues = {
     focusOnElement: '',
     name: '',
@@ -46,7 +45,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
     <div className={styles.payFormContainer}>
       <span className={styles.headerInfo}>Payment Information</span>
       <Formik
-        initialValues={initialValues}
+        initialValues={initialValues as any}
         onSubmit={sendRequest}
         validationSchema={isCashoutPage ? CashoutSchema : PaymentSchema}
       >
@@ -93,6 +92,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
                       }}
                       type="text"
                       label="sum"
+                      changeFocus={changeFocusOnCardMethod}
                     />
                   </div>
                 )}

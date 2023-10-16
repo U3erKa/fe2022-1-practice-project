@@ -1,10 +1,16 @@
+import { type FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles/Error.module.sass';
 
-const Error = (props) => {
+export type Props = {
+  status: number;
+  data: string;
+  clearError: () => void;
+};
+
+const Error: FC<Props> = ({ status, data, clearError }) => {
   const getMessage = () => {
-    const { status, data } = props;
     switch (status) {
       case 404:
         return data;

@@ -1,9 +1,16 @@
+import { type FC } from 'react';
+import { Field, ErrorMessage, type FieldAttributes } from 'formik';
 import clsx from 'clsx';
-import { Field, ErrorMessage } from 'formik';
 
-const FormTextArea = ({ label, classes, type, ...rest }) => (
+export type Props = FieldAttributes<unknown> & {
+  label: string;
+  classes: Record<string, string>;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const FormTextArea: FC<Props> = ({ label, classes, type, ...rest }) => (
   <Field {...rest}>
-    {(props) => {
+    {(props: any) => {
       const {
         field,
         meta: { touched, error },

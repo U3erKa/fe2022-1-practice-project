@@ -7,8 +7,8 @@ import type {
   Offer,
   TaglineContestInfo,
 } from './api/contest';
-import type { Card, ProfileViewMode, User, UserInOffer } from './api/user';
-
+import type { CardField } from './api/offer';
+import type { ProfileViewMode, User, UserInOffer } from './api/user';
 import type {
   Catalog,
   CatalogCreationMode,
@@ -16,7 +16,6 @@ import type {
   ChatMode,
   MessagePreview,
 } from './chat';
-
 import type { Contest, Industry, Status } from './contest';
 import type {
   LOGO_CONTEST,
@@ -90,7 +89,7 @@ export type DataForContestState = WithFetch & {
 };
 
 export type PaymentState = WithFetch & {
-  focusOnElement: keyof Omit<Card, 'balance'>;
+  focusOnElement: CardField;
 };
 
 export type UserProfileState = {
@@ -124,7 +123,7 @@ export type ContestData = WithId<ContestId> &
     User: UserInOffer;
   };
 
-export type ServerError = { data: unknown; status: number };
+export type ServerError = { data: string; status: number };
 export type WithFetch = { isFetching: boolean; error: ServerError | null };
 
 export type NameMatchesDomain =

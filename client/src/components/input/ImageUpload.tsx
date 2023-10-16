@@ -1,16 +1,21 @@
-import React from 'react';
-import clsx from 'clsx';
+import { type ChangeEventHandler, type FC } from 'react';
 import { useField } from 'formik';
+import clsx from 'clsx';
 
-const ImageUpload = (props) => {
+export type Props = {
+  name: string;
+  classes: Record<string, string>;
+};
+
+const ImageUpload: FC<Props> = ({ name, classes }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [{ value, ...restField }, meta, helpers] = useField(props.name);
-  const { uploadContainer, inputContainer, imgStyle } = props.classes;
-  const onChange = (e) => {
+  const [{ value, ...restField }, meta, helpers] = useField(name);
+  const { uploadContainer, inputContainer, imgStyle } = classes;
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const node = window.document.getElementById(
       'imagePreview',
     ) as HTMLImageElement;
-    const file = e.target.files[0];
+    const file = e.target.files![0];
     const imageType = /image.*/;
 
     if (!file.type.match(imageType)) {
@@ -19,8 +24,7 @@ const ImageUpload = (props) => {
       helpers.setValue(file, false);
       const reader = new FileReader();
       reader.onload = () => {
-        // @ts-expect-error
-        node.src = reader.result;
+        node.src = reader.result as string;
       };
       reader.readAsDataURL(file);
     }

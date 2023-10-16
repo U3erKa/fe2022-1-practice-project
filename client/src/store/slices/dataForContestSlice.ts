@@ -1,4 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  type ActionReducerMapBuilder,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
 
 import * as contestController from 'api/rest/contestController';
 import { DataForContest, DataForContestParams } from 'types/api/contest';
@@ -21,7 +25,9 @@ export const getDataForContest = decorateAsyncThunk({
   },
 });
 
-const extraReducers = (builder) => {
+const extraReducers = (
+  builder: ActionReducerMapBuilder<DataForContestState>,
+) => {
   builder.addCase(getDataForContest.pending, (state: DataForContestState) => {
     state.isFetching = true;
     state.data = null;

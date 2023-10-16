@@ -1,10 +1,11 @@
 import ChatSocket from './sockets/ChatSocket';
 import NotificationSocket from './sockets/NotificationSocket';
+import type _store from 'store';
 
-export let controller;
-export let chatController;
+export let controller: NotificationSocket;
+export let chatController: ChatSocket;
 
-export const initSocket = (store) => {
+export const initSocket = (store: typeof _store) => {
   controller = new NotificationSocket(
     store.dispatch,
     store.getState,

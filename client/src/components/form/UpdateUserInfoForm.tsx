@@ -1,15 +1,22 @@
-import { Form, Formik } from 'formik';
-
+import { type FC } from 'react';
+import { Form, Formik, type FormikHelpers } from 'formik';
+import { type InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
-
 import { Error } from 'components/general';
 import { ImageUpload, FormInput } from 'components/input';
-
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
 import styles from './styles/UpdateUserInfoForm.module.sass';
 
-const UpdateUserInfoForm = ({ onSubmit, submitting }) => {
+export type Props = {
+  onSubmit: (
+    values: InferType<typeof UpdateUserSchema>,
+    formikHelpers: FormikHelpers<InferType<typeof UpdateUserSchema>>,
+  ) => void;
+  submitting?: boolean;
+};
+
+const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   const { data: user, error } = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
 

@@ -1,3 +1,4 @@
+import { type MouseEvent, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import {
   changeChatBlock,
@@ -12,29 +13,49 @@ import {
   FAVORITE_PREVIEW_CHAT_MODE,
 } from 'constants/general';
 import type { MessagePreview } from 'types/chat';
-import type { UserId } from 'types/api/_common';
+import type {
+  ChangeChatBlockParams,
+  ChangeChatFavoriteParams,
+  GoToExtendedDialog,
+} from 'types/api/chat';
+import type { ChatId, UserId } from 'types/api/_common';
 import styles from './styles/DialogList.module.sass';
 
-const DialogList = ({ userId, removeChat }) => {
+export type Props = {
+  userId: UserId;
+  removeChat: (event: MouseEvent<SVGSVGElement>, chatId: ChatId) => void;
+};
+
+const DialogList: FC<Props> = ({ userId, removeChat }) => {
   const { chatMode, messagesPreview, isShowChatsInCatalog, currentCatalog } =
     useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  const changeFavorite = (data, event) => {
+  const changeFavorite = (
+    data: ChangeChatFavoriteParams,
+    event: MouseEvent<SVGSVGElement>,
+  ) => {
     dispatch(changeChatFavorite(data));
     event.stopPropagation();
   };
 
-  const changeBlackList = (data, event) => {
+  const changeBlackList = (
+    data: ChangeChatBlockParams,
+    event: MouseEvent<SVGSVGElement>,
+  ) => {
     dispatch(changeChatBlock(data));
     event.stopPropagation();
   };
 
-  const changeShowCatalogCreation = (event, chatId) => {
+  const changeShowCatalogCreation = (
+    event: MouseEvent<SVGSVGElement>,
+    chatId: ChatId,
+  ) => {
     dispatch(changeShowAddChatToCatalogMenu(chatId));
     event.stopPropagation();
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onlyChatsInCatalog = (chatPreview: MessagePreview, _userId: UserId) =>
     currentCatalog?.chats.includes(chatPreview._id);
 
@@ -44,7 +65,12 @@ const DialogList = ({ userId, removeChat }) => {
   const onlyBlockDialogs = (chatPreview: MessagePreview, userId: UserId) =>
     chatPreview.blackList[chatPreview.participants.indexOf(userId)];
 
-  const renderPreview = (filterFunc?) => {
+  const renderPreview = (
+    filterFunc?:
+      | typeof onlyChatsInCatalog
+      | typeof onlyFavoriteDialogs
+      | typeof onlyBlockDialogs,
+  ) => {
     const arrayList: JSX.Element[] = [];
     messagesPreview.forEach((chatPreview, index) => {
       const dialogNode = (
@@ -61,13 +87,16 @@ const DialogList = ({ userId, removeChat }) => {
               ? removeChat
               : changeShowCatalogCreation
           }
-          goToExpandedDialog={(data) => dispatch(goToExpandedDialog(data))}
+          goToExpandedDialog={(data: GoToExtendedDialog) =>
+            dispatch(goToExpandedDialog(data))
+          }
         />
       );
       if (!filterFunc || (filterFunc && filterFunc(chatPreview, userId))) {
         arrayList.push(dialogNode);
       }
     });
+
     return arrayList.length ? (
       arrayList
     ) : (
