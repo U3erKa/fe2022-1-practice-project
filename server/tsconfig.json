@@ -13,7 +13,6 @@
     "inlineSources": true,
     "removeComments": true,
     "alwaysStrict": true,
-    "noImplicitAny": false,
     "checkJs": true,
     "outDir": "dist"
   },
