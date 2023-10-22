@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import type {
-  AsyncThunkPayloadCreator,
   ActionReducerMapBuilder,
+  AsyncThunkPayloadCreator,
   CaseReducer,
   PayloadAction,
 } from '@reduxjs/toolkit';

@@ -1,4 +1,4 @@
-import { type MouseEvent, type FC } from 'react';
+import { type FC, type MouseEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import type { CatalogId } from 'types/api/_common';

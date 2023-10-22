@@ -24,8 +24,8 @@ import type {
 } from 'constants/general';
 import type {
   EXACT_CHOISE,
-  SIMILAR_CHOISE,
   NAME_ONLY_CHOISE,
+  SIMILAR_CHOISE,
 } from 'constants/buttonGroup';
 
 export type AuthState = WithFetch;

@@ -1,8 +1,8 @@
 import http from '../interceptor';
 import type {
-  GetEventsResponse,
   CreateEventRequest,
   CreateEventResponse,
+  GetEventsResponse,
 } from 'types/api/event';
 
 export const getEvents = () => http.get<GetEventsResponse>('/events');

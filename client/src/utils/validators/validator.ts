@@ -1,4 +1,4 @@
-import type { ValidationError, AnySchema } from 'yup';
+import type { AnySchema, ValidationError } from 'yup';
 
 const validator = (schema: AnySchema) => (values: Record<string, string>) => {
   const errors: Record<string, string> = {};

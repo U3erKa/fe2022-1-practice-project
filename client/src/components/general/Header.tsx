@@ -4,7 +4,7 @@ import { useSelector } from 'hooks';
 import { Logo, Picture, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
 
-import { STATIC_IMAGES_PATH, CUSTOMER, DUMMY_LINK } from 'constants/general';
+import { CUSTOMER, DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import styles from './styles/Header.module.sass';
 

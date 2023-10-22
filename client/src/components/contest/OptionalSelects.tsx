@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { Spinner } from 'components/general';
-import { SelectInput, FormInput } from 'components/input';
+import { FormInput, SelectInput } from 'components/input';
 import { useSelector } from 'hooks';
-import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
+import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/ContestForm.module.sass';
 

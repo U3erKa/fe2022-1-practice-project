@@ -1,13 +1,13 @@
 import { Footer, Header } from 'components/general';
 import {
-  HowItWorksIntro,
-  HowItWorksCards,
-  HowContestsWork,
-  HowItWorksQnA,
-  GetStarted,
-  GetStartedImages,
   ContactUs,
   Featured,
+  GetStarted,
+  GetStartedImages,
+  HowContestsWork,
+  HowItWorksCards,
+  HowItWorksIntro,
+  HowItWorksQnA,
 } from '.';
 import type { FC } from 'react';
 

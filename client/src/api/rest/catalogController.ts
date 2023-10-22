@@ -3,15 +3,15 @@ import http from '../interceptor';
 import type {
   AddChatToCatalogParams,
   AddChatToCatalogResponse,
-  RemoveChatFromCatalogParams,
-  RemoveChatFromCatalogResponse,
-  GetCatalogListResponse,
+  ChangeCatalogNameParams,
+  ChangeCatalogNameResponse,
   CreateCatalogParams,
   CreateCatalogResponse,
   DeleteCatalogParams,
   DeleteCatalogResponse,
-  ChangeCatalogNameParams,
-  ChangeCatalogNameResponse,
+  GetCatalogListResponse,
+  RemoveChatFromCatalogParams,
+  RemoveChatFromCatalogResponse,
 } from 'types/api/catalog';
 
 export const addChatToCatalog = (data: AddChatToCatalogParams) =>

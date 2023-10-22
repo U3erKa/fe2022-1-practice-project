@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { isEmpty } from 'radash';
 
 import { useDispatch, useSelector } from 'hooks';
-import { pay, clearPaymentStore } from 'store/slices/paymentSlice';
+import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
 
 import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';

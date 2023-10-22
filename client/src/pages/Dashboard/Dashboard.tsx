@@ -1,6 +1,6 @@
 import { useSelector } from 'hooks';
 import { Header } from 'components/general';
-import { CustomerDashboard, CreatorDashboard, ModeratorDashboard } from '.';
+import { CreatorDashboard, CustomerDashboard, ModeratorDashboard } from '.';
 import { CREATOR, CUSTOMER, MODERATOR } from 'constants/general';
 
 const Dashboard = () => {

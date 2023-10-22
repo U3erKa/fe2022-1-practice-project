@@ -1,4 +1,4 @@
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
 
 import { useDispatch, useSelector } from 'hooks';
 import { createCatalog } from 'store/slices/chatSlice';

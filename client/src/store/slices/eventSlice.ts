@@ -5,8 +5,8 @@ import {
 } from '@reduxjs/toolkit';
 import * as eventController from 'api/rest/eventController';
 import {
-  decorateAsyncThunk,
   createExtraReducers,
+  decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';

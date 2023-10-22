@@ -12,24 +12,24 @@ import { useDispatch, useSelector } from 'hooks';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
   changeMark,
-  clearChangeMarkError,
   changeShowImage,
+  clearChangeMarkError,
 } from 'store/slices/contestByIdSlice';
 import { Picture } from 'components/general';
 import {
-  OFFER_STATUS_REJECTED,
-  OFFER_STATUS_WON,
   ANONYM_IMAGE_PATH,
-  PUBLIC_URL,
-  STATIC_IMAGES_PATH,
-  LOGO_CONTEST,
+  CONTEST_STATUS_ACTIVE,
   CREATOR,
   CUSTOMER,
-  CONTEST_STATUS_ACTIVE,
-  OFFER_STATUS_APPROVED,
+  LOGO_CONTEST,
   MODERATOR,
+  OFFER_STATUS_APPROVED,
   OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
+  OFFER_STATUS_REJECTED,
+  OFFER_STATUS_WON,
+  PUBLIC_URL,
+  STATIC_IMAGES_PATH,
 } from 'constants/general';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../styles/confirmStyle.css';

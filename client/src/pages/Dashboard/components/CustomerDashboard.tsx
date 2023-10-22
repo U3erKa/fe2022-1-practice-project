@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import {
-  getContests,
   clearContestsList,
+  getContests,
   setNewCustomerFilter,
 } from 'store/slices/contestsSlice';
-import { TryAgain, ItemsContainer } from 'components/general';
+import { ItemsContainer, TryAgain } from 'components/general';
 import { ContestBox } from 'components/contest';
 import { CustomFilter } from './CustomFilter';
 import {

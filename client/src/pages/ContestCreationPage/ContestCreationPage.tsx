@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'hooks';
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 
-import { ProgressBar, Footer, Header } from 'components/general';
+import { Footer, Header, ProgressBar } from 'components/general';
 import { ContestForm } from 'components/contest';
 import { ROUTE } from 'constants/general';
 import styles from './styles/ContestCreationPage.module.sass';

@@ -4,15 +4,15 @@ import clsx from 'clsx';
 import LightBox from 'yet-another-react-lightbox';
 import { useDispatch, useSelector } from 'hooks';
 import {
-  getContestById,
-  changeEditContest,
   changeContestViewMode,
+  changeEditContest,
   changeShowImage,
+  getContestById,
 } from 'store/slices/contestByIdSlice';
 import { Header, Spinner, TryAgain } from 'components/general';
 import { OfferForm } from 'components/form';
-import { Brief, ContestSideBar, ContestOffersList } from '.';
-import { CONTEST_STATUS_ACTIVE, PUBLIC_URL, CREATOR } from 'constants/general';
+import { Brief, ContestOffersList, ContestSideBar } from '.';
+import { CONTEST_STATUS_ACTIVE, CREATOR, PUBLIC_URL } from 'constants/general';
 import styles from './styles/ContestPage.module.sass';
 import 'yet-another-react-lightbox/styles.css';
 

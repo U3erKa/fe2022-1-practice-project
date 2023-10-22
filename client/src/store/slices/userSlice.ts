@@ -1,8 +1,8 @@
 import {
-  createSlice,
-  createAsyncThunk,
   type ActionReducerMapBuilder,
   type PayloadAction,
+  createAsyncThunk,
+  createSlice,
 } from '@reduxjs/toolkit';
 import * as userController from 'api/rest/userController';
 import * as authController from 'api/rest/authController';

@@ -12,7 +12,7 @@ import {
   RoleInput,
 } from 'components/input';
 import { RegistrationSchem } from 'utils/validators/validationSchems';
-import { AUTH_MODE, CUSTOMER, CREATOR } from 'constants/general';
+import { AUTH_MODE, CREATOR, CUSTOMER } from 'constants/general';
 import type { RegisterParams } from 'types/api/auth';
 import styles from './styles/RegistrationForm.module.sass';
 

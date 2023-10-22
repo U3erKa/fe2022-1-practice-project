@@ -1,7 +1,7 @@
 import {
   type ActionReducerMapBuilder,
-  createSlice,
   type PayloadAction,
+  createSlice,
 } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';

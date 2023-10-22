@@ -4,11 +4,11 @@ import type {
   DataForContestParams,
   DataForContestResponse,
   DownloadContestFileParams,
-  GetCustomersContestsParams,
-  GetContestsResponse,
   GetActiveContestsParams,
   GetContestParams,
   GetContestResponse,
+  GetContestsResponse,
+  GetCustomersContestsParams,
   UpdateContestResponse,
 } from 'types/api/contest';
 

@@ -8,7 +8,7 @@ import {
   changeTypeOfChatAdding,
   getCatalogList,
 } from 'store/slices/chatSlice';
-import { CreateCatalog, AddToCatalog } from 'components/catalog';
+import { AddToCatalog, CreateCatalog } from 'components/catalog';
 import {
   ADD_CHAT_TO_OLD_CATALOG,
   CREATE_NEW_CATALOG_AND_ADD_CHAT,

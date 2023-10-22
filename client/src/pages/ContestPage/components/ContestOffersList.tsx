@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'hooks';
 import {
-  setOfferStatus,
   clearSetOfferStatusError,
+  setOfferStatus,
 } from 'store/slices/contestByIdSlice';
 import { Error } from 'components/general';
 import { OfferBox } from '..';

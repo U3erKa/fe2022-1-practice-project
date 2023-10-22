@@ -1,4 +1,4 @@
-import { type MouseEvent, type FC } from 'react';
+import { type FC, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import {
   changeChatBlock,

@@ -45,7 +45,16 @@ module.exports = {
     'prefer-promise-reject-errors': ['warn', { allowEmptyReject: true }],
     'require-atomic-updates': ['warn', { allowProperties: true }],
     'require-await': 'warn',
-    // 'sort-imports': 'warn',
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: false,
+        ignoreCase: false,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      },
+    ],
     // 'sort-keys': 'warn',
     strict: ['warn', 'safe'],
   },

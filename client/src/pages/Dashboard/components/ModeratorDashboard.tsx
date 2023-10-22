@@ -7,7 +7,7 @@ import {
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
 import { OfferBox } from 'pages/ContestPage';
-import { TryAgain, ItemsContainer } from 'components/general';
+import { ItemsContainer, TryAgain } from 'components/general';
 import { CustomFilter } from './CustomFilter';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { ModeratorCommand } from 'types/api/offer';

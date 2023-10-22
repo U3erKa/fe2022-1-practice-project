@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
-import { Header, Error } from 'components/general';
+import { Error, Header } from 'components/general';
 import { PayForm } from 'components/form';
 import { UserInfo } from '.';
-import { USER_INFO_MODE, CREATOR, CASHOUT_MODE } from 'constants/general';
+import { CASHOUT_MODE, CREATOR, USER_INFO_MODE } from 'constants/general';
 import type { CashOutParams } from 'types/api/offer';
 import styles from './styles/UserProfile.module.sass';
 

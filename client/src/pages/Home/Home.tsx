@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'hooks';
-import { Header, Footer, Spinner, Picture } from 'components/general';
+import { Footer, Header, Picture, Spinner } from 'components/general';
 import { SlideBar } from '.';
 import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from 'constants/general';
 import {
-  MAIN_SLIDER_IMAGES,
-  MAIN_SLIDER,
-  EXAMPLE_SLIDER_IMAGES,
   EXAMPLE_SLIDER,
-  FEEDBACK_SLIDER_IMAGES,
+  EXAMPLE_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
+  FEEDBACK_SLIDER_IMAGES,
+  MAIN_SLIDER,
+  MAIN_SLIDER_IMAGES,
 } from 'constants/carousel';
 import styles from './styles/Home.module.sass';
 

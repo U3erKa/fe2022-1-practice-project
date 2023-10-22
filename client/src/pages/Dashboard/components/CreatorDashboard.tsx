@@ -3,12 +3,12 @@ import { useLocation } from 'react-router-dom';
 import { isEqual } from 'radash';
 import { useDispatch, useSelector } from 'hooks';
 import {
-  getContests,
   clearContestsList,
+  getContests,
   setNewCreatorFilter,
 } from 'store/slices/contestsSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-import { TryAgain, ItemsContainer } from 'components/general';
+import { ItemsContainer, TryAgain } from 'components/general';
 import { ContestBox } from 'components/contest';
 import { CreatorFilter } from './CreatorFilter';
 import { parseQueryString } from 'utils/functions';

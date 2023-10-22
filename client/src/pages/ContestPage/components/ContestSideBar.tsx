@@ -2,9 +2,9 @@ import { useSelector } from 'hooks';
 import { Picture } from 'components/general';
 import { getLongTimeStr } from 'utils/functions';
 import {
-  STATIC_IMAGES_PATH,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
+  STATIC_IMAGES_PATH,
 } from 'constants/general';
 import type { FC } from 'react';
 import type { ContestData } from 'types/slices';

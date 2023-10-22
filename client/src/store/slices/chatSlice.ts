@@ -1,19 +1,19 @@
 import {
-  createSlice,
   type ActionReducerMapBuilder,
   type PayloadAction,
+  createSlice,
 } from '@reduxjs/toolkit';
 import { isEqual } from 'radash';
 import * as catalogController from 'api/rest/catalogController';
 import * as chatController from 'api/rest/chatController';
 import {
-  decorateAsyncThunk,
   createExtraReducers,
+  decorateAsyncThunk,
   rejectedReducer,
 } from 'utils/store';
 import {
-  NORMAL_PREVIEW_CHAT_MODE,
   ADD_CHAT_TO_OLD_CATALOG,
+  NORMAL_PREVIEW_CHAT_MODE,
 } from 'constants/general';
 
 import type { ChatState } from 'types/slices';
@@ -47,9 +47,9 @@ import type {
 
 import type {
   Catalog,
+  CatalogCreationMode,
   ChatData,
   ChatMode,
-  CatalogCreationMode,
 } from 'types/chat';
 
 const CHAT_SLICE_NAME = 'chat';

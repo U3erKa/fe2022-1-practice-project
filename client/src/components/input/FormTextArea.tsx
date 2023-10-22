@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Field, ErrorMessage, type FieldAttributes } from 'formik';
+import { ErrorMessage, Field, type FieldAttributes } from 'formik';
 import clsx from 'clsx';
 
 export type Props = FieldAttributes<unknown> & {

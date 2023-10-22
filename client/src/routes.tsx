@@ -20,11 +20,11 @@ import {
 import { Spinner } from 'components/general';
 import { ChatContainer } from 'components/chat';
 import {
-  NAME_CONTEST,
-  TAGLINE_CONTEST,
   LOGO_CONTEST,
+  NAME_CONTEST,
   REFRESH_TOKEN,
   ROUTE,
+  TAGLINE_CONTEST,
 } from 'constants/general';
 import type { LoaderFunction, RouteObject } from 'react-router-dom';
 

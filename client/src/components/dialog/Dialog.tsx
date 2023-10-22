@@ -1,6 +1,6 @@
-import { useEffect, useRef, type FC } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'hooks';
-import { getDialogMessages, clearMessageList } from 'store/slices/chatSlice';
+import { clearMessageList, getDialogMessages } from 'store/slices/chatSlice';
 import { ChatHeader, ChatInput } from 'components/chat';
 import { BlockMessage, MainDialog } from 'components/dialog';
 import type { UserId } from 'types/api/_common';

@@ -6,16 +6,16 @@ import {
 import * as offerController from 'api/rest/offerController';
 import * as contestController from 'api/rest/contestController';
 import {
+  createExtraReducers,
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
-  createExtraReducers,
 } from 'utils/store';
 import {
-  OFFER_STATUS_WON,
-  OFFER_STATUS_REJECTED,
   OFFER_STATUS_APPROVED,
   OFFER_STATUS_DISCARDED,
+  OFFER_STATUS_REJECTED,
+  OFFER_STATUS_WON,
 } from 'constants/general';
 import { addNewItems } from 'utils/functions';
 import type { GetContestParams, GetContestResponse } from 'types/api/contest';

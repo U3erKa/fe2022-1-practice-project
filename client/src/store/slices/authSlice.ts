@@ -5,8 +5,8 @@ import { controller } from 'api/ws/socketController';
 
 import {
   decorateAsyncThunk,
-  pendingReducer,
   fulfilledReducer,
+  pendingReducer,
   rejectedReducer,
 } from 'utils/store';
 import { AUTH_MODE, ROUTE } from 'constants/general';

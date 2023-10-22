@@ -1,14 +1,14 @@
 import http from '../interceptor';
 
 import type {
-  GetDialogParams,
-  ChangeChatFavoriteParams,
   ChangeChatBlockParams,
-  NewMessageParams,
+  ChangeChatBlockResponse,
+  ChangeChatFavoriteParams,
+  ChangeChatFavoriteResponse,
+  GetDialogParams,
   GetDialogResponse,
   GetPreviewChatResponse,
-  ChangeChatFavoriteResponse,
-  ChangeChatBlockResponse,
+  NewMessageParams,
   NewMessageResponse,
 } from 'types/api/chat';
 

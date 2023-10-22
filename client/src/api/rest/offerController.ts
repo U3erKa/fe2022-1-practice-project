@@ -1,13 +1,13 @@
 import http from '../interceptor';
 import type {
-  SetOfferStatusParams,
-  ChangeMarkParams,
   CashOutParams,
-  SetNewOfferResponse,
-  SetOfferStatusResponse,
+  ChangeMarkParams,
   ChangeMarkResponse,
   GetOffersParams,
   GetOffersResponse,
+  SetNewOfferResponse,
+  SetOfferStatusParams,
+  SetOfferStatusResponse,
 } from 'types/api/offer';
 
 export const setNewOffer = (data: FormData) =>

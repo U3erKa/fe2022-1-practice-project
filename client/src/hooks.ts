@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import {
-  useSelector as _useSelector,
   useDispatch as _useDispatch,
+  useSelector as _useSelector,
 } from 'react-redux';
 import { isEqual } from 'radash';
-import type { RootState, AppDispatch } from 'store';
+import type { AppDispatch, RootState } from 'store';
 
 export const useSelector = <TSelected = unknown>(
   selector: (state: RootState) => TSelected,

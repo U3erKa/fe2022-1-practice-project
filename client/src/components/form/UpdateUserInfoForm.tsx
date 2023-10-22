@@ -4,7 +4,7 @@ import { type InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
 import { Error } from 'components/general';
-import { ImageUpload, FormInput } from 'components/input';
+import { FormInput, ImageUpload } from 'components/input';
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
 import styles from './styles/UpdateUserInfoForm.module.sass';
 import { uniqueId } from 'utils/functions';

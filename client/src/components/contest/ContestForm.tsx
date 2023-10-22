@@ -1,17 +1,17 @@
-import { type FC, useEffect, type Ref } from 'react';
-import { Form, Formik, type FormikProps, type FormikHelpers } from 'formik';
+import { type FC, type Ref, useEffect } from 'react';
+import { Form, Formik, type FormikHelpers, type FormikProps } from 'formik';
 import { useDispatch, useSelector } from 'hooks';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { Spinner, TryAgain } from 'components/general';
 import { OptionalSelects } from 'components/contest';
 import {
-  FormInput,
-  SelectInput,
   FieldFileInput,
+  FormInput,
   FormTextArea,
+  SelectInput,
 } from 'components/input';
 import { ContestSchem } from 'utils/validators/validationSchems';
-import { NAME_CONTEST, LOGO_CONTEST, TAGLINE_CONTEST } from 'constants/general';
+import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import type { ContestInfo } from 'types/api/contest';
 import styles from './styles/ContestForm.module.sass';

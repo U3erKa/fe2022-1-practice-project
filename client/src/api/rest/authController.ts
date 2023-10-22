@@ -1,10 +1,10 @@
 import httpClient from '../interceptor';
 
 import type {
-  LoginParams,
   AuthResponse,
-  RegisterParams,
+  LoginParams,
   RefreshParams,
+  RegisterParams,
 } from 'types/api/auth';
 
 export const login = (loginData: LoginParams) =>

@@ -1,4 +1,4 @@
-import { type MouseEvent, type FC } from 'react';
+import { type FC, type MouseEvent } from 'react';
 import { useDispatch } from 'hooks';
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
 import { Catalog } from 'components/catalog';

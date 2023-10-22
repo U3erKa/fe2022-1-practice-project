@@ -9,8 +9,8 @@ import { faHeart as farFaHeart } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch, useSelector } from 'hooks';
 import {
   backToDialogList,
-  changeChatFavorite,
   changeChatBlock,
+  changeChatFavorite,
 } from 'store/slices/chatSlice';
 import { Picture } from 'components/general';
 import {

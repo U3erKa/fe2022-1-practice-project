@@ -11,8 +11,8 @@ import {
   CONTEST_STATUS_FINISHED,
   CUSTOMER,
   NAME_CONTEST,
-  TAGLINE_CONTEST,
   PUBLIC_URL,
+  TAGLINE_CONTEST,
 } from 'constants/general';
 import type { InterlocutorId, UserId } from 'types/api/_common';
 import styles from './styles/ContestInfo.module.sass';

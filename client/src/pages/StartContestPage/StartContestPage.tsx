@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'hooks';
 import { updateBundle } from 'store/slices/bundleSlice';
 
-import { Header, Footer, ProgressBar } from 'components/general';
+import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from '.';
 
 import { CUSTOMER, ROUTE } from 'constants/general';
