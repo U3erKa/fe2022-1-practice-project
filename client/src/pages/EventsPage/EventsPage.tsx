@@ -22,7 +22,7 @@ export default function EventsPage() {
       <Header />
       <EventsList events={upcomingEvents} />
       <CreateEvent forceUpdate={forceUpdate} />
-      <EventsList isPast={true} events={pastEvents} />
+      <EventsList isPast events={pastEvents} />
       <Footer />
     </>
   );

@@ -42,6 +42,29 @@ export type Props = {
   formRef?: Ref<FormikProps<ContestInfo> | undefined>;
 };
 
+const inputClasses = {
+  container: styles.componentInputContainer,
+  input: styles.input,
+  warning: styles.warning,
+};
+const selectClasses = {
+  inputContainer: styles.selectInputContainer,
+  inputHeader: styles.selectHeader,
+  selectInput: styles.select,
+  warning: styles.warning,
+};
+const textareaClasses = {
+  container: styles.componentInputContainer,
+  inputStyle: styles.textArea,
+  warning: styles.warning,
+};
+const fileClasses = {
+  fileUploadContainer: styles.fileUploadContainer,
+  labelClass: styles.label,
+  fileNameClass: styles.fileName,
+  fileInput: styles.fileInput,
+  warning: styles.warning,
+};
 const ContestForm: FC<Props> = (props) => {
   const { isEditContest, dataForContest } = useSelector(
     ({ contestByIdStore, dataForContest }) => ({
@@ -117,22 +140,13 @@ const ContestForm: FC<Props> = (props) => {
                 name="title"
                 type="text"
                 label="Title"
-                classes={{
-                  container: styles.componentInputContainer,
-                  input: styles.input,
-                  warning: styles.warning,
-                }}
+                classes={inputClasses}
               />
             </div>
             <div className={styles.inputContainer}>
               <SelectInput
                 name="industry"
-                classes={{
-                  inputContainer: styles.selectInputContainer,
-                  inputHeader: styles.selectHeader,
-                  selectInput: styles.select,
-                  warning: styles.warning,
-                }}
+                classes={selectClasses}
                 header="Describe industry associated with your venture"
                 // @ts-expect-error
                 optionsArray={contestData?.industry}
@@ -146,11 +160,7 @@ const ContestForm: FC<Props> = (props) => {
                 name="focusOfWork"
                 type="text"
                 label="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
-                classes={{
-                  container: styles.componentInputContainer,
-                  inputStyle: styles.textArea,
-                  warning: styles.warning,
-                }}
+                classes={textareaClasses}
               />
             </div>
             <div className={styles.inputContainer}>
@@ -161,25 +171,11 @@ const ContestForm: FC<Props> = (props) => {
                 name="targetCustomer"
                 type="text"
                 label="customers"
-                classes={{
-                  container: styles.componentInputContainer,
-                  inputStyle: styles.textArea,
-                  warning: styles.warning,
-                }}
+                classes={textareaClasses}
               />
             </div>
             <OptionalSelects {...props} />
-            <FieldFileInput
-              name="file"
-              classes={{
-                fileUploadContainer: styles.fileUploadContainer,
-                labelClass: styles.label,
-                fileNameClass: styles.fileName,
-                fileInput: styles.fileInput,
-                warning: styles.warning,
-              }}
-              type="file"
-            />
+            <FieldFileInput name="file" classes={fileClasses} type="file" />
             {isEditContest ? (
               <button type="submit" className={styles.changeData}>
                 Set Data

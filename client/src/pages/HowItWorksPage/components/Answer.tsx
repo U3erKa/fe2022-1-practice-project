@@ -10,6 +10,7 @@ export type Props = {
 };
 
 const isAnswer = (contents: unknown): contents is AnswerProps => {
+  if (!contents) return false;
   return isEqual(Object.keys(contents), ['description', 'list'].sort());
 };
 
