@@ -1,6 +1,8 @@
 import WebSocket from './WebSocket';
 import { CHANGE_BLOCK_STATUS, NEW_MESSAGE } from '../../constants';
 import type { Socket } from 'socket.io';
+import type { Conversation } from '../../types/models';
+import type { WebSocketMessage } from '../../types/websocket';
 
 class ChatController extends WebSocket {
   anotherSubscribes(socket: Socket) {
@@ -20,16 +22,12 @@ class ChatController extends WebSocket {
     });
   }
 
-  emitNewMessage(target: string, message: string) {
-    this.io
-      .to(parseInt(target) as unknown as string)
-      .emit(NEW_MESSAGE, { message });
+  emitNewMessage(target: number | string, message: WebSocketMessage) {
+    this.io.to(target as string).emit(NEW_MESSAGE, { message });
   }
 
-  emitChangeBlockStatus(target: string, message: string) {
-    this.io
-      .to(parseInt(target) as unknown as string)
-      .emit(CHANGE_BLOCK_STATUS, { message });
+  emitChangeBlockStatus(target: number | string, message: Conversation) {
+    this.io.to(target as string).emit(CHANGE_BLOCK_STATUS, { message });
   }
 }
 

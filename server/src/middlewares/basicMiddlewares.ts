@@ -1,4 +1,5 @@
-import { Contest, Sequelize } from '../models';
+import { Op } from 'sequelize';
+import { Contest } from '../models';
 import RightsError from '../errors/RightsError';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
@@ -53,7 +54,7 @@ export const canGetContest: RequestHandler = async (req, res, next) => {
           where: {
             id: contestId,
             status: {
-              [Sequelize.Op.or]: [
+              [Op.or]: [
                 CONSTANTS.CONTEST_STATUS_ACTIVE,
                 CONSTANTS.CONTEST_STATUS_FINISHED,
               ],
@@ -152,7 +153,7 @@ export const canUpdateContest: RequestHandler = async (req, res, next) => {
       where: {
         userId: req.tokenData.userId,
         id: req.body.contestId,
-        status: { [Sequelize.Op.not]: CONSTANTS.CONTEST_STATUS_FINISHED },
+        status: { [Op.not]: CONSTANTS.CONTEST_STATUS_FINISHED },
       },
     });
     if (!result) {

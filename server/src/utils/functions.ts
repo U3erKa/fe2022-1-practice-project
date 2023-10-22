@@ -1,4 +1,4 @@
-import { Sequelize } from '../models';
+import { Op } from 'sequelize';
 import * as CONSTANTS from '../constants';
 import type { OrderPredicate, SortOrder } from '../types';
 import type {
@@ -33,7 +33,7 @@ export const createWhereForAllContests = ({
   }
   Object.assign(where, {
     status: {
-      [Sequelize.Op.or]: [
+      [Op.or]: [
         CONSTANTS.CONTEST_STATUS_FINISHED,
         CONSTANTS.CONTEST_STATUS_ACTIVE,
       ],
@@ -58,7 +58,7 @@ export const createWhereForCustomerContests = ({ status, userId }: Contest) => {
 };
 
 function getPredicateTypes(index: number) {
-  return { [Sequelize.Op.or]: [types[index].split(',')] };
+  return { [Op.or]: [types[index].split(',')] };
 }
 
 const types = [

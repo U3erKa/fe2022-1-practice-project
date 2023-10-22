@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import Sequelize from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 import type { DB } from '../types/models';
 
 const basename = path.basename(__filename);
@@ -18,7 +18,6 @@ const configPath =
 const config = require(configPath)[env];
 const db: DB = {} as any;
 
-// @ts-expect-error
 const sequelize = new Sequelize(
   config.database,
   config.username,
@@ -35,10 +34,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes,
-    );
+    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
     db[model.name as keyof DB] = model;
   });
 

@@ -6,15 +6,7 @@ import {
 } from 'sequelize';
 import fs from 'fs/promises';
 import path from 'path';
-import {
-  Contest,
-  Offer,
-  Rating,
-  Select,
-  Sequelize,
-  User,
-  sequelize,
-} from '../models';
+import { Contest, Offer, Rating, Select, User, sequelize } from '../models';
 import _sendEmail from '../email';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
@@ -43,7 +35,7 @@ export const dataForContest: RequestHandler = async (req, res, next) => {
     const characteristics = await Select.findAll({
       where: {
         type: {
-          [Sequelize.Op.or]: types,
+          [Op.or]: types,
         },
       },
     });
@@ -421,13 +413,13 @@ export const getContests: RequestHandler = async (req, res, next) => {
       }
 
       default: {
-        next(new RightsError());
+        return next(new RightsError());
       }
     }
 
     const contests = await Contest.findAll({
-      where: predicates!.where,
-      order: predicates!.order,
+      where: predicates.where as any,
+      order: predicates.order,
       limit,
       offset,
       include: [
@@ -441,9 +433,8 @@ export const getContests: RequestHandler = async (req, res, next) => {
     });
 
     const contestsCount = (await Contest.count({
-      where: predicates!.where,
-      // @ts-expect-error
-      order: predicates!.order,
+      where: predicates.where as any,
+      order: predicates.order,
       offset,
     })) as unknown as number;
 

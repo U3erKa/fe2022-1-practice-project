@@ -1,5 +1,4 @@
-import type Sequelize from 'sequelize';
-import type { Attributes, Model } from 'sequelize';
+import type { Attributes, Model, Sequelize } from 'sequelize';
 import type { Col, Fn, Literal } from 'sequelize/types/utils';
 import type { Types } from 'mongoose';
 import type _Bank from '../models/bank';
@@ -19,7 +18,7 @@ import type __Message from '../models/mongoModels/Message';
 import type { WithTimeStamps } from '.';
 
 export type DB = {
-  sequelize: InstanceType<(typeof Sequelize)['Sequelize']>;
+  sequelize: InstanceType<typeof Sequelize>;
   Sequelize: typeof Sequelize;
   Bank: ReturnType<typeof _Bank>;
   Catalog: ReturnType<typeof _Catalog>;

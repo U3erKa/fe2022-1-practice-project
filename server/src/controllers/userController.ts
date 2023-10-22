@@ -1,12 +1,13 @@
 import type { RequestHandler } from 'express';
-import type { Transaction } from 'sequelize';
+import { Op, Transaction } from 'sequelize';
 import * as CONSTANTS from '../constants';
-import { Contest, Offer, Rating, Sequelize, sequelize } from '../models';
+import { Contest, Offer, Rating, sequelize } from '../models';
 import { v4 as uuid } from 'uuid';
 import * as controller from '../socketInit';
 import * as userQueries from './queries/userQueries';
 import * as bankQueries from './queries/bankQueries';
 import * as ratingQueries from './queries/ratingQueries';
+import type { Contest as _Contest } from '../types/models';
 
 function getQuery(
   offerId: number,
@@ -35,7 +36,7 @@ export const changeMark: RequestHandler = async (req, res, next) => {
   const { isFirst, offerId, mark, creatorId } = req.body;
   const { userId } = req.tokenData;
   const transaction = await sequelize.transaction({
-    isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
+    isolationLevel: Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
   });
 
   try {
@@ -93,17 +94,14 @@ END
       },
       {
         cardNumber: {
-          [Sequelize.Op.in]: [
-            CONSTANTS.SQUADHELP_BANK_NUMBER,
-            number.replace(/ /g, ''),
-          ],
+          [Op.in]: [CONSTANTS.SQUADHELP_BANK_NUMBER, number.replace(/ /g, '')],
         },
       },
       transaction,
     );
 
     const orderId = uuid();
-    contests.forEach((contest, index) => {
+    contests.forEach((contest: _Contest, index: number) => {
       const prize =
         index === contests.length - 1
           ? Math.ceil(price / contests.length)
@@ -177,7 +175,7 @@ END
       },
       {
         cardNumber: {
-          [Sequelize.Op.in]: [
+          [Op.in]: [
             CONSTANTS.SQUADHELP_BANK_NUMBER,
             req.body.number.replace(/ /g, ''),
           ],

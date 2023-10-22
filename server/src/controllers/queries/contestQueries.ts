@@ -30,19 +30,6 @@ export const updateContest = async (
   }
 };
 
-export const updateContestStatus = async (data, predicate, transaction?) => {
-  const updateResult = await Contest.update(data, {
-    where: predicate,
-    returning: true,
-    transaction,
-  });
-  if (updateResult[0] < 1) {
-    throw new ServerError('cannot update Contest');
-  } else {
-    return updateResult[1][0].dataValues;
-  }
-};
-
 export const updateOffer = async (
   data: ModelUpdateAttributes<_Offer>,
   predicate: WhereOptions<InferAttributes<_Offer>>,
