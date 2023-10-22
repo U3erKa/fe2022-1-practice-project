@@ -39,11 +39,13 @@ fs.readdirSync(__dirname)
       sequelize,
       Sequelize.DataTypes,
     );
-    db[model.name] = model;
+    db[model.name as keyof DB] = model;
   });
 
 Object.keys(db).forEach((modelName) => {
+  // @ts-expect-error
   if (db[modelName].associate) {
+    // @ts-expect-error
     db[modelName].associate(db);
   }
 });

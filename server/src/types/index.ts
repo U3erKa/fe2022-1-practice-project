@@ -3,6 +3,7 @@ import type { RefreshToken, User } from './models';
 import type { TokenData } from './user';
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request extends RefreshTokenInstance, WithTokenData {}
   }
@@ -18,7 +19,8 @@ export type _Id = string;
 
 export type UserId = User['id'];
 
-export type OrderPredicate = [string, 'asc' | 'desc' | 'ASC' | 'DESC'][];
+export type SortOrder = 'asc' | 'desc' | 'ASC' | 'DESC';
+export type OrderPredicate = [string, SortOrder][];
 
 export type RefreshTokenInstance = { refreshTokenInstance: RefreshToken };
 export type WithTokenData = { tokenData: TokenData };

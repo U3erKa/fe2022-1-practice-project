@@ -1,18 +1,26 @@
 import { Sequelize } from '../models';
 import * as CONSTANTS from '../constants';
-import type { OrderPredicate } from '../types';
+import type { OrderPredicate, SortOrder } from '../types';
+import type {
+  Contest,
+  ContestData,
+  WhereForAllContests,
+  WhereForCustomerContests,
+} from '../types/services';
 
 export const createWhereForAllContests = ({
   typeIndex,
   contestId,
   industry,
   awardSort,
-}) => {
-  const where: { contestType?; id?; industry?; status: string[] } = {} as any;
+}: ContestData) => {
+  const where = {} as WhereForAllContests;
   const order: OrderPredicate = [['id', 'desc']];
 
   if (typeIndex) {
-    Object.assign(where, { contestType: getPredicateTypes(typeIndex) });
+    Object.assign(where, {
+      contestType: getPredicateTypes(typeIndex as unknown as number),
+    });
   }
   if (contestId) {
     Object.assign(where, { id: contestId });
@@ -21,7 +29,7 @@ export const createWhereForAllContests = ({
     Object.assign(where, { industry });
   }
   if (awardSort) {
-    order.push(['prize', awardSort]);
+    order.push(['prize', awardSort as unknown as SortOrder]);
   }
   Object.assign(where, {
     status: {
@@ -35,8 +43,8 @@ export const createWhereForAllContests = ({
   return { where, order };
 };
 
-export const createWhereForCustomerContests = ({ status, userId }) => {
-  const where = {};
+export const createWhereForCustomerContests = ({ status, userId }: Contest) => {
+  const where: WhereForCustomerContests = {};
   const order: OrderPredicate = [['id', 'desc']];
 
   if (status) {
@@ -49,7 +57,7 @@ export const createWhereForCustomerContests = ({ status, userId }) => {
   return { where, order };
 };
 
-function getPredicateTypes(index) {
+function getPredicateTypes(index: number) {
   return { [Sequelize.Op.or]: [types[index].split(',')] };
 }
 

@@ -219,7 +219,7 @@ export const blackList: RequestHandler = async (req, res, next) => {
     res.send(chat);
 
     const [interlocutorId] = participants.filter(
-      (participant) => participant !== userId,
+      (participant: number) => participant !== userId,
     );
     controller.getChatController().emitChangeBlockStatus(interlocutorId, chat);
   } catch (err) {

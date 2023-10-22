@@ -11,7 +11,7 @@
     "preview": "vite preview --host",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -s public",
-    "format": "prettier --write ."
+    "format": "prettier --write -l ."
   },
   "browserslist": [
     ">0.2%",

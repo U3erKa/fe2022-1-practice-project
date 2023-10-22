@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"nodemon --trace-deprecation .\" \"swc src/ -d dist/ --copy-files --watch\"",
     "build": "swc src/ -d dist/ --copy-files",
-    "format": "prettier --write .",
+    "format": "prettier --write -l .",
     "install": "npm run build"
   },
   "dependencies": {

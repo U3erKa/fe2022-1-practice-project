@@ -31,7 +31,7 @@ export const validateContestCreation: RequestHandler = async (
   next,
 ) => {
   try {
-    const promiseArray: Promise<boolean>[] = req.body.contests.map((el) =>
+    const promiseArray: Promise<boolean>[] = req.body.contests.map((el: any) =>
       schems.contestSchem.isValid(el),
     );
     const results = await Promise.all(promiseArray);

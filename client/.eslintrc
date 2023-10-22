@@ -28,6 +28,7 @@
     ],
     "no-await-in-loop": "warn",
     "no-console": "warn",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-new-native-nonconstructor": "error",
     "no-param-reassign": "off",
     "no-promise-executor-return": "warn",

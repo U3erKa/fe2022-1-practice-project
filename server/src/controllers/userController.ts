@@ -1,3 +1,5 @@
+import type { RequestHandler } from 'express';
+import type { Transaction } from 'sequelize';
 import * as CONSTANTS from '../constants';
 import { Contest, Offer, Rating, Sequelize, sequelize } from '../models';
 import { v4 as uuid } from 'uuid';
@@ -5,9 +7,14 @@ import * as controller from '../socketInit';
 import * as userQueries from './queries/userQueries';
 import * as bankQueries from './queries/bankQueries';
 import * as ratingQueries from './queries/ratingQueries';
-import type { RequestHandler } from 'express';
 
-function getQuery(offerId, userId, mark, isFirst, transaction?) {
+function getQuery(
+  offerId: number,
+  userId: number,
+  mark: number,
+  isFirst: boolean,
+  transaction?: Transaction,
+) {
   const getCreateQuery = () =>
     ratingQueries.createRating(
       {

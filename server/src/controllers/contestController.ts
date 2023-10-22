@@ -1,4 +1,9 @@
-import { type Filterable, type InferAttributes, Op } from 'sequelize';
+import {
+  type Filterable,
+  type InferAttributes,
+  Op,
+  type Transaction,
+} from 'sequelize';
 import fs from 'fs/promises';
 import path from 'path';
 import {
@@ -28,7 +33,7 @@ export const dataForContest: RequestHandler = async (req, res, next) => {
   const {
     body: { characteristic1, characteristic2 },
   } = req;
-  const response = {};
+  const response: Record<string, string[]> = {};
 
   try {
     const types = [characteristic1, characteristic2, 'industry'].filter(
@@ -187,7 +192,11 @@ export const setNewOffer: RequestHandler = async (req, res, next) => {
   }
 };
 
-const rejectOffer = async (offerId, creatorId, contestId) => {
+const rejectOffer = async (
+  offerId: number,
+  creatorId: number,
+  contestId: number,
+) => {
   const rejectedOffer = await contestQueries.updateOffer(
     { status: CONSTANTS.OFFER_STATUS_REJECTED },
     { id: offerId },
@@ -203,14 +212,14 @@ const rejectOffer = async (offerId, creatorId, contestId) => {
 };
 
 const resolveOffer = async (
-  contestId,
-  creatorId,
-  orderId,
-  offerId,
-  priority,
-  transaction,
+  contestId: number,
+  creatorId: number,
+  orderId: number,
+  offerId: number,
+  priority: number,
+  transaction: Transaction,
 ) => {
-  const finishedContest = await contestQueries.updateContestStatus(
+  const finishedContest = await contestQueries.updateContest(
     {
       status: sequelize.literal(`
 CASE

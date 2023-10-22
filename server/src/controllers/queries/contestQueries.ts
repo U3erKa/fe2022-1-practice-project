@@ -2,14 +2,22 @@ import { Contest, Offer } from '../../models';
 import ServerError from '../../errors/ServerError';
 import type {
   Attributes,
+  CreationAttributes,
   InferAttributes,
   Transaction,
   WhereOptions,
 } from 'sequelize';
-import type { Col, Fn, Literal } from 'sequelize/types/utils';
-import type { Offer as _Offer } from '../../types/models';
+import type {
+  ModelUpdateAttributes,
+  Contest as _Contest,
+  Offer as _Offer,
+} from '../../types/models';
 
-export const updateContest = async (data, predicate, transaction?) => {
+export const updateContest = async (
+  data: ModelUpdateAttributes<_Contest>,
+  predicate: WhereOptions<Attributes<_Contest>>,
+  transaction?: Transaction,
+) => {
   const [updatedCount, [updatedContest]] = await Contest.update(data, {
     where: predicate,
     returning: true,
@@ -36,13 +44,7 @@ export const updateContestStatus = async (data, predicate, transaction?) => {
 };
 
 export const updateOffer = async (
-  data: {
-    [key in keyof Attributes<_Offer>]?:
-      | Attributes<_Offer>[key]
-      | Fn
-      | Col
-      | Literal;
-  },
+  data: ModelUpdateAttributes<_Offer>,
   predicate: WhereOptions<InferAttributes<_Offer>>,
   transaction?: Transaction,
 ) => {
@@ -59,13 +61,7 @@ export const updateOffer = async (
 };
 
 export const updateOfferStatus = async (
-  data: {
-    [key in keyof Attributes<_Offer>]?:
-      | Attributes<_Offer>[key]
-      | Fn
-      | Col
-      | Literal;
-  },
+  data: ModelUpdateAttributes<_Offer>,
   predicate: WhereOptions<InferAttributes<_Offer>>,
   transaction?: Transaction,
 ) => {
@@ -80,7 +76,7 @@ export const updateOfferStatus = async (
   return offers;
 };
 
-export const createOffer = async (data) => {
+export const createOffer = async (data: CreationAttributes<_Offer>) => {
   const result = await Offer.create(data);
   if (!result) {
     throw new ServerError('cannot create new Offer');

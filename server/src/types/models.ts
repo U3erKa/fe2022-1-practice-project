@@ -1,4 +1,6 @@
 import type Sequelize from 'sequelize';
+import type { Attributes, Model } from 'sequelize';
+import type { Col, Fn, Literal } from 'sequelize/types/utils';
 import type { Types } from 'mongoose';
 import type _Bank from '../models/bank';
 import type _Catalog from '../models/catalog';
@@ -70,3 +72,7 @@ export type _Catalog = InstanceType<typeof __Catalog>;
 export type _Conversation = InstanceType<typeof __Conversation>;
 /** @deprecated */
 export type _Message = InstanceType<typeof __Message>;
+
+export type ModelUpdateAttributes<M extends Model> = {
+  [key in keyof Attributes<M>]?: Attributes<M>[key] | Fn | Col | Literal;
+};

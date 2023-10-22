@@ -13,7 +13,7 @@
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-var-requires": "off",
     "block-scoped-var": "warn",
     "class-methods-use-this": "warn",
@@ -27,6 +27,7 @@
     ],
     "no-await-in-loop": "warn",
     // "no-console": "warn",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-new-native-nonconstructor": "error",
     "no-param-reassign": "off",
     "no-promise-executor-return": "warn",
@@ -46,7 +47,7 @@
     "prefer-named-capture-group": "warn",
     "prefer-promise-reject-errors": ["warn", { "allowEmptyReject": true }],
     "require-atomic-updates": ["warn", { "allowProperties": true }],
-    "require-await": "warn",
+    // "require-await": "warn",
     "sort-imports": [
       "warn",
       {
