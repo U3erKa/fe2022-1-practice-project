@@ -3,19 +3,32 @@ import {
   setOfferStatus,
   clearSetOfferStatusError,
 } from 'store/slices/contestByIdSlice';
-
 import { Error } from 'components/general';
 import { OfferBox } from '..';
-
+import type { OfferId, UserId } from 'types/api/_common';
+import type { FC } from 'react';
+import type { Offer } from 'types/api/contest';
+import type { ContestData } from 'types/slices';
+import type { CustomerCommand } from 'types/api/offer';
 import styles from '../styles/ContestOfferList.module.sass';
 
-const ContestOffersList = ({ offers, contestData, userId }) => {
+export type Props = {
+  offers: Offer[];
+  contestData: ContestData;
+  userId?: UserId;
+};
+
+const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
   const { setOfferStatusError } = useSelector(
     (state) => state.contestByIdStore,
   );
   const dispatch = useDispatch();
 
-  const setOfferStatusMethod = (creatorId, offerId, command) => {
+  const setOfferStatusMethod = (
+    creatorId: UserId,
+    offerId: OfferId,
+    command: CustomerCommand,
+  ) => {
     dispatch(clearSetOfferStatusError());
     const { id, orderId, priority } = contestData;
     const obj = {

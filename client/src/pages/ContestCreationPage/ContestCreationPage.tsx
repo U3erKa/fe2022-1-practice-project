@@ -12,6 +12,7 @@ import styles from './styles/ContestCreationPage.module.sass';
 import type { FC } from 'react';
 import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
 import type { ContestType } from 'types/contest';
+import type { FormikProps } from 'formik';
 
 export type Props = {
   contestType: ContestType;
@@ -29,7 +30,7 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const formRef = useRef<HTMLFormElement>();
+  const formRef = useRef<FormikProps<ContestInfo>>();
   const contestData = contests[contestType]
     ? contests[contestType]!
     : { contestType: contestType };
@@ -40,6 +41,7 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
   }, [bundle]);
 
   const handleSubmit = (values: ContestInfo) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { file, ...restValues } = values;
 
     dispatch(
@@ -80,7 +82,7 @@ const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
             contestType={contestType}
             handleSubmit={handleSubmit}
             formRef={formRef}
-            defaultData={contestData}
+            defaultData={contestData as ContestInfo}
           />
         </div>
       </div>

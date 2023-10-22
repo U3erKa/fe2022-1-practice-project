@@ -1,6 +1,6 @@
 import {
-  ActionReducerMapBuilder,
-  PayloadAction,
+  type ActionReducerMapBuilder,
+  type PayloadAction,
   createSlice,
 } from '@reduxjs/toolkit';
 import * as eventController from 'api/rest/eventController';

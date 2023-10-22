@@ -7,9 +7,10 @@ import {
   STATIC_IMAGES_PATH,
 } from 'constants/general';
 import { PROFILE_NAVBAR } from 'constants/header';
+import type { User } from 'types/api/user';
 import styles from './styles/LoginButtons.module.sass';
 
-export default function LoginButtons({ data }) {
+export default function LoginButtons({ data }: { data: User }) {
   const { events } = useSelector(({ events }) => events);
   const currentDate = Date.now();
   let activeEvents = 0;

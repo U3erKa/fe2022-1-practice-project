@@ -16,6 +16,15 @@ import {
 } from 'constants/general';
 import type { InterlocutorId, UserId } from 'types/api/_common';
 import styles from './styles/ContestInfo.module.sass';
+import type { FC } from 'react';
+import type { ContestData } from 'types/slices';
+
+export type Props = {
+  changeEditContest: (isEditContest: boolean) => void;
+  userId: UserId;
+  contestData: ContestData;
+  role: string;
+};
 
 function DataContainer({ label, value }: { label: string; value: string }) {
   return (
@@ -26,7 +35,12 @@ function DataContainer({ label, value }: { label: string; value: string }) {
   );
 }
 
-const ContestInfo = ({ changeEditContest, userId, contestData, role }) => {
+const ContestInfo: FC<Props> = ({
+  changeEditContest,
+  userId,
+  contestData,
+  role,
+}) => {
   const { messagesPreview } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
@@ -93,18 +107,18 @@ const ContestInfo = ({ changeEditContest, userId, contestData, role }) => {
         <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            typeOfName={typeOfName}
-            styleName={styleName}
+            typeOfName={typeOfName!}
+            styleName={styleName!}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            typeOfTagline={typeOfTagline}
-            nameVenture={contestData.nameVenture}
+            typeOfTagline={typeOfTagline!}
+            nameVenture={contestData.nameVenture!}
           />
         ) : (
           <LogoContestSpecialInfo
-            brandStyle={brandStyle}
-            nameVenture={contestData.nameVenture}
+            brandStyle={brandStyle!}
+            nameVenture={contestData.nameVenture!}
           />
         )}
         <DataContainer

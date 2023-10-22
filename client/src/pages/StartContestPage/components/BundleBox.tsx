@@ -1,7 +1,15 @@
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from '../styles/BundleBox.module.sass';
+import type { FC } from 'react';
 
-const BundleBox = ({ header, path, setBundle, describe }) => {
+export type Props = {
+  header: string;
+  describe: string;
+  path: string[];
+  setBundle: (bundleStr: string) => void;
+};
+
+const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
   const defaultPathToImages = `${STATIC_IMAGES_PATH}contestLabels/`;
 
   const renderImage = () => {

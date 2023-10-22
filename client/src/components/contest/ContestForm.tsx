@@ -32,14 +32,14 @@ const variableOptions = {
 };
 
 export type Props = {
-  name: string;
+  name?: string;
   contestType: ContestType;
   defaultData: Partial<ContestInfo>;
   handleSubmit: (
     values: ContestInfo,
     { resetForm }: FormikHelpers<ContestInfo>,
   ) => void;
-  formRef: Ref<FormikProps<ContestInfo>>;
+  formRef?: Ref<FormikProps<ContestInfo> | undefined>;
 };
 
 const ContestForm: FC<Props> = (props) => {
@@ -102,10 +102,11 @@ const ContestForm: FC<Props> = (props) => {
             targetCustomer: '',
             file: '' as any,
             ...variableOptions[contestType],
-            ...defaultData,
+            ...(defaultData as any),
           }}
           onSubmit={handleSubmit}
           validationSchema={ContestSchem}
+          // @ts-expect-error
           innerRef={formRef}
           enableReinitialize
         >
@@ -133,6 +134,7 @@ const ContestForm: FC<Props> = (props) => {
                   warning: styles.warning,
                 }}
                 header="Describe industry associated with your venture"
+                // @ts-expect-error
                 optionsArray={contestData?.industry}
               />
             </div>

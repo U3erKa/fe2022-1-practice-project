@@ -1,14 +1,22 @@
 import clsx from 'clsx';
 import { getDays } from 'utils/functions';
-import type { ReactNode } from 'react';
+import type { FC, MutableRefObject, ReactNode } from 'react';
+import type { Message } from 'types/api/chat';
+import type { UserId } from 'types/api/_common';
 import styles from './styles/MainDialog.module.sass';
 
-const MainDialog = ({ messages, userId, messagesEnd }) => {
+export type Props = {
+  messages: Message[];
+  userId: UserId;
+  messagesEnd: MutableRefObject<HTMLDivElement | undefined>;
+};
+
+const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
   const messagesArray: ReactNode[] = [];
   let currentTime = Date.now();
 
   messages.forEach(({ createdAt, sender, body }, i) => {
-    if (getDays(currentTime) !== getDays(createdAt)) {
+    if (getDays(currentTime) !== getDays(Date.parse(createdAt))) {
       messagesArray.push(
         <div key={createdAt} className={styles.date}>
           {new Date(createdAt).toDateString()}
@@ -26,6 +34,7 @@ const MainDialog = ({ messages, userId, messagesEnd }) => {
         <span className={styles.messageTime}>
           {new Date(createdAt).toLocaleTimeString('uk')}
         </span>
+        {/* @ts-expect-error */}
         <div ref={messagesEnd} />
       </div>,
     );

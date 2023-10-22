@@ -9,7 +9,7 @@ export type Props = {
   contents: string | AnswerProps | ReactNode;
 };
 
-const isAnswer = (contents): contents is AnswerProps => {
+const isAnswer = (contents: unknown): contents is AnswerProps => {
   return isEqual(Object.keys(contents), ['description', 'list'].sort());
 };
 

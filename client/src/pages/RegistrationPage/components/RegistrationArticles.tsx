@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { type FC, Fragment } from 'react';
 
 import { TextEntry } from 'components/general';
 import styles from '../styles/RegistrationArticles.module.sass';

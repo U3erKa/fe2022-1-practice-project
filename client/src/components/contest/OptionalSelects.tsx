@@ -39,13 +39,13 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             name="typeOfName"
             header="type of company"
             classes={selectClasses}
-            optionsArray={data!.typeOfName}
+            optionsArray={data!.typeOfName!}
           />
           <SelectInput
             name="styleName"
             header="Style name"
             classes={selectClasses}
-            optionsArray={data!.nameStyle}
+            optionsArray={data!.nameStyle!}
           />
         </>
       );
@@ -68,7 +68,7 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             name="brandStyle"
             classes={selectClasses}
             header="Brand Style"
-            optionsArray={data!.brandStyle}
+            optionsArray={data!.brandStyle!}
           />
         </>
       );
@@ -91,7 +91,7 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             name="typeOfTagline"
             classes={selectClasses}
             header="Type tagline"
-            optionsArray={data!.typeOfTagline}
+            optionsArray={data!.typeOfTagline!}
           />
         </>
       );

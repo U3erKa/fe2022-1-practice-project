@@ -2,8 +2,13 @@ import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
 import { Event } from '..';
 import styles from '../styles/EventListItems.module.sass';
+import type { CreateEventResponse } from 'types/api/event';
 
-export default function EventListItems({ events }) {
+export type Props = {
+  events: CreateEventResponse[];
+};
+
+export default function EventListItems({ events }: Props) {
   const { isFetching } = useSelector(({ events }) => events);
 
   if (isFetching) return <Spinner />;

@@ -4,8 +4,14 @@ import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
 import { ROUTE } from 'constants/general';
 import styles from './styles/ProfileNavBar.module.sass';
+import type { PROFILE_NAVBAR } from 'constants/header';
 
-export default function ProfileNavBar({ list, activeEvents }) {
+export type Props = {
+  list: typeof PROFILE_NAVBAR;
+  activeEvents: number;
+};
+
+export default function ProfileNavBar({ list, activeEvents }: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

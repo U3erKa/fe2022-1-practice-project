@@ -1,12 +1,12 @@
 import {
   type ActionReducerMapBuilder,
   createSlice,
-  PayloadAction,
+  type PayloadAction,
 } from '@reduxjs/toolkit';
 
 import * as contestController from 'api/rest/contestController';
-import { DataForContest, DataForContestParams } from 'types/api/contest';
-import { DataForContestState } from 'types/slices';
+import type { DataForContest, DataForContestParams } from 'types/api/contest';
+import type { DataForContestState } from 'types/slices';
 import { decorateAsyncThunk, rejectedReducer } from 'utils/store';
 
 const DATA_FOR_CONTEST_SLICE_NAME = 'dataForContest';

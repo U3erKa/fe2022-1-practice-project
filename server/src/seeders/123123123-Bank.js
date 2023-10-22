@@ -6,6 +6,7 @@ const {
   SQUADHELP_BANK_CVC,
 } = process.env;
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(

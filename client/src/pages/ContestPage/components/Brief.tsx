@@ -9,6 +9,7 @@ import { Error } from 'components/general';
 import { ContestForm, ContestInfo } from 'components/contest';
 
 import styles from '../styles/Brief.module.sass';
+import type { ContestInfo as _ContestInfo } from 'types/api/contest';
 
 const Brief = () => {
   const selector = useSelector((state) => {
@@ -23,11 +24,12 @@ const Brief = () => {
     userStore: { data: user },
   } = selector;
 
-  const setNewContestData = (values) => {
+  const setNewContestData = (values: _ContestInfo) => {
     const data = new FormData();
 
     Object.keys(values).forEach((key) => {
-      if (key !== 'file' && values[key]) data.append(key, values[key]);
+      if (key !== 'file' && values[key as keyof _ContestInfo])
+        data.append(key, values[key as keyof _ContestInfo]!);
     });
     if (values.file instanceof File) {
       data.append('file', values.file);
@@ -111,7 +113,7 @@ const Brief = () => {
       )}
       <ContestForm
         contestType={contestData.contestType}
-        defaultData={getContestObjInfo()}
+        defaultData={getContestObjInfo() as unknown as _ContestInfo}
         handleSubmit={setNewContestData}
       />
     </div>

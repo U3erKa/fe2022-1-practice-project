@@ -7,7 +7,7 @@ class WebSocket {
   socket: ReturnType<typeof socketIoClient>;
   constructor(
     public dispatch: AppDispatch,
-    public getState: typeof store['getState'],
+    public getState: (typeof store)['getState'],
     room: string,
   ) {
     this.socket = socketIoClient(`${BASE_URL}${room}`, {

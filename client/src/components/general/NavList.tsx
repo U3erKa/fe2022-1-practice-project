@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
+import type { HEADER_LIST } from 'constants/header';
 import styles from './styles/NavList.module.sass';
 
-export default function NavList({ list }) {
+export type List = typeof HEADER_LIST;
+export type ListItem = List[number]['listItem'];
+
+export default function NavList({ list }: { list: List }) {
   const mapList = list.map(({ id, text, listItem }) => (
     <li key={id}>
       <span>{text}</span>
@@ -21,7 +25,7 @@ export default function NavList({ list }) {
   return <ul className={styles.nav}>{mapList}</ul>;
 }
 
-export function NavListItem({ list }) {
+export function NavListItem({ list }: { list: ListItem }) {
   const mapList = list.map(({ id, href, text }, i) => (
     <li key={id} className={list.length - 1 === i ? styles.last : undefined}>
       <Link to={href}>{text}</Link>

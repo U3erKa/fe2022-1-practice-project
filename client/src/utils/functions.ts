@@ -43,7 +43,7 @@ export const getLongTimeStr = (date: string | number | Date) => {
   return result.join(' ') || 'less than one hour';
 };
 
-export const getShortTimeStr = (time: number) => {
+export const getShortTimeStr = (time: string | number | Date) => {
   const currentTime = Date.now();
   const date = new Date(time);
   const days = getDays(currentTime) - getDays(date.valueOf());

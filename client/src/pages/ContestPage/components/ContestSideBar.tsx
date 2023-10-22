@@ -6,9 +6,16 @@ import {
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
 } from 'constants/general';
+import type { FC } from 'react';
+import type { ContestData } from 'types/slices';
 import styles from '../styles/ContestSideBar.module.sass';
 
-const ContestSideBar = ({ totalEntries, contestData }) => {
+export type Props = {
+  totalEntries: number;
+  contestData: ContestData;
+};
+
+const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {
   const { data } = useSelector((state) => state.userStore);
   const { User, prize, createdAt } = contestData;
 

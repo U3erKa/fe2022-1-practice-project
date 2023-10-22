@@ -33,10 +33,20 @@ import {
 } from 'constants/general';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../styles/confirmStyle.css';
-import styles from '../styles/OfferBox.module.sass';
 import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
+import type { FC } from 'react';
+import type { ContestData } from 'types/slices';
+import type { OfferId, UserId } from 'types/api/_common';
+import type { Offer } from 'types/api/contest';
+import styles from '../styles/OfferBox.module.sass';
 
-const OfferBox = ({ data, contestData, setOfferStatus }) => {
+export type Props = {
+  data: Offer;
+  contestData: ContestData;
+  setOfferStatus: (creatorId: UserId, offerId: OfferId, command: any) => void;
+};
+
+const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
   const selector = useSelector((state) => {
     const { id, role } = state.userStore.data!;
     const { messagesPreview } = state.chatStore;

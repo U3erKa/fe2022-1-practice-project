@@ -1,9 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { EventListItems } from '..';
+import type { CreateEventResponse } from 'types/api/event';
 import styles from '../styles/EventsList.module.sass';
 
-export default function EventsList({ isPast = false, events }) {
+export type Props = {
+  events: CreateEventResponse[];
+  isPast?: boolean;
+};
+
+export default function EventsList({ isPast = false, events }: Props) {
   return (
     <article className={styles.container}>
       <section className={styles.headingContainer}>

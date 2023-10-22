@@ -1,3 +1,4 @@
+// @ts-ignore
 import Flickity from 'react-flickity-component';
 
 import {

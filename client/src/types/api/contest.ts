@@ -67,10 +67,10 @@ export type Offer = WithId<OfferId> &
   };
 
 export type DataForContest = {
-  nameStyle?: StyleName;
-  typeOfName?: TypeOfName;
-  brandStyle?: BrandStyle;
-  typeOfTagline?: TypeOfTagline;
+  nameStyle?: StyleName[];
+  typeOfName?: TypeOfName[];
+  brandStyle?: BrandStyle[];
+  typeOfTagline?: TypeOfTagline[];
   industry?: Industry[];
 };
 

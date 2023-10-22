@@ -20,13 +20,14 @@ const StartContestPage = () => {
     navigate(ROUTE.HOME, { replace: true });
   }
 
-  const setBundle = (bundleStr) => {
+  const setBundle = (bundleStr: string) => {
     const array = bundleStr.toLowerCase().split('+');
     const bundleList = {} as Bundle;
 
     bundleList.first = array[0];
     for (let i = 0; i < array.length; i++) {
-      bundleList[array[i]] = i === array.length - 1 ? 'payment' : array[i + 1];
+      bundleList[array[i] as keyof typeof bundleList] =
+        i === array.length - 1 ? 'payment' : array[i + 1];
     }
     dispatch(updateBundle(bundleList));
     navigate(`${ROUTE.START_CONTEST}/${bundleList.first}Contest`);

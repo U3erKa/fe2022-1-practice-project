@@ -15,6 +15,7 @@ import { parseQueryString } from 'utils/functions';
 import { CREATOR } from 'constants/general';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from '../styles/CreatorDashboard.module.sass';
+import type { GetActiveContestsParams } from 'types/api/contest';
 
 const CreatorDashboard = () => {
   const { contests, creatorFilter, error, haveMore } = useSelector(
@@ -39,7 +40,7 @@ const CreatorDashboard = () => {
     <ContestBox data={contest} key={contest.id} />
   ));
 
-  const getContestsMethod = (filter) => {
+  const getContestsMethod = (filter: GetActiveContestsParams) => {
     dispatch(
       getContests({
         requestData: { limit: 8, offset: 0, ...filter },
@@ -71,6 +72,7 @@ const CreatorDashboard = () => {
     const obj: _CreatorFilter = {};
     Object.keys(creatorFilter).forEach((el) => {
       if (creatorFilter[el as keyof _CreatorFilter]) {
+        // @ts-expect-error
         obj[el] = creatorFilter[el as keyof _CreatorFilter];
       }
     });
@@ -78,7 +80,7 @@ const CreatorDashboard = () => {
     return obj;
   };
 
-  const loadMore = (startFrom) => {
+  const loadMore = (startFrom: number) => {
     getContestsMethod({
       limit: 8,
       offset: startFrom,

@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { type FC, type MouseEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleMinus,
@@ -17,17 +17,26 @@ import {
 } from 'constants/general';
 import styles from './styles/DialogBox.module.sass';
 import { getShortTimeStr } from 'utils/functions';
+import type { ChatId, UserId } from 'types/api/_common';
+import type { ChatMode, MessagePreview } from 'types/chat';
+import type { GoToExtendedDialog, Interlocutor } from 'types/api/chat';
 
 export type Props = {
-  chatPreview,
-  userId,
-  changeFavorite,
-  changeBlackList,
-  catalogOperation,
-  goToExpandedDialog,
-  chatMode,
-  interlocutor,
-}
+  chatPreview: MessagePreview;
+  userId: UserId;
+  changeFavorite: (
+    parameters: { participants: [UserId, UserId]; favoriteFlag: boolean },
+    event: MouseEvent<SVGSVGElement>,
+  ) => void;
+  changeBlackList: (
+    parameters: { participants: [UserId, UserId]; blackListFlag: boolean },
+    event: MouseEvent<SVGSVGElement>,
+  ) => void;
+  catalogOperation: (event: MouseEvent<SVGSVGElement>, chatId: ChatId) => void;
+  goToExpandedDialog: (data: GoToExtendedDialog) => void;
+  chatMode: ChatMode;
+  interlocutor: Interlocutor;
+};
 
 const DialogBox: FC<Props> = ({
   chatPreview,

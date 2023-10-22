@@ -2,7 +2,6 @@ import { type ChangeEventHandler, type FC } from 'react';
 import { type FieldAttributes, useField } from 'formik';
 
 export type Props = FieldAttributes<unknown> & {
-  label: string;
   classes: Record<string, string>;
 };
 

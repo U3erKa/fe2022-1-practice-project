@@ -11,7 +11,7 @@ import {
 import { LOGO_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.sass';
-import { Id, WithId } from 'types/api/_common';
+import type { Id, WithId } from 'types/api/_common';
 
 export type Props = {
   contestType: ContestType;
