@@ -1,5 +1,5 @@
 import { Op } from 'sequelize';
-import { Conversation, Message, Catalog, User } from '../models';
+import { Catalog, Conversation, Message, User } from '../models';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import NotFoundError from '../errors/NotFoundError';

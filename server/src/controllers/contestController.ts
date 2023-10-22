@@ -2,11 +2,11 @@ import { type Filterable, type InferAttributes, Op } from 'sequelize';
 import fs from 'fs/promises';
 import path from 'path';
 import {
-  Select,
-  Sequelize,
-  Rating,
   Contest,
   Offer,
+  Rating,
+  Select,
+  Sequelize,
   User,
   sequelize,
 } from '../models';
@@ -232,7 +232,6 @@ END
   );
   const updatedOffers = await contestQueries.updateOfferStatus(
     {
-      // prettier-ignore
       status: sequelize.literal(`
 CASE
   WHEN "id"=${offerId} THEN '${CONSTANTS.OFFER_STATUS_WON}'

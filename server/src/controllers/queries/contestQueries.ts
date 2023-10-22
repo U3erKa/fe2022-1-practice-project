@@ -1,8 +1,10 @@
 import { Contest, Offer } from '../../models';
 import ServerError from '../../errors/ServerError';
-// prettier-ignore
 import type {
-  InferAttributes, Attributes, Transaction, WhereOptions,
+  Attributes,
+  InferAttributes,
+  Transaction,
+  WhereOptions,
 } from 'sequelize';
 import type { Col, Fn, Literal } from 'sequelize/types/utils';
 import type { Offer as _Offer } from '../../types/models';

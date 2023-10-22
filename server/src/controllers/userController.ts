@@ -1,5 +1,5 @@
 import * as CONSTANTS from '../constants';
-import { sequelize, Sequelize, Rating, Offer, Contest } from '../models';
+import { Contest, Offer, Rating, Sequelize, sequelize } from '../models';
 import { v4 as uuid } from 'uuid';
 import * as controller from '../socketInit';
 import * as userQueries from './queries/userQueries';
@@ -26,7 +26,7 @@ export const changeMark: RequestHandler = async (req, res, next) => {
   let sum = 0;
   let avg = 0;
   const { isFirst, offerId, mark, creatorId } = req.body;
-  const userId = req.tokenData.userId;
+  const { userId } = req.tokenData;
   const transaction = await sequelize.transaction({
     isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
   });

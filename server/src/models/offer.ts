@@ -1,10 +1,18 @@
 import { Model } from 'sequelize';
-// prettier-ignore
-import type { 
-  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
-  NonAttribute, ForeignKey, Association,
-  BelongsToCreateAssociationMixin, BelongsToGetAssociationMixin, BelongsToSetAssociationMixin,
-  HasOneCreateAssociationMixin, HasOneGetAssociationMixin, HasOneSetAssociationMixin,
+import type {
+  Association,
+  BelongsToCreateAssociationMixin,
+  BelongsToGetAssociationMixin,
+  BelongsToSetAssociationMixin,
+  CreationOptional,
+  ForeignKey,
+  HasOneCreateAssociationMixin,
+  HasOneGetAssociationMixin,
+  HasOneSetAssociationMixin,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { Contest, DB, User } from '../types/models';
 

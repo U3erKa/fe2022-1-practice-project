@@ -1,15 +1,23 @@
 import { Model } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from '../constants';
-// prettier-ignore
-import type { 
-  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes, CreationOptional,
-  NonAttribute, Association,
-  HasManyGetAssociationsMixin, HasManyAddAssociationMixin,
-  HasManyAddAssociationsMixin, HasManySetAssociationsMixin,
-  HasManyRemoveAssociationMixin, HasManyRemoveAssociationsMixin,
-  HasManyHasAssociationMixin, HasManyHasAssociationsMixin,
-  HasManyCountAssociationsMixin, HasManyCreateAssociationMixin,
+import type {
+  Association,
+  CreationOptional,
+  HasManyAddAssociationMixin,
+  HasManyAddAssociationsMixin,
+  HasManyCountAssociationsMixin,
+  HasManyCreateAssociationMixin,
+  HasManyGetAssociationsMixin,
+  HasManyHasAssociationMixin,
+  HasManyHasAssociationsMixin,
+  HasManyRemoveAssociationMixin,
+  HasManyRemoveAssociationsMixin,
+  HasManySetAssociationsMixin,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB, User } from '../types/models';
 

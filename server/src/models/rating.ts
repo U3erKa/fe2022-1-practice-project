@@ -1,9 +1,14 @@
 import { Model } from 'sequelize';
-// prettier-ignore
-import type { 
-  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
-  NonAttribute, ForeignKey, Association,
-  BelongsToCreateAssociationMixin, BelongsToGetAssociationMixin, BelongsToSetAssociationMixin,
+import type {
+  Association,
+  BelongsToCreateAssociationMixin,
+  BelongsToGetAssociationMixin,
+  BelongsToSetAssociationMixin,
+  ForeignKey,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB, Offer, User } from '../types/models';
 

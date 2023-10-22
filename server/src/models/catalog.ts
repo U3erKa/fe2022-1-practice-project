@@ -1,14 +1,25 @@
 import { Model } from 'sequelize';
-// prettier-ignore
-import type { 
-  DataTypes as _DataTypes, InferAttributes, InferCreationAttributes,
-  ForeignKey, CreationOptional, NonAttribute, Association,
-  BelongsToGetAssociationMixin, BelongsToSetAssociationMixin, BelongsToCreateAssociationMixin,
-  BelongsToManyGetAssociationsMixin, BelongsToManyAddAssociationMixin,
-  BelongsToManyAddAssociationsMixin, BelongsToManySetAssociationsMixin,
-  BelongsToManyRemoveAssociationMixin, BelongsToManyRemoveAssociationsMixin,
-  BelongsToManyHasAssociationMixin, BelongsToManyHasAssociationsMixin,
-  BelongsToManyCountAssociationsMixin, BelongsToManyCreateAssociationMixin,
+import type {
+  Association,
+  BelongsToCreateAssociationMixin,
+  BelongsToGetAssociationMixin,
+  BelongsToManyAddAssociationMixin,
+  BelongsToManyAddAssociationsMixin,
+  BelongsToManyCountAssociationsMixin,
+  BelongsToManyCreateAssociationMixin,
+  BelongsToManyGetAssociationsMixin,
+  BelongsToManyHasAssociationMixin,
+  BelongsToManyHasAssociationsMixin,
+  BelongsToManyRemoveAssociationMixin,
+  BelongsToManyRemoveAssociationsMixin,
+  BelongsToManySetAssociationsMixin,
+  BelongsToSetAssociationMixin,
+  CreationOptional,
+  ForeignKey,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB, User } from '../types/models';
 

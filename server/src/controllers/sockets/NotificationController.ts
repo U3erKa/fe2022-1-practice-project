@@ -1,8 +1,8 @@
 import WebSocket from './WebSocket';
 import {
-  NOTIFICATION_ENTRY_CREATED,
   NOTIFICATION_CHANGE_MARK,
   NOTIFICATION_CHANGE_OFFER_STATUS,
+  NOTIFICATION_ENTRY_CREATED,
 } from '../../constants';
 
 class NotificationController extends WebSocket {

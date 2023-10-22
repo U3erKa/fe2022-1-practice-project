@@ -9,7 +9,7 @@ import type { Contest as _Contest } from '../types/models';
 
 export const parseBody: RequestHandler = (req, res, next) => {
   req.body.contests = JSON.parse(req.body.contests);
-  let {
+  const {
     files,
     body: { contests },
   } = req;

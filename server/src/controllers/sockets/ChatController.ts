@@ -1,5 +1,5 @@
 import WebSocket from './WebSocket';
-import { NEW_MESSAGE, CHANGE_BLOCK_STATUS } from '../../constants';
+import { CHANGE_BLOCK_STATUS, NEW_MESSAGE } from '../../constants';
 import type { Socket } from 'socket.io';
 
 class ChatController extends WebSocket {
