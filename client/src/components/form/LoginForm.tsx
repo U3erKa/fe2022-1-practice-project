@@ -57,7 +57,7 @@ const LoginForm = () => {
         <div className={styles.inputContainer}>
           <input
             className={inputClassName('email')}
-            type="text"
+            type="email"
             autoComplete="username"
             placeholder={'Email Address'}
             {...register('email')}
