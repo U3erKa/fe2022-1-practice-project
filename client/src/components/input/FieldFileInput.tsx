@@ -13,7 +13,7 @@ const FieldFileInput: FC<Props> = ({ classes, name, ...rest }) => {
   const [{ value, ...restField }, meta, helpers] = useField(name);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const file = e.target.files![0];
+    const [file] = e.target.files!;
     helpers.setValue(file, false);
   };
 

@@ -5,6 +5,12 @@ import { SelectInput } from 'components/input';
 import type { CatalogId } from 'types/api/_common';
 import styles from './styles/AddToCatalog.module.sass';
 
+const classes = {
+  inputContainer: styles.selectInputContainer,
+  inputHeader: styles.selectHeader,
+  selectInput: styles.select,
+};
+
 const AddToCatalog = () => {
   const { catalogList, addChatId } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
@@ -22,31 +28,21 @@ const AddToCatalog = () => {
     );
   };
 
-  return (
-    <>
-      {catalogNames.length !== 0 ? (
-        <Formik onSubmit={onSubmit} initialValues={{ catalogId: '' as any }}>
-          <Form className={styles.form}>
-            <SelectInput
-              name="catalogId"
-              header="name of catalog"
-              classes={{
-                inputContainer: styles.selectInputContainer,
-                inputHeader: styles.selectHeader,
-                selectInput: styles.select,
-              }}
-              optionsArray={catalogNames}
-              valueArray={catalogIds}
-            />
-            <button type="submit">Add</button>
-          </Form>
-        </Formik>
-      ) : (
-        <div className={styles.notFound}>
-          You have not created any directories.
-        </div>
-      )}
-    </>
+  return catalogNames.length !== 0 ? (
+    <Formik onSubmit={onSubmit} initialValues={{ catalogId: '' as any }}>
+      <Form className={styles.form}>
+        <SelectInput
+          name="catalogId"
+          header="name of catalog"
+          classes={classes}
+          optionsArray={catalogNames}
+          valueArray={catalogIds}
+        />
+        <button type="submit">Add</button>
+      </Form>
+    </Formik>
+  ) : (
+    <div className={styles.notFound}>You have not created any directories.</div>
   );
 };
 

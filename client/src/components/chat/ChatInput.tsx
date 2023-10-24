@@ -1,12 +1,18 @@
 import { Form, Formik, type FormikHelpers } from 'formik';
+import type { InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
 import { Picture } from 'components/general';
 import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import type { InferType } from 'yup';
 import styles from './styles/ChatInput.module.sass';
+
+const classes = {
+  container: styles.container,
+  input: styles.input,
+  notValid: styles.notValid,
+};
 
 const ChatInput = () => {
   const interlocutor = useSelector(({ chatStore }) => chatStore.interlocutor);
@@ -39,11 +45,7 @@ const ChatInput = () => {
             name="message"
             type="text"
             label="message"
-            classes={{
-              container: styles.container,
-              input: styles.input,
-              notValid: styles.notValid,
-            }}
+            classes={classes}
           />
           <button type="submit">
             <Picture

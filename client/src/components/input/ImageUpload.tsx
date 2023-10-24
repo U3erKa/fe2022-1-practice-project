@@ -15,7 +15,7 @@ const ImageUpload: FC<Props> = ({ name, classes }) => {
     const node = window.document.getElementById(
       'imagePreview',
     ) as HTMLImageElement;
-    const file = e.target.files![0];
+    const [file] = e.target.files!;
     const imageType = /image.*/;
 
     if (!file.type.match(imageType)) {
@@ -40,7 +40,7 @@ const ImageUpload: FC<Props> = ({ name, classes }) => {
           accept=".jpg, .png, .jpeg"
           onChange={onChange}
         />
-        <label htmlFor="fileInput">Chose file</label>
+        <label htmlFor="fileInput">Choose file</label>
       </div>
       <img
         id="imagePreview"

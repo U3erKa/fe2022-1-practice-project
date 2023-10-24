@@ -8,7 +8,7 @@ import type { ChatId } from 'types/api/_common';
 const CatalogListContainer = () => {
   const {
     chatStore: { currentCatalog, catalogList, isShowChatsInCatalog },
-    userStore,
+    userStore: { data },
   } = useSelector(({ chatStore, userStore }) => ({ chatStore, userStore }));
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const CatalogListContainer = () => {
     event.stopPropagation();
   };
 
-  const { id } = userStore.data!;
+  const { id } = data;
   return (
     <>
       {isShowChatsInCatalog ? (

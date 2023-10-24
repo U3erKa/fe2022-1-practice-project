@@ -4,12 +4,11 @@ import {
   updateContest,
 } from 'store/slices/contestUpdationSlice';
 import { changeEditContest } from 'store/slices/contestByIdSlice';
-
 import { Error } from 'components/general';
 import { ContestForm, ContestInfo } from 'components/contest';
-
-import styles from '../styles/Brief.module.sass';
 import type { ContestInfo as _ContestInfo } from 'types/api/contest';
+import type { ContestData } from 'types/slices';
+import styles from '../styles/Brief.module.sass';
 
 const Brief = () => {
   const selector = useSelector((state) => {
@@ -58,7 +57,7 @@ const Brief = () => {
       typeOfTagline,
       originalFileName,
       contestType,
-    } = contestData!;
+    } = contestData ?? ({} as ContestData);
     const data = {
       focusOfWork,
       industry,
@@ -73,7 +72,7 @@ const Brief = () => {
       contestType,
     };
 
-    const defaultData: DefaultData = {} as any;
+    const defaultData = {} as DefaultData;
     Object.keys(data).forEach((key) => {
       if (data[key as keyof typeof data]) {
         if (key === 'originalFileName') {

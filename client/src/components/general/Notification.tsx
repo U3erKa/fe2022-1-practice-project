@@ -2,7 +2,12 @@ import { Link } from 'react-router-dom';
 
 import styles from './styles/Notification.module.sass';
 
-const Notification = ({ contestId, message }) => (
+export type Props = {
+  contestId?: number;
+  message: string;
+};
+
+const Notification = ({ contestId, message }: Props) => (
   <div>
     <br />
     <span>{message}</span>

@@ -7,7 +7,7 @@ const validator = (schema: AnySchema) => (values: Record<string, string>) => {
     return errors;
   } catch (err) {
     (err as ValidationError).inner.forEach((error) => {
-      errors[error.path!] = error.message;
+      errors[error?.path as string] = error.message;
     });
     return errors;
   }

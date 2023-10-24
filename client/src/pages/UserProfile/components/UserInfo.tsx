@@ -72,7 +72,7 @@ const UserInfo: FC = () => {
   return (
     <div className={styles.mainContainer}>
       {isEdit ? (
-        // @ts-ignore
+        // @ts-expect-error
         <UpdateUserInfoForm onSubmit={updateUserData} />
       ) : (
         <div className={styles.infoContainer}>

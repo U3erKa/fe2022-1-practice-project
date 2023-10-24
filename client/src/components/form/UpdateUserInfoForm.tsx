@@ -3,7 +3,7 @@ import { Form, Formik, type FormikHelpers } from 'formik';
 import { type InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
-import { Error } from 'components/general';
+import { Error, Spinner } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
 import styles from './styles/UpdateUserInfoForm.module.sass';
@@ -40,6 +40,8 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   const { data: user, error } = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
 
+  if (!user) return <Spinner />;
+
   const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
     <div key={id} className={styles.container}>
       <span className={styles.label}>{label}</span>
@@ -51,9 +53,9 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
     <Formik
       onSubmit={onSubmit}
       initialValues={{
-        firstName: user!.firstName,
-        lastName: user!.lastName,
-        displayName: user!.displayName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        displayName: user.displayName,
       }}
       validationSchema={UpdateUserSchema}
     >

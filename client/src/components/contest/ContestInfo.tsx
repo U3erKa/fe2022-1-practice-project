@@ -18,6 +18,7 @@ import type { InterlocutorId, UserId } from 'types/api/_common';
 import styles from './styles/ContestInfo.module.sass';
 import type { FC } from 'react';
 import type { ContestData } from 'types/slices';
+import type { LogoContest, NameContest, TaglineContest } from 'types/contest';
 
 export type Props = {
   changeEditContest: (isEditContest: boolean) => void;
@@ -54,6 +55,7 @@ const ContestInfo: FC<Props> = ({
     focusOfWork,
     targetCustomer,
     industry,
+    nameVenture,
     originalFileName,
     fileName,
     User,
@@ -61,28 +63,23 @@ const ContestInfo: FC<Props> = ({
   } = contestData;
 
   const findConversationInfo = (interlocutorId: InterlocutorId) => {
-    const participants = [userId, interlocutorId];
-    participants.sort(
-      (participant1, participant2) => +participant1 - +participant2,
+    const currentParticipants = [userId, interlocutorId].sort(
+      (participant1, participant2) => participant1 - participant2,
     );
     for (let i = 0; i < messagesPreview.length; i++) {
-      if (isEqual(participants, messagesPreview[i].participants)) {
-        return {
-          participants: messagesPreview[i].participants,
-          _id: messagesPreview[i]._id,
-          blackList: messagesPreview[i].blackList,
-          favoriteList: messagesPreview[i].favoriteList,
-        };
+      const { _id, participants, blackList, favoriteList } = messagesPreview[i];
+      if (isEqual(currentParticipants, participants)) {
+        return { _id, participants, blackList, favoriteList };
       }
     }
-    return null;
+    throw new Error(`Conversation info not found: ${currentParticipants}`);
   };
 
   const goChat = () => {
     dispatch(
       goToExpandedDialog({
         interlocutor: User,
-        conversationData: findConversationInfo(User.id as UserId)!,
+        conversationData: findConversationInfo(User.id),
       }),
     );
   };
@@ -107,18 +104,18 @@ const ContestInfo: FC<Props> = ({
         <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            typeOfName={typeOfName!}
-            styleName={styleName!}
+            typeOfName={typeOfName as NameContest['typeOfName']}
+            styleName={styleName as NameContest['styleName']}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            typeOfTagline={typeOfTagline!}
-            nameVenture={contestData.nameVenture!}
+            typeOfTagline={typeOfTagline as TaglineContest['typeOfTagline']}
+            nameVenture={nameVenture as TaglineContest['nameVenture']}
           />
         ) : (
           <LogoContestSpecialInfo
-            brandStyle={brandStyle!}
-            nameVenture={contestData.nameVenture!}
+            brandStyle={brandStyle as LogoContest['brandStyle']}
+            nameVenture={nameVenture as LogoContest['nameVenture']}
           />
         )}
         <DataContainer

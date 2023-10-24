@@ -3,7 +3,12 @@ import { Spinner } from 'components/general';
 import { FormInput, SelectInput } from 'components/input';
 import { useSelector } from 'hooks';
 import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
-import type { ContestType } from 'types/contest';
+import type {
+  ContestType,
+  LogoContest,
+  NameContest,
+  TaglineContest,
+} from 'types/contest';
 import styles from './styles/ContestForm.module.sass';
 
 export type Props = {
@@ -27,7 +32,7 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
     ({ dataForContest }) => dataForContest,
   );
 
-  if (isFetching) {
+  if (isFetching || !data) {
     return <Spinner />;
   }
 
@@ -39,13 +44,13 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             name="typeOfName"
             header="type of company"
             classes={selectClasses}
-            optionsArray={data!.typeOfName!}
+            optionsArray={data.typeOfName as NameContest['typeOfName'][]}
           />
           <SelectInput
             name="styleName"
             header="Style name"
             classes={selectClasses}
-            optionsArray={data!.nameStyle!}
+            optionsArray={data.nameStyle as NameContest['styleName'][]}
           />
         </>
       );
@@ -68,7 +73,7 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             name="brandStyle"
             classes={selectClasses}
             header="Brand Style"
-            optionsArray={data!.brandStyle!}
+            optionsArray={data.brandStyle as LogoContest['brandStyle'][]}
           />
         </>
       );
@@ -91,7 +96,9 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             name="typeOfTagline"
             classes={selectClasses}
             header="Type tagline"
-            optionsArray={data!.typeOfTagline!}
+            optionsArray={
+              data.typeOfTagline as TaglineContest['typeOfTagline'][]
+            }
           />
         </>
       );

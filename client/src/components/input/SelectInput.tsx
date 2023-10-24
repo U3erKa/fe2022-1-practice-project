@@ -6,7 +6,6 @@ import {
   type FieldMetaProps,
   type FormikProps,
 } from 'formik';
-import type { JSX } from 'react/jsx-runtime';
 
 export type Props = {
   header: string;
@@ -31,18 +30,6 @@ const SelectInput: FC<Props & FieldProps> = ({
   meta: { initialValue },
   field,
 }) => {
-  const getOptionsArray = () => {
-    const array: JSX.Element[] = [];
-    for (let i = 0; optionsArray && i < optionsArray.length; i++) {
-      array.push(
-        <option key={i} value={valueArray ? valueArray[i] : undefined}>
-          {optionsArray[i]}
-        </option>,
-      );
-    }
-    return array;
-  };
-
   useLayoutEffect(() => {
     if (!initialValue && optionsArray) {
       setFieldValue(field.name, valueArray ? valueArray[0] : optionsArray[0]);
@@ -54,7 +41,11 @@ const SelectInput: FC<Props & FieldProps> = ({
     <div className={classes.inputContainer}>
       <span className={classes.inputHeader}>{header}</span>
       <select {...field} className={classes.selectInput}>
-        {getOptionsArray()}
+        {optionsArray?.map((_, i) => (
+          <option key={i} value={valueArray ? valueArray[i] : undefined}>
+            {optionsArray[i]}
+          </option>
+        ))}
       </select>
     </div>
   );

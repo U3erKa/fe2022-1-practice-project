@@ -15,7 +15,7 @@ const ChatList = () => {
   const {
     chatStore: { chatMode, isShowChatsInCatalog },
     userStore: {
-      // @ts-ignore
+      // @ts-expect-error
       data: { id: userId },
     },
   } = useSelector(({ chatStore, userStore }) => ({
@@ -27,7 +27,6 @@ const ChatList = () => {
   const dialogs = dialogButtons.map(({ id, name, mode }) => (
     <span
       key={id}
-      // @ts-ignore
       onClick={() => dispatch(setPreviewChatMode(mode))}
       className={clsx(styles.button, {
         [styles.activeButton]: chatMode === mode,

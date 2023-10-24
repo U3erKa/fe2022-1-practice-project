@@ -219,11 +219,11 @@ const getOffersExtraReducers = createExtraReducers({
 const reducers = {
   updateStoreAfterUpdateContest: (
     state: ContestByIdState,
-    { payload }: PayloadAction<ContestByIdState['contestData']>,
+    { payload }: PayloadAction<NonNullable<ContestByIdState['contestData']>>,
   ) => {
     state.error = null;
     state.isEditContest = false;
-    state.contestData = { ...state.contestData, ...payload! };
+    state.contestData = { ...state.contestData, ...payload };
   },
   changeContestViewMode: (
     state: ContestByIdState,

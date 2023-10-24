@@ -1,6 +1,7 @@
+import type { FC } from 'react';
+import clsx from 'clsx';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from '../styles/BundleBox.module.sass';
-import type { FC } from 'react';
 
 export type Props = {
   header: string;
@@ -28,8 +29,8 @@ const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
   };
 
   const mouseOverHandler = () => {
-    const element = document.getElementById(header)!;
-    const { children } = element.children[0];
+    const element = document.getElementById(header);
+    const [{ children }] = element!.children;
     for (let i = 0; i < children.length; i++) {
       (
         children[i] as HTMLImageElement
@@ -38,15 +39,12 @@ const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
   };
 
   const mouseOutHandler = () => {
-    const element = document.getElementById(header)!;
-    const { children } = element.children[0];
+    const element = document.getElementById(header);
+    const [{ children }] = element!.children;
     for (let i = 0; i < children.length; i++) {
       (children[i] as HTMLImageElement).src = defaultPathToImages + path[i];
     }
   };
-
-  const getBackClass = () =>
-    path.length === 1 ? ' ' : ` ${styles.combinedBundle}`;
 
   return (
     <div
@@ -54,7 +52,9 @@ const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
       onMouseOut={mouseOutHandler}
       onClick={() => setBundle(header)}
       id={header}
-      className={styles.bundleContainer + getBackClass()}
+      className={clsx(styles.bundleContainer, {
+        [styles.combinedBundle]: path.length === 1,
+      })}
     >
       <div>{renderImage()}</div>
       <div className={styles.infoContainer}>

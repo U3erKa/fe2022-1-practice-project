@@ -3,8 +3,8 @@ import type Mail from 'nodemailer/lib/mailer';
 
 const sendEmail = (async () => {
   const { MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = process.env;
-  let user = MAIL_USER!;
-  let pass = MAIL_PASS!;
+  let user = MAIL_USER;
+  let pass = MAIL_PASS;
   if (!MAIL_USER || !MAIL_PASS) {
     const testAccount = await nodemailer.createTestAccount();
     user = testAccount.user;

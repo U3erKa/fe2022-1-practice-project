@@ -23,7 +23,7 @@ const StartContestPage = () => {
   const setBundle = (bundleStr: string) => {
     const array = bundleStr.toLowerCase().split('+');
     const bundleList = {} as Bundle;
-
+    // eslint-disable-next-line prefer-destructuring
     bundleList.first = array[0];
     for (let i = 0; i < array.length; i++) {
       bundleList[array[i] as keyof typeof bundleList] =

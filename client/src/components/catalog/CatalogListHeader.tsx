@@ -15,7 +15,7 @@ import styles from './styles/CatalogHeader.module.sass';
 const CatalogListHeader = () => {
   const {
     isRenameCatalog,
-    // @ts-ignore
+    // @ts-expect-error
     currentCatalog: { _id, catalogName },
   } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();

@@ -11,7 +11,7 @@ export default function Event({ id, name, date, createdAt }: Props) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // @ts-ignore
+      // @ts-expect-error
       const { progress, time } = getEventProgress({ date, createdAt });
       setTime(time);
       setProgress(progress);

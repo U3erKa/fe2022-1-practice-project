@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error
 import Flickity from 'react-flickity-component';
 
 import {

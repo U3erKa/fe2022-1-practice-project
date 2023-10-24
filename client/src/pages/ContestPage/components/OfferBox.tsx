@@ -38,6 +38,7 @@ import type { FC } from 'react';
 import type { ContestData } from 'types/slices';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
+import type { User } from 'types/api/user';
 import styles from '../styles/OfferBox.module.sass';
 
 export type Props = {
@@ -47,9 +48,9 @@ export type Props = {
 };
 
 const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
-  const selector = useSelector((state) => {
-    const { id, role } = state.userStore.data!;
-    const { messagesPreview } = state.chatStore;
+  const selector = useSelector(({ userStore, chatStore }) => {
+    const { id, role } = userStore.data ?? ({} as User);
+    const { messagesPreview } = chatStore;
 
     return { id, role, messagesPreview };
   });
@@ -59,21 +60,16 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
   const { id, avatar, firstName, lastName, email, rating } = data.User;
 
   const findConversationInfo = () => {
-    const participants = [userId, id];
-    participants.sort(
+    const currentParticipants = [userId, id].sort(
       (participant1, participant2) => participant1 - participant2,
     );
     for (let i = 0; i < messagesPreview.length; i++) {
-      if (isEqual(participants, messagesPreview[i].participants)) {
-        return {
-          participants: messagesPreview[i].participants,
-          _id: messagesPreview[i]._id,
-          blackList: messagesPreview[i].blackList,
-          favoriteList: messagesPreview[i].favoriteList,
-        };
+      const { _id, participants, blackList, favoriteList } = messagesPreview[i];
+      if (isEqual(currentParticipants, participants)) {
+        return { _id, participants, blackList, favoriteList };
       }
     }
-    return null;
+    throw new Error(`Conversation info not found: ${currentParticipants}`);
   };
 
   const resolveOffer = () => {
@@ -143,8 +139,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
         return (
           <FontAwesomeIcon icon={faCircleCheck} className={styles.resolve} />
         );
-      case OFFER_STATUS_PENDING as any:
-        if (role !== CREATOR) return null;
+      case role === CREATOR && (OFFER_STATUS_PENDING as any):
         return <FontAwesomeIcon icon={faClock} className={styles.pending} />;
       default:
         return null;
@@ -155,7 +150,6 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     dispatch(
       goToExpandedDialog({
         interlocutor: data.User,
-        // @ts-ignore
         conversationData: findConversationInfo(),
       }),
     );
@@ -227,7 +221,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
           </div>
           <div className={styles.creativeRating}>
             <span className={styles.userScoreLabel}>Creative Rating </span>
-            {/* @ts-ignore */}
+            {/* @ts-expect-error */}
             <Rating
               fractions={2}
               fullSymbol={fullSymbol}
@@ -258,7 +252,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
             <span className={styles.response}>{data.text}</span>
           )}
           {id !== userId && role === CUSTOMER && (
-            // @ts-ignore
+            // @ts-expect-error
             <Rating
               fractions={2}
               fullSymbol={fullSymbol}

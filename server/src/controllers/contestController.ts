@@ -1,9 +1,10 @@
 import {
-  type Filterable,
-  type InferAttributes,
+  type Attributes,
   Op,
   type Transaction,
+  type WhereOptions,
 } from 'sequelize';
+import type { RequestHandler } from 'express';
 import fs from 'fs/promises';
 import path from 'path';
 import { Contest, Offer, Rating, Select, User, sequelize } from '../models';
@@ -18,7 +19,6 @@ import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
-import type { RequestHandler } from 'express';
 import type { Offer as _Offer, User as _User } from '../types/models';
 
 export const dataForContest: RequestHandler = async (req, res, next) => {
@@ -172,9 +172,9 @@ export const setNewOffer: RequestHandler = async (req, res, next) => {
 
   try {
     const result = await contestQueries.createOffer(obj);
-    // @ts-ignore
+    // @ts-expect-error
     delete result.contestId;
-    // @ts-ignore
+    // @ts-expect-error
     delete result.userId;
     controller.getNotificationController().emitEntryCreated(customerId);
     const User = Object.assign({}, tokenData, { id: tokenData.userId });
@@ -376,8 +376,8 @@ export const getContests: RequestHandler = async (req, res, next) => {
     },
   } = req;
   const ownEntries = _ownEntries === 'true';
-  const offset = +_offset! ?? 0;
-  const limit = +_limit! ?? 8;
+  const offset = +(_offset ?? 0);
+  const limit = +(_limit ?? 8);
 
   try {
     let predicates: ReturnType<
@@ -425,25 +425,23 @@ export const getContests: RequestHandler = async (req, res, next) => {
       include: [
         {
           model: Offer,
-          required: isRequiredOffer!,
+          required: isRequiredOffer,
           where: offerFilter,
           attributes: ['id'],
         },
       ],
     });
 
-    const contestsCount = (await Contest.count({
+    const contestsCount = await Contest.count({
       where: predicates.where as any,
-      order: predicates.order,
-      offset,
-    })) as unknown as number;
+    });
 
     contests.forEach(
       (contest) =>
         // @ts-expect-error
         (contest.dataValues.count = contest.dataValues.Offers.length),
     );
-    const haveMore = contestsCount > +offset + contests.length;
+    const haveMore = contestsCount > offset + contests.length;
 
     res.send({ contests, haveMore });
   } catch (error) {
@@ -456,11 +454,11 @@ export const getOffers: RequestHandler = async (req, res, next) => {
     const {
       query: { offset: _offset, limit: _limit, isReviewed: _isReviewed },
     } = req;
-    const offset = +_offset! ?? 0;
-    const limit = +_limit! ?? 8;
+    const offset = +(_offset ?? 0);
+    const limit = +(_limit ?? 8);
     const isReviewed = _isReviewed === 'true';
 
-    const where: Filterable<InferAttributes<_Offer>>['where'] = {
+    const where: WhereOptions<Attributes<_Offer>> = {
       [Op.or]: isReviewed
         ? [
             { status: 'approved' },
