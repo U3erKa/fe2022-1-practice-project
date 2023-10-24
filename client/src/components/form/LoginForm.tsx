@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Formik } from 'formik';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { Error } from 'components/general';
-import { FormInput } from 'components/input';
 import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
 import type { LoginParams } from 'types/api/auth';
@@ -22,17 +23,25 @@ const LoginForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const {
+    handleSubmit,
+    formState: { touchedFields, dirtyFields, errors },
+    register,
+  } = useForm({
+    defaultValues: { email: '', password: '' },
+    resolver: yupResolver(LoginSchem),
+    mode: 'all',
+  });
+
   const onSubmit = (values: LoginParams) => {
     dispatch(checkAuth({ data: values, navigate, authMode: AUTH_MODE.LOGIN }));
   };
 
-  const formInputClasses = {
-    container: styles.inputContainer,
-    input: styles.input,
-    warning: styles.fieldWarning,
-    notValid: styles.notValid,
-    valid: styles.valid,
-  };
+  const inputClassName = (field: keyof LoginParams) =>
+    clsx(styles.input, {
+      [styles.notValid]: touchedFields[field] && !dirtyFields[field],
+      [styles.valid]: touchedFields[field] && dirtyFields[field],
+    });
 
   return (
     <div className={styles.loginForm}>
@@ -44,38 +53,43 @@ const LoginForm = () => {
         />
       )}
       <h2>LOGIN TO YOUR ACCOUNT</h2>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        onSubmit={onSubmit}
-        validationSchema={LoginSchem}
-      >
-        <Form className={styles.form}>
-          <FormInput
-            classes={formInputClasses}
-            name="email"
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.inputContainer}>
+          <input
+            className={inputClassName('email')}
             type="text"
-            label="Email Address"
+            autoComplete="username"
+            placeholder={'Email Address'}
+            {...register('email')}
           />
-          <FormInput
-            classes={formInputClasses}
-            name="password"
+          {errors.email && (
+            <span className={styles.fieldWarning}>{errors.email.message}</span>
+          )}
+        </div>
+        <div className={styles.inputContainer}>
+          <input
+            className={inputClassName('password')}
             type="password"
-            label="Password"
+            autoComplete="current-password"
+            placeholder={'Password'}
+            {...register('password')}
           />
-          <button
-            type="submit"
-            disabled={isFetching}
-            className={styles.submitContainer}
-          >
-            <span className={styles.inscription}>
-              {isFetching ? 'Submitting...' : 'Login'}
+          {errors.password && (
+            <span className={styles.fieldWarning}>
+              {errors.password.message}
             </span>
-          </button>
-        </Form>
-      </Formik>
+          )}
+        </div>
+        <button
+          type="submit"
+          disabled={isFetching}
+          className={styles.submitContainer}
+        >
+          <span className={styles.inscription}>
+            {isFetching ? 'Submitting...' : 'Login'}
+          </span>
+        </button>
+      </form>
     </div>
   );
 };
