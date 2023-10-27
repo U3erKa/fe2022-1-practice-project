@@ -77,6 +77,7 @@ const RegistrationForm = () => {
             control={control}
             classes={formInputClasses}
             type="text"
+            autoComplete="given-name"
             placeholder="First name"
           />
           <FormInput
@@ -84,6 +85,7 @@ const RegistrationForm = () => {
             control={control}
             classes={formInputClasses}
             type="text"
+            autoComplete="family-name"
             placeholder="Last name"
           />
         </div>
@@ -93,13 +95,14 @@ const RegistrationForm = () => {
             control={control}
             classes={formInputClasses}
             type="text"
+            autoComplete="nickname"
             placeholder="Display Name"
           />
           <FormInput
             name="email"
             control={control}
             classes={formInputClasses}
-            type="text"
+            autoComplete="email"
             placeholder="Email Address"
           />
         </div>
@@ -109,6 +112,7 @@ const RegistrationForm = () => {
             control={control}
             classes={formInputClasses}
             type="password"
+            autoComplete="new-password"
             placeholder="Password"
           />
           <FormInput
@@ -116,25 +120,28 @@ const RegistrationForm = () => {
             control={control}
             classes={formInputClasses}
             type="password"
+            autoComplete="new-password"
             placeholder="Password confirmation"
           />
         </div>
         <div className={styles.choseRoleContainer}>
           <RoleInput
             name="role"
+            control={control}
             type="radio"
             value={CUSTOMER}
             strRole="Join As a Buyer"
             infoRole="I am looking for a Name, Logo or Tagline for my business, brand or product."
-            control={control}
+            id={CUSTOMER}
           />
           <RoleInput
             name="role"
+            control={control}
             type="radio"
             value={CREATOR}
             strRole="Join As a Creative"
             infoRole="I plan to submit name ideas, Logo designs or sell names in Domain Marketplace."
-            control={control}
+            id={CREATOR}
           />
         </div>
         <div className={styles.termsOfService}>
