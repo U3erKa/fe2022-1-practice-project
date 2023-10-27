@@ -1,42 +1,48 @@
-import { type FC } from 'react';
-import { Field, type FieldAttributes } from 'formik';
+import {
+  type DetailedHTMLProps,
+  type FC,
+  type InputHTMLAttributes,
+} from 'react';
+import { type Control, useController } from 'react-hook-form';
 import { DUMMY_LINK } from 'constants/general';
 
-export type Props = FieldAttributes<unknown> & {
-  label?: string;
-  classes: Record<string, string>;
+export type Props = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
+  classes: Record<'container' | 'warning', string>;
+  control: Control<any>;
+  name: string;
 };
 
-const AgreeTermOfServiceInput: FC<Props> = ({
+const AgreeTermOfServiceInput: FC<Props> = function AgreeTermOfServiceInput({
   id,
-  type,
   classes,
-  label = '',
+  name,
+  control,
   ...rest
-}) => (
-  <Field {...rest}>
-    {(props: any) => {
-      const {
-        meta: { touched, error },
-        field,
-      } = props;
+}) {
+  const {
+    field,
+    fieldState: { error, isTouched },
+  } = useController({ name, control });
 
-      return (
-        <div>
-          <div className={classes.container}>
-            <input {...field} placeholder={label} id={id} type={type} />
-            <label htmlFor={id}>
-              By clicking this checkbox, you agree to our{' '}
-              <a href={DUMMY_LINK} target="_blank" rel="noreferrer">
-                Terms of Service.
-              </a>
-            </label>
-          </div>
-          {touched && error && <span className={classes.warning}>{error}</span>}
-        </div>
-      );
-    }}
-  </Field>
-);
+  return (
+    <div>
+      <div className={classes.container}>
+        <input id={id} type="checkbox" {...field} {...rest} />
+        <label htmlFor={id}>
+          By clicking this checkbox, you agree to our{' '}
+          <a href={DUMMY_LINK} target="_blank" rel="noreferrer">
+            Terms of Service.
+          </a>
+        </label>
+      </div>
+      {isTouched && error?.message && (
+        <span className={classes.warning}>{error.message}</span>
+      )}
+    </div>
+  );
+};
 
 export default AgreeTermOfServiceInput;

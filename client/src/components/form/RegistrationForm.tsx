@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Field, Form, Formik } from 'formik';
-
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
-
 import { Error } from 'components/general';
 import {
   AgreeTermOfServiceInput,
@@ -15,6 +14,14 @@ import { RegistrationSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE, CREATOR, CUSTOMER } from 'constants/general';
 import type { RegisterParams } from 'types/api/auth';
 import styles from './styles/RegistrationForm.module.sass';
+
+const formInputClasses = {
+  container: styles.inputContainer,
+  input: styles.input,
+  warning: styles.fieldWarning,
+  notValid: styles.notValid,
+  valid: styles.valid,
+};
 
 const RegistrationForm = () => {
   const { error, isFetching } = useSelector(({ auth }) => auth);
@@ -28,19 +35,27 @@ const RegistrationForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      role: CUSTOMER,
+      agreeOfTerms: false,
+    },
+    resolver: yupResolver(RegistrationSchem),
+    mode: 'all',
+  });
+
   const onSubmit = (values: RegisterParams) => {
     dispatch(
       checkAuth({ data: values, navigate, authMode: AUTH_MODE.REGISTER }),
     );
   };
 
-  const formInputClasses = {
-    container: styles.inputContainer,
-    input: styles.input,
-    warning: styles.fieldWarning,
-    notValid: styles.notValid,
-    valid: styles.valid,
-  };
   return (
     <div className={styles.signUpFormContainer}>
       {error && (
@@ -54,105 +69,95 @@ const RegistrationForm = () => {
         <h2>CREATE AN ACCOUNT</h2>
         <h4>We always keep your name and email address private.</h4>
       </div>
-      <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          displayName: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-          role: CUSTOMER,
-          agreeOfTerms: false,
-        }}
-        onSubmit={onSubmit}
-        validationSchema={RegistrationSchem}
-      >
-        <Form className={styles.form}>
-          <div className={styles.row}>
-            <FormInput
-              name="firstName"
-              classes={formInputClasses}
-              type="text"
-              label="First name"
-            />
-            <FormInput
-              name="lastName"
-              classes={formInputClasses}
-              type="text"
-              label="Last name"
-            />
-          </div>
-          <div className={styles.row}>
-            <FormInput
-              name="displayName"
-              classes={formInputClasses}
-              type="text"
-              label="Display Name"
-            />
-            <FormInput
-              name="email"
-              classes={formInputClasses}
-              type="text"
-              label="Email Address"
-            />
-          </div>
-          <div className={styles.row}>
-            <FormInput
-              name="password"
-              classes={formInputClasses}
-              type="password"
-              label="Password"
-            />
-            <FormInput
-              name="confirmPassword"
-              classes={formInputClasses}
-              type="password"
-              label="Password confirmation"
-            />
-          </div>
-          <div className={styles.choseRoleContainer}>
-            <Field
-              name="role"
-              type="radio"
-              value={CUSTOMER}
-              strRole="Join As a Buyer"
-              infoRole="I am looking for a Name, Logo or Tagline for my business, brand or product."
-              component={RoleInput}
-              id={CUSTOMER}
-            />
-            <Field
-              name="role"
-              type="radio"
-              value={CREATOR}
-              strRole="Join As a Creative"
-              infoRole="I plan to submit name ideas, Logo designs or sell names in Domain Marketplace."
-              component={RoleInput}
-              id={CREATOR}
-            />
-          </div>
-          <div className={styles.termsOfService}>
-            <AgreeTermOfServiceInput
-              name="agreeOfTerms"
-              classes={{
-                container: styles.termsOfService,
-                warning: styles.fieldWarning,
-              }}
-              id="termsOfService"
-              type="checkbox"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={isFetching}
-            className={styles.submitContainer}
-          >
-            <span className={styles.inscription}>
-              {isFetching ? 'Submitting...' : 'Create Account'}
-            </span>
-          </button>
-        </Form>
-      </Formik>
+
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.row}>
+          <FormInput
+            name="firstName"
+            control={control}
+            classes={formInputClasses}
+            type="text"
+            placeholder="First name"
+          />
+          <FormInput
+            name="lastName"
+            control={control}
+            classes={formInputClasses}
+            type="text"
+            placeholder="Last name"
+          />
+        </div>
+        <div className={styles.row}>
+          <FormInput
+            name="displayName"
+            control={control}
+            classes={formInputClasses}
+            type="text"
+            placeholder="Display Name"
+          />
+          <FormInput
+            name="email"
+            control={control}
+            classes={formInputClasses}
+            type="text"
+            placeholder="Email Address"
+          />
+        </div>
+        <div className={styles.row}>
+          <FormInput
+            name="password"
+            control={control}
+            classes={formInputClasses}
+            type="password"
+            placeholder="Password"
+          />
+          <FormInput
+            name="confirmPassword"
+            control={control}
+            classes={formInputClasses}
+            type="password"
+            placeholder="Password confirmation"
+          />
+        </div>
+        <div className={styles.choseRoleContainer}>
+          <RoleInput
+            name="role"
+            type="radio"
+            value={CUSTOMER}
+            strRole="Join As a Buyer"
+            infoRole="I am looking for a Name, Logo or Tagline for my business, brand or product."
+            control={control}
+          />
+          <RoleInput
+            name="role"
+            type="radio"
+            value={CREATOR}
+            strRole="Join As a Creative"
+            infoRole="I plan to submit name ideas, Logo designs or sell names in Domain Marketplace."
+            control={control}
+          />
+        </div>
+        <div className={styles.termsOfService}>
+          <AgreeTermOfServiceInput
+            name="agreeOfTerms"
+            control={control}
+            classes={{
+              container: styles.termsOfService,
+              warning: styles.fieldWarning,
+            }}
+            id="termsOfService"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={isFetching}
+          className={styles.submitContainer}
+        >
+          <span className={styles.inscription}>
+            {isFetching ? 'Submitting...' : 'Create Account'}
+          </span>
+        </button>
+      </form>
     </div>
   );
 };
