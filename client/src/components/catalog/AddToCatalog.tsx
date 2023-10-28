@@ -1,4 +1,4 @@
-import { Form, Formik } from 'formik';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { addChatToCatalog } from 'store/slices/chatSlice';
 import { SelectInput } from 'components/input';
@@ -22,25 +22,26 @@ const AddToCatalog = () => {
     catalogIds.push(_id);
   });
 
-  const onSubmit = (values: { catalogId: CatalogId }) => {
-    dispatch(
-      addChatToCatalog({ chatId: addChatId!, catalogId: values.catalogId }),
-    );
+  const { handleSubmit, control } = useForm({
+    defaultValues: { catalogId: catalogIds[0] },
+  });
+
+  const onSubmit = ({ catalogId }: { catalogId: CatalogId }) => {
+    dispatch(addChatToCatalog({ chatId: addChatId!, catalogId }));
   };
 
   return catalogNames.length !== 0 ? (
-    <Formik onSubmit={onSubmit} initialValues={{ catalogId: '' as any }}>
-      <Form className={styles.form}>
-        <SelectInput
-          name="catalogId"
-          header="name of catalog"
-          classes={classes}
-          optionsArray={catalogNames}
-          valueArray={catalogIds}
-        />
-        <button type="submit">Add</button>
-      </Form>
-    </Formik>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <SelectInput
+        name="catalogId"
+        control={control}
+        header="name of catalog"
+        classes={classes}
+        optionsArray={catalogNames}
+        valueArray={catalogIds}
+      />
+      <button type="submit">Add</button>
+    </form>
   ) : (
     <div className={styles.notFound}>You have not created any directories.</div>
   );
