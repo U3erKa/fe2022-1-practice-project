@@ -1,7 +1,10 @@
-import { type FC, type MutableRefObject, useEffect } from 'react';
+import { type FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import type { InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
+import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { Spinner, TryAgain } from 'components/general';
 import { OptionalSelects } from 'components/contest';
@@ -12,11 +15,15 @@ import {
   SelectInput,
 } from 'components/input';
 import { ContestSchem } from 'utils/validators/validationSchems';
-import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
+import {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  ROUTE,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 import type { ContestType } from 'types/contest';
-import type { ContestInfo } from 'types/api/contest';
+import type { SaveContestToStore } from 'types/api/contest';
 import styles from './styles/ContestForm.module.sass';
-import type { InferType } from 'yup';
 
 const variableOptions = {
   [NAME_CONTEST]: {
@@ -34,11 +41,7 @@ const variableOptions = {
 };
 
 export type Props = {
-  name?: string;
   contestType: ContestType;
-  defaultData: Partial<ContestInfo>;
-  handleSubmit: (values: InferType<typeof ContestSchem>) => void;
-  formRef?: MutableRefObject<HTMLFormElement>;
 };
 
 const inputClasses = {
@@ -65,18 +68,29 @@ const fileClasses = {
   warning: styles.warning,
 };
 
-const ContestForm: FC<Props> = (props) => {
-  const { isEditContest, dataForContest } = useSelector(
-    ({ contestByIdStore, dataForContest }) => ({
+const ContestForm: FC<Props> = ({ contestType }) => {
+  const { isEditContest, dataForContest, bundle, contests } = useSelector(
+    ({
+      contestCreationStore,
+      contestByIdStore,
+      dataForContest,
+      bundleStore,
+    }) => ({
       isEditContest: contestByIdStore.isEditContest,
       dataForContest,
+      bundle: bundleStore.bundle,
+      contests: contestCreationStore.contests,
     }),
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { contestType, defaultData, handleSubmit: onSubmit, formRef } = props;
+  const defaultContestData = contests[contestType]
+    ? contests[contestType]
+    : { contestType };
   const { isFetching, error, data: contestData } = dataForContest;
-  const { handleSubmit, control } = useForm({
+
+  const { handleSubmit, control, register } = useForm({
     defaultValues: {
       title: '',
       industry: '',
@@ -84,7 +98,7 @@ const ContestForm: FC<Props> = (props) => {
       targetCustomer: '',
       file: '',
       ...variableOptions[contestType],
-      ...defaultData,
+      ...defaultContestData,
     },
     resolver: yupResolver(ContestSchem),
   });
@@ -93,6 +107,23 @@ const ContestForm: FC<Props> = (props) => {
     getPreference();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contestType]);
+
+  const onSubmit = (values: InferType<typeof ContestSchem>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { file, ...restValues } = values;
+
+    dispatch(
+      saveContestToStore({
+        type: contestType,
+        info: restValues,
+      } as SaveContestToStore),
+    );
+    const route =
+      bundle![contestType] === 'payment'
+        ? ROUTE.PAYMENT
+        : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
+    navigate(route);
+  };
 
   const getPreference = () => {
     switch (contestType) {
@@ -128,7 +159,7 @@ const ContestForm: FC<Props> = (props) => {
 
   return (
     <div className={styles.formContainer}>
-      <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputContainer}>
           <span className={styles.inputHeader}>Title of contest</span>
           <FormInput
@@ -177,6 +208,22 @@ const ContestForm: FC<Props> = (props) => {
             Set Data
           </button>
         ) : null}
+        <div className={styles.footerButtonsContainer}>
+          <div className={styles.lastContainer}>
+            <div className={styles.buttonsContainer}>
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className={styles.prevButtonContainer}
+              >
+                Back
+              </button>
+              <button type="submit" className={styles.nextButtonContainer}>
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   );

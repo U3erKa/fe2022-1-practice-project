@@ -27,8 +27,8 @@ const FormInput = function FormInput({
   } = useController({ name, control });
 
   const inputClassName = clsx(classes.input, {
-    [classes.notValid as string]: isTouched && invalid,
-    [classes.valid as string]: isTouched && !invalid,
+    [classes.notValid!]: isTouched && invalid,
+    [classes.valid!]: isTouched && !invalid,
   });
 
   return (
