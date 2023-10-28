@@ -185,8 +185,8 @@ const ContestForm: FC<Props> = ({ contestType }) => {
           </span>
           <FormTextArea
             name="focusOfWork"
-            type="text"
-            label="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
+            control={control}
+            placeholder="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
             classes={textareaClasses}
           />
         </div>
@@ -196,13 +196,18 @@ const ContestForm: FC<Props> = ({ contestType }) => {
           </span>
           <FormTextArea
             name="targetCustomer"
-            type="text"
-            label="customers"
+            control={control}
+            placeholder="customers"
             classes={textareaClasses}
           />
         </div>
-        <OptionalSelects {...props} />
-        <FieldFileInput name="file" classes={fileClasses} type="file" />
+        <OptionalSelects control={control} contestType={contestType} />
+        <FieldFileInput
+          name="file"
+          control={control}
+          register={register}
+          classes={fileClasses}
+        />
         {isEditContest ? (
           <button type="submit" className={styles.changeData}>
             Set Data

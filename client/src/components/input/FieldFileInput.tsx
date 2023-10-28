@@ -1,36 +1,49 @@
-import { type ChangeEventHandler, type FC } from 'react';
-import { type FieldAttributes, useField } from 'formik';
+import {
+  type DetailedHTMLProps,
+  type FC,
+  type InputHTMLAttributes,
+} from 'react';
+import {
+  type Control,
+  type UseFormRegister,
+  useController,
+} from 'react-hook-form';
 
-export type Props = FieldAttributes<unknown> & {
+export type Props = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
+  name: string;
+  control: Control<any>;
+  register: UseFormRegister<any>;
   classes: Record<string, string>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const FieldFileInput: FC<Props> = ({ classes, name, ...rest }) => {
+const FieldFileInput: FC<Props> = ({
+  name,
+  control,
+  register,
+  classes,
+  id,
+  ...rest
+}) => {
+  const { field } = useController({ name, control });
   const { fileUploadContainer, labelClass, fileNameClass, fileInput } = classes;
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [{ value, ...restField }, meta, helpers] = useField(name);
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const [file] = e.target.files!;
-    helpers.setValue(file, false);
-  };
 
   return (
     <div className={fileUploadContainer}>
-      <label htmlFor="fileInput" className={labelClass}>
+      <label htmlFor={id ?? 'fileInput'} className={labelClass}>
         Choose file
       </label>
       <span id="fileNameContainer" className={fileNameClass}>
-        {value?.name ?? ''}
+        {field.value[0]?.name}
       </span>
       <input
-        {...restField}
         className={fileInput}
-        onChange={onChange}
-        id="fileInput"
+        id={id ?? 'fileInput'}
         type="file"
+        {...register(name)}
+        {...rest}
       />
     </div>
   );
