@@ -33,7 +33,7 @@ const FormInput = function FormInput({
 
   return (
     <div className={classes.container}>
-      <input className={inputClassName} {...field} {...props} />
+      <input className={inputClassName} type="text" {...field} {...props} />
       {error && <span className={classes.warning}>{error.message}</span>}
     </div>
   );

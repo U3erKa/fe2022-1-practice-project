@@ -1,4 +1,5 @@
-import { Form, Formik } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'hooks';
@@ -19,6 +20,11 @@ const CatalogListHeader = () => {
     currentCatalog: { _id, catalogName },
   } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
+
+  const { handleSubmit, control } = useForm({
+    defaultValues: { catalogName },
+    resolver: yupResolver(CatalogSchema),
+  });
 
   const changeCatalogNameMethod = (values: Pick<Catalog, 'catalogName'>) => {
     dispatch(
@@ -42,26 +48,20 @@ const CatalogListHeader = () => {
         </div>
       ) : (
         <div className={styles.changeContainer}>
-          <Formik
-            onSubmit={changeCatalogNameMethod}
-            initialValues={{ catalogName }}
-            validationSchema={CatalogSchema}
-          >
-            <Form>
-              <FormInput
-                name="catalogName"
-                classes={{
-                  container: styles.inputContainer,
-                  input: styles.input,
-                  warning: styles.fieldWarning,
-                  notValid: styles.notValid,
-                }}
-                type="text"
-                label="Catalog Name"
-              />
-              <button type="submit">Change</button>
-            </Form>
-          </Formik>
+          <form onSubmit={handleSubmit(changeCatalogNameMethod)}>
+            <FormInput
+              name="catalogName"
+              control={control}
+              classes={{
+                container: styles.inputContainer,
+                input: styles.input,
+                warning: styles.fieldWarning,
+                notValid: styles.notValid,
+              }}
+              placeholder="Catalog Name"
+            />
+            <button type="submit">Change</button>
+          </form>
         </div>
       )}
     </div>

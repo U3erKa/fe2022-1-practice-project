@@ -65,7 +65,7 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             <FormInput
               name="nameVenture"
               type="text"
-              label="name of venture"
+              placeholder="name of venture"
               classes={inputClasses}
             />
           </div>
@@ -88,7 +88,7 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
             <FormInput
               name="nameVenture"
               type="text"
-              label="name of venture"
+              placeholder="name of venture"
               classes={inputClasses}
             />
           </div>

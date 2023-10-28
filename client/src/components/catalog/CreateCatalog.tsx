@@ -1,4 +1,5 @@
-import { Form, Formik } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'hooks';
 import { createCatalog } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
@@ -17,27 +18,27 @@ const CreateCatalog = () => {
   const { addChatId } = useSelector((state) => state.chatStore);
   const dispatch = useDispatch();
 
-  const click = (values: Pick<Catalog, 'catalogName'>) => {
+  const { handleSubmit, control } = useForm({
+    defaultValues: { catalogName: '' },
+    resolver: yupResolver(CatalogSchema),
+  });
+
+  const onSubmit = (values: Pick<Catalog, 'catalogName'>) => {
     dispatch(
       createCatalog({ catalogName: values.catalogName, chatId: addChatId }),
     );
   };
+
   return (
-    <Formik
-      onSubmit={click}
-      initialValues={{ catalogName: '' }}
-      validationSchema={CatalogSchema}
-    >
-      <Form className={styles.form}>
-        <FormInput
-          name="catalogName"
-          type="text"
-          label="name of catalog"
-          classes={classes}
-        />
-        <button type="submit">Create Catalog</button>
-      </Form>
-    </Formik>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <FormInput
+        name="catalogName"
+        control={control}
+        placeholder="name of catalog"
+        classes={classes}
+      />
+      <button type="submit">Create Catalog</button>
+    </form>
   );
 };
 

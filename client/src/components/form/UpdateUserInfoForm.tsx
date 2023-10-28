@@ -45,7 +45,7 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
     <div key={id} className={styles.container}>
       <span className={styles.label}>{label}</span>
-      <FormInput type="text" name={name} label={label} classes={inputClasses} />
+      <FormInput name={name} placeholder={label} classes={inputClasses} />
     </div>
   ));
 

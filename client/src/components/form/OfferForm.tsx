@@ -12,33 +12,34 @@ import { LOGO_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.sass';
 import type { Id, WithId } from 'types/api/_common';
+import type { FormInputClasses } from 'components/input/FormInput';
 
 export type Props = {
   contestType: ContestType;
 };
 export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & Props;
 
+const formInputClassses = {
+  container: styles.inputContainer,
+  input: styles.input,
+  warning: styles.fieldWarning,
+  notValid: styles.notValid,
+} satisfies FormInputClasses;
+
+const imageUploadClasses = {
+  uploadContainer: styles.imageUploadContainer,
+  inputContainer: styles.uploadInputContainer,
+  imgStyle: styles.imgStyle,
+};
+
 const OfferInput: FC<Props> = ({ contestType }) => {
   return contestType === LOGO_CONTEST ? (
-    <ImageUpload
-      name="offerData"
-      classes={{
-        uploadContainer: styles.imageUploadContainer,
-        inputContainer: styles.uploadInputContainer,
-        imgStyle: styles.imgStyle,
-      }}
-    />
+    <ImageUpload name="offerData" classes={imageUploadClasses} />
   ) : (
     <FormInput
       name="offerData"
-      classes={{
-        container: styles.inputContainer,
-        input: styles.input,
-        warning: styles.fieldWarning,
-        notValid: styles.notValid,
-      }}
-      type="text"
-      label="your suggestion"
+      classes={formInputClassses}
+      placeholder="your suggestion"
     />
   );
 };
