@@ -21,8 +21,8 @@ export type FormSelectProps = DetailedHTMLProps<
   control: Control<any>;
   header: string;
   classes: FormSelectClasses;
-  optionsArray: string[];
-  valueArray?: number[];
+  optionsArray: readonly string[];
+  valueArray?: readonly number[];
 };
 
 const SelectInput: FC<FormSelectProps> = function SelectInput({
@@ -48,8 +48,8 @@ const SelectInput: FC<FormSelectProps> = function SelectInput({
 
   return (
     <>
-      <div className={classes.inputContainer}>
-        <span className={classes.inputHeader}>{header}</span>
+      <label className={classes.inputContainer}>
+        <p className={classes.inputHeader}>{header}</p>
         <select className={classes.selectInput} {...field} {...rest}>
           {optionsArray?.map((_, i) => (
             <option key={i} value={valueArray ? valueArray[i] : undefined}>
@@ -57,8 +57,8 @@ const SelectInput: FC<FormSelectProps> = function SelectInput({
             </option>
           ))}
         </select>
-      </div>
-      {error && <span className={classes.warning}>{error.message}</span>}
+      </label>
+      {error && <p className={classes.warning}>{error.message}</p>}
     </>
   );
 };

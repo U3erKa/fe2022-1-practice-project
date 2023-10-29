@@ -3,22 +3,27 @@ import { type Control, useController } from 'react-hook-form';
 import clsx from 'clsx';
 
 export type FormInputClasses = Partial<
-  Record<'container' | 'input' | 'notValid' | 'valid' | 'warning', string>
+  Record<
+    'container' | 'input' | 'label' | 'notValid' | 'valid' | 'warning',
+    string
+  >
 >;
 
 export type FormInputProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  control: Control<any>;
-  classes: FormInputClasses;
   name: string;
+  control: Control<any>;
+  classes?: FormInputClasses;
+  label?: string;
 };
 
 const FormInput = function FormInput({
-  control,
-  classes,
   name,
+  control,
+  classes = {},
+  label,
   ...props
 }: FormInputProps) {
   const {
@@ -32,10 +37,11 @@ const FormInput = function FormInput({
   });
 
   return (
-    <div className={classes.container}>
+    <label className={classes.container}>
+      {label && <p className={classes.label}>{label}</p>}
       <input className={inputClassName} type="text" {...field} {...props} />
-      {error && <span className={classes.warning}>{error.message}</span>}
-    </div>
+      {error && <p className={classes.warning}>{error.message}</p>}
+    </label>
   );
 };
 
