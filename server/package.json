@@ -7,7 +7,7 @@
     "start": "concurrently \"nodemon --trace-deprecation .\" \"swc src/ -d dist/ --copy-files --watch\"",
     "build": "swc src/ -d dist/ --copy-files",
     "format": "prettier --write -l .",
-    "install": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
