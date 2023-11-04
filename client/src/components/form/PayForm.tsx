@@ -1,7 +1,8 @@
 import { type FC } from 'react';
-import { Form, Formik } from 'formik';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Cards from 'react-credit-cards-2';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
@@ -38,7 +39,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   };
 
   const isCashoutPage = location.pathname === ROUTE.ACCOUNT;
-  const initialValues = {
+  const defaultValues = {
     focusOnElement: '',
     name: '',
     number: '',
@@ -46,96 +47,97 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
     expiry: '',
   };
 
-  if (isCashoutPage) Object.assign(initialValues, { sum: '' });
+  if (isCashoutPage) Object.assign(defaultValues, { sum: '' });
+
+  const { handleSubmit, control, watch } = useForm({
+    defaultValues,
+    resolver: yupResolver(isCashoutPage ? CashoutSchema : PaymentSchema),
+  });
+  const { name, number, expiry, cvc } = watch();
 
   return (
     <div className={styles.payFormContainer}>
       <span className={styles.headerInfo}>Payment Information</span>
-      <Formik
-        initialValues={initialValues as any}
-        onSubmit={sendRequest}
-        validationSchema={isCashoutPage ? CashoutSchema : PaymentSchema}
+      <div className={styles.cardContainer}>
+        <Cards
+          number={number}
+          name={name}
+          expiry={expiry}
+          cvc={cvc}
+          focused={focusOnElement}
+        />
+      </div>
+      <form
+        id="myForm"
+        onSubmit={handleSubmit(sendRequest)}
+        className={styles.formContainer}
       >
-        {({ values }) => {
-          const { name, number, expiry, cvc } = values;
-
-          return (
-            <>
-              <div className={styles.cardContainer}>
-                <Cards
-                  number={number}
-                  name={name}
-                  expiry={expiry}
-                  cvc={cvc}
-                  focused={focusOnElement}
-                />
-              </div>
-              <Form id="myForm" className={styles.formContainer}>
-                <div className={styles.bigInput}>
-                  <span>Name</span>
-                  <PayInput
-                    name="name"
-                    classes={classes}
-                    type="text"
-                    label="name"
-                    changeFocus={changeFocusOnCardMethod}
-                  />
-                </div>
-                {!isPayForOrder && (
-                  <div className={styles.bigInput}>
-                    <span>Sum</span>
-                    <PayInput
-                      name="sum"
-                      classes={classes}
-                      type="text"
-                      label="sum"
-                      changeFocus={changeFocusOnCardMethod}
-                    />
-                  </div>
-                )}
-                <div className={styles.bigInput}>
-                  <span>Card Number</span>
-                  <PayInput
-                    isInputMask
-                    mask="9999 9999 9999 9999 999"
-                    name="number"
-                    classes={classes}
-                    type="text"
-                    label="card number"
-                    changeFocus={changeFocusOnCardMethod}
-                  />
-                </div>
-                <div className={styles.smallInputContainer}>
-                  <div className={styles.smallInput}>
-                    <span>* Expires</span>
-                    <PayInput
-                      isInputMask
-                      mask="99/99"
-                      name="expiry"
-                      classes={classes}
-                      type="text"
-                      label="expiry"
-                      changeFocus={changeFocusOnCardMethod}
-                    />
-                  </div>
-                  <div className={styles.smallInput}>
-                    <span>* Security Code</span>
-                    <PayInput
-                      isInputMask
-                      mask="9999"
-                      name="cvc"
-                      classes={classes}
-                      type="text"
-                      label="cvc"
-                      changeFocus={changeFocusOnCardMethod}
-                    />
-                  </div>
-                </div>
-              </Form>
-            </>
-          );
-        }}
-      </Formik>
+        <div className={styles.bigInput}>
+          <span>Name</span>
+          <PayInput
+            name="name"
+            control={control}
+            classes={classes}
+            type="text"
+            placeholder="name"
+            changeFocus={changeFocusOnCardMethod}
+          />
+        </div>
+        {!isPayForOrder && (
+          <div className={styles.bigInput}>
+            <span>Sum</span>
+            <PayInput
+              name="sum"
+              control={control}
+              classes={classes}
+              type="text"
+              placeholder="sum"
+              changeFocus={changeFocusOnCardMethod}
+            />
+          </div>
+        )}
+        <div className={styles.bigInput}>
+          <span>Card Number</span>
+          <PayInput
+            isInputMask
+            control={control}
+            mask="9999 9999 9999 9999 999"
+            name="number"
+            classes={classes}
+            type="text"
+            placeholder="card number"
+            changeFocus={changeFocusOnCardMethod}
+          />
+        </div>
+        <div className={styles.smallInputContainer}>
+          <div className={styles.smallInput}>
+            <span>* Expires</span>
+            <PayInput
+              isInputMask
+              control={control}
+              mask="99/99"
+              name="expiry"
+              classes={classes}
+              type="text"
+              placeholder="expiry"
+              changeFocus={changeFocusOnCardMethod}
+            />
+          </div>
+          <div className={styles.smallInput}>
+            <span>* Security Code</span>
+            <PayInput
+              isInputMask
+              control={control}
+              mask="9999"
+              name="cvc"
+              classes={classes}
+              type="text"
+              placeholder="cvc"
+              changeFocus={changeFocusOnCardMethod}
+            />
+          </div>
+        </div>
+      </form>
       {isPayForOrder && (
         <div className={styles.totalSum}>
           <span>Total: $100.00</span>

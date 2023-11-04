@@ -1,80 +1,72 @@
-import { type FC } from 'react';
-import InputMask from 'react-input-mask';
-import { type FieldAttributes, useField } from 'formik';
+import {
+  type DetailedHTMLProps,
+  type FC,
+  type InputHTMLAttributes,
+} from 'react';
+import { type Control, useController } from 'react-hook-form';
+import InputMask, { type Props as ReactInputMaskProps } from 'react-input-mask';
 import clsx from 'clsx';
 import type { CardField } from 'types/api/offer';
 
-export type Props = FieldAttributes<unknown> & {
-  label: string;
+export type Props = {
+  name: string;
+  control: Control<any>;
   changeFocus: (name: CardField) => void;
   classes: Record<string, string>;
   isInputMask?: boolean;
 } & (
-    | { isInputMask?: false; mask?: undefined }
-    | { isInputMask?: true; mask: string }
-  );
+  | (DetailedHTMLProps<
+      InputHTMLAttributes<HTMLInputElement>,
+      HTMLInputElement
+    > & { isInputMask?: false; mask?: undefined })
+  | (ReactInputMaskProps & { isInputMask?: true; mask: string })
+);
 
 const PayInput: FC<Props> = ({
-  label,
   changeFocus,
   classes,
   isInputMask,
   mask,
   name,
+  control,
+  ...rest
 }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [field, meta, helpers] = useField<CardField>(name);
-  const { touched, error } = meta;
+  const {
+    field,
+    fieldState: { isTouched, error },
+  } = useController({ name, control });
 
-  if (field.name === 'sum') {
-    return (
-      <div className={classes.container}>
-        <input
-          {...field}
-          placeholder={label}
-          className={clsx(classes.input, {
-            [classes.notValid]: touched && error,
-          })}
-        />
-        {touched && error && (
-          // @ts-expect-error
-          <span className={classes.error}>{error.message}!</span>
-        )}
-      </div>
-    );
-  }
-  if (isInputMask) {
+  if (isInputMask && field.name !== 'sum') {
     return (
       <div className={classes.container}>
         <InputMask
           mask={mask}
           maskChar={null}
-          {...field}
-          placeholder={label}
           className={clsx(classes.input, {
-            [classes.notValid]: touched && error,
+            [classes.notValid]: isTouched && error,
           })}
           onFocus={() => changeFocus(field.name as CardField)}
+          {...(field as any)}
+          {...rest}
         />
-        {touched && error && (
-          // @ts-expect-error
+        {isTouched && error && (
           <span className={classes.error}>{error.message}!</span>
         )}
       </div>
     );
   }
+
   return (
     <div className={classes.container}>
       <input
-        {...field}
-        placeholder={label}
         className={clsx(classes.input, {
-          [classes.notValid]: touched && error,
+          [classes.notValid]: isTouched && error,
         })}
         onFocus={() => changeFocus(field.name as CardField)}
+        {...field}
+        {...rest}
       />
-      {touched && error && (
-        // @ts-expect-error
+      {isTouched && error && (
         <span className={classes.error}>{error.message}!</span>
       )}
     </div>
