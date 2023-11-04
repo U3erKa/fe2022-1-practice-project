@@ -174,4 +174,5 @@ Assuming you have done everything correctly, web app can be accessed via the fol
 - `dependencies` branch updates all depencencies on the server and most of them on the client. This allows us to mitigate many security issues.
 - `swc-compiler` branch replaces `babel` with `swc` on the server. `swc` is a lot faster compiler than `babel` and supports Typescript out of the box.
 - `vite-bundler` branch replaces inherently bulky and vulnerable `react-scripts` installed by `create-react-app` with `vite` on the client. `vite` is faster and more modern than `webpack` and it can use `swc` under the hood.
+- `hook-form` branch replaces `formik` with `react-hook-form` across all forms. It also replaces legacy `react-input-mask` with more modern `@react-input/mask`.
 - `main` branch combines all of the above branches' work together and adds a little extra. Apparently, it contains few fixes and reformats everything with Prettier.
