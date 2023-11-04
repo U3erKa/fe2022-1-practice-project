@@ -1,39 +1,40 @@
-import { type FC } from 'react';
-import { ErrorMessage, Field, type FieldAttributes } from 'formik';
+import {
+  type DetailedHTMLProps,
+  type FC,
+  type InputHTMLAttributes,
+} from 'react';
+import { type Control, useController } from 'react-hook-form';
 import clsx from 'clsx';
 
-export type Props = FieldAttributes<unknown> & {
-  label: string;
-  classes: Record<string, string>;
+export type Props = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+> & {
+  name: string;
+  control: Control<any>;
+  classes: Partial<
+    Record<'container' | 'inputStyle' | 'notValid' | 'warning', string>
+  >;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const FormTextArea: FC<Props> = ({ label, classes, type, ...rest }) => (
-  <Field {...rest}>
-    {(props: any) => {
-      const {
-        field,
-        meta: { touched, error },
-      } = props;
-      const { container, inputStyle, notValid, warning } = classes;
-      return (
-        <div className={container}>
-          <textarea
-            {...field}
-            placeholder={label}
-            className={clsx(inputStyle, {
-              [notValid]: touched && error,
-            })}
-          />
-          <ErrorMessage
-            name={field.name}
-            component="span"
-            className={warning}
-          />
-        </div>
-      );
-    }}
-  </Field>
-);
+const FormTextArea: FC<Props> = ({ name, control, classes, ...rest }) => {
+  const {
+    field,
+    fieldState: { isTouched, error },
+  } = useController({ name, control });
+  const { container, inputStyle, notValid, warning } = classes;
+  return (
+    <div className={container}>
+      <textarea
+        className={clsx(inputStyle, {
+          [notValid!]: isTouched && error,
+        })}
+        {...field}
+        {...rest}
+      />
+      {error && <span className={warning}>{error.message}</span>}
+    </div>
+  );
+};
 
 export default FormTextArea;

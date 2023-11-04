@@ -56,10 +56,6 @@ const UserProfile = () => {
         ) : (
           <div className={styles.container}>
             {balance ? (
-              <span className={styles.notMoney}>
-                There is no money on your balance
-              </span>
-            ) : (
               <div>
                 {error && (
                   <Error
@@ -70,6 +66,10 @@ const UserProfile = () => {
                 )}
                 <PayForm sendRequest={pay} />
               </div>
+            ) : (
+              <span className={styles.notMoney}>
+                There is no money on your balance
+              </span>
             )}
           </div>
         )}

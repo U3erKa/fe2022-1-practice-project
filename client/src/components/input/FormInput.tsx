@@ -1,42 +1,48 @@
-import { type FC } from 'react';
-import { ErrorMessage, Field, type FieldAttributes } from 'formik';
+import { type DetailedHTMLProps, type InputHTMLAttributes } from 'react';
+import { type Control, useController } from 'react-hook-form';
 import clsx from 'clsx';
 
-export type Props = FieldAttributes<unknown> & {
-  label: string;
-  classes: Record<string, string>;
+export type FormInputClasses = Partial<
+  Record<
+    'container' | 'input' | 'label' | 'notValid' | 'valid' | 'warning',
+    string
+  >
+>;
+
+export type FormInputProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
+  name: string;
+  control: Control<any>;
+  classes?: FormInputClasses;
+  label?: string;
 };
 
-const FormInput: FC<Props> = ({ classes, label, name, ...rest }) => (
-  <Field name={name}>
-    {(props: any) => {
-      const {
-        field,
-        meta: { touched, error },
-      } = props;
+const FormInput = function FormInput({
+  name,
+  control,
+  classes = {},
+  label,
+  ...props
+}: FormInputProps) {
+  const {
+    field,
+    fieldState: { invalid, isTouched, error },
+  } = useController({ name, control });
 
-      const inputClassName = clsx(classes.input, {
-        [classes.notValid]: touched && error,
-        [classes.valid]: touched && !error,
-      });
-      return (
-        <div className={classes.container}>
-          <input
-            type="text"
-            {...field}
-            placeholder={label}
-            className={inputClassName}
-            {...rest}
-          />
-          <ErrorMessage
-            name={name}
-            component="span"
-            className={classes.warning}
-          />
-        </div>
-      );
-    }}
-  </Field>
-);
+  const inputClassName = clsx(classes.input, {
+    [classes.notValid!]: isTouched && invalid,
+    [classes.valid!]: isTouched && !invalid,
+  });
+
+  return (
+    <label className={classes.container}>
+      {label && <p className={classes.label}>{label}</p>}
+      <input className={inputClassName} type="text" {...field} {...props} />
+      {error && <p className={classes.warning}>{error.message}</p>}
+    </label>
+  );
+};
 
 export default FormInput;

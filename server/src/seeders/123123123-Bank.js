@@ -17,17 +17,24 @@ module.exports = {
           name: SQUADHELP_BANK_NAME,
           expiry: SQUADHELP_BANK_EXPIRY,
           cvc: SQUADHELP_BANK_CVC,
-          balance: 0,
+          balance: 5000,
         },
         {
           cardNumber: '4111111111111111',
           name: 'yriy',
-          expiry: '09/23',
+          expiry: '09/33',
           cvc: '505',
           balance: 5000,
         },
       ],
       {},
     );
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Banks', {
+      cardNumber: {
+        [Sequelize.Op.or]: [SQUADHELP_BANK_NUMBER, '4111111111111111'],
+      },
+    });
   },
 };

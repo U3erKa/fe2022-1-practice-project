@@ -1,70 +1,75 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import type { InferType } from 'yup';
 import { useDispatch } from 'hooks';
 import { createEvent } from 'store/slices/eventSlice';
+import { FormInput, SelectInput } from 'components/input';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
-import type { FormikHelpers } from 'formik';
 import type { useForceUpdate } from 'hooks';
-import type { Event } from 'types/api/event';
 import styles from '../styles/CreateEvent.module.sass';
 
-export const initialValues = {
+export const defaultValues = {
   name: '',
   date: '',
   notify: notifyOptions[0] as (typeof notifyOptions)[number],
 };
 
-function NotifyEventField() {
-  const options = notifyOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ));
-  return <>{options}</>;
-}
-
-export default function CreateEvent({
-  forceUpdate,
-}: {
+export type Props = {
   forceUpdate: ReturnType<typeof useForceUpdate>;
-}) {
-  const dispatch = useDispatch();
+};
 
-  const onSubmit = (values: Event, formikBag: FormikHelpers<Event>) => {
+const selectInputClasses = {
+  inputContainer: styles.inputContainer,
+  selectInput: styles.input,
+  inputHeader: styles.text,
+};
+
+const formInputClasses = {
+  container: styles.inputContainer,
+  input: styles.input,
+  label: styles.text,
+};
+
+export default function CreateEvent({ forceUpdate }: Props) {
+  const dispatch = useDispatch();
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues,
+    resolver: yupResolver(newEventSchema),
+  });
+
+  const onSubmit = (values: InferType<typeof newEventSchema>) => {
     dispatch(createEvent(values));
-    formikBag.resetForm();
+    reset();
     forceUpdate();
   };
 
   return (
-    <Formik
-      initialValues={initialValues as any}
-      validationSchema={newEventSchema}
-      onSubmit={onSubmit}
-    >
-      <Form className={styles.container}>
-        <h2 className={styles.heading}>Create new event:</h2>
-        <label className={styles.inputContainer}>
-          <p className={styles.text}>Name of event:</p>
-          <Field className={styles.input} name="name" />
-          <ErrorMessage name="name" />
-        </label>
-        <label className={styles.inputContainer}>
-          <p className={styles.text}>Date & time of the event:</p>
-          <Field className={styles.input} name="date" type="datetime-local" />
-          <ErrorMessage name="date" />
-        </label>
-        <label className={styles.inputContainer}>
-          <p className={styles.text}>When to remind me about the event:</p>
-          <Field className={styles.input} name="notify" as="select">
-            <NotifyEventField />
-          </Field>
-          <ErrorMessage name="notify" />
-        </label>
-        <button type="submit" className={styles.submit}>
-          Create event
-        </button>
-      </Form>
-    </Formik>
+    <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+      <h2 className={styles.heading}>Create new event:</h2>
+      <FormInput
+        name="name"
+        control={control}
+        label="Name of event:"
+        classes={formInputClasses}
+      />
+      <FormInput
+        name="date"
+        control={control}
+        label="Date & time of the event:"
+        type="datetime-local"
+        classes={formInputClasses}
+      />
+      <SelectInput
+        name="notify"
+        control={control}
+        header="When to remind me about the event:"
+        optionsArray={notifyOptions}
+        classes={selectInputClasses}
+      />
+      <button type="submit" className={styles.submit}>
+        Create event
+      </button>
+    </form>
   );
 }

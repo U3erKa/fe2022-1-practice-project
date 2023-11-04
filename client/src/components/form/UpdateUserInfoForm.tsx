@@ -1,5 +1,6 @@
 import { type FC } from 'react';
-import { Form, Formik, type FormikHelpers } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { type InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
@@ -10,10 +11,7 @@ import styles from './styles/UpdateUserInfoForm.module.sass';
 import { uniqueId } from 'utils/functions';
 
 export type Props = {
-  onSubmit: (
-    values: InferType<typeof UpdateUserSchema>,
-    formikHelpers: FormikHelpers<InferType<typeof UpdateUserSchema>>,
-  ) => void;
+  onSubmit: (values: InferType<typeof UpdateUserSchema>) => void;
   submitting?: boolean;
 };
 
@@ -39,41 +37,48 @@ const imageUploadClasses = {
 const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   const { data: user, error } = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
+  const { handleSubmit, control, register } = useForm({
+    defaultValues: {
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      displayName: user?.displayName,
+    },
+    resolver: yupResolver(UpdateUserSchema),
+  });
 
   if (!user) return <Spinner />;
 
   const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
-    <div key={id} className={styles.container}>
-      <span className={styles.label}>{label}</span>
-      <FormInput type="text" name={name} label={label} classes={inputClasses} />
-    </div>
+    <FormInput
+      key={id}
+      name={name}
+      control={control}
+      label={label}
+      placeholder={label}
+      classes={inputClasses}
+    />
   ));
 
   return (
-    <Formik
-      onSubmit={onSubmit}
-      initialValues={{
-        firstName: user.firstName,
-        lastName: user.lastName,
-        displayName: user.displayName,
-      }}
-      validationSchema={UpdateUserSchema}
-    >
-      <Form className={styles.updateContainer}>
-        {error && (
-          <Error
-            data={error.data}
-            status={error.status}
-            clearError={() => dispatch(clearUserError())}
-          />
-        )}
-        {inputContainers}
-        <ImageUpload name="file" classes={imageUploadClasses} />
-        <button type="submit" disabled={submitting}>
-          Submit
-        </button>
-      </Form>
-    </Formik>
+    <form className={styles.updateContainer} onSubmit={handleSubmit(onSubmit)}>
+      {error && (
+        <Error
+          data={error.data}
+          status={error.status}
+          clearError={() => dispatch(clearUserError())}
+        />
+      )}
+      {inputContainers}
+      <ImageUpload
+        name="file"
+        control={control}
+        register={register}
+        classes={imageUploadClasses}
+      />
+      <button type="submit" disabled={submitting}>
+        Submit
+      </button>
+    </form>
   );
 };
 

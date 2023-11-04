@@ -1,4 +1,5 @@
 import { type FC } from 'react';
+import { type Control } from 'react-hook-form';
 import { Spinner } from 'components/general';
 import { FormInput, SelectInput } from 'components/input';
 import { useSelector } from 'hooks';
@@ -12,6 +13,7 @@ import type {
 import styles from './styles/ContestForm.module.sass';
 
 export type Props = {
+  control: Control<any>;
   contestType: ContestType;
 };
 
@@ -27,10 +29,18 @@ const inputClasses = {
   warning: styles.warning,
 };
 
-const OptionalSelects: FC<Props> = ({ contestType }) => {
+const CONTEST_NAME = {
+  [NAME_CONTEST]: ['typeOfName', 'styleName'],
+  [LOGO_CONTEST]: ['nameVenture', 'brandStyle'],
+  [TAGLINE_CONTEST]: ['nameVenture', 'typeOfTagline'],
+} as const;
+
+const OptionalSelects: FC<Props> = ({ contestType, control }) => {
   const { data, isFetching } = useSelector(
     ({ dataForContest }) => dataForContest,
   );
+
+  const [firstContestName, secondContestName] = CONTEST_NAME[contestType];
 
   if (isFetching || !data) {
     return <Spinner />;
@@ -41,14 +51,16 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
       return (
         <>
           <SelectInput
-            name="typeOfName"
+            name={firstContestName}
             header="type of company"
+            control={control}
             classes={selectClasses}
             optionsArray={data.typeOfName as NameContest['typeOfName'][]}
           />
           <SelectInput
-            name="styleName"
+            name={secondContestName}
             header="Style name"
+            control={control}
             classes={selectClasses}
             optionsArray={data.nameStyle as NameContest['styleName'][]}
           />
@@ -63,16 +75,17 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
               What name of your venture?
             </span>
             <FormInput
-              name="nameVenture"
-              type="text"
-              label="name of venture"
+              name={firstContestName}
+              placeholder="name of venture"
+              control={control}
               classes={inputClasses}
             />
           </div>
           <SelectInput
-            name="brandStyle"
-            classes={selectClasses}
+            name={secondContestName}
             header="Brand Style"
+            control={control}
+            classes={selectClasses}
             optionsArray={data.brandStyle as LogoContest['brandStyle'][]}
           />
         </>
@@ -86,16 +99,17 @@ const OptionalSelects: FC<Props> = ({ contestType }) => {
               What name of your venture?
             </span>
             <FormInput
-              name="nameVenture"
-              type="text"
-              label="name of venture"
+              name={firstContestName}
+              placeholder="name of venture"
+              control={control}
               classes={inputClasses}
             />
           </div>
           <SelectInput
-            name="typeOfTagline"
-            classes={selectClasses}
+            name={secondContestName}
             header="Type tagline"
+            control={control}
+            classes={selectClasses}
             optionsArray={
               data.typeOfTagline as TaglineContest['typeOfTagline'][]
             }

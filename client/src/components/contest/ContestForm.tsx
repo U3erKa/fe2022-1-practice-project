@@ -1,6 +1,10 @@
-import { type FC, type Ref, useEffect } from 'react';
-import { Form, Formik, type FormikHelpers, type FormikProps } from 'formik';
+import { type FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import type { InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
+import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { Spinner, TryAgain } from 'components/general';
 import { OptionalSelects } from 'components/contest';
@@ -11,9 +15,14 @@ import {
   SelectInput,
 } from 'components/input';
 import { ContestSchem } from 'utils/validators/validationSchems';
-import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
+import {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  ROUTE,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 import type { ContestType } from 'types/contest';
-import type { ContestInfo } from 'types/api/contest';
+import type { SaveContestToStore } from 'types/api/contest';
 import styles from './styles/ContestForm.module.sass';
 
 const variableOptions = {
@@ -32,14 +41,7 @@ const variableOptions = {
 };
 
 export type Props = {
-  name?: string;
   contestType: ContestType;
-  defaultData: Partial<ContestInfo>;
-  handleSubmit: (
-    values: ContestInfo,
-    { resetForm }: FormikHelpers<ContestInfo>,
-  ) => void;
-  formRef?: Ref<FormikProps<ContestInfo> | undefined>;
 };
 
 const inputClasses = {
@@ -65,22 +67,63 @@ const fileClasses = {
   fileInput: styles.fileInput,
   warning: styles.warning,
 };
-const ContestForm: FC<Props> = (props) => {
-  const { isEditContest, dataForContest } = useSelector(
-    ({ contestByIdStore, dataForContest }) => ({
+
+const ContestForm: FC<Props> = ({ contestType }) => {
+  const { isEditContest, dataForContest, bundle, contests } = useSelector(
+    ({
+      contestCreationStore,
+      contestByIdStore,
+      dataForContest,
+      bundleStore,
+    }) => ({
       isEditContest: contestByIdStore.isEditContest,
       dataForContest,
+      bundle: bundleStore.bundle,
+      contests: contestCreationStore.contests,
     }),
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { contestType, defaultData, handleSubmit, formRef } = props;
+  const defaultContestData = contests[contestType]
+    ? contests[contestType]
+    : { contestType };
   const { isFetching, error, data: contestData } = dataForContest;
+
+  const { handleSubmit, control, register } = useForm({
+    defaultValues: {
+      title: '',
+      industry: '',
+      focusOfWork: '',
+      targetCustomer: '',
+      file: '',
+      ...variableOptions[contestType],
+      ...defaultContestData,
+    },
+    resolver: yupResolver(ContestSchem),
+  });
 
   useEffect(() => {
     getPreference();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contestType]);
+
+  const onSubmit = (values: InferType<typeof ContestSchem>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { file, ...restValues } = values;
+
+    dispatch(
+      saveContestToStore({
+        type: contestType,
+        info: restValues,
+      } as SaveContestToStore),
+    );
+    const route =
+      bundle![contestType] === 'payment'
+        ? ROUTE.PAYMENT
+        : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
+    navigate(route);
+  };
 
   const getPreference = () => {
     switch (contestType) {
@@ -115,76 +158,79 @@ const ContestForm: FC<Props> = (props) => {
   }
 
   return (
-    <>
-      <div className={styles.formContainer}>
-        <Formik
-          initialValues={{
-            title: '',
-            industry: '',
-            focusOfWork: '',
-            targetCustomer: '',
-            file: '' as any,
-            ...variableOptions[contestType],
-            ...(defaultData as any),
-          }}
-          onSubmit={handleSubmit}
-          validationSchema={ContestSchem}
-          // @ts-expect-error
-          innerRef={formRef}
-          enableReinitialize
-        >
-          <Form>
-            <div className={styles.inputContainer}>
-              <span className={styles.inputHeader}>Title of contest</span>
-              <FormInput
-                name="title"
-                type="text"
-                label="Title"
-                classes={inputClasses}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <SelectInput
-                name="industry"
-                classes={selectClasses}
-                header="Describe industry associated with your venture"
-                // @ts-expect-error
-                optionsArray={contestData?.industry}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <span className={styles.inputHeader}>
-                What does your company / business do?
-              </span>
-              <FormTextArea
-                name="focusOfWork"
-                type="text"
-                label="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
-                classes={textareaClasses}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <span className={styles.inputHeader}>
-                Tell us about your customers
-              </span>
-              <FormTextArea
-                name="targetCustomer"
-                type="text"
-                label="customers"
-                classes={textareaClasses}
-              />
-            </div>
-            <OptionalSelects {...props} />
-            <FieldFileInput name="file" classes={fileClasses} type="file" />
-            {isEditContest ? (
-              <button type="submit" className={styles.changeData}>
-                Set Data
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.inputContainer}>
+          <span className={styles.inputHeader}>Title of contest</span>
+          <FormInput
+            name="title"
+            control={control}
+            placeholder="Title"
+            classes={inputClasses}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <SelectInput
+            name="industry"
+            control={control}
+            classes={selectClasses}
+            header="Describe industry associated with your venture"
+            // @ts-expect-error
+            optionsArray={contestData?.industry}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <span className={styles.inputHeader}>
+            What does your company / business do?
+          </span>
+          <FormTextArea
+            name="focusOfWork"
+            control={control}
+            placeholder="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
+            classes={textareaClasses}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <span className={styles.inputHeader}>
+            Tell us about your customers
+          </span>
+          <FormTextArea
+            name="targetCustomer"
+            control={control}
+            placeholder="customers"
+            classes={textareaClasses}
+          />
+        </div>
+        <OptionalSelects control={control} contestType={contestType} />
+        <FieldFileInput
+          name="file"
+          control={control}
+          register={register}
+          classes={fileClasses}
+        />
+        {isEditContest ? (
+          <button type="submit" className={styles.changeData}>
+            Set Data
+          </button>
+        ) : null}
+        <div className={styles.footerButtonsContainer}>
+          <div className={styles.lastContainer}>
+            <div className={styles.buttonsContainer}>
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className={styles.prevButtonContainer}
+              >
+                Back
               </button>
-            ) : null}
-          </Form>
-        </Formik>
-      </div>
-    </>
+              <button type="submit" className={styles.nextButtonContainer}>
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

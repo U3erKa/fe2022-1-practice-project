@@ -1,4 +1,5 @@
-import { Form, Formik, type FormikHelpers } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import type { InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { sendMessage } from 'store/slices/chatSlice';
@@ -18,10 +19,12 @@ const ChatInput = () => {
   const interlocutor = useSelector(({ chatStore }) => chatStore.interlocutor);
   const dispatch = useDispatch();
 
-  const submitHandler = (
-    values: InferType<typeof MessageSchema>,
-    { resetForm }: FormikHelpers<InferType<typeof MessageSchema>>,
-  ) => {
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: { message: '' },
+    resolver: yupResolver(MessageSchema),
+  });
+
+  const onSubmit = (values: InferType<typeof MessageSchema>) => {
     dispatch(
       sendMessage({
         messageBody: values.message,
@@ -30,35 +33,30 @@ const ChatInput = () => {
         interlocutor,
       }),
     );
-    resetForm();
+    reset();
   };
 
   return (
     <div className={styles.inputContainer}>
-      <Formik
-        onSubmit={submitHandler}
-        initialValues={{ message: '' }}
-        validationSchema={MessageSchema}
-      >
-        <Form className={styles.form}>
-          <FormInput
-            name="message"
-            type="text"
-            label="message"
-            classes={classes}
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <FormInput
+          name="message"
+          control={control}
+          placeholder="message"
+          autoComplete="off"
+          classes={classes}
+        />
+        <button type="submit">
+          <Picture
+            srcSet={[
+              `${STATIC_IMAGES_PATH}send.avif`,
+              `${STATIC_IMAGES_PATH}send.webp`,
+            ]}
+            src={`${STATIC_IMAGES_PATH}send.png`}
+            alt="send Message"
           />
-          <button type="submit">
-            <Picture
-              srcSet={[
-                `${STATIC_IMAGES_PATH}send.avif`,
-                `${STATIC_IMAGES_PATH}send.webp`,
-              ]}
-              src={`${STATIC_IMAGES_PATH}send.png`}
-              alt="send Message"
-            />
-          </button>
-        </Form>
-      </Formik>
+        </button>
+      </form>
     </div>
   );
 };

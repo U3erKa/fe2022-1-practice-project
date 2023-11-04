@@ -56,12 +56,12 @@ const UserInfo: FC = () => {
 
   const updateUserData = (
     values: Pick<User, 'firstName' | 'lastName' | 'displayName'> & {
-      file: string | Blob;
+      file: FileList;
     },
   ) => {
     const formData = new FormData();
 
-    formData.append('file', values.file);
+    formData.append('file', values.file[0]);
     formData.append('firstName', values.firstName);
     formData.append('lastName', values.lastName);
     formData.append('displayName', values.displayName);
