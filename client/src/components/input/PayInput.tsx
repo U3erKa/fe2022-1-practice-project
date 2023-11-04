@@ -3,58 +3,37 @@ import {
   type FC,
   type InputHTMLAttributes,
 } from 'react';
+import { type MaskProps, useMask } from '@react-input/mask';
 import { type Control, useController } from 'react-hook-form';
-import InputMask, { type Props as ReactInputMaskProps } from 'react-input-mask';
 import clsx from 'clsx';
 import type { CardField } from 'types/api/offer';
 
-export type Props = {
+export type Props = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   name: string;
   control: Control<any>;
   changeFocus: (name: CardField) => void;
   classes: Record<string, string>;
-  isInputMask?: boolean;
-} & (
-  | (DetailedHTMLProps<
-      InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    > & { isInputMask?: false; mask?: undefined })
-  | (ReactInputMaskProps & { isInputMask?: true; mask: string })
-);
+  replacement?: MaskProps['replacement'];
+} & ({ mask?: undefined } | Pick<MaskProps, 'mask' | 'replacement'>);
 
 const PayInput: FC<Props> = ({
   changeFocus,
   classes,
-  isInputMask,
   mask,
+  replacement,
   name,
   control,
   ...rest
 }) => {
   const {
-    field,
+    field: { ref, value, ...field },
     fieldState: { isTouched, error },
   } = useController({ name, control });
-
-  if (isInputMask && field.name !== 'sum') {
-    return (
-      <div className={classes.container}>
-        <InputMask
-          mask={mask}
-          maskChar={null}
-          className={clsx(classes.input, {
-            [classes.notValid]: isTouched && error,
-          })}
-          onFocus={() => changeFocus(field.name as CardField)}
-          {...(field as any)}
-          {...rest}
-        />
-        {isTouched && error && (
-          <span className={classes.error}>{error.message}!</span>
-        )}
-      </div>
-    );
-  }
+  const inputRef = useMask({ mask, replacement });
+  const isMaskable = !!mask && field.name !== 'sum';
 
   return (
     <div className={classes.container}>
@@ -63,6 +42,8 @@ const PayInput: FC<Props> = ({
           [classes.notValid]: isTouched && error,
         })}
         onFocus={() => changeFocus(field.name as CardField)}
+        value={isMaskable ? undefined : value}
+        ref={isMaskable ? inputRef : ref}
         {...field}
         {...rest}
       />

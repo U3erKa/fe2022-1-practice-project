@@ -1,5 +1,6 @@
 import { type FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -55,6 +56,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   });
   const { name, number, expiry, cvc } = watch();
 
+  const replacement = { _: /\d/ } satisfies string | Replacement;
   return (
     <div className={styles.payFormContainer}>
       <span className={styles.headerInfo}>Payment Information</span>
@@ -99,9 +101,9 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
         <div className={styles.bigInput}>
           <span>Card Number</span>
           <PayInput
-            isInputMask
             control={control}
-            mask="9999 9999 9999 9999 999"
+            mask="____ ____ ____ ____ ___"
+            replacement={replacement}
             name="number"
             classes={classes}
             type="text"
@@ -113,9 +115,9 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
           <div className={styles.smallInput}>
             <span>* Expires</span>
             <PayInput
-              isInputMask
               control={control}
-              mask="99/99"
+              mask="__/__"
+              replacement={replacement}
               name="expiry"
               classes={classes}
               type="text"
@@ -126,9 +128,9 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
           <div className={styles.smallInput}>
             <span>* Security Code</span>
             <PayInput
-              isInputMask
               control={control}
-              mask="9999"
+              mask="____"
+              replacement={replacement}
               name="cvc"
               classes={classes}
               type="text"
