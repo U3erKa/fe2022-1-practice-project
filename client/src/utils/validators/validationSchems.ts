@@ -54,7 +54,7 @@ export const RegistrationSchem = yup.object().shape({
     .required('Display Name is required'),
   role: yup
     .string()
-    .matches(/(customer|creator)/)
+    .matches(/(?<role>customer|creator)/)
     .required('Role is required'),
   agreeOfTerms: yup
     .boolean()
@@ -66,7 +66,7 @@ export const ContestSchem = yup.object({
   nameVenture: yup.string().min(3),
   contestType: yup
     .string()
-    .matches(/(name|tagline|logo)/)
+    .matches(/(?<contestType>name|tagline|logo)/)
     .required(),
   title: yup
     .string()
@@ -103,7 +103,7 @@ export const ContestSchem = yup.object({
 export const filterSchem = yup.object().shape({
   typeIndex: yup.number().oneOf([1, 2, 3, 4, 5, 6, 7]),
   contestId: yup.string(),
-  awardSort: yup.string().matches(/(desc|asc)/),
+  awardSort: yup.string().matches(/(?<awardSort>desc|asc)/),
   industry: yup.string(),
 });
 

@@ -32,7 +32,7 @@ const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
       };
       reader.readAsDataURL(file);
     }
-    onChange(e)
+    onChange(e);
   };
 
   return (
