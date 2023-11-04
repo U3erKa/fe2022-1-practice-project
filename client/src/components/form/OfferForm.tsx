@@ -1,5 +1,7 @@
 import { type FC } from 'react';
-import { Form, Formik, type FormikHelpers } from 'formik';
+import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import type { InferType } from 'yup';
 import { useDispatch, useSelector } from 'hooks';
 import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
 import { Error } from 'components/general';
@@ -10,12 +12,14 @@ import {
 } from 'utils/validators/validationSchems';
 import { LOGO_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
-import styles from './styles/OfferForm.module.sass';
 import type { Id, WithId } from 'types/api/_common';
 import type { FormInputClasses } from 'components/input/FormInput';
+import styles from './styles/OfferForm.module.sass';
 
 export type Props = {
   contestType: ContestType;
+  control: Control<any>;
+  register: UseFormRegister<any>;
 };
 export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & Props;
 
@@ -32,12 +36,18 @@ const imageUploadClasses = {
   imgStyle: styles.imgStyle,
 };
 
-const OfferInput: FC<Props> = ({ contestType }) => {
+const OfferInput: FC<Props> = ({ control, register, contestType }) => {
   return contestType === LOGO_CONTEST ? (
-    <ImageUpload name="offerData" classes={imageUploadClasses} />
+    <ImageUpload
+      name="offerData"
+      control={control}
+      register={register}
+      classes={imageUploadClasses}
+    />
   ) : (
     <FormInput
       name="offerData"
+      control={control}
       classes={formInputClassses}
       placeholder="your suggestion"
     />
@@ -54,21 +64,25 @@ const OfferForm: FC<OfferFormProps> = ({
 
   const validationSchema =
     contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema;
+  const { handleSubmit, control, register, reset } = useForm({
+    defaultValues: { offerData: '' },
+    resolver: yupResolver(validationSchema),
+  });
 
-  const setOffer = (
-    values: { offerData: string },
-    { resetForm }: FormikHelpers<{ offerData: string }>,
-  ) => {
+  const setOffer = ({ offerData }: InferType<typeof validationSchema>) => {
     dispatch(clearAddOfferError());
     const data = new FormData();
 
     data.append('contestId', contestId as unknown as string);
     data.append('contestType', contestType);
     data.append('customerId', customerId as unknown as string);
-    data.append('offerData', values.offerData);
+    data.append(
+      'offerData',
+      offerData instanceof FileList ? (offerData[0] as any) : offerData,
+    );
 
     dispatch(addOffer(data));
-    resetForm();
+    reset();
   };
 
   return (
@@ -80,19 +94,16 @@ const OfferForm: FC<OfferFormProps> = ({
           clearError={() => dispatch(clearAddOfferError())}
         />
       )}
-      <Formik
-        onSubmit={setOffer}
-        initialValues={{ offerData: '' }}
-        validationSchema={validationSchema}
-      >
-        <Form className={styles.form}>
-          <OfferInput contestType={contestType} />
-
-          <button type="submit" className={styles.btnOffer}>
-            Send Offer
-          </button>
-        </Form>
-      </Formik>
+      <form className={styles.form} onSubmit={handleSubmit(setOffer)}>
+        <OfferInput
+          control={control}
+          register={register}
+          contestType={contestType}
+        />
+        <button type="submit" className={styles.btnOffer}>
+          Send Offer
+        </button>
+      </form>
     </div>
   );
 };
