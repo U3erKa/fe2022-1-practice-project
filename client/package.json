@@ -12,7 +12,9 @@
     "preview": "vite preview --host",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -s public",
-    "format": "prettier --write -l ."
+    "format": "prettier --write -l .",
+    "styles": "typed-scss-modules 'src/**/*.{css,scss}'",
+    "styles:watch": "typed-scss-modules -w 'src/**/*.{css,scss}'"
   },
   "browserslist": [
     ">0.2%",
@@ -61,6 +63,7 @@
     "eslint-plugin-react-refresh": "^0.4.4",
     "prettier": "^3.0.3",
     "sass": "^1.69.5",
+    "typed-scss-modules": "^7.1.4",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vite-plugin-pwa": "^0.16.7",
