@@ -1,0 +1,31 @@
+@import './common.module';
+
+.questionContainer {
+  margin: $padding 0;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: start;
+  background-color: $buttonTextColor;
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius $borderRadius 0 0;
+  padding: $padding;
+
+  &:hover {
+    color: $mainColor;
+    background-color: $backgroundColor;
+  }
+}
+
+.arrowIcon {
+  font-size: 0.8rem;
+  color: $mainColor;
+}
+
+.activeIcon {
+  transform: rotate(90deg);
+}

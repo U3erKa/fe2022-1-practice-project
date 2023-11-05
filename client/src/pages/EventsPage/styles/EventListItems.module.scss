@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import '../../../styles/common';
+
+$colorLightGray: #eee;
+$colorGray: #aaa;
+$colorDarkGray: #555;
+
+.container {
+  @include container($align: center, $justify: flex-start, $dir: column);
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-size: $fontSize;
+  width: clamp($minWidth, 100%, $containerWidth);
+  padding: $padding;
+  gap: $gap;
+  overflow: auto;
+  max-height: 300px;
+
+  &::-webkit-scrollbar {
+    width: calc($padding * 3 / 4);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 1rem;
+    background: $colorLightGray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: $colorGray;
+
+    &:hover {
+      background: $colorDarkGray;
+    }
+  }
+}
+
+.eventContainer {
+  @include container($align: center, $justify: space-between, $dir: row);
+  position: relative;
+  width: calc(100% - $padding * 2);
+  padding: $padding;
+  gap: $gap;
+}
+
+.progress {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+
+  &::-webkit-progress-bar {
+    border-radius: $borderRadius;
+    background-color: $colorLightGray;
+  }
+
+  &::-webkit-progress-value {
+    border-radius: $borderRadius;
+    background-color: #d1e9cf;
+  }
+}
+
+.name,
+.time {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.time {
+  color: $colorGray;
+  flex-shrink: 0;
+  text-align: right;
+}

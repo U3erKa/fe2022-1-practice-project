@@ -1,0 +1,28 @@
+@import './common.module';
+
+.inactive {
+  display: none;
+}
+
+.container {
+  border: 1px solid $borderColor;
+  border-top: none;
+  border-radius: 0 0 $borderRadius $borderRadius;
+  padding: $padding;
+}
+
+.list {
+  display: list;
+  list-style: disc;
+  padding-inline-start: 40px;
+}
+
+.text {
+  color: $textColorDark;
+  margin-bottom: 0;
+
+  & a {
+    color: $mainColor;
+    text-decoration: none;
+  }
+}

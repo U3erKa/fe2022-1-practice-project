@@ -1,0 +1,61 @@
+.emailIcon {
+  padding: 0 15px;
+  border-right: 1px solid #ebebeb;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px 15px;
+  border-right: 1px solid #ebebeb;
+
+  &:hover > ul {
+    display: block;
+    position: absolute;
+    top: 40px;
+  }
+
+  & > ul {
+    border: 1px solid #eee;
+    z-index: 500;
+    padding: 5px 0;
+    list-style: none;
+    background: white;
+    width: 180px;
+    display: none;
+
+    & > li {
+      text-align: left;
+
+      &:hover {
+        background: #f9fafb;
+      }
+    }
+  }
+
+  & > img {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  & > span {
+    padding: 0 15px;
+    color: #718888;
+    font-weight: 400;
+    font-size: 14px;
+    border-right: 1px solid #ebebeb;
+  }
+}
+
+.badge {
+  position: absolute;
+  left: 30px;
+  bottom: 8px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff0000;
+  border-radius: 1rem;
+}

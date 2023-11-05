@@ -1,0 +1,38 @@
+@import './common.module';
+
+.container {
+  @include container;
+  @media (width < 1024px) {
+    flex-direction: column;
+  }
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: calc($padding * 2);
+  gap: $gap;
+  border-top: 1px solid $borderColor;
+  @media (width < 768px) {
+    flex-direction: column;
+  }
+}
+
+.heading {
+  @media (width >= 1024px) {
+    width: 30%;
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+
+  & > a {
+    padding: calc($padding * 1);
+  }
+}

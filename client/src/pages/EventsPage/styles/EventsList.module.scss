@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import '../../../styles/common';
+
+.container {
+  @include container($align: center, $justify: flex-start, $dir: column);
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-size: $fontSize;
+  padding: $padding;
+}
+
+.headingContainer {
+  @include container($align: center, $justify: space-between, $dir: row);
+  width: clamp($minWidth, 100%, $containerWidth);
+  padding: $padding;
+
+  @media (width < 768px) {
+    flex-direction: column;
+    gap: $gap;
+    text-align: center;
+  }
+}
+
+.textContainer {
+  @include container($align: center, $justify: space-between, $dir: row);
+  gap: $gap;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
