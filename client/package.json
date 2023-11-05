@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "npm run styles",
-    "start": "turbo dev style:watch",
+    "start": "turbo dev styles:watch",
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
