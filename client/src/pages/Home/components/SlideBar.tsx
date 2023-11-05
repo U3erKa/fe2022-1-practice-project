@@ -1,5 +1,4 @@
-// @ts-expect-error
-import Flickity from 'react-flickity-component';
+import Flickity, { type FlickityOptions } from 'react-flickity-component';
 
 import {
   EXAMPLE_SLIDER,
@@ -32,7 +31,7 @@ const SliderBar: FC<Props> = ({ carouselType, images }) => {
     autoPlay: true,
     groupCells: true,
     lazyLoad: true,
-  };
+  } satisfies FlickityOptions;
 
   const getStyleName = () => {
     switch (carouselType) {

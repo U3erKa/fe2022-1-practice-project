@@ -40,11 +40,9 @@ export const decorateAsyncThunk = <Return, Payload = void>({
       const { rejectWithValue } = thunkAPI;
       try {
         return await thunk(payload, thunkAPI);
-      } catch (err) {
+      } catch (err: any) {
         return rejectWithValue({
-          // @ts-expect-error
           data: err?.response?.data ?? 'Gateway Timeout',
-          // @ts-expect-error
           status: err?.response?.status ?? 504,
         });
       }
