@@ -148,3 +148,5 @@ server/public
 dist-ssr
 dev-dist
 .turbo
+*.css.d.ts
+*.scss.d.ts
