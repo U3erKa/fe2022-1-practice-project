@@ -10,7 +10,7 @@ import type {
   NameContest,
   TaglineContest,
 } from 'types/contest';
-import styles from './styles/ContestForm.module.sass';
+import styles from './styles/ContestForm.module.scss';
 
 export type Props = {
   control: Control<any>;

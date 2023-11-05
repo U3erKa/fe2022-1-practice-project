@@ -6,7 +6,7 @@ import { LoginButtons, NavList } from '.';
 
 import { CUSTOMER, DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
-import styles from './styles/Header.module.sass';
+import styles from './styles/Header.module.scss';
 
 const Header = () => {
   const { data: user, isFetching } = useSelector((state) => state.userStore);

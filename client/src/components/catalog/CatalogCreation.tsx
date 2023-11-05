@@ -13,7 +13,7 @@ import {
   ADD_CHAT_TO_OLD_CATALOG,
   CREATE_NEW_CATALOG_AND_ADD_CHAT,
 } from 'constants/general';
-import styles from './styles/CatalogCreation.module.sass';
+import styles from './styles/CatalogCreation.module.scss';
 
 const CatalogCreation = () => {
   const { catalogCreationMode, isFetching } = useSelector(

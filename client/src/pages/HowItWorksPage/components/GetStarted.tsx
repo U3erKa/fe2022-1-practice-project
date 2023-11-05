@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from '../styles/GetStarted.module.sass';
+import styles from '../styles/GetStarted.module.scss';
 import type { FC } from 'react';
 import { HOW_IT_WORKS_PATH } from 'constants/general';
 

@@ -19,7 +19,7 @@ import type {
   GoToExtendedDialog,
 } from 'types/api/chat';
 import type { ChatId, UserId } from 'types/api/_common';
-import styles from './styles/DialogList.module.sass';
+import styles from './styles/DialogList.module.scss';
 
 export type Props = {
   userId: UserId;

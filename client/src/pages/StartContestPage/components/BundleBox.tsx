@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import clsx from 'clsx';
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import styles from '../styles/BundleBox.module.sass';
+import styles from '../styles/BundleBox.module.scss';
 
 export type Props = {
   header: string;

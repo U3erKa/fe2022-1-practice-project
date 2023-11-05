@@ -15,7 +15,7 @@ import {
   CUSTOMER,
 } from 'constants/general';
 import type { Status } from 'types/contest';
-import styles from '../styles/CustomerDashboard.module.sass';
+import styles from '../styles/CustomerDashboard.module.scss';
 
 const buttons: { name: string; filter: Status }[] = [
   { name: 'Active Contests', filter: CONTEST_STATUS_ACTIVE },

@@ -7,7 +7,7 @@ import { clearUserError } from 'store/slices/userSlice';
 import { Error, Spinner } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 import { UpdateUserSchema } from 'utils/validators/validationSchems';
-import styles from './styles/UpdateUserInfoForm.module.sass';
+import styles from './styles/UpdateUserInfoForm.module.scss';
 import { uniqueId } from 'utils/functions';
 
 export type Props = {

@@ -15,7 +15,7 @@ import {
   TAGLINE_CONTEST,
 } from 'constants/general';
 import type { InterlocutorId, UserId } from 'types/api/_common';
-import styles from './styles/ContestInfo.module.sass';
+import styles from './styles/ContestInfo.module.scss';
 import type { FC } from 'react';
 import type { ContestData } from 'types/slices';
 import type { LogoContest, NameContest, TaglineContest } from 'types/contest';

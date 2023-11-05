@@ -15,7 +15,7 @@ import { ROUTE } from 'constants/general';
 import type { Card } from 'types/api/user';
 import type { CardField } from 'types/api/offer';
 import 'react-credit-cards-2/dist/es/styles.scss';
-import styles from './styles/PayForm.module.sass';
+import styles from './styles/PayForm.module.scss';
 
 export type Props = {
   sendRequest: (values: Card) => void;

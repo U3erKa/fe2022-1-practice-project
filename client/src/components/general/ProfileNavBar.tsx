@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
 import { ROUTE } from 'constants/general';
-import styles from './styles/ProfileNavBar.module.sass';
+import styles from './styles/ProfileNavBar.module.scss';
 import type { PROFILE_NAVBAR } from 'constants/header';
 
 export type Props = {

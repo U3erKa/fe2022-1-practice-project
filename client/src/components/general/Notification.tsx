@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import styles from './styles/Notification.module.sass';
+import styles from './styles/Notification.module.scss';
 
 export type Props = {
   contestId?: number;

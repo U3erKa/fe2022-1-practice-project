@@ -12,7 +12,7 @@ import { CustomFilter } from './CustomFilter';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { ModeratorCommand } from 'types/api/offer';
 import type { OfferId, UserId } from 'types/api/_common';
-import styles from '../styles/CustomerDashboard.module.sass';
+import styles from '../styles/CustomerDashboard.module.scss';
 
 const buttons = [
   { name: 'Offers to review', filter: false },

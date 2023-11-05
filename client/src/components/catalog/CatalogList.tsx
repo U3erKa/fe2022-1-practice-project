@@ -4,7 +4,7 @@ import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
 import { Catalog } from 'components/catalog';
 import type { Catalog as _Catalog } from 'types/chat';
 import type { CatalogId } from 'types/api/_common';
-import styles from './styles/CatalogListContainer.module.sass';
+import styles from './styles/CatalogListContainer.module.scss';
 
 export type Props = {
   catalogList: _Catalog[];

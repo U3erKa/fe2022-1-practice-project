@@ -6,7 +6,7 @@ import { chatController } from 'api/ws/socketController';
 import { CatalogCreation } from 'components/catalog';
 import { ChatError, ChatList } from 'components/chat';
 import { Dialog } from 'components/dialog';
-import styles from './styles/Chat.module.sass';
+import styles from './styles/Chat.module.scss';
 
 const Chat = () => {
   const {

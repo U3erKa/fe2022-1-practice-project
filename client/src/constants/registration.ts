@@ -1,4 +1,4 @@
-import styles from 'styles/registration.module.sass';
+import styles from 'styles/registration.module.scss';
 import type { TextEntry } from 'types/general';
 
 export const REGISTRATION_ARTICLES_LEFT = [

@@ -7,7 +7,7 @@ import { FormInput, SelectInput } from 'components/input';
 import { newEventSchema } from 'utils/validators/validationSchems';
 import { notifyOptions } from 'constants/general';
 import type { useForceUpdate } from 'hooks';
-import styles from '../styles/CreateEvent.module.sass';
+import styles from '../styles/CreateEvent.module.scss';
 
 export const defaultValues = {
   name: '',

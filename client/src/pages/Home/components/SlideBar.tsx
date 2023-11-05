@@ -9,7 +9,7 @@ import {
   MAIN_SLIDER,
 } from 'constants/carousel';
 
-import style from '../styles/SlideBar.module.sass';
+import style from '../styles/SlideBar.module.scss';
 import '../styles/flickity.css';
 
 import type { FC } from 'react';

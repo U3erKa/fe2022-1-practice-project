@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useDispatch } from 'hooks';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { FC } from 'react';
-import styles from '../styles/CustomerDashboard.module.sass';
+import styles from '../styles/CustomerDashboard.module.scss';
 
 export type Props<Filter = any> = {
   buttons: { name: string; filter: Filter }[];

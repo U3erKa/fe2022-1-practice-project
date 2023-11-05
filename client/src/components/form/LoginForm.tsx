@@ -10,7 +10,7 @@ import { LoginSchem } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
 import type { LoginParams } from 'types/api/auth';
 import type { FormInputClasses } from 'components/input/FormInput';
-import styles from './styles/LoginForm.module.sass';
+import styles from './styles/LoginForm.module.scss';
 
 const formInputClasses = {
   container: styles.inputContainer,

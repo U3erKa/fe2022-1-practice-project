@@ -7,7 +7,7 @@ import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import { ROUTE } from 'constants/general';
 import type { Industry } from 'types/contest';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
-import styles from '../styles/CreatorDashboard.module.sass';
+import styles from '../styles/CreatorDashboard.module.scss';
 
 export type Props = {
   onChange: ChangeEventHandler<HTMLSelectElement>;

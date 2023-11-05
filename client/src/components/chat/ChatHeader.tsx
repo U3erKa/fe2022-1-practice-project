@@ -23,7 +23,7 @@ import type {
   ChangeChatFavoriteParams,
 } from 'types/api/chat';
 import type { UserId } from 'types/api/_common';
-import styles from './styles/ChatHeader.module.sass';
+import styles from './styles/ChatHeader.module.scss';
 import type { ChatData } from 'types/chat';
 
 export type Props = {

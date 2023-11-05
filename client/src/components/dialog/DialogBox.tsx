@@ -15,7 +15,7 @@ import {
   CATALOG_PREVIEW_CHAT_MODE,
   PUBLIC_URL,
 } from 'constants/general';
-import styles from './styles/DialogBox.module.sass';
+import styles from './styles/DialogBox.module.scss';
 import { getShortTimeStr } from 'utils/functions';
 import type { ChatId, UserId } from 'types/api/_common';
 import type { ChatMode, MessagePreview } from 'types/chat';

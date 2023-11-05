@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import type { CatalogId } from 'types/api/_common';
 import type { Catalog as _Catalog } from 'types/chat';
-import styles from './styles/Catalog.module.sass';
+import styles from './styles/Catalog.module.scss';
 
 export type Props = {
   catalog: _Catalog;

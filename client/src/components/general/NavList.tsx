@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import type { HEADER_LIST } from 'constants/header';
-import styles from './styles/NavList.module.sass';
+import styles from './styles/NavList.module.scss';
 
 export type List = typeof HEADER_LIST;
 export type ListItem = List[number]['listItem'];

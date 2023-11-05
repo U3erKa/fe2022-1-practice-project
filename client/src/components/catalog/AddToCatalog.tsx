@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { addChatToCatalog } from 'store/slices/chatSlice';
 import { SelectInput } from 'components/input';
 import type { CatalogId } from 'types/api/_common';
-import styles from './styles/AddToCatalog.module.sass';
+import styles from './styles/AddToCatalog.module.scss';
 
 const classes = {
   inputContainer: styles.selectInputContainer,

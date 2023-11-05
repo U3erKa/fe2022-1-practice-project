@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import type { NameContestInfo } from 'types/api/contest';
-import styles from './styles/ContestInfo.module.sass';
+import styles from './styles/ContestInfo.module.scss';
 
 export type Props = Pick<NameContestInfo, 'typeOfName' | 'styleName'>;
 

@@ -9,7 +9,7 @@ import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
 
 import { DUMMY_LINK, ROUTE } from 'constants/general';
-import styles from './styles/Payment.module.sass';
+import styles from './styles/Payment.module.scss';
 import type { Card } from 'types/api/user';
 
 const Payment = () => {

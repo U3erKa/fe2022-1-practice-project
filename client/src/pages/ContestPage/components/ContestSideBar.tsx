@@ -8,7 +8,7 @@ import {
 } from 'constants/general';
 import type { FC } from 'react';
 import type { ContestData } from 'types/slices';
-import styles from '../styles/ContestSideBar.module.sass';
+import styles from '../styles/ContestSideBar.module.scss';
 
 export type Props = {
   totalEntries: number;

@@ -8,7 +8,7 @@ import {
   STATIC_IMAGES_PATH,
 } from 'constants/general';
 import { dialogButtons } from 'constants/chat';
-import styles from './styles/ChatList.module.sass';
+import styles from './styles/ChatList.module.scss';
 import { Picture } from 'components/general';
 
 const ChatList = () => {

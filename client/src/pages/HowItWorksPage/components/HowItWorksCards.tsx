@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DUMMY_LINK } from 'constants/general';
 import { HOW_IT_WORKS_CARDS } from 'constants/howItWorks';
-import styles from '../styles/HowItWorksCards.module.sass';
+import styles from '../styles/HowItWorksCards.module.scss';
 import type { FC } from 'react';
 
 export const HowItWorksCards: FC = () => {

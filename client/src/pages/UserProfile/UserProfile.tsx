@@ -7,7 +7,7 @@ import { PayForm } from 'components/form';
 import { UserInfo } from '.';
 import { CASHOUT_MODE, CREATOR, USER_INFO_MODE } from 'constants/general';
 import type { CashOutParams } from 'types/api/offer';
-import styles from './styles/UserProfile.module.sass';
+import styles from './styles/UserProfile.module.scss';
 
 const UserProfile = () => {
   const { balance, role, profileViewMode, error } = useSelector((state) => {

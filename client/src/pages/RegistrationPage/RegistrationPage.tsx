@@ -14,7 +14,7 @@ import {
   REGISTRATION_ARTICLES_RIGHT,
 } from 'constants/registration';
 
-import styles from './styles/RegistrationPage.module.sass';
+import styles from './styles/RegistrationPage.module.scss';
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();

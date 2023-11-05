@@ -5,7 +5,7 @@ import {
   type InputHTMLAttributes,
 } from 'react';
 import { type Control, useController } from 'react-hook-form';
-import styles from './styles/RoleInput.module.sass';
+import styles from './styles/RoleInput.module.scss';
 
 export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,

@@ -39,7 +39,7 @@ import type { ContestData } from 'types/slices';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
 import type { User } from 'types/api/user';
-import styles from '../styles/OfferBox.module.sass';
+import styles from '../styles/OfferBox.module.scss';
 
 export type Props = {
   data: Offer;

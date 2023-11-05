@@ -1,6 +1,6 @@
 import { ClipLoader } from 'react-spinners';
 
-import styles from './styles/Spinner.module.sass';
+import styles from './styles/Spinner.module.scss';
 
 const SpinnerLoader = () => (
   <div className={styles.loaderContainer}>

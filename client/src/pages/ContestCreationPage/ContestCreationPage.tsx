@@ -5,7 +5,7 @@ import { Footer, Header, ProgressBar } from 'components/general';
 import { ContestForm } from 'components/contest';
 import { ROUTE } from 'constants/general';
 import type { ContestType } from 'types/contest';
-import styles from './styles/ContestCreationPage.module.sass';
+import styles from './styles/ContestCreationPage.module.scss';
 
 export type Props = {
   contestType: ContestType;

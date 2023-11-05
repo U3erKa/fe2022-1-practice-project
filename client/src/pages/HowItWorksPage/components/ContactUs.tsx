@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { HOW_IT_WORKS_PATH } from 'constants/general';
-import styles from '../styles/ContactUs.module.sass';
+import styles from '../styles/ContactUs.module.scss';
 import type { FC } from 'react';
 
 export const ContactUs: FC = () => {

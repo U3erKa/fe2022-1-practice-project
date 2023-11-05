@@ -11,7 +11,7 @@ import {
 import { FormInput } from 'components/input';
 import { CatalogSchema } from 'utils/validators/validationSchems';
 import type { Catalog } from 'types/chat';
-import styles from './styles/CatalogHeader.module.sass';
+import styles from './styles/CatalogHeader.module.scss';
 
 const CatalogListHeader = () => {
   const {

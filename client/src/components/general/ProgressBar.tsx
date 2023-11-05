@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import styles from './styles/ProgressBar.module.sass';
+import styles from './styles/ProgressBar.module.scss';
 
 export type Props = { currentStep: number };
 

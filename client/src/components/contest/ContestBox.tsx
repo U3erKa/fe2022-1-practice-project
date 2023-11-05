@@ -10,7 +10,7 @@ import {
 } from 'constants/general';
 import type { ContestId } from 'types/api/_common';
 import type { Contest } from 'types/contest';
-import styles from './styles/ContestBox.module.sass';
+import styles from './styles/ContestBox.module.scss';
 
 export type Props = { data: Contest };
 

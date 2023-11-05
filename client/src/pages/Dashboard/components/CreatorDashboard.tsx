@@ -14,7 +14,7 @@ import { CreatorFilter } from './CreatorFilter';
 import { parseQueryString } from 'utils/functions';
 import { CREATOR } from 'constants/general';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
-import styles from '../styles/CreatorDashboard.module.sass';
+import styles from '../styles/CreatorDashboard.module.scss';
 import type { GetActiveContestsParams } from 'types/api/contest';
 
 const CreatorDashboard = () => {

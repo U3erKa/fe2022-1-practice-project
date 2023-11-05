@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
-import styles from './styles/ChatError.module.sass';
+import styles from './styles/ChatError.module.scss';
 import type { FC, MouseEventHandler } from 'react';
 
 export type Props = {

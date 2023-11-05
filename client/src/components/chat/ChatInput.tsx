@@ -7,7 +7,7 @@ import { FormInput } from 'components/input';
 import { Picture } from 'components/general';
 import { MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
-import styles from './styles/ChatInput.module.sass';
+import styles from './styles/ChatInput.module.scss';
 
 const classes = {
   container: styles.container,

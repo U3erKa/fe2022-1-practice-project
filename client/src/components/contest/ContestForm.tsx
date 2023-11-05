@@ -23,7 +23,7 @@ import {
 } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import type { SaveContestToStore } from 'types/api/contest';
-import styles from './styles/ContestForm.module.sass';
+import styles from './styles/ContestForm.module.scss';
 
 const variableOptions = {
   [NAME_CONTEST]: {

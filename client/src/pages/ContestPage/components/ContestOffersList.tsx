@@ -10,7 +10,7 @@ import type { FC } from 'react';
 import type { Offer } from 'types/api/contest';
 import type { ContestData } from 'types/slices';
 import type { CustomerCommand } from 'types/api/offer';
-import styles from '../styles/ContestOfferList.module.sass';
+import styles from '../styles/ContestOfferList.module.scss';
 
 export type Props = {
   offers: Offer[];

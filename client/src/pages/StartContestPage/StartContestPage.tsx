@@ -7,7 +7,7 @@ import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from '.';
 
 import { CUSTOMER, ROUTE } from 'constants/general';
-import styles from './styles/StartContestPage.module.sass';
+import styles from './styles/StartContestPage.module.scss';
 
 import type { Bundle } from 'types/slices';
 

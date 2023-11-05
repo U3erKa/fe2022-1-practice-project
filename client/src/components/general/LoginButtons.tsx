@@ -8,7 +8,7 @@ import {
 } from 'constants/general';
 import { PROFILE_NAVBAR } from 'constants/header';
 import type { User } from 'types/api/user';
-import styles from './styles/LoginButtons.module.sass';
+import styles from './styles/LoginButtons.module.scss';
 
 export default function LoginButtons({ data }: { data: User }) {
   const { events } = useSelector(({ events }) => events);

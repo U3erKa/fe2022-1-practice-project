@@ -14,7 +14,7 @@ import { LOGO_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import type { Id, WithId } from 'types/api/_common';
 import type { FormInputClasses } from 'components/input/FormInput';
-import styles from './styles/OfferForm.module.sass';
+import styles from './styles/OfferForm.module.scss';
 
 export type Props = {
   contestType: ContestType;

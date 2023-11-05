@@ -8,7 +8,7 @@ import { Spinner, TryAgain } from 'components/general';
 import { OfferForm } from 'components/form';
 import { Brief, ContestOffersList, ContestSideBar } from '..';
 import { CONTEST_STATUS_ACTIVE, CREATOR } from 'constants/general';
-import styles from '../styles/ContestPage.module.sass';
+import styles from '../styles/ContestPage.module.scss';
 
 function ContestPageContents({ contestId }: { contestId: number }) {
   const {
