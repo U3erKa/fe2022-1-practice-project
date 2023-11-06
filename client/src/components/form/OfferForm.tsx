@@ -21,7 +21,10 @@ export type Props = {
   control: Control<any>;
   register: UseFormRegister<any>;
 };
-export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & Props;
+
+export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & {
+  contestType: ContestType;
+};
 
 const formInputClassses = {
   container: styles.inputContainer,

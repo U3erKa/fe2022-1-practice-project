@@ -19,18 +19,18 @@ import styles from './styles/Home.module.scss';
 const Home = () => {
   const { isFetching } = useSelector((state) => state.userStore);
   const [index, setIndex] = useState(0);
-  const [styleName, setStyle] = useState(styles.headline__static);
+  const [styleName, setStyle] = useState(styles.headlineStatic);
 
   const text = HEADER_ANIMATION_TEXT[index % HEADER_ANIMATION_TEXT.length];
 
   useEffect(() => {
     const timeout = setInterval(() => {
       setIndex(index + 1);
-      setStyle(styles.headline__isloading);
+      setStyle('');
     }, 3000);
 
     return () => {
-      setStyle(styles.headline__static);
+      setStyle(styles.headlineStatic);
       clearInterval(timeout);
     };
   });
@@ -55,7 +55,7 @@ const Home = () => {
                 for immediate purchase
               </p>
               <div className={styles.button}>
-                <Link className={styles.button__link} to="/dashboard">
+                <Link className={styles.buttonLink} to="/dashboard">
                   DASHBOARD
                 </Link>
               </div>
@@ -66,7 +66,7 @@ const Home = () => {
                 carouselType={MAIN_SLIDER}
               />
             </div>
-            <div className={styles.container__description}>
+            <div className={styles.containerDescription}>
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
               <div className={styles.cardContainer}>
                 <div className={styles.card}>
@@ -311,7 +311,7 @@ const Home = () => {
               carouselType={EXAMPLE_SLIDER}
             />
             <div className={styles.button}>
-              <Link className={styles.button__link} to="/dashboard">
+              <Link className={styles.buttonLink} to="/dashboard">
                 DASHBOARD
               </Link>
             </div>

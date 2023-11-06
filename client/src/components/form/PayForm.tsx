@@ -25,7 +25,6 @@ export type Props = {
 
 const classes = {
   container: styles.inputContainer,
-  input: styles.input,
   notValid: styles.notValid,
   error: styles.error,
 };

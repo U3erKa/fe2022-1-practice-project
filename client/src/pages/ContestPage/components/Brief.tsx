@@ -112,7 +112,7 @@ const Brief = () => {
       )}
       <ContestForm
         contestType={contestData.contestType}
-        defaultData={getContestObjInfo() as unknown as _ContestInfo}
+        defaultData={getContestObjInfo()}
         handleSubmit={setNewContestData}
       />
     </div>

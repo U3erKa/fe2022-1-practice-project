@@ -18,10 +18,10 @@ const Header = () => {
     return (
       <>
         <Link to="/login" style={{ textDecoration: 'none' }}>
-          <span className={styles.btn}>LOGIN</span>
+          <span>LOGIN</span>
         </Link>
         <Link to="/registration" style={{ textDecoration: 'none' }}>
-          <span className={styles.btn}>SIGN UP</span>
+          <span>SIGN UP</span>
         </Link>
       </>
     );
@@ -59,7 +59,7 @@ const Header = () => {
       <div className={styles.navContainer}>
         <Logo />
         <div className={styles.leftNav}>
-          <div className={styles.nav}>
+          <div>
             <NavList list={HEADER_LIST} />
           </div>
           {user && user.role === CUSTOMER && (

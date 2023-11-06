@@ -23,11 +23,7 @@ export default function ProfileNavBar({ list, activeEvents }: Props) {
 
   const mapList = list.map(({ id, href, text }) => (
     <li key={id} className={styles.navListItem}>
-      <Link
-        className={styles.navListLink}
-        to={href}
-        style={{ textDecoration: 'none' }}
-      >
+      <Link to={href} style={{ textDecoration: 'none' }}>
         <span className={styles.navListLinkText}>{text}</span>
         {href === ROUTE.EVENTS && !!activeEvents && (
           <div className={styles.badge}>{activeEvents}</div>
@@ -37,7 +33,7 @@ export default function ProfileNavBar({ list, activeEvents }: Props) {
   ));
 
   return (
-    <ul className={styles.navList}>
+    <ul>
       {mapList}
       <li className={styles.navListItem}>
         <button className={styles.navListBtn} onClick={logOut}>

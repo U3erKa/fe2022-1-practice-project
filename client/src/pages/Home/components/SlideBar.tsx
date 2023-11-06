@@ -8,7 +8,7 @@ import {
   MAIN_SLIDER,
 } from 'constants/carousel';
 
-import style from '../styles/SlideBar.module.scss';
+import styles from '../styles/SlideBar.module.scss';
 import '../styles/flickity.css';
 
 import type { FC } from 'react';
@@ -36,11 +36,11 @@ const SliderBar: FC<Props> = ({ carouselType, images }) => {
   const getStyleName = () => {
     switch (carouselType) {
       case MAIN_SLIDER:
-        return style.mainCarousel;
+        return styles.mainCarousel;
       case EXAMPLE_SLIDER:
-        return style.exampleCarousel;
+        return styles.exampleCarousel;
       case FEEDBACK_SLIDER:
-        return style.feedbackCarousel;
+        return styles.feedbackCarousel;
       default: {
         break;
       }
@@ -51,14 +51,14 @@ const SliderBar: FC<Props> = ({ carouselType, images }) => {
     switch (carouselType) {
       case MAIN_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
-          <div className={style['carousel-cell']} key={index}>
+          <div className={styles.carouselCell} key={index}>
             <Picture src={src} srcSet={srcSet} alt="slide" />
           </div>
         ));
       }
       case EXAMPLE_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
-          <div className={style['example-cell']} key={index}>
+          <div className={styles.exampleCell} key={index}>
             <Picture src={src} srcSet={srcSet} alt="slide" />
             <p>{EXAMPLE_SLIDER_TEXT[index]}</p>
           </div>
@@ -66,7 +66,7 @@ const SliderBar: FC<Props> = ({ carouselType, images }) => {
       }
       case FEEDBACK_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
-          <div className={style['feedback-cell']} key={index}>
+          <div className={styles.feedbackCell} key={index}>
             <Picture src={src} srcSet={srcSet} alt="slide" />
             <p>{FEEDBACK_SLIDER_TEXT[index].feedback}</p>
             <span>{FEEDBACK_SLIDER_TEXT[index].name}</span>

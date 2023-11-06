@@ -17,7 +17,7 @@ export type Article = {
 
 const RegistrationArticles: FC<Props> = ({ articles }) => {
   return (
-    <div className={styles.ColumnContainer}>
+    <div className={styles.columnContainer}>
       {articles.map(({ id, header, article }) => (
         <Fragment key={id}>
           <div className={styles.headerArticle}>{header}</div>

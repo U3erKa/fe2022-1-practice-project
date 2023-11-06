@@ -23,9 +23,9 @@
   }
 }
 
-.example-cell,
-.feedback-cell,
-.carousel-cell {
+.exampleCell,
+.feedbackCell,
+.carouselCell {
   width: 30%;
   aspect-ratio: 1;
   margin: 0 20px;
@@ -43,7 +43,7 @@
   }
 }
 
-.carousel-cell {
+.carouselCell {
   border-radius: 3px;
 
   & img {
@@ -51,7 +51,7 @@
   }
 }
 
-.example-cell {
+.exampleCell {
   @include container(flex-start);
   aspect-ratio: 1.67;
   border-top: 2px solid grey;
@@ -82,7 +82,7 @@
   }
 }
 
-.feedback-cell {
+.feedbackCell {
   @include container;
   height: 400px;
   font-family: Raleway, sans-serif;
