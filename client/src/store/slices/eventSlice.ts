@@ -12,10 +12,9 @@ import {
 } from 'utils/store';
 import { timezoneOffsetInMs } from 'constants/general';
 import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
+import type { NewEvent } from 'utils/validators/validationSchems';
 import type {
-  CreateEventRequest,
   CreateEventResponse,
-  Event,
   EventState,
   GetEventsResponse,
 } from 'types/api/event';
@@ -42,7 +41,7 @@ export const getEvents = decorateAsyncThunk({
 
 export const createEvent = decorateAsyncThunk({
   key: `${EVENT_SLICE_NAME}/createEvent`,
-  thunk: async (payload: CreateEventRequest) => {
+  thunk: async (payload: NewEvent) => {
     const { data } = await eventController.createEvent(payload);
     const date = new Date(Date.parse(data.date) + timezoneOffsetInMs);
     Object.assign(data, { date: date.toString() });
@@ -50,7 +49,7 @@ export const createEvent = decorateAsyncThunk({
   },
 });
 
-const closestEventFirst = ({ date }: Event, { date: other }: Event) =>
+const closestEventFirst = ({ date }: NewEvent, { date: other }: NewEvent) =>
   Date.parse(date) - Date.parse(other);
 
 const getEventsExtraReducers = createExtraReducers({
