@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'hooks';
@@ -14,16 +14,15 @@ import type { Catalog } from 'types/chat';
 import styles from './styles/CatalogHeader.module.scss';
 
 const CatalogListHeader = () => {
-  const {
-    isRenameCatalog,
-    // @ts-expect-error
-    currentCatalog: { _id, catalogName },
-  } = useSelector((state) => state.chatStore);
+  const { isRenameCatalog, currentCatalog } = useSelector(
+    ({ chatStore }) => chatStore,
+  );
   const dispatch = useDispatch();
+  const { _id, catalogName } = currentCatalog ?? ({} as Catalog);
 
   const { handleSubmit, control } = useForm({
     defaultValues: { catalogName },
-    resolver: yupResolver(CatalogSchema),
+    resolver: zodResolver(CatalogSchema),
   });
 
   const changeCatalogNameMethod = (values: Pick<Catalog, 'catalogName'>) => {

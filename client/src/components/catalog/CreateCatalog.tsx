@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { createCatalog } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
@@ -19,8 +19,7 @@ const CreateCatalog = () => {
   const dispatch = useDispatch();
 
   const { handleSubmit, control } = useForm({
-    defaultValues: { catalogName: '' },
-    resolver: yupResolver(CatalogSchema),
+    resolver: zodResolver(CatalogSchema),
   });
 
   const onSubmit = (values: Pick<Catalog, 'catalogName'>) => {

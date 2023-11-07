@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { FormInput } from 'components/input';
 import { Error } from 'components/general';
-import { LoginSchem } from 'utils/validators/validationSchems';
+import { type Login, LoginSchema } from 'utils/validators/validationSchems';
 import { AUTH_MODE } from 'constants/general';
-import type { LoginParams } from 'types/api/auth';
 import type { FormInputClasses } from 'components/input/FormInput';
 import styles from './styles/LoginForm.module.scss';
 
@@ -33,12 +32,11 @@ const LoginForm = () => {
   }, []);
 
   const { handleSubmit, control } = useForm({
-    defaultValues: { email: '', password: '' },
-    resolver: yupResolver(LoginSchem),
+    resolver: zodResolver(LoginSchema),
     mode: 'all',
   });
 
-  const onSubmit = (values: LoginParams) => {
+  const onSubmit = (values: Login) => {
     dispatch(checkAuth({ data: values, navigate, authMode: AUTH_MODE.LOGIN }));
   };
 

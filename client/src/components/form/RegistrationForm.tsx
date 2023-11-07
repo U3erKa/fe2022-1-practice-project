@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { Error } from 'components/general';
@@ -10,9 +10,11 @@ import {
   FormInput,
   RoleInput,
 } from 'components/input';
-import { RegistrationSchem } from 'utils/validators/validationSchems';
+import {
+  type Registration,
+  RegistrationSchema,
+} from 'utils/validators/validationSchems';
 import { AUTH_MODE, CREATOR, CUSTOMER } from 'constants/general';
-import type { RegisterParams } from 'types/api/auth';
 import styles from './styles/RegistrationForm.module.scss';
 
 const formInputClasses = {
@@ -36,21 +38,12 @@ const RegistrationForm = () => {
   }, []);
 
   const { handleSubmit, control } = useForm({
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      role: CUSTOMER,
-      agreeOfTerms: false,
-    },
-    resolver: yupResolver(RegistrationSchem),
+    defaultValues: { role: CUSTOMER, agreeOfTerms: false },
+    resolver: zodResolver(RegistrationSchema),
     mode: 'all',
   });
 
-  const onSubmit = (values: RegisterParams) => {
+  const onSubmit = (values: Registration) => {
     dispatch(
       checkAuth({ data: values, navigate, authMode: AUTH_MODE.REGISTER }),
     );
@@ -129,6 +122,7 @@ const RegistrationForm = () => {
             name="role"
             control={control}
             type="radio"
+            defaultChecked
             value={CUSTOMER}
             strRole="Join As a Buyer"
             infoRole="I am looking for a Name, Logo or Tagline for my business, brand or product."

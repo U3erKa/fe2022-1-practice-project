@@ -1,18 +1,19 @@
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import type { InferType } from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'hooks';
 import { createEvent } from 'store/slices/eventSlice';
 import { FormInput, SelectInput } from 'components/input';
-import { newEventSchema } from 'utils/validators/validationSchems';
-import { notifyOptions } from 'constants/general';
+import {
+  type NewEvent,
+  NewEventSchema,
+  type Notify,
+} from 'utils/validators/validationSchems';
+import { NOTIFY_OPTIONS } from 'constants/general';
 import type { useForceUpdate } from 'hooks';
 import styles from '../styles/CreateEvent.module.scss';
 
 export const defaultValues = {
-  name: '',
-  date: '',
-  notify: notifyOptions[0] as (typeof notifyOptions)[number],
+  notify: NOTIFY_OPTIONS[0] as Notify,
 };
 
 export type Props = {
@@ -35,10 +36,10 @@ export default function CreateEvent({ forceUpdate }: Props) {
   const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
     defaultValues,
-    resolver: yupResolver(newEventSchema),
+    resolver: zodResolver(NewEventSchema),
   });
 
-  const onSubmit = (values: InferType<typeof newEventSchema>) => {
+  const onSubmit = (values: NewEvent) => {
     dispatch(createEvent(values));
     reset();
     forceUpdate();
@@ -64,7 +65,7 @@ export default function CreateEvent({ forceUpdate }: Props) {
         name="notify"
         control={control}
         header="When to remind me about the event:"
-        optionsArray={notifyOptions}
+        optionsArray={NOTIFY_OPTIONS}
         classes={selectInputClasses}
       />
       <button type="submit" className={styles.submit}>

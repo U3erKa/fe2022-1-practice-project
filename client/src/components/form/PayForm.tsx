@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
@@ -51,7 +51,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
 
   const { handleSubmit, control, watch } = useForm({
     defaultValues,
-    resolver: yupResolver(isCashoutPage ? CashoutSchema : PaymentSchema),
+    resolver: zodResolver(isCashoutPage ? CashoutSchema : PaymentSchema),
   });
   const { name, number, expiry, cvc } = watch();
 

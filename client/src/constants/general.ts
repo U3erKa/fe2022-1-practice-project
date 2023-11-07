@@ -97,7 +97,7 @@ export const FOOTER_ITEMS = [
   },
 ];
 
-export const notifyOptions = [
+export const NOTIFY_OPTIONS = [
   'never',
   'when event starts',
   '1 hour before',

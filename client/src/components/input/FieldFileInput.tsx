@@ -36,7 +36,7 @@ const FieldFileInput: FC<Props> = ({
         Choose file
       </label>
       <span id="fileNameContainer" className={fileNameClass}>
-        {field.value[0]?.name}
+        {field.value?.[0]?.name}
       </span>
       <input
         className={fileInput}

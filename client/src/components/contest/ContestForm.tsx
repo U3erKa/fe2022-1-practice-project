@@ -1,8 +1,7 @@
 import { type FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import type { InferType } from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
@@ -14,7 +13,7 @@ import {
   FormTextArea,
   SelectInput,
 } from 'components/input';
-import { ContestSchem } from 'utils/validators/validationSchems';
+import { type Contest, ContestSchema } from 'utils/validators/validationSchems';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
@@ -22,23 +21,8 @@ import {
   TAGLINE_CONTEST,
 } from 'constants/general';
 import type { ContestType } from 'types/contest';
-import type { SaveContestToStore } from 'types/api/contest';
+import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
 import styles from './styles/ContestForm.module.scss';
-
-const variableOptions = {
-  [NAME_CONTEST]: {
-    styleName: '',
-    typeOfName: '',
-  },
-  [LOGO_CONTEST]: {
-    nameVenture: '',
-    brandStyle: '',
-  },
-  [TAGLINE_CONTEST]: {
-    nameVenture: '',
-    typeOfTagline: '',
-  },
-};
 
 export type Props = {
   contestType: ContestType;
@@ -85,22 +69,14 @@ const ContestForm: FC<Props> = ({ contestType }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const defaultContestData = contests[contestType]
+  const defaultValues = contests[contestType]
     ? contests[contestType]
-    : { contestType };
+    : ({ contestType } as unknown as ContestInfo);
   const { isFetching, error, data: contestData } = dataForContest;
 
   const { handleSubmit, control, register } = useForm({
-    defaultValues: {
-      title: '',
-      industry: '',
-      focusOfWork: '',
-      targetCustomer: '',
-      file: '',
-      ...variableOptions[contestType],
-      ...defaultContestData,
-    },
-    resolver: yupResolver(ContestSchem),
+    defaultValues,
+    resolver: zodResolver(ContestSchema),
   });
 
   useEffect(() => {
@@ -108,7 +84,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contestType]);
 
-  const onSubmit = (values: InferType<typeof ContestSchem>) => {
+  const onSubmit = (values: Contest) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { file, ...restValues } = values;
 

@@ -1,17 +1,19 @@
 import { type FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { type InferType } from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
 import { Error, Spinner } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
-import { UpdateUserSchema } from 'utils/validators/validationSchems';
+import {
+  type UpdateUser,
+  UpdateUserSchema,
+} from 'utils/validators/validationSchems';
 import styles from './styles/UpdateUserInfoForm.module.scss';
 import { uniqueId } from 'utils/functions';
 
 export type Props = {
-  onSubmit: (values: InferType<typeof UpdateUserSchema>) => void;
+  onSubmit: (values: UpdateUser) => void;
   submitting?: boolean;
 };
 
@@ -43,7 +45,7 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
       lastName: user?.lastName,
       displayName: user?.displayName,
     },
-    resolver: yupResolver(UpdateUserSchema),
+    resolver: zodResolver(UpdateUserSchema),
   });
 
   if (!user) return <Spinner />;

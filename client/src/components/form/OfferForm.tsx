@@ -1,13 +1,14 @@
 import { type FC } from 'react';
 import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import type { InferType } from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
 import { Error } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 import {
+  type LogoOffer,
   LogoOfferSchema,
+  type TextOffer,
   TextOfferSchema,
 } from 'utils/validators/validationSchems';
 import { LOGO_CONTEST } from 'constants/general';
@@ -64,15 +65,13 @@ const OfferForm: FC<OfferFormProps> = ({
 }) => {
   const { addOfferError } = useSelector((state) => state.contestByIdStore);
   const dispatch = useDispatch();
-
-  const validationSchema =
-    contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema;
   const { handleSubmit, control, register, reset } = useForm({
-    defaultValues: { offerData: '' },
-    resolver: yupResolver(validationSchema),
+    resolver: zodResolver(
+      contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema,
+    ),
   });
 
-  const setOffer = ({ offerData }: InferType<typeof validationSchema>) => {
+  const setOffer = ({ offerData }: LogoOffer | TextOffer) => {
     dispatch(clearAddOfferError());
     const data = new FormData();
 

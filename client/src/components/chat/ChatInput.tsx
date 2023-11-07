@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import type { InferType } from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
 import { Picture } from 'components/general';
-import { MessageSchema } from 'utils/validators/validationSchems';
+import { type Message, MessageSchema } from 'utils/validators/validationSchems';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/ChatInput.module.scss';
 
@@ -20,11 +19,10 @@ const ChatInput = () => {
   const dispatch = useDispatch();
 
   const { handleSubmit, control, reset } = useForm({
-    defaultValues: { message: '' },
-    resolver: yupResolver(MessageSchema),
+    resolver: zodResolver(MessageSchema),
   });
 
-  const onSubmit = (values: InferType<typeof MessageSchema>) => {
+  const onSubmit = (values: Message) => {
     dispatch(
       sendMessage({
         messageBody: values.message,
