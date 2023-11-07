@@ -1,248 +1,261 @@
-import * as yup from 'yup';
+import { z } from 'zod';
 import valid from 'card-validator';
-import { notifyOptions } from 'constants/general';
+import {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  NOTIFY_OPTIONS,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 
-export const LoginSchem = yup.object().shape({
-  email: yup.string().email('check email').required('required'),
-  password: yup
+export const IndustrySchema = z.enum([
+  'Biotech',
+  'Builders',
+  'Consulting Firm',
+  'Creative Agency',
+  'Education',
+  'Footwear',
+  'Medical',
+  'Publisher',
+  'Skin care',
+]);
+
+export const StyleNameSchema = z.enum([
+  'Any',
+  'Classic',
+  'Descriptive',
+  'Fun',
+  'Professional',
+  'Youthful',
+]);
+
+export const TypeOfNameSchema = z.enum(['Company', 'Product', 'Project']);
+
+export const BrandStyleSchema = z.enum([
+  'Brick & Mortar',
+  'Fancy',
+  'Fun',
+  'Minimal',
+  'Photo-based',
+  'Techy',
+]);
+
+export const TypeOfTaglineSchema = z.enum([
+  'Any',
+  'Classic',
+  'Descriptive',
+  'Fun',
+  'Modern',
+  'Powerful',
+]);
+
+export const NameContestTypeSchema = z.enum([NAME_CONTEST]);
+export const LogoContestTypeSchema = z.enum([LOGO_CONTEST]);
+export const TaglineContestTypeSchema = z.enum([TAGLINE_CONTEST]);
+
+export const ContestContestTypeSchema = z.enum([
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+]);
+
+export const StringSchema = z
+  .string()
+  .superRefine((value, { addIssue, path }) => {
+    if (!value || !value.trim().length) {
+      addIssue({
+        code: 'custom',
+        message: `${path} is a required field`,
+      });
+    }
+  });
+
+export const NotifySchema = z.enum(NOTIFY_OPTIONS);
+export const FileSchema = z.instanceof(FileList);
+export const OrderBySchema = z.enum(['asc', 'desc']);
+
+export const NewEventSchema = z.object({
+  date: z
     .string()
-    .test(
-      'test-password',
-      'min 6 symbols',
-      (value) => !!value && value.trim().length >= 6,
-    )
-    .required('required'),
+    .datetime()
+    .superRefine((value, { addIssue, path }) => {
+      if (Date.now() - Date.parse(value) <= 5 * 60 * 1000) {
+        addIssue({
+          code: 'custom',
+          message: `Event ${path} cannot be in the past`,
+        });
+      }
+    }),
+  name: z.string().min(6),
+  notify: NotifySchema,
 });
 
-export const RegistrationSchem = yup.object().shape({
-  email: yup.string().email('check email').required('Email is required'),
-  password: yup
-    .string()
-    .test(
-      'test-password',
-      'min 6 symbols',
-      (value) => !!value && value.trim().length >= 6,
-    )
-    .required('required'),
-  confirmPassword: yup
-    .string()
-    .required('confirm password is required')
-    .oneOf([yup.ref('password')], 'confirmation pass must match password'),
-  firstName: yup
-    .string()
-    .test(
-      'test-firstName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('First Name is required'),
-  lastName: yup
-    .string()
-    .test(
-      'test-lastName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('Last Name is required'),
-  displayName: yup
-    .string()
-    .test(
-      'test-displayName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('Display Name is required'),
-  role: yup
-    .string()
-    .matches(/(?<role>customer|creator)/)
-    .required('Role is required'),
-  agreeOfTerms: yup
-    .boolean()
-    .oneOf([true], 'Must Accept Terms and Conditions')
-    .required('Must Accept Terms and Conditions'),
+export const CatalogSchema = z.object({
+  catalogName: StringSchema,
 });
 
-export const ContestSchem = yup.object({
-  nameVenture: yup.string().min(3),
-  contestType: yup
-    .string()
-    .matches(/(?<contestType>name|tagline|logo)/)
-    .required(),
-  title: yup
-    .string()
-    .test(
-      'test-title',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('title of contest required'),
-  industry: yup.string().required('industry required'),
-  focusOfWork: yup
-    .string()
-    .test(
-      'test-focusOfWork',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('focus of work required'),
-  targetCustomer: yup
-    .string()
-    .test(
-      'test-targetCustomer',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('target customers required'),
-  styleName: yup.string().min(1),
-  typeOfName: yup.string().min(1),
-  typeOfTagline: yup.string().min(1),
-  brandStyle: yup.string().min(1),
-  file: yup.mixed(),
+export const MessageSchema = z.object({
+  message: StringSchema,
 });
 
-export const filterSchem = yup.object().shape({
-  typeIndex: yup.number().oneOf([1, 2, 3, 4, 5, 6, 7]),
-  contestId: yup.string(),
-  awardSort: yup.string().matches(/(?<awardSort>desc|asc)/),
-  industry: yup.string(),
+export const UpdateUserSchema = z.object({
+  displayName: StringSchema,
+  file: z.union([FileSchema, z.null()]).optional(),
+  firstName: StringSchema,
+  lastName: StringSchema,
 });
 
-export const LogoOfferSchema = yup.object().shape({
-  offerData: yup.mixed().required('required'),
+export const PaymentSchema = z.object({
+  cvc: z.string().superRefine((value, { addIssue, path }) => {
+    if (!valid.cvv(value).isValid) {
+      addIssue({
+        code: 'custom',
+        message: `Credit Card ${path} is invalid`,
+      });
+    }
+  }),
+  expiry: z.string().superRefine((value, { addIssue, path }) => {
+    if (!valid.expirationDate(value).isValid) {
+      addIssue({
+        code: 'custom',
+        message: `Credit Card ${path} is invalid`,
+      });
+    }
+  }),
+  name: StringSchema,
+  number: z.string().superRefine((value, { addIssue, path }) => {
+    if (!valid.number(value).isValid) {
+      addIssue({
+        code: 'custom',
+        message: `Credit Card ${path} is invalid`,
+      });
+    }
+  }),
 });
 
-export const TextOfferSchema = yup.object().shape({
-  offerData: yup
-    .string()
-    .test(
-      'test-offerData',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('suggestion is required'),
+export const CashoutSchema = z.intersection(
+  PaymentSchema,
+  z.object({ sum: z.number().min(5) }),
+);
+
+export const TextOfferSchema = z.object({
+  offerData: StringSchema,
 });
 
-export const PaymentSchema = yup.object().shape({
-  number: yup
-    .string()
-    .test(
-      'test-cardNumber',
-      'Credit Card number is invalid',
-      (value) => valid.number(value).isValid,
-    )
-    .required('required'),
-  name: yup.string().min(1, 'required atleast one symbol').required('required'),
-  cvc: yup
-    .string()
-    .test('test-cvc', 'cvc is invalid', (value) => valid.cvv(value).isValid)
-    .required('required'),
-  expiry: yup
-    .string()
-    .test(
-      'test-expiry',
-      'expiry is invalid',
-      (value) => valid.expirationDate(value).isValid,
-    )
-    .required('required'),
+export const LogoOfferSchema = z.object({
+  offerData: FileSchema,
 });
 
-export const CashoutSchema = yup.object().shape({
-  sum: yup.number().min(5, 'min sum is 5$').required('required'),
-  number: yup
-    .string()
-    .test(
-      'test-cardNumber',
-      'Credit Card number is invalid',
-      (value) => valid.number(value).isValid,
-    )
-    .required('required'),
-  name: yup.string().min(1).required('required'),
-  cvc: yup
-    .string()
-    .test('test-cvc', 'cvc is invalid', (value) => valid.cvv(value).isValid)
-    .required('required'),
-  expiry: yup
-    .string()
-    .test(
-      'test-expiry',
-      'expiry is invalid',
-      (value) => valid.expirationDate(value).isValid,
-    )
-    .required('required'),
+export const FilterSchema = z.object({
+  awardSort: z.union([z.null(), OrderBySchema]).optional(),
+  contestId: z.union([z.null(), z.string()]).optional(),
+  industry: z.union([z.null(), z.string()]).optional(),
+  typeIndex: z.union([z.number().int().min(0).max(7), z.null()]).optional(),
 });
 
-export const UpdateUserSchema = yup.object().shape({
-  firstName: yup
-    .string()
-    .test(
-      'test-firstName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('required'),
-  lastName: yup
-    .string()
-    .test(
-      'test-lastName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('required'),
-  displayName: yup
-    .string()
-    .test(
-      'test-displayName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('required'),
-  file: yup.mixed(),
+export const BaseContestSchema = z.object({
+  contestType: StringSchema,
+  file: z.union([FileSchema, z.null()]).optional(),
+  focusOfWork: StringSchema,
+  industry: StringSchema,
+  targetCustomer: StringSchema,
+  title: StringSchema,
 });
 
-export const MessageSchema = yup.object({
-  message: yup
-    .string()
-    .test(
-      'test-message',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('required'),
+export const TaglineContestSchema = z.intersection(
+  BaseContestSchema,
+  z.object({
+    contestType: TaglineContestTypeSchema,
+    typeOfTagline: TypeOfTaglineSchema,
+    nameVenture: z.string().min(3),
+  }),
+);
+
+export const LogoContestSchema = z.intersection(
+  BaseContestSchema,
+  z.object({
+    contestType: LogoContestTypeSchema,
+    brandStyle: BrandStyleSchema,
+    nameVenture: z.string().min(3),
+  }),
+);
+
+export const NameContestSchema = z.intersection(
+  BaseContestSchema,
+  z.object({
+    contestType: NameContestTypeSchema,
+    styleName: StyleNameSchema,
+    typeOfName: TypeOfNameSchema,
+  }),
+);
+
+export const ContestSchema = z.union([
+  TaglineContestSchema,
+  LogoContestSchema,
+  NameContestSchema,
+]);
+
+export const RegistrationSchema = z
+  .object({
+    agreeOfTerms: z.literal(true, {
+      required_error: 'Must Accept Terms and Conditions',
+      invalid_type_error: 'Must Accept Terms and Conditions',
+    }),
+    confirmPassword: z.string().min(6),
+    displayName: StringSchema,
+    email: z.string().email(),
+    firstName: StringSchema,
+    lastName: StringSchema,
+    password: z.string().min(6),
+    role: z.enum(['customer', 'creator']),
+  })
+  .superRefine(({ confirmPassword, password }, { addIssue }) => {
+    if (confirmPassword !== password) {
+      addIssue({
+        code: 'custom',
+        path: ['confirmPassword'],
+        message: 'Confirmation password must match password',
+      });
+    }
+  });
+
+export const UsernameSchema = z.object({
+  displayName: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
 });
 
-export const CatalogSchema = yup.object({
-  catalogName: yup
-    .string()
-    .test(
-      'test-catalogName',
-      'required',
-      (value) => !!value && value.trim().length >= 1,
-    )
-    .required('required'),
+export const LoginSchema = z.object({
+  email: z.string().min(6).email(),
+  password: z.string().min(6),
 });
 
-export const newEventSchema = yup.object().shape({
-  name: yup
-    .string()
-    .test(
-      'event-name-length',
-      'Minimum 6 symbols',
-      (value) => !!value && value.trim().length >= 6,
-    )
-    .required(),
-  date: yup
-    .string()
-    .test(
-      'not-from-the-past',
-      'Event time cannot be in the past',
-      (value) =>
-        !!value &&
-        value.trim().length !== 0 &&
-        Date.now() - new Date(value).valueOf() <= 5 * 60 * 1000,
-    )
-    .required(),
-  notify: yup
-    .string()
-    .oneOf([...notifyOptions])
-    .required(),
-});
+export type Industry = z.infer<typeof IndustrySchema>;
+export type StyleName = z.infer<typeof StyleNameSchema>;
+export type TypeOfName = z.infer<typeof TypeOfNameSchema>;
+export type BrandStyle = z.infer<typeof BrandStyleSchema>;
+export type NameContestContestType = z.infer<typeof NameContestTypeSchema>;
+export type LogoContestContestType = z.infer<typeof LogoContestTypeSchema>;
+export type TaglineContestContestType = z.infer<
+  typeof TaglineContestTypeSchema
+>;
+export type OrderBy = z.infer<typeof OrderBySchema>;
+export type TypeOfTagline = z.infer<typeof TypeOfTaglineSchema>;
+export type ContestContestType = z.infer<typeof ContestContestTypeSchema>;
+export type Notify = z.infer<typeof NotifySchema>;
+export type NewEvent = z.infer<typeof NewEventSchema>;
+export type Catalog = z.infer<typeof CatalogSchema>;
+export type Message = z.infer<typeof MessageSchema>;
+export type UpdateUser = z.infer<typeof UpdateUserSchema>;
+export type Cashout = z.infer<typeof CashoutSchema>;
+export type Payment = z.infer<typeof PaymentSchema>;
+export type TextOffer = z.infer<typeof TextOfferSchema>;
+export type LogoOffer = z.infer<typeof LogoOfferSchema>;
+export type Filter = z.infer<typeof FilterSchema>;
+export type Contest = z.infer<typeof ContestSchema>;
+export type TaglineContest = z.infer<typeof TaglineContestSchema>;
+export type LogoContest = z.infer<typeof LogoContestSchema>;
+export type NameContest = z.infer<typeof NameContestSchema>;
+export type BaseContest = z.infer<typeof BaseContestSchema>;
+export type Registration = z.infer<typeof RegistrationSchema>;
+export type Username = z.infer<typeof UsernameSchema>;
+export type Login = z.infer<typeof LoginSchema>;

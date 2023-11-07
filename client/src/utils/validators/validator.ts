@@ -1,13 +1,13 @@
-import type { AnySchema, ValidationError } from 'yup';
+import { Schema, type ZodError } from 'zod';
 
-const validator = (schema: AnySchema) => (values: Record<string, string>) => {
+const validator = (schema: Schema) => (values: Record<string, string>) => {
   const errors: Record<string, string> = {};
   try {
-    schema.validateSync(values, { abortEarly: false });
+    schema.parse(values);
     return errors;
   } catch (err) {
-    (err as ValidationError).inner.forEach((error) => {
-      errors[error?.path as string] = error.message;
+    (err as ZodError).errors.forEach((error) => {
+      errors[error.path.join('.')] = error.message;
     });
     return errors;
   }
