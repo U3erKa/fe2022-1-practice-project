@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "prepare": "npm run styles",
+    "prepare": "turbo styles",
     "start": "turbo dev styles:watch",
     "dev": "vite --host",
     "build": "vite build",
