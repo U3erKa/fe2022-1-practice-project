@@ -1,21 +1,20 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "build": {
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
+    "build": { "outputs": [".next/**", "!.next/cache/**"] },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "format": {},
     "lint": {},
+    "prepare": { "outputs": ["src"] },
     "start": {
       "cache": false,
       "persistent": true
     },
-    "typecheck": {
-      "outputs": ["tsconfig.tsbuildinfo"]
-    }
+    "typecheck": { "outputs": ["tsconfig.tsbuildinfo"] },
+    "styles": { "outputs": ["src"] },
+    "styles:watch": { "cache": false, "persistent": true }
   }
 }
