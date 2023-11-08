@@ -6,33 +6,33 @@ settings:
 
 dependencies:
   next:
-    specifier: 14.0.1
+    specifier: ^14.0.1
     version: 14.0.1(react-dom@18.2.0)(react@18.2.0)
   react:
-    specifier: ^18
+    specifier: ^18.2.0
     version: 18.2.0
   react-dom:
-    specifier: ^18
+    specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
 
 devDependencies:
   '@types/node':
-    specifier: ^20
+    specifier: ^20.9.0
     version: 20.9.0
   '@types/react':
-    specifier: ^18
+    specifier: ^18.2.37
     version: 18.2.37
   '@types/react-dom':
-    specifier: ^18
+    specifier: ^18.2.15
     version: 18.2.15
   eslint:
-    specifier: ^8
+    specifier: ^8.53.0
     version: 8.53.0
   eslint-config-next:
-    specifier: 14.0.1
+    specifier: ^14.0.1
     version: 14.0.1(eslint@8.53.0)(typescript@5.2.2)
   typescript:
-    specifier: ^5
+    specifier: ^5.2.2
     version: 5.2.2
 
 packages:
