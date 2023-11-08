@@ -151,3 +151,4 @@ dev-dist
 *.css.d.ts
 *.scss.d.ts
 next-env.d.ts
+.turbo
