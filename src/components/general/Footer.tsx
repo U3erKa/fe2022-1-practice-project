@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { DUMMY_LINK, FOOTER_ITEMS } from 'constants/general';
 import styles from './styles/Footer.module.scss';
@@ -8,7 +8,7 @@ const Footer = () => {
     <div key={title}>
       <h4>{title}</h4>
       {items.map((item) => (
-        <Link key={item} to={DUMMY_LINK}>
+        <Link key={item} href={DUMMY_LINK}>
           {item}
         </Link>
       ))}

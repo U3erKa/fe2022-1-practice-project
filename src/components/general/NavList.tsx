@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import type { HEADER_LIST } from 'constants/header';
@@ -28,7 +28,7 @@ export default function NavList({ list }: { list: List }) {
 export function NavListItem({ list }: { list: ListItem }) {
   const mapList = list.map(({ id, href, text }, i) => (
     <li key={id} className={list.length - 1 === i ? styles.last : undefined}>
-      <Link to={href}>{text}</Link>
+      <Link href={href}>{text}</Link>
     </li>
   ));
   return <ul>{mapList}</ul>;

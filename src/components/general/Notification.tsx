@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import styles from './styles/Notification.module.scss';
 
@@ -13,7 +13,7 @@ const Notification = ({ contestId, message }: Props) => (
     <span>{message}</span>
     <br />
     {contestId && (
-      <Link to={`/contest/${contestId}`} className={styles.goToContest}>
+      <Link href={`/contest/${contestId}`} className={styles.goToContest}>
         Go to contest
       </Link>
     )}

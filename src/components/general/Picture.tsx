@@ -4,7 +4,7 @@ import { MIME_TYPE } from 'constants/general';
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'srcSet'> & {
   srcSet?: string[];
 };
-
+/** @deprecated Use Image from next/image instead */
 export default function Picture({ srcSet, className, ...restProps }: Props) {
   const sources = srcSet?.map((source) => {
     const extension = source

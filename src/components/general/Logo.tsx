@@ -1,5 +1,5 @@
 import { type FC, type ImgHTMLAttributes } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 
@@ -9,7 +9,7 @@ export type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'srcSet'> & {
 };
 
 const Logo: FC<Props> = ({ to = '/', ...props }) => (
-  <Link to={to}>
+  <Link href={to}>
     <Picture
       srcSet={[
         `${STATIC_IMAGES_PATH}blue-logo.avif`,

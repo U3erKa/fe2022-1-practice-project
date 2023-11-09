@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
-import { useSelector } from 'hooks';
+import { useSelector } from 'store';
+// import { useSelector } from 'hooks';
 import { Logo, Picture, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
 
@@ -17,10 +18,10 @@ const Header = () => {
     }
     return (
       <>
-        <Link to="/login" style={{ textDecoration: 'none' }}>
+        <Link href="/login" style={{ textDecoration: 'none' }}>
           <span>LOGIN</span>
         </Link>
-        <Link to="/registration" style={{ textDecoration: 'none' }}>
+        <Link href="/registration" style={{ textDecoration: 'none' }}>
           <span>SIGN UP</span>
         </Link>
       </>
@@ -38,7 +39,7 @@ const Header = () => {
           Squadhelp recognized as one of the Most Innovative Companies by Inc
           Magazine.
         </span>
-        <Link to={DUMMY_LINK}>Read Announcement</Link>
+        <Link href={DUMMY_LINK}>Read Announcement</Link>
       </div>
       <div className={styles.loginSignnUpHeaders}>
         <div className={styles.numberContainer}>
@@ -63,7 +64,7 @@ const Header = () => {
             <NavList list={HEADER_LIST} />
           </div>
           {user && user.role === CUSTOMER && (
-            <Link to="/startContest" className={styles.startContestBtn}>
+            <Link href="/startContest" className={styles.startContestBtn}>
               START CONTEST
             </Link>
           )}
