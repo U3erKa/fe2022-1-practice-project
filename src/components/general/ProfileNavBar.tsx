@@ -1,6 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
-
-import { useDispatch } from 'hooks';
+import Link from 'next/link';
+import { useDispatch } from 'store';
 import { clearUserStore } from 'store/slices/userSlice';
 import { ROUTE } from 'constants/general';
 import styles from './styles/ProfileNavBar.module.scss';
@@ -13,17 +12,17 @@ export type Props = {
 
 export default function ProfileNavBar({ list, activeEvents }: Props) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const logOut = () => {
     localStorage.clear();
     dispatch(clearUserStore());
-    navigate(ROUTE.LOGIN);
+    // navigate(ROUTE.LOGIN);
   };
 
   const mapList = list.map(({ id, href, text }) => (
     <li key={id} className={styles.navListItem}>
-      <Link to={href} style={{ textDecoration: 'none' }}>
+      <Link href={href} style={{ textDecoration: 'none' }}>
         <span className={styles.navListLinkText}>{text}</span>
         {href === ROUTE.EVENTS && !!activeEvents && (
           <div className={styles.badge}>{activeEvents}</div>

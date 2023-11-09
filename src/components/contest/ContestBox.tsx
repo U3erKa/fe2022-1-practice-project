@@ -1,5 +1,4 @@
 import { type FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { capitalize } from 'radash';
 import { Picture } from 'components/general';
 import { getLongTimeStr } from 'utils/functions';
@@ -15,10 +14,10 @@ import styles from './styles/ContestBox.module.scss';
 export type Props = { data: Contest };
 
 const ContestBox: FC<Props> = ({ data }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const goToExtended = (contest_id: ContestId) => {
-    navigate(`/contest/${contest_id}`);
+    // navigate(`/contest/${contest_id}`);
   };
 
   const getPreferenceContest = () => {

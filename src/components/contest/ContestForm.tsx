@@ -1,8 +1,7 @@
 import { type FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { Spinner, TryAgain } from 'components/general';
@@ -67,7 +66,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
     }),
   );
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const defaultValues = contests[contestType]
     ? contests[contestType]
@@ -85,7 +84,6 @@ const ContestForm: FC<Props> = ({ contestType }) => {
   }, [contestType]);
 
   const onSubmit = (values: Contest) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { file, ...restValues } = values;
 
     dispatch(
@@ -98,7 +96,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
       bundle![contestType] === 'payment'
         ? ROUTE.PAYMENT
         : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
-    navigate(route);
+    // navigate(route);
   };
 
   const getPreference = () => {
@@ -194,7 +192,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
             <div className={styles.buttonsContainer}>
               <button
                 type="button"
-                onClick={() => navigate(-1)}
+                // onClick={() => navigate(-1)}
                 className={styles.prevButtonContainer}
               >
                 Back

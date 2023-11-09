@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { Error } from 'components/general';
 import {
@@ -28,7 +27,7 @@ const formInputClasses = {
 const RegistrationForm = () => {
   const { error, isFetching } = useSelector(({ auth }) => auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     return () => {
@@ -45,7 +44,7 @@ const RegistrationForm = () => {
 
   const onSubmit = (values: Registration) => {
     dispatch(
-      checkAuth({ data: values, navigate, authMode: AUTH_MODE.REGISTER }),
+      checkAuth({ data: values, /* navigate, */ authMode: AUTH_MODE.REGISTER }),
     );
   };
 

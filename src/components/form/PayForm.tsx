@@ -1,10 +1,9 @@
 import { type FC } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch } from 'hooks';
+import { useDispatch } from 'store';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
 import {
@@ -31,8 +30,8 @@ const classes = {
 
 const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
   const changeFocusOnCardMethod = (name: CardField) => {
     dispatch(changeFocusOnCard(name));
@@ -149,7 +148,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
           <span>{isPayForOrder ? 'Pay Now' : 'CashOut'}</span>
         </button>
         {isPayForOrder && (
-          <div onClick={() => navigate(-1)} className={styles.backButton}>
+          <div /* onClick={() => navigate(-1)} */ className={styles.backButton}>
             <span>Back</span>
           </div>
         )}
