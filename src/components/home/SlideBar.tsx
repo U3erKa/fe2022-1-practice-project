@@ -8,8 +8,8 @@ import {
   MAIN_SLIDER,
 } from 'constants/carousel';
 
-import styles from '../styles/SlideBar.module.scss';
-import '../styles/flickity.css';
+import styles from './styles/SlideBar.module.scss';
+import './styles/flickity.css';
 
 import type { FC } from 'react';
 import { Picture } from 'components/general';

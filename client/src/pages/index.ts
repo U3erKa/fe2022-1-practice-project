@@ -6,7 +6,6 @@ export const ContestCreationPage = lazy(
 export const ContestPage = lazy(() => import('./ContestPage/ContestPage'));
 export const Dashboard = lazy(() => import('./Dashboard/Dashboard'));
 export const EventsPage = lazy(() => import('./EventsPage/EventsPage'));
-export const Home = lazy(() => import('./Home/Home'));
 export const HowItWorksPage = lazy(
   () => import('./HowItWorksPage/HowItWorksPage'),
 );
