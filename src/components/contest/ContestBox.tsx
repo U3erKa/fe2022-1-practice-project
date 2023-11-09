@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { type FC } from 'react';
 import { capitalize } from 'radash';
 import { Picture } from 'components/general';
@@ -14,10 +15,10 @@ import styles from './styles/ContestBox.module.scss';
 export type Props = { data: Contest };
 
 const ContestBox: FC<Props> = ({ data }) => {
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const goToExtended = (contest_id: ContestId) => {
-    // navigate(`/contest/${contest_id}`);
+    router.push(`/contest/${contest_id}`);
   };
 
   const getPreferenceContest = () => {

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { type FC } from 'react';
 import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
@@ -30,7 +31,7 @@ const classes = {
 
 const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const router = useRouter();
   // const location = useLocation();
 
   const changeFocusOnCardMethod = (name: CardField) => {
@@ -148,7 +149,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
           <span>{isPayForOrder ? 'Pay Now' : 'CashOut'}</span>
         </button>
         {isPayForOrder && (
-          <div /* onClick={() => navigate(-1)} */ className={styles.backButton}>
+          <div onClick={router.back} className={styles.backButton}>
             <span>Back</span>
           </div>
         )}

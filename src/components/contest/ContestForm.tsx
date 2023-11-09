@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { type FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -66,7 +67,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
     }),
   );
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const defaultValues = contests[contestType]
     ? contests[contestType]
@@ -96,7 +97,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
       bundle![contestType] === 'payment'
         ? ROUTE.PAYMENT
         : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
-    // navigate(route);
+        router.push(route);
   };
 
   const getPreference = () => {
@@ -192,7 +193,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
             <div className={styles.buttonsContainer}>
               <button
                 type="button"
-                // onClick={() => navigate(-1)}
+                onClick={router.back}
                 className={styles.prevButtonContainer}
               >
                 Back

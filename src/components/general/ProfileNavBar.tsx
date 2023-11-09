@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
 import { ROUTE } from 'constants/general';
@@ -12,12 +13,12 @@ export type Props = {
 
 export default function ProfileNavBar({ list, activeEvents }: Props) {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const logOut = () => {
     localStorage.clear();
     dispatch(clearUserStore());
-    // navigate(ROUTE.LOGIN);
+    router.push(ROUTE.LOGIN);
   };
 
   const mapList = list.map(({ id, href, text }) => (

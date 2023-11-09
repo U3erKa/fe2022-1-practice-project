@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -27,7 +28,7 @@ const formInputClasses = {
 const RegistrationForm = () => {
   const { error, isFetching } = useSelector(({ auth }) => auth);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     return () => {
@@ -44,7 +45,11 @@ const RegistrationForm = () => {
 
   const onSubmit = (values: Registration) => {
     dispatch(
-      checkAuth({ data: values, /* navigate, */ authMode: AUTH_MODE.REGISTER }),
+      checkAuth({
+        data: values,
+        navigate: router.push,
+        authMode: AUTH_MODE.REGISTER,
+      }),
     );
   };
 
