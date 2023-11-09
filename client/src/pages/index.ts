@@ -10,9 +10,6 @@ export const HowItWorksPage = lazy(
   () => import('./HowItWorksPage/HowItWorksPage'),
 );
 export const Payment = lazy(() => import('./Payment/Payment'));
-export const RegistrationPage = lazy(
-  () => import('./RegistrationPage/RegistrationPage'),
-);
 export const StartContestPage = lazy(
   () => import('./StartContestPage/StartContestPage'),
 );

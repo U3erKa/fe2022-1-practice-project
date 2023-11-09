@@ -1,11 +1,11 @@
 'use client';
-import { useEffect } from 'react';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useDispatch } from 'hooks';
 import { clearAuthError } from 'store/slices/authSlice';
 import { Logo } from 'components/general';
 import { LoginForm } from 'components/form';
-import { STATIC_IMAGES_PATH } from 'constants/general';
+import { ROUTE, STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/page.module.scss';
 
 const LoginPage = () => {
@@ -29,7 +29,7 @@ const LoginPage = () => {
             alt="logo"
           />
           <div className={styles.linkLoginContainer}>
-            <Link href="/registration" style={{ textDecoration: 'none' }}>
+            <Link href={ROUTE.REGISTER} style={{ textDecoration: 'none' }}>
               <span>Signup</span>
             </Link>
           </div>

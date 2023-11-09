@@ -1,9 +1,7 @@
 import { type FC, Fragment } from 'react';
-
 import { TextEntry } from 'components/general';
-import styles from '../styles/RegistrationArticles.module.scss';
-
 import type { TextEntry as TextEntryT } from 'types/general';
+import styles from './styles/RegistrationArticles.module.scss';
 
 export type Props = {
   articles: Article[];

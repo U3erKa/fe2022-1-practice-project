@@ -1,20 +1,17 @@
+'use client';
+import Link from 'next/link';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-import { useDispatch } from 'hooks';
+import { useDispatch } from 'store';
 import { clearAuthError } from 'store/slices/authSlice';
-
 import { Logo } from 'components/general';
 import { RegistrationForm } from 'components/form';
-import { RegistrationArticles } from '.';
-
-import { STATIC_IMAGES_PATH } from 'constants/general';
+import { RegistrationArticles } from 'components/registration';
+import { ROUTE, STATIC_IMAGES_PATH } from 'constants/general';
 import {
   REGISTRATION_ARTICLES_LEFT,
   REGISTRATION_ARTICLES_RIGHT,
 } from 'constants/registration';
-
-import styles from './styles/RegistrationPage.module.scss';
+import styles from './styles/page.module.scss';
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -36,7 +33,7 @@ const RegistrationPage = () => {
             src={`${STATIC_IMAGES_PATH}logo.png`}
           />
           <div className={styles.linkLoginContainer}>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link href={ROUTE.LOGIN} style={{ textDecoration: 'none' }}>
               <span>Login</span>
             </Link>
           </div>
