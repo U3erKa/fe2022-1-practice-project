@@ -9,7 +9,6 @@ export const EventsPage = lazy(() => import('./EventsPage/EventsPage'));
 export const HowItWorksPage = lazy(
   () => import('./HowItWorksPage/HowItWorksPage'),
 );
-export const LoginPage = lazy(() => import('./LoginPage/LoginPage'));
 export const Payment = lazy(() => import('./Payment/Payment'));
 export const RegistrationPage = lazy(
   () => import('./RegistrationPage/RegistrationPage'),

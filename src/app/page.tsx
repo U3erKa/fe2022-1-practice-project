@@ -15,7 +15,7 @@ import {
   MAIN_SLIDER,
   MAIN_SLIDER_IMAGES,
 } from 'constants/carousel';
-import styles from './styles/Home.module.scss';
+import styles from './styles/page.module.scss';
 
 const Home = () => {
   const { isFetching } = useSelector((state) => state.userStore);
