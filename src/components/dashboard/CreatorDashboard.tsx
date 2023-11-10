@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect } from 'react';
 import { isEqual } from 'radash';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   clearContestsList,
   getContests,
@@ -11,62 +11,59 @@ import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { ItemsContainer, TryAgain } from 'components/general';
 import { ContestBox } from 'components/contest';
 import { CreatorFilter } from './CreatorFilter';
-import { parseQueryString } from 'utils/functions';
 import { CREATOR } from 'constants/general';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
-import styles from '../styles/CreatorDashboard.module.scss';
 import type { GetActiveContestsParams } from 'types/api/contest';
+import styles from './styles/CreatorDashboard.module.scss';
 
 const CreatorDashboard = () => {
   const { contests, creatorFilter, error, haveMore } = useSelector(
     ({ contestsList }) => contestsList,
   );
   const dispatch = useDispatch();
-  const location = useLocation();
+  const searchParams = useSearchParams();
+
+  const getContestsMethod = useCallback(
+    (filter: GetActiveContestsParams) => {
+      dispatch(
+        getContests({
+          requestData: { limit: 8, offset: 0, ...filter },
+          role: CREATOR,
+        }),
+      );
+    },
+    [dispatch],
+  );
+
+  const parseUrlForParams = useCallback(() => {
+    const filter = {
+      typeIndex: searchParams.get('typeIndex') ?? '1',
+      contestId: searchParams.get('contestId') ?? '',
+      industry: searchParams.get('industry') ?? '',
+      awardSort: searchParams.get('awardSort') ?? 'asc',
+      ownEntries: searchParams.get('ownEntries') ?? false,
+    } as unknown as _CreatorFilter;
+    if (isEqual(filter, creatorFilter)) return true;
+    dispatch(setNewCreatorFilter(filter));
+    dispatch(clearContestsList());
+    getContestsMethod(filter);
+    return false;
+  }, [creatorFilter, dispatch, getContestsMethod, searchParams]);
 
   useEffect(() => {
     dispatch(getDataForContest());
-    if (parseUrlForParams(location.search) && !contests.length)
+    if (parseUrlForParams() && !contests.length)
       getContestsMethod(creatorFilter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    parseUrlForParams(location.search);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search]);
+    parseUrlForParams();
+  }, [parseUrlForParams, searchParams]);
 
   const contestsList = contests.map((contest) => (
     <ContestBox data={contest} key={contest.id} />
   ));
-
-  const getContestsMethod = (filter: GetActiveContestsParams) => {
-    dispatch(
-      getContests({
-        requestData: { limit: 8, offset: 0, ...filter },
-        role: CREATOR,
-      }),
-    );
-  };
-
-  const parseUrlForParams = (search: string) => {
-    const obj = parseQueryString(search);
-    const filter = {
-      typeIndex: obj.typeIndex || 1,
-      contestId: obj.contestId ? obj.contestId : ('' as any),
-      industry: obj.industry ? obj.industry : '',
-      awardSort: obj.awardSort || 'asc',
-      ownEntries:
-        typeof obj.ownEntries === 'undefined' ? false : obj.ownEntries,
-    } as _CreatorFilter;
-    if (!isEqual(filter, creatorFilter)) {
-      dispatch(setNewCreatorFilter(filter));
-      dispatch(clearContestsList());
-      getContestsMethod(filter);
-      return false;
-    }
-    return true;
-  };
 
   const getPredicateOfRequest = () => {
     const obj: _CreatorFilter = {};

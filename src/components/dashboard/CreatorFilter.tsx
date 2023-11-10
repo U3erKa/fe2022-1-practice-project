@@ -1,33 +1,38 @@
+import { useRouter } from 'next/navigation';
 import { type ChangeEventHandler, type FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { select } from 'radash';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
-import { ROUTE } from 'constants/general';
+import {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  ROUTE,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 import type { Industry } from 'types/contest';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
-import styles from '../styles/CreatorDashboard.module.scss';
+import styles from './styles/CreatorDashboard.module.scss';
 
 export type Props = {
   onChange: ChangeEventHandler<HTMLSelectElement>;
-  value: (typeof types)[number];
+  value: (typeof CONTEST_TYPES)[number];
 };
 
-export const types = [
+export const CONTEST_TYPES = [
   '',
-  'name,tagline,logo',
-  'name',
-  'tagline',
-  'logo',
-  'name,tagline',
-  'logo,tagline',
-  'name,logo',
-];
+  `${NAME_CONTEST},${TAGLINE_CONTEST},${LOGO_CONTEST}`,
+  `${NAME_CONTEST}`,
+  `${TAGLINE_CONTEST}`,
+  `${LOGO_CONTEST}`,
+  `${NAME_CONTEST},${TAGLINE_CONTEST}`,
+  `${LOGO_CONTEST},${TAGLINE_CONTEST}`,
+  `${NAME_CONTEST},${LOGO_CONTEST}`,
+] as const;
 
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {
   const contestTypes = select(
-    types,
+    CONTEST_TYPES,
     (type, i) => (
       <option key={i} value={type}>
         {type}
@@ -80,7 +85,7 @@ export const CreatorFilter = () => {
   const { industry } = contestData || {};
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const parseParamsToUrl = (creatorFilter: _CreatorFilter) => {
     const obj: Record<string, any> = {};
@@ -90,7 +95,7 @@ export const CreatorFilter = () => {
       }
     });
 
-    navigate(`${ROUTE.DASHBOARD}?${new URLSearchParams(obj)}`);
+    router.push(`${ROUTE.DASHBOARD}?${new URLSearchParams(obj)}`);
   };
 
   const changePredicate = ({ name, value }: { name: string; value: any }) => {
@@ -128,10 +133,10 @@ export const CreatorFilter = () => {
             onChange={({ target }) =>
               changePredicate({
                 name: 'typeIndex',
-                value: types.indexOf(target.value),
+                value: CONTEST_TYPES.indexOf(target.value),
               })
             }
-            value={types[creatorFilter.typeIndex as number]}
+            value={CONTEST_TYPES[creatorFilter.typeIndex as number]}
           />
         </div>
         <div className={styles.inputContainer}>

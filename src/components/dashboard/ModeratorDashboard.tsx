@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   clearSetOfferStatusError,
   getOffers,
   setIsReviewed,
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
-import { OfferBox } from 'pages/ContestPage';
 import { ItemsContainer, TryAgain } from 'components/general';
+import { OfferBox } from 'components/contestById';
 import { CustomFilter } from './CustomFilter';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { ModeratorCommand } from 'types/api/offer';
 import type { OfferId, UserId } from 'types/api/_common';
-import styles from '../styles/CustomerDashboard.module.scss';
+import styles from './styles/CustomerDashboard.module.scss';
 
 const buttons = [
   { name: 'Offers to review', filter: false },

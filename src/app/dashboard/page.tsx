@@ -1,6 +1,11 @@
-import { useSelector } from 'hooks';
+'use client';
+import { useSelector } from 'store';
 import { Header } from 'components/general';
-import { CreatorDashboard, CustomerDashboard, ModeratorDashboard } from '.';
+import {
+  CreatorDashboard,
+  CustomerDashboard,
+  ModeratorDashboard,
+} from 'components/dashboard';
 import { CREATOR, CUSTOMER, MODERATOR } from 'constants/general';
 
 const Dashboard = () => {

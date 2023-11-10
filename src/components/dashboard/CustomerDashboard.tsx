@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   clearContestsList,
   getContests,
@@ -15,7 +15,7 @@ import {
   CUSTOMER,
 } from 'constants/general';
 import type { Status } from 'types/contest';
-import styles from '../styles/CustomerDashboard.module.scss';
+import styles from './styles/CustomerDashboard.module.scss';
 
 const buttons: { name: string; filter: Status }[] = [
   { name: 'Active Contests', filter: CONTEST_STATUS_ACTIVE },
