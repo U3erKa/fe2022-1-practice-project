@@ -1,16 +1,15 @@
+'use client';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { isEmpty } from 'radash';
-
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
-
 import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
-
 import { DUMMY_LINK, ROUTE } from 'constants/general';
-import styles from './styles/Payment.module.scss';
-import type { Card } from 'types/api/user';
+import { type Payment } from 'utils/validators/validationSchems';
+import styles from './styles/page.module.scss';
 
 const Payment = () => {
   const { error, contests } = useSelector((state) => ({
@@ -18,16 +17,16 @@ const Payment = () => {
     contests: state.contestCreationStore.contests,
   }));
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     if (isEmpty(contests)) {
-      navigate(ROUTE.START_CONTEST, { replace: true });
+      router.replace(ROUTE.START_CONTEST);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contests]);
 
-  const payMethod = (values: Card) => {
+  const payMethod = (values: Payment) => {
     const contestArray: any[] = Object.keys(contests).map((key) => ({
       ...contests[key as keyof typeof contests],
     }));
@@ -38,12 +37,12 @@ const Payment = () => {
       formData.append('files', contestArray[i].file);
       contestArray[i].haveFile = !!contestArray[i].file;
     }
-    formData.append('number', number as unknown as string);
-    formData.append('expiry', expiry as unknown as string);
-    formData.append('cvc', cvc as unknown as string);
+    formData.append('number', number);
+    formData.append('expiry', expiry);
+    formData.append('cvc', cvc);
     formData.append('contests', JSON.stringify(contestArray));
     formData.append('price', '100');
-    dispatch(pay({ data: { formData }, navigate }));
+    dispatch(pay({ data: { formData }, navigate: router.push }));
   };
 
   return (
@@ -73,7 +72,7 @@ const Payment = () => {
             <span>Total:</span>
             <span>$100.00 USD</span>
           </div>
-          <Link to={DUMMY_LINK}>Have a promo code?</Link>
+          <Link href={DUMMY_LINK}>Have a promo code?</Link>
         </div>
       </div>
     </div>
