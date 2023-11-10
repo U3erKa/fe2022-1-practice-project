@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch } from 'hooks';
+import { useDispatch } from 'store';
 import { createEvent } from 'store/slices/eventSlice';
 import { FormInput, SelectInput } from 'components/input';
 import {
@@ -10,7 +10,7 @@ import {
 } from 'utils/validators/validationSchems';
 import { NOTIFY_OPTIONS } from 'constants/general';
 import type { useForceUpdate } from 'hooks';
-import styles from '../styles/CreateEvent.module.scss';
+import styles from './styles/CreateEvent.module.scss';
 
 export const defaultValues = {
   notify: NOTIFY_OPTIONS[0] as Notify,

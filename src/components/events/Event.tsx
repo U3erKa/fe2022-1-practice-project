@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getEventProgress } from 'utils/functions';
 import type { CreateEventResponse } from 'types/api/event';
-import styles from '../styles/EventListItems.module.scss';
+import styles from './styles/EventListItems.module.scss';
 
 export type Props = CreateEventResponse;
 
