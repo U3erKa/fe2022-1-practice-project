@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 
-export const ContestPage = lazy(() => import('./ContestPage/ContestPage'));
 export const HowItWorksPage = lazy(
   () => import('./HowItWorksPage/HowItWorksPage'),
 );

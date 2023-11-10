@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   clearContestUpdationStore,
   updateContest,
@@ -8,7 +8,7 @@ import { Error } from 'components/general';
 import { ContestForm, ContestInfo } from 'components/contest';
 import type { ContestInfo as _ContestInfo } from 'types/api/contest';
 import type { ContestData } from 'types/slices';
-import styles from '../styles/Brief.module.scss';
+import styles from './styles/Brief.module.scss';
 
 const Brief = () => {
   const selector = useSelector((state) => {

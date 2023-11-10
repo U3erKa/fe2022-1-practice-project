@@ -1,28 +1,30 @@
-import { useEffect } from 'react';
-import { useMatch } from 'react-router-dom';
+'use client';
+import { useEffect, type FC } from 'react';
 import LightBox from 'yet-another-react-lightbox';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   changeEditContest,
   changeShowImage,
   getContestById,
 } from 'store/slices/contestByIdSlice';
-import { ContestPageContents } from '.';
+import { ContestPageContents } from 'components/contestById';
 import { Header } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';
 import 'yet-another-react-lightbox/styles.css';
 
-const ContestPage = () => {
+export type Props = {
+  params: { id: number };
+};
+
+const ContestPage: FC<Props> = ({ params: { id } }) => {
   const { isShowOnFull, imagePath } = useSelector(
     ({ contestByIdStore }) => contestByIdStore,
   );
 
   const dispatch = useDispatch();
-  const match = useMatch('/contest/:id')!;
-  const contestId = match.params.id as unknown as number;
 
   useEffect(() => {
-    dispatch(getContestById({ contestId }));
+    dispatch(getContestById({ contestId: id }));
 
     return () => {
       dispatch(changeEditContest(false));
@@ -42,7 +44,7 @@ const ContestPage = () => {
         />
       )}
       <Header />
-      <ContestPageContents contestId={contestId} />
+      <ContestPageContents contestId={id} />
     </div>
   );
 };

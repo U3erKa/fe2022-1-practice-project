@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   clearSetOfferStatusError,
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
 import { Error } from 'components/general';
-import { OfferBox } from '..';
+import { OfferBox } from '.';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { FC } from 'react';
 import type { Offer } from 'types/api/contest';
 import type { ContestData } from 'types/slices';
 import type { CustomerCommand } from 'types/api/offer';
-import styles from '../styles/ContestOfferList.module.scss';
+import styles from './styles/ContestOfferList.module.scss';
 
 export type Props = {
   offers: Offer[];

@@ -1,4 +1,4 @@
-import { useSelector } from 'hooks';
+import { useSelector } from 'store';
 import { Picture } from 'components/general';
 import { getLongTimeStr } from 'utils/functions';
 import {
@@ -8,7 +8,7 @@ import {
 } from 'constants/general';
 import type { FC } from 'react';
 import type { ContestData } from 'types/slices';
-import styles from '../styles/ContestSideBar.module.scss';
+import styles from './styles/ContestSideBar.module.scss';
 
 export type Props = {
   totalEntries: number;

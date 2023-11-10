@@ -8,7 +8,7 @@ import {
   faClock,
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
   changeMark,
@@ -32,14 +32,14 @@ import {
   STATIC_IMAGES_PATH,
 } from 'constants/general';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import '../styles/confirmStyle.css';
+import './styles/confirmStyle.css';
 import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
 import type { FC } from 'react';
 import type { ContestData } from 'types/slices';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
 import type { User } from 'types/api/user';
-import styles from '../styles/OfferBox.module.scss';
+import styles from './styles/OfferBox.module.scss';
 
 export type Props = {
   data: Offer;

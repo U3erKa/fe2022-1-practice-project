@@ -1,14 +1,14 @@
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import {
   changeContestViewMode,
   getContestById,
 } from 'store/slices/contestByIdSlice';
 import { Spinner, TryAgain } from 'components/general';
 import { OfferForm } from 'components/form';
-import { Brief, ContestOffersList, ContestSideBar } from '..';
+import { Brief, ContestOffersList, ContestSideBar } from '.';
 import { CONTEST_STATUS_ACTIVE, CREATOR } from 'constants/general';
-import styles from '../styles/ContestPage.module.scss';
+import styles from './styles/ContestPage.module.scss';
 
 function ContestPageContents({ contestId }: { contestId: number }) {
   const {
