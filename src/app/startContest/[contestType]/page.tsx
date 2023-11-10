@@ -1,23 +1,24 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { type FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'hooks';
+import { useSelector } from 'store';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { ContestForm } from 'components/contest';
 import { ROUTE } from 'constants/general';
 import type { ContestType } from 'types/contest';
-import styles from './styles/ContestCreationPage.module.scss';
+import styles from './styles/page.module.scss';
 
 export type Props = {
-  contestType: ContestType;
+  params: { contestType: ContestType };
   title: string;
 };
 
-const ContestCreationPage: FC<Props> = ({ contestType, title }) => {
+const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
   const bundle = useSelector(({ bundleStore }) => bundleStore.bundle);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
-    !bundle && navigate(ROUTE.START_CONTEST, { replace: true });
+    !bundle && router.replace(ROUTE.START_CONTEST);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bundle]);
 

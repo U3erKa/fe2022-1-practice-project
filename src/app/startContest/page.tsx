@@ -1,36 +1,32 @@
-import { useNavigate } from 'react-router-dom';
-
-import { useDispatch, useSelector } from 'hooks';
+'use client';
+import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'store';
 import { updateBundle } from 'store/slices/bundleSlice';
-
 import { Footer, Header, ProgressBar } from 'components/general';
-import { BundleBox, ButtonGroup } from '.';
-
+import { BundleBox, ButtonGroup } from 'components/startContest';
 import { CUSTOMER, ROUTE } from 'constants/general';
-import styles from './styles/StartContestPage.module.scss';
-
 import type { Bundle } from 'types/slices';
+import styles from './styles/page.module.scss';
 
 const StartContestPage = () => {
   const userStore = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   if (userStore.data?.role !== CUSTOMER) {
-    navigate(ROUTE.HOME, { replace: true });
+    router.replace(ROUTE.HOME);
   }
 
   const setBundle = (bundleStr: string) => {
     const array = bundleStr.toLowerCase().split('+');
     const bundleList = {} as Bundle;
-    // eslint-disable-next-line prefer-destructuring
     bundleList.first = array[0];
     for (let i = 0; i < array.length; i++) {
       bundleList[array[i] as keyof typeof bundleList] =
         i === array.length - 1 ? 'payment' : array[i + 1];
     }
     dispatch(updateBundle(bundleList));
-    navigate(`${ROUTE.START_CONTEST}/${bundleList.first}Contest`);
+    router.push(`${ROUTE.START_CONTEST}/${bundleList.first}Contest`);
   };
 
   return (
