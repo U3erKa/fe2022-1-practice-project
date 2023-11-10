@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { isEqual } from 'radash';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
-import styles from '../styles/Answer.module.scss';
+import styles from './styles/Answer.module.scss';
 
 export type Props = {
   active: boolean;

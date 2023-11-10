@@ -1,5 +1,5 @@
 import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
-import styles from '../styles/HowItWorksQnA.module.scss';
+import styles from './styles/HowItWorksQnA.module.scss';
 import type { FC } from 'react';
 import { Questions } from './Questions';
 

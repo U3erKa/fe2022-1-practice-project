@@ -8,7 +8,7 @@ import {
   HowItWorksCards,
   HowItWorksIntro,
   HowItWorksQnA,
-} from '.';
+} from 'components/how-it-works';
 import type { FC } from 'react';
 
 const HowItWorksPage: FC = () => {

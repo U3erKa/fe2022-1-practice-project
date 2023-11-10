@@ -1,5 +1,5 @@
 import { FEATURED } from 'constants/howItWorks';
-import styles from '../styles/Featured.module.scss';
+import styles from './styles/Featured.module.scss';
 import type { FC } from 'react';
 
 export const Featured: FC = () => {

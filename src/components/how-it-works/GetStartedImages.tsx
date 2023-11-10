@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { GET_STARTED_IMAGES } from 'constants/howItWorks';
-import styles from '../styles/GetStartedImages.module.scss';
+import styles from './styles/GetStartedImages.module.scss';
 
 const GetStartedImages = () => {
   const images = GET_STARTED_IMAGES.map(({ id, src, alt, caption }) => {
