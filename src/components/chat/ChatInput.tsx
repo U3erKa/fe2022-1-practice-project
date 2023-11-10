@@ -19,6 +19,7 @@ const ChatInput = () => {
   const dispatch = useDispatch();
 
   const { handleSubmit, control, reset } = useForm({
+    defaultValues: { message: '' },
     resolver: zodResolver(MessageSchema),
   });
 

@@ -13,6 +13,8 @@ import type { useForceUpdate } from 'hooks';
 import styles from './styles/CreateEvent.module.scss';
 
 export const defaultValues = {
+  name: '',
+  date: '',
   notify: NOTIFY_OPTIONS[0] as Notify,
 };
 

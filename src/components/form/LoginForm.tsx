@@ -32,6 +32,7 @@ const LoginForm = () => {
   }, []);
 
   const { handleSubmit, control } = useForm({
+    defaultValues: { email: '', password: '' },
     resolver: zodResolver(LoginSchema),
     mode: 'all',
   });

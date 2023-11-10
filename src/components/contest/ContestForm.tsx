@@ -24,6 +24,21 @@ import type { ContestType } from 'types/contest';
 import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
 import styles from './styles/ContestForm.module.scss';
 
+const variableOptions = {
+  [NAME_CONTEST]: {
+    styleName: '',
+    typeOfName: '',
+  },
+  [LOGO_CONTEST]: {
+    nameVenture: '',
+    brandStyle: '',
+  },
+  [TAGLINE_CONTEST]: {
+    nameVenture: '',
+    typeOfTagline: '',
+  },
+};
+
 export type Props = {
   contestType: ContestType;
 };
@@ -69,13 +84,21 @@ const ContestForm: FC<Props> = ({ contestType }) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const defaultValues = contests[contestType]
+  const defaultContestData = contests[contestType]
     ? contests[contestType]
     : ({ contestType } as unknown as ContestInfo);
   const { isFetching, error, data: contestData } = dataForContest;
 
   const { handleSubmit, control, register } = useForm({
-    defaultValues,
+    defaultValues: {
+      title: '',
+      industry: '',
+      focusOfWork: '',
+      targetCustomer: '',
+      file: '',
+      ...variableOptions[contestType],
+      ...defaultContestData,
+    },
     resolver: zodResolver(ContestSchema),
   });
 
@@ -97,7 +120,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
       bundle![contestType] === 'payment'
         ? ROUTE.PAYMENT
         : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
-        router.push(route);
+    router.push(route);
   };
 
   const getPreference = () => {

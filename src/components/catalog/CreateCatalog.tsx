@@ -19,6 +19,7 @@ const CreateCatalog = () => {
   const dispatch = useDispatch();
 
   const { handleSubmit, control } = useForm({
+    defaultValues: { catalogName: '' },
     resolver: zodResolver(CatalogSchema),
   });
 

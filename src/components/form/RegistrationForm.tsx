@@ -38,7 +38,16 @@ const RegistrationForm = () => {
   }, []);
 
   const { handleSubmit, control } = useForm({
-    defaultValues: { role: CUSTOMER, agreeOfTerms: false },
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      role: CUSTOMER,
+      agreeOfTerms: false,
+    },
     resolver: zodResolver(RegistrationSchema),
     mode: 'all',
   });

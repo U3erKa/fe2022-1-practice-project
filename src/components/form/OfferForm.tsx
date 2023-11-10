@@ -66,6 +66,7 @@ const OfferForm: FC<OfferFormProps> = ({
   const { addOfferError } = useSelector((state) => state.contestByIdStore);
   const dispatch = useDispatch();
   const { handleSubmit, control, register, reset } = useForm({
+    defaultValues: { offerData: '' },
     resolver: zodResolver(
       contestType === LOGO_CONTEST ? LogoOfferSchema : TextOfferSchema,
     ),
