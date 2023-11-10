@@ -1,12 +1,12 @@
 import { type FC } from 'react';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { updateUser } from 'store/slices/userSlice';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
 import { UpdateUserInfoForm } from 'components/form';
 import { uniqueId } from 'utils/functions';
 import { ANONYM_IMAGE_PATH, CREATOR, PUBLIC_URL } from 'constants/general';
 import type { User } from 'types/api/user';
-import styles from '../styles/UserInfo.module.scss';
+import styles from './styles/UserInfo.module.scss';
 
 export type Props = {
   userData: Omit<User, 'avatar'>;

@@ -1,13 +1,14 @@
+'use client';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'hooks';
+import { useDispatch, useSelector } from 'store';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 import { Error, Header } from 'components/general';
 import { PayForm } from 'components/form';
-import { UserInfo } from '.';
+import { UserInfo } from 'components/account';
 import { CASHOUT_MODE, CREATOR, USER_INFO_MODE } from 'constants/general';
 import type { CashOutParams } from 'types/api/offer';
-import styles from './styles/UserProfile.module.scss';
+import styles from './styles/page.module.scss';
 
 const UserProfile = () => {
   const { balance, role, profileViewMode, error } = useSelector((state) => {
