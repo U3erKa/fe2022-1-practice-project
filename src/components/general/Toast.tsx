@@ -1,17 +1,25 @@
 'use client';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { useDispatch } from 'store';
+import { useDispatch, useSelector } from 'store';
 import { getEvents } from 'store/slices/eventSlice';
+import { refresh } from 'store/slices/userSlice';
 import { ChatContainer } from 'components/chat';
 
 function Toast({ children }: React.PropsWithChildren) {
+  const user = useSelector(({ userStore }) => userStore.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getEvents());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (user) {
+      dispatch(getEvents());
+      return;
+    }
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (refreshToken) {
+      dispatch(refresh(refreshToken));
+    }
+  }, [dispatch, user]);
 
   return (
     <>
