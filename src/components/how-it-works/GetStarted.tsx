@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './styles/GetStarted.module.scss';
 import type { FC } from 'react';
-import { HOW_IT_WORKS_PATH, ROUTE } from 'constants/general';
+import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
 
 export const GetStarted: FC = () => {
   return (
@@ -18,7 +18,7 @@ export const GetStarted: FC = () => {
           Fill out your contest brief and begin receiving custom name
           suggestions within minutes.
         </p>
-        <Link className={styles.button} href={ROUTE.START_CONTEST}>
+        <Link className={styles.button} href={PAGE.START_CONTEST}>
           Start A Contest
         </Link>
       </section>

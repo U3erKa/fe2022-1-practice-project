@@ -12,7 +12,7 @@ import {
   type Payment,
   PaymentSchema,
 } from 'utils/validators/validationSchems';
-import { ROUTE } from 'constants/general';
+import { PAGE } from 'constants/general';
 import type { CardField } from 'types/api/offer';
 import 'react-credit-cards-2/dist/es/styles.scss';
 import styles from './styles/PayForm.module.scss';
@@ -38,7 +38,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
     dispatch(changeFocusOnCard(name));
   };
 
-  const isCashoutPage = location.pathname === ROUTE.ACCOUNT;
+  const isCashoutPage = location.pathname === PAGE.ACCOUNT;
   const defaultValues = {
     focusOnElement: '',
     name: '',

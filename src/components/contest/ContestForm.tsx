@@ -17,7 +17,7 @@ import { type Contest, ContestSchema } from 'utils/validators/validationSchems';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
-  ROUTE,
+  PAGE,
   TAGLINE_CONTEST,
 } from 'constants/general';
 import type { ContestType } from 'types/contest';
@@ -118,8 +118,8 @@ const ContestForm: FC<Props> = ({ contestType }) => {
     );
     const route =
       bundle![contestType] === 'payment'
-        ? ROUTE.PAYMENT
-        : `${ROUTE.START_CONTEST}/${bundle![contestType]}Contest`;
+        ? PAGE.PAYMENT
+        : `${PAGE.START_CONTEST}/${bundle![contestType]}`;
     router.push(route);
   };
 

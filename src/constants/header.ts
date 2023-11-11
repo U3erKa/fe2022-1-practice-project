@@ -1,4 +1,4 @@
-import { DUMMY_LINK } from './general';
+import { DUMMY_LINK, PAGE } from './general';
 
 const NAME_IDEAS = [
   { id: 0, href: DUMMY_LINK, text: 'Beauty' },
@@ -57,9 +57,9 @@ export const HEADER_LIST = [
 ];
 
 export const PROFILE_NAVBAR = [
-  { id: 0, href: '/dashboard', text: 'View Dashboard' },
-  { id: 1, href: '/account', text: 'My Account' },
-  { id: 2, href: '/events', text: 'My Events' },
+  { id: 0, href: PAGE.DASHBOARD, text: 'View Dashboard' },
+  { id: 1, href: PAGE.ACCOUNT, text: 'My Account' },
+  { id: 2, href: PAGE.EVENTS, text: 'My Events' },
   { id: 3, href: DUMMY_LINK, text: 'Messages' },
   { id: 4, href: DUMMY_LINK, text: 'Affiliate Dashboard' },
 ];

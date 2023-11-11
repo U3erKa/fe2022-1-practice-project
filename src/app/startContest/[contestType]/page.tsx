@@ -4,7 +4,7 @@ import { type FC, useEffect } from 'react';
 import { useSelector } from 'store';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { ContestForm } from 'components/contest';
-import { ROUTE } from 'constants/general';
+import { PAGE } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/page.module.scss';
 
@@ -18,7 +18,7 @@ const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
   const router = useRouter();
 
   useEffect(() => {
-    !bundle && router.replace(ROUTE.START_CONTEST);
+    !bundle && router.replace(PAGE.START_CONTEST);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bundle]);
 

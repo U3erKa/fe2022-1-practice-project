@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useSelector } from 'hooks';
 import { Logo, Picture, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
-import { CUSTOMER, DUMMY_LINK, STATIC_IMAGES_PATH } from 'constants/general';
+import { CUSTOMER, DUMMY_LINK, PAGE, STATIC_IMAGES_PATH } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import styles from './styles/Header.module.scss';
 
@@ -17,10 +17,10 @@ const Header = () => {
     }
     return (
       <>
-        <Link href="/login" style={{ textDecoration: 'none' }}>
+        <Link href={PAGE.LOGIN} style={{ textDecoration: 'none' }}>
           <span>LOGIN</span>
         </Link>
-        <Link href="/registration" style={{ textDecoration: 'none' }}>
+        <Link href={PAGE.REGISTER} style={{ textDecoration: 'none' }}>
           <span>SIGN UP</span>
         </Link>
       </>
@@ -63,7 +63,7 @@ const Header = () => {
             <NavList list={HEADER_LIST} />
           </div>
           {user && user.role === CUSTOMER && (
-            <Link href="/startContest" className={styles.startContestBtn}>
+            <Link href={PAGE.START_CONTEST} className={styles.startContestBtn}>
               START CONTEST
             </Link>
           )}

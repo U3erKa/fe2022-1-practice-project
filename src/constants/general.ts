@@ -112,7 +112,7 @@ export const MIME_TYPE = {
   WEBP: 'image/webp',
 } as const;
 
-export const ROUTE = {
+export const PAGE = {
   HOME: '/',
   LOGIN: '/login',
   REGISTER: '/registration',

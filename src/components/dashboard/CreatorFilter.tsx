@@ -7,7 +7,7 @@ import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
-  ROUTE,
+  PAGE,
   TAGLINE_CONTEST,
 } from 'constants/general';
 import type { Industry } from 'types/contest';
@@ -95,7 +95,7 @@ export const CreatorFilter = () => {
       }
     });
 
-    router.push(`${ROUTE.DASHBOARD}?${new URLSearchParams(obj)}`);
+    router.push(`${PAGE.DASHBOARD}?${new URLSearchParams(obj)}`);
   };
 
   const changePredicate = ({ name, value }: { name: string; value: any }) => {

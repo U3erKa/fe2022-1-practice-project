@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'store';
 import { updateBundle } from 'store/slices/bundleSlice';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from 'components/startContest';
-import { CUSTOMER, ROUTE } from 'constants/general';
+import { CUSTOMER, PAGE } from 'constants/general';
 import type { Bundle } from 'types/slices';
 import styles from './styles/page.module.scss';
 
@@ -14,19 +14,18 @@ const StartContestPage = () => {
   const router = useRouter();
 
   if (userStore.data?.role !== CUSTOMER) {
-    router.replace(ROUTE.HOME);
+    router.replace(PAGE.HOME);
   }
 
   const setBundle = (bundleStr: string) => {
     const array = bundleStr.toLowerCase().split('+');
-    const bundleList = {} as Bundle;
-    bundleList.first = array[0];
+    const bundleList = { first: array[0] } as unknown as Bundle;
     for (let i = 0; i < array.length; i++) {
       bundleList[array[i] as keyof typeof bundleList] =
         i === array.length - 1 ? 'payment' : array[i + 1];
     }
     dispatch(updateBundle(bundleList));
-    router.push(`${ROUTE.START_CONTEST}/${bundleList.first}Contest`);
+    router.push(`${PAGE.START_CONTEST}/${bundleList.first}Contest`);
   };
 
   return (

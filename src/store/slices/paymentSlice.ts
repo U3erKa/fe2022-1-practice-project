@@ -12,7 +12,7 @@ import {
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import { ROUTE, USER_INFO_MODE } from 'constants/general';
+import { PAGE, USER_INFO_MODE } from 'constants/general';
 import type { PaymentState } from 'types/slices';
 import type { WithNavigate } from 'types/_common';
 import type { CashOutParams } from 'types/api/offer';
@@ -32,7 +32,7 @@ export const pay = decorateAsyncThunk({
     { dispatch },
   ) => {
     await offerController.payMent(data);
-    navigate(ROUTE.DASHBOARD, { replace: true });
+    navigate(PAGE.DASHBOARD, { replace: true });
     dispatch(clearContestStore());
   },
 });
