@@ -68,7 +68,7 @@ export const StringSchema = z
       });
     }
   });
-
+globalThis.FileList ??= Object as any;
 export const NotifySchema = z.enum(NOTIFY_OPTIONS);
 export const FileSchema = z.instanceof(FileList);
 export const OrderBySchema = z.enum(['asc', 'desc']);
