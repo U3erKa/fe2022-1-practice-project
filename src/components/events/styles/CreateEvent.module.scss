@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 @import '../../../styles/common';
 
 $colorWhite: #fff;
@@ -8,7 +7,6 @@ $colorCyan: #28d2d0;
 
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
-  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   font-size: $fontSize;
   width: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;

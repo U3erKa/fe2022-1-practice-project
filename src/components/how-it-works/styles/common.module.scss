@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
 $mainColor: #377dff;
 $backgroundColor: rgba(55, 125, 255, 0.1);
 $borderColor: #e7eaf3;
@@ -27,13 +25,7 @@ $containerWidth: 1280px;
   width: clamp($minWidth, 100%, $containerWidth);
   margin: 0 auto;
   padding: calc($padding * 4) calc($padding * 2);
-  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   font-size: $fontSize;
-
-  & a,
-  button {
-    font-family: 'Poppins', Helvetica, Arial, sans-serif;
-  }
 }
 
 .heading {

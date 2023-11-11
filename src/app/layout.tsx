@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { ReduxProvider } from 'store/providers';
 import './globals.css';
 import { Toast } from 'components/general';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,10 +24,8 @@ export default function RootLayout({ children }: Props) {
   return (
     <ReduxProvider>
       <html lang="en">
-        <body className={inter.className}>
-          <Toast>
-            {children}
-          </Toast>
+        <body className={poppins.className}>
+          <Toast>{children}</Toast>
         </body>
       </html>
     </ReduxProvider>
