@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'store';
 import { updateBundle } from 'store/slices/bundleSlice';
 import { Footer, Header, ProgressBar } from 'components/general';
@@ -13,9 +14,11 @@ const StartContestPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  if (userStore.data?.role !== CUSTOMER) {
-    router.replace(PAGE.HOME);
-  }
+  useEffect(() => {
+    if (userStore.data?.role !== CUSTOMER) {
+      router.replace(PAGE.HOME);
+    }
+  }, [router, userStore.data?.role]);
 
   const setBundle = (bundleStr: string) => {
     const array = bundleStr.toLowerCase().split('+');
