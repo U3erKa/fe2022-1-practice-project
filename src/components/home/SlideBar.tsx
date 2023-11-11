@@ -1,5 +1,7 @@
-import Flickity, { type FlickityOptions } from 'react-flickity-component';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import type { FC } from 'react';
+import { Picture } from 'components/general';
 import {
   EXAMPLE_SLIDER,
   EXAMPLE_SLIDER_TEXT,
@@ -7,12 +9,8 @@ import {
   FEEDBACK_SLIDER_TEXT,
   MAIN_SLIDER,
 } from 'constants/carousel';
-
 import styles from './styles/SlideBar.module.scss';
-import './styles/flickity.css';
-
-import type { FC } from 'react';
-import { Picture } from 'components/general';
+import 'swiper/scss';
 
 export type Props = {
   carouselType:
@@ -22,66 +20,61 @@ export type Props = {
   images: { src: string; srcSet?: string[] }[];
 };
 
+const CONTAINER_STYLE = {
+  [MAIN_SLIDER]: styles.mainCarousel,
+  [EXAMPLE_SLIDER]: styles.exampleCarousel,
+  [FEEDBACK_SLIDER]: styles.feedbackCarousel,
+};
+
 const SliderBar: FC<Props> = ({ carouselType, images }) => {
-  const options = {
-    draggable: true,
-    wrapAround: true,
-    pageDots: false,
-    prevNextButtons: true,
-    autoPlay: true,
-    groupCells: true,
-    lazyLoad: true,
-  } satisfies FlickityOptions;
-
-  const getStyleName = () => {
-    switch (carouselType) {
-      case MAIN_SLIDER:
-        return styles.mainCarousel;
-      case EXAMPLE_SLIDER:
-        return styles.exampleCarousel;
-      case FEEDBACK_SLIDER:
-        return styles.feedbackCarousel;
-      default: {
-        break;
-      }
-    }
-  };
-
   const renderSlides = () => {
     switch (carouselType) {
       case MAIN_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
-          <div className={styles.carouselCell} key={index}>
+          <SwiperSlide className={styles.carouselCell} key={index}>
             <Picture src={src} srcSet={srcSet} alt="slide" />
-          </div>
+          </SwiperSlide>
         ));
       }
       case EXAMPLE_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
-          <div className={styles.exampleCell} key={index}>
+          <SwiperSlide className={styles.exampleCell} key={index}>
             <Picture src={src} srcSet={srcSet} alt="slide" />
             <p>{EXAMPLE_SLIDER_TEXT[index]}</p>
-          </div>
+          </SwiperSlide>
         ));
       }
       case FEEDBACK_SLIDER: {
         return images.map(({ src, srcSet }, index) => (
-          <div className={styles.feedbackCell} key={index}>
+          <SwiperSlide className={styles.feedbackCell} key={index}>
             <Picture src={src} srcSet={srcSet} alt="slide" />
             <p>{FEEDBACK_SLIDER_TEXT[index].feedback}</p>
             <span>{FEEDBACK_SLIDER_TEXT[index].name}</span>
-          </div>
+          </SwiperSlide>
         ));
       }
-      default: {
-        break;
-      }
+      default:
+        return null;
     }
   };
   return (
-    <Flickity className={getStyleName()} elementType="div" options={options}>
+    <Swiper
+      className={CONTAINER_STYLE[carouselType]}
+      loop
+      slidesPerView={1}
+      spaceBetween={10}
+      autoplay={{
+        delay: 3000,
+        pauseOnMouseEnter: true,
+      }}
+      breakpoints={{
+        512: { slidesPerView: 2, spaceBetween: 20 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
+      }}
+      modules={[Autoplay]}
+    >
       {renderSlides()}
-    </Flickity>
+    </Swiper>
   );
 };
 
