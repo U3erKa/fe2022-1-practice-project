@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { type FC } from 'react';
 import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
@@ -32,13 +32,13 @@ const classes = {
 const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  // const location = useLocation();
+  const pathname = usePathname();
 
   const changeFocusOnCardMethod = (name: CardField) => {
     dispatch(changeFocusOnCard(name));
   };
 
-  const isCashoutPage = location.pathname === PAGE.ACCOUNT;
+  const isCashoutPage = pathname === PAGE.ACCOUNT;
   const defaultValues = {
     focusOnElement: '',
     name: '',

@@ -25,7 +25,7 @@ const StartContestPage = () => {
         i === array.length - 1 ? 'payment' : array[i + 1];
     }
     dispatch(updateBundle(bundleList));
-    router.push(`${PAGE.START_CONTEST}/${bundleList.first}Contest`);
+    router.push(`${PAGE.START_CONTEST}/${bundleList.first}`);
   };
 
   return (
