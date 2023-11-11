@@ -116,6 +116,9 @@ dependencies:
   socket.io-client:
     specifier: ^4.7.2
     version: 4.7.2
+  swiper:
+    specifier: ^11.0.4
+    version: 11.0.4
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
@@ -4884,6 +4887,11 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /swiper@11.0.4:
+    resolution: {integrity: sha512-qtUxILrD4aD++rpKzGrkz3IAWL92f9uTrDwjb6HaNLmPvJhZCE/83DL+9w4kIgDDJeF6QKalV47rMBN77UOVYQ==}
+    engines: {node: '>= 4.7.0'}
+    dev: false
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
