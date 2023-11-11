@@ -10,6 +10,7 @@ export { default as Spinner } from './Spinner';
 export { default as TextEntry } from './TextEntry';
 export { default as TryAgain } from './TryAgain';
 
+export { default as Toast } from './Toast';
 export { default as LoginButtons } from './LoginButtons';
 export { default as NavList } from './NavList';
 export { default as ProfileNavBar } from './ProfileNavBar';
