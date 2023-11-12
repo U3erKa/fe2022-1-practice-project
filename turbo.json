@@ -9,6 +9,7 @@
     "format": {},
     "lint": {},
     "prepare": { "outputs": ["src"] },
+    "migrate": {},
     "start": {
       "cache": false,
       "persistent": true

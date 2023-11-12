@@ -7,6 +7,7 @@ const { MODER_EMAIL, MODER_PASSWORD, SALT_ROUNDS } = process.env;
 module.exports = {
   async up(queryInterface, Sequelize) {
     const password = bcrypt.hashSync(
+      // @ts-expect-error
       MODER_PASSWORD,
       // @ts-expect-error
       isNaN(+SALT_ROUNDS) ? SALT_ROUNDS : +SALT_ROUNDS,
