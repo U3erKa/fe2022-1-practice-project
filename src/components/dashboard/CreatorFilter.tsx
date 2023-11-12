@@ -4,10 +4,7 @@ import { select } from 'radash';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'store';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
-import {
-  CONTEST_TYPES,
-  PAGE,
-} from 'constants/general';
+import { CONTEST_TYPES, PAGE } from 'constants/general';
 import type { Industry } from 'types/contest';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from './styles/CreatorDashboard.module.scss';

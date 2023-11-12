@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier --write -l src",
+    "format": "prettier --write -l src db",
     "lint": "next lint",
     "prepare": "turbo styles",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
