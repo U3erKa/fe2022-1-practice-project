@@ -55,4 +55,4 @@ abstract class _Bank extends Model<
   declare balance: number;
 }
 
-export default Bank;
+export = Bank;

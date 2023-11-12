@@ -111,4 +111,4 @@ abstract class _Catalog extends Model<
   >;
 }
 
-export default Catalog;
+export = Catalog;

@@ -92,4 +92,4 @@ abstract class _Message extends Model<
   declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
 }
 
-export default Message;
+export = Message;

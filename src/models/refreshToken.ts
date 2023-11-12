@@ -64,4 +64,4 @@ abstract class _RefreshToken extends Model<
   declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
 }
 
-export default RefreshToken;
+export = RefreshToken;

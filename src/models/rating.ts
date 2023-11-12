@@ -76,4 +76,4 @@ abstract class _Rating extends Model<
   declare addOffer: BelongsToSetAssociationMixin<DB['Offer'], number>;
 }
 
-export default Rating;
+export = Rating;

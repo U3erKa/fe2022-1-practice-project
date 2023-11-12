@@ -40,4 +40,4 @@ class _Select extends Model<
   declare describe: string;
 }
 
-export default Select;
+export = Select;

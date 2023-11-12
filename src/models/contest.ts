@@ -176,4 +176,4 @@ abstract class _Contest extends Model<
   >;
 }
 
-export default Contest;
+export = Contest;

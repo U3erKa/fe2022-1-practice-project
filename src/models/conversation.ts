@@ -28,7 +28,7 @@ import type {
   NonAttribute,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import { isTuple } from '../validationSchemes/functions';
+import { isTuple } from '../utils/functions';
 import type { DB, User } from '../types/models';
 
 const Conversation = (
@@ -228,4 +228,4 @@ abstract class _Conversation extends Model<
   >;
 }
 
-export default Conversation;
+export = Conversation;
