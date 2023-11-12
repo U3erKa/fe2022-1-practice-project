@@ -16,6 +16,7 @@ export const {
   SQUADHELP_BANK_EXPIRY,
   SQUADHELP_BANK_CVC,
   SALT_ROUNDS: _SALT_ROUNDS,
+  POSTGRES_DB_STRING,
 } = process.env;
 
 export const SALT_ROUNDS = isNaN(+_SALT_ROUNDS!)

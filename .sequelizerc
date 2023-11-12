@@ -1,7 +1,7 @@
-import { resolve } from 'path';
+const { resolve } = require('path');
 
-export default {
-  'config': resolve('./src/config', 'postgres.json'),
+module.exports = {
+  'config': resolve('./src/config', 'postgres.cjs'),
   'models-path': resolve('./src/models'),
   'seeders-path': resolve('./seeders'),
   'migrations-path': resolve('./migrations'),
