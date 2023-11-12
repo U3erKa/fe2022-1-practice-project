@@ -5,22 +5,20 @@ import styles from './styles/Footer.module.scss';
 
 const Footer = () => {
   const topFooterRender = FOOTER_ITEMS.map(({ title, items }) => (
-    <div key={title}>
-      <h4>{title}</h4>
+    <section key={title}>
+      <h2>{title}</h2>
       {items.map((item) => (
         <Link key={item} href={DUMMY_LINK}>
           {item}
         </Link>
       ))}
-    </div>
+    </section>
   ));
 
   return (
-    <div className={styles.footerContainer}>
-      <div className={styles.footerTop}>
-        <div>{topFooterRender}</div>
-      </div>
-    </div>
+    <footer className={styles.footerTop}>
+      <article>{topFooterRender}</article>
+    </footer>
   );
 };
 
