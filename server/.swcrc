@@ -9,5 +9,5 @@
     },
     "target": "esnext"
   },
-  "module": { "type": "commonjs" }
+  "module": { "type": "es6" }
 }
