@@ -5,10 +5,8 @@ import clsx from 'clsx';
 import { useDispatch, useSelector } from 'store';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import {
-  LOGO_CONTEST,
-  NAME_CONTEST,
+  CONTEST_TYPES,
   PAGE,
-  TAGLINE_CONTEST,
 } from 'constants/general';
 import type { Industry } from 'types/contest';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
@@ -18,17 +16,6 @@ export type Props = {
   onChange: ChangeEventHandler<HTMLSelectElement>;
   value: (typeof CONTEST_TYPES)[number];
 };
-
-export const CONTEST_TYPES = [
-  '',
-  `${NAME_CONTEST},${TAGLINE_CONTEST},${LOGO_CONTEST}`,
-  `${NAME_CONTEST}`,
-  `${TAGLINE_CONTEST}`,
-  `${LOGO_CONTEST}`,
-  `${NAME_CONTEST},${TAGLINE_CONTEST}`,
-  `${LOGO_CONTEST},${TAGLINE_CONTEST}`,
-  `${NAME_CONTEST},${LOGO_CONTEST}`,
-] as const;
 
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {
   const contestTypes = select(

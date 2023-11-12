@@ -103,4 +103,4 @@ abstract class _Offer extends Model<
   declare addRating: HasOneSetAssociationMixin<DB['Rating'], number>;
 }
 
-export = Offer;
+export default Offer;

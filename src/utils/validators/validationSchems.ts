@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import valid from 'card-validator';
 import {
+  CREATOR,
+  CUSTOMER,
   LOGO_CONTEST,
   NAME_CONTEST,
   NOTIFY_OPTIONS,
@@ -206,7 +208,7 @@ export const RegistrationSchema = z
     firstName: StringSchema,
     lastName: StringSchema,
     password: z.string().min(6),
-    role: z.enum(['customer', 'creator']),
+    role: z.enum([CUSTOMER, CREATOR]),
   })
   .superRefine(({ confirmPassword, password }, { addIssue }) => {
     if (confirmPassword !== password) {

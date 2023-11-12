@@ -228,4 +228,4 @@ abstract class _Conversation extends Model<
   >;
 }
 
-export = Conversation;
+export default Conversation;

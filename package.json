@@ -1,6 +1,7 @@
 {
   "name": "next-app",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -22,6 +23,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@react-input/mask": "^1.0.20",
     "@reduxjs/toolkit": "^1.9.7",
+    "@types/cors": "^2.8.16",
     "axios": "^1.6.1",
     "bcrypt": "^5.1.1",
     "card-validator": "^9.0.0",

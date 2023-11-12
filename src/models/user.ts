@@ -1,6 +1,4 @@
 import { Model } from 'sequelize';
-import bcrypt from 'bcrypt';
-import { SALT_ROUNDS } from '../constants/backend';
 import type {
   Association,
   CreationOptional,
@@ -19,9 +17,11 @@ import type {
   NonAttribute,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import type { DB, User } from '../types/models';
+import bcrypt from 'bcrypt';
+import { SALT_ROUNDS } from '../constants/backend';
+import type { DB, User as __User } from '../types/models';
 
-const hashPassword = async (user: User) => {
+const hashPassword = async (user: __User) => {
   if (user.changed('password')) {
     const passwordHash = await bcrypt.hash(user.password, SALT_ROUNDS);
     user.password = passwordHash;
@@ -318,4 +318,4 @@ abstract class _User extends Model<
   >;
 }
 
-export = User;
+export default User;

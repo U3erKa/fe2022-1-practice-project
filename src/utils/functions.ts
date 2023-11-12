@@ -1,3 +1,4 @@
+import ApplicationError from '../errors/ApplicationError';
 import type { CreateEventResponse } from 'types/api/event';
 
 /**
@@ -81,4 +82,13 @@ export function parseQueryString(query: string) {
     result[key] = value;
   });
   return result;
+}
+
+export function isTuple(list: boolean[]): asserts list is [boolean, boolean] {
+  if (!(list instanceof Array)) {
+    throw new ApplicationError('Must be an array');
+  }
+  if (list.length !== 2) {
+    throw new ApplicationError('Must be tuple of 2 booleans');
+  }
 }

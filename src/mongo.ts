@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
-import path from 'path';
+import configObj from './config/mongo.json' assert { type: 'json' };
 const env = process.env.NODE_ENV || 'development';
-const configPath = path.join(__dirname, '..', 'config/mongoConfig.json');
-const config = require(configPath)[env];
+const config = configObj[env];
 /*
 mongoose
   .connect(`mongodb://${config.host}:${config.port}/${config.database}`, {

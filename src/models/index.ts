@@ -1,34 +1,53 @@
-import fs from 'fs';
-import path from 'path';
 import { DataTypes, Sequelize } from 'sequelize';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import _Bank from './bank';
+import _Catalog from './catalog';
+import _Contest from './contest';
+import _Conversation from './conversation';
+import _Event from './event';
+import _Message from './message';
+import _Offer from './offer';
+import _Rating from './rating';
+import _RefreshToken from './refreshToken';
+import _Select from './select';
+import _User from './user';
 import type { DB } from '../types/models';
 
-const basename = path.basename(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const env = process.env.NODE_ENV || 'development';
-const config = require(path.join(__dirname, '../../config/postgres.json'))[env];
+const configPath = path.join(__dirname, '../../config/postgres.json');
+
+const config = (await import(configPath, { assert: { type: 'json' } })).default[
+  env
+];
 const db = {} as DB;
 
-const sequelize = new Sequelize(
+export const sequelize = new Sequelize(
   config.database,
   config.username,
   config.password,
   config,
 );
 
-fs.readdirSync(__dirname)
-  .filter((file) => {
-    return (
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      ['.js', '.ts'].includes(file.slice(-3)) &&
-      file.indexOf('.test.js') === -1 &&
-      file.indexOf('.test.ts') === -1
-    );
-  })
-  .forEach((file) => {
-    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
-    db[model.name as keyof DB] = model;
-  });
+[
+  _Bank,
+  _Catalog,
+  _Contest,
+  _Conversation,
+  _Event,
+  _Message,
+  _Offer,
+  _Rating,
+  _RefreshToken,
+  _Select,
+  _User,
+].forEach((createModel) => {
+  const model = createModel(sequelize, DataTypes);
+  db[model.name as keyof DB] = model;
+});
 
 Object.keys(db).forEach((modelName) => {
   // @ts-expect-error
@@ -38,10 +57,21 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
 console.log('db is =>>>>>>>>>>');
 console.log(Object.keys(db));
 
-export = db;
+export const {
+  Bank,
+  Catalog,
+  Contest,
+  Conversation,
+  Event,
+  Message,
+  Offer,
+  Rating,
+  RefreshToken,
+  Select,
+  User,
+} = db;
+
+export default db;

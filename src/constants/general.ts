@@ -128,3 +128,14 @@ export const PAGE = {
   HOW_IT_WORKS: '/how-it-works',
   NOT_FOUND: '*',
 } as const;
+
+export const CONTEST_TYPES = [
+  '',
+  `${NAME_CONTEST},${TAGLINE_CONTEST},${LOGO_CONTEST}`,
+  `${NAME_CONTEST}`,
+  `${TAGLINE_CONTEST}`,
+  `${LOGO_CONTEST}`,
+  `${NAME_CONTEST},${TAGLINE_CONTEST}`,
+  `${LOGO_CONTEST},${TAGLINE_CONTEST}`,
+  `${NAME_CONTEST},${LOGO_CONTEST}`,
+] as const;
