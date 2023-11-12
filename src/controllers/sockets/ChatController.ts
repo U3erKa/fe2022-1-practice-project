@@ -1,6 +1,7 @@
-import WebSocket from './WebSocket';
-import { CHANGE_BLOCK_STATUS, NEW_MESSAGE } from '../../constants';
 import type { Socket } from 'socket.io';
+import WebSocket from './WebSocket';
+import { NEW_MESSAGE } from '../../constants/backend';
+import { CHANGE_BLOCK_STATUS } from 'constants/general';
 import type { Conversation } from '../../types/models';
 import type { WebSocketMessage } from '../../types/websocket';
 

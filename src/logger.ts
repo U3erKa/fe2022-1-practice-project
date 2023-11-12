@@ -6,7 +6,7 @@ import {
   CRON_DAILY_AT_MIDNIGHT,
   LOG_PATH,
   READ_FILE_OPTIONS,
-} from './constants';
+} from './constants/backend';
 import type ApplicationError from './errors/ApplicationError';
 
 (async () => {

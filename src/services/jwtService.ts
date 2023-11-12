@@ -5,7 +5,7 @@ import {
   ACCESS_TOKEN_TIME,
   REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_TIME,
-} from '../constants';
+} from '../constants/backend';
 
 import type { TokenData } from '../types/user';
 import type { JwtSign, JwtVerify, TokenOptions } from '../types/services';
