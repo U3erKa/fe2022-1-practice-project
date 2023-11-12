@@ -3,6 +3,6 @@ const { resolve } = require('path');
 module.exports = {
   'config': resolve('./src/config', 'postgres.cjs'),
   'models-path': resolve('./src/models'),
-  'seeders-path': resolve('./seeders'),
-  'migrations-path': resolve('./migrations'),
+  'seeders-path': resolve('./db/seeders'),
+  'migrations-path': resolve('./db/migrations'),
 };
