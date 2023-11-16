@@ -1,0 +1,66 @@
+{
+  "root": true,
+  "env": { "browser": true, "es6": true, "node": true },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "ignorePatterns": ["dist", ".eslintrc*"],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "react/jsx-key": "warn",
+    "react/no-unescaped-entities": "off",
+    "block-scoped-var": "warn",
+    "class-methods-use-this": "warn",
+    "func-name-matching": [
+      "warn",
+      "always",
+      {
+        "considerPropertyDescriptor": true,
+        "includeCommonJSModuleExports": false
+      }
+    ],
+    "no-await-in-loop": "warn",
+    "no-console": "warn",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-new-native-nonconstructor": "error",
+    "no-param-reassign": "off",
+    "no-promise-executor-return": "warn",
+    "no-self-compare": "warn",
+    "no-template-curly-in-string": "warn",
+    "no-unmodified-loop-condition": "warn",
+    "no-unreachable-loop": "warn",
+    "prefer-const": [
+      "warn",
+      { "destructuring": "all", "ignoreReadBeforeAssign": false }
+    ],
+    "prefer-destructuring": [
+      "warn",
+      { "array": true, "object": true },
+      { "enforceForRenamedProperties": false }
+    ],
+    "prefer-named-capture-group": "warn",
+    "prefer-promise-reject-errors": ["warn", { "allowEmptyReject": true }],
+    "require-atomic-updates": ["warn", { "allowProperties": true }],
+    "require-await": "warn",
+    "sort-imports": [
+      "warn",
+      {
+        "allowSeparatedGroups": false,
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    // "sort-keys": "warn",
+    "strict": ["warn", "safe"]
+  }
+}
