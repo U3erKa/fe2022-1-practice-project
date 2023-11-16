@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, type FC } from 'react';
+import { type FC, useEffect } from 'react';
 import LightBox from 'yet-another-react-lightbox';
 import { useDispatch, useSelector } from 'store';
 import {
