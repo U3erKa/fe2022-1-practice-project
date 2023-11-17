@@ -1,4 +1,4 @@
-import ApplicationError from '../errors/ApplicationError';
+import ApplicationError from 'errors/ApplicationError';
 import type { CreateEventResponse } from 'types/api/event';
 
 /**

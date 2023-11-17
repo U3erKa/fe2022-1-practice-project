@@ -1,30 +1,20 @@
 import cron from 'node-cron';
-import fs from 'fs/promises';
+import { promises as fs } from 'fs';
 import path from 'path';
-import _sendEmail from './email';
+import sendEmail from 'email';
+import { createFileIfNotExists } from 'utils/backend';
 import {
   CRON_DAILY_AT_MIDNIGHT,
   LOG_PATH,
   READ_FILE_OPTIONS,
-} from './constants/backend';
-import type ApplicationError from './errors/ApplicationError';
+} from 'constants/backend';
+import type ApplicationError from 'errors/ApplicationError';
 
-(async () => {
-  try {
-    await fs.mkdir(path.resolve(LOG_PATH), {});
-  } catch (error) {}
-})();
-
-(async (filename: string) => {
-  try {
-    await fs.readFile(path.resolve(LOG_PATH, filename), READ_FILE_OPTIONS);
-  } catch (error) {
-    await fs.writeFile(path.resolve(LOG_PATH, filename), '', READ_FILE_OPTIONS);
-  }
-})('latest.log');
+const LATEST_LOG_PATH = path.resolve(LOG_PATH, 'latest.log');
+await createFileIfNotExists(LATEST_LOG_PATH);
 
 const flushLogs = async () => {
-  const data = await fs.readFile(`${LOG_PATH}/latest.log`, READ_FILE_OPTIONS);
+  const data = await fs.readFile(LATEST_LOG_PATH, READ_FILE_OPTIONS);
   if (!data) return;
 
   const dataWithoutTrailingComma = data.substring(0, data.length - 2);
@@ -39,11 +29,7 @@ const flushLogs = async () => {
     JSON.stringify(strippedLogs, undefined, 2),
     READ_FILE_OPTIONS,
   );
-  await fs.writeFile(
-    path.resolve(LOG_PATH, 'latest.log'),
-    '',
-    READ_FILE_OPTIONS,
-  );
+  await fs.writeFile(LATEST_LOG_PATH, '', READ_FILE_OPTIONS);
   return logPath;
 };
 
@@ -54,8 +40,8 @@ export const saveErrorToLog = async ({
 }: ApplicationError) => {
   const errorToLog = { message, stackTrace, code, time: Date.now() };
 
-  fs.appendFile(
-    path.resolve(LOG_PATH, 'latest.log'),
+  await fs.appendFile(
+    LATEST_LOG_PATH,
     `${JSON.stringify(errorToLog, undefined, 2)},\n`,
     READ_FILE_OPTIONS,
   );
@@ -63,13 +49,8 @@ export const saveErrorToLog = async ({
 
 cron.schedule(CRON_DAILY_AT_MIDNIGHT, async () => {
   const log = await flushLogs();
-  if (!log) {
-    console.log('Nothing to send via email');
-    return;
-  }
-  console.log('Sending email...');
+  if (!log) return;
 
-  const sendEmail = await _sendEmail;
   const { MAIL_LOG_RECIPIENT, MAIL_USER } = process.env;
   sendEmail({
     to: MAIL_LOG_RECIPIENT ?? MAIL_USER,

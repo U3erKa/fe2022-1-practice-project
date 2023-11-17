@@ -13,7 +13,7 @@ import type { JwtSign, JwtVerify, TokenOptions } from '../types/services';
 const jwtSign: JwtSign = promisify(jwt.sign);
 const jwtVerify: JwtVerify = promisify(jwt.verify);
 
-const tokenOptions: TokenOptions = {
+const tokenOptions = {
   access: {
     secret: ACCESS_TOKEN_SECRET!,
     expiresIn: ACCESS_TOKEN_TIME,
@@ -22,24 +22,25 @@ const tokenOptions: TokenOptions = {
     secret: REFRESH_TOKEN_SECRET!,
     expiresIn: REFRESH_TOKEN_TIME,
   },
-};
+} satisfies TokenOptions;
 
-const createToken = async (
+const createToken = (
   payload: TokenData,
   { secret, expiresIn }: TokenOptions[keyof TokenOptions],
 ) => jwtSign(payload, secret, { expiresIn });
 
-const verifyToken = async (token: string, { secret }: { secret: Secret }) =>
+const verifyToken = (token: string, { secret }: { secret: Secret }) =>
   jwtVerify(token, secret);
 
 export const generateTokenPair = async (payload: TokenData) => {
-  return {
-    accessToken: await createToken(payload, tokenOptions.access),
-    refreshToken: await createToken(payload, tokenOptions.refresh),
-  };
+  const [accessToken, refreshToken] = await Promise.all([
+    createToken(payload, tokenOptions.access),
+    createToken(payload, tokenOptions.refresh),
+  ]);
+  return { accessToken, refreshToken };
 };
 
-export const verifyAccessToken = async (token: string) =>
+export const verifyAccessToken = (token: string) =>
   verifyToken(token, tokenOptions.access);
-export const verifyRefreshToken = async (token: string) =>
+export const verifyRefreshToken = (token: string) =>
   verifyToken(token, tokenOptions.refresh);
