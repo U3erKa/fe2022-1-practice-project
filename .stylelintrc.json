@@ -3,6 +3,11 @@
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
   ],
+  "reportInvalidScopeDisables": true,
+  "reportNeedlessDisables": true,
+  "defaultSeverity": "warning",
   "rules": {
+    "selector-class-pattern": "^[A-Za-z]+$",
+    "scss/dollar-variable-pattern": "^[A-Za-z]+$"
   }
 }

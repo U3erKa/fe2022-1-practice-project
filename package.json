@@ -9,6 +9,7 @@
     "dev": "next dev",
     "format": "prettier --write -l src db",
     "lint": "turbo lint:code lint:styles",
+    "lint:fix": "turbo lint:code lint:styles -- --fix",
     "lint:code": "next lint",
     "lint:styles": "stylelint 'src/**/*.{css,scss}'",
     "prepare": "turbo styles",
