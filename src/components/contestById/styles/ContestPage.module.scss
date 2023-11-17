@@ -44,11 +44,11 @@
   width: 1200px;
   margin: 0 auto;
   margin-bottom: 50px;
-  @media (max-width: 1200px) {
+  @media (width <= 1200px) {
     width: auto;
   }
 
-  @media (max-width: 680px) {
+  @media (width <= 680px) {
     align-items: center;
     flex-direction: column;
   }
@@ -56,14 +56,14 @@
 
 .infoContainer {
   width: 80%;
-  box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   margin-right: 40px;
   flex: 1 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  @media (max-width: 680px) {
+  @media (width <= 680px) {
     width: auto;
     margin: 10px;
     align-self: stretch;
@@ -99,7 +99,7 @@
   border-radius: 4px 4px 0 0;
 
   &:hover {
-    background-color: rgba(176, 196, 222, 0.8);
+    background-color: rgb(176 196 222 / 80%);
   }
 }
 

@@ -2,7 +2,8 @@
 
 @mixin stepCard {
   @include container(flex-start);
-  margin: 90px 0 30px 0;
+
+  margin: 90px 0 30px;
   max-width: 540px;
 
   h3 {
@@ -13,6 +14,7 @@
 
   p {
     @include container(flex-start, space-around, row);
+
     margin-bottom: 10px;
     line-height: 25px;
 
@@ -27,8 +29,8 @@
     font-size: 18px;
   }
 
-  @media screen and (max-width: 1024px) {
-    margin: 90px 0 30px 0;
+  @media screen and (width <= 1024px) {
+    margin: 90px 0 30px;
     padding: 0 80px;
   }
 }
@@ -51,13 +53,14 @@
 .cardContainer {
   @include container(flex-start, flex-start, row);
 
-  @media (max-width: 720px) {
+  @media (width <= 720px) {
     @include container;
   }
 }
 
 .card {
   @include container(flex-start);
+
   max-width: 300px;
   margin: 40px 40px 40px 0;
 
@@ -82,12 +85,12 @@
     margin-right: 0;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (width <= 768px) {
     max-width: 100%;
     margin: 40px;
   }
 
-  @media screen and (max-width: 414px) {
+  @media screen and (width <= 414px) {
     p {
       margin-right: 10px;
     }
@@ -96,6 +99,7 @@
 
 .adv {
   @include container(center, space-around, row);
+
   margin-bottom: 50px;
   width: 100%;
   max-width: 1100px;
@@ -130,7 +134,7 @@
     }
   }
 
-  @media screen and (max-width: 414px) {
+  @media screen and (width <= 414px) {
     img,
     &:hover {
       max-height: 20px;
@@ -145,9 +149,10 @@
 
   div {
     @include container(center, center, row);
+
     padding: 10px 20px;
     border-right: 1px solid grey;
-    @media (max-width: 580px) {
+    @media (width <= 580px) {
       padding: 10px 5px;
     }
 
@@ -167,7 +172,7 @@
     border-right: 0;
   }
 
-  @media screen and (max-width: 414px) {
+  @media screen and (width <= 414px) {
     flex-wrap: wrap;
   }
 
@@ -179,13 +184,14 @@
 
 .step {
   @include container(center, space-around, row);
+
   padding: 40px 0;
 
   div {
     @include stepCard;
   }
 
-  @media screen and (max-width: 823px) {
+  @media screen and (width <= 823px) {
     @include container;
   }
 
@@ -200,12 +206,14 @@
 
 .greenStep {
   @include stepCard;
+
   color: white;
 }
 
 @mixin underline {
   position: relative;
-  &:after {
+
+  &::after {
     position: absolute;
     content: '';
     height: 3px;
@@ -220,7 +228,7 @@
 .blueUnderline {
   @include underline;
 
-  &:after {
+  &::after {
     background: #455a89;
   }
 }
@@ -228,27 +236,30 @@
 .whiteUnderline {
   @include underline;
 
-  &:after {
+  &::after {
     background: white;
   }
 }
 
 @mixin innerContainer {
   @include container(center, center);
+
   width: 100%;
-  padding: 40px 0 30px 0;
+  padding: 40px 0 30px;
 }
 
 .stepReverse {
   @include container(flex-start, space-around, row);
+
   padding: 40px 0;
 
-  @media screen and (max-width: 950px) {
+  @media screen and (width <= 950px) {
     @include container(center, flex-start, column-reverse);
+
     padding: 0;
   }
 
-  @media screen and (max-width: 414px) {
+  @media screen and (width <= 414px) {
     padding: 0;
   }
 
@@ -262,10 +273,11 @@
 
   div {
     @include container(flex-start);
-    margin: 90px 0 30px 0;
+
+    margin: 90px 0 30px;
     padding: 0 80px;
     width: 100%;
-    @media (max-width: 720px) {
+    @media (width <= 720px) {
       padding: 0;
     }
   }
@@ -301,6 +313,7 @@
 
 .headerBar {
   @include container;
+
   padding-top: 75px;
   max-width: 1140px;
   width: 100%;
@@ -338,14 +351,13 @@
     font-weight: 700;
     padding: 7px 0;
     margin-left: 5px;
-
     transition: width 0.3s -0.1s;
   }
 
   &Static {
     position: relative;
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       left: 0;
@@ -371,6 +383,7 @@
 .button {
   @include container(center, center, row);
   @include button;
+
   height: 40px;
   cursor: pointer;
   background-color: transparent;
@@ -379,6 +392,7 @@
 
   &Link {
     @include container(center, center, row);
+
     color: inherit;
     font-size: 14px;
     font-weight: 500;

@@ -14,18 +14,18 @@
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid #ebebeb;
-  @media (max-width: 920px) {
+  @media (width <= 920px) {
     justify-content: center;
   }
 
-  @media (max-width: 750px) {
+  @media (width <= 750px) {
     flex-direction: column;
   }
 }
 
 .logo {
   align-self: flex-end;
-  @media (max-width: 920px) {
+  @media (width <= 920px) {
     display: none;
   }
 }
@@ -36,7 +36,7 @@
 
 .leftNav {
   display: flex;
-  @media (max-width: 750px) {
+  @media (width <= 750px) {
     align-items: center;
     flex-direction: column;
   }
@@ -59,15 +59,15 @@
   display: flex;
   border-left: 1px solid #ebebeb;
   height: 40px;
-  @media (max-width: 600px) {
+  @media (width <= 600px) {
     margin-left: 60px;
   }
 
-  @media (max-width: 400px) {
+  @media (width <= 400px) {
     margin-left: 20px;
   }
 
-  @media (max-width: 320px) {
+  @media (width <= 320px) {
     margin-left: 0;
   }
 
@@ -91,11 +91,11 @@
   border-left: 1px solid #ebebeb;
   margin-left: 120px;
   height: 40px;
-  @media (max-width: 600px) {
+  @media (width <= 600px) {
     margin-left: 10px;
   }
 
-  @media (max-width: 360px) {
+  @media (width <= 360px) {
     padding: 0 5px;
     margin-left: 0;
   }
@@ -104,7 +104,7 @@
     color: #337ab7;
     font-size: 14px;
     margin-left: 10px;
-    @media (max-width: 360px) {
+    @media (width <= 360px) {
       font-size: 12px;
     }
   }
@@ -117,8 +117,8 @@
   align-items: center;
   width: 100vw;
   position: fixed;
-  background-color: rgb(69, 90, 137);
-  border-bottom: 3px solid rgb(255, 255, 255);
+  background-color: rgb(69 90 137);
+  border-bottom: 3px solid rgb(255 255 255);
   height: 30px;
 
   & > a {
@@ -134,7 +134,7 @@
   letter-spacing: 0.3px;
   color: white;
   margin-right: 4px;
-  @media (max-width: 600px) {
+  @media (width <= 600px) {
     display: none;
   }
 }

@@ -9,7 +9,7 @@
   height: 390px;
   z-index: 500;
   overflow: visible;
-  box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   left: -290px;
   transition: left ease 0.25s;
 }
@@ -19,7 +19,6 @@
   position: absolute;
   top: 28px;
   right: -62px;
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   background-color: #8aca6b;
   padding: 6px;

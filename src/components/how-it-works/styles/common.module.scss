@@ -1,5 +1,5 @@
 $mainColor: #377dff;
-$backgroundColor: rgba(55, 125, 255, 0.1);
+$backgroundColor: rgb(55 125 255 / 10%);
 $borderColor: #e7eaf3;
 $textColorDark: #1e2022;
 $textColorLight: #77838f;
@@ -8,12 +8,10 @@ $getStartedHeadingColor: #00dffc;
 $getStartedTextColor: #fff;
 $gradientStartColor: #2d1582;
 $gradientEndColor: #19a0ff;
-
 $fontSize: 16px;
 $gap: 8px;
 $padding: calc($gap * 2);
 $borderRadius: 5px;
-
 $minWidth: 320px;
 $containerWidth: 1280px;
 
@@ -70,7 +68,7 @@ $containerWidth: 1280px;
   }
 
   &:hover {
-    box-shadow: 0 4px 11px rgba(55, 125, 255, 0.35);
+    box-shadow: 0 4px 11px rgb(55 125 255 / 35%);
     transform: translateY(-3px);
   }
 

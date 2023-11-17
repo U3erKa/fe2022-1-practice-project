@@ -6,6 +6,7 @@ $colorDarkGray: #555;
 
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
+
   font-size: $fontSize;
   width: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
@@ -34,6 +35,7 @@ $colorDarkGray: #555;
 
 .eventContainer {
   @include container($align: center, $justify: space-between, $dir: row);
+
   position: relative;
   width: calc(100% - $padding * 2);
   padding: $padding;

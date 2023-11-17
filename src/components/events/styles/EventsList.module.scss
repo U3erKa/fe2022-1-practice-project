@@ -2,12 +2,14 @@
 
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
+
   font-size: $fontSize;
   padding: $padding;
 }
 
 .headingContainer {
   @include container($align: center, $justify: space-between, $dir: row);
+
   width: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
 
@@ -20,6 +22,7 @@
 
 .textContainer {
   @include container($align: center, $justify: space-between, $dir: row);
+
   gap: $gap;
 }
 

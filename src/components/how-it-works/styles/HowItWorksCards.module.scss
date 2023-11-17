@@ -4,6 +4,7 @@ $columnWidth: minmax(260px, 1fr);
 
 .container {
   @include container;
+
   flex-direction: column;
   text-align: center;
   gap: calc($gap * 8);
@@ -42,5 +43,6 @@ $columnWidth: minmax(260px, 1fr);
     $backgroundColor: $mainColor,
     $borderRadius: $borderRadius
   );
+
   align-self: flex-end;
 }

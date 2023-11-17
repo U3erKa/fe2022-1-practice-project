@@ -14,11 +14,11 @@
   margin-right: 50px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   align-items: flex-start;
   background-color: white;
   margin-bottom: 15px;
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     padding: 10px;
     flex-direction: row;
     margin-right: 0;
@@ -34,7 +34,7 @@
   font-size: 18px;
   border-radius: 10px;
   padding: 10px;
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     height: 30px;
     margin: 0 5px;
   }
@@ -54,7 +54,7 @@
   padding: 10px;
   background-color: #4e618d;
   color: white;
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     height: 30px;
     margin: 0 5px;
   }

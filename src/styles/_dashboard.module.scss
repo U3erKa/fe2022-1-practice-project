@@ -5,11 +5,11 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  @media (max-width: 1400px) {
+  @media (width <= 1400px) {
     width: auto;
   }
 
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     flex-direction: column;
   }
 }

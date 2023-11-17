@@ -5,6 +5,7 @@ $lineHeight: 0.0625rem;
 
 .container {
   @include container;
+
   gap: calc($gap * 8);
   flex-direction: column;
 }

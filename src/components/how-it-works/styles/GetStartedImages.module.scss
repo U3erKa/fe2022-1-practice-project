@@ -1,10 +1,11 @@
 @import './common.module';
 
-$borderColor: rgba(30, 32, 34, 0.2);
+$borderColor: rgb(30 32 34 / 20%);
 $iconSize: 80px;
 
 .cardContainer {
   @include container;
+
   display: flex;
   justify-content: center;
   align-items: center;

@@ -42,11 +42,11 @@
   border-radius: 4px;
   color: #9ca8b7;
   font-size: 18px;
-  padding: 23px 20px 23px 20px;
+  padding: 23px 20px;
   outline: none;
   margin-bottom: 15px;
   flex: 1;
-  @media (max-width: 1400px) {
+  @media (width <= 1400px) {
     align-self: normal;
   }
 }
@@ -65,7 +65,7 @@
   border: 0;
   width: stretch;
   margin-right: 20px;
-  @media (max-width: 850px) {
+  @media (width <= 850px) {
     align-self: auto;
   }
 }

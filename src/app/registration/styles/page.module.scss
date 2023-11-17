@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     flex-direction: column;
   }
 }
@@ -40,7 +40,7 @@
   margin-top: 26px;
   padding-left: 45px;
   padding-right: 60px;
-  @media (max-width: 530px) {
+  @media (width <= 530px) {
     padding: 0;
   }
 }

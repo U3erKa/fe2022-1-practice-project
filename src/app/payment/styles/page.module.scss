@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  @media (max-width: 950px) {
+  @media (width <= 950px) {
     align-items: center;
     flex-direction: column;
   }
@@ -39,7 +39,7 @@
   margin-top: 5px;
   padding: 30px 60px;
   z-index: 500;
-  @media (max-width: 500px) {
+  @media (width <= 500px) {
     order: 500;
     width: 300px;
     padding: 0 10px;
@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 0 25px 0;
+  padding: 15px 0 25px;
 
   span {
     font-size: 24px;
@@ -82,7 +82,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 0 20px 0;
+  padding: 25px 0 20px;
   border-bottom: 1px solid #eee;
 }
 
@@ -100,7 +100,7 @@
 
 .paymentContainer {
   padding: 0 15px;
-  @media (max-width: 480px) {
+  @media (width <= 480px) {
     padding: 0;
   }
 }
@@ -109,5 +109,5 @@
   display: inline-block;
   font-size: 26px;
   color: #333;
-  padding: 35px 0 20px 0;
+  padding: 35px 0 20px;
 }

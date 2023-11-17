@@ -2,6 +2,7 @@
 
 .container {
   @include container;
+
   padding: 0;
   width: 100%;
   background-image: linear-gradient(

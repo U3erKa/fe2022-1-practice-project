@@ -14,7 +14,7 @@
 }
 
 .contentsContainer {
-  box-shadow: 0 10px 40px 10px rgba(140, 152, 164, 0.175);
+  box-shadow: 0 10px 40px 10px rgb(140 152 164 / 17.5%);
 }
 
 .contactsContainer {
@@ -72,6 +72,7 @@
     $backgroundColor: $buttonTextColor,
     $borderRadius: 2rem
   );
+
   display: block;
 }
 

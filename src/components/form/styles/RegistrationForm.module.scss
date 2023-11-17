@@ -27,7 +27,7 @@
   min-width: 260px;
   margin-left: 20px;
   margin-right: 20px;
-  @media (max-width: 850px) {
+  @media (width <= 850px) {
     align-self: auto;
   }
 }
@@ -42,7 +42,7 @@
   margin-right: 20px;
   margin-left: 20px;
   margin-bottom: 10px;
-  @media (max-width: 850px) {
+  @media (width <= 850px) {
     align-self: auto;
   }
 
@@ -56,11 +56,10 @@
   width: 100%;
   min-width: 260px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 795px) {
+  @media (width <= 795px) {
     width: auto;
   }
 }

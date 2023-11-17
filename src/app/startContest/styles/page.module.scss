@@ -1,4 +1,4 @@
-@import '../../../styles/_contest.module';
+@import '../../../styles/contest.module';
 
 .combinedBundles {
   padding: 25px 0;
@@ -11,13 +11,12 @@
 
 .baseBundles {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
   padding-right: 15px;
   padding-left: 15px;
   box-sizing: border-box;
-  flex-wrap: wrap;
   max-width: 1200px;
 }
 

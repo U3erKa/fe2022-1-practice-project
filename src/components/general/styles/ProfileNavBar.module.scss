@@ -3,7 +3,7 @@
     box-sizing: border-box;
     width: 100%;
 
-    @media (max-width: 700px) {
+    @media (width <= 700px) {
       padding: 0 15px;
     }
 
@@ -50,5 +50,5 @@
   border-radius: 1rem;
   text-align: center;
   font-weight: 600;
-  background-color: #ff0000;
+  background-color: #f00;
 }

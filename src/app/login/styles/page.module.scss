@@ -30,7 +30,7 @@
   margin-top: 26px;
   padding-left: 45px;
   padding-right: 100px;
-  @media (max-width: 530px) {
+  @media (width <= 530px) {
     padding-right: 45px;
   }
 }

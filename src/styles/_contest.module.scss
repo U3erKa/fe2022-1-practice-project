@@ -14,12 +14,12 @@
   padding-left: 15px;
   box-sizing: border-box;
   max-width: 480px;
-  @media (max-width: 750px) {
+  @media (width <= 750px) {
     max-width: none;
   }
 
   h2 {
-    color: #333333;
+    color: #333;
     font-weight: 700;
     font-size: 28px;
     text-transform: uppercase;
@@ -34,6 +34,6 @@
     margin-bottom: 10px;
     font-size: 14px;
     line-height: 1.428;
-    color: #333333;
+    color: #333;
   }
 }

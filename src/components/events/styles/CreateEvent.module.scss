@@ -7,6 +7,7 @@ $colorCyan: #28d2d0;
 
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
+
   font-size: $fontSize;
   width: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
@@ -21,6 +22,7 @@ $colorCyan: #28d2d0;
 
 .inputContainer {
   @include container($align: flex-start, $justify: center, $dir: column);
+
   width: 100%;
   padding: $padding 0;
   gap: $gap;
@@ -53,5 +55,6 @@ $colorCyan: #28d2d0;
 
 .submit {
   @include button;
+
   font-size: 1.15rem;
 }
