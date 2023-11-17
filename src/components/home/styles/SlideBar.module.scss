@@ -34,21 +34,6 @@
   border-radius: 3px;
 }
 
-.exampleCell {
-  aspect-ratio: 1.67;
-
-  p {
-    @include container(flex-start, center, row);
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-
-    &:hover {
-      background-color: #ff6f54;
-    }
-  }
-}
-
 .feedbackCell {
   @include container;
 
@@ -80,5 +65,21 @@
     padding: 20px 0;
     font-size: 16px;
     margin-top: auto;
+  }
+}
+
+.exampleCell {
+  aspect-ratio: 1.67;
+
+  p {
+    @include container(flex-start, center, row);
+
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+
+    &:hover {
+      background-color: #ff6f54;
+    }
   }
 }
