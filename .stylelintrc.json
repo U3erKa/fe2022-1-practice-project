@@ -35,6 +35,7 @@
       }
     ],
     "selector-class-pattern": "^[A-Za-z-]+$",
-    "scss/dollar-variable-pattern": "^[A-Za-z]+$"
+    "scss/dollar-variable-pattern": "^[A-Za-z]+$",
+    "scss/at-mixin-pattern": "^[A-Za-z]+$"
   }
 }

@@ -106,6 +106,52 @@
   max-inline-size: 1100px;
 }
 
+.step,
+.stepReverse {
+  padding: 40px 0;
+
+  div {
+    @include stepCard;
+  }
+
+  img {
+    inline-size: 100%;
+  }
+}
+
+.step {
+  @include container(center, space-around, row);
+
+  @media screen and (width <= 823px) {
+    @include container;
+  }
+}
+
+.stepReverse {
+  @include container(flex-start, space-around, row);
+
+  @media screen and (width <= 950px) {
+    @include container(center, flex-start, column-reverse);
+
+    padding: 0;
+  }
+
+  @media screen and (width <= 414px) {
+    padding: 0;
+  }
+
+  div {
+    @include container(flex-start);
+
+    margin: 90px 0 30px;
+    padding: 0 80px;
+    inline-size: 100%;
+    @media (width <= 720px) {
+      padding: 0;
+    }
+  }
+}
+
 .images {
   img {
     max-block-size: 40px;
@@ -154,40 +200,6 @@
   }
 }
 
-.stats {
-  @include container(center, center, row);
-
-  div {
-    @include container(center, center, row);
-
-    margin-block-end: 10px;
-    padding: 10px 20px;
-    border-inline-end: 1px solid grey;
-    @media (width <= 580px) {
-      padding: 10px 5px;
-    }
-
-    &:last-child {
-      border-inline-end: 0;
-    }
-
-    p {
-      margin-inline-end: 10px;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    span {
-      font-size: 18px;
-      font-weight: 400;
-    }
-  }
-
-  @media screen and (width <= 414px) {
-    flex-wrap: wrap;
-  }
-}
-
 .whiteStep {
   @include stepCard;
 }
@@ -233,52 +245,6 @@
 
   inline-size: 100%;
   padding: 40px 0 30px;
-}
-
-.step,
-.stepReverse {
-  padding: 40px 0;
-
-  div {
-    @include stepCard;
-  }
-
-  img {
-    inline-size: 100%;
-  }
-}
-
-.step {
-  @include container(center, space-around, row);
-
-  @media screen and (width <= 823px) {
-    @include container;
-  }
-}
-
-.stepReverse {
-  @include container(flex-start, space-around, row);
-
-  @media screen and (width <= 950px) {
-    @include container(center, flex-start, column-reverse);
-
-    padding: 0;
-  }
-
-  @media screen and (width <= 414px) {
-    padding: 0;
-  }
-
-  div {
-    @include container(flex-start);
-
-    margin: 90px 0 30px;
-    padding: 0 80px;
-    inline-size: 100%;
-    @media (width <= 720px) {
-      padding: 0;
-    }
-  }
 }
 
 .greyContainer,
@@ -332,10 +298,45 @@
   }
 }
 
+.stats {
+  @include container(center, center, row);
+
+  div {
+    @include container(center, center, row);
+
+    margin-block-end: 10px;
+    padding: 10px 20px;
+    border-inline-end: 1px solid grey;
+    @media (width <= 580px) {
+      padding: 10px 5px;
+    }
+
+    &:last-child {
+      border-inline-end: 0;
+    }
+
+    p {
+      margin-inline-end: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+
+  @media screen and (width <= 414px) {
+    flex-wrap: wrap;
+  }
+}
+
 .headline {
   margin: 20px 0;
   text-align: center;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   span {
     &:first-child {
       line-height: 39px;
