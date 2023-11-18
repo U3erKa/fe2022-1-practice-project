@@ -7,7 +7,8 @@
     "stylelint-plugin-logical-css",
     "stylelint-csstree-validator",
     "stylelint-declaration-block-no-ignored-properties",
-    "stylelint-group-selectors"
+    "stylelint-group-selectors",
+    "stylelint-plugin-defensive-css"
   ],
   "reportInvalidScopeDisables": true,
   "reportNeedlessDisables": true,
@@ -21,6 +22,18 @@
     "csstree/validator": { "syntaxExtensions": ["sass"] },
     "plugin/declaration-block-no-ignored-properties": true,
     "plugin/stylelint-group-selectors": true,
+    "plugin/use-defensive-css": [
+      true,
+      {
+        "accidental-hover": true,
+        "background-repeat": true,
+        "custom-property-fallbacks": true,
+        "flex-wrapping": true,
+        "scroll-chaining": true,
+        "scrollbar-gutter": true,
+        "vendor-prefix-grouping": true
+      }
+    ],
     "selector-class-pattern": "^[A-Za-z-]+$",
     "scss/dollar-variable-pattern": "^[A-Za-z]+$"
   }
