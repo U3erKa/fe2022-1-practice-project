@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": "^18 || >=20",
+    "pnpm": ">=8"
+  },
   "scripts": {
     "build": "next build",
     "clear:styles": "rm -rf src/**/*.{css,scss}.d.ts",
     "dev": "next dev",
     "format": "prettier --write -l src db",
     "lint": "turbo lint:code lint:styles",
-    "lint:fix": "turbo lint:code lint:styles -- --fix",
+    "lint:fix": "pnpm lint -- --fix",
     "lint:code": "next lint",
     "lint:styles": "stylelint 'src/**/*.{css,scss}'",
     "prepare": "turbo styles",
