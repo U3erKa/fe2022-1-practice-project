@@ -40,8 +40,10 @@
     margin: 0 5px;
   }
 
-  &:hover {
-    background-color: #eefaea;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #eefaea;
+    }
   }
 }
 

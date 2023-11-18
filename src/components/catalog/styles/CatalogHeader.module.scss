@@ -23,9 +23,11 @@
     color: white;
     transition: font-size 0.2s;
 
-    &:hover {
-      transition: font-size 0.2s;
-      font-size: 28px;
+    @media (hover: hover) {
+      &:hover {
+        transition: font-size 0.2s;
+        font-size: 28px;
+      }
     }
   }
 }
@@ -41,15 +43,16 @@
     color: white;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
   svg {
     font-size: 12px;
     transition: font-size 0.2s;
     margin-inline-start: 5px;
 
-    &:hover {
-      font-size: 14px;
-      transition: font-size 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        font-size: 14px;
+        transition: font-size 0.2s;
+      }
     }
   }
 }

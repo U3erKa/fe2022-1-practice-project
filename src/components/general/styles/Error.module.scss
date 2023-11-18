@@ -25,12 +25,14 @@
     inset-inline-end: -4px;
     transition: font-size 0.2s;
 
-    &:hover {
-      inset-block-start: -8px;
-      inset-inline-end: -8px;
-      color: #4e618d;
-      font-size: 32px;
-      transition: font-size 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        inset-block-start: -8px;
+        inset-inline-end: -8px;
+        color: #4e618d;
+        font-size: 32px;
+        transition: font-size 0.2s;
+      }
     }
   }
 }

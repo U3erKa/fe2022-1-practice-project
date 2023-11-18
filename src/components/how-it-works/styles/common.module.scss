@@ -63,17 +63,20 @@ $containerWidth: 1280px;
   text-align: center;
   line-height: 1.5;
   transition: all 0.3s ease-in-out;
+
+  & > svg {
+    margin-inline-end: $gap;
+  }
+
   @media (width < 480px) {
     display: block;
     max-inline-size: 100%;
   }
 
-  &:hover {
-    box-shadow: 0 4px 11px rgb(55 125 255 / 35%);
-    transform: translateY(-3px);
-  }
-
-  & > svg {
-    margin-inline-end: $gap;
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 4px 11px rgb(55 125 255 / 35%);
+      transform: translateY(-3px);
+    }
   }
 }

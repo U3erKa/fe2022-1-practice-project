@@ -7,7 +7,6 @@
   article {
     margin: 0 auto;
     display: flex;
-    flex-wrap: nowrap;
     flex-flow: row wrap;
     align-items: baseline;
     justify-content: space-around;
@@ -45,8 +44,10 @@
         text-decoration: none;
         color: #767979;
 
-        &:hover {
-          color: rgb(249 118 75);
+        @media (hover: hover) {
+          &:hover {
+            color: rgb(249 118 75);
+          }
         }
       }
     }

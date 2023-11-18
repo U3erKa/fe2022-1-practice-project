@@ -7,8 +7,10 @@
   cursor: pointer;
   border-block-end: 1px solid #4e618d;
 
-  &:hover {
-    background-color: #e5e5e5;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #e5e5e5;
+    }
   }
 
   img {
@@ -49,9 +51,11 @@
     font-size: 16px;
     transition: font-size 0.2s ease;
 
-    &:hover {
-      font-size: 20px;
-      color: red;
+    @media (hover: hover) {
+      &:hover {
+        font-size: 20px;
+        color: red;
+      }
     }
   }
 }

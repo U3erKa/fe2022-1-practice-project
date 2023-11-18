@@ -11,12 +11,14 @@
   min-inline-size: 170px;
   max-inline-size: 350px;
 
-  &:hover {
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 
-    .infoContainer {
-      hr {
-        border-block-start: 1px solid #28d2d1;
+      .infoContainer {
+        hr {
+          border-block-start: 1px solid #28d2d1;
+        }
       }
     }
   }
@@ -27,12 +29,12 @@
   inline-size: 48px;
   margin: 20px 0;
 }
-/* stylelint-disable-next-line no-descending-specificity */
+
 .infoContainer {
   display: flex;
   flex-flow: column wrap;
   align-self: center;
-  /* stylelint-disable-next-line no-descending-specificity */
+
   hr {
     inline-size: 60px;
     border-block-start: 1px solid #ccc;

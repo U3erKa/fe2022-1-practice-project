@@ -120,7 +120,17 @@
     }
   }
 
-  &:hover {
+  @media (width <= 414px) {
+    img {
+      max-block-size: 20px;
+      max-inline-size: 70px;
+      margin: 0 30px;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .images:hover {
     img {
       max-block-size: 40px;
       cursor: pointer;
@@ -135,9 +145,8 @@
     }
   }
 
-  @media screen and (width <= 414px) {
-    img,
-    &:hover {
+  @media (width <= 414px) {
+    .images:hover {
       max-block-size: 20px;
       max-inline-size: 70px;
       margin: 0 30px;
@@ -391,8 +400,10 @@
     flex: 1;
     text-decoration: none;
 
-    &:hover {
-      color: inherit;
+    @media (hover: hover) {
+      &:hover {
+        color: inherit;
+      }
     }
   }
 }

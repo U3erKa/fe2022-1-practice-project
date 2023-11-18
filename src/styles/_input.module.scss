@@ -34,9 +34,11 @@
     align-self: flex-start;
     cursor: pointer;
 
-    &:hover {
-      color: white;
-      background-color: #f27e51;
+    @media (hover: hover) {
+      &:hover {
+        color: white;
+        background-color: #f27e51;
+      }
     }
   }
 }

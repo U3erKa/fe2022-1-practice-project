@@ -81,9 +81,11 @@
     text-align: center;
   }
 
-  &:hover {
-    background-color: #455a89;
-    color: white;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #455a89;
+      color: white;
+    }
   }
 }
 

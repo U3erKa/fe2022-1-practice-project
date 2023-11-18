@@ -38,8 +38,10 @@
     margin-block-start: 10px;
   }
 
-  &:hover {
-    background-color: #4e618d;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #4e618d;
+    }
   }
 }
 

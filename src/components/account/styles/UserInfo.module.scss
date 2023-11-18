@@ -23,10 +23,12 @@
   font-size: 18px;
   transition: background-color 0.2s;
 
-  &:hover {
-    transition: background-color 0.2s;
-    background-color: #f27e51;
-    color: white;
+  @media (hover: hover) {
+    &:hover {
+      transition: background-color 0.2s;
+      background-color: #f27e51;
+      color: white;
+    }
   }
 }
 

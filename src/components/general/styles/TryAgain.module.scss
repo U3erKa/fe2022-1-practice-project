@@ -21,10 +21,12 @@
     transition: font-size 0.2s;
     color: #4e618d;
 
-    &:hover {
-      animation: rot 0.4s infinite linear;
-      font-size: 30px;
-      transition: font-size 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        animation: rot 0.4s infinite linear;
+        font-size: 30px;
+        transition: font-size 0.2s;
+      }
     }
   }
 }

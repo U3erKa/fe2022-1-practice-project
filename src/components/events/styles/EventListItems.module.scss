@@ -30,8 +30,10 @@ $colorDarkGray: #555;
     border-radius: 1rem;
     background: $colorGray;
 
-    &:hover {
-      background: $colorDarkGray;
+    @media (hover: hover) {
+      &:hover {
+        background: $colorDarkGray;
+      }
     }
   }
 }

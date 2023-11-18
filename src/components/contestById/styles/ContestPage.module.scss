@@ -100,8 +100,10 @@
   color: white;
   border-radius: 4px 4px 0 0;
 
-  &:hover {
-    background-color: rgb(176 196 222 / 80%);
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgb(176 196 222 / 80%);
+    }
   }
 }
 
@@ -109,7 +111,9 @@
   background-color: white;
   color: #333;
 
-  &:hover {
-    background-color: white;
+  @media (hover: hover) {
+    &:hover {
+      background-color: white;
+    }
   }
 }

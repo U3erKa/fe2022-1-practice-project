@@ -44,9 +44,11 @@
       text-align: center;
       transition: font-size 0.2s ease;
 
-      &:hover {
-        font-size: 22px;
-        color: red;
+      @media (hover: hover) {
+        &:hover {
+          font-size: 22px;
+          color: red;
+        }
       }
     }
 

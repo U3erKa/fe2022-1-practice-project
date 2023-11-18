@@ -12,12 +12,14 @@
   padding: 10px 15px;
   border-inline-end: 1px solid #ebebeb;
 
-  &:hover > ul {
-    display: block;
-    position: absolute;
-    inset-block-start: 40px;
+  @media (hover: hover) {
+    &:hover > ul {
+      display: block;
+      position: absolute;
+      inset-block-start: 40px;
+    }
   }
-  /* stylelint-disable-next-line no-descending-specificity */
+
   & > ul {
     border: 1px solid #eee;
     z-index: 500;
@@ -30,8 +32,10 @@
     & > li {
       text-align: start;
 
-      &:hover {
-        background: #f9fafb;
+      @media (hover: hover) {
+        &:hover {
+          background: #f9fafb;
+        }
       }
     }
   }

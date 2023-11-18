@@ -16,9 +16,11 @@
   border-radius: $borderRadius $borderRadius 0 0;
   padding: $padding;
 
-  &:hover {
-    color: $mainColor;
-    background-color: $backgroundColor;
+  @media (hover: hover) {
+    &:hover {
+      color: $mainColor;
+      background-color: $backgroundColor;
+    }
   }
 }
 

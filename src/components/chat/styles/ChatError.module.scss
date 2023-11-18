@@ -39,10 +39,12 @@
     inset-inline-end: -4px;
     transition: font-size 0.2s;
 
-    &:hover {
-      color: white;
-      font-size: 30px;
-      transition: font-size 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        color: white;
+        font-size: 30px;
+        transition: font-size 0.2s;
+      }
     }
   }
 }

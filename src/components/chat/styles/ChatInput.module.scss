@@ -37,8 +37,10 @@
     inset-inline-start: -8px;
     transition: transform 0.2s ease;
 
-    &:hover {
-      transform: scale(1.25);
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.25);
+      }
     }
   }
 }
@@ -79,9 +81,14 @@
   border: 2px solid #d0d0d0;
   transition: border 0.5s;
 
-  &:focus,
-  &:hover {
+  &:focus {
     border-color: #28d2d0;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: #28d2d0;
+    }
   }
 }
 

@@ -20,8 +20,10 @@
 .numbers {
   margin-inline-start: 5px;
 
-  &:hover {
-    background-color: #e5e5e5;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #e5e5e5;
+    }
   }
 
   svg {
@@ -29,10 +31,12 @@
     font-size: 18px;
     transition: font-size 0.2s;
 
-    &:hover {
-      color: red;
-      font-size: 24px;
-      transition: font-size 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        color: red;
+        font-size: 24px;
+        transition: font-size 0.2s;
+      }
     }
   }
 }

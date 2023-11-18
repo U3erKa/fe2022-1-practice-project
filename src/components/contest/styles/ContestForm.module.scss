@@ -30,8 +30,10 @@
   border-radius: 8px;
   background-color: #8aca6b;
 
-  &:hover {
-    background-color: #6b8ab1;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #6b8ab1;
+    }
   }
 }
 
@@ -79,8 +81,10 @@
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
 
-  &:focus {
-    border: 2px solid #28d2d0;
+  @media (hover: hover) {
+    &:focus {
+      border: 2px solid #28d2d0;
+    }
   }
 }
 
@@ -106,8 +110,10 @@
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
 
-  &:focus {
-    border: 2px solid #28d2d0;
+  @media (hover: hover) {
+    &:focus {
+      border: 2px solid #28d2d0;
+    }
   }
 }
 
@@ -233,8 +239,10 @@
     min-inline-size: 140px;
   }
 
-  &:hover {
-    font-size: 28px;
+  @media (hover: hover) {
+    &:hover {
+      font-size: 28px;
+    }
   }
 }
 
@@ -248,11 +256,13 @@
     block-size: 60px;
   }
 
-  &:hover {
-    font-size: 32px;
+  @media (hover: hover) {
+    &:hover {
+      font-size: 32px;
+    }
   }
 }
-/* stylelint-disable-next-line no-descending-specificity */
+
 .prevButtonContainer,
 .nextButtonContainer {
   border: none;
@@ -270,7 +280,9 @@
     margin: 0 10px;
   }
 
-  &:hover {
-    transition: font-size 0.1s ease-in-out;
+  @media (hover: hover) {
+    &:hover {
+      transition: font-size 0.1s ease-in-out;
+    }
   }
 }

@@ -52,38 +52,43 @@
           text-decoration: none;
           color: #333;
 
-          &:hover {
-            color: #f27e51;
+          @media (hover: hover) {
+            &:hover {
+              color: #f27e51;
+            }
           }
         }
 
-        &:hover {
-          background: #f9fafb;
+        @media (hover: hover) {
+          &:hover {
+            background: #f9fafb;
+          }
         }
       }
     }
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    &:hover {
-      span {
-        color: #f27e51;
-      }
+    @media (hover: hover) {
+      &:hover {
+        span {
+          color: #f27e51;
+        }
 
-      ul {
-        display: block;
-        position: absolute;
-        border: 1px solid #eee;
-        z-index: 1000;
-        inset-block-start: 130px;
-        background-color: white;
-        @media (width <= 700px) {
-          inset-block-start: auto;
-          inset-inline-start: 145px;
+        ul {
+          display: block;
+          position: absolute;
+          border: 1px solid #eee;
+          z-index: 1000;
+          inset-block-start: 130px;
+          background-color: white;
+          @media (width <= 700px) {
+            inset-block-start: auto;
+            inset-inline-start: 145px;
+          }
         }
       }
     }
   }
-  /* stylelint-disable-next-line no-descending-specificity */
+
   &:last-child li {
     ul {
       inline-size: 200px;

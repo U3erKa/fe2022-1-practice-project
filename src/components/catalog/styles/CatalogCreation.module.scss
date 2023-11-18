@@ -18,8 +18,10 @@
     background-color: white;
     border-radius: 11px;
 
-    &:hover {
-      color: red;
+    @media (hover: hover) {
+      &:hover {
+        color: red;
+      }
     }
   }
 }
@@ -44,9 +46,11 @@
     justify-content: center;
     flex: 1;
 
-    &:hover {
-      color: #4e618d;
-      background-color: #f3f3f3;
+    @media (hover: hover) {
+      &:hover {
+        color: #4e618d;
+        background-color: #f3f3f3;
+      }
     }
 
     &:first-child {

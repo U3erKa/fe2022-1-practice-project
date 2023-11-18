@@ -78,8 +78,10 @@
     color: #fff;
     padding: 10px 0;
 
-    &:hover {
-      background-color: #ff6f54;
+    @media (hover: hover) {
+      &:hover {
+        background-color: #ff6f54;
+      }
     }
   }
 }

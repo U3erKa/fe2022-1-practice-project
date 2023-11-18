@@ -7,8 +7,10 @@
       padding: 0 15px;
     }
 
-    &:hover {
-      background: #f9fafb;
+    @media (hover: hover) {
+      &:hover {
+        background: #f9fafb;
+      }
     }
   }
 
@@ -35,8 +37,10 @@
     border: none;
     text-align: start;
 
-    &:hover {
-      background: inherit;
+    @media (hover: hover) {
+      &:hover {
+        background: inherit;
+      }
     }
   }
 }

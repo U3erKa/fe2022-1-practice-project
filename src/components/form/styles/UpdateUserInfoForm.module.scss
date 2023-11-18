@@ -17,8 +17,10 @@
     font-weight: 500;
     border: none;
 
-    &:hover {
-      background-color: #f27e51;
+    @media (hover: hover) {
+      &:hover {
+        background-color: #f27e51;
+      }
     }
   }
 }

@@ -25,9 +25,11 @@ $containerWidth: 1280px;
   font-weight: 400;
   margin-block-end: 10px;
 
-  &:hover {
-    color: white;
-    background-color: #28d2d0;
+  @media (hover: hover) {
+    &:hover {
+      color: white;
+      background-color: #28d2d0;
+    }
   }
 
   &[disabled] {

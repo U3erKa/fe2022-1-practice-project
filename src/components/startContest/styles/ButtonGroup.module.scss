@@ -23,8 +23,10 @@ $colorDarkGray: #333;
   border: 2px solid $colorGray;
   border-radius: 5px;
 
-  &:hover {
-    box-shadow: 1px 1px 1px 1px #0002;
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 1px 1px 1px 1px #0002;
+    }
   }
 
   &.active {
