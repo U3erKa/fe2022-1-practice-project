@@ -5,7 +5,7 @@
   align-items: flex-start;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
-  width: 100%;
+  inline-size: 100%;
 
   @media (width <= 420px) {
     flex-direction: column;
@@ -20,14 +20,14 @@
   background-color: #455a89;
   color: white;
   font-weight: 500;
-  margin-top: 100px;
+  margin-block-start: 100px;
   font-size: 18px;
-  margin-left: 50px;
+  margin-inline-start: 50px;
   transition: background-color 0.2s;
 
   @media (width <= 420px) {
     margin: 20px 0;
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   &:hover {
@@ -46,17 +46,17 @@
 
 .avatar {
   align-self: center;
-  width: 140px;
-  height: 140px;
+  inline-size: 140px;
+  block-size: 140px;
   margin: 40px 0;
 }
 
 .infoBlock {
   display: flex;
   flex-direction: row;
-  margin-bottom: 25px;
+  margin-block-end: 25px;
   align-items: center;
-  width: 200px;
+  inline-size: 200px;
   justify-content: space-between;
 }
 

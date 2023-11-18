@@ -1,13 +1,13 @@
 .chatHeader {
-  height: 50px;
+  block-size: 50px;
   background-color: #4e618d;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid #f3f3f3;
+  border-block-end: 1px solid #f3f3f3;
   box-sizing: border-box;
   z-index: 600;
-  padding-left: 15px;
+  padding-inline-start: 15px;
 }
 
 .buttonContainer {
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 15px;
+  margin-inline-start: 15px;
 
   div {
     display: flex;
@@ -31,12 +31,12 @@
     align-items: center;
 
     &:last-child {
-      margin-right: 15px;
+      margin-inline-end: 15px;
     }
 
     svg {
-      margin-right: 10px;
-      width: 23px;
+      margin-inline-end: 10px;
+      inline-size: 23px;
       font-size: 18px;
       text-align: center;
       transition: font-size 0.2s ease;
@@ -48,8 +48,8 @@
     }
 
     img {
-      height: 44px;
-      width: 44px;
+      block-size: 44px;
+      inline-size: 44px;
       border-radius: 50%;
     }
 
@@ -58,11 +58,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 100px;
+      inline-size: 100px;
       color: white;
       font-size: 18px;
       font-weight: 500;
-      margin-left: 12px;
+      margin-inline-start: 12px;
     }
   }
 }

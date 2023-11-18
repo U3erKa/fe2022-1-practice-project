@@ -1,7 +1,7 @@
 .imgStyle {
   display: block;
-  width: 120px;
-  height: 120px;
+  inline-size: 120px;
+  block-size: 120px;
   align-self: center;
 }
 
@@ -10,11 +10,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 
   span {
     font-size: 14px;
-    margin-bottom: 4px;
+    margin-block-end: 4px;
     color: red;
   }
 

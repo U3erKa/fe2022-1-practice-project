@@ -1,8 +1,7 @@
 .fieldWarning {
   position: absolute;
-  bottom: -25px;
-  right: 0;
-  left: 0;
+  inset-block-end: -25px;
+  inset-inline: 0;
   z-index: 1;
   background: #f7542c;
   font-size: 15px;
@@ -13,9 +12,8 @@
   color: white;
   border: 2px solid red;
   border-radius: 0 0 5px 5px;
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  margin-block-end: 15px;
+  padding-block: 5px;
   text-align: center;
 }
 
@@ -32,8 +30,7 @@
   position: relative;
   flex-direction: column;
   justify-content: center;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-inline: 20px;
 }
 
 .input {
@@ -44,7 +41,7 @@
   font-size: 18px;
   padding: 23px 20px;
   outline: none;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
   flex: 1;
   @media (width <= 1400px) {
     align-self: normal;
@@ -53,18 +50,17 @@
 
 .submitContainer {
   align-self: stretch;
-  min-width: 260px;
+  min-inline-size: 260px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #28d2d0;
-  height: 64px;
-  margin-left: 20px;
+  block-size: 64px;
+  margin-inline: 20px;
   padding: 0;
   border: 0;
-  width: stretch;
-  margin-right: 20px;
+  inline-size: stretch;
   @media (width <= 850px) {
     align-self: auto;
   }

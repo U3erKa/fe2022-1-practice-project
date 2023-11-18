@@ -1,11 +1,11 @@
 .headerContainer {
-  height: 50px;
+  block-size: 50px;
   background-color: #4e618d;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 15px;
-  border-bottom: 1px solid #f3f3f3;
+  padding-inline-start: 15px;
+  border-block-end: 1px solid #f3f3f3;
   z-index: 600;
 
   button {
@@ -30,7 +30,7 @@
 }
 
 .infoContainer {
-  margin-left: 25px;
+  margin-inline-start: 25px;
   display: flex;
   align-items: center;
 
@@ -39,10 +39,11 @@
     color: white;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   svg {
     font-size: 12px;
     transition: font-size 0.2s;
-    margin-left: 5px;
+    margin-inline-start: 5px;
 
     &:hover {
       font-size: 14px;
@@ -73,7 +74,7 @@
 }
 
 .fieldWarning {
-  margin-right: 5px;
+  margin-inline-end: 5px;
   font-size: 15px;
   display: flex;
   flex-direction: row;
@@ -88,7 +89,7 @@
   margin: 0 15px;
   background-color: white;
   border: none;
-  width: 140px;
+  inline-size: 140px;
   border-radius: 4px;
   color: #9ca8b7;
   font-size: 16px;

@@ -9,7 +9,7 @@ $colorCyan: #28d2d0;
   @include container($align: center, $justify: flex-start, $dir: column);
 
   font-size: $fontSize;
-  width: clamp($minWidth, 100%, $containerWidth);
+  inline-size: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
   gap: $gap;
   margin: 0 auto;
@@ -23,20 +23,20 @@ $colorCyan: #28d2d0;
 .inputContainer {
   @include container($align: flex-start, $justify: center, $dir: column);
 
-  width: 100%;
+  inline-size: 100%;
   padding: $padding 0;
   gap: $gap;
 }
 
 .input {
   box-sizing: border-box;
-  width: 100%;
+  inline-size: 100%;
   font-size: 1.25rem;
-  height: 3rem;
+  block-size: 3rem;
   background-color: $colorWhite;
   border: 2px solid $colorLightGray;
   border-radius: $borderRadius;
-  margin-bottom: $padding;
+  margin-block-end: $padding;
   padding: 0 $padding;
   color: $colorDarkGray;
   transition:

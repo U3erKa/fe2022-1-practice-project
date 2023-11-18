@@ -3,14 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 40px;
-  height: 100vh;
+  padding-block-start: 40px;
+  block-size: 100vb;
 }
 
 .loginContainer {
   background-color: #3ea9f5;
-  min-width: 300px;
-  width: 1200px;
+  min-inline-size: 300px;
+  inline-size: 1200px;
   display: flex;
   flex-direction: column;
 }
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
+  margin-block-start: 80px;
 }
 
 .headerSignUpPage {
@@ -27,11 +27,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 26px;
-  padding-left: 45px;
-  padding-right: 100px;
+  margin-block-start: 26px;
+  padding-inline: 45px 100px;
   @media (width <= 530px) {
-    padding-right: 45px;
+    padding-inline-end: 45px;
   }
 }
 

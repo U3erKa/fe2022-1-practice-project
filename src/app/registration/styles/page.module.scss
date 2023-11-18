@@ -6,16 +6,16 @@
 }
 
 .footer {
-  padding-top: 80px;
+  padding-block-start: 80px;
   background: white;
   display: flex;
   justify-content: center;
 }
 
 .articlesMainContainer {
-  width: 60%;
+  inline-size: 60%;
   display: flex;
-  min-width: 300px;
+  min-inline-size: 300px;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
@@ -25,11 +25,11 @@
 }
 
 .signUpContainer {
-  width: 72%;
+  inline-size: 72%;
   padding: 20px;
-  min-width: 280px;
-  min-height: 650px;
-  padding-top: 40px;
+  min-inline-size: 280px;
+  min-block-size: 650px;
+  padding-block-start: 40px;
 }
 
 .headerSignUpPage {
@@ -37,9 +37,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 26px;
-  padding-left: 45px;
-  padding-right: 60px;
+  margin-block-start: 26px;
+  padding-inline: 45px 60px;
   @media (width <= 530px) {
     padding: 0;
   }

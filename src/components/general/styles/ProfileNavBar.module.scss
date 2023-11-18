@@ -1,7 +1,7 @@
 .navList {
   &Item {
     box-sizing: border-box;
-    width: 100%;
+    inline-size: 100%;
 
     @media (width <= 700px) {
       padding: 0 15px;
@@ -16,7 +16,7 @@
   &Btn {
     box-sizing: border-box;
     display: inline-block;
-    margin-left: 0;
+    margin-inline-start: 0;
     padding: 5px 15px;
     font-size: 16px;
     text-decoration: none;
@@ -25,15 +25,15 @@
   &LinkText {
     color: #495d8b;
     font-weight: 300;
-    width: 100%;
+    inline-size: 100%;
   }
 
   &Btn {
-    width: 100%;
+    inline-size: 100%;
     color: #333;
     background: #fff;
     border: none;
-    text-align: left;
+    text-align: start;
 
     &:hover {
       background: inherit;
@@ -43,10 +43,10 @@
 
 .badge {
   position: absolute;
-  right: 10px;
-  bottom: 85px;
-  width: 20px;
-  height: 20px;
+  inset-inline-end: 10px;
+  inset-block-end: 85px;
+  inline-size: 20px;
+  block-size: 20px;
   border-radius: 1rem;
   text-align: center;
   font-weight: 600;

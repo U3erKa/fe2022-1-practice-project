@@ -1,7 +1,7 @@
 @import '../../../styles/auth.module';
 
 .loginForm {
-  width: 600px;
+  inline-size: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,8 +13,7 @@
     font-size: 34px;
     letter-spacing: 0.6px;
     color: white;
-    margin-top: 20px;
-    margin-bottom: 28px;
+    margin-block: 20px 28px;
   }
 }
 

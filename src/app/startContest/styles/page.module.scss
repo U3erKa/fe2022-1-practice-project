@@ -14,26 +14,23 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-inline: 15px;
   box-sizing: border-box;
-  max-width: 1200px;
+  max-inline-size: 1200px;
 }
 
 .infoCombinedBundles {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 20px;
+  padding-inline: 15px;
+  padding-block-end: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
   hr {
-    width: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-top: 2px solid #28d2d1;
+    inline-size: 100px;
+    margin-block: 20px;
+    border-block-start: 2px solid #28d2d1;
   }
 }
 
@@ -46,19 +43,17 @@
 }
 
 .infoBaseBundles {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 20px;
+  padding-inline: 15px;
+  padding-block-end: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
   hr {
-    width: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-top: 2px solid white;
+    inline-size: 100px;
+    margin-block: 20px;
+    border-block-start: 2px solid white;
   }
 }
 
@@ -66,14 +61,13 @@
   color: white;
   text-align: center;
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
   font-weight: 300;
 }
 
 .headerInfo {
   font-size: 32px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-block: 20px 10px;
   line-height: 1.1;
   text-align: center;
   color: white;

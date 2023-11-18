@@ -2,11 +2,10 @@
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  padding-top: 20px;
+  padding-block: 20px 25px;
   margin: 0 25px;
-  margin-top: 20px;
-  padding-bottom: 25px;
-  border-top: 1px solid #f3f3f3;
+  margin-block-start: 20px;
+  border-block-start: 1px solid #f3f3f3;
 }
 
 .infoContainer {
@@ -26,7 +25,7 @@
 }
 
 .editBtn {
-  margin-right: 15px;
+  margin-inline-end: 15px;
   color: white;
   font-size: 20px;
   padding: 12px 28px;
@@ -50,8 +49,8 @@
   color: #515b5f;
   font-size: 15px;
   padding: 0;
-  padding-top: 8px;
-  margin-bottom: 10px;
+  padding-block-start: 8px;
+  margin-block-end: 10px;
   border: none;
   background-color: white;
   resize: none;

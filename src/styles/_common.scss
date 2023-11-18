@@ -15,7 +15,7 @@ $containerWidth: 1280px;
 @mixin button {
   text-align: center;
   text-decoration: none;
-  max-width: 340px;
+  max-inline-size: 340px;
   padding: 10px 22px;
   border: 2px solid #28d2d0;
   color: #28d2d0;
@@ -23,7 +23,7 @@ $containerWidth: 1280px;
   border-radius: 5px;
   font-size: 14px;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 
   &:hover {
     color: white;

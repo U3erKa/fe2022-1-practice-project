@@ -1,5 +1,5 @@
 .errorContainer {
-  width: auto;
+  inline-size: auto;
   align-self: center;
   display: flex;
   flex-direction: row;
@@ -9,9 +9,9 @@
   padding: 15px 10px;
   background-color: red;
   position: absolute;
-  top: 80px;
+  inset-block-start: 80px;
   cursor: pointer;
-  left: 80px;
+  inset-inline-start: 80px;
 }
 
 .container {
@@ -21,7 +21,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 26px;
-  width: 120px;
+  inline-size: 120px;
   background-color: red;
   position: relative;
 
@@ -35,8 +35,8 @@
     font-size: 26px;
     position: absolute;
     cursor: pointer;
-    top: -4px;
-    right: -4px;
+    inset-block-start: -4px;
+    inset-inline-end: -4px;
     transition: font-size 0.2s;
 
     &:hover {

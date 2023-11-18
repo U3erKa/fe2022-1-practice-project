@@ -10,7 +10,7 @@
 .headingContainer {
   @include container($align: center, $justify: space-between, $dir: row);
 
-  width: clamp($minWidth, 100%, $containerWidth);
+  inline-size: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
 
   @media (width < 768px) {

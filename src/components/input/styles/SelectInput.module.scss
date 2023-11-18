@@ -2,12 +2,12 @@
   margin: 15px 0 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  inline-size: 100%;
 }
 
 .selectInput {
-  width: 550px;
-  height: 46px;
+  inline-size: 550px;
+  block-size: 46px;
   box-sizing: border-box;
   box-shadow: none;
   display: flex;
@@ -17,7 +17,7 @@
   border: 2px solid #d0d0d0;
   border-radius: 4px;
   cursor: text;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
   outline: none;
   padding: 0 10px;
   color: #555;
@@ -25,7 +25,7 @@
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
   @media (width <= 700px) {
-    width: min-content;
+    inline-size: min-content;
   }
 
   &:focus {
@@ -38,6 +38,5 @@
   font-size: 19px;
   color: #585859;
   font-weight: 700;
-  margin-top: 12px;
-  margin-bottom: 5px;
+  margin-block: 12px 5px;
 }

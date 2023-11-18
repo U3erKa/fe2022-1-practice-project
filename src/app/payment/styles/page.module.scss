@@ -13,11 +13,11 @@
   border-radius: 12px;
   border: 2px solid #333;
   text-align: center;
-  width: 300px;
+  inline-size: 300px;
   color: white;
   font-size: 16px;
   text-transform: uppercase;
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 .mainContainer {
@@ -31,17 +31,17 @@
 }
 
 .orderInfoContainer {
-  width: 480px;
+  inline-size: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 5px;
+  margin-block-start: 5px;
   padding: 30px 60px;
   z-index: 500;
   @media (width <= 500px) {
     order: 500;
-    width: 300px;
+    inline-size: 300px;
     padding: 0 10px;
   }
 
@@ -55,7 +55,7 @@
 }
 
 .resultPriceContainer {
-  width: 70%;
+  inline-size: 70%;
   align-self: flex-end;
   display: flex;
   align-items: center;
@@ -69,21 +69,21 @@
 }
 
 .orderHeader {
-  width: 100%;
+  inline-size: 100%;
   font-size: 26px;
   color: #333;
   line-height: 1.4;
   padding: 15px 0;
-  border-bottom: 1px solid #eee;
+  border-block-end: 1px solid #eee;
 }
 
 .packageInfoContainer {
-  width: 100%;
+  inline-size: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px 0 20px;
-  border-bottom: 1px solid #eee;
+  border-block-end: 1px solid #eee;
 }
 
 .packageName {

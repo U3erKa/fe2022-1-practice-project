@@ -8,29 +8,29 @@ $contentWidth: calc($containerWidth - $imageWidth);
 }
 
 .contents {
-  width: clamp($minWidth, 60%, $contentWidth);
+  inline-size: clamp($minWidth, 60%, $contentWidth);
   @media (width < 1000px) {
-    width: clamp($minWidth, 80%, 900px);
+    inline-size: clamp($minWidth, 80%, 900px);
   }
 
   @media (width < 768px) {
-    width: 90%;
+    inline-size: 90%;
   }
 
   @media (width < 480px) {
-    width: 100%;
+    inline-size: 100%;
   }
 }
 
 .imageContainer {
-  width: clamp($minWidth, 40%, $imageWidth);
+  inline-size: clamp($minWidth, 40%, $imageWidth);
   @media (width < 1000px) {
     display: none;
   }
 }
 
 .mainHeading {
-  margin-bottom: $gap;
+  margin-block-end: $gap;
   font-size: 2.5rem;
   font-weight: 600;
   color: $textColorDark;

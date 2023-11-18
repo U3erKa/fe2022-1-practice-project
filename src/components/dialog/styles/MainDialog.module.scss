@@ -1,5 +1,5 @@
 .messageList {
-  height: 280px;
+  block-size: 280px;
   overflow: auto;
   padding: 0 8px;
   display: flex;
@@ -7,7 +7,7 @@
   justify-content: flex-start;
 
   &::-webkit-scrollbar {
-    width: 5px;
+    inline-size: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -32,24 +32,24 @@
 .ownMessage {
   align-self: flex-end;
   background-color: #6b89b0;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 4px;
+  border-start-start-radius: 8px;
+  border-start-end-radius: 4px;
 }
 
 .message {
   align-self: flex-start;
   background-color: #4e618d;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 8px;
+  border-start-start-radius: 4px;
+  border-start-end-radius: 8px;
 }
 
 .ownMessage,
 .message {
   color: white;
-  max-width: 200px;
+  max-inline-size: 200px;
   padding: 6px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
   margin: 4px 0;
   overflow-wrap: break-word;
   box-sizing: border-box;
@@ -57,9 +57,9 @@
 
 .messageTime {
   position: relative;
-  float: right;
-  margin-left: 5px;
-  top: 12px;
+  float: inline-end;
+  margin-inline-start: 5px;
+  inset-block-start: 12px;
   font-size: 10px;
   color: white;
 }

@@ -37,7 +37,7 @@
 }
 
 .label {
-  margin-bottom: 2px;
+  margin-block-end: 2px;
   font-size: 16px;
   font-weight: 500;
   color: #585859;
@@ -48,23 +48,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-block-end: 20px;
   position: relative;
 }
 
 .error {
   position: absolute;
-  bottom: -20px;
+  inset-block-end: -20px;
   display: inline-block;
   align-self: stretch;
-  margin-bottom: 5px;
+  margin-block-end: 5px;
   color: red;
   font-size: 14px;
 }
 
 .input {
   outline: none;
-  height: 48px;
+  block-size: 48px;
   border: 2px solid #d0d0d0;
   padding: 0 8px;
   font-size: 17px;

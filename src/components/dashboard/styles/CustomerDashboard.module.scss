@@ -3,31 +3,31 @@
 .contestsContainer {
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 15px;
+  inline-size: 100%;
+  margin-block-start: 15px;
 }
 
 .filterContainer {
-  min-width: 250px;
-  max-height: 350px;
+  min-inline-size: 250px;
+  max-block-size: 350px;
   padding: 30px;
-  margin-right: 50px;
+  margin-inline-end: 50px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   align-items: flex-start;
   background-color: white;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
   @media (width <= 1000px) {
     padding: 10px;
     flex-direction: row;
-    margin-right: 0;
+    margin-inline-end: 0;
     justify-content: center;
   }
 }
 
 .filter {
-  margin-top: 15px;
+  margin-block-start: 15px;
   align-self: stretch;
   text-align: center;
   color: #46568a;
@@ -35,7 +35,7 @@
   border-radius: 10px;
   padding: 10px;
   @media (width <= 1000px) {
-    height: 30px;
+    block-size: 30px;
     margin: 0 5px;
   }
 
@@ -46,7 +46,7 @@
 
 .activeFilter {
   transition: 0.5s background-color;
-  margin-top: 15px;
+  margin-block-start: 15px;
   align-self: stretch;
   text-align: center;
   font-size: 18px;
@@ -55,7 +55,7 @@
   background-color: #4e618d;
   color: white;
   @media (width <= 1000px) {
-    height: 30px;
+    block-size: 30px;
     margin: 0 5px;
   }
 }

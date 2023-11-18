@@ -1,14 +1,14 @@
 .notFound {
   color: #455a89;
   font-size: 20px;
-  margin-top: 40px;
-  width: 100%;
+  margin-block-start: 40px;
+  inline-size: 100%;
   text-align: center;
 }
 
 .offers {
-  width: 100%;
-  margin-top: 20px;
-  padding-top: 10px;
+  inline-size: 100%;
+  margin-block-start: 20px;
+  padding-block-start: 10px;
   align-self: stretch;
 }

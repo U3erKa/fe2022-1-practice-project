@@ -1,6 +1,6 @@
 .offerContainer {
   display: flex;
-  margin-top: 15px;
+  margin-block-start: 15px;
   align-self: stretch;
   padding: 30px 40px 10px;
   background-color: #f9fafb;
@@ -15,8 +15,8 @@
 
   svg {
     position: absolute;
-    left: calc(100% - 35px);
-    top: -15px;
+    inset-inline-start: calc(100% - 35px);
+    inset-block-start: -15px;
     font-size: 54px;
   }
 }
@@ -43,7 +43,7 @@
 }
 
 .resolveBtn {
-  width: 100px;
+  inline-size: 100px;
   cursor: pointer;
   text-align: center;
   padding: 10px;
@@ -59,7 +59,7 @@
 .rejectBtn {
   text-align: center;
   cursor: pointer;
-  width: 100px;
+  inline-size: 100px;
   padding: 10px;
   border-radius: 8px;
   background-color: #cd5c5c;
@@ -90,11 +90,11 @@
     transition: font-size 0.2s;
     color: #4e618d;
     @media (width <= 450px) {
-      top: 30px;
+      inset-block-start: 30px;
     }
 
     @media (width <= 380px) {
-      top: 100px;
+      inset-block-start: 100px;
       align-self: flex-end;
     }
 
@@ -110,45 +110,45 @@
 }
 
 .userInfo {
-  min-width: 215px;
+  min-inline-size: 215px;
 }
 
 .responseConainer {
-  width: 70%;
+  inline-size: 70%;
   align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   @media (width <= 800px) {
-    margin-top: 10px;
-    max-width: 200px;
+    margin-block-start: 10px;
+    max-inline-size: 200px;
   }
 }
 
 .responseLogo {
-  width: auto;
-  height: 100px;
+  inline-size: auto;
+  block-size: 100px;
 }
 
 .response {
   text-align: center;
   overflow-wrap: break-word;
   align-self: stretch;
-  margin-left: 10px;
+  margin-inline-start: 10px;
   color: #556da5;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
   font-size: 18px;
 }
 
 .creativeRating {
   display: flex;
-  margin-top: 5px;
+  margin-block-start: 5px;
   align-items: center;
 }
 
 .userScoreLabel {
-  margin-right: 10px;
+  margin-inline-end: 10px;
   color: #556da5;
   font-size: 15px;
 }
@@ -160,8 +160,8 @@
   justify-content: flex-start;
 
   img {
-    width: 50px;
-    height: 50px;
+    inline-size: 50px;
+    block-size: 50px;
     border-radius: 25px;
   }
 }
@@ -176,7 +176,7 @@
     color: #556da5;
     font-size: 16px;
     font-weight: 500;
-    margin-left: 10px;
+    margin-inline-start: 10px;
   }
 }
 

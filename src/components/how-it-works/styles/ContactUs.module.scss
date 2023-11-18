@@ -27,8 +27,8 @@
   gap: $padding;
 
   & > svg {
-    width: 2rem;
-    height: 2rem;
+    inline-size: 2rem;
+    block-size: 2rem;
     flex-shrink: 0;
     text-align: center;
     line-height: 2;
@@ -41,7 +41,7 @@
 .smallHeading,
 .bigHeading {
   font-weight: 500;
-  margin-bottom: $padding;
+  margin-block-end: $padding;
 }
 
 .smallHeading {
@@ -54,7 +54,7 @@
 
 .heading {
   margin: 0;
-  margin-bottom: $padding;
+  margin-block-end: $padding;
 }
 
 .text {
@@ -83,6 +83,6 @@
   margin: $padding 0;
 
   & > img {
-    margin-right: $gap;
+    margin-inline-end: $gap;
   }
 }

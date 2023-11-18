@@ -2,7 +2,7 @@
   background-color: #f4f6f6;
   border: 1px solid #ccd3d3;
   padding: 25px 15px;
-  margin-bottom: 50px;
+  margin-block-end: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,9 +14,8 @@
 
 .headerInfo {
   padding: 0 15px;
-  margin-bottom: 25px;
+  margin-block: 10px 25px;
   font-size: 18px;
-  margin-top: 10px;
 }
 
 .cardContainer {
@@ -33,8 +32,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0 15px;
-  margin-bottom: 25px;
-  margin-top: 20px;
+  margin-block: 20px 25px;
 }
 
 .payButton {
@@ -61,14 +59,14 @@
   border: 1px solid transparent;
   border-radius: 4px;
   color: white;
-  margin-left: 10px;
+  margin-inline-start: 10px;
   @media (width <= 480px) {
     padding: 8px 30px;
   }
 }
 
 .totalSum {
-  margin-top: 25px;
+  margin-block-start: 25px;
   padding: 0 15px;
   font-size: 22px;
   color: #333;
@@ -76,8 +74,8 @@
 }
 
 .formContainer {
-  width: 100%;
-  margin-top: 25px;
+  inline-size: 100%;
+  margin-block-start: 25px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -99,11 +97,11 @@
   align-items: flex-start;
 
   &:first-child {
-    margin-right: 5px;
+    margin-inline-end: 5px;
   }
 
   &:last-child {
-    margin-left: 5px;
+    margin-inline-start: 5px;
   }
 
   input {
@@ -113,21 +111,21 @@
     line-height: 1.4;
     font-size: 14px;
     color: #555;
-    margin-top: 4px;
+    margin-block-start: 4px;
     padding: 5px;
     background-color: white;
     border: 1px solid #ccc;
     transition: all 0.2s;
     -webkit-font-smoothing: antialiased;
     @media (width <= 480px) {
-      max-width: 130px;
+      max-inline-size: 130px;
     }
   }
 
   span {
     font-weight: 400;
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-block-end: 5px;
     color: #333;
   }
 }
@@ -143,7 +141,7 @@
 .error {
   align-self: flex-end;
   color: red;
-  margin-top: 2px;
+  margin-block-start: 2px;
   font-size: 14px;
 }
 
@@ -153,8 +151,8 @@
 
 .bigInput {
   box-sizing: border-box;
-  width: 100%;
-  margin-bottom: 25px;
+  inline-size: 100%;
+  margin-block-end: 25px;
   padding: 0 15px;
   display: flex;
   flex-direction: column;
@@ -164,7 +162,7 @@
   span {
     font-weight: 400;
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-block-end: 5px;
     color: #333;
   }
 
@@ -174,7 +172,7 @@
     line-height: 1.4;
     font-size: 14px;
     color: #555;
-    margin-top: 4px;
+    margin-block-start: 4px;
     padding: 5px;
     background-color: white;
     border: 1px solid #ccc;
@@ -193,7 +191,7 @@
   .error {
     align-self: flex-end;
     color: red;
-    margin-top: 2px;
+    margin-block-start: 2px;
     font-size: 14px;
   }
 

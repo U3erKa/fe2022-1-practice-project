@@ -8,14 +8,14 @@ $colorDarkGray: #555;
   @include container($align: center, $justify: flex-start, $dir: column);
 
   font-size: $fontSize;
-  width: clamp($minWidth, 100%, $containerWidth);
+  inline-size: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
   gap: $gap;
   overflow: auto;
-  max-height: 300px;
+  max-block-size: 300px;
 
   &::-webkit-scrollbar {
-    width: calc($padding * 3 / 4);
+    inline-size: calc($padding * 3 / 4);
   }
 
   &::-webkit-scrollbar-track {
@@ -37,7 +37,7 @@ $colorDarkGray: #555;
   @include container($align: center, $justify: space-between, $dir: row);
 
   position: relative;
-  width: calc(100% - $padding * 2);
+  inline-size: calc(100% - $padding * 2);
   padding: $padding;
   gap: $gap;
 }
@@ -46,8 +46,8 @@ $colorDarkGray: #555;
   appearance: none;
   position: absolute;
   inset: 0;
-  height: 100%;
-  width: 100%;
+  block-size: 100%;
+  inline-size: 100%;
   z-index: -1;
 
   &::-webkit-progress-bar {
@@ -70,5 +70,5 @@ $colorDarkGray: #555;
 .time {
   color: $colorGray;
   flex-shrink: 0;
-  text-align: right;
+  text-align: end;
 }

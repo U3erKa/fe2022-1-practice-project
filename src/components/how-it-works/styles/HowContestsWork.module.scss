@@ -22,7 +22,7 @@ $lineHeight: 0.0625rem;
 }
 
 .listContainer {
-  width: 100%;
+  inline-size: 100%;
   gap: calc($gap * 8);
   @media (width < 1024px) {
     flex-direction: column-reverse;
@@ -30,7 +30,7 @@ $lineHeight: 0.0625rem;
 }
 
 .listIcon {
-  width: 75%;
+  inline-size: 75%;
   padding: 0 $padding;
   @media (width < 768px) {
     display: none;
@@ -59,26 +59,26 @@ $lineHeight: 0.0625rem;
     }
 
     &::before {
-      left: calc($lineWidth * -1);
-      width: $lineWidth;
-      height: $lineHeight;
-      border-top: 1px solid $borderColor;
+      inset-inline-start: calc($lineWidth * -1);
+      inline-size: $lineWidth;
+      block-size: $lineHeight;
+      border-block-start: 1px solid $borderColor;
     }
 
     &::after {
-      left: calc($lineWidth * -1 - 0.1rem);
-      width: $lineHeight;
-      border-right: 1px solid $borderColor;
+      inset-inline-start: calc($lineWidth * -1 - 0.1rem);
+      inline-size: $lineHeight;
+      border-inline-end: 1px solid $borderColor;
     }
 
     &:first-child::after {
-      height: 50%;
-      top: auto;
+      block-size: 50%;
+      inset-block-start: auto;
     }
 
     &:last-child::after {
-      height: 50%;
-      bottom: auto;
+      block-size: 50%;
+      inset-block-end: auto;
     }
   }
 }
@@ -86,7 +86,7 @@ $lineHeight: 0.0625rem;
 .text {
   display: flex;
   align-items: center;
-  margin-bottom: 0;
+  margin-block-end: 0;
   counter-increment: how-to;
   padding: calc($padding * 2 / 3) calc($padding * 2);
   border: 1px solid $borderColor;
@@ -95,7 +95,7 @@ $lineHeight: 0.0625rem;
   &::before {
     content: counter(how-to) '.';
     display: block;
-    width: 64px;
+    inline-size: 64px;
     font-size: 4rem;
     color: $mainColor;
   }

@@ -24,16 +24,16 @@ $iconSize: 80px;
   gap: calc($gap * 2);
   position: relative;
   @media (width >= 768px) {
-    width: 33%;
+    inline-size: 33%;
     padding: 0 calc($padding * 3);
 
     &:nth-child(n + 2)::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 25%;
-      height: 4rem;
-      border-left: 1px solid $borderColor;
+      inset-inline-start: 0;
+      inset-block-start: 25%;
+      block-size: 4rem;
+      border-inline-start: 1px solid $borderColor;
       transform: rotate(15deg);
     }
   }
@@ -45,8 +45,8 @@ $iconSize: 80px;
 }
 
 .icon {
-  width: $iconSize;
-  height: $iconSize;
+  inline-size: $iconSize;
+  block-size: $iconSize;
 }
 
 .text {

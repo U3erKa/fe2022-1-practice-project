@@ -12,13 +12,13 @@
 
 .linksContainer {
   box-sizing: border-box;
-  width: 100%;
+  inline-size: 100%;
   background-color: $mainColor;
   border-radius: $borderRadius;
   padding: $padding;
   @media (width >= 1024px) {
-    margin-top: calc($padding * 4);
-    width: 25%;
+    margin-block-start: calc($padding * 4);
+    inline-size: 25%;
   }
 }
 
@@ -33,13 +33,13 @@
 
 .answersContainer {
   @media (width >= 1024px) {
-    width: 75%;
+    inline-size: 75%;
   }
 }
 
 .heading {
   margin: 0;
-  margin-bottom: $padding;
+  margin-block-end: $padding;
   color: $mainColor;
 }
 
@@ -47,6 +47,6 @@
   padding: calc($padding * 4) 0;
 
   &:nth-child(n + 2) {
-    border-top: 1px solid $borderColor;
+    border-block-start: 1px solid $borderColor;
   }
 }

@@ -3,16 +3,16 @@
 .mainCarousel,
 .feedbackCarousel,
 .exampleCarousel {
-  width: 50%;
+  inline-size: 50%;
   margin: 30px 0;
-  overflow-x: hidden;
+  overflow-inline: hidden;
   position: relative;
   @media (width <= 1440px) {
-    width: 80%;
+    inline-size: 80%;
   }
 
   @media (width <= 760px) {
-    width: 90%;
+    inline-size: 90%;
   }
 
   button {
@@ -37,14 +37,14 @@
 .feedbackCell {
   @include container;
 
-  height: 450px;
-  padding-top: 20px;
+  block-size: 450px;
+  padding-block-start: 20px;
   background-color: #fff;
   color: #000;
 
   img {
-    height: 80px;
-    width: 80px;
+    block-size: 80px;
+    inline-size: 80px;
     border-radius: 100%;
   }
 
@@ -59,12 +59,12 @@
 
   span {
     text-align: center;
-    width: 100%;
+    inline-size: 100%;
     opacity: 0.6;
-    border-top: 1px solid #808080b3;
+    border-block-start: 1px solid #808080b3;
     padding: 20px 0;
     font-size: 16px;
-    margin-top: auto;
+    margin-block-start: auto;
   }
 }
 

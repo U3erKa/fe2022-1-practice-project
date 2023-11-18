@@ -3,9 +3,9 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 60px;
+  block-size: 60px;
   cursor: pointer;
-  border-bottom: 1px solid #4e618d;
+  border-block-end: 1px solid #4e618d;
 
   &:hover {
     background-color: #e5e5e5;
@@ -13,9 +13,9 @@
 
   img {
     border-radius: 50%;
-    width: 46px;
-    height: 46px;
-    margin-left: 10px;
+    inline-size: 46px;
+    block-size: 46px;
+    margin-inline-start: 10px;
   }
 }
 
@@ -25,9 +25,9 @@
   flex: 1;
   align-items: flex-start;
   padding: 0 15px;
-  padding-right: 10px;
+  padding-inline-end: 10px;
   overflow: hidden;
-  padding-bottom: 5px;
+  padding-block-end: 5px;
 
   span {
     color: grey;
@@ -42,7 +42,7 @@
   align-items: center;
 
   svg {
-    width: 25px;
+    inline-size: 25px;
     text-align: center;
     font-size: 16px;
     transition: font-size 0.2s ease;
@@ -55,7 +55,7 @@
 }
 
 .time {
-  margin-right: 10px;
+  margin-inline-end: 10px;
 }
 
 .interlocutorInfo {
@@ -71,7 +71,7 @@
   text-overflow: ellipsis;
   color: grey;
   font-size: 15px;
-  width: 65px;
+  inline-size: 65px;
 }
 
 .interlocutorName {
@@ -79,7 +79,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #6b8ab1;
-  width: 65px;
+  inline-size: 65px;
   font-weight: 500;
   font-size: 16px;
 }

@@ -20,7 +20,7 @@ $containerWidth: 1280px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: clamp($minWidth, 100%, $containerWidth);
+  inline-size: clamp($minWidth, 100%, $containerWidth);
   margin: 0 auto;
   padding: calc($padding * 4) calc($padding * 2);
   font-size: $fontSize;
@@ -34,22 +34,22 @@ $containerWidth: 1280px;
 
 .subHeading {
   font-size: 0.7rem;
-  margin-bottom: $gap;
+  margin-block-end: $gap;
   padding: $gap calc($gap * 2);
   color: $mainColor;
   background-color: $backgroundColor;
   border-radius: 1rem;
-  width: fit-content;
+  inline-size: fit-content;
 }
 
 .text {
-  margin-bottom: calc($gap * 2);
+  margin-block-end: calc($gap * 2);
   line-height: 1.7;
   color: $textColorLight;
 }
 
 .icon {
-  width: 72px;
+  inline-size: 72px;
 }
 
 @mixin button($color, $backgroundColor, $borderRadius) {
@@ -64,7 +64,7 @@ $containerWidth: 1280px;
   transition: all 0.3s ease-in-out;
   @media (width < 480px) {
     display: block;
-    max-width: 100%;
+    max-inline-size: 100%;
   }
 
   &:hover {
@@ -73,6 +73,6 @@ $containerWidth: 1280px;
   }
 
   & > svg {
-    margin-right: $gap;
+    margin-inline-end: $gap;
   }
 }

@@ -2,15 +2,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-top: 1px solid #f3f3f3;
+  border-block-start: 1px solid #f3f3f3;
   padding: 0 15px;
-  margin-top: 8px;
-  padding-top: 7px;
+  margin-block-start: 8px;
+  padding-block-start: 7px;
 
   &:last-child {
     border: none;
-    margin-top: 0;
-    padding-top: 0;
+    margin-block-start: 0;
+    padding-block-start: 0;
   }
 }
 
@@ -32,8 +32,8 @@
   img {
     position: absolute;
     cursor: pointer;
-    top: -15px;
-    left: -8px;
+    inset-block-start: -15px;
+    inset-inline-start: -8px;
     transition: transform 0.2s ease;
 
     &:hover {
@@ -51,7 +51,7 @@
 
   span {
     position: absolute;
-    right: 25px;
+    inset-inline-end: 25px;
     color: #b72522;
   }
 }
@@ -64,14 +64,13 @@
   align-items: center;
   color: white;
   border: 1px solid #b72522;
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  margin-block-end: 15px;
+  padding-block: 5px;
   text-align: center;
 }
 
 .input {
-  height: 20px;
+  block-size: 20px;
   outline: none;
   border-radius: 6px;
   padding: 6px;

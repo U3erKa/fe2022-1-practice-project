@@ -1,12 +1,12 @@
 .mainContainer {
-  width: 1200px;
+  inline-size: 1200px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-block-start: 50px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   @media (width <= 1400px) {
-    width: auto;
+    inline-size: auto;
   }
 
   @media (width <= 1000px) {
@@ -19,7 +19,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  width: 260px;
+  inline-size: 260px;
   padding: 15px;
 }
 

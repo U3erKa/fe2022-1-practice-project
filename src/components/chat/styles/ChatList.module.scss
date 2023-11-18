@@ -3,20 +3,20 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 .button {
   cursor: pointer;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-start-start-radius: 6px;
+  border-start-end-radius: 6px;
   flex: 1;
   border: 1px solid #d6d1d1;
   background-color: #d6d1d1;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 25px;
+  block-size: 25px;
 
   &:hover {
     border-color: #535457;
@@ -37,20 +37,20 @@
   }
 
   &:last-child {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 }
 
 .chatHeader {
-  height: 50px;
+  block-size: 50px;
   background-color: #4e618d;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #f3f3f3;
+  border-block-end: 1px solid #f3f3f3;
   z-index: 600;
 
   img {
-    width: 120px;
+    inline-size: 120px;
   }
 }

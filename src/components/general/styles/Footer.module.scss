@@ -1,5 +1,5 @@
 .footerTop {
-  width: 100%;
+  inline-size: 100%;
   background-color: #2b3030;
   padding: 80px 0;
   color: white;
@@ -11,22 +11,22 @@
     align-items: baseline;
     justify-content: space-around;
     @media (width >= 768px) {
-      width: 750px;
+      inline-size: 750px;
     }
 
     @media (width >= 992px) {
-      width: 970px;
+      inline-size: 970px;
     }
 
     @media (width >= 1200px) {
-      width: 1170px;
+      inline-size: 1170px;
     }
 
     section {
       display: flex;
       flex: 1;
-      min-width: 250px;
-      max-width: 300px;
+      min-inline-size: 250px;
+      max-inline-size: 300px;
       flex-direction: column;
       padding: 15px;
 
@@ -34,12 +34,12 @@
         font-size: 16px;
         color: #fff;
         display: block;
-        padding-bottom: 20px;
-        margin-bottom: 0;
+        padding-block-end: 20px;
+        margin-block-end: 0;
       }
 
       a {
-        padding-bottom: 7px;
+        padding-block-end: 7px;
         font-size: 14px;
         text-decoration: none;
         color: #767979;

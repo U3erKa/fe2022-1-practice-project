@@ -1,14 +1,14 @@
 @import '../../../styles/auth.module';
 
 .signUpFormContainer {
-  width: 60%;
+  inline-size: 60%;
   display: flex;
-  min-width: 280px;
+  min-inline-size: 280px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  margin-block-start: 80px;
   padding: 10px 20px 30px;
   box-sizing: border-box;
 }
@@ -24,9 +24,8 @@
   justify-content: center;
   align-items: stretch;
   align-self: stretch;
-  min-width: 260px;
-  margin-left: 20px;
-  margin-right: 20px;
+  min-inline-size: 260px;
+  margin-inline: 20px;
   @media (width <= 850px) {
     align-self: auto;
   }
@@ -37,11 +36,10 @@
   text-align: center;
   color: white;
   font-size: 16px;
-  min-width: 260px;
+  min-inline-size: 260px;
   align-self: stretch;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin-inline: 20px;
+  margin-block-end: 10px;
   @media (width <= 850px) {
     align-self: auto;
   }
@@ -53,14 +51,14 @@
 }
 
 .row {
-  width: 100%;
-  min-width: 260px;
+  inline-size: 100%;
+  min-inline-size: 260px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
   @media (width <= 795px) {
-    width: auto;
+    inline-size: auto;
   }
 }
 
@@ -74,7 +72,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 18px;
+  margin-block-end: 18px;
   text-align: center;
 
   h2 {
@@ -82,8 +80,7 @@
     font-size: 42px;
     font-weight: 600;
     line-height: 1.1;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-block: 20px 10px;
     letter-spacing: 1px;
   }
 
@@ -92,9 +89,9 @@
     font-size: 20px;
     font-weight: 500;
     word-spacing: 3px;
-    width: 88%;
+    inline-size: 88%;
     margin: 0;
-    margin-bottom: 13px;
+    margin-block-end: 13px;
     text-align: center;
     line-height: 27px;
   }

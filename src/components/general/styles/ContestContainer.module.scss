@@ -1,7 +1,7 @@
 @import '../../../styles/common';
 
 .container {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .spinnerContainer {
@@ -9,7 +9,7 @@
   flex: 1;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 .notFound {
@@ -17,7 +17,7 @@
   text-align: center;
   padding: 10px;
   font-weight: 600;
-  width: 100%;
+  inline-size: 100%;
   margin: 0 auto;
   color: #4e618d;
 }

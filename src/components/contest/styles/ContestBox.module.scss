@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: #f9fafb;
   padding: 30px 20px 10px;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
   @media (width <= 400px) {
     flex-direction: column;
   }
@@ -16,11 +16,11 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-right: 20px;
+  margin-inline-end: 20px;
 }
 
 .prizeContainer {
-  margin-top: 5px;
+  margin-block-start: 5px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -33,7 +33,7 @@
   span {
     color: #465a89;
     font-size: 15px;
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 }
 
@@ -41,17 +41,17 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 20px;
+  margin-inline-end: 20px;
 
   div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 14px;
-    width: 14px;
+    block-size: 14px;
+    inline-size: 14px;
     border-radius: 7px;
     background-color: #8aca6b;
-    margin-right: 5px;
+    margin-inline-end: 5px;
   }
 
   span {
@@ -61,7 +61,7 @@
 }
 
 .contestType {
-  margin-top: 5px;
+  margin-block-start: 5px;
 
   span {
     font-size: 14px;
@@ -70,7 +70,7 @@
 }
 
 .titleAndIdContainer {
-  width: 100%;
+  inline-size: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -85,19 +85,19 @@
   color: #556da5;
   font-size: 18px;
   font-weight: 500;
-  margin-right: 20px;
+  margin-inline-end: 20px;
 }
 
 .entryAndTimeContainer {
   display: flex;
   padding: 10px;
   background-color: white;
-  border-left: 1px solid #eee;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-inline-start: 1px solid #eee;
+  border-inline-end: 1px solid #eee;
+  border-block-end: 1px solid #eee;
   box-shadow: 2px 2px rgb(0 0 0 / 20%);
   @media (width <= 400px) {
-    margin-top: 10px;
+    margin-block-start: 10px;
     align-self: flex-start;
   }
 }
@@ -108,12 +108,12 @@
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  border-left: 1px solid #46568a;
+  border-inline-start: 1px solid #46568a;
 
   span {
     font-size: 15px;
     color: #8c8e92;
-    margin-top: 3px;
+    margin-block-start: 3px;
   }
 }
 
@@ -128,12 +128,12 @@
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  border-right: 1px solid #46568a;
+  border-inline-end: 1px solid #46568a;
 
   span {
     font-size: 15px;
     color: #8c8e92;
-    margin-top: 3px;
+    margin-block-start: 3px;
   }
 }
 
@@ -143,7 +143,7 @@
   justify-content: space-around;
 
   img {
-    margin-right: 5px;
+    margin-inline-end: 5px;
   }
 
   span {

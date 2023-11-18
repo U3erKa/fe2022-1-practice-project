@@ -1,6 +1,6 @@
 .emailIcon {
   padding: 0 15px;
-  border-right: 1px solid #ebebeb;
+  border-inline-end: 1px solid #ebebeb;
 }
 
 .userInfo {
@@ -9,25 +9,25 @@
   align-items: center;
   position: relative;
   padding: 10px 15px;
-  border-right: 1px solid #ebebeb;
+  border-inline-end: 1px solid #ebebeb;
 
   &:hover > ul {
     display: block;
     position: absolute;
-    top: 40px;
+    inset-block-start: 40px;
   }
-
+  /* stylelint-disable-next-line no-descending-specificity */
   & > ul {
     border: 1px solid #eee;
     z-index: 500;
     padding: 5px 0;
     list-style: none;
     background: white;
-    width: 180px;
+    inline-size: 180px;
     display: none;
 
     & > li {
-      text-align: left;
+      text-align: start;
 
       &:hover {
         background: #f9fafb;
@@ -36,8 +36,8 @@
   }
 
   & > img {
-    width: 20px;
-    height: 20px;
+    inline-size: 20px;
+    block-size: 20px;
     border-radius: 10px;
   }
 
@@ -46,16 +46,16 @@
     color: #718888;
     font-weight: 400;
     font-size: 14px;
-    border-right: 1px solid #ebebeb;
+    border-inline-end: 1px solid #ebebeb;
   }
 }
 
 .badge {
   position: absolute;
-  left: 30px;
-  bottom: 8px;
-  width: 8px;
-  height: 8px;
+  inset-inline-start: 30px;
+  inset-block-end: 8px;
+  inline-size: 8px;
+  block-size: 8px;
   background-color: #f00;
   border-radius: 1rem;
 }
