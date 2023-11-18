@@ -178,24 +178,6 @@
   }
 }
 
-.step {
-  @include container(center, space-around, row);
-
-  padding: 40px 0;
-
-  div {
-    @include stepCard;
-  }
-
-  @media screen and (width <= 823px) {
-    @include container;
-  }
-
-  img {
-    inline-size: 100%;
-  }
-}
-
 .whiteStep {
   @include stepCard;
 }
@@ -243,10 +225,29 @@
   padding: 40px 0 30px;
 }
 
+.step,
+.stepReverse {
+  padding: 40px 0;
+
+  div {
+    @include stepCard;
+  }
+
+  img {
+    inline-size: 100%;
+  }
+}
+
+.step {
+  @include container(center, space-around, row);
+
+  @media screen and (width <= 823px) {
+    @include container;
+  }
+}
+
 .stepReverse {
   @include container(flex-start, space-around, row);
-
-  padding: 40px 0;
 
   @media screen and (width <= 950px) {
     @include container(center, flex-start, column-reverse);
@@ -258,13 +259,8 @@
     padding: 0;
   }
 
-  img {
-    inline-size: 100%;
-  }
-
   div {
     @include container(flex-start);
-    @include stepCard;
 
     margin: 90px 0 30px;
     padding: 0 80px;

@@ -12,6 +12,8 @@ $colorDarkGray: #555;
   padding: $padding;
   gap: $gap;
   overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   max-block-size: 300px;
 
   &::-webkit-scrollbar {

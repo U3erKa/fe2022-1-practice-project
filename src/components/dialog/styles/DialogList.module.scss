@@ -27,6 +27,8 @@
   align-self: stretch;
   block-size: 300px;
   overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 
   &::-webkit-scrollbar {
     inline-size: 5px;

@@ -1,6 +1,8 @@
 .messageList {
   block-size: 280px;
   overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   padding: 0 8px;
   display: flex;
   flex-direction: column;

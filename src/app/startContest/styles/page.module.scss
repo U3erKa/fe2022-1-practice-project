@@ -19,7 +19,8 @@
   max-inline-size: 1200px;
 }
 
-.infoCombinedBundles {
+.infoCombinedBundles,
+.infoBaseBundles {
   padding-inline: 15px;
   padding-block-end: 20px;
   display: flex;
@@ -40,21 +41,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.infoBaseBundles {
-  padding-inline: 15px;
-  padding-block-end: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  hr {
-    inline-size: 100px;
-    margin-block: 20px;
-    border-block-start: 2px solid white;
-  }
 }
 
 .info {

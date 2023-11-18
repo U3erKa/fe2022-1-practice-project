@@ -1,4 +1,5 @@
-.contestSideBarInfo {
+.contestSideBarInfo,
+.customerNameContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -34,11 +35,6 @@
 }
 
 .customerNameContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
   span {
     color: #337ab7;
     font-size: 14px;

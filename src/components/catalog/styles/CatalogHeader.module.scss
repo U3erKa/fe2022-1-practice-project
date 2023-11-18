@@ -52,21 +52,9 @@
   }
 }
 
-.changeContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-
-  form {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-  }
-}
-
-.inputContainer {
+.changeContainer,
+.inputContainer,
+.changeContainer form {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

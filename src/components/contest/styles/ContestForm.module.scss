@@ -125,7 +125,8 @@
   inline-size: 100%;
 }
 
-.selectHeader {
+.selectHeader,
+.inputHeader {
   display: inline-block;
   font-size: 19px;
   color: #585859;
@@ -136,14 +137,6 @@
 .inputContainer {
   margin: 15px 0 0;
   inline-size: 100%;
-}
-
-.inputHeader {
-  display: inline-block;
-  font-size: 19px;
-  color: #585859;
-  font-weight: 700;
-  margin-block: 12px 5px;
 }
 
 .fileUploadContainer {
