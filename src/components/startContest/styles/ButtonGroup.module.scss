@@ -4,6 +4,14 @@ $colorWhite: #fff;
 $colorGray: #ccc;
 $colorDarkGray: #333;
 
+.choise {
+  padding: $padding;
+  border-radius: 2rem;
+  color: $colorWhite;
+  background-color: $colorGray;
+  inline-size: 40px;
+}
+
 .button {
   display: flex;
   flex-direction: column;
@@ -26,14 +34,6 @@ $colorDarkGray: #333;
       background-color: $colorCyan;
     }
   }
-}
-
-.choise {
-  padding: $padding;
-  border-radius: 2rem;
-  color: $colorWhite;
-  background-color: $colorGray;
-  inline-size: 40px;
 }
 
 .text {

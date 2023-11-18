@@ -109,28 +109,28 @@
   img {
     max-block-size: 40px;
     cursor: pointer;
-  }
 
-  img:first-child {
-    display: block;
-  }
+    &:first-child {
+      display: block;
+    }
 
-  img:last-child {
-    display: none;
+    &:last-child {
+      display: none;
+    }
   }
 
   &:hover {
     img {
       max-block-size: 40px;
       cursor: pointer;
-    }
 
-    img:first-child {
-      display: none;
-    }
+      &:first-child {
+        display: none;
+      }
 
-    img:last-child {
-      display: block;
+      &:last-child {
+        display: block;
+      }
     }
   }
 
@@ -150,10 +150,15 @@
   div {
     @include container(center, center, row);
 
+    margin-block-end: 10px;
     padding: 10px 20px;
     border-inline-end: 1px solid grey;
     @media (width <= 580px) {
       padding: 10px 5px;
+    }
+
+    &:last-child {
+      border-inline-end: 0;
     }
 
     p {
@@ -168,17 +173,9 @@
     }
   }
 
-  div:last-child {
-    border-inline-end: 0;
-  }
 
   @media screen and (width <= 414px) {
     flex-wrap: wrap;
-  }
-
-  div {
-    margin-block-end: 10px;
-    border-inline-end: 0;
   }
 }
 
@@ -262,16 +259,13 @@
     padding: 0;
   }
 
-  div {
-    @include stepCard;
-  }
-
   img {
     inline-size: 100%;
   }
 
   div {
     @include container(flex-start);
+    @include stepCard;
 
     margin: 90px 0 30px;
     padding: 0 80px;
@@ -337,20 +331,22 @@
   margin: 20px 0;
   text-align: center;
 
-  span:first-child {
-    line-height: 39px;
-    font-size: 32px;
-    font-weight: 500;
-    padding: 7px 0;
-  }
+  span {
+    &:first-child {
+      line-height: 39px;
+      font-size: 32px;
+      font-weight: 500;
+      padding: 7px 0;
+    }
 
-  span:last-child {
-    line-height: 40px;
-    font-size: 30px;
-    font-weight: 700;
-    padding: 7px 0;
-    margin-inline-start: 5px;
-    transition: inline-size 0.3s -0.1s;
+    &:last-child {
+      line-height: 40px;
+      font-size: 30px;
+      font-weight: 700;
+      padding: 7px 0;
+      margin-inline-start: 5px;
+      transition: inline-size 0.3s -0.1s;
+    }
   }
 
   &Static {

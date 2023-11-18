@@ -180,22 +180,3 @@
     -webkit-font-smoothing: antialiased;
   }
 }
-
-.inputContainer {
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .error {
-    align-self: flex-end;
-    color: red;
-    margin-block-start: 2px;
-    font-size: 14px;
-  }
-
-  .notValid {
-    border: 1px solid red;
-  }
-}

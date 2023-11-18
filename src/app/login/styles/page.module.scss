@@ -1,3 +1,5 @@
+@import '../../../styles/registration.module';
+
 .mainContainer {
   background-color: #3ea9f5;
   display: flex;
@@ -20,35 +22,4 @@
   align-items: center;
   justify-content: center;
   margin-block-start: 80px;
-}
-
-.headerSignUpPage {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-block-start: 26px;
-  padding-inline: 45px 100px;
-  @media (width <= 530px) {
-    padding-inline-end: 45px;
-  }
-}
-
-.linkLoginContainer {
-  border: 1px solid white;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-
-  a {
-    padding: 10px 20px;
-  }
-
-  span {
-    color: white;
-  }
 }

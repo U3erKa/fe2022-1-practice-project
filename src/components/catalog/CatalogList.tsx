@@ -4,7 +4,7 @@ import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
 import { Catalog } from 'components/catalog';
 import type { Catalog as _Catalog } from 'types/chat';
 import type { CatalogId } from 'types/api/_common';
-import styles from './styles/CatalogListContainer.module.scss';
+import styles from 'components/dialog/styles/DialogList.module.scss';
 
 export type Props = {
   catalogList: _Catalog[];
@@ -46,7 +46,7 @@ const CatalogList: FC<Props> = ({ catalogList }) => {
     return elementList;
   };
 
-  return <div className={styles.listContainer}>{getListCatalog()}</div>;
+  return <div className={styles.previewContainer}>{getListCatalog()}</div>;
 };
 
 export default CatalogList;

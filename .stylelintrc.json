@@ -13,7 +13,7 @@
       { "severity": "warning" }
     ],
     "plugin/use-logical-units": [true, { "severity": "warning" }],
-    "selector-class-pattern": "^[A-Za-z]+$",
+    "selector-class-pattern": "^[A-Za-z-]+$",
     "scss/dollar-variable-pattern": "^[A-Za-z]+$"
   }
 }
