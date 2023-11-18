@@ -6,7 +6,8 @@
   "plugins": [
     "stylelint-plugin-logical-css",
     "stylelint-csstree-validator",
-    "stylelint-declaration-block-no-ignored-properties"
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-group-selectors"
   ],
   "reportInvalidScopeDisables": true,
   "reportNeedlessDisables": true,
@@ -19,6 +20,7 @@
     "plugin/use-logical-units": [true, { "severity": "warning" }],
     "csstree/validator": { "syntaxExtensions": ["sass"] },
     "plugin/declaration-block-no-ignored-properties": true,
+    "plugin/stylelint-group-selectors": true,
     "selector-class-pattern": "^[A-Za-z-]+$",
     "scss/dollar-variable-pattern": "^[A-Za-z]+$"
   }
