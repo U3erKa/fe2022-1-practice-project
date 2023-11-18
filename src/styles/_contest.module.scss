@@ -1,9 +1,9 @@
 .startContestHeader {
   display: flex;
   flex-flow: row wrap;
-  padding: 35px;
-  box-sizing: border-box;
   justify-content: center;
+  box-sizing: border-box;
+  padding: 35px;
 }
 
 .startContestInfo {
@@ -21,17 +21,17 @@
     color: #333;
     font-weight: 700;
     font-size: 28px;
+    line-height: 1.1;
     text-transform: uppercase;
     margin-block: 20px 10px;
-    line-height: 1.1;
   }
 
   span {
+    color: #333;
     font-weight: 300;
-    padding-inline-end: 20px;
-    margin-block-end: 10px;
     font-size: 14px;
     line-height: 1.428;
-    color: #333;
+    padding-inline-end: 20px;
+    margin-block-end: 10px;
   }
 }

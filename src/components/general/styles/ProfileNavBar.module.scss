@@ -16,12 +16,12 @@
 
   &LinkText,
   &Btn {
-    box-sizing: border-box;
     display: inline-block;
-    margin-inline-start: 0;
+    box-sizing: border-box;
     padding: 5px 15px;
     font-size: 16px;
     text-decoration: none;
+    margin-inline-start: 0;
   }
 
   &LinkText {
@@ -31,11 +31,11 @@
   }
 
   &Btn {
-    inline-size: 100%;
     color: #333;
+    text-align: start;
     background: #fff;
     border: none;
-    text-align: start;
+    inline-size: 100%;
 
     @media (hover: hover) {
       &:hover {
@@ -47,12 +47,12 @@
 
 .badge {
   position: absolute;
+  font-weight: 600;
+  text-align: center;
+  background-color: #f00;
+  border-radius: 1rem;
   inset-inline-end: 10px;
   inset-block-end: 85px;
   inline-size: 20px;
   block-size: 20px;
-  border-radius: 1rem;
-  text-align: center;
-  font-weight: 600;
-  background-color: #f00;
 }

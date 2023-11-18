@@ -1,99 +1,99 @@
 .header {
-  padding: 15px 0;
-  box-shadow: 2px 1px 4px #ccc;
-  box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  box-sizing: border-box;
+  padding: 15px 0;
+  box-shadow: 2px 1px 4px #ccc;
 }
 
 .errorMessage {
   margin: 0 auto;
   padding: 20px;
-  background-color: red;
-  border-radius: 12px;
-  border: 2px solid #333;
-  text-align: center;
-  inline-size: 300px;
   color: white;
   font-size: 16px;
+  text-align: center;
   text-transform: uppercase;
+  background-color: red;
+  border: 2px solid #333;
+  border-radius: 12px;
+  inline-size: 300px;
   margin-block-start: 20px;
 }
 
 .mainContainer {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
   @media (width <= 950px) {
-    align-items: center;
     flex-direction: column;
+    align-items: center;
   }
 }
 
 .orderInfoContainer {
-  inline-size: 480px;
+  z-index: 500;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: flex-start;
-  margin-block-start: 5px;
+  justify-content: center;
   padding: 30px 60px;
-  z-index: 500;
+  inline-size: 480px;
+  margin-block-start: 5px;
   @media (width <= 500px) {
     order: 500;
-    inline-size: 300px;
     padding: 0 10px;
+    inline-size: 300px;
   }
 
   a {
-    letter-spacing: 0.4px;
     align-self: flex-end;
-    font-size: 18px;
     color: #28d2d0;
+    font-size: 18px;
+    letter-spacing: 0.4px;
     text-decoration: none;
   }
 }
 
 .resultPriceContainer {
-  inline-size: 70%;
-  align-self: flex-end;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  align-self: flex-end;
   justify-content: space-between;
   padding: 15px 0 25px;
+  inline-size: 70%;
 
   span {
-    font-size: 24px;
     font-weight: 400;
+    font-size: 24px;
   }
 }
 
 .orderHeader {
-  inline-size: 100%;
-  font-size: 26px;
-  color: #333;
-  line-height: 1.4;
   padding: 15px 0;
+  color: #333;
+  font-size: 26px;
+  line-height: 1.4;
+  inline-size: 100%;
   border-block-end: 1px solid #eee;
 }
 
 .packageInfoContainer {
-  inline-size: 100%;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 25px 0 20px;
+  inline-size: 100%;
   border-block-end: 1px solid #eee;
 }
 
 .packageName {
-  font-size: 18px;
-  font-weight: 300;
   color: #333;
+  font-weight: 300;
+  font-size: 18px;
   line-height: 1.4;
 }
 
@@ -111,7 +111,7 @@
 
 .headerLabel {
   display: inline-block;
-  font-size: 26px;
-  color: #333;
   padding: 35px 0 20px;
+  color: #333;
+  font-size: 26px;
 }

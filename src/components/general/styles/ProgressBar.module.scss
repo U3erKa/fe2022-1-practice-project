@@ -17,8 +17,8 @@
 .stepDescContainer {
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-inline-end: 4px;
 }
 
@@ -31,25 +31,25 @@
 }
 
 .stepDesc {
-  text-align: center;
-  background-color: #28d2d0;
-  font-size: 15px;
-  font-weight: 500;
-  inline-size: 120px;
   padding: 4px 8px 6px;
   color: white;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  background-color: #28d2d0;
   border-radius: 4px;
+  inline-size: 120px;
   margin-block-start: -40px;
 }
 
 .lineBar {
-  inline-size: 76px;
-  block-size: 5px;
-  border: 1px solid #d5d5da;
-  border-inline-start: none;
-  border-inline-end: none;
   box-sizing: border-box;
   margin: 0 -1px;
+  border: 1px solid #d5d5da;
+  inline-size: 76px;
+  block-size: 5px;
+  border-inline-start: none;
+  border-inline-end: none;
 }
 
 .outerComplete {
@@ -57,11 +57,11 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  inline-size: 34px;
-  block-size: 34px;
-  border-radius: 18px;
   background-color: #8aca6b;
   border: 2px solid #8aca6b;
+  border-radius: 18px;
+  inline-size: 34px;
+  block-size: 34px;
 }
 
 .innerComplete {
@@ -76,18 +76,18 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  inline-size: 36px;
-  block-size: 36px;
-  border-radius: 18px;
   box-sizing: border-box;
   border: 2px solid #28d2d0;
+  border-radius: 18px;
+  inline-size: 36px;
+  block-size: 36px;
 }
 
 .innerActive {
+  background-color: #28d2d0;
+  border-radius: 10px;
   inline-size: 20px;
   block-size: 20px;
-  border-radius: 10px;
-  background-color: #28d2d0;
 }
 
 .outerNotActive {
@@ -95,11 +95,11 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  inline-size: 36px;
-  block-size: 36px;
-  border-radius: 18px;
   box-sizing: border-box;
   border: 1px solid #d5d5da;
+  border-radius: 18px;
+  inline-size: 36px;
+  block-size: 36px;
 
   @media (hover: hover) {
     &:hover {

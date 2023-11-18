@@ -1,8 +1,8 @@
 .headerSignUpPage {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-block-start: 26px;
   padding-inline: 45px 60px;
   @media (width <= 530px) {
@@ -11,15 +11,15 @@
 }
 
 .linkLoginContainer {
-  border: 1px solid white;
-  border-radius: 4px;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
-  font-size: 18px;
+  justify-content: center;
   font-weight: bold;
+  font-size: 18px;
   text-decoration: none;
+  border: 1px solid white;
+  border-radius: 4px;
 
   a {
     padding: 10px 20px;

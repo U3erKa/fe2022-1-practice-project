@@ -8,21 +8,21 @@ $containerWidth: 1280px;
 @mixin container($align: center, $justify: flex-start, $dir: column) {
   display: flex;
   flex-flow: $dir wrap;
-  justify-content: $justify;
   align-items: $align;
+  justify-content: $justify;
 }
 
 @mixin button {
+  padding: 10px 22px;
+  color: #28d2d0;
+  font-weight: 400;
+  font-size: 14px;
   text-align: center;
   text-decoration: none;
-  max-inline-size: 340px;
-  padding: 10px 22px;
-  border: 2px solid #28d2d0;
-  color: #28d2d0;
   background-color: #fff;
+  border: 2px solid #28d2d0;
   border-radius: 5px;
-  font-size: 14px;
-  font-weight: 400;
+  max-inline-size: 340px;
   margin-block-end: 10px;
 
   @media (hover: hover) {

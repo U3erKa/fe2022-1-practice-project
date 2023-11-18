@@ -8,12 +8,12 @@
 }
 
 .navContainer {
-  inline-size: 100%;
-  margin: 0 auto;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  inline-size: 100%;
   border-block-end: 1px solid #ebebeb;
   @media (width <= 920px) {
     justify-content: center;
@@ -39,8 +39,8 @@
   display: flex;
   flex-wrap: nowrap;
   @media (width <= 750px) {
-    align-items: center;
     flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -54,11 +54,11 @@
 }
 
 .userButtonsContainer {
-  margin-inline-start: 100px;
-  align-items: center;
-  justify-content: center;
   display: flex;
   flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: 100px;
   border-inline-start: 1px solid #ebebeb;
   block-size: 40px;
   @media (width <= 600px) {
@@ -83,13 +83,13 @@
 }
 
 .numberContainer {
-  text-decoration: none;
-  color: inherit;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 0 15px;
+  color: inherit;
+  text-decoration: none;
   border-inline-end: 1px solid #ebebeb;
   border-inline-start: 1px solid #ebebeb;
   margin-inline-start: 120px;
@@ -114,29 +114,29 @@
 }
 
 .fixedHeader {
+  position: fixed;
   z-index: 500;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
-  inline-size: 100vi;
-  position: fixed;
+  justify-content: center;
   background-color: rgb(69 90 137);
+  inline-size: 100vi;
   border-block-end: 3px solid rgb(255 255 255);
   block-size: 30px;
 
   & > a {
+    color: lightyellow;
     font-size: 8pt;
     letter-spacing: 0.3px;
-    color: lightyellow;
     text-decoration: underline;
   }
 }
 
 .info {
+  color: white;
   font-size: 8pt;
   letter-spacing: 0.3px;
-  color: white;
   margin-inline-end: 4px;
   @media (width <= 600px) {
     display: none;

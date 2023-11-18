@@ -1,32 +1,32 @@
 .headerContainer {
-  block-size: 50px;
-  background-color: #4e618d;
+  z-index: 600;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  background-color: #4e618d;
+  block-size: 50px;
   padding-inline-start: 15px;
   border-block-end: 1px solid #f3f3f3;
-  z-index: 600;
 
   button {
-    border: none;
-    border-radius: 4px;
     padding: 4px 6px;
     font-size: 14px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
   }
 
   svg {
-    cursor: pointer;
-    font-size: 24px;
     color: white;
+    font-size: 24px;
+    cursor: pointer;
     transition: font-size 0.2s;
 
     @media (hover: hover) {
       &:hover {
-        transition: font-size 0.2s;
         font-size: 28px;
+        transition: font-size 0.2s;
       }
     }
   }
@@ -39,8 +39,8 @@
   align-items: center;
 
   span {
-    font-size: 18px;
     color: white;
+    font-size: 18px;
   }
 
   svg {
@@ -62,32 +62,32 @@
 .changeContainer form {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .fieldWarning {
-  margin-inline-end: 5px;
-  font-size: 15px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   color: white;
-  border: 1px solid #b72522;
+  font-size: 15px;
   text-align: center;
+  border: 1px solid #b72522;
+  margin-inline-end: 5px;
 }
 
 .input {
   margin: 0 15px;
-  background-color: white;
-  border: none;
-  inline-size: 140px;
-  border-radius: 4px;
+  padding: 4px;
   color: #9ca8b7;
   font-size: 16px;
-  padding: 4px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
   outline: none;
+  inline-size: 140px;
 }
 
 .notValid {

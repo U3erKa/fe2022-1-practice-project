@@ -6,18 +6,18 @@ $colorDarkGray: #333;
 
 .choise {
   padding: $padding;
-  border-radius: 2rem;
   color: $colorWhite;
   background-color: $colorGray;
+  border-radius: 2rem;
   inline-size: 40px;
 }
 
 .button {
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
   gap: calc($padding * 2);
+  align-items: center;
+  justify-content: center;
   padding: calc($padding * 2);
   background-color: $colorWhite;
   border: 2px solid $colorGray;

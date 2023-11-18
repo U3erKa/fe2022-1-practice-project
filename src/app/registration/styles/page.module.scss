@@ -1,27 +1,27 @@
 @import '../../../styles/registration.module';
 
 .signUpPage {
-  background-color: #3ea9f5;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  background-color: #3ea9f5;
 }
 
 .footer {
-  padding-block-start: 80px;
-  background: white;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  background: white;
+  padding-block-start: 80px;
 }
 
 .articlesMainContainer {
-  inline-size: 60%;
   display: flex;
   flex-flow: row wrap;
-  min-inline-size: 300px;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
+  inline-size: 60%;
+  min-inline-size: 300px;
   @media (width <= 1000px) {
     flex-direction: column;
   }

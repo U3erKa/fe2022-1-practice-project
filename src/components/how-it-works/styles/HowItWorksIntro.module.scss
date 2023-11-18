@@ -30,10 +30,10 @@ $contentWidth: calc($containerWidth - $imageWidth);
 }
 
 .mainHeading {
-  margin-block-end: $gap;
-  font-size: 2.5rem;
-  font-weight: 600;
   color: $textColorDark;
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-block-end: $gap;
 }
 
 .button {

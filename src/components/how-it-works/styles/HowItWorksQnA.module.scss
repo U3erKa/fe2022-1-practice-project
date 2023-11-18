@@ -3,8 +3,8 @@
 .container {
   @include container;
 
-  align-items: flex-start;
   gap: calc($gap * 4);
+  align-items: flex-start;
   @media (width < 1024px) {
     flex-direction: column;
   }
@@ -12,10 +12,10 @@
 
 .linksContainer {
   box-sizing: border-box;
-  inline-size: 100%;
+  padding: $padding;
   background-color: $mainColor;
   border-radius: $borderRadius;
-  padding: $padding;
+  inline-size: 100%;
   @media (width >= 1024px) {
     margin-block-start: calc($padding * 4);
     inline-size: 25%;

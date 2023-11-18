@@ -8,40 +8,40 @@ $colorCyan: #28d2d0;
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
 
-  font-size: $fontSize;
-  inline-size: clamp($minWidth, 100%, $containerWidth);
-  padding: $padding;
   gap: $gap;
   margin: 0 auto;
+  padding: $padding;
+  font-size: $fontSize;
+  inline-size: clamp($minWidth, 100%, $containerWidth);
 }
 
 .heading {
-  font-size: 2rem;
   font-weight: 600;
+  font-size: 2rem;
 }
 
 .inputContainer {
   @include container($align: flex-start, $justify: center, $dir: column);
 
-  inline-size: 100%;
-  padding: $padding 0;
   gap: $gap;
+  padding: $padding 0;
+  inline-size: 100%;
 }
 
 .input {
   box-sizing: border-box;
-  inline-size: 100%;
+  padding: 0 $padding;
+  color: $colorDarkGray;
   font-size: 1.25rem;
-  block-size: 3rem;
   background-color: $colorWhite;
   border: 2px solid $colorLightGray;
   border-radius: $borderRadius;
-  margin-block-end: $padding;
-  padding: 0 $padding;
-  color: $colorDarkGray;
   transition:
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
+  inline-size: 100%;
+  block-size: 3rem;
+  margin-block-end: $padding;
 
   &:focus {
     border: 2px solid $colorCyan;
@@ -49,8 +49,8 @@ $colorCyan: #28d2d0;
 }
 
 .text {
-  font-size: 1.25rem;
   font-weight: 500;
+  font-size: 1.25rem;
 }
 
 .submit {

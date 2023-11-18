@@ -3,8 +3,8 @@
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
 
-  font-size: $fontSize;
   padding: $padding;
+  font-size: $fontSize;
 }
 
 .headingContainer {
@@ -27,8 +27,8 @@
 }
 
 .heading {
-  font-size: 2rem;
   font-weight: bold;
+  font-size: 2rem;
 }
 
 .pending {

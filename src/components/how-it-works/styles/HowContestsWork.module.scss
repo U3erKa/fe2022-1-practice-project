@@ -6,16 +6,16 @@ $lineHeight: 0.0625rem;
 .container {
   @include container;
 
-  gap: calc($gap * 8);
   flex-direction: column;
+  gap: calc($gap * 8);
 }
 
 .headingContainer,
 .listContainer {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
   gap: calc($gap * 2);
+  align-items: center;
 }
 
 .headingContainer {
@@ -53,10 +53,10 @@ $lineHeight: 0.0625rem;
 
     &::before,
     &::after {
-      content: '';
       position: absolute;
-      inset: 0;
       margin: auto auto auto 0;
+      content: '';
+      inset: 0;
     }
 
     &::before {
@@ -88,17 +88,17 @@ $lineHeight: 0.0625rem;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  margin-block-end: 0;
-  counter-increment: how-to;
   padding: calc($padding * 2 / 3) calc($padding * 2);
   border: 1px solid $borderColor;
   border-radius: $borderRadius;
+  counter-increment: how-to;
+  margin-block-end: 0;
 
   &::before {
-    content: counter(how-to) '.';
     display: block;
-    inline-size: 64px;
-    font-size: 4rem;
     color: $mainColor;
+    font-size: 4rem;
+    content: counter(how-to) '.';
+    inline-size: 64px;
   }
 }

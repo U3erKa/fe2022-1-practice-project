@@ -9,41 +9,41 @@
 .infoCustomerContainer {
   display: flex;
   flex-flow: column wrap;
-  align-self: stretch;
   align-items: flex-start;
+  align-self: stretch;
   justify-content: flex-start;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
 }
 
 .customerInfo {
-  padding: 15px 20px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  padding: 15px 20px;
 
   img {
+    border-radius: 20px;
     inline-size: 40px;
     block-size: 40px;
-    border-radius: 20px;
     margin-inline-end: 20px;
   }
 }
 
 .customerNameContainer {
   span {
+    margin: 2px 0;
     color: #337ab7;
     font-size: 14px;
-    margin: 2px 0;
   }
 }
 
 .labelCustomerInfo {
   align-self: stretch;
-  font-size: 15px;
   padding: 15px 20px;
-  background-color: #f3f3f3;
   font-weight: 700;
+  font-size: 15px;
+  background-color: #f3f3f3;
 }
 
 .contestInfo {
@@ -58,95 +58,95 @@
 }
 
 .contestStats {
-  align-self: stretch;
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
+  align-self: stretch;
   justify-content: flex-start;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   margin-block-end: 22px;
 
   span {
-    color: #000;
-    font-size: 15px;
-    font-weight: 700;
-    align-self: stretch;
     display: inline-block;
-    background-color: #f3f3f3;
+    align-self: stretch;
     padding: 15px 20px;
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #f3f3f3;
   }
 }
 
 .totalEntrie {
-  align-self: stretch;
-  padding: 15px 20px;
-  background: white;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  align-self: stretch;
   justify-content: space-between;
+  padding: 15px 20px;
+  background: white;
 
   span {
     padding: 0;
-    background-color: white;
-    font-weight: 600;
     color: #6b89b0;
+    font-weight: 600;
     font-size: 14px;
+    background-color: white;
   }
 }
 
 .totalEntriesLabel {
-  background-color: white;
   padding: 0;
-  font-size: 15px;
   color: #333;
   font-weight: 400;
+  font-size: 15px;
+  background-color: white;
 }
 
 .awardAndTimeContainer {
-  inline-size: 100%;
-  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+  inline-size: 100%;
   margin-block-end: 22px;
 }
 
 .guaranteedPrize {
-  align-self: stretch;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  margin-block: 10px 15px;
+  align-self: stretch;
   padding: 0 15px;
+  margin-block: 10px 15px;
 
   div {
-    border-radius: 8px;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background-color: #8aca6b;
+    border-radius: 8px;
     inline-size: 16px;
     block-size: 16px;
-    background-color: #8aca6b;
   }
 
   span {
+    color: #333;
     font-size: 14px;
     margin-inline-start: 5px;
-    color: #333;
   }
 }
 
 .timeContainer {
-  align-self: stretch;
-  margin-block-start: 10px;
   display: flex;
   flex-flow: column wrap;
-  justify-content: flex-start;
   align-items: flex-start;
+  align-self: stretch;
+  justify-content: flex-start;
   padding: 0 15px;
+  margin-block-start: 10px;
 }
 
 .time {
@@ -161,25 +161,25 @@
   align-items: center;
 
   span {
-    font-size: 14px;
     color: #333;
+    font-size: 14px;
     margin-inline-start: 10px;
   }
 }
 
 .prizeContainer {
-  align-self: stretch;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   align-items: center;
-  background-color: #6b89b0;
+  align-self: stretch;
+  justify-content: flex-start;
   padding: 12px 20px;
+  background-color: #6b89b0;
 
   span {
     color: white;
-    font-size: 22px;
     font-weight: 600;
+    font-size: 22px;
     margin-inline-start: 10px;
   }
 }

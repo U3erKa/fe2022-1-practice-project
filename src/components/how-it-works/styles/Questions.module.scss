@@ -7,14 +7,14 @@
 .question {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
   align-items: center;
-  inline-size: 100%;
+  justify-content: space-between;
+  padding: $padding;
   text-align: start;
   background-color: $buttonTextColor;
   border: 1px solid $borderColor;
   border-radius: $borderRadius $borderRadius 0 0;
-  padding: $padding;
+  inline-size: 100%;
 
   @media (hover: hover) {
     &:hover {
@@ -25,8 +25,8 @@
 }
 
 .arrowIcon {
-  font-size: 0.8rem;
   color: $mainColor;
+  font-size: 0.8rem;
 }
 
 .activeIcon {

@@ -1,39 +1,39 @@
 .buttonsContainer {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-block-end: 10px;
 }
 
 .button {
-  cursor: pointer;
-  border-start-start-radius: 6px;
-  border-start-end-radius: 6px;
-  flex: 1;
-  border: 1px solid #d6d1d1;
-  background-color: #d6d1d1;
   display: flex;
+  flex: 1;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  background-color: #d6d1d1;
+  border: 1px solid #d6d1d1;
+  cursor: pointer;
+  border-start-start-radius: 6px;
+  border-start-end-radius: 6px;
   block-size: 25px;
 
   @media (hover: hover) {
     &:hover {
-      border-color: #535457;
       background-color: #f3f3f3;
+      border-color: #535457;
     }
   }
 }
 
 .activeButton {
-  transition: margin 0.1s;
+  z-index: 500;
   margin: 0 -5px;
   color: white;
-  z-index: 500;
-  border-color: #4e618d;
   background-color: #4e618d;
+  border-color: #4e618d;
+  transition: margin 0.1s;
 
   @media (hover: hover) {
     &:hover {
@@ -47,14 +47,14 @@
 }
 
 .chatHeader {
-  block-size: 50px;
-  background-color: #4e618d;
+  z-index: 600;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  background-color: #4e618d;
+  block-size: 50px;
   border-block-end: 1px solid #f3f3f3;
-  z-index: 600;
 
   img {
     inline-size: 120px;

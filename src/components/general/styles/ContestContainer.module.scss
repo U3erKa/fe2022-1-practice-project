@@ -6,21 +6,21 @@
 
 .spinnerContainer {
   display: flex;
-  flex-wrap: nowrap;
   flex: 1;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
   margin-block-start: 20px;
 }
 
 .notFound {
+  margin: 0 auto;
+  padding: 10px;
+  color: #4e618d;
+  font-weight: 600;
   font-size: 18px;
   text-align: center;
-  padding: 10px;
-  font-weight: 600;
   inline-size: 100%;
-  margin: 0 auto;
-  color: #4e618d;
 }
 
 .loadMoreBtn {

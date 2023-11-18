@@ -1,10 +1,10 @@
 .previewChatBox {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
   align-items: center;
-  block-size: 60px;
+  justify-content: flex-start;
   cursor: pointer;
+  block-size: 60px;
   border-block-end: 1px solid #4e618d;
 
   @media (hover: hover) {
@@ -23,13 +23,13 @@
 
 .infoContainer {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
   flex: 1;
+  flex-wrap: nowrap;
   align-items: flex-start;
+  justify-content: space-between;
   padding: 0 15px;
-  padding-inline-end: 10px;
   overflow: hidden;
+  padding-inline-end: 10px;
   padding-block-end: 5px;
 
   span {
@@ -39,22 +39,22 @@
 }
 
 .buttonsContainer {
-  align-self: center;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-end;
   align-items: center;
+  align-self: center;
+  justify-content: flex-end;
 
   svg {
-    inline-size: 25px;
-    text-align: center;
     font-size: 16px;
+    text-align: center;
     transition: font-size 0.2s ease;
+    inline-size: 25px;
 
     @media (hover: hover) {
       &:hover {
-        font-size: 20px;
         color: red;
+        font-size: 20px;
       }
     }
   }
@@ -73,19 +73,19 @@
 
 .interlocutorMessage {
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   color: grey;
   font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   inline-size: 65px;
 }
 
 .interlocutorName {
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   color: #6b8ab1;
-  inline-size: 65px;
   font-weight: 500;
   font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  inline-size: 65px;
 }

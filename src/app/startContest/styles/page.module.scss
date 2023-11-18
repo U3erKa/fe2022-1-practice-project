@@ -1,12 +1,12 @@
 @import '../../../styles/contest.module';
 
 .combinedBundles {
-  padding: 25px 0;
-  box-sizing: border-box;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
   justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 25px 0;
 }
 
 .baseBundles {
@@ -21,12 +21,12 @@
 
 .infoCombinedBundles,
 .infoBaseBundles {
-  padding-inline: 15px;
-  padding-block-end: 20px;
   display: flex;
   flex-flow: column wrap;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+  padding-inline: 15px;
+  padding-block-end: 20px;
 
   hr {
     inline-size: 100px;
@@ -36,27 +36,27 @@
 }
 
 .baseBundleContainer {
-  background-color: #28d2d1;
-  padding: 25px 0;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  padding: 25px 0;
+  background-color: #28d2d1;
 }
 
 .info {
   color: white;
-  text-align: center;
-  font-size: 18px;
-  margin-block-end: 10px;
   font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+  margin-block-end: 10px;
 }
 
 .headerInfo {
+  color: white;
   font-size: 32px;
-  margin-block: 20px 10px;
   line-height: 1.1;
   text-align: center;
-  color: white;
+  margin-block: 20px 10px;
 
   span {
     font-weight: 700;
@@ -66,8 +66,8 @@
 .buttonGroup {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 0;
   gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 0;
 }

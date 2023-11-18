@@ -1,20 +1,20 @@
 @import '../../../../styles/contest.module';
 
 .container {
-  padding: 40px 0 15px;
-  background: #f8f8f8;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 40px 0 15px;
+  background: #f8f8f8;
   border-block-end: 1px solid #eee;
 }
 
 .formContainer {
   display: flex;
   flex-flow: column wrap;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   margin: 0 10px;
   inline-size: 100%;
   max-inline-size: 768px;

@@ -1,23 +1,23 @@
 .offerContainer {
+  position: relative;
   display: flex;
   flex-flow: column wrap;
-  margin-block-start: 15px;
+  align-items: flex-start;
   align-self: stretch;
+  justify-content: flex-start;
   padding: 30px 40px 10px;
   background-color: #f9fafb;
-  justify-content: flex-start;
   border-radius: 10px;
-  position: relative;
-  align-items: flex-start;
+  margin-block-start: 15px;
   @media (width <= 450px) {
     padding: 10px 0;
   }
 
   svg {
     position: absolute;
+    font-size: 54px;
     inset-inline-start: calc(100% - 35px);
     inset-block-start: -15px;
-    font-size: 54px;
   }
 }
 
@@ -34,22 +34,22 @@
 }
 
 .btnsContainer {
-  margin: 5px 0;
-  align-self: stretch;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  align-self: stretch;
   justify-content: space-between;
+  margin: 5px 0;
 }
 
 .resolveBtn {
-  inline-size: 100px;
-  cursor: pointer;
-  text-align: center;
   padding: 10px;
-  border-radius: 8px;
-  background-color: #8aca6b;
   color: white;
+  text-align: center;
+  background-color: #8aca6b;
+  border-radius: 8px;
+  cursor: pointer;
+  inline-size: 100px;
 
   @media (hover: hover) {
     &:hover {
@@ -59,14 +59,14 @@
 }
 
 .rejectBtn {
+  margin: 0 25px;
+  padding: 10px;
+  color: white;
   text-align: center;
+  background-color: #cd5c5c;
+  border-radius: 8px;
   cursor: pointer;
   inline-size: 100px;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #cd5c5c;
-  color: white;
-  margin: 0 25px;
 
   @media (hover: hover) {
     &:hover {
@@ -76,30 +76,30 @@
 }
 
 .mainInfoContainer {
-  align-self: stretch;
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  align-self: stretch;
   justify-content: space-between;
-  position: relative;
   @media (width <= 500px) {
     flex-direction: column;
   }
 
   svg {
-    cursor: pointer;
     position: absolute;
     align-self: flex-start;
-    font-size: 26px;
-    transition: font-size 0.2s;
     color: #4e618d;
+    font-size: 26px;
+    cursor: pointer;
+    transition: font-size 0.2s;
     @media (width <= 450px) {
       inset-block-start: 30px;
     }
 
     @media (width <= 380px) {
-      inset-block-start: 100px;
       align-self: flex-end;
+      inset-block-start: 100px;
     }
 
     @media (width <= 500px) {
@@ -120,12 +120,12 @@
 }
 
 .responseConainer {
-  inline-size: 70%;
-  align-self: center;
   display: flex;
   flex-flow: column wrap;
-  justify-content: flex-start;
   align-items: center;
+  align-self: center;
+  justify-content: flex-start;
+  inline-size: 70%;
   @media (width <= 800px) {
     margin-block-start: 10px;
     max-inline-size: 200px;
@@ -138,13 +138,13 @@
 }
 
 .response {
+  align-self: stretch;
+  color: #556da5;
+  font-size: 18px;
   text-align: center;
   overflow-wrap: break-word;
-  align-self: stretch;
   margin-inline-start: 10px;
-  color: #556da5;
   margin-block-end: 10px;
-  font-size: 18px;
 }
 
 .creativeRating {
@@ -181,8 +181,8 @@
 
   span {
     color: #556da5;
-    font-size: 16px;
     font-weight: 500;
+    font-size: 16px;
     margin-inline-start: 10px;
   }
 }

@@ -3,10 +3,10 @@
 .mainCarousel,
 .feedbackCarousel,
 .exampleCarousel {
-  inline-size: 50%;
-  margin: 30px 0;
-  overflow-inline: hidden;
   position: relative;
+  margin: 30px 0;
+  inline-size: 50%;
+  overflow-inline: hidden;
   @media (width <= 1440px) {
     inline-size: 80%;
   }
@@ -17,9 +17,9 @@
 
   button {
     position: absolute;
+    color: #333;
     background: hsl(0deg 0% 100% / 75%);
     border: none;
-    color: #333;
   }
 }
 
@@ -37,33 +37,33 @@
 .feedbackCell {
   @include container;
 
+  color: #000;
+  background-color: #fff;
   block-size: 450px;
   padding-block-start: 20px;
-  background-color: #fff;
-  color: #000;
 
   img {
+    border-radius: 100%;
     block-size: 80px;
     inline-size: 80px;
-    border-radius: 100%;
   }
 
   p {
-    text-align: center;
     margin: 20px 0 10px;
     padding: 0 20px;
     font-size: 14px;
     line-height: 20px;
+    text-align: center;
     opacity: 0.6;
   }
 
   span {
-    text-align: center;
-    inline-size: 100%;
-    opacity: 0.6;
-    border-block-start: 1px solid #808080b3;
     padding: 20px 0;
     font-size: 16px;
+    text-align: center;
+    opacity: 0.6;
+    inline-size: 100%;
+    border-block-start: 1px solid #808080b3;
     margin-block-start: auto;
   }
 }
@@ -74,9 +74,9 @@
   p {
     @include container(flex-start, center, row);
 
-    background-color: #333;
-    color: #fff;
     padding: 10px 0;
+    color: #fff;
+    background-color: #333;
 
     @media (hover: hover) {
       &:hover {

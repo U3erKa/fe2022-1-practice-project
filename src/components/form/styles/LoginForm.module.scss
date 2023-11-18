@@ -1,18 +1,18 @@
 @import '../../../styles/auth.module';
 
 .loginForm {
-  inline-size: 600px;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: stretch;
+  justify-content: center;
   padding: 10px 20px 30px;
+  inline-size: 600px;
 
   h2 {
-    text-align: center;
+    color: white;
     font-size: 34px;
     letter-spacing: 0.6px;
-    color: white;
+    text-align: center;
     margin-block: 20px 28px;
   }
 }

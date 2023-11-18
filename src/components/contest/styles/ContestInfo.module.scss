@@ -12,26 +12,26 @@
 .dataContainer {
   display: flex;
   flex-flow: column wrap;
-  justify-content: flex-start;
   align-items: flex-start;
   align-self: stretch;
+  justify-content: flex-start;
 }
 
 .contestTypeContainer {
-  align-self: stretch;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  align-self: stretch;
   justify-content: space-between;
 }
 
 .editBtn {
-  margin-inline-end: 15px;
+  padding: 12px 28px;
   color: white;
   font-size: 20px;
-  padding: 12px 28px;
-  border-radius: 8px;
   background-color: #8aca6b;
+  border-radius: 8px;
+  margin-inline-end: 15px;
 
   @media (hover: hover) {
     &:hover {
@@ -41,22 +41,22 @@
 }
 
 .data {
+  align-self: stretch;
+  padding: 0;
+  overflow: visible;
   color: #515b5f;
   font-size: 15px;
-  padding: 0;
+  overflow-wrap: break-word;
+  background-color: white;
+  border: none;
   padding-block-start: 8px;
   margin-block-end: 10px;
-  border: none;
-  background-color: white;
-  align-self: stretch;
-  overflow: visible;
-  overflow-wrap: break-word;
 }
 
 .label {
-  font-size: 16px;
-  font-weight: 700;
   margin: 10px 0;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .file {

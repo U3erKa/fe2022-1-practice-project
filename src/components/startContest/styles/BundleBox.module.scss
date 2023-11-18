@@ -1,13 +1,13 @@
 .bundleContainer {
   display: inline-block;
-  background: white;
+  flex: 1 1;
+  box-sizing: border-box;
   padding: 15px 30px;
   text-align: center;
+  background: white;
   margin-block-end: 30px;
   block-size: 350px;
   margin-inline: 20px;
-  box-sizing: border-box;
-  flex: 1 1;
   min-inline-size: 170px;
   max-inline-size: 350px;
 
@@ -43,19 +43,19 @@
 }
 
 .bundleName {
+  color: #333;
   font-weight: 500;
   font-size: 17px;
-  margin-block: 10px;
   line-height: 1.1;
-  color: #333;
+  margin-block: 10px;
 }
 
 .infoBundle {
-  font-size: 14px;
-  line-height: 1.4;
   margin: 0 0 10px;
   color: #333;
   font-weight: 300;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .combinedBundle {

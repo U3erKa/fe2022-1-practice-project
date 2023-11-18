@@ -1,37 +1,37 @@
 .errorContainer {
-  inline-size: auto;
-  align-self: center;
+  position: relative;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
   align-items: center;
-  border-radius: 26px;
+  align-self: center;
+  justify-content: center;
   padding: 15px 10px;
   background-color: red;
-  position: relative;
+  border-radius: 26px;
   cursor: pointer;
+  inline-size: auto;
 
   span {
-    font-size: 16px;
     color: white;
+    font-size: 16px;
   }
 
   svg {
+    position: absolute;
     color: white;
     font-size: 26px;
-    position: absolute;
     cursor: pointer;
+    transition: font-size 0.2s;
     inset-block-start: -4px;
     inset-inline-end: -4px;
-    transition: font-size 0.2s;
 
     @media (hover: hover) {
       &:hover {
-        inset-block-start: -8px;
-        inset-inline-end: -8px;
         color: #4e618d;
         font-size: 32px;
         transition: font-size 0.2s;
+        inset-block-start: -8px;
+        inset-inline-end: -8px;
       }
     }
   }

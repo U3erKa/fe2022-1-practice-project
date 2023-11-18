@@ -13,25 +13,25 @@
   margin-block-end: 10px;
 
   span {
+    color: red;
     font-size: 14px;
     margin-block-end: 4px;
-    color: red;
   }
 
   input {
     display: none;
-    border: none;
-    border-radius: 8px;
     color: white;
     background-color: #66afe9;
+    border: none;
+    border-radius: 8px;
   }
 
   label {
+    align-self: flex-start;
     padding: 5px 10px;
     color: white;
     background-color: #455a89;
     border-radius: 4px;
-    align-self: flex-start;
     cursor: pointer;
 
     @media (hover: hover) {

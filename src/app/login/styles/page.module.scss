@@ -1,21 +1,21 @@
 @import '../../../styles/registration.module';
 
 .mainContainer {
-  background-color: #3ea9f5;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
+  background-color: #3ea9f5;
   padding-block-start: 40px;
   block-size: 100vb;
 }
 
 .loginContainer {
+  display: flex;
+  flex-flow: column nowrap;
   background-color: #3ea9f5;
   min-inline-size: 300px;
   inline-size: 1200px;
-  display: flex;
-  flex-flow: column nowrap;
 }
 
 .loginFormContainer {

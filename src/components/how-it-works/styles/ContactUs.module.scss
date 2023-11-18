@@ -28,14 +28,14 @@
   gap: $padding;
 
   & > svg {
-    inline-size: 2rem;
-    block-size: 2rem;
     flex-shrink: 0;
-    text-align: center;
-    line-height: 2;
     color: $mainColor;
+    line-height: 2;
+    text-align: center;
     background-color: $backgroundColor;
     border-radius: 1rem;
+    inline-size: 2rem;
+    block-size: 2rem;
   }
 }
 
@@ -79,9 +79,9 @@
 
 .link {
   display: inline-block;
+  margin: $padding 0;
   color: $buttonTextColor;
   text-decoration: none;
-  margin: $padding 0;
 
   & > img {
     margin-inline-end: $gap;

@@ -1,24 +1,24 @@
 .columnContainer {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-inline: 48px;
   flex: 1;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-inline: 48px;
 }
 
 .headerArticle {
-  font-size: 16px;
-  font-weight: 500;
   color: #363945;
+  font-weight: 500;
+  font-size: 16px;
   margin-block-end: 20px;
 }
 
 .article {
-  color: #9ca8b7;
-  line-height: 30px;
   padding: 0;
-  font-size: 16px;
+  color: #9ca8b7;
   font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
   margin-block-end: 10px;
 }

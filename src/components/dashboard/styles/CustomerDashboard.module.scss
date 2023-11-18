@@ -9,35 +9,35 @@
 }
 
 .filterContainer {
-  min-inline-size: 250px;
-  max-block-size: 350px;
-  padding: 30px;
-  margin-inline-end: 50px;
   display: flex;
   flex-flow: column wrap;
-  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   align-items: flex-start;
+  padding: 30px;
   background-color: white;
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+  min-inline-size: 250px;
+  max-block-size: 350px;
+  margin-inline-end: 50px;
   margin-block-end: 15px;
   @media (width <= 1000px) {
-    padding: 10px;
     flex-direction: row;
-    margin-inline-end: 0;
     justify-content: center;
+    padding: 10px;
+    margin-inline-end: 0;
   }
 }
 
 .filter {
-  margin-block-start: 15px;
   align-self: stretch;
-  text-align: center;
+  padding: 10px;
   color: #46568a;
   font-size: 18px;
+  text-align: center;
   border-radius: 10px;
-  padding: 10px;
+  margin-block-start: 15px;
   @media (width <= 1000px) {
-    block-size: 30px;
     margin: 0 5px;
+    block-size: 30px;
   }
 
   @media (hover: hover) {
@@ -48,17 +48,17 @@
 }
 
 .activeFilter {
+  align-self: stretch;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-color: #4e618d;
+  border-radius: 10px;
   transition: 0.5s background-color;
   margin-block-start: 15px;
-  align-self: stretch;
-  text-align: center;
-  font-size: 18px;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #4e618d;
-  color: white;
   @media (width <= 1000px) {
-    block-size: 30px;
     margin: 0 5px;
+    block-size: 30px;
   }
 }

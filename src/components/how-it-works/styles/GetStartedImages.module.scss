@@ -8,40 +8,40 @@ $iconSize: 80px;
 
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   @media (width < 768px) {
-    gap: calc($gap * 6);
     flex-direction: column;
+    gap: calc($gap * 6);
   }
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
   gap: calc($gap * 2);
-  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
   @media (width >= 768px) {
-    inline-size: 33%;
     padding: 0 calc($padding * 3);
+    inline-size: 33%;
 
     &:nth-child(n + 2)::before {
-      content: '';
       position: absolute;
+      transform: rotate(15deg);
+      content: '';
       inset-inline-start: 0;
       inset-block-start: 25%;
       block-size: 4rem;
       border-inline-start: 1px solid $borderColor;
-      transform: rotate(15deg);
     }
   }
 
   b {
-    font-weight: 600;
     color: $textColorDark;
+    font-weight: 600;
   }
 }
 

@@ -4,30 +4,30 @@
 }
 
 .userInfo {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  justify-content: center;
   padding: 10px 15px;
   border-inline-end: 1px solid #ebebeb;
 
   @media (hover: hover) {
     &:hover > ul {
-      display: block;
       position: absolute;
+      display: block;
       inset-block-start: 40px;
     }
   }
 
   & > ul {
-    border: 1px solid #eee;
     z-index: 500;
+    display: none;
     padding: 5px 0;
     list-style: none;
     background: white;
+    border: 1px solid #eee;
     inline-size: 180px;
-    display: none;
 
     & > li {
       text-align: start;
@@ -41,9 +41,9 @@
   }
 
   & > img {
+    border-radius: 10px;
     inline-size: 20px;
     block-size: 20px;
-    border-radius: 10px;
   }
 
   & > span {

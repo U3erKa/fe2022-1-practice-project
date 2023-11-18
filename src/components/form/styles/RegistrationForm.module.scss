@@ -1,16 +1,16 @@
 @import '../../../styles/auth.module';
 
 .signUpFormContainer {
-  inline-size: 60%;
   display: flex;
   flex-flow: column wrap;
-  min-inline-size: 280px;
-  margin: 0 auto;
-  justify-content: center;
   align-items: center;
-  margin-block-start: 80px;
-  padding: 10px 20px 30px;
+  justify-content: center;
   box-sizing: border-box;
+  margin: 0 auto;
+  padding: 10px 20px 30px;
+  inline-size: 60%;
+  min-inline-size: 280px;
+  margin-block-start: 80px;
 }
 
 .form {
@@ -21,9 +21,9 @@
 .choseRoleContainer {
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: stretch;
   align-self: stretch;
+  justify-content: center;
   min-inline-size: 260px;
   margin-inline: 20px;
   @media (width <= 850px) {
@@ -33,11 +33,11 @@
 
 .termsOfService {
   position: relative;
-  text-align: center;
+  align-self: stretch;
   color: white;
   font-size: 16px;
+  text-align: center;
   min-inline-size: 260px;
-  align-self: stretch;
   margin-inline: 20px;
   margin-block-end: 10px;
   @media (width <= 850px) {
@@ -63,36 +63,36 @@
 }
 
 .inputContainer {
-  align-self: flex-start;
   flex: 1 1;
+  align-self: flex-start;
 }
 
 .headerFormContainer {
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: center;
-  margin-block-end: 18px;
+  justify-content: center;
   text-align: center;
+  margin-block-end: 18px;
 
   h2 {
     color: white;
-    font-size: 42px;
     font-weight: 600;
+    font-size: 42px;
     line-height: 1.1;
-    margin-block: 20px 10px;
     letter-spacing: 1px;
+    margin-block: 20px 10px;
   }
 
   h4 {
+    margin: 0;
     color: white;
-    font-size: 20px;
     font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: center;
     word-spacing: 3px;
     inline-size: 88%;
-    margin: 0;
     margin-block-end: 13px;
-    text-align: center;
-    line-height: 27px;
   }
 }

@@ -5,10 +5,10 @@
 }
 
 .container {
-  border: 1px solid $borderColor;
-  border-block-start: none;
-  border-radius: 0 0 $borderRadius $borderRadius;
   padding: $padding;
+  border: 1px solid $borderColor;
+  border-radius: 0 0 $borderRadius $borderRadius;
+  border-block-start: none;
 }
 
 .list {

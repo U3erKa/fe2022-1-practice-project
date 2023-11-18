@@ -1,9 +1,9 @@
 .notFound {
   display: flex;
   flex-wrap: nowrap;
-  text-align: center;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background-color: #8aca6b;
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
@@ -11,25 +11,25 @@
 }
 
 .form {
-  background-color: #8aca6b;
-  block-size: 110px;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 0 10px;
+  background-color: #8aca6b;
+  block-size: 110px;
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
 
   button {
-    margin-block-start: 5px;
-    border-radius: 8px;
     padding: 4px 10px;
-    cursor: pointer;
-    border: none;
+    color: white;
     font-size: 16px;
     background-color: #4e618d;
-    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-block-start: 5px;
   }
 }
 
@@ -40,25 +40,25 @@
 }
 
 .select {
-  align-self: stretch;
-  block-size: 24px;
-  box-sizing: border-box;
-  box-shadow: none;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  align-self: stretch;
+  box-sizing: border-box;
+  padding: 0 10px;
+  color: #555;
   font-size: 18px;
   background-color: white;
   border: 2px solid #d0d0d0;
   border-radius: 4px;
-  cursor: text;
-  margin-block-end: 5px;
   outline: none;
-  padding: 0 10px;
-  color: #555;
+  box-shadow: none;
+  cursor: text;
   transition:
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
+  block-size: 24px;
+  margin-block-end: 5px;
 
   &:focus {
     border: 2px solid #28d2d0;
@@ -67,9 +67,9 @@
 
 .selectHeader {
   display: inline-block;
-  text-align: center;
-  font-size: 15px;
   color: #585859;
   font-weight: 700;
+  font-size: 15px;
+  text-align: center;
   margin-block: 12px 5px;
 }

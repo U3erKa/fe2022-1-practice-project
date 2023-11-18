@@ -8,11 +8,11 @@ $colorDarkGray: #555;
   @include container($align: center, $justify: flex-start, $dir: column);
 
   flex-wrap: nowrap;
+  gap: $gap;
+  padding: $padding;
+  overflow: auto;
   font-size: $fontSize;
   inline-size: clamp($minWidth, 100%, $containerWidth);
-  padding: $padding;
-  gap: $gap;
-  overflow: auto;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
   max-block-size: 300px;
@@ -22,13 +22,13 @@ $colorDarkGray: #555;
   }
 
   &::-webkit-scrollbar-track {
-    border-radius: 1rem;
     background: $colorLightGray;
+    border-radius: 1rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 1rem;
     background: $colorGray;
+    border-radius: 1rem;
 
     @media (hover: hover) {
       &:hover {
@@ -42,38 +42,38 @@ $colorDarkGray: #555;
   @include container($align: center, $justify: space-between, $dir: row);
 
   position: relative;
-  inline-size: calc(100% - $padding * 2);
-  padding: $padding;
   gap: $gap;
+  padding: $padding;
+  inline-size: calc(100% - $padding * 2);
 }
 
 .progress {
-  appearance: none;
   position: absolute;
+  z-index: -1;
+  appearance: none;
   inset: 0;
   block-size: 100%;
   inline-size: 100%;
-  z-index: -1;
 
   &::-webkit-progress-bar {
-    border-radius: $borderRadius;
     background-color: $colorLightGray;
+    border-radius: $borderRadius;
   }
 
   &::-webkit-progress-value {
-    border-radius: $borderRadius;
     background-color: #d1e9cf;
+    border-radius: $borderRadius;
   }
 }
 
 .name,
 .time {
-  font-size: 1.25rem;
   font-weight: 500;
+  font-size: 1.25rem;
 }
 
 .time {
-  color: $colorGray;
   flex-shrink: 0;
+  color: $colorGray;
   text-align: end;
 }

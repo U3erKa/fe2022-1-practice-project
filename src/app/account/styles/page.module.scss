@@ -1,14 +1,14 @@
 .mainContainer {
-  margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: flex-start;
+  margin: 0 auto;
   padding: 100px;
 
   @media (width <= 800px) {
-    padding: 40px;
     flex-direction: column;
+    padding: 40px;
   }
 
   @media (width <= 590px) {
@@ -21,17 +21,17 @@
 }
 
 .notMoney {
-  margin-block-end: 20px;
   color: #455a89;
-  font-size: 18px;
   font-weight: 500;
+  font-size: 18px;
+  margin-block-end: 20px;
 }
 
 .container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
   inline-size: 100%;
   padding-block-start: 30px;
 }
@@ -52,44 +52,44 @@
 
 .headerAside {
   align-self: stretch;
-  font-size: 18px;
   padding: 20px 26px;
-  background-color: #f3f3f3;
   font-weight: 500;
+  font-size: 18px;
+  background-color: #f3f3f3;
 }
 
 .optionsContainer {
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
-  justify-content: flex-start;
   align-self: stretch;
+  justify-content: flex-start;
   padding: 15px 0;
   margin-block-end: 10px;
 }
 
 .optionContainer {
-  border-radius: 8px;
-  margin-block-start: 5px;
-  cursor: pointer;
-  color: #455a89;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 14px 58px;
   align-self: stretch;
+  padding: 14px 58px;
+  color: #455a89;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-block-start: 5px;
   @media (width <= 800px) {
     text-align: center;
   }
 
   @media (hover: hover) {
     &:hover {
-      background-color: #455a89;
       color: white;
+      background-color: #455a89;
     }
   }
 }
 
 .currentOption {
-  background-color: #455a89;
   color: white;
+  background-color: #455a89;
 }

@@ -16,37 +16,37 @@ $minWidth: 320px;
 $containerWidth: 1280px;
 
 @mixin container {
-  box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
-  inline-size: clamp($minWidth, 100%, $containerWidth);
+  justify-content: center;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: calc($padding * 4) calc($padding * 2);
   font-size: $fontSize;
+  inline-size: clamp($minWidth, 100%, $containerWidth);
 }
 
 .heading {
+  margin: $padding;
   font-weight: 500;
   font-size: 2rem;
-  margin: $padding;
 }
 
 .subHeading {
-  font-size: 0.7rem;
-  margin-block-end: $gap;
   padding: $gap calc($gap * 2);
   color: $mainColor;
+  font-size: 0.7rem;
   background-color: $backgroundColor;
   border-radius: 1rem;
+  margin-block-end: $gap;
   inline-size: fit-content;
 }
 
 .text {
-  margin-block-end: calc($gap * 2);
-  line-height: 1.7;
   color: $textColorLight;
+  line-height: 1.7;
+  margin-block-end: calc($gap * 2);
 }
 
 .icon {
@@ -54,14 +54,14 @@ $containerWidth: 1280px;
 }
 
 @mixin button($color, $backgroundColor, $borderRadius) {
+  padding: calc($gap * 1.5) calc($gap * 2);
   color: $color;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
   background-color: $backgroundColor;
   border: none;
   border-radius: $borderRadius;
-  padding: calc($gap * 1.5) calc($gap * 2);
-  text-decoration: none;
-  text-align: center;
-  line-height: 1.5;
   transition: all 0.3s ease-in-out;
 
   & > svg {

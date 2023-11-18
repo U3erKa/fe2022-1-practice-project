@@ -1,10 +1,10 @@
 .nav {
-  margin: 0;
-  list-style: none;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  list-style: none;
   @media (width <= 920px) {
     padding: 0;
   }
@@ -21,36 +21,36 @@
     justify-content: flex-start;
     margin-inline-end: 30px;
     @media (width <= 700px) {
-      inline-size: 100%;
       padding: 0 15px;
+      inline-size: 100%;
     }
 
     span {
-      color: #495d8b;
-      font-size: 15px;
-      font-weight: 300;
       padding: 15px 0;
+      color: #495d8b;
+      font-weight: 300;
+      font-size: 15px;
     }
 
     ul {
-      padding: 0;
-      margin: 0;
-      inline-size: 160px;
       display: none;
+      margin: 0;
+      padding: 0;
+      inline-size: 160px;
 
       li {
-        box-sizing: border-box;
-        inline-size: 100%;
         display: flex;
         flex-wrap: nowrap;
         justify-content: flex-start;
+        box-sizing: border-box;
+        inline-size: 100%;
 
         a {
-          inline-size: 100%;
           padding: 10px 15px;
+          color: #333;
           font-size: 12px;
           text-decoration: none;
-          color: #333;
+          inline-size: 100%;
 
           @media (hover: hover) {
             &:hover {
@@ -74,12 +74,12 @@
         }
 
         ul {
-          display: block;
           position: absolute;
-          border: 1px solid #eee;
           z-index: 1000;
-          inset-block-start: 130px;
+          display: block;
           background-color: white;
+          border: 1px solid #eee;
+          inset-block-start: 130px;
           @media (width <= 700px) {
             inset-block-start: auto;
             inset-inline-start: 145px;

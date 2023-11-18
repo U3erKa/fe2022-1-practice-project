@@ -10,10 +10,10 @@
 .linksContainer {
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
-  inline-size: 100%;
-  padding: calc($padding * 2);
   gap: $gap;
+  align-items: center;
+  padding: calc($padding * 2);
+  inline-size: 100%;
   border-block-start: 1px solid $borderColor;
   @media (width < 768px) {
     flex-direction: column;
@@ -29,8 +29,8 @@
 .link {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   inline-size: 25%;
 
   & > a {
