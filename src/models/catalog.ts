@@ -19,11 +19,12 @@ import type {
   InferAttributes,
   InferCreationAttributes,
   NonAttribute,
+  Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB, User } from '../types/models';
 
-const Catalog = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+const Catalog = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Catalog extends _Catalog {
     static associate({ Conversation, User }: DB) {
       Catalog.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });

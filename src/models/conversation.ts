@@ -26,15 +26,13 @@ import type {
   InferAttributes,
   InferCreationAttributes,
   NonAttribute,
+  Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
 import { isTuple } from '../utils/functions';
 import type { DB, User } from '../types/models';
 
-const Conversation = (
-  sequelize: DB['sequelize'],
-  DataTypes: typeof _DataTypes,
-) => {
+const Conversation = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Conversation extends _Conversation {
     static associate({ Catalog, Message, User }: DB) {
       Conversation.hasMany(Message, {

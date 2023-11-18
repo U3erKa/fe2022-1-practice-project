@@ -12,11 +12,12 @@ import type {
   InferAttributes,
   InferCreationAttributes,
   NonAttribute,
+  Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
 import type { Contest, DB, User } from '../types/models';
 
-const Offer = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+const Offer = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Offer extends _Offer {
     static associate({ User, Contest, Rating }: DB) {
       Offer.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });

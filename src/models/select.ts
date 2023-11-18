@@ -2,11 +2,12 @@ import { Model } from 'sequelize';
 import type {
   InferAttributes,
   InferCreationAttributes,
+  Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB } from '../types/models';
 
-const Select = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+const Select = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Select extends _Select {
     static associate(models: DB) {}
   }

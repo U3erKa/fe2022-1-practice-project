@@ -9,11 +9,12 @@ import type {
   InferAttributes,
   InferCreationAttributes,
   NonAttribute,
+  Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB, User } from '../types/models';
 
-const Event = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+const Event = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Event extends _Event {
     static associate({ User }: DB) {
       Event.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });

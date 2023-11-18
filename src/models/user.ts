@@ -15,6 +15,7 @@ import type {
   InferAttributes,
   InferCreationAttributes,
   NonAttribute,
+  Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
 import bcrypt from 'bcrypt';
@@ -28,10 +29,10 @@ const hashPassword = async (user: __User) => {
   }
 };
 
-const User = (sequelize: DB['sequelize'], DataTypes: typeof _DataTypes) => {
+const User = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class User extends _User {
     async comparePassword(password: string | Buffer) {
-      return bcrypt.compare(password, this.password);
+      return await bcrypt.compare(password, this.password);
     }
 
     static associate({
