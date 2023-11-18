@@ -14,7 +14,7 @@ $colorDarkGray: #333;
 
 .button {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   gap: calc($padding * 2);

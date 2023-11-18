@@ -1,20 +1,15 @@
 .contestSideBarInfo,
 .customerNameContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  @media (width <= 680px) {
-    align-self: stretch;
-    inline-size: auto;
-    margin: 0 10px;
-  }
 }
 
 .infoCustomerContainer {
   display: flex;
+  flex-flow: column wrap;
   align-self: stretch;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
@@ -23,6 +18,7 @@
 .customerInfo {
   padding: 15px 20px;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
 
@@ -53,7 +49,7 @@
 .contestInfo {
   inline-size: 100%;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
   @media (width <= 680px) {
@@ -64,7 +60,7 @@
 .contestStats {
   align-self: stretch;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
@@ -86,6 +82,7 @@
   padding: 15px 20px;
   background: white;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
 
@@ -110,7 +107,7 @@
   inline-size: 100%;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
   margin-block-end: 22px;
@@ -119,6 +116,7 @@
 .guaranteedPrize {
   align-self: stretch;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   margin-block: 10px 15px;
   padding: 0 15px;
@@ -126,6 +124,7 @@
   div {
     border-radius: 8px;
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     inline-size: 16px;
@@ -144,7 +143,7 @@
   align-self: stretch;
   margin-block-start: 10px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 15px;
@@ -158,6 +157,7 @@
 
 .timeDesc {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
 
   span {
@@ -170,6 +170,7 @@
 .prizeContainer {
   align-self: stretch;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   background-color: #6b89b0;
@@ -180,5 +181,13 @@
     font-size: 22px;
     font-weight: 600;
     margin-inline-start: 10px;
+  }
+}
+
+@media (width <= 680px) {
+  .contestSideBarInfo {
+    align-self: stretch;
+    inline-size: auto;
+    margin: 0 10px;
   }
 }

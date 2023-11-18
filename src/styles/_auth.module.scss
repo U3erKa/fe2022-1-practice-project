@@ -6,7 +6,7 @@
   background: #f7542c;
   font-size: 15px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   color: white;
@@ -27,8 +27,8 @@
 
 .inputContainer {
   display: flex;
+  flex-flow: column wrap;
   position: relative;
-  flex-direction: column;
   justify-content: center;
   margin-inline: 20px;
 }
@@ -53,6 +53,7 @@
   min-inline-size: 260px;
   border-radius: 5px;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   background-color: #28d2d0;

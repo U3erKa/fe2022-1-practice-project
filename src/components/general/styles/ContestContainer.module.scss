@@ -6,6 +6,7 @@
 
 .spinnerContainer {
   display: flex;
+  flex-wrap: nowrap;
   flex: 1;
   align-items: center;
   justify-content: flex-start;

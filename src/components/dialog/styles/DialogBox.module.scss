@@ -1,6 +1,6 @@
 .previewChatBox {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
   block-size: 60px;
@@ -21,6 +21,7 @@
 
 .infoContainer {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   flex: 1;
   align-items: flex-start;
@@ -38,6 +39,7 @@
 .buttonsContainer {
   align-self: center;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;
 
@@ -60,7 +62,7 @@
 
 .interlocutorInfo {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: space-between;
 }

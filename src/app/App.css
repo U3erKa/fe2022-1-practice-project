@@ -24,6 +24,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  flex-wrap: nowrap;
   place-items: center;
   min-inline-size: 320px;
   min-block-size: 100vb;

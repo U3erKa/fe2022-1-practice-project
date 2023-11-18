@@ -3,7 +3,7 @@
 .loginForm {
   inline-size: 600px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: stretch;
   padding: 10px 20px 30px;
@@ -19,7 +19,7 @@
 
 .form {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
 }
 
 .inputContainer {

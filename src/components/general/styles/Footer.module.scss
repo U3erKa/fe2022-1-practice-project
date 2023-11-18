@@ -7,6 +7,7 @@
   article {
     margin: 0 auto;
     display: flex;
+    flex-wrap: nowrap;
     flex-flow: row wrap;
     align-items: baseline;
     justify-content: space-around;
@@ -24,10 +25,10 @@
 
     section {
       display: flex;
+      flex-flow: column wrap;
       flex: 1;
       min-inline-size: 250px;
       max-inline-size: 300px;
-      flex-direction: column;
       padding: 15px;
 
       h2 {

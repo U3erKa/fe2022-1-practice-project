@@ -3,6 +3,7 @@
 .messageContainer {
   margin-block-start: 20px;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
   flex: 1;
@@ -12,7 +13,7 @@
   block-size: fit-content;
   margin-inline-end: 25px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
   box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
@@ -39,7 +40,7 @@
 
 .inputsContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   padding: 25px;
   background-color: white;
   place-content: flex-start flex-start;
@@ -73,7 +74,7 @@
 
 .inputContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   place-content: flex-start flex-start;
   margin-block-end: 25px;
   @media (width <= 1000px) {

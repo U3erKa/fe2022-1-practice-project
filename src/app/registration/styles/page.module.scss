@@ -3,7 +3,7 @@
 .signUpPage {
   background-color: #3ea9f5;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
 }
 
@@ -11,14 +11,15 @@
   padding-block-start: 80px;
   background: white;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
 .articlesMainContainer {
   inline-size: 60%;
   display: flex;
+  flex-flow: row wrap;
   min-inline-size: 300px;
-  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   @media (width <= 1000px) {

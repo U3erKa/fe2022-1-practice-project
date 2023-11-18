@@ -1,6 +1,6 @@
 .progressBarContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
   @media (width <= 750px) {
@@ -10,13 +10,13 @@
 
 .progressContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
 }
 
 .stepDescContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   margin-inline-end: 4px;
@@ -54,6 +54,7 @@
 
 .outerComplete {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   inline-size: 34px;
@@ -72,6 +73,7 @@
 
 .outerActive {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   inline-size: 36px;
@@ -90,6 +92,7 @@
 
 .outerNotActive {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   inline-size: 36px;

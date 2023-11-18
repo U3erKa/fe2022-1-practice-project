@@ -1,5 +1,6 @@
 .notFound {
   display: flex;
+  flex-wrap: nowrap;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -13,7 +14,7 @@
   background-color: #8aca6b;
   block-size: 110px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   padding: 0 10px;
@@ -34,7 +35,7 @@
 
 .selectInputContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   inline-size: 100%;
 }
 
@@ -44,6 +45,7 @@
   box-sizing: border-box;
   box-shadow: none;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   font-size: 18px;
   background-color: white;

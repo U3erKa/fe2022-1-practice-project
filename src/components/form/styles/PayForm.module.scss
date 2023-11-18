@@ -4,7 +4,7 @@
   padding: 25px 15px;
   margin-block-end: 50px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
   @media (width <= 480px) {
@@ -28,7 +28,7 @@
 
 .buttonsContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
   padding: 0 15px;
@@ -77,14 +77,14 @@
   inline-size: 100%;
   margin-block-start: 25px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: center;
 }
 
 .smallInputContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: space-between;
   padding: 0 15px;
@@ -92,7 +92,7 @@
 
 .smallInput {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
 
@@ -133,7 +133,7 @@
 .inputContainer {
   align-self: stretch;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
 }
@@ -155,7 +155,7 @@
   margin-block-end: 25px;
   padding: 0 15px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
 

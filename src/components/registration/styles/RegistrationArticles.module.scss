@@ -1,6 +1,6 @@
 .columnContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
   margin-inline: 48px;

@@ -4,13 +4,14 @@
   padding: 25px 0;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: flex-start;
 }
 
 .baseBundles {
   display: flex;
+  flex-wrap: nowrap;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
@@ -24,7 +25,7 @@
   padding-inline: 15px;
   padding-block-end: 20px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: center;
 
@@ -39,7 +40,7 @@
   background-color: #28d2d1;
   padding: 25px 0;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
 }
 
@@ -65,6 +66,7 @@
 
 .buttonGroup {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   padding: 25px 0;

@@ -15,6 +15,7 @@
   p {
     @include container(flex-start, space-around, row);
 
+    flex-wrap: nowrap;
     margin-block-end: 10px;
     line-height: 25px;
 

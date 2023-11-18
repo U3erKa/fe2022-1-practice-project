@@ -1,6 +1,6 @@
 .startContestHeader {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   padding: 35px;
   box-sizing: border-box;
   justify-content: center;
@@ -8,7 +8,7 @@
 
 .startContestInfo {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   padding-inline: 15px;
   box-sizing: border-box;

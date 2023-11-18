@@ -3,6 +3,7 @@
 .mainContainer {
   background-color: #3ea9f5;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
   padding-block-start: 40px;
@@ -14,11 +15,12 @@
   min-inline-size: 300px;
   inline-size: 1200px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
 }
 
 .loginFormContainer {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   margin-block-start: 80px;

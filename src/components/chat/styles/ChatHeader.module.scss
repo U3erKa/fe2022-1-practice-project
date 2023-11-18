@@ -2,6 +2,7 @@
   block-size: 50px;
   background-color: #4e618d;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   border-block-end: 1px solid #f3f3f3;
@@ -12,6 +13,7 @@
 
 .buttonContainer {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -20,13 +22,14 @@
 .infoContainer {
   flex: 1;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   margin-inline-start: 15px;
 
   div {
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 

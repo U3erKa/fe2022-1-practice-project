@@ -7,7 +7,7 @@
 
 .uploadInputContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: flex-start;
   margin-block-end: 10px;

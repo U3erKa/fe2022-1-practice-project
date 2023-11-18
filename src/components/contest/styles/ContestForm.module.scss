@@ -1,6 +1,6 @@
 .errorContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-end;
   align-items: center;
   padding: 20px;
@@ -37,7 +37,7 @@
 
 .componentInputContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
   position: relative;
@@ -49,6 +49,7 @@
   inset-block-end: -13px;
   font-size: 18px;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   border: 2px solid #b72522;
@@ -63,6 +64,7 @@
   box-sizing: border-box;
   box-shadow: none;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   font-size: 18px;
   background-color: white;
@@ -89,6 +91,7 @@
   box-sizing: border-box;
   box-shadow: none;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   font-size: 18px;
   background-color: white;
@@ -110,7 +113,7 @@
 
 .formContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   inline-size: 100%;
   @media (width <= 700px) {
@@ -121,7 +124,7 @@
 .selectInputContainer {
   margin: 15px 0 0;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   inline-size: 100%;
 }
 
@@ -141,6 +144,7 @@
 
 .fileUploadContainer {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   block-size: 80px;
@@ -155,7 +159,7 @@
 
   @media (width <= 600px) {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: center;
     block-size: 120px;
   }
@@ -190,6 +194,7 @@
 .footerButtonsContainer {
   margin: 0 auto;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
@@ -199,7 +204,7 @@
   max-inline-size: 768px;
   margin: 30px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-end;
   @media (width <= 900px) {
@@ -209,6 +214,7 @@
 
 .buttonsContainer {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   @media (width <= 512px) {
@@ -251,6 +257,7 @@
 .nextButtonContainer {
   border: none;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   font-weight: 700;

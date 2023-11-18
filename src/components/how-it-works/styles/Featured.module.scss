@@ -9,7 +9,7 @@
 
 .linksContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   align-items: center;
   inline-size: 100%;
   padding: calc($padding * 2);
@@ -28,6 +28,7 @@
 
 .link {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   inline-size: 25%;

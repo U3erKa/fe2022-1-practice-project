@@ -1,6 +1,6 @@
 .mainContestInfoContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-self: stretch;
   padding-block: 20px 25px;
   margin: 0 25px;
@@ -11,7 +11,7 @@
 .infoContainer,
 .dataContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
   align-self: stretch;
@@ -20,7 +20,7 @@
 .contestTypeContainer {
   align-self: stretch;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 }

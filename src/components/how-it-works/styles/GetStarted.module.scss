@@ -34,7 +34,7 @@
 
 .headingContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   text-align: center;
   padding: calc($padding * 2) $padding;

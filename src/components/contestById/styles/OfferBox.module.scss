@@ -1,10 +1,10 @@
 .offerContainer {
   display: flex;
+  flex-flow: column wrap;
   margin-block-start: 15px;
   align-self: stretch;
   padding: 30px 40px 10px;
   background-color: #f9fafb;
-  flex-direction: column;
   justify-content: flex-start;
   border-radius: 10px;
   position: relative;
@@ -37,7 +37,7 @@
   margin: 5px 0;
   align-self: stretch;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -74,7 +74,7 @@
 .mainInfoContainer {
   align-self: stretch;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
   position: relative;
@@ -117,7 +117,7 @@
   inline-size: 70%;
   align-self: center;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: center;
   @media (width <= 800px) {
@@ -143,6 +143,7 @@
 
 .creativeRating {
   display: flex;
+  flex-wrap: nowrap;
   margin-block-start: 5px;
   align-items: center;
 }
@@ -155,7 +156,7 @@
 
 .creativeInfoContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
 
@@ -168,7 +169,7 @@
 
 .nameAndEmail {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
 

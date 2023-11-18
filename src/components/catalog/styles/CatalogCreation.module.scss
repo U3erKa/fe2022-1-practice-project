@@ -26,7 +26,7 @@
 
 .buttonsContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
 
@@ -39,6 +39,7 @@
     cursor: pointer;
     block-size: 24px;
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     flex: 1;

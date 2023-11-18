@@ -3,7 +3,7 @@
   margin: 0 auto;
   margin-block-start: 50px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   justify-content: flex-start;
   @media (width <= 1400px) {
     inline-size: auto;
@@ -18,7 +18,7 @@
   margin: 0 auto;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   inline-size: 260px;
   padding: 15px;
 }

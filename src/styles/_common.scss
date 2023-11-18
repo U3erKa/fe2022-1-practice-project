@@ -7,7 +7,7 @@ $containerWidth: 1280px;
 
 @mixin container($align: center, $justify: flex-start, $dir: column) {
   display: flex;
-  flex-direction: $dir;
+  flex-flow: $dir wrap;
   justify-content: $justify;
   align-items: $align;
 }

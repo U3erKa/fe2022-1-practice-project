@@ -2,7 +2,7 @@
   border: 1px solid white;
   padding: 14px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: stretch;
   margin-block: 10px;
@@ -11,7 +11,7 @@
 .infoRoleContainer {
   margin-inline-start: 16px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
 }

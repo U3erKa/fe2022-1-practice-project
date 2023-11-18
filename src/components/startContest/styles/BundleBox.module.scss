@@ -30,7 +30,7 @@
 /* stylelint-disable-next-line no-descending-specificity */
 .infoContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-self: center;
   /* stylelint-disable-next-line no-descending-specificity */
   hr {

@@ -12,7 +12,7 @@ $columnWidth: minmax(260px, 1fr);
 
 .contentsContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
 }
 

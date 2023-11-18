@@ -1,8 +1,8 @@
 .mainContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   inline-size: 100%;
@@ -20,15 +20,8 @@
   background-color: #455a89;
   color: white;
   font-weight: 500;
-  margin-block-start: 100px;
   font-size: 18px;
-  margin-inline-start: 50px;
   transition: background-color 0.2s;
-
-  @media (width <= 420px) {
-    margin: 20px 0;
-    margin-inline-start: 0;
-  }
 
   &:hover {
     transition: background-color 0.2s;
@@ -39,9 +32,8 @@
 
 .infoContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: flex-end;
-  align-items: center;
 }
 
 .avatar {
@@ -53,10 +45,9 @@
 
 .infoBlock {
   display: flex;
-  flex-direction: row;
-  margin-block-end: 25px;
+  flex-flow: row wrap;
+  padding: 12px 24px;
   align-items: center;
-  inline-size: 200px;
   justify-content: space-between;
 }
 

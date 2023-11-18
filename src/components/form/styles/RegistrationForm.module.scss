@@ -3,9 +3,9 @@
 .signUpFormContainer {
   inline-size: 60%;
   display: flex;
+  flex-flow: column wrap;
   min-inline-size: 280px;
   margin: 0 auto;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-block-start: 80px;
@@ -15,12 +15,12 @@
 
 .form {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
 }
 
 .choseRoleContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: stretch;
   align-self: stretch;
@@ -54,6 +54,7 @@
   inline-size: 100%;
   min-inline-size: 260px;
   display: flex;
+  flex-wrap: nowrap;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
@@ -69,7 +70,7 @@
 
 .headerFormContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   margin-block-end: 18px;

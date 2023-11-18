@@ -1,6 +1,6 @@
 .catalogContainer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
   min-block-size: 50px;
@@ -12,6 +12,7 @@
 
 .infoContainer {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
 }

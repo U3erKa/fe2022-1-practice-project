@@ -2,7 +2,7 @@
   background-color: #8aca6b;
   block-size: 110px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
   border-end-start-radius: 8px;
@@ -21,7 +21,7 @@
 
 .inputContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-self: stretch;
   background-color: #8aca6b;
@@ -34,8 +34,8 @@
   border-radius: 4px;
   font-size: 15px;
   display: flex;
+  flex-flow: row wrap;
   padding: 4px 6px;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   color: white;

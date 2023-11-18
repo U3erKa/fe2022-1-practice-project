@@ -3,6 +3,7 @@
   box-shadow: 2px 1px 4px #ccc;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -22,6 +23,7 @@
 
 .mainContainer {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
   @media (width <= 950px) {
@@ -33,7 +35,7 @@
 .orderInfoContainer {
   inline-size: 480px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
   margin-block-start: 5px;
@@ -58,6 +60,7 @@
   inline-size: 70%;
   align-self: flex-end;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   padding: 15px 0 25px;
@@ -80,6 +83,7 @@
 .packageInfoContainer {
   inline-size: 100%;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   padding: 25px 0 20px;

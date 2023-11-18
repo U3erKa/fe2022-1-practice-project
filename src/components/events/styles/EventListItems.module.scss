@@ -7,6 +7,7 @@ $colorDarkGray: #555;
 .container {
   @include container($align: center, $justify: flex-start, $dir: column);
 
+  flex-wrap: nowrap;
   font-size: $fontSize;
   inline-size: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;

@@ -2,6 +2,7 @@
   block-size: 50px;
   background-color: #4e618d;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
   padding-inline-start: 15px;
@@ -32,6 +33,7 @@
 .infoContainer {
   margin-inline-start: 25px;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
 
   span {
@@ -56,7 +58,7 @@
 .inputContainer,
 .changeContainer form {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
 }
@@ -65,7 +67,7 @@
   margin-inline-end: 5px;
   font-size: 15px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   color: white;
