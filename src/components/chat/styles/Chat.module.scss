@@ -1,7 +1,6 @@
 .chatContainer {
   position: fixed;
   z-index: 500;
-  box-sizing: border-box;
   overflow: visible;
   background-color: #f9fafb;
   border-radius: 8px;
@@ -15,7 +14,6 @@
 
 .toggleChat {
   position: absolute;
-  box-sizing: border-box;
   padding: 6px;
   color: white;
   text-align: center;

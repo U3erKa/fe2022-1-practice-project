@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  box-sizing: border-box;
   padding: 35px;
 }
 
@@ -11,7 +10,6 @@
   flex-flow: column wrap;
   justify-content: flex-start;
   padding-inline: 15px;
-  box-sizing: border-box;
   max-inline-size: 480px;
   @media (width <= 750px) {
     max-inline-size: none;

@@ -1,6 +1,5 @@
 .navList {
   &Item {
-    box-sizing: border-box;
     inline-size: 100%;
 
     @media (width <= 700px) {
@@ -17,7 +16,6 @@
   &LinkText,
   &Btn {
     display: inline-block;
-    box-sizing: border-box;
     padding: 5px 15px;
     font-size: 16px;
     text-decoration: none;

@@ -42,7 +42,6 @@
         display: flex;
         flex-wrap: nowrap;
         justify-content: flex-start;
-        box-sizing: border-box;
         inline-size: 100%;
 
         a {
@@ -99,6 +98,5 @@
 .last {
   inline-size: 100%;
   padding-block-start: 8px;
-  box-sizing: border-box;
   border-block-start: 1px solid aquamarine;
 }

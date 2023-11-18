@@ -43,7 +43,6 @@
 }
 
 .lineBar {
-  box-sizing: border-box;
   margin: 0 -1px;
   border: 1px solid #d5d5da;
   inline-size: 76px;
@@ -76,7 +75,6 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   border: 2px solid #28d2d0;
   border-radius: 18px;
   inline-size: 36px;
@@ -95,7 +93,6 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   border: 1px solid #d5d5da;
   border-radius: 18px;
   inline-size: 36px;
