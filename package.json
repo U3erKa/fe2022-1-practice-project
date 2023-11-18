@@ -92,6 +92,7 @@
     "stylelint": "^15.11.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-csstree-validator": "^3.0.0",
     "stylelint-plugin-logical-css": "^0.13.2",
     "turbo": "^1.10.16",
     "typed-scss-modules": "^7.1.4",

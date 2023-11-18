@@ -3,7 +3,7 @@
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
   ],
-  "plugins": ["stylelint-plugin-logical-css"],
+  "plugins": ["stylelint-plugin-logical-css", "stylelint-csstree-validator"],
   "reportInvalidScopeDisables": true,
   "reportNeedlessDisables": true,
   "defaultSeverity": "warning",
@@ -13,6 +13,9 @@
       { "severity": "warning" }
     ],
     "plugin/use-logical-units": [true, { "severity": "warning" }],
+    "csstree/validator": {
+      "syntaxExtensions": ["sass"]
+    },
     "selector-class-pattern": "^[A-Za-z-]+$",
     "scss/dollar-variable-pattern": "^[A-Za-z]+$"
   }

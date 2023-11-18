@@ -217,6 +217,9 @@ devDependencies:
   stylelint-config-standard-scss:
     specifier: ^11.1.0
     version: 11.1.0(postcss@8.4.31)(stylelint@15.11.0)
+  stylelint-csstree-validator:
+    specifier: ^3.0.0
+    version: 3.0.0(stylelint@15.11.0)
   stylelint-plugin-logical-css:
     specifier: ^0.13.2
     version: 0.13.2(stylelint@15.11.0)
@@ -5438,6 +5441,16 @@ packages:
     dependencies:
       stylelint: 15.11.0(typescript@5.2.2)
       stylelint-config-recommended: 13.0.0(stylelint@15.11.0)
+    dev: true
+
+  /stylelint-csstree-validator@3.0.0(stylelint@15.11.0):
+    resolution: {integrity: sha512-/CPYhwchWZbyZK2LVGKvt1ivISYZyRSRhrY4cMArlwYh1DxwygubR0nBv+5upuX23j1qBfJWdv6xx9dsUZF+OA==}
+    engines: {node: ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
+    peerDependencies:
+      stylelint: '>=7.0.0 <16.0.0'
+    dependencies:
+      css-tree: 2.3.1
+      stylelint: 15.11.0(typescript@5.2.2)
     dev: true
 
   /stylelint-plugin-logical-css@0.13.2(stylelint@15.11.0):
