@@ -5,6 +5,7 @@ import type { QNAItems } from 'types/general';
 
 const LINK_ID_PREFIX = 'link';
 const QNA_ID_PREFIX = 'QNA';
+const IMG_ID_PREFIX = 'img';
 
 export const HOW_IT_WORKS_CARDS = [
   {
@@ -341,39 +342,46 @@ export const HOW_IT_WORKS_QNA = [
 
 export const GET_STARTED_IMAGES = [
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}stars.svg`,
     alt: 'stars icon',
-    caption: [<b>4.9 out of 5 stars</b>, ' from 25,000+ customers.'],
+    caption: [
+      <b key={uniqueId()}>4.9 out of 5 stars</b>,
+      ' from 25,000+ customers.',
+    ],
   },
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}brandingCommunity.webp`,
     alt: 'community icon',
-    caption: ['Our branding community stands ', <b>200,000+</b>, ' strong.'],
+    caption: [
+      'Our branding community stands ',
+      <b key={uniqueId()}>200,000+</b>,
+      ' strong.',
+    ],
   },
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}industries.svg`,
     alt: 'industries icon',
     caption: [
-      <b>140+ Industries</b>,
+      <b key={uniqueId()}>140+ Industries</b>,
       ' supported across more than ',
-      <b>85 countries</b>,
-      ' – and counting.',
+      <b key={uniqueId()}>85 countries</b>,
+      ' - and counting.',
     ],
   },
 ];
 
 export const FEATURED = [
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}Forbes.svg`,
     alt: 'Forbes',
     href: 'http://www.forbes.com/sites/forbestreptalks/2016/07/11/not-sure-how-to-name-a-startup-squadhelp-will-crowdsource-it-for-199',
   },
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}TheNextWeb.png`,
     srcSet: [
       `${HOW_IT_WORKS_PATH}TheNextWeb.webp`,
@@ -383,13 +391,13 @@ export const FEATURED = [
     href: 'http://thenextweb.com/contributors/crowdsource-startup-name-with-squadhelp/',
   },
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}ChicagoTribune.svg`,
     alt: 'Chicago Tribune',
     href: 'http://www.chicagotribune.com/bluesky/originals/ct-squadhelp-startup-names-bsi-20170331-story.html',
   },
   {
-    id: uniqueId('img'),
+    id: uniqueId(IMG_ID_PREFIX),
     src: `${HOW_IT_WORKS_PATH}Mashable.svg`,
     alt: 'Mashable',
     href: 'http://mashable.com/2011/04/01/make-money-crowdworking/',

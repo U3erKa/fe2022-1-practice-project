@@ -33,6 +33,7 @@ export const sequelize = new Sequelize(POSTGRES_DB_STRING, {
   _User,
 ].forEach((createModel) => {
   const model = createModel(sequelize, DataTypes);
+  // @ts-expect-error
   db[model.name as keyof DB] = model;
 });
 
@@ -43,10 +44,10 @@ Object.keys(db).forEach((modelName) => {
     db[modelName].associate(db);
   }
 });
-
+/* eslint-disable no-console */
 console.log('db is =>>>>>>>>>>');
 console.log(Object.keys(db));
-
+/* eslint-enable no-console */
 export const {
   Bank,
   Catalog,

@@ -18,8 +18,6 @@ import type __Message from '../models/mongoModels/Message';
 import type { WithTimeStamps } from '.';
 
 export type DB = {
-  sequelize: InstanceType<typeof Sequelize>;
-  Sequelize: typeof Sequelize;
   Bank: ReturnType<typeof _Bank>;
   Catalog: ReturnType<typeof _Catalog>;
   Contest: ReturnType<typeof _Contest>;
