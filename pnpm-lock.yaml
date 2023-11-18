@@ -220,6 +220,9 @@ devDependencies:
   stylelint-csstree-validator:
     specifier: ^3.0.0
     version: 3.0.0(stylelint@15.11.0)
+  stylelint-declaration-block-no-ignored-properties:
+    specifier: ^2.7.0
+    version: 2.7.0(stylelint@15.11.0)
   stylelint-plugin-logical-css:
     specifier: ^0.13.2
     version: 0.13.2(stylelint@15.11.0)
@@ -5450,6 +5453,15 @@ packages:
       stylelint: '>=7.0.0 <16.0.0'
     dependencies:
       css-tree: 2.3.1
+      stylelint: 15.11.0(typescript@5.2.2)
+    dev: true
+
+  /stylelint-declaration-block-no-ignored-properties@2.7.0(stylelint@15.11.0):
+    resolution: {integrity: sha512-44SpI9+9Oc1ICuwwRfwS/3npQ2jPobDSTnwWdNgZGryGqQCp17CgEIWjCv1BgUOSzND3RqywNCNLKvO1AOxbfg==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      stylelint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
+    dependencies:
       stylelint: 15.11.0(typescript@5.2.2)
     dev: true
 
