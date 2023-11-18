@@ -3,10 +3,16 @@
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
   ],
+  "plugins": ["stylelint-plugin-logical-css"],
   "reportInvalidScopeDisables": true,
   "reportNeedlessDisables": true,
   "defaultSeverity": "warning",
   "rules": {
+    "plugin/use-logical-properties-and-values": [
+      true,
+      { "severity": "warning" }
+    ],
+    "plugin/use-logical-units": [true, { "severity": "warning" }],
     "selector-class-pattern": "^[A-Za-z]+$",
     "scss/dollar-variable-pattern": "^[A-Za-z]+$"
   }

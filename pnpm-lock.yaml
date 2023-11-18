@@ -217,6 +217,9 @@ devDependencies:
   stylelint-config-standard-scss:
     specifier: ^11.1.0
     version: 11.1.0(postcss@8.4.31)(stylelint@15.11.0)
+  stylelint-plugin-logical-css:
+    specifier: ^0.13.2
+    version: 0.13.2(stylelint@15.11.0)
   turbo:
     specifier: ^1.10.16
     version: 1.10.16
@@ -5442,6 +5445,15 @@ packages:
     dependencies:
       stylelint: 15.11.0(typescript@5.2.2)
       stylelint-config-recommended: 13.0.0(stylelint@15.11.0)
+    dev: true
+
+  /stylelint-plugin-logical-css@0.13.2(stylelint@15.11.0):
+    resolution: {integrity: sha512-4UJOGzNqIE7DZNeSia2kKvbSIkAyDrvr05YGjLumBzsWQcHoR9oynUmncsp3uBXTVbHeLJxm3N+AgRfE11p9xg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      stylelint: ^14.0.0 || ^15.0.0
+    dependencies:
+      stylelint: 15.11.0(typescript@5.2.2)
     dev: true
 
   /stylelint-scss@5.3.1(stylelint@15.11.0):
