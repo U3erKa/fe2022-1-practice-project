@@ -82,12 +82,12 @@ export type ModeratorOffer<IsReviewed> = Offer &
 export type OfferStatus<T = Commands> = T extends 'resolve'
   ? typeof OFFER_STATUS_WON
   : T extends 'reject'
-  ? typeof OFFER_STATUS_REJECTED
-  : T extends 'approve'
-  ? typeof OFFER_STATUS_APPROVED
-  : T extends 'discard'
-  ? typeof OFFER_STATUS_DISCARDED
-  : typeof OFFER_STATUS_PENDING;
+    ? typeof OFFER_STATUS_REJECTED
+    : T extends 'approve'
+      ? typeof OFFER_STATUS_APPROVED
+      : T extends 'discard'
+        ? typeof OFFER_STATUS_DISCARDED
+        : typeof OFFER_STATUS_PENDING;
 
 export type Priority = 1 | 2 | 3;
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;

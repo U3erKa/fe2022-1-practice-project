@@ -25,8 +25,8 @@ export type JwtVerify<Complete = unknown> = (
   Complete extends true
     ? Jwt
     : Complete extends false
-    ? JwtPayload | string
-    : Jwt | JwtPayload | string
+      ? JwtPayload | string
+      : Jwt | JwtPayload | string
 >;
 
 export type TokenOptions = {

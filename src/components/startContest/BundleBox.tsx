@@ -32,9 +32,8 @@ const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
     const element = document.getElementById(header);
     const [{ children }] = element!.children;
     for (let i = 0; i < children.length; i++) {
-      (
-        children[i] as HTMLImageElement
-      ).src = `${defaultPathToImages}blue_${path[i]}`;
+      (children[i] as HTMLImageElement).src =
+        `${defaultPathToImages}blue_${path[i]}`;
     }
   };
 

@@ -15,4 +15,3 @@ export function checkAccessToken(
     throw new TokenError('Access token is missing');
   }
 }
-
