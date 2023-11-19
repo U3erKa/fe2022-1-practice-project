@@ -1,5 +1,5 @@
 import { type NextMiddleware, NextResponse } from 'next/server';
-import { checkAccessToken } from 'middlewares/tokenMiddlewares';
+import { checkAuthorization } from 'middlewares/tokenMiddlewares';
 
 export const middleware = function (req) {
   const { headers, nextUrl } = req;
@@ -9,7 +9,7 @@ export const middleware = function (req) {
 
   try {
     if (shouldCheckAccessToken) {
-      checkAccessToken(headers.get('Authorization'));
+      checkAuthorization(headers.get('Authorization'));
     }
     return NextResponse.next();
   } catch (error: any) {

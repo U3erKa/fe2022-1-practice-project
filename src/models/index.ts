@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from 'sequelize';
-import * as pg from 'pg';
+import pg from 'pg';
 import _Bank from './bank';
 import _Catalog from './catalog';
 import _Contest from './contest';

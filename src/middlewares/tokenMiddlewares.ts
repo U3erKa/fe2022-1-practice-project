@@ -1,6 +1,6 @@
-import TokenError from '../errors/TokenError';
+import TokenError from 'errors/TokenError';
 
-export function checkAccessToken(
+export function checkAuthorization(
   authorization: unknown,
 ): asserts authorization is `Bearer ${string}` {
   if (!authorization || typeof authorization !== 'string') {
