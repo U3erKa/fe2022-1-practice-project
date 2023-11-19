@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'store';
 import { getEvents } from 'store/slices/eventSlice';
 import { refresh } from 'store/slices/userSlice';
 import { ChatContainer } from 'components/chat';
+import { REFRESH_TOKEN } from 'constants/general';
 
 function Toast({ children }: React.PropsWithChildren) {
   const user = useSelector(({ userStore }) => userStore.data);
@@ -15,7 +16,7 @@ function Toast({ children }: React.PropsWithChildren) {
       dispatch(getEvents());
       return;
     }
-    const refreshToken = localStorage.getItem('refreshToken');
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
     if (refreshToken) {
       dispatch(refresh(refreshToken));
     }
