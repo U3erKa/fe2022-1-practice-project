@@ -1,0 +1,30 @@
+import { type NextRequest, NextResponse } from 'next/server';
+import { User } from 'models';
+import { createSession } from 'services/authService';
+import handleError from 'utils/errorHandler';
+import UserNotFoundError from 'errors/UserNotFoundError';
+import { LoginSchema } from 'utils/validators/validationSchems';
+import BadRequestError from 'errors/BadRequestError';
+
+export async function POST(req: NextRequest) {
+  try {
+    const { json } = req;
+    const loginData = await json();
+
+    const result = await LoginSchema.safeParseAsync(loginData);
+    if (!result.success) throw new BadRequestError('Invalid data for login');
+    const { email, password } = result.data;
+
+    const user = await User.findOne({ where: { email } });
+
+    if (!user || !(await user.comparePassword(password))) {
+      throw new UserNotFoundError('Invalid data for login');
+    }
+
+    const responseData = await createSession(user);
+
+    return NextResponse.json(responseData, { status: 200 });
+  } catch (error) {
+    return handleError(error);
+  }
+}
