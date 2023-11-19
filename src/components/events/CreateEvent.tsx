@@ -7,7 +7,7 @@ import {
   type NewEvent,
   NewEventSchema,
   type Notify,
-} from 'utils/validators/validationSchems';
+} from 'utils/schemas';
 import { NOTIFY_OPTIONS } from 'constants/general';
 import type { useForceUpdate } from 'hooks';
 import styles from './styles/CreateEvent.module.scss';

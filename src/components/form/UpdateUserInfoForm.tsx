@@ -8,7 +8,7 @@ import { FormInput, ImageUpload } from 'components/input';
 import {
   type UpdateUser,
   UpdateUserSchema,
-} from 'utils/validators/validationSchems';
+} from 'utils/schemas';
 import styles from './styles/UpdateUserInfoForm.module.scss';
 import { uniqueId } from 'utils/functions';
 

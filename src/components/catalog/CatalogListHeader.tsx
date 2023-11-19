@@ -9,7 +9,7 @@ import {
   changeShowModeCatalog,
 } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
-import { CatalogSchema } from 'utils/validators/validationSchems';
+import { CatalogSchema } from 'utils/schemas';
 import type { Catalog } from 'types/chat';
 import styles from './styles/CatalogHeader.module.scss';
 

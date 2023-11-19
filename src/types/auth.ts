@@ -1,6 +1,6 @@
 import type { AUTH_MODE } from 'constants/general';
 import type { WithNavigate } from './_common';
-import type { Login, Registration } from 'utils/validators/validationSchems';
+import type { Login, Registration } from 'utils/schemas';
 
 export type CheckAuth = WithNavigate &
   (

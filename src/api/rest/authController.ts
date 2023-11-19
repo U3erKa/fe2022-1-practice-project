@@ -1,5 +1,5 @@
-import httpClient from '../interceptor';
-import type { Login, Registration } from 'utils/validators/validationSchems';
+import httpClient from 'api/interceptor';
+import type { Login, Registration } from 'utils/schemas';
 import type { AuthResponse, RefreshParams } from 'types/api/auth';
 
 export const login = (loginData: Login) =>

@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { User } from 'models';
 import { createSession } from 'services/authService';
 import handleError from 'utils/errorHandler';
-import { RegistrationSchema } from 'utils/validators/validationSchems';
+import { RegistrationSchema } from 'utils/schemas';
 import BadRequestError from 'errors/BadRequestError';
 
 export async function POST(req: NextRequest) {

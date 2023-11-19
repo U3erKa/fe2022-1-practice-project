@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
 import { createCatalog } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
-import { CatalogSchema } from 'utils/validators/validationSchems';
+import { CatalogSchema } from 'utils/schemas';
 import type { Catalog } from 'types/chat';
 import styles from './styles/CreateCatalog.module.scss';
 

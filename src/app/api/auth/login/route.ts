@@ -3,7 +3,7 @@ import { User } from 'models';
 import { createSession } from 'services/authService';
 import handleError from 'utils/errorHandler';
 import UserNotFoundError from 'errors/UserNotFoundError';
-import { LoginSchema } from 'utils/validators/validationSchems';
+import { LoginSchema } from 'utils/schemas';
 import BadRequestError from 'errors/BadRequestError';
 
 export async function POST(req: NextRequest) {

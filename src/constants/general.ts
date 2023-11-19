@@ -20,7 +20,6 @@ export const OFFER_STATUS_PENDING = 'pending';
 export const STATIC_IMAGES_PATH = '/staticImages/';
 export const ANONYM_IMAGE_PATH = `${STATIC_IMAGES_PATH}anonym.png` as const;
 export const HOW_IT_WORKS_PATH = `${STATIC_IMAGES_PATH}howItWorks/` as const;
-export const BASE_URL = `http://${serverIP}:${serverPort}/api/` as const;
 export const REFRESH_TOKEN = 'refreshToken';
 
 export const PUBLIC_URL =
@@ -127,6 +126,15 @@ export const PAGE = {
   ACCOUNT: '/account',
   HOW_IT_WORKS: '/how-it-works',
   NOT_FOUND: '*',
+} as const;
+
+export const API_ROUTE = '/api';
+export const BASE_URL = `http://${serverIP}:${serverPort}${API_ROUTE}` as const;
+
+export const ROUTE = {
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/registration',
+  REFRESH: '/auth/refresh',
 } as const;
 
 export const CONTEST_TYPES = [

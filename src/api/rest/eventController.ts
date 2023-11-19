@@ -1,5 +1,5 @@
 import http from '../interceptor';
-import type { NewEvent } from 'utils/validators/validationSchems';
+import type { NewEvent } from 'utils/schemas';
 import type { CreateEventResponse, GetEventsResponse } from 'types/api/event';
 
 export const getEvents = () => http.get<GetEventsResponse>('/events');

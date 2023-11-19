@@ -10,7 +10,7 @@ import {
   LogoOfferSchema,
   type TextOffer,
   TextOfferSchema,
-} from 'utils/validators/validationSchems';
+} from 'utils/schemas';
 import { LOGO_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import type { Id, WithId } from 'types/api/_common';

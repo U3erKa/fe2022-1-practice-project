@@ -11,7 +11,7 @@ import {
   CashoutSchema,
   type Payment,
   PaymentSchema,
-} from 'utils/validators/validationSchems';
+} from 'utils/schemas';
 import { PAGE } from 'constants/general';
 import type { CardField } from 'types/api/offer';
 import 'react-credit-cards-2/dist/es/styles.scss';

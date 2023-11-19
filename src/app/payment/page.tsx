@@ -8,7 +8,7 @@ import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
 import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
 import { DUMMY_LINK, PAGE } from 'constants/general';
-import { type Payment } from 'utils/validators/validationSchems';
+import { type Payment } from 'utils/schemas';
 import styles from './styles/page.module.scss';
 
 const Payment = () => {

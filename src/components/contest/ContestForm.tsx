@@ -13,7 +13,7 @@ import {
   FormTextArea,
   SelectInput,
 } from 'components/input';
-import { type Contest, ContestSchema } from 'utils/validators/validationSchems';
+import { type Contest, ContestSchema } from 'utils/schemas';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,

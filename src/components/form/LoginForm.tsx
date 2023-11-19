@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { FormInput } from 'components/input';
 import { Error } from 'components/general';
-import { type Login, LoginSchema } from 'utils/validators/validationSchems';
+import { type Login, LoginSchema } from 'utils/schemas';
 import { AUTH_MODE } from 'constants/general';
 import type { FormInputClasses } from 'components/input/FormInput';
 import styles from './styles/LoginForm.module.scss';

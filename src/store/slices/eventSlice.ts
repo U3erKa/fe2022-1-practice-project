@@ -12,7 +12,7 @@ import {
 } from 'utils/store';
 import { timezoneOffsetInMs } from 'constants/general';
 import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
-import type { NewEvent } from 'utils/validators/validationSchems';
+import type { NewEvent } from 'utils/schemas';
 import type {
   CreateEventResponse,
   EventState,

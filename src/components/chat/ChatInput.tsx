@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { sendMessage } from 'store/slices/chatSlice';
 import { FormInput } from 'components/input';
 import { Picture } from 'components/general';
-import { type Message, MessageSchema } from 'utils/validators/validationSchems';
+import { type Message, MessageSchema } from 'utils/schemas';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/ChatInput.module.scss';
 
