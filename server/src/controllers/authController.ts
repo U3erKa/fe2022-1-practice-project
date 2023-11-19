@@ -24,20 +24,6 @@ export const login: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const registration: RequestHandler = async (req, res, next) => {
-  try {
-    const { body } = req;
-
-    const user = await User.create(body);
-
-    const responseData = await AuthService.createSession(user);
-
-    res.status(201).send(responseData);
-  } catch (error) {
-    next(error);
-  }
-};
-
 export const refresh: RequestHandler = async (req, res, next) => {
   try {
     const { refreshTokenInstance } = req;

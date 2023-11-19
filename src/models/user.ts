@@ -137,11 +137,11 @@ abstract class _User extends Model<
   declare displayName: string;
   declare password: string;
   declare email: string;
-  declare avatar: string;
+  declare avatar: CreationOptional<string>;
   declare role: 'customer' | 'creator' | 'moderator';
-  declare balance: number;
+  declare balance: CreationOptional<number>;
   declare accessToken?: CreationOptional<string>;
-  declare rating: number;
+  declare rating: CreationOptional<number>;
 
   declare id: CreationOptional<number>;
 
