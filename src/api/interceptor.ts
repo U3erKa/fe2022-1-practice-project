@@ -35,7 +35,7 @@ httpClient.interceptors.response.use(
     if (!oldRefreshToken) {
       return Promise.reject(err);
     }
-    if (err.response.status === 401) {
+    if (err.response.status === 405) {
       accessToken = null;
       localStorage.removeItem(REFRESH_TOKEN);
     }

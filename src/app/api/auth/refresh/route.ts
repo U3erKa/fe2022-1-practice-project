@@ -3,7 +3,7 @@ import { RefreshToken } from 'models';
 import TokenError from 'errors/TokenError';
 import { verifyRefreshToken } from 'services/jwtService';
 import { refreshSession } from 'services/authService';
-import handleError from 'utils/errorHandler';
+import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   try {
