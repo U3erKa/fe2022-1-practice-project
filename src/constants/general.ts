@@ -135,6 +135,7 @@ export const ROUTE = {
   LOGIN: '/auth/login',
   REGISTER: '/auth/registration',
   REFRESH: '/auth/refresh',
+  CONTESTS: '/contests',
 } as const;
 
 export const CONTEST_TYPES = [

@@ -30,7 +30,7 @@ const createToken = (
 ) => jwtSign(payload, secret, { expiresIn });
 
 const verifyToken = (token: string, { secret }: { secret: Secret }) =>
-  jwtVerify(token, secret);
+  jwtVerify(token, secret) as Promise<TokenData>;
 
 export const generateTokenPair = async (payload: TokenData) => {
   const [accessToken, refreshToken] = await Promise.all([

@@ -1,3 +1,4 @@
+import { ROUTE } from 'constants/general';
 import http from '../interceptor';
 
 import type {
@@ -20,7 +21,7 @@ export const downloadContestFile = ({ fileName }: DownloadContestFileParams) =>
 
 export const getCustomersContests = (data: GetCustomersContestsParams) =>
   http.get<GetContestsResponse>(
-    `contests?${new URLSearchParams({
+    `${ROUTE.CONTESTS}?${new URLSearchParams({
       limit: data.limit,
       offset: data.offset,
     } as any)}`,
@@ -33,11 +34,14 @@ export const getCustomersContests = (data: GetCustomersContestsParams) =>
 
 export const getActiveContests = (options: GetActiveContestsParams) =>
   http.get<GetContestsResponse>(
-    `contests?${new URLSearchParams(options as any)}`,
+    `${ROUTE.CONTESTS}?${new URLSearchParams(options as any)}`,
   );
 
 export const getContestById = ({ contestId }: GetContestParams) =>
-  http.get<GetContestResponse>(`contests/${contestId}`);
+  http.get<GetContestResponse>(`${ROUTE.CONTESTS}/${contestId}`);
 
 export const updateContest = (data: FormData) =>
-  http.put<UpdateContestResponse>(`contests/${data.get('contestId')}`, data);
+  http.put<UpdateContestResponse>(
+    `${ROUTE.CONTESTS}/${data.get('contestId')}`,
+    data,
+  );
