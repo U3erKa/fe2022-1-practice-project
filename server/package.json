@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
+    "prestart": "npm run build",
     "start": "turbo dev build:watch",
     "dev": "node --trace-deprecation --experimental-specifier-resolution node .",
     "build": "swc src/ -d dist/ --copy-files",
