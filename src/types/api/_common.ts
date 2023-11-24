@@ -8,6 +8,10 @@ export type WithUUID<T extends UUID = UUID, K extends string = 'id'> = {
   [key in K]: T;
 };
 
+export type Context<T extends Record<string, string> | undefined = undefined> = {
+  params: T;
+};
+
 export type WithFile = { fileName: string; originalFileName: string };
 export type WithTimeStamps = { createdAt: TimeStamp; updatedAt: TimeStamp };
 export type WithLifeSpan = { iat: NumTimeStamp; exp: NumTimeStamp };
