@@ -7,11 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
-import {
-  CashoutSchema,
-  type Payment,
-  PaymentSchema,
-} from 'utils/schemas';
+import { CashoutSchema, type Payment, PaymentSchema } from 'utils/schemas';
 import { PAGE } from 'constants/general';
 import type { CardField } from 'types/api/offer';
 import 'react-credit-cards-2/dist/es/styles.scss';

@@ -5,10 +5,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { clearUserError } from 'store/slices/userSlice';
 import { Error, Spinner } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
-import {
-  type UpdateUser,
-  UpdateUserSchema,
-} from 'utils/schemas';
+import { type UpdateUser, UpdateUserSchema } from 'utils/schemas';
 import styles from './styles/UpdateUserInfoForm.module.scss';
 import { uniqueId } from 'utils/functions';
 

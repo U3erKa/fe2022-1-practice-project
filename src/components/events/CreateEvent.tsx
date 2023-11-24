@@ -3,11 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'store';
 import { createEvent } from 'store/slices/eventSlice';
 import { FormInput, SelectInput } from 'components/input';
-import {
-  type NewEvent,
-  NewEventSchema,
-  type Notify,
-} from 'utils/schemas';
+import { type NewEvent, NewEventSchema, type Notify } from 'utils/schemas';
 import { NOTIFY_OPTIONS } from 'constants/general';
 import type { useForceUpdate } from 'hooks';
 import styles from './styles/CreateEvent.module.scss';

@@ -10,10 +10,7 @@ import {
   FormInput,
   RoleInput,
 } from 'components/input';
-import {
-  type Registration,
-  RegistrationSchema,
-} from 'utils/schemas';
+import { type Registration, RegistrationSchema } from 'utils/schemas';
 import { AUTH_MODE, CREATOR, CUSTOMER } from 'constants/general';
 import styles from './styles/RegistrationForm.module.scss';
 
