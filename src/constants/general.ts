@@ -21,12 +21,7 @@ export const STATIC_IMAGES_PATH = '/staticImages/';
 export const ANONYM_IMAGE_PATH = `${STATIC_IMAGES_PATH}anonym.png` as const;
 export const HOW_IT_WORKS_PATH = `${STATIC_IMAGES_PATH}howItWorks/` as const;
 export const REFRESH_TOKEN = 'refreshToken';
-
-export const PUBLIC_URL =
-  env === 'production'
-    ? (`http://${serverIP}:80/images/` as const)
-    : (`http://${serverIP}:${serverPort}/images/` as const);
-
+export const PUBLIC_URL = '/images/';
 export const DUMMY_LINK = '/404';
 
 export const NORMAL_PREVIEW_CHAT_MODE = 'NORMAL_PREVIEW_CHAT_MODE';

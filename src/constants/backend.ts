@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { PUBLIC_URL } from './general';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,8 +39,8 @@ export const FILES_PATH = path.resolve(
 ) as `${string}/public`;
 export const UPLOADED_IMAGES_PATH = path.resolve(
   FILES_PATH,
-  'images',
-) as `${typeof FILES_PATH}/images`;
+  PUBLIC_URL,
+) as `${typeof FILES_PATH}${typeof PUBLIC_URL}`;
 export const CRON_DAILY_AT_MIDNIGHT = '0 0 * * *';
 export const CRON_EVERY_MINUTE = '* * * * *';
 export const READ_FILE_OPTIONS = { encoding: 'utf8' } as const;
