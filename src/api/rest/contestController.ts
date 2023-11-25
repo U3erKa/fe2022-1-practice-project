@@ -4,7 +4,6 @@ import http from 'api/interceptor';
 import type {
   DataForContestParams,
   DataForContestResponse,
-  DownloadContestFileParams,
   GetActiveContestsParams,
   GetContestParams,
   GetContestResponse,
@@ -15,9 +14,6 @@ import type {
 
 export const dataForContest = (data?: DataForContestParams) =>
   http.post<DataForContestResponse>(ROUTE.DATA_FOR_CONTEST, data);
-
-export const downloadContestFile = ({ fileName }: DownloadContestFileParams) =>
-  http.get(`downloadFile/${fileName}`);
 
 export const getCustomersContests = (data: GetCustomersContestsParams) =>
   http.get<GetContestsResponse>(

@@ -54,7 +54,6 @@ export type DataForContestParams = {
 
 export type DataForContestResponse = DataForContest;
 
-export type DownloadContestFileParams = { fileName: string };
 export type GetContestsResponse = { contests: Contest[]; haveMore: boolean };
 export type UpdateContestResponse = Contest;
 
