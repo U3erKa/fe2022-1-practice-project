@@ -141,10 +141,7 @@ dist
 *.sw?
 
 # Project specific
-./server/uploadFiles
-./server/upload
-server/public
-
+public/images
 dist-ssr
 dev-dist
 .turbo

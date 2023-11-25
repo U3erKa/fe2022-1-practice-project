@@ -25,7 +25,7 @@ export const REFRESH_TOKEN = 'refreshToken';
 export const PUBLIC_URL =
   env === 'production'
     ? (`http://${serverIP}:80/images/` as const)
-    : (`http://${serverIP}:${serverPort}/public/images/` as const);
+    : (`http://${serverIP}:${serverPort}/images/` as const);
 
 export const DUMMY_LINK = '/404';
 
