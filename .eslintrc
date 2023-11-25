@@ -9,6 +9,7 @@
     "prettier"
   ],
   "ignorePatterns": ["dist", ".eslintrc*"],
+  "plugins": ["react-refresh", "react-hooks"],
   "rules": {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
