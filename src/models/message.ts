@@ -12,7 +12,7 @@ import type {
   Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import type { Conversation, DB, User } from '../types/models';
+import type { Conversation, DB, User } from 'types/models';
 
 const Message = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Message extends _Message {

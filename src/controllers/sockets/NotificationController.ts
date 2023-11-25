@@ -3,7 +3,7 @@ import {
   NOTIFICATION_CHANGE_MARK,
   NOTIFICATION_CHANGE_OFFER_STATUS,
   NOTIFICATION_ENTRY_CREATED,
-} from '../../constants/backend';
+} from 'constants/backend';
 
 class NotificationController extends WebSocket {
   emitEntryCreated(target: string | string[]) {

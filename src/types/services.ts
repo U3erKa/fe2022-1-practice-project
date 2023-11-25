@@ -8,7 +8,7 @@ import type {
 import type {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
-} from '../constants/general';
+} from 'constants/general';
 import type { UserId } from '.';
 
 export type JwtSign = (

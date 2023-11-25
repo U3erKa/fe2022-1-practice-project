@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { deprecate } from 'util';
-import { MONGO_DEPRECATED_MESSAGE } from '../../constants/backend';
-import type { ConversationSchema } from '../../types/models';
+import { MONGO_DEPRECATED_MESSAGE } from 'constants/backend';
+import type { ConversationSchema } from 'types/models';
 
 const Schema = new mongoose.Schema(
   {

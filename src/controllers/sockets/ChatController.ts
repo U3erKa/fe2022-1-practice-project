@@ -1,9 +1,9 @@
 import type { Socket } from 'socket.io';
 import WebSocket from './WebSocket';
-import { NEW_MESSAGE } from '../../constants/backend';
+import { NEW_MESSAGE } from 'constants/backend';
 import { CHANGE_BLOCK_STATUS } from 'constants/general';
-import type { Conversation } from '../../types/models';
-import type { WebSocketMessage } from '../../types/websocket';
+import type { Conversation } from 'types/models';
+import type { WebSocketMessage } from 'types/websocket';
 
 class ChatController extends WebSocket {
   anotherSubscribes(socket: Socket) {

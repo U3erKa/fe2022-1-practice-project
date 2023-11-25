@@ -12,7 +12,7 @@ import _RefreshToken from './refreshToken';
 import _Select from './select';
 import _User from './user';
 import { POSTGRES_DB_STRING } from 'constants/backend';
-import type { DB } from '../types/models';
+import type { DB } from 'types/models';
 
 const db = {} as DB;
 export const sequelize = new Sequelize(POSTGRES_DB_STRING, {

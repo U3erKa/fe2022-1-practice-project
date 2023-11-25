@@ -15,7 +15,7 @@ import type {
   Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import type { Contest, DB, User } from '../types/models';
+import type { Contest, DB, User } from 'types/models';
 
 const Offer = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Offer extends _Offer {

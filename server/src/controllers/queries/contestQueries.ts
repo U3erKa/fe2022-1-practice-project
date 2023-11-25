@@ -1,5 +1,5 @@
-import { Contest, Offer } from '../../models';
-import ServerError from '../../errors/ServerError';
+import { Contest, Offer } from 'models';
+import ServerError from 'errors/ServerError';
 import type {
   Attributes,
   CreationAttributes,
@@ -11,7 +11,7 @@ import type {
   ModelUpdateAttributes,
   Contest as _Contest,
   Offer as _Offer,
-} from '../../types/models';
+} from 'types/models';
 
 export const updateContest = async (
   data: ModelUpdateAttributes<_Contest>,

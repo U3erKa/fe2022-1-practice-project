@@ -5,7 +5,7 @@ import type {
   Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import type { DB } from '../types/models';
+import type { DB } from 'types/models';
 
 const Bank = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Bank extends _Bank {

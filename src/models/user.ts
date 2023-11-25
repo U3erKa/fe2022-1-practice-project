@@ -19,8 +19,8 @@ import type {
   DataTypes as _DataTypes,
 } from 'sequelize';
 import bcrypt from 'bcrypt';
-import { SALT_ROUNDS } from '../constants/backend';
-import type { DB, User as __User } from '../types/models';
+import { SALT_ROUNDS } from 'constants/backend';
+import type { DB, User as __User } from 'types/models';
 
 const hashPassword = async (user: __User) => {
   if (user.changed('password')) {

@@ -22,7 +22,7 @@ import type {
   Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import type { DB, User } from '../types/models';
+import type { DB, User } from 'types/models';
 
 const Contest = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Contest extends _Contest {

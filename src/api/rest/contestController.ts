@@ -1,5 +1,5 @@
 import { ROUTE } from 'constants/general';
-import http from '../interceptor';
+import http from 'api/interceptor';
 
 import type {
   DataForContestParams,

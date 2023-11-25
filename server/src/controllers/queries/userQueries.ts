@@ -4,11 +4,11 @@ import type {
   Transaction,
   WhereOptions,
 } from 'sequelize';
-import { User } from '../../models';
-import NotFound from '../../errors/UserNotFoundError';
-import ServerError from '../../errors/ServerError';
-import type { ModelUpdateAttributes, User as _User } from '../../types/models';
-import type { UserId } from '../../types';
+import { User } from 'models';
+import NotFound from 'errors/UserNotFoundError';
+import ServerError from 'errors/ServerError';
+import type { ModelUpdateAttributes, User as _User } from 'types/models';
+import type { UserId } from 'types';
 
 export const updateUser = async (
   data: ModelUpdateAttributes<_User>,

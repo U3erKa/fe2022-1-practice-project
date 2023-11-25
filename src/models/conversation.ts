@@ -29,8 +29,8 @@ import type {
   Sequelize,
   DataTypes as _DataTypes,
 } from 'sequelize';
-import { isTuple } from '../utils/functions';
-import type { DB, User } from '../types/models';
+import { isTuple } from 'utils/functions';
+import type { DB, User } from 'types/models';
 
 const Conversation = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
   class Conversation extends _Conversation {

@@ -4,10 +4,10 @@ import type {
   Transaction,
   WhereOptions,
 } from 'sequelize';
-import { Rating } from '../../models';
-import ServerError from '../../errors/ServerError';
-import type { Rating as _Rating } from '../../types/models';
-import type { ModelUpdateAttributes } from '../../types/models';
+import { Rating } from 'models';
+import ServerError from 'errors/ServerError';
+import type { Rating as _Rating } from 'types/models';
+import type { ModelUpdateAttributes } from 'types/models';
 
 export const updateRating = async (
   data: ModelUpdateAttributes<_Rating>,

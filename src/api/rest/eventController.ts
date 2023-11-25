@@ -1,4 +1,4 @@
-import http from '../interceptor';
+import http from 'api/interceptor';
 import type { NewEvent } from 'utils/schemas';
 import type { CreateEventResponse, GetEventsResponse } from 'types/api/event';
 

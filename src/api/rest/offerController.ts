@@ -1,4 +1,4 @@
-import http from '../interceptor';
+import http from 'api/interceptor';
 import type {
   CashOutParams,
   ChangeMarkParams,
