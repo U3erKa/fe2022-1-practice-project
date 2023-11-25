@@ -21,7 +21,7 @@ type RouteContext = Context<{
   contestId: `${number}`;
 }>;
 
-export const GET = async function (
+export async function GET(
   req: NextRequest,
   { params: { contestId } }: RouteContext,
 ) {
@@ -114,9 +114,9 @@ export const GET = async function (
   } catch (e) {
     return handleError(e);
   }
-};
+}
 
-export const PUT = async function (
+export async function PUT(
   req: NextRequest,
   { params: { contestId } }: RouteContext,
 ) {
@@ -150,4 +150,4 @@ export const PUT = async function (
   } catch (e) {
     return handleError(e);
   }
-};
+}

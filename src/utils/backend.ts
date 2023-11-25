@@ -1,8 +1,6 @@
 import { existsSync, promises as fs } from 'fs';
 import { resolve } from 'path';
 import { READ_FILE_OPTIONS, UPLOADED_IMAGES_PATH } from 'constants/backend';
-import { writeFile } from 'fs/promises';
-import path from 'path';
 
 export async function createFolderIfNotExists(path: string) {
   if (existsSync(path)) return;
@@ -18,13 +16,14 @@ export async function createFileIfNotExists(path: string) {
   if (!existsSync(folder)) await createFolderIfNotExists(resolve(folder));
   await fs.writeFile(resolve(folder, file), '', READ_FILE_OPTIONS);
 }
+
 export async function uploadFile(file: File) {
   const fileName = `${Date.now()}-${file.name}`;
   await createFolderIfNotExists(UPLOADED_IMAGES_PATH);
-  const filePath = path.resolve(UPLOADED_IMAGES_PATH, fileName);
+  const filePath = resolve(UPLOADED_IMAGES_PATH, fileName);
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
-  await writeFile(filePath, buffer);
+  await fs.writeFile(filePath, buffer);
   return { fileName, originalFileName: file.name };
 }
