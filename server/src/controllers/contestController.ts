@@ -63,29 +63,6 @@ export const downloadFile: RequestHandler = async (req, res, next) => {
   res.download(file);
 };
 
-export const updateContest: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData,
-    file,
-    body,
-    params: { contestId },
-  } = req;
-
-  if (file) {
-    body.fileName = file.filename;
-    body.originalFileName = file.originalname;
-  }
-  try {
-    const updatedContest = await contestQueries.updateContest(body, {
-      id: contestId,
-      userId: tokenData.userId,
-    });
-    res.send(updatedContest);
-  } catch (e) {
-    next(e);
-  }
-};
-
 export const setNewOffer: RequestHandler = async (req, res, next) => {
   const {
     tokenData,

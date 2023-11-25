@@ -1,10 +1,12 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
 import { Contest, Offer, Rating, User } from 'models';
+import { updateContest } from 'controllers/queries/contestQueries';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 import NotFoundError from 'errors/NotFoundError';
 import RightsError from 'errors/RightsError';
+import { uploadFile } from 'utils/backend';
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
@@ -15,9 +17,13 @@ import {
 } from 'constants/general';
 import type { Context } from 'types/api/_common';
 
+type RouteContext = Context<{
+  contestId: `${number}`;
+}>;
+
 export const GET = async function (
   req: NextRequest,
-  { params: { contestId } }: Context<{ contestId: `${number}` }>,
+  { params: { contestId } }: RouteContext,
 ) {
   try {
     const { headers } = req;
@@ -105,6 +111,42 @@ export const GET = async function (
       delete offer.Rating;
     });
     return NextResponse.json(contestInfo, { status: 200 });
+  } catch (e) {
+    return handleError(e);
+  }
+};
+
+export const PUT = async function (
+  req: NextRequest,
+  { params: { contestId } }: RouteContext,
+) {
+  try {
+    const { headers, formData } = req;
+    const authorization = headers.get('Authorization')!.split(' ')[1]!;
+    const { userId } = await verifyAccessToken(authorization);
+    const body = await formData();
+    const { file, ...restBody } = Object.fromEntries(body);
+
+    const result = await Contest.findOne({
+      where: {
+        userId,
+        id: contestId,
+        status: { [Op.not]: CONTEST_STATUS_FINISHED },
+      },
+    });
+    if (!result) throw new RightsError();
+
+    if (file instanceof File) {
+      const fileData = await uploadFile(file);
+      Object.assign(restBody, fileData);
+    }
+
+    const updatedContest = await updateContest(restBody, {
+      id: contestId,
+      userId,
+    });
+
+    return NextResponse.json(updatedContest, { status: 200 });
   } catch (e) {
     return handleError(e);
   }
