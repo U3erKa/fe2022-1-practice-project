@@ -2,13 +2,6 @@ import type { Date } from 'mongoose';
 import type { RefreshToken, User } from './models';
 import type { TokenData } from './user';
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Express {
-    interface Request extends RefreshTokenInstance, WithTokenData {}
-  }
-}
-
 export type WithId<T extends Id = Id, K extends string = 'id'> = {
   [key in K]: T;
 };
