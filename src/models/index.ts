@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import pg from 'pg';
 import _Bank from './bank';
 import _Catalog from './catalog';
@@ -32,7 +32,7 @@ export const sequelize = new Sequelize(POSTGRES_DB_STRING, {
   _Select,
   _User,
 ].forEach((createModel) => {
-  const model = createModel(sequelize, DataTypes);
+  const model = createModel(sequelize);
   // @ts-expect-error
   db[model.name as keyof DB] = model;
 });

@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
   BelongsToCreateAssociationMixin,
@@ -20,11 +20,10 @@ import type {
   InferCreationAttributes,
   NonAttribute,
   Sequelize,
-  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB, User } from 'types/models';
 
-const Contest = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
+const Contest = (sequelize: Sequelize) => {
   class Contest extends _Contest {
     static associate({ User, Offer }: DB) {
       Contest.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });

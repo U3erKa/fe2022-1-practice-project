@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
   BelongsToManyAddAssociationMixin,
@@ -27,12 +27,11 @@ import type {
   InferCreationAttributes,
   NonAttribute,
   Sequelize,
-  DataTypes as _DataTypes,
 } from 'sequelize';
 import { isTuple } from 'utils/functions';
 import type { DB, User } from 'types/models';
 
-const Conversation = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
+const Conversation = (sequelize: Sequelize) => {
   class Conversation extends _Conversation {
     static associate({ Catalog, Message, User }: DB) {
       Conversation.hasMany(Message, {

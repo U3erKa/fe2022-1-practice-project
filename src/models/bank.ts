@@ -1,13 +1,12 @@
-import { Model } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import type {
   InferAttributes,
   InferCreationAttributes,
   Sequelize,
-  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { DB } from 'types/models';
 
-const Bank = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
+const Bank = (sequelize: Sequelize) => {
   class Bank extends _Bank {
     static associate(models: DB) {}
   }

@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
   BelongsToCreateAssociationMixin,
@@ -10,11 +10,10 @@ import type {
   InferCreationAttributes,
   NonAttribute,
   Sequelize,
-  DataTypes as _DataTypes,
 } from 'sequelize';
 import type { Conversation, DB, User } from 'types/models';
 
-const Message = (sequelize: Sequelize, DataTypes: typeof _DataTypes) => {
+const Message = (sequelize: Sequelize) => {
   class Message extends _Message {
     static associate({ Conversation, User }: DB) {
       Message.belongsTo(User, { foreignKey: 'sender', targetKey: 'id' });
