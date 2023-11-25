@@ -14,7 +14,7 @@ import type {
 } from 'types/api/contest';
 
 export const dataForContest = (data?: DataForContestParams) =>
-  http.post<DataForContestResponse>('dataForContest', data);
+  http.post<DataForContestResponse>(ROUTE.DATA_FOR_CONTEST, data);
 
 export const downloadContestFile = ({ fileName }: DownloadContestFileParams) =>
   http.get(`downloadFile/${fileName}`);

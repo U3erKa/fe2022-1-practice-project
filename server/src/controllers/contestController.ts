@@ -8,55 +8,20 @@ import type { RequestHandler } from 'express';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { Contest, Offer, Rating, Select, User, sequelize } from '../models';
+import { Contest, Offer, User, sequelize } from '../models';
 import _sendEmail from '../email';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
-import RightsError from '../errors/RightsError';
 import BadRequestError from '../errors/BadRequestError';
 import ApplicationError from '../errors/ApplicationError';
 import * as contestQueries from './queries/contestQueries';
 import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
-import * as UtilFunctions from '../utils/functions';
 import * as CONSTANTS from '../constants';
 import type { Offer as _Offer, User as _User } from '../types/models';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-export const dataForContest: RequestHandler = async (req, res, next) => {
-  const {
-    body: { characteristic1, characteristic2 },
-  } = req;
-  const response: Record<string, string[]> = {};
-
-  try {
-    const types = [characteristic1, characteristic2, 'industry'].filter(
-      Boolean,
-    );
-
-    const characteristics = await Select.findAll({
-      where: {
-        type: {
-          [Op.or]: types,
-        },
-      },
-    });
-    if (!characteristics) {
-      return next(new ServerError());
-    }
-    characteristics.forEach((characteristic) => {
-      if (!response[characteristic.type]) {
-        response[characteristic.type] = [];
-      }
-      response[characteristic.type].push(characteristic.describe);
-    });
-    res.send(response);
-  } catch (err) {
-    next(new ServerError('cannot get contest preferences'));
-  }
-};
 
 export const downloadFile: RequestHandler = async (req, res, next) => {
   const file = CONSTANTS.CONTESTS_DEFAULT_DIR + req.params.fileName;
