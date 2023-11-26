@@ -93,7 +93,7 @@
     "stylelint-plugin-defensive-css": "^0.10.2",
     "stylelint-plugin-logical-css": "^0.13.2",
     "turbo": "^1.10.16",
-    "typed-scss-modules": "^7.1.4",
+    "typed-scss-modules": "^8.0.0",
     "typescript": "^5.3.2"
   }
 }
