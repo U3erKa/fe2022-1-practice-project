@@ -1,7 +1,6 @@
 {
   "extends": [
     "stylelint-config-standard-scss",
-    "stylelint-config-rational-order",
     "stylelint-config-clean-order",
     "stylelint-config-prettier-scss"
   ],
@@ -35,10 +34,6 @@
         "scrollbar-gutter": true,
         "vendor-prefix-grouping": true
       }
-    ],
-    "plugin/rational-order": [
-      true,
-      { "border-in-box-model": false, "empty-line-between-groups": false }
     ],
     "selector-class-pattern": "^[A-Za-z-]+$",
     "scss/dollar-variable-pattern": "^[A-Za-z]+$",
