@@ -1,28 +1,33 @@
 .headerContainer {
   z-index: 600;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  background-color: #4e618d;
+
   block-size: 50px;
   padding-inline-start: 15px;
+
+  background-color: #4e618d;
   border-block-end: 1px solid #f3f3f3;
 
   button {
+    cursor: pointer;
+
     padding: 4px 6px;
+
     font-size: 14px;
+
     border: none;
     border-radius: 4px;
-    cursor: pointer;
   }
 
   svg {
-    color: white;
-    font-size: 24px;
     cursor: pointer;
+    font-size: 24px;
+    color: white;
     transition: font-size 0.2s;
-
     @media (hover: hover) {
       &:hover {
         font-size: 28px;
@@ -33,21 +38,20 @@
 }
 
 .infoContainer {
-  margin-inline-start: 25px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  margin-inline-start: 25px;
 
   span {
-    color: white;
     font-size: 18px;
+    color: white;
   }
 
   svg {
+    margin-inline-start: 5px;
     font-size: 12px;
     transition: font-size 0.2s;
-    margin-inline-start: 5px;
-
     @media (hover: hover) {
       &:hover {
         font-size: 14px;
@@ -71,23 +75,28 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  border: 1px solid #b72522;
+
   margin-inline-end: 5px;
+
+  font-size: 15px;
+  color: white;
+  text-align: center;
+
+  border: 1px solid #b72522;
 }
 
 .input {
+  inline-size: 140px;
   margin: 0 15px;
   padding: 4px;
-  color: #9ca8b7;
+
   font-size: 16px;
+  color: #9ca8b7;
+
   background-color: white;
   border: none;
   border-radius: 4px;
   outline: none;
-  inline-size: 140px;
 }
 
 .notValid {

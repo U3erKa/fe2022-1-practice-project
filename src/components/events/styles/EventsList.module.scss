@@ -12,7 +12,6 @@
 
   inline-size: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
-
   @media (width < 768px) {
     flex-direction: column;
     gap: $gap;
@@ -27,8 +26,8 @@
 }
 
 .heading {
-  font-weight: bold;
   font-size: 2rem;
+  font-weight: bold;
 }
 
 .pending {

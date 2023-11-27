@@ -1,23 +1,26 @@
 .offerContainer {
   position: relative;
+
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
   align-self: stretch;
   justify-content: flex-start;
+
+  margin-block-start: 15px;
   padding: 30px 40px 10px;
+
   background-color: #f9fafb;
   border-radius: 10px;
-  margin-block-start: 15px;
-  @media (width <= 450px) {
-    padding: 10px 0;
-  }
 
   svg {
     position: absolute;
-    font-size: 54px;
-    inset-inline-start: calc(100% - 35px);
     inset-block-start: -15px;
+    inset-inline-start: calc(100% - 35px);
+    font-size: 54px;
+  }
+  @media (width <= 450px) {
+    padding: 10px 0;
   }
 }
 
@@ -39,18 +42,21 @@
   align-items: center;
   align-self: stretch;
   justify-content: space-between;
+
   margin: 5px 0;
 }
 
 .resolveBtn {
+  cursor: pointer;
+
+  inline-size: 100px;
   padding: 10px;
+
   color: white;
   text-align: center;
+
   background-color: #8aca6b;
   border-radius: 8px;
-  cursor: pointer;
-  inline-size: 100px;
-
   @media (hover: hover) {
     &:hover {
       background-color: rgb(138 202 107 / 70%);
@@ -59,15 +65,17 @@
 }
 
 .rejectBtn {
+  cursor: pointer;
+
+  inline-size: 100px;
   margin: 0 25px;
   padding: 10px;
+
   color: white;
   text-align: center;
+
   background-color: #cd5c5c;
   border-radius: 8px;
-  cursor: pointer;
-  inline-size: 100px;
-
   @media (hover: hover) {
     &:hover {
       background-color: rgb(205 92 92 / 70%);
@@ -77,41 +85,43 @@
 
 .mainInfoContainer {
   position: relative;
+
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   align-self: stretch;
   justify-content: space-between;
-  @media (width <= 500px) {
-    flex-direction: column;
-  }
 
   svg {
-    position: absolute;
-    align-self: flex-start;
-    color: #4e618d;
-    font-size: 26px;
     cursor: pointer;
+
+    position: absolute;
+
+    align-self: flex-start;
+
+    font-size: 26px;
+    color: #4e618d;
+
     transition: font-size 0.2s;
     @media (width <= 450px) {
       inset-block-start: 30px;
     }
-
     @media (width <= 380px) {
-      align-self: flex-end;
       inset-block-start: 100px;
+      align-self: flex-end;
     }
-
     @media (width <= 500px) {
       align-self: flex-end;
     }
-
     @media (hover: hover) {
       &:hover {
         font-size: 34px;
         transition: font-size 0.2s;
       }
     }
+  }
+  @media (width <= 500px) {
+    flex-direction: column;
   }
 }
 
@@ -125,10 +135,11 @@
   align-items: center;
   align-self: center;
   justify-content: flex-start;
+
   inline-size: 70%;
   @media (width <= 800px) {
-    margin-block-start: 10px;
     max-inline-size: 200px;
+    margin-block-start: 10px;
   }
 }
 
@@ -139,25 +150,27 @@
 
 .response {
   align-self: stretch;
-  color: #556da5;
+
+  margin-block-end: 10px;
+  margin-inline-start: 10px;
+
   font-size: 18px;
+  color: #556da5;
   text-align: center;
   overflow-wrap: break-word;
-  margin-inline-start: 10px;
-  margin-block-end: 10px;
 }
 
 .creativeRating {
   display: flex;
   flex-wrap: nowrap;
-  margin-block-start: 5px;
   align-items: center;
+  margin-block-start: 5px;
 }
 
 .userScoreLabel {
   margin-inline-end: 10px;
-  color: #556da5;
   font-size: 15px;
+  color: #556da5;
 }
 
 .creativeInfoContainer {
@@ -180,10 +193,10 @@
   justify-content: flex-start;
 
   span {
-    color: #556da5;
-    font-weight: 500;
-    font-size: 16px;
     margin-inline-start: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #556da5;
   }
 }
 

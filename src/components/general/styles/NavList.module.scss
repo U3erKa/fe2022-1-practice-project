@@ -3,40 +3,31 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  margin: 0;
-  list-style: none;
-  @media (width <= 920px) {
-    padding: 0;
-  }
 
-  @media (width <= 700px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  margin: 0;
+
+  list-style: none;
 
   li {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
+
     margin-inline-end: 30px;
-    @media (width <= 700px) {
-      padding: 0 15px;
-      inline-size: 100%;
-    }
 
     span {
       padding: 15px 0;
-      color: #495d8b;
-      font-weight: 300;
       font-size: 15px;
+      font-weight: 300;
+      color: #495d8b;
     }
 
     ul {
       display: none;
+      inline-size: 160px;
       margin: 0;
       padding: 0;
-      inline-size: 160px;
 
       li {
         display: flex;
@@ -45,19 +36,18 @@
         inline-size: 100%;
 
         a {
-          padding: 10px 15px;
-          color: #333;
-          font-size: 12px;
-          text-decoration: none;
           inline-size: 100%;
+          padding: 10px 15px;
 
+          font-size: 12px;
+          color: #333;
+          text-decoration: none;
           @media (hover: hover) {
             &:hover {
               color: #f27e51;
             }
           }
         }
-
         @media (hover: hover) {
           &:hover {
             background: #f9fafb;
@@ -65,7 +55,10 @@
         }
       }
     }
-
+    @media (width <= 700px) {
+      inline-size: 100%;
+      padding: 0 15px;
+    }
     @media (hover: hover) {
       &:hover {
         span {
@@ -75,10 +68,12 @@
         ul {
           position: absolute;
           z-index: 1000;
+          inset-block-start: 130px;
+
           display: block;
+
           background-color: white;
           border: 1px solid #eee;
-          inset-block-start: 130px;
           @media (width <= 700px) {
             inset-block-start: auto;
             inset-inline-start: 145px;
@@ -92,6 +87,13 @@
     ul {
       inline-size: 200px;
     }
+  }
+  @media (width <= 920px) {
+    padding: 0;
+  }
+  @media (width <= 700px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

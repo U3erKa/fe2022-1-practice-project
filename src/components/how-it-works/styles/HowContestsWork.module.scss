@@ -23,8 +23,9 @@ $lineHeight: 0.0625rem;
 }
 
 .listContainer {
-  inline-size: 100%;
   gap: calc($gap * 8);
+  inline-size: 100%;
+
   @media (width < 1024px) {
     flex-direction: column-reverse;
   }
@@ -43,9 +44,9 @@ $lineHeight: 0.0625rem;
 }
 
 .howTo {
+  counter-reset: how-to;
   display: flex;
   flex-flow: column wrap;
-  counter-reset: how-to;
 
   &Item {
     position: relative;
@@ -53,10 +54,10 @@ $lineHeight: 0.0625rem;
 
     &::before,
     &::after {
-      position: absolute;
-      margin: auto auto auto 0;
       content: '';
+      position: absolute;
       inset: 0;
+      margin: auto auto auto 0;
     }
 
     &::before {
@@ -73,32 +74,38 @@ $lineHeight: 0.0625rem;
     }
 
     &:first-child::after {
-      block-size: 50%;
       inset-block-start: auto;
+      block-size: 50%;
     }
 
     &:last-child::after {
-      block-size: 50%;
       inset-block-end: auto;
+      block-size: 50%;
     }
   }
 }
 
 .text {
+  counter-increment: how-to;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+
+  margin-block-end: 0;
   padding: calc($padding * 2 / 3) calc($padding * 2);
+
   border: 1px solid $borderColor;
   border-radius: $borderRadius;
-  counter-increment: how-to;
-  margin-block-end: 0;
 
   &::before {
-    display: block;
-    color: $mainColor;
-    font-size: 4rem;
     content: counter(how-to) '.';
+
+    display: block;
+
     inline-size: 64px;
+
+    font-size: 4rem;
+    color: $mainColor;
   }
 }

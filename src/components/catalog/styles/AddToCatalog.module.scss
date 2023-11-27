@@ -3,11 +3,14 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+
+  block-size: 110px;
+
   text-align: center;
+
   background-color: #8aca6b;
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
-  block-size: 110px;
 }
 
 .form {
@@ -15,21 +18,26 @@
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  padding: 0 10px;
-  background-color: #8aca6b;
+
   block-size: 110px;
+  padding: 0 10px;
+
+  background-color: #8aca6b;
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
 
   button {
+    cursor: pointer;
+
+    margin-block-start: 5px;
     padding: 4px 10px;
-    color: white;
+
     font-size: 16px;
+    color: white;
+
     background-color: #4e618d;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
-    margin-block-start: 5px;
   }
 }
 
@@ -40,24 +48,29 @@
 }
 
 .select {
+  cursor: text;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   align-self: stretch;
+
+  block-size: 24px;
+  margin-block-end: 5px;
   padding: 0 10px;
-  color: #555;
+
   font-size: 18px;
+  color: #555;
+
   background-color: white;
   border: 2px solid #d0d0d0;
   border-radius: 4px;
   outline: none;
   box-shadow: none;
-  cursor: text;
+
   transition:
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
-  block-size: 24px;
-  margin-block-end: 5px;
 
   &:focus {
     border: 2px solid #28d2d0;
@@ -66,9 +79,11 @@
 
 .selectHeader {
   display: inline-block;
-  color: #585859;
-  font-weight: 700;
-  font-size: 15px;
-  text-align: center;
+
   margin-block: 12px 5px;
+
+  font-size: 15px;
+  font-weight: 700;
+  color: #585859;
+  text-align: center;
 }

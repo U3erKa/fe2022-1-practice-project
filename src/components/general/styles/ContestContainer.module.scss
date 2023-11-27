@@ -10,17 +10,19 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+
   margin-block-start: 20px;
 }
 
 .notFound {
+  inline-size: 100%;
   margin: 0 auto;
   padding: 10px;
-  color: #4e618d;
-  font-weight: 600;
+
   font-size: 18px;
+  font-weight: 600;
+  color: #4e618d;
   text-align: center;
-  inline-size: 100%;
 }
 
 .loadMoreBtn {

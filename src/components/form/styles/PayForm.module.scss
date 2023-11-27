@@ -3,18 +3,20 @@
   flex-flow: column wrap;
   align-items: flex-start;
   justify-content: flex-start;
+
+  margin-block-end: 50px;
   padding: 25px 15px;
+
   background-color: #f4f6f6;
   border: 1px solid #ccd3d3;
-  margin-block-end: 50px;
   @media (width <= 480px) {
     padding: 0;
   }
 }
 
 .headerInfo {
-  padding: 0 15px;
   margin-block: 10px 25px;
+  padding: 0 15px;
   font-size: 18px;
 }
 
@@ -31,55 +33,63 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 15px;
+
   margin-block: 20px 25px;
+  padding: 0 15px;
 }
 
 .payButton {
+  cursor: pointer;
+
   padding: 8px 50px;
-  color: white;
+
   font-size: 20px;
   line-height: 1.4;
+  color: white;
   text-align: center;
+
   background-color: #f3875d;
   border: 1px solid transparent;
   border-radius: 4px;
-  cursor: pointer;
   @media (width <= 480px) {
     padding: 8px 30px;
   }
 }
 
 .backButton {
+  margin-inline-start: 10px;
   padding: 8px 50px;
-  color: white;
+
   font-size: 20px;
   line-height: 1.4;
+  color: white;
   text-align: center;
+
   background-color: #ababac;
   border: 1px solid transparent;
   border-radius: 4px;
-  margin-inline-start: 10px;
   @media (width <= 480px) {
     padding: 8px 30px;
   }
 }
 
 .totalSum {
+  margin-block-start: 25px;
   padding: 0 15px;
-  color: #333;
+
   font-size: 22px;
   line-height: 1.4;
-  margin-block-start: 25px;
+  color: #333;
 }
 
 .formContainer {
-  inline-size: 100%;
-  margin-block-start: 25px;
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
   justify-content: center;
+
+  inline-size: 100%;
+  margin-block-start: 25px;
 }
 
 .smallInputContainer {
@@ -87,6 +97,7 @@
   flex-flow: row wrap;
   align-items: flex-start;
   justify-content: space-between;
+
   padding: 0 15px;
 }
 
@@ -107,15 +118,20 @@
   input {
     display: inline-block;
     align-self: stretch;
+
+    margin-block-start: 4px;
     padding: 5px;
-    color: #555;
+
     font-size: 14px;
     line-height: 1.4;
+    color: #555;
+
     background-color: white;
     border: 1px solid #ccc;
     outline: 0;
+
     transition: all 0.2s;
-    margin-block-start: 4px;
+
     -webkit-font-smoothing: antialiased;
     @media (width <= 480px) {
       max-inline-size: 130px;
@@ -123,10 +139,10 @@
   }
 
   span {
-    color: #333;
-    font-weight: 400;
-    font-size: 14px;
     margin-block-end: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
   }
 }
 
@@ -140,9 +156,9 @@
 
 .error {
   align-self: flex-end;
-  color: red;
   margin-block-start: 2px;
   font-size: 14px;
+  color: red;
 }
 
 .notValid {
@@ -154,28 +170,34 @@
   flex-flow: column wrap;
   align-items: flex-start;
   justify-content: center;
-  padding: 0 15px;
+
   inline-size: 100%;
   margin-block-end: 25px;
+  padding: 0 15px;
 
   span {
-    color: #333;
-    font-weight: 400;
-    font-size: 14px;
     margin-block-end: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
   }
 
   input {
     align-self: stretch;
+
+    margin-block-start: 4px;
     padding: 5px;
-    color: #555;
+
     font-size: 14px;
     line-height: 1.4;
+    color: #555;
+
     background-color: white;
     border: 1px solid #ccc;
     outline: 0;
+
     transition: all 0.2s;
-    margin-block-start: 4px;
+
     -webkit-font-smoothing: antialiased;
   }
 }

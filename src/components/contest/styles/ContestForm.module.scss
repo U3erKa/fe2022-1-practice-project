@@ -3,33 +3,36 @@
   flex-flow: column wrap;
   align-items: center;
   justify-content: flex-end;
+
+  inline-size: 280px;
   margin: 0 auto;
   padding: 20px;
-  inline-size: 280px;
 }
 
 .message {
-  color: red;
   font-size: 18px;
+  color: red;
 }
 
 .try {
-  color: #333;
   font-size: 18px;
+  color: #333;
 }
 
 .changeData {
   float: inline-end;
+
+  inline-size: 150px;
+  margin-block-start: 50px;
+  margin-inline-end: 15px;
   padding: 12px 28px;
-  color: white;
+
   font-size: 20px;
+  color: white;
   text-align: center;
+
   background-color: #8aca6b;
   border-radius: 8px;
-  margin-block-start: 50px;
-  inline-size: 150px;
-  margin-inline-end: 15px;
-
   @media (hover: hover) {
     &:hover {
       background-color: #6b8ab1;
@@ -39,6 +42,7 @@
 
 .componentInputContainer {
   position: relative;
+
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
@@ -47,39 +51,47 @@
 
 .warning {
   position: absolute;
+  inset-block-end: -13px;
+  inset-inline: 0;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+
   padding: 3px 20px;
-  color: #333;
+
   font-size: 18px;
+  color: #333;
+
   border: 2px solid #b72522;
   border-radius: 4px;
-  inset-inline: 0;
-  inset-block-end: -13px;
 }
 
 .textArea {
+  cursor: text;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+
+  inline-size: 100%;
+  block-size: 250px;
+  margin-block-end: 15px;
   padding: 10px;
-  color: #555;
+
   font-size: 18px;
+  color: #555;
+
   background-color: white;
   border: 2px solid #d0d0d0;
   border-radius: 4px;
   outline: none;
   box-shadow: none;
-  cursor: text;
+
   transition:
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
-  inline-size: 100%;
-  block-size: 250px;
-  margin-block-end: 15px;
-
   @media (hover: hover) {
     &:focus {
       border: 2px solid #28d2d0;
@@ -89,25 +101,29 @@
 
 .input,
 .select {
+  cursor: text;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+
+  inline-size: 100%;
+  block-size: 46px;
+  margin-block-end: 15px;
   padding: 0 10px;
-  color: #555;
+
   font-size: 18px;
+  color: #555;
+
   background-color: white;
   border: 2px solid #d0d0d0;
   border-radius: 4px;
   outline: none;
   box-shadow: none;
-  cursor: text;
+
   transition:
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
-  inline-size: 100%;
-  block-size: 46px;
-  margin-block-end: 15px;
-
   @media (hover: hover) {
     &:focus {
       border: 2px solid #28d2d0;
@@ -128,22 +144,24 @@
 .selectInputContainer {
   display: flex;
   flex-flow: column wrap;
-  margin: 15px 0 0;
   inline-size: 100%;
+  margin: 15px 0 0;
 }
 
 .selectHeader,
 .inputHeader {
   display: inline-block;
-  color: #585859;
-  font-weight: 700;
-  font-size: 19px;
+
   margin-block: 12px 5px;
+
+  font-size: 19px;
+  font-weight: 700;
+  color: #585859;
 }
 
 .inputContainer {
-  margin: 15px 0 0;
   inline-size: 100%;
+  margin: 15px 0 0;
 }
 
 .fileUploadContainer {
@@ -151,15 +169,16 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  block-size: 80px;
+
   inline-size: 100%;
+  block-size: 80px;
   margin: 10px 0;
   padding: 10px 15px;
+
   background-color: #eee;
   @media (width <= 700px) {
     inline-size: auto;
   }
-
   @media (width <= 600px) {
     display: flex;
     flex-flow: column wrap;
@@ -169,22 +188,28 @@
 }
 
 .label {
+  cursor: pointer;
+
   display: inline-block;
+
+  inline-size: 150px;
   padding: 20px;
+
   font-size: 16px;
   text-align: center;
+
   background-color: white;
-  cursor: pointer;
-  inline-size: 150px;
 }
 
 .fileName {
-  display: inline-block;
-  padding: 12px;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: inline-block;
+
   inline-size: 100%;
+  padding: 12px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
   @media (width <= 600px) {
     text-align: center;
   }
@@ -199,6 +224,7 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+
   margin: 0 auto;
 }
 
@@ -207,9 +233,10 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-end;
-  margin: 30px;
+
   inline-size: 100%;
   max-inline-size: 768px;
+  margin: 30px;
   @media (width <= 900px) {
     justify-content: center;
   }
@@ -227,15 +254,14 @@
 }
 
 .prevButtonContainer {
+  inline-size: 140px;
   font-size: 22px;
   line-height: 21px;
   background-color: #888;
-  inline-size: 140px;
   @media (width <= 512px) {
     inline-size: 275px;
     min-inline-size: 140px;
   }
-
   @media (hover: hover) {
     &:hover {
       font-size: 28px;
@@ -244,15 +270,14 @@
 }
 
 .nextButtonContainer {
-  font-size: 26px;
-  background-color: #f3875d;
   inline-size: 275px;
   min-inline-size: 140px;
+  font-size: 26px;
+  background-color: #f3875d;
   @media (width <= 700px) {
-    font-size: 22px;
     block-size: 60px;
+    font-size: 22px;
   }
-
   @media (hover: hover) {
     &:hover {
       font-size: 32px;
@@ -262,21 +287,24 @@
 
 .prevButtonContainer,
 .nextButtonContainer {
+  cursor: pointer;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+
+  block-size: 70px;
   margin: 0 15px;
-  color: white;
+
   font-weight: 700;
+  color: white;
+
   border: none;
   border-radius: 8px;
-  cursor: pointer;
-  block-size: 70px;
   @media (width <= 400px) {
     margin: 0 10px;
   }
-
   @media (hover: hover) {
     &:hover {
       transition: font-size 0.1s ease-in-out;

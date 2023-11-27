@@ -5,18 +5,21 @@
   flex-flow: column wrap;
   align-items: center;
   justify-content: flex-start;
+
   margin: 40px 0;
 
   button {
     align-self: flex-end;
+
     padding: 5px 10px;
-    color: white;
-    font-weight: 500;
+
     font-size: 16px;
+    font-weight: 500;
+    color: white;
+
     background-color: #4e618d;
     border: none;
     border-radius: 6px;
-
     @media (hover: hover) {
       &:hover {
         background-color: #f27e51;
@@ -39,42 +42,50 @@
 }
 
 .label {
-  color: #585859;
-  font-weight: 500;
-  font-size: 16px;
   margin-block-end: 2px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #585859;
 }
 
 .inputContainer {
   position: relative;
+
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
   justify-content: center;
+
   margin-block-end: 20px;
 }
 
 .error {
   position: absolute;
   inset-block-end: -20px;
+
   display: inline-block;
   align-self: stretch;
+
   margin-block-end: 5px;
-  color: red;
+
   font-size: 14px;
+  color: red;
 }
 
 .input {
+  block-size: 48px;
   padding: 0 8px;
-  color: #555;
+
   font-size: 17px;
+  color: #555;
+
   border: 2px solid #d0d0d0;
   border-radius: 4px;
   outline: none;
+
   transition:
     border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
-  block-size: 48px;
 
   &:focus {
     border-color: #66afe9;

@@ -1,7 +1,9 @@
 .messageBlock {
   display: inline-block;
+
+  inline-size: 100%;
   margin: 20px 0;
+
   color: red;
   text-align: center;
-  inline-size: 100%;
 }

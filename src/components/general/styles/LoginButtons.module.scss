@@ -5,33 +5,31 @@
 
 .userInfo {
   position: relative;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  padding: 10px 15px;
-  border-inline-end: 1px solid #ebebeb;
 
-  @media (hover: hover) {
-    &:hover > ul {
-      position: absolute;
-      display: block;
-      inset-block-start: 40px;
-    }
-  }
+  padding: 10px 15px;
+
+  border-inline-end: 1px solid #ebebeb;
 
   & > ul {
     z-index: 500;
+
     display: none;
+
+    inline-size: 180px;
     padding: 5px 0;
+
     list-style: none;
+
     background: white;
     border: 1px solid #eee;
-    inline-size: 180px;
 
     & > li {
       text-align: start;
-
       @media (hover: hover) {
         &:hover {
           background: #f9fafb;
@@ -41,26 +39,37 @@
   }
 
   & > img {
-    border-radius: 10px;
     inline-size: 20px;
     block-size: 20px;
+    border-radius: 10px;
   }
 
   & > span {
     padding: 0 15px;
-    color: #718888;
-    font-weight: 400;
+
     font-size: 14px;
+    font-weight: 400;
+    color: #718888;
+
     border-inline-end: 1px solid #ebebeb;
+  }
+  @media (hover: hover) {
+    &:hover > ul {
+      position: absolute;
+      inset-block-start: 40px;
+      display: block;
+    }
   }
 }
 
 .badge {
   position: absolute;
-  inset-inline-start: 30px;
   inset-block-end: 8px;
+  inset-inline-start: 30px;
+
   inline-size: 8px;
   block-size: 8px;
+
   background-color: #f00;
   border-radius: 1rem;
 }

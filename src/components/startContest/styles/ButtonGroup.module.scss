@@ -5,11 +5,13 @@ $colorGray: #ccc;
 $colorDarkGray: #333;
 
 .choise {
+  inline-size: 40px;
   padding: $padding;
+
   color: $colorWhite;
+
   background-color: $colorGray;
   border-radius: 2rem;
-  inline-size: 40px;
 }
 
 .button {
@@ -18,16 +20,12 @@ $colorDarkGray: #333;
   gap: calc($padding * 2);
   align-items: center;
   justify-content: center;
+
   padding: calc($padding * 2);
+
   background-color: $colorWhite;
   border: 2px solid $colorGray;
   border-radius: 5px;
-
-  @media (hover: hover) {
-    &:hover {
-      box-shadow: 1px 1px 1px 1px #0002;
-    }
-  }
 
   &.active {
     border-color: $colorCyan;
@@ -36,9 +34,14 @@ $colorDarkGray: #333;
       background-color: $colorCyan;
     }
   }
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 1px 1px 1px 1px #0002;
+    }
+  }
 }
 
 .text {
-  color: $colorDarkGray;
   font-size: 14px;
+  color: $colorDarkGray;
 }

@@ -9,13 +9,15 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+
+  inline-size: 100%;
   padding: $padding;
+
   text-align: start;
+
   background-color: $buttonTextColor;
   border: 1px solid $borderColor;
   border-radius: $borderRadius $borderRadius 0 0;
-  inline-size: 100%;
-
   @media (hover: hover) {
     &:hover {
       color: $mainColor;
@@ -25,8 +27,8 @@
 }
 
 .arrowIcon {
-  color: $mainColor;
   font-size: 0.8rem;
+  color: $mainColor;
 }
 
 .activeIcon {

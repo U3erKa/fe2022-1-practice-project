@@ -1,15 +1,17 @@
 .bundleContainer {
   display: inline-block;
   flex: 1 1;
-  padding: 15px 30px;
-  text-align: center;
-  background: white;
-  margin-block-end: 30px;
-  block-size: 350px;
-  margin-inline: 20px;
+
   min-inline-size: 170px;
   max-inline-size: 350px;
+  block-size: 350px;
+  margin-block-end: 30px;
+  margin-inline: 20px;
+  padding: 15px 30px;
 
+  text-align: center;
+
+  background: white;
   @media (hover: hover) {
     &:hover {
       box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
@@ -24,8 +26,8 @@
 }
 
 .imgContainer {
-  block-size: 48px;
   inline-size: 48px;
+  block-size: 48px;
   margin: 20px 0;
 }
 
@@ -36,25 +38,27 @@
 
   hr {
     inline-size: 60px;
-    border-block-start: 1px solid #ccc;
     margin-block: 15px;
+    border-block-start: 1px solid #ccc;
   }
 }
 
 .bundleName {
-  color: #333;
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 1.1;
   margin-block: 10px;
+
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #333;
 }
 
 .infoBundle {
   margin: 0 0 10px;
-  color: #333;
-  font-weight: 300;
+
   font-size: 14px;
+  font-weight: 300;
   line-height: 1.4;
+  color: #333;
 }
 
 .combinedBundle {

@@ -1,9 +1,11 @@
 .flickity-prev-next-button {
   inset-block-start: 50%;
+  transform: translateY(-50%);
+
   inline-size: 44px;
   block-size: 44px;
+
   border-radius: 50%;
-  transform: translateY(-50%);
 }
 
 .next {

@@ -9,6 +9,7 @@ $contentWidth: calc($containerWidth - $imageWidth);
 
 .contents {
   inline-size: clamp($minWidth, 60%, $contentWidth);
+
   @media (width < 1000px) {
     inline-size: clamp($minWidth, 80%, 900px);
   }
@@ -30,10 +31,10 @@ $contentWidth: calc($containerWidth - $imageWidth);
 }
 
 .mainHeading {
-  color: $textColorDark;
-  font-weight: 600;
-  font-size: 2.5rem;
   margin-block-end: $gap;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: $textColorDark;
 }
 
 .button {

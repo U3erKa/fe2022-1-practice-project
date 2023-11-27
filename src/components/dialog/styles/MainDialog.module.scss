@@ -1,12 +1,14 @@
 .messageList {
+  scrollbar-gutter: stable;
+
+  overflow: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  padding: 0 8px;
-  overflow: auto;
+
   block-size: 280px;
-  overscroll-behavior: contain;
-  scrollbar-gutter: stable;
+  padding: 0 8px;
 
   &::-webkit-scrollbar {
     inline-size: 5px;
@@ -23,12 +25,15 @@
 
 .date {
   align-self: center;
+
   margin: 4px 0;
   padding: 2px;
+
   color: white;
+
+  opacity: 0.4;
   background-color: black;
   border-radius: 6px;
-  opacity: 0.4;
 }
 
 .ownMessage {
@@ -47,20 +52,25 @@
 
 .ownMessage,
 .message {
+  max-inline-size: 200px;
   margin: 4px 0;
   padding: 6px;
+
   color: white;
   overflow-wrap: break-word;
-  max-inline-size: 200px;
+
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
 }
 
 .messageTime {
   position: relative;
-  float: inline-end;
-  color: white;
-  font-size: 10px;
-  margin-inline-start: 5px;
   inset-block-start: 12px;
+
+  float: inline-end;
+
+  margin-inline-start: 5px;
+
+  font-size: 10px;
+  color: white;
 }

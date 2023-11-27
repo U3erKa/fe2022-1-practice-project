@@ -19,34 +19,39 @@
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+
   margin-inline-end: 4px;
 }
 
 .arrow {
   inline-size: 0;
   block-size: 0;
+
   border: 5px solid transparent;
-  border-block-end: 0;
   border-block-start-color: #28d2d0;
+  border-block-end: 0;
 }
 
 .stepDesc {
-  padding: 4px 8px 6px;
-  color: white;
-  font-weight: 500;
-  font-size: 15px;
-  text-align: center;
-  background-color: #28d2d0;
-  border-radius: 4px;
   inline-size: 120px;
   margin-block-start: -40px;
+  padding: 4px 8px 6px;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+
+  background-color: #28d2d0;
+  border-radius: 4px;
 }
 
 .lineBar {
-  margin: 0 -1px;
-  border: 1px solid #d5d5da;
   inline-size: 76px;
   block-size: 5px;
+  margin: 0 -1px;
+
+  border: 1px solid #d5d5da;
   border-inline-start: none;
   border-inline-end: none;
 }
@@ -56,11 +61,13 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+
+  inline-size: 34px;
+  block-size: 34px;
+
   background-color: #8aca6b;
   border: 2px solid #8aca6b;
   border-radius: 18px;
-  inline-size: 34px;
-  block-size: 34px;
 }
 
 .innerComplete {
@@ -75,17 +82,19 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  border: 2px solid #28d2d0;
-  border-radius: 18px;
+
   inline-size: 36px;
   block-size: 36px;
+
+  border: 2px solid #28d2d0;
+  border-radius: 18px;
 }
 
 .innerActive {
-  background-color: #28d2d0;
-  border-radius: 10px;
   inline-size: 20px;
   block-size: 20px;
+  background-color: #28d2d0;
+  border-radius: 10px;
 }
 
 .outerNotActive {
@@ -93,11 +102,12 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  border: 1px solid #d5d5da;
-  border-radius: 18px;
+
   inline-size: 36px;
   block-size: 36px;
 
+  border: 1px solid #d5d5da;
+  border-radius: 18px;
   @media (hover: hover) {
     &:hover {
       border: 2px solid #28d2d0;

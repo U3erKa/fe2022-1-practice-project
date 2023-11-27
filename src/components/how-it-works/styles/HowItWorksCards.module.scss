@@ -28,7 +28,9 @@ $columnWidth: minmax(260px, 1fr);
 .card {
   display: grid;
   justify-items: center;
+
   padding: calc($padding * 4) $padding;
+
   border: 1px solid $borderColor;
   border-radius: $borderRadius;
 }

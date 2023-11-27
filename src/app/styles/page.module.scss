@@ -1,15 +1,14 @@
 @import '../../styles/common';
-
 @mixin stepCard {
   @include container(flex-start);
 
-  margin: 90px 0 30px;
   max-inline-size: 540px;
+  margin: 90px 0 30px;
 
   h3 {
+    margin-block-end: 20px;
     font-size: 22px;
     text-align: center;
-    margin-block-end: 20px;
   }
 
   p {
@@ -29,7 +28,6 @@
   span {
     font-size: 18px;
   }
-
   @media screen and (width <= 1024px) {
     margin: 90px 0 30px;
     padding: 0 80px;
@@ -41,8 +39,8 @@
 
   h2 {
     margin: 30px 0;
-    font-weight: 500;
     font-size: 30px;
+    font-weight: 500;
     text-align: center;
   }
 
@@ -53,7 +51,6 @@
 
 .cardContainer {
   @include container(flex-start, flex-start, row);
-
   @media (width <= 720px) {
     @include container;
   }
@@ -66,16 +63,16 @@
   margin: 40px 40px 40px 0;
 
   h3 {
-    font-weight: 500;
-    font-size: 22px;
     margin-block-start: 20px;
+    font-size: 22px;
+    font-weight: 500;
   }
 
   p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
     margin-block-start: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
   }
 
   img {
@@ -85,12 +82,10 @@
   &:last-child {
     margin-inline-end: 0;
   }
-
   @media screen and (width <= 768px) {
     max-inline-size: 100%;
     margin: 40px;
   }
-
   @media screen and (width <= 414px) {
     p {
       margin-inline-end: 10px;
@@ -101,9 +96,9 @@
 .adv {
   @include container(center, space-around, row);
 
-  margin-block-end: 50px;
   inline-size: 100%;
   max-inline-size: 1100px;
+  margin-block-end: 50px;
 }
 
 .step,
@@ -121,7 +116,6 @@
 
 .step {
   @include container(center, space-around, row);
-
   @media screen and (width <= 823px) {
     @include container;
   }
@@ -130,32 +124,30 @@
 .stepReverse {
   @include container(flex-start, space-around, row);
 
+  div {
+    @include container(flex-start);
+
+    inline-size: 100%;
+    margin: 90px 0 30px;
+    padding: 0 80px;
+    @media (width <= 720px) {
+      padding: 0;
+    }
+  }
   @media screen and (width <= 950px) {
     @include container(center, flex-start, column-reverse);
 
     padding: 0;
   }
-
   @media screen and (width <= 414px) {
     padding: 0;
-  }
-
-  div {
-    @include container(flex-start);
-
-    margin: 90px 0 30px;
-    padding: 0 80px;
-    inline-size: 100%;
-    @media (width <= 720px) {
-      padding: 0;
-    }
   }
 }
 
 .images {
   img {
-    max-block-size: 40px;
     cursor: pointer;
+    max-block-size: 40px;
 
     &:first-child {
       display: block;
@@ -165,21 +157,19 @@
       display: none;
     }
   }
-
   @media (width <= 414px) {
     img {
-      max-block-size: 20px;
       max-inline-size: 70px;
+      max-block-size: 20px;
       margin: 0 30px;
     }
   }
 }
-
 @media (hover: hover) {
   .images:hover {
     img {
-      max-block-size: 40px;
       cursor: pointer;
+      max-block-size: 40px;
 
       &:first-child {
         display: none;
@@ -190,11 +180,10 @@
       }
     }
   }
-
   @media (width <= 414px) {
     .images:hover {
-      max-block-size: 20px;
       max-inline-size: 70px;
+      max-block-size: 20px;
       margin: 0 30px;
     }
   }
@@ -209,18 +198,19 @@
 
   color: white;
 }
-
 @mixin underline {
   position: relative;
 
   &::after {
-    position: absolute;
-    margin: 0 auto;
     content: '';
-    block-size: 3px;
+
+    position: absolute;
     inset-block-end: -30px;
     inset-inline: 0;
+
     inline-size: 100px;
+    block-size: 3px;
+    margin: 0 auto;
   }
 }
 
@@ -239,7 +229,6 @@
     background: white;
   }
 }
-
 @mixin innerContainer {
   @include container(center, center);
 
@@ -278,23 +267,24 @@
 .headerBar {
   @include container;
 
-  padding-block-start: 75px;
-  max-inline-size: 1140px;
   inline-size: 100%;
+  max-inline-size: 1140px;
+  padding-block-start: 75px;
 
   h3 {
-    font-weight: 500;
-    font-size: 30px;
     margin-block-end: 20px;
+    font-size: 30px;
+    font-weight: 500;
   }
 
   p {
+    margin-block-end: 30px;
     padding: 0 15px;
-    font-weight: 400;
+
     font-size: 18px;
+    font-weight: 400;
     line-height: 25px;
     text-align: center;
-    margin-block-end: 30px;
   }
 }
 
@@ -307,26 +297,25 @@
     margin-block-end: 10px;
     padding: 10px 20px;
     border-inline-end: 1px solid grey;
-    @media (width <= 580px) {
-      padding: 10px 5px;
-    }
 
     &:last-child {
       border-inline-end: 0;
     }
 
     p {
-      font-weight: 600;
-      font-size: 20px;
       margin-inline-end: 10px;
+      font-size: 20px;
+      font-weight: 600;
     }
 
     span {
-      font-weight: 400;
       font-size: 18px;
+      font-weight: 400;
+    }
+    @media (width <= 580px) {
+      padding: 10px 5px;
     }
   }
-
   @media screen and (width <= 414px) {
     flex-wrap: wrap;
   }
@@ -340,18 +329,20 @@
   span {
     &:first-child {
       padding: 7px 0;
-      font-weight: 500;
       font-size: 32px;
+      font-weight: 500;
       line-height: 39px;
     }
 
     &:last-child {
-      padding: 7px 0;
-      font-weight: 700;
-      font-size: 30px;
-      line-height: 40px;
-      transition: inline-size 0.3s -0.1s;
       margin-inline-start: 5px;
+      padding: 7px 0;
+
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 40px;
+
+      transition: inline-size 0.3s -0.1s;
     }
   }
 
@@ -359,18 +350,21 @@
     position: relative;
 
     &::after {
-      position: absolute;
-      background: #28d2d0;
-      animation: cd-pulse 3s infinite;
       content: '';
-      inset-inline-start: 0;
+
+      position: absolute;
       inset-block-end: 0;
-      block-size: 3px;
+      inset-inline-start: 0;
+
       inline-size: 0;
+      block-size: 3px;
+
+      background: #28d2d0;
+
+      animation: cd-pulse 3s infinite;
     }
   }
 }
-
 @keyframes cd-pulse {
   0% {
     inline-size: 0;
@@ -385,22 +379,25 @@
   @include container(center, center, row);
   @include button;
 
-  margin: 40px 0;
-  background-color: transparent;
   cursor: pointer;
-  block-size: 40px;
+
   inline-size: 270px;
+  block-size: 40px;
+  margin: 40px 0;
+
+  background-color: transparent;
 
   &Link {
     @include container(center, center, row);
 
     flex: 1;
-    color: inherit;
-    font-weight: 500;
-    font-size: 14px;
-    text-decoration: none;
+
     block-size: 100%;
 
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+    text-decoration: none;
     @media (hover: hover) {
       &:hover {
         color: inherit;

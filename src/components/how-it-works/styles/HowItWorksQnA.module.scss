@@ -11,13 +11,14 @@
 }
 
 .linksContainer {
+  inline-size: 100%;
   padding: $padding;
   background-color: $mainColor;
   border-radius: $borderRadius;
-  inline-size: 100%;
+
   @media (width >= 1024px) {
-    margin-block-start: calc($padding * 4);
     inline-size: 25%;
+    margin-block-start: calc($padding * 4);
   }
 }
 

@@ -5,15 +5,17 @@
   flex-flow: column wrap;
   align-items: stretch;
   justify-content: center;
-  padding: 10px 20px 30px;
+
   inline-size: 600px;
+  padding: 10px 20px 30px;
 
   h2 {
-    color: white;
-    font-size: 34px;
-    letter-spacing: 0.6px;
-    text-align: center;
     margin-block: 20px 28px;
+
+    font-size: 34px;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.6px;
   }
 }
 

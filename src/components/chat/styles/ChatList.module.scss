@@ -3,22 +3,25 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
+
   margin-block-end: 10px;
 }
 
 .button {
+  cursor: pointer;
+
   display: flex;
   flex: 1;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  background-color: #d6d1d1;
-  border: 1px solid #d6d1d1;
-  cursor: pointer;
-  border-start-start-radius: 6px;
-  border-start-end-radius: 6px;
+
   block-size: 25px;
 
+  background-color: #d6d1d1;
+  border: 1px solid #d6d1d1;
+  border-start-start-radius: 6px;
+  border-start-end-radius: 6px;
   @media (hover: hover) {
     &:hover {
       background-color: #f3f3f3;
@@ -29,31 +32,37 @@
 
 .activeButton {
   z-index: 500;
+
   margin: 0 -5px;
+
   color: white;
+
   background-color: #4e618d;
   border-color: #4e618d;
+
   transition: margin 0.1s;
 
+  &:last-child {
+    margin-inline-end: 0;
+  }
   @media (hover: hover) {
     &:hover {
       background-color: #4e618d;
     }
   }
-
-  &:last-child {
-    margin-inline-end: 0;
-  }
 }
 
 .chatHeader {
   z-index: 600;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  background-color: #4e618d;
+
   block-size: 50px;
+
+  background-color: #4e618d;
   border-block-end: 1px solid #f3f3f3;
 
   img {

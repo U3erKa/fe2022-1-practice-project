@@ -1,11 +1,9 @@
 .navList {
   &Item {
     inline-size: 100%;
-
     @media (width <= 700px) {
       padding: 0 15px;
     }
-
     @media (hover: hover) {
       &:hover {
         background: #f9fafb;
@@ -16,25 +14,28 @@
   &LinkText,
   &Btn {
     display: inline-block;
+
+    margin-inline-start: 0;
     padding: 5px 15px;
+
     font-size: 16px;
     text-decoration: none;
-    margin-inline-start: 0;
   }
 
   &LinkText {
-    color: #495d8b;
-    font-weight: 300;
     inline-size: 100%;
+    font-weight: 300;
+    color: #495d8b;
   }
 
   &Btn {
-    color: #333;
-    text-align: start;
-    background: #fff;
-    border: none;
     inline-size: 100%;
 
+    color: #333;
+    text-align: start;
+
+    background: #fff;
+    border: none;
     @media (hover: hover) {
       &:hover {
         background: inherit;
@@ -45,12 +46,15 @@
 
 .badge {
   position: absolute;
-  font-weight: 600;
-  text-align: center;
-  background-color: #f00;
-  border-radius: 1rem;
-  inset-inline-end: 10px;
   inset-block-end: 85px;
+  inset-inline-end: 10px;
+
   inline-size: 20px;
   block-size: 20px;
+
+  font-weight: 600;
+  text-align: center;
+
+  background-color: #f00;
+  border-radius: 1rem;
 }

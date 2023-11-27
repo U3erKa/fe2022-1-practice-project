@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+
   inline-size: 100%;
   margin-block-start: 15px;
 }
@@ -12,34 +13,38 @@
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
-  padding: 30px;
-  background-color: white;
-  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+
   min-inline-size: 250px;
   max-block-size: 350px;
-  margin-inline-end: 50px;
   margin-block-end: 15px;
+  margin-inline-end: 50px;
+  padding: 30px;
+
+  background-color: white;
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
   @media (width <= 1000px) {
     flex-direction: row;
     justify-content: center;
-    padding: 10px;
     margin-inline-end: 0;
+    padding: 10px;
   }
 }
 
 .filter {
   align-self: stretch;
-  padding: 10px;
-  color: #46568a;
-  font-size: 18px;
-  text-align: center;
-  border-radius: 10px;
-  margin-block-start: 15px;
-  @media (width <= 1000px) {
-    margin: 0 5px;
-    block-size: 30px;
-  }
 
+  margin-block-start: 15px;
+  padding: 10px;
+
+  font-size: 18px;
+  color: #46568a;
+  text-align: center;
+
+  border-radius: 10px;
+  @media (width <= 1000px) {
+    block-size: 30px;
+    margin: 0 5px;
+  }
   @media (hover: hover) {
     &:hover {
       background-color: #eefaea;
@@ -49,16 +54,20 @@
 
 .activeFilter {
   align-self: stretch;
+
+  margin-block-start: 15px;
   padding: 10px;
-  color: white;
+
   font-size: 18px;
+  color: white;
   text-align: center;
+
   background-color: #4e618d;
   border-radius: 10px;
+
   transition: 0.5s background-color;
-  margin-block-start: 15px;
   @media (width <= 1000px) {
-    margin: 0 5px;
     block-size: 30px;
+    margin: 0 5px;
   }
 }

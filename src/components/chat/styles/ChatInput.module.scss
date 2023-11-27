@@ -3,15 +3,17 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 15px;
-  border-block-start: 1px solid #f3f3f3;
+
   margin-block-start: 8px;
+  padding: 0 15px;
   padding-block-start: 7px;
 
+  border-block-start: 1px solid #f3f3f3;
+
   &:last-child {
-    border: none;
     margin-block-start: 0;
     padding-block-start: 0;
+    border: none;
   }
 }
 
@@ -22,21 +24,25 @@
   justify-content: space-between;
 
   button {
+    cursor: pointer;
+
     position: relative;
+
     padding: 0;
+
     background-color: white;
     border: none;
     outline: none;
-    cursor: pointer;
   }
 
   img {
-    position: absolute;
     cursor: pointer;
-    transition: transform 0.2s ease;
+
+    position: absolute;
     inset-block-start: -15px;
     inset-inline-start: -8px;
 
+    transition: transform 0.2s ease;
     @media (hover: hover) {
       &:hover {
         transform: scale(1.25);
@@ -47,16 +53,18 @@
 
 .container {
   position: relative;
+
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+
   padding: 0 15px;
 
   span {
     position: absolute;
-    color: #b72522;
     inset-inline-end: 25px;
+    color: #b72522;
   }
 }
 
@@ -65,26 +73,30 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  border: 1px solid #b72522;
+
   margin-block-end: 15px;
   padding-block: 5px;
+
+  font-size: 15px;
+  color: white;
+  text-align: center;
+
+  border: 1px solid #b72522;
 }
 
 .input {
+  block-size: 20px;
   padding: 6px;
+
   border: 2px solid #d0d0d0;
   border-radius: 6px;
   outline: none;
+
   transition: border 0.5s;
-  block-size: 20px;
 
   &:focus {
     border-color: #28d2d0;
   }
-
   @media (hover: hover) {
     &:hover {
       border-color: #28d2d0;

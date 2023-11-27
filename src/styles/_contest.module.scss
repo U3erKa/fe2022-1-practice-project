@@ -9,27 +9,31 @@
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
-  padding-inline: 15px;
+
   max-inline-size: 480px;
-  @media (width <= 750px) {
-    max-inline-size: none;
-  }
+  padding-inline: 15px;
 
   h2 {
-    color: #333;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.1;
-    text-transform: uppercase;
     margin-block: 20px 10px;
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #333;
+    text-transform: uppercase;
   }
 
   span {
-    color: #333;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 1.428;
-    padding-inline-end: 20px;
     margin-block-end: 10px;
+    padding-inline-end: 20px;
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.428;
+    color: #333;
+  }
+
+  @media (width <= 750px) {
+    max-inline-size: none;
   }
 }

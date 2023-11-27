@@ -1,23 +1,28 @@
 .catalogCreationContainer {
   position: absolute;
   z-index: 500;
-  color: white;
-  border-radius: 8px;
   inset-block-start: -40px;
   inset-inline-start: 172px;
+
   inline-size: 150px;
 
+  color: white;
+
+  border-radius: 8px;
+
   svg {
+    cursor: pointer;
+
     position: absolute;
     z-index: 700;
-    color: #4e618d;
-    font-size: 22px;
-    background-color: white;
-    border-radius: 11px;
-    cursor: pointer;
     inset-block-start: -7px;
     inset-inline-start: -7px;
 
+    font-size: 22px;
+    color: #4e618d;
+
+    background-color: white;
+    border-radius: 11px;
     @media (hover: hover) {
       &:hover {
         color: red;
@@ -33,28 +38,30 @@
   justify-content: flex-start;
 
   span {
+    cursor: pointer;
+
     display: flex;
     flex: 1;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    background-color: #4e618d;
-    border: 1px solid white;
-    cursor: pointer;
-    border-start-end-radius: 8px;
-    border-start-start-radius: 8px;
-    border-block-end: none;
+
     block-size: 24px;
 
+    background-color: #4e618d;
+    border: 1px solid white;
+    border-block-end: none;
+    border-start-start-radius: 8px;
+    border-start-end-radius: 8px;
+
+    &:first-child {
+      border-inline-end: none;
+    }
     @media (hover: hover) {
       &:hover {
         color: #4e618d;
         background-color: #f3f3f3;
       }
-    }
-
-    &:first-child {
-      border-inline-end: none;
     }
   }
 

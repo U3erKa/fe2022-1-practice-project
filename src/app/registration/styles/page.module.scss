@@ -11,8 +11,10 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  background: white;
+
   padding-block-start: 80px;
+
+  background: white;
 }
 
 .articlesMainContainer {
@@ -20,6 +22,7 @@
   flex-flow: row wrap;
   align-items: flex-start;
   justify-content: center;
+
   inline-size: 60%;
   min-inline-size: 300px;
   @media (width <= 1000px) {
@@ -29,8 +32,8 @@
 
 .signUpContainer {
   inline-size: 72%;
-  padding: 20px;
   min-inline-size: 280px;
   min-block-size: 650px;
+  padding: 20px;
   padding-block-start: 40px;
 }

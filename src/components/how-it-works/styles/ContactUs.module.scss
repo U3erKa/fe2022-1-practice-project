@@ -29,20 +29,23 @@
 
   & > svg {
     flex-shrink: 0;
-    color: $mainColor;
-    line-height: 2;
-    text-align: center;
-    background-color: $backgroundColor;
-    border-radius: 1rem;
+
     inline-size: 2rem;
     block-size: 2rem;
+
+    line-height: 2;
+    color: $mainColor;
+    text-align: center;
+
+    background-color: $backgroundColor;
+    border-radius: 1rem;
   }
 }
 
 .smallHeading,
 .bigHeading {
-  font-weight: 500;
   margin-block-end: $padding;
+  font-weight: 500;
 }
 
 .smallHeading {
