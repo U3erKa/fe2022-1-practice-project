@@ -83,6 +83,7 @@
     "sass": "^1.69.5",
     "sequelize-cli": "^6.6.2",
     "stylelint": "^15.11.0",
+    "stylelint-config-clean-order": "^5.2.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard-scss": "^11.1.0",
