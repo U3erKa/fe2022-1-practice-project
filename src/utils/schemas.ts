@@ -76,17 +76,21 @@ export const FileSchema = z.instanceof(FileList);
 export const OrderBySchema = z.enum(['asc', 'desc']);
 
 export const NewEventSchema = z.object({
-  date: z
-    .string()
-    .datetime()
-    .superRefine((value, { addIssue, path }) => {
-      if (Date.now() - Date.parse(value) <= 5 * 60 * 1000) {
-        addIssue({
-          code: 'custom',
-          message: `Event ${path} cannot be in the past`,
-        });
-      }
-    }),
+  date: z.string().superRefine((value, { addIssue, path }) => {
+    const parsedDate = Date.parse(value);
+    if (isNaN(parsedDate)) {
+      addIssue({
+        code: 'custom',
+        message: `Event ${path} is invalid`,
+      });
+    }
+    if (parsedDate - Date.now() <= 5 * 60 * 1000) {
+      addIssue({
+        code: 'custom',
+        message: `Event ${path} cannot be in the past`,
+      });
+    }
+  }),
   name: z.string().min(6),
   notify: NotifySchema,
 });
