@@ -74,16 +74,6 @@ export function uniqueId(prefix?: any) {
   return `${prefix?.toString() ?? ''}${++_uniqueIdNum}`;
 }
 
-export function parseQueryString(query: string) {
-  const result: Record<string, string> = {};
-  const searchParams = new URLSearchParams(query);
-
-  searchParams.forEach((value, key) => {
-    result[key] = value;
-  });
-  return result;
-}
-
 export function isTuple(list: boolean[]): asserts list is [boolean, boolean] {
   if (!(list instanceof Array)) {
     throw new ApplicationError('Must be an array');

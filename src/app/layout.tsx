@@ -16,11 +16,7 @@ export const metadata: Metadata = {
   other: { 'theme-color': '#000000' },
 };
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <ReduxProvider>
       <html lang="en">
