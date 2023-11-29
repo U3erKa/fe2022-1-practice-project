@@ -48,7 +48,7 @@ export type TaglineContest = BaseContest & {
 
 export type BaseContest = WithId &
   WithId<UserId, 'userId'> &
-  WithUUID<OrderId, 'orderId'> &
+  WithUUID<'orderId'> &
   Omit<WithTimeStamps, 'updatedAt'> &
   Partial<WithFile> & {
     title: string;

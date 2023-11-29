@@ -1,11 +1,13 @@
+import type { UUID } from 'crypto';
+
 export type With_id<T extends _Id = _Id, K extends string = '_id'> = {
   [key in K]: T;
 };
 export type WithId<T extends Id = Id, K extends string = 'id'> = {
   [key in K]: T;
 };
-export type WithUUID<T extends UUID = UUID, K extends string = 'id'> = {
-  [key in K]: T;
+export type WithUUID<K extends string = 'id'> = {
+  [key in K]: UUID;
 };
 
 export type Context<T extends Record<string, string> | undefined = undefined> =
@@ -22,8 +24,6 @@ export type Id = number;
 export type _Id = number;
 /** MongoDB's `__v` parameter */
 export type __V = 0;
-/** Universally unique id */
-export type UUID = string;
 /** JSON Web Token */
 export type JWT = string;
 

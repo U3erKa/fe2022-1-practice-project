@@ -25,7 +25,7 @@ export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
   (
     | (WithId<ContestId, 'contestId'> &
         WithId<CreatorId, 'creatorId'> &
-        WithUUID<OrderId, 'orderId'> & {
+        WithUUID<'orderId'> & {
           command: CustomerCommand;
           priority: Priority;
         })
