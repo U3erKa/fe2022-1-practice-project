@@ -130,7 +130,8 @@ export const ROUTE = {
   REGISTER: '/auth/registration',
   REFRESH: '/auth/refresh',
   CONTESTS: '/contests',
-  DATA_FOR_CONTEST: '/dataForContest'
+  DATA_FOR_CONTEST: '/dataForContest',
+  EVENTS: '/events',
 } as const;
 
 export const CONTEST_TYPES = [
