@@ -23,26 +23,24 @@ export const updateUser = async (
   if (updatedCount !== 1) {
     throw new ServerError('cannot update user');
   }
-  return updatedUser.dataValues;
+  return updatedUser!.dataValues;
 };
 
 export const findUser = async (
   predicate: WhereOptions<Attributes<_User>>,
   transaction?: Transaction,
 ) => {
-  const result = await User.findOne({ where: predicate, transaction });
-  if (!result) {
+  const user = await User.findOne({ where: predicate, transaction });
+  if (!user) {
     throw new NotFound('user with this data didn`t exist');
-  } else {
-    return result.get({ plain: true });
   }
+  return user.get({ plain: true });
 };
 
 export const userCreation = async (data: CreationAttributes<_User>) => {
   const newUser = await User.create(data);
   if (!newUser) {
     throw new ServerError('server error on user creation');
-  } else {
-    return newUser.get({ plain: true });
   }
+  return newUser.get({ plain: true });
 };

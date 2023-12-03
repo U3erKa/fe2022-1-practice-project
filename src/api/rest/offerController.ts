@@ -1,4 +1,5 @@
 import http from 'api/interceptor';
+import { ROUTE } from 'constants/general';
 import type {
   CashOutParams,
   ChangeMarkParams,
@@ -17,7 +18,8 @@ export const setOfferStatus = <
   T extends SetOfferStatusParams = SetOfferStatusParams,
 >(
   data: T,
-) => http.post<SetOfferStatusResponse<T['command']>>('setOfferStatus', data);
+) =>
+  http.post<SetOfferStatusResponse<T['command']>>(ROUTE.SET_OFFER_STATUS, data);
 
 export const changeMark = (data: ChangeMarkParams) =>
   http.post<ChangeMarkResponse>('changeMark', data);

@@ -22,7 +22,7 @@ export const updateRating = async (
   if (updatedCount !== 1) {
     throw new ServerError('cannot update mark on this offer');
   }
-  return updatedRating.dataValues;
+  return updatedRating!.dataValues;
 };
 
 export const createRating = async (

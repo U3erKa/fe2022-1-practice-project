@@ -5,14 +5,12 @@ import {
   type WhereOptions,
 } from 'sequelize';
 import type { RequestHandler } from 'express';
-import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Contest, Offer, User, sequelize } from '../models';
 import _sendEmail from '../email';
 import ServerError from '../errors/ServerError';
 import NotFoundError from '../errors/NotFoundError';
-import BadRequestError from '../errors/BadRequestError';
 import ApplicationError from '../errors/ApplicationError';
 import * as contestQueries from './queries/contestQueries';
 import * as userQueries from './queries/userQueries';
@@ -136,104 +134,6 @@ END
     .getNotificationController()
     .emitChangeOfferStatus(creatorId, 'Some of your offers WIN', contestId);
   return updatedOffers[0].dataValues;
-};
-
-export const setOfferStatus: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { role },
-    body: { command, offerId, creatorId, contestId, orderId, priority },
-  } = req;
-
-  if (role === 'customer') {
-    if (command === 'reject') {
-      try {
-        const offer = await rejectOffer(offerId, creatorId, contestId);
-        return res.send(offer);
-      } catch (err) {
-        next(err);
-      }
-    }
-    const transaction = await sequelize.transaction();
-
-    if (command === 'resolve') {
-      try {
-        const winningOffer = await resolveOffer(
-          contestId,
-          creatorId,
-          orderId,
-          offerId,
-          priority,
-          transaction,
-        );
-        return res.send(winningOffer);
-      } catch (err) {
-        transaction.rollback();
-        next(err);
-      }
-    }
-  } else if (role === 'moderator') {
-    let offer: _Offer;
-    if (command === 'approve') {
-      try {
-        const [_offer] = await contestQueries.updateOfferStatus(
-          { status: CONSTANTS.OFFER_STATUS_APPROVED },
-          { id: offerId },
-        );
-        offer = _offer;
-        res.send(offer);
-      } catch (error) {
-        return next(error);
-      }
-    } else if (command === 'discard') {
-      try {
-        const [_offer] = await contestQueries.updateOfferStatus(
-          { status: CONSTANTS.OFFER_STATUS_DISCARDED },
-          { id: offerId },
-        );
-        offer = _offer;
-        res.send(offer);
-      } catch (error) {
-        return next(error);
-      }
-    } else {
-      return next(new BadRequestError('Invalid command'));
-    }
-
-    try {
-      const sendEmail = await _sendEmail;
-      const user = (await offer.getUser()) as unknown as _User;
-      const fullName = `${user.firstName} ${user.lastName}`;
-      const offerText = offer.text ?? (offer.originalFileName as string);
-      const action =
-        command === 'approve'
-          ? 'approved it. The offer is visible to customers now!'
-          : 'discarded it. Please send appropriate offer next time.';
-
-      const email = await fs.readFile(
-        path.resolve(__dirname, '../email/moderatedCreatorOffer.html'),
-        'utf8',
-      );
-      const html = email
-        .replaceAll('{{command}}', command)
-        .replaceAll('{{fullName}}', fullName)
-        .replaceAll('{{offer}}', offerText)
-        .replaceAll('{{action}}', action);
-
-      return sendEmail({
-        to: `"${fullName}" <${user.email}>`,
-        subject: `We decided to ${command} your offer`,
-        text: `Hello ${fullName}!
-You have sent offer "${offerText}". Our moderator reviewed it and ${action}
-Sincerely,
-Squadhelp team.`,
-        html,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  next(new BadRequestError('Invalid command'));
 };
 
 export const getOffers: RequestHandler = async (req, res, next) => {
