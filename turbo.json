@@ -9,11 +9,11 @@
     "lint:fix": {},
     "lint:code": {},
     "lint:styles": {},
-    "prepare": { "outputs": ["src"] },
+    "prepare": {},
     "migrate": {},
     "start": { "cache": false, "persistent": true },
     "typecheck": { "outputs": ["tsconfig.tsbuildinfo"] },
-    "styles": { "outputs": ["src"] },
+    "styles": {},
     "styles:watch": { "cache": false, "persistent": true }
   }
 }
