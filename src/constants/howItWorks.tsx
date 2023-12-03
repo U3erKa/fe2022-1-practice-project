@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { uniqueId } from 'utils/functions';
-import { DUMMY_LINK, HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
 import type { QNAItems } from 'types/general';
 
 const LINK_ID_PREFIX = 'link';
@@ -89,7 +89,7 @@ export const CONTEST_QUESTIONS: QNAItems = [
             'contest as "Not Guaranteed", you can request a partial refund if you ' +
             'choose not to move forward with any name from you project. (Please ' +
             'note that the refund is for the contest award). Here is a link to our ',
-          <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+          <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
             Refund Policy
           </Link>,
         ],
@@ -104,7 +104,7 @@ export const CONTEST_QUESTIONS: QNAItems = [
         'Our naming competitions start at $299, and our logo design competitions ' +
           'start at $299. Also, there are three additional contest level that each ' +
           'offer more features and benefits. See our ',
-        <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+        <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
           Pricing Page
         </Link>,
         ' for details',
@@ -120,7 +120,7 @@ export const CONTEST_QUESTIONS: QNAItems = [
         'Tagline, and Logo bundle. Bundles allow you to purchase multiple contests ' +
         'at one time and save as much as from $75 - $400. You can learn more about ' +
         'our bundle options on our ',
-      <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+      <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
         Pricing Page
       </Link>,
       '.',
@@ -154,13 +154,13 @@ export const CONTEST_QUESTIONS: QNAItems = [
         'logos on our platform. Here are some examples of Names, Taglines, and ' +
         'Logos that were submitted in recent contests.',
       list: [
-        <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+        <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
           Name Examples
         </Link>,
-        <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+        <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
           Tagline Examples
         </Link>,
-        <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+        <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
           Logo Examples
         </Link>,
       ],
@@ -218,7 +218,7 @@ export const MANAGED_CONTEST_QUESTIONS: QNAItems = [
           'lead to successful project outcomes. Our team will apply all best ' +
           'practices towards the management of your branding project. Learn more ' +
           'about our ',
-        <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+        <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
           Managed Contest Service
         </Link>,
       ],
@@ -262,7 +262,7 @@ export const MANAGED_CONTEST_QUESTIONS: QNAItems = [
           'responses for your audience test.',
         [
           'Here is a link to our ',
-          <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+          <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
             Pricing page
           </Link>,
           ' with a detailed comparison of the two packages.',
@@ -287,7 +287,7 @@ export const CREATIVES_QUESTIONS: QNAItems = [
     question: 'Can anyone join your platform?',
     answer: [
       'We are open to anyone to signup. However, we have an extensive ',
-      <Link href={DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
+      <Link href={PAGE.DUMMY_LINK} key={uniqueId(LINK_ID_PREFIX)}>
         "Quality Scoring"
       </Link>,
       ' process which ensures that ' +

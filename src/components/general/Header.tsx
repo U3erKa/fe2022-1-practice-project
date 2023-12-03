@@ -4,12 +4,7 @@ import Link from 'next/link';
 import { useSelector } from 'hooks';
 import { Logo, Picture, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
-import {
-  CUSTOMER,
-  DUMMY_LINK,
-  PAGE,
-  STATIC_IMAGES_PATH,
-} from 'constants/general';
+import { CUSTOMER, PAGE, STATIC_IMAGES_PATH } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import styles from './styles/Header.module.scss';
 
@@ -43,7 +38,7 @@ const Header = () => {
           Squadhelp recognized as one of the Most Innovative Companies by Inc
           Magazine.
         </span>
-        <Link href={DUMMY_LINK}>Read Announcement</Link>
+        <Link href={PAGE.DUMMY_LINK}>Read Announcement</Link>
       </div>
       <div className={styles.loginSignnUpHeaders}>
         <div className={styles.numberContainer}>

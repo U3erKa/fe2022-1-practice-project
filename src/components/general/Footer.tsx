@@ -1,6 +1,5 @@
 import Link from 'next/link';
-
-import { DUMMY_LINK, FOOTER_ITEMS } from 'constants/general';
+import { FOOTER_ITEMS, PAGE } from 'constants/general';
 import styles from './styles/Footer.module.scss';
 
 const Footer = () => {
@@ -8,7 +7,7 @@ const Footer = () => {
     <section key={title}>
       <h2>{title}</h2>
       {items.map((item) => (
-        <Link key={item} href={DUMMY_LINK}>
+        <Link key={item} href={PAGE.DUMMY_LINK}>
           {item}
         </Link>
       ))}

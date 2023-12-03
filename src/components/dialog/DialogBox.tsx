@@ -11,6 +11,7 @@ import {
   faHeart as farFaHeart,
 } from '@fortawesome/free-regular-svg-icons';
 import {
+  ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   CATALOG_PREVIEW_CHAT_MODE,
   PUBLIC_URL,
@@ -69,7 +70,7 @@ const DialogBox: FC<Props> = ({
     >
       <img
         src={
-          interlocutor.avatar === 'anon.png'
+          interlocutor.avatar === ANONYM_IMAGE_NAME
             ? ANONYM_IMAGE_PATH
             : `${PUBLIC_URL}${interlocutor.avatar}`
         }

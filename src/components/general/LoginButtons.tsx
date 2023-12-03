@@ -2,6 +2,7 @@ import { useSelector } from 'hooks';
 import { Picture, ProfileNavBar } from 'components/general';
 import { getDays, getHours, getRemainingTime } from 'utils/functions';
 import {
+  ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
@@ -50,7 +51,7 @@ export default function LoginButtons({ data }: { data: User }) {
       <div className={styles.userInfo}>
         <img
           src={
-            data.avatar === 'anon.png'
+            data.avatar === ANONYM_IMAGE_NAME
               ? ANONYM_IMAGE_PATH
               : `${PUBLIC_URL}${data.avatar}`
           }

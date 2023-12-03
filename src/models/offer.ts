@@ -1,3 +1,4 @@
+import { OFFER_STATUS_PENDING } from 'constants/general';
 import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
@@ -55,7 +56,7 @@ const Offer = (sequelize: Sequelize) => {
       status: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: 'pending',
+        defaultValue: OFFER_STATUS_PENDING,
       },
     },
     {

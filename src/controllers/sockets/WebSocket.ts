@@ -2,7 +2,7 @@ import {
   SOCKET_CONNECTION,
   SOCKET_SUBSCRIBE,
   SOCKET_UNSUBSCRIBE,
-} from 'constants/backend';
+} from 'constants/general';
 import type { Server, Socket } from 'socket.io';
 
 class WebSocket {

@@ -16,12 +16,22 @@ export const OFFER_STATUS_DISCARDED = 'discarded';
 export const OFFER_STATUS_APPROVED = 'approved';
 export const OFFER_STATUS_PENDING = 'pending';
 
+export const SOCKET_CONNECTION = 'connection';
+export const SOCKET_SUBSCRIBE = 'subscribe';
+export const SOCKET_UNSUBSCRIBE = 'unsubscribe';
+export const SOCKET_SUBSCRIBE_CHAT = `subscribeChat`;
+export const SOCKET_UNSUBSCRIBE_CHAT = `unsubscribeChat`;
+export const NOTIFICATION_ENTRY_CREATED = 'onEntryCreated';
+export const NOTIFICATION_CHANGE_MARK = 'changeMark';
+export const NOTIFICATION_CHANGE_OFFER_STATUS = 'changeOfferStatus';
+export const NEW_MESSAGE = 'newMessage';
+
 export const STATIC_IMAGES_PATH = '/staticImages/';
+export const ANONYM_IMAGE_NAME = 'anon.png';
 export const ANONYM_IMAGE_PATH = `${STATIC_IMAGES_PATH}anonym.png` as const;
 export const HOW_IT_WORKS_PATH = `${STATIC_IMAGES_PATH}howItWorks/` as const;
 export const REFRESH_TOKEN = 'refreshToken';
 export const PUBLIC_URL = '/images/';
-export const DUMMY_LINK = '/404';
 
 export const NORMAL_PREVIEW_CHAT_MODE = 'NORMAL_PREVIEW_CHAT_MODE';
 export const FAVORITE_PREVIEW_CHAT_MODE = 'FAVORITE_PREVIEW_CHAT_MODE';
@@ -120,6 +130,7 @@ export const PAGE = {
   ACCOUNT: '/account',
   HOW_IT_WORKS: '/how-it-works',
   NOT_FOUND: '*',
+  DUMMY_LINK: '/404',
 } as const;
 
 export const API_ROUTE = '/api';

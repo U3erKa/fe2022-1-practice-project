@@ -2,6 +2,7 @@ import { useSelector } from 'store';
 import { Picture } from 'components/general';
 import { getLongTimeStr } from 'utils/functions';
 import {
+  ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
@@ -78,7 +79,7 @@ const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {
           <div className={styles.customerInfo}>
             <img
               src={
-                User.avatar === 'anon.png'
+                User.avatar === ANONYM_IMAGE_NAME
                   ? ANONYM_IMAGE_PATH
                   : `${PUBLIC_URL}${User.avatar}`
               }

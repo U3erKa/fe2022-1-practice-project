@@ -2,6 +2,13 @@ import { toast } from 'react-toastify';
 import WebSocket from './WebSocket';
 import { Notification } from 'components/general';
 import type { ChatId } from 'types/api/_common';
+import {
+  NOTIFICATION_CHANGE_MARK,
+  NOTIFICATION_CHANGE_OFFER_STATUS,
+  NOTIFICATION_ENTRY_CREATED,
+  SOCKET_SUBSCRIBE,
+  SOCKET_UNSUBSCRIBE,
+} from 'constants/general';
 
 class NotificationSocket extends WebSocket {
   anotherSubscribes = () => {
@@ -11,13 +18,13 @@ class NotificationSocket extends WebSocket {
   };
 
   onChangeMark = () => {
-    this.socket.on('changeMark', () => {
+    this.socket.on(NOTIFICATION_CHANGE_MARK, () => {
       toast('Someone liked your offer');
     });
   };
 
   onChangeOfferStatus = () => {
-    this.socket.on('changeOfferStatus', (message) => {
+    this.socket.on(NOTIFICATION_CHANGE_OFFER_STATUS, (message) => {
       toast(
         <Notification
           message={message.message}
@@ -28,17 +35,17 @@ class NotificationSocket extends WebSocket {
   };
 
   onEntryCreated = () => {
-    this.socket.on('onEntryCreated', () => {
+    this.socket.on(NOTIFICATION_ENTRY_CREATED, () => {
       toast('New Entry');
     });
   };
 
   subscribe = (id: ChatId) => {
-    this.socket.emit('subscribe', id);
+    this.socket.emit(SOCKET_SUBSCRIBE, id);
   };
 
   unsubscribe = (id: ChatId) => {
-    this.socket.emit('unsubscribe', id);
+    this.socket.emit(SOCKET_UNSUBSCRIBE, id);
   };
 }
 

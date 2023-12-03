@@ -4,7 +4,12 @@ import { updateUser } from 'store/slices/userSlice';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
 import { UpdateUserInfoForm } from 'components/form';
 import { uniqueId } from 'utils/functions';
-import { ANONYM_IMAGE_PATH, CREATOR, PUBLIC_URL } from 'constants/general';
+import {
+  ANONYM_IMAGE_NAME,
+  ANONYM_IMAGE_PATH,
+  CREATOR,
+  PUBLIC_URL,
+} from 'constants/general';
 import type { User } from 'types/api/user';
 import styles from './styles/UserInfo.module.scss';
 
@@ -78,7 +83,7 @@ const UserInfo: FC = () => {
         <div className={styles.infoContainer}>
           <img
             src={
-              avatar === 'anon.png'
+              avatar === ANONYM_IMAGE_NAME
                 ? ANONYM_IMAGE_PATH
                 : `${PUBLIC_URL}${avatar}`
             }

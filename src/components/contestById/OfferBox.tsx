@@ -17,6 +17,7 @@ import {
 } from 'store/slices/contestByIdSlice';
 import { Picture } from 'components/general';
 import {
+  ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   CONTEST_STATUS_ACTIVE,
   CREATOR,
@@ -31,6 +32,12 @@ import {
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
+import {
+  OFFER_COMMAND_APPROVE,
+  OFFER_COMMAND_DISCARD,
+  OFFER_COMMAND_REJECT,
+  OFFER_COMMAND_RESOLVE,
+} from 'constants/backend';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './styles/confirmStyle.css';
 import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
@@ -63,8 +70,8 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     const currentParticipants = [userId, id].sort(
       (participant1, participant2) => participant1 - participant2,
     );
-    for (let i = 0; i < messagesPreview.length; i++) {
-      const { _id, participants, blackList, favoriteList } = messagesPreview[i];
+    for (const preview of messagesPreview) {
+      const { _id, participants, blackList, favoriteList } = preview;
       if (isEqual(currentParticipants, participants)) {
         return { _id, participants, blackList, favoriteList };
       }
@@ -83,7 +90,9 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
             setOfferStatus(
               id,
               data.id,
-              role === MODERATOR ? 'approve' : 'resolve',
+              role === MODERATOR
+                ? OFFER_COMMAND_APPROVE
+                : OFFER_COMMAND_RESOLVE,
             ),
         },
         {
@@ -104,7 +113,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
             setOfferStatus(
               id,
               data.id,
-              role === MODERATOR ? 'discard' : 'reject',
+              role === MODERATOR ? OFFER_COMMAND_DISCARD : OFFER_COMMAND_REJECT,
             ),
         },
         {
@@ -208,7 +217,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
           <div className={styles.creativeInfoContainer}>
             <img
               src={
-                avatar === 'anon.png'
+                avatar === ANONYM_IMAGE_NAME
                   ? ANONYM_IMAGE_PATH
                   : `${PUBLIC_URL}${avatar}`
               }

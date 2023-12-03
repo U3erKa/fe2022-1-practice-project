@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'store';
 import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
 import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
-import { DUMMY_LINK, PAGE } from 'constants/general';
+import { PAGE } from 'constants/general';
 import { type Payment } from 'utils/schemas';
 import styles from './styles/page.module.scss';
 
@@ -72,7 +72,7 @@ const Payment = () => {
             <span>Total:</span>
             <span>$100.00 USD</span>
           </div>
-          <Link href={DUMMY_LINK}>Have a promo code?</Link>
+          <Link href={PAGE.DUMMY_LINK}>Have a promo code?</Link>
         </div>
       </div>
     </div>

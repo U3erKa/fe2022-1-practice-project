@@ -1,6 +1,11 @@
 import WebSocket from './WebSocket';
 import { addMessage, changeBlockStatusInStore } from 'store/slices/chatSlice';
-import { CHANGE_BLOCK_STATUS } from 'constants/general';
+import {
+  CHANGE_BLOCK_STATUS,
+  NEW_MESSAGE,
+  SOCKET_SUBSCRIBE_CHAT,
+  SOCKET_UNSUBSCRIBE_CHAT,
+} from 'constants/general';
 import type { ChatId } from 'types/api/_common';
 
 class ChatSocket extends WebSocket {
@@ -16,17 +21,17 @@ class ChatSocket extends WebSocket {
   };
 
   onNewMessage = () => {
-    this.socket.on('newMessage', (data) => {
+    this.socket.on(NEW_MESSAGE, (data) => {
       this.dispatch(addMessage(data.message));
     });
   };
 
   subscribeChat = (id: ChatId) => {
-    this.socket.emit('subscribeChat', id);
+    this.socket.emit(SOCKET_SUBSCRIBE_CHAT, id);
   };
 
   unsubscribeChat = (id: ChatId) => {
-    this.socket.emit('unsubscribeChat', id);
+    this.socket.emit(SOCKET_UNSUBSCRIBE_CHAT, id);
   };
 }
 

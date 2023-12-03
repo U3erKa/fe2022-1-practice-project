@@ -1,7 +1,11 @@
 import type { Socket } from 'socket.io';
 import WebSocket from './WebSocket';
-import { NEW_MESSAGE } from 'constants/backend';
-import { CHANGE_BLOCK_STATUS } from 'constants/general';
+import {
+  CHANGE_BLOCK_STATUS,
+  NEW_MESSAGE,
+  SOCKET_SUBSCRIBE_CHAT,
+  SOCKET_UNSUBSCRIBE_CHAT,
+} from 'constants/general';
 import type { Conversation } from 'types/models';
 import type { WebSocketMessage } from 'types/websocket';
 
@@ -12,13 +16,13 @@ class ChatController extends WebSocket {
   }
 
   onSubscribeChat(socket: Socket) {
-    socket.on('subscribeChat', (id) => {
+    socket.on(SOCKET_SUBSCRIBE_CHAT, (id) => {
       socket.join(id);
     });
   }
 
   onUnsubscribeChat(socket: Socket) {
-    socket.on('unsubscribeChat', (id) => {
+    socket.on(SOCKET_UNSUBSCRIBE_CHAT, (id) => {
       socket.join(id);
     });
   }

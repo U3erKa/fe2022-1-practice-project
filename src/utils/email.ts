@@ -2,7 +2,7 @@ import { template } from 'radash';
 import { promises as fs } from 'fs';
 import path from 'path';
 import sendEmail from 'email';
-import { READ_FILE_OPTIONS } from 'constants/backend';
+import { OFFER_COMMAND_APPROVE, READ_FILE_OPTIONS } from 'constants/backend';
 import type { Offer as _Offer, User as _User } from 'types/models';
 
 export async function sendCreatorOfferEmail(offer: _Offer, command: string) {
@@ -11,7 +11,7 @@ export async function sendCreatorOfferEmail(offer: _Offer, command: string) {
     const fullName = `${user.firstName} ${user.lastName}`;
     const offerText = offer.text ?? (offer.originalFileName as string);
     const action =
-      command === 'approve'
+      command === OFFER_COMMAND_APPROVE
         ? 'approved it. The offer is visible to customers now!'
         : 'discarded it. Please send appropriate offer next time.';
 

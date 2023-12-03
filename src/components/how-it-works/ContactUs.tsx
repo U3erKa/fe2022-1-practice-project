@@ -1,9 +1,9 @@
 import Link from 'next/link';
+import type { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { HOW_IT_WORKS_PATH } from 'constants/general';
+import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
 import styles from './styles/ContactUs.module.scss';
-import type { FC } from 'react';
 
 export const ContactUs: FC = () => {
   return (
@@ -28,7 +28,7 @@ export const ContactUs: FC = () => {
             <p className={styles.text}>
               Of course! We have policies in place to ensure that you are
               satisfied with your experience.{' '}
-              <Link href={'/how-it-works#satisfaction'}>Learn more</Link>
+              <Link href={`${PAGE.HOW_IT_WORKS}#satisfaction`}>Learn more</Link>
             </p>
           </section>
         </li>

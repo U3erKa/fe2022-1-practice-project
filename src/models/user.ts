@@ -20,6 +20,12 @@ import type {
 import bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from 'constants/backend';
 import type { DB, User as __User } from 'types/models';
+import {
+  ANONYM_IMAGE_NAME,
+  CREATOR,
+  CUSTOMER,
+  MODERATOR,
+} from 'constants/general';
 
 const hashPassword = async (user: __User) => {
   if (user.changed('password')) {
@@ -90,10 +96,10 @@ const User = (sequelize: Sequelize) => {
       avatar: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'anon.png',
+        defaultValue: ANONYM_IMAGE_NAME,
       },
       role: {
-        type: DataTypes.ENUM('customer', 'creator'),
+        type: DataTypes.ENUM(CUSTOMER, CREATOR),
         allowNull: false,
       },
       balance: {
@@ -137,7 +143,7 @@ abstract class _User extends Model<
   declare password: string;
   declare email: string;
   declare avatar: CreationOptional<string>;
-  declare role: 'customer' | 'creator' | 'moderator';
+  declare role: typeof CUSTOMER | typeof CREATOR | typeof MODERATOR;
   declare balance: CreationOptional<number>;
   declare accessToken?: CreationOptional<string>;
   declare rating: CreationOptional<number>;

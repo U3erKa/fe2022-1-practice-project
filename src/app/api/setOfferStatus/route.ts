@@ -17,6 +17,12 @@ import {
   OFFER_STATUS_APPROVED,
   OFFER_STATUS_DISCARDED,
 } from 'constants/general';
+import {
+  OFFER_COMMAND_APPROVE,
+  OFFER_COMMAND_DISCARD,
+  OFFER_COMMAND_REJECT,
+  OFFER_COMMAND_RESOLVE,
+} from 'constants/backend';
 
 export async function POST(req: NextRequest) {
   try {
@@ -34,13 +40,13 @@ export async function POST(req: NextRequest) {
     if (!result) throw new RightsError();
 
     if (role === CUSTOMER) {
-      if (command === 'reject') {
+      if (command === OFFER_COMMAND_REJECT) {
         const offer = await rejectOffer(offerId, creatorId, contestId);
         return NextResponse.json(offer, { status: 200 });
       }
-      const transaction = await sequelize.transaction();
 
-      if (command === 'resolve') {
+      if (command === OFFER_COMMAND_RESOLVE) {
+        const transaction = await sequelize.transaction();
         try {
           const winningOffer = await resolveOffer(
             contestId,
@@ -57,7 +63,7 @@ export async function POST(req: NextRequest) {
         }
       }
     } else if (role === MODERATOR) {
-      if (command === 'approve') {
+      if (command === OFFER_COMMAND_APPROVE) {
         const [offer] = await updateOfferStatus(
           { status: OFFER_STATUS_APPROVED },
           { id: offerId },
@@ -65,7 +71,7 @@ export async function POST(req: NextRequest) {
         sendCreatorOfferEmail(offer!, command);
         return NextResponse.json(offer, { status: 200 });
       }
-      if (command === 'discard') {
+      if (command === OFFER_COMMAND_DISCARD) {
         const [offer] = await updateOfferStatus(
           { status: OFFER_STATUS_DISCARDED },
           { id: offerId },

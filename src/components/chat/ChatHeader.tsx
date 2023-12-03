@@ -14,6 +14,7 @@ import {
 } from 'store/slices/chatSlice';
 import { Picture } from 'components/general';
 import {
+  ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
@@ -81,7 +82,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
         <div>
           <img
             src={
-              avatar === 'anon.png'
+              avatar === ANONYM_IMAGE_NAME
                 ? ANONYM_IMAGE_PATH
                 : `${PUBLIC_URL}${avatar}`
             }
