@@ -6,7 +6,7 @@ import type {
 } from 'sequelize';
 import type { DB } from 'types/models';
 
-const Bank = (sequelize: Sequelize) => {
+export default function Bank(sequelize: Sequelize) {
   class Bank extends _Bank {
     static associate(models: DB) {}
   }
@@ -42,7 +42,7 @@ const Bank = (sequelize: Sequelize) => {
     },
   );
   return Bank;
-};
+}
 
 abstract class _Bank extends Model<
   InferAttributes<_Bank>,
@@ -54,5 +54,3 @@ abstract class _Bank extends Model<
   declare cvc: string;
   declare balance: number;
 }
-
-export default Bank;

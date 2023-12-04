@@ -10,9 +10,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { DB, Offer, User } from 'types/models';
+import type { DB, Offer, Rating, User } from 'types/models';
 
-const Rating = (sequelize: Sequelize) => {
+export default function Rating(sequelize: Sequelize) {
   class Rating extends _Rating {
     static associate({ User, Offer }: DB) {
       Rating.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
@@ -48,7 +48,7 @@ const Rating = (sequelize: Sequelize) => {
     },
   );
   return Rating;
-};
+}
 
 abstract class _Rating extends Model<
   InferAttributes<_Rating>,
@@ -63,17 +63,15 @@ abstract class _Rating extends Model<
   declare offer?: NonAttribute<DB['Offer'][]>;
 
   declare static associations: {
-    user: Association<DB['Rating'] & Model, DB['User'] & Model>;
-    offer: Association<DB['Rating'] & Model, DB['Offer'] & Model>;
+    user: Association<Rating, User>;
+    offer: Association<Rating, Offer>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
 
-  declare createOffer: BelongsToCreateAssociationMixin<DB['Offer'] & Model>;
-  declare getOffer: BelongsToGetAssociationMixin<DB['Offer']>;
-  declare addOffer: BelongsToSetAssociationMixin<DB['Offer'], number>;
+  declare createOffer: BelongsToCreateAssociationMixin<Offer>;
+  declare getOffer: BelongsToGetAssociationMixin<Offer>;
+  declare addOffer: BelongsToSetAssociationMixin<Offer, number>;
 }
-
-export default Rating;

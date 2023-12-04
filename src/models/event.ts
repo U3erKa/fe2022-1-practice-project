@@ -11,9 +11,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { DB, User } from 'types/models';
+import type { DB, Offer, User } from 'types/models';
 
-const Event = (sequelize: Sequelize) => {
+export default function Event(sequelize: Sequelize) {
   class Event extends _Event {
     static associate({ User }: DB) {
       Event.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
@@ -51,7 +51,7 @@ const Event = (sequelize: Sequelize) => {
     },
   );
   return Event;
-};
+}
 
 abstract class _Event extends Model<
   InferAttributes<_Event>,
@@ -67,12 +67,10 @@ abstract class _Event extends Model<
   declare user?: NonAttribute<DB['User'][]>;
 
   declare static associations: {
-    user: Association<DB['Offer'] & Model, DB['User'] & Model>;
+    user: Association<Offer, User>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
 }
-
-export default Event;

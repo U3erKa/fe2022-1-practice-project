@@ -29,9 +29,9 @@ import type {
   Sequelize,
 } from 'sequelize';
 import { isTuple } from 'utils/functions';
-import type { DB, User } from 'types/models';
+import type { Catalog, Conversation, DB, Message, User } from 'types/models';
 
-const Conversation = (sequelize: Sequelize) => {
+export default function Conversation(sequelize: Sequelize) {
   class Conversation extends _Conversation {
     static associate({ Catalog, Message, User }: DB) {
       Conversation.hasMany(Message, {
@@ -111,7 +111,7 @@ const Conversation = (sequelize: Sequelize) => {
     },
   );
   return Conversation;
-};
+}
 
 abstract class _Conversation extends Model<
   InferAttributes<_Conversation>,
@@ -129,100 +129,59 @@ abstract class _Conversation extends Model<
   declare messages?: NonAttribute<DB['Message'][]>;
 
   declare static associations: {
-    catalogs: Association<DB['Conversation'] & Model, DB['Catalog'] & Model>;
-    messages: Association<DB['Conversation'] & Model, DB['Message'] & Model>;
-    participant1: Association<DB['Conversation'] & Model, DB['User'] & Model>;
-    participant2: Association<DB['Conversation'] & Model, DB['User'] & Model>;
+    catalogs: Association<Conversation, Catalog>;
+    messages: Association<Conversation, Message>;
+    participant1: Association<Conversation, User>;
+    participant2: Association<Conversation, User>;
   };
 
-  declare getMessages: HasManyGetAssociationsMixin<DB['Message']>;
-  declare addMessage: HasManyAddAssociationMixin<DB['Message'], number>;
-  declare addMessages: HasManyAddAssociationsMixin<DB['Message'], number>;
-  declare setMessages: HasManySetAssociationsMixin<DB['Message'], number>;
-  declare removeMessage: HasManyRemoveAssociationMixin<DB['Message'], number>;
-  declare removeMessages: HasManyRemoveAssociationsMixin<DB['Message'], number>;
-  declare hasMessage: HasManyHasAssociationMixin<DB['Message'], number>;
-  declare hasMessages: HasManyHasAssociationsMixin<DB['Message'], number>;
+  declare getMessages: HasManyGetAssociationsMixin<Message>;
+  declare addMessage: HasManyAddAssociationMixin<Message, number>;
+  declare addMessages: HasManyAddAssociationsMixin<Message, number>;
+  declare setMessages: HasManySetAssociationsMixin<Message, number>;
+  declare removeMessage: HasManyRemoveAssociationMixin<Message, number>;
+  declare removeMessages: HasManyRemoveAssociationsMixin<Message, number>;
+  declare hasMessage: HasManyHasAssociationMixin<Message, number>;
+  declare hasMessages: HasManyHasAssociationsMixin<Message, number>;
   declare countMessages: HasManyCountAssociationsMixin;
-  declare createMessage: HasManyCreateAssociationMixin<
-    DB['Message'] & Model,
-    'conversation'
-  >;
+  declare createMessage: HasManyCreateAssociationMixin<Message, 'conversation'>;
 
-  declare getCatalogs: BelongsToManyGetAssociationsMixin<DB['Catalog']>;
-  declare addCatalog: BelongsToManyAddAssociationMixin<DB['Catalog'], number>;
-  declare addCatalogs: BelongsToManyAddAssociationsMixin<DB['Catalog'], number>;
-  declare setCatalogs: BelongsToManySetAssociationsMixin<DB['Catalog'], number>;
-  declare removeCatalog: BelongsToManyRemoveAssociationMixin<
-    DB['Catalog'],
-    number
-  >;
-  declare removeCatalogs: BelongsToManyRemoveAssociationsMixin<
-    DB['Catalog'],
-    number
-  >;
-  declare hasCatalog: BelongsToManyHasAssociationMixin<DB['Catalog'], number>;
-  declare hasCatalogs: BelongsToManyHasAssociationsMixin<DB['Catalog'], number>;
+  declare getCatalogs: BelongsToManyGetAssociationsMixin<Catalog>;
+  declare addCatalog: BelongsToManyAddAssociationMixin<Catalog, number>;
+  declare addCatalogs: BelongsToManyAddAssociationsMixin<Catalog, number>;
+  declare setCatalogs: BelongsToManySetAssociationsMixin<Catalog, number>;
+  declare removeCatalog: BelongsToManyRemoveAssociationMixin<Catalog, number>;
+  declare removeCatalogs: BelongsToManyRemoveAssociationsMixin<Catalog, number>;
+  declare hasCatalog: BelongsToManyHasAssociationMixin<Catalog, number>;
+  declare hasCatalogs: BelongsToManyHasAssociationsMixin<Catalog, number>;
   declare countCatalogs: BelongsToManyCountAssociationsMixin;
-  declare createCatalog: BelongsToManyCreateAssociationMixin<
-    DB['Catalog'] & Model
-  >;
+  declare createCatalog: BelongsToManyCreateAssociationMixin<Catalog>;
 
-  declare getParticipant1s: BelongsToManyGetAssociationsMixin<DB['User']>;
-  declare addParticipant1: BelongsToManyAddAssociationMixin<DB['User'], number>;
-  declare addParticipant1s: BelongsToManyAddAssociationsMixin<
-    DB['User'],
-    number
-  >;
-  declare setParticipant1s: BelongsToManySetAssociationsMixin<
-    DB['User'],
-    number
-  >;
-  declare removeParticipant1: BelongsToManyRemoveAssociationMixin<
-    DB['User'],
-    number
-  >;
+  declare getParticipant1s: BelongsToManyGetAssociationsMixin<User>;
+  declare addParticipant1: BelongsToManyAddAssociationMixin<User, number>;
+  declare addParticipant1s: BelongsToManyAddAssociationsMixin<User, number>;
+  declare setParticipant1s: BelongsToManySetAssociationsMixin<User, number>;
+  declare removeParticipant1: BelongsToManyRemoveAssociationMixin<User, number>;
   declare removeParticipant1s: BelongsToManyRemoveAssociationsMixin<
-    DB['User'],
+    User,
     number
   >;
-  declare hasParticipant1: BelongsToManyHasAssociationMixin<DB['User'], number>;
-  declare hasParticipant1s: BelongsToManyHasAssociationsMixin<
-    DB['User'],
-    number
-  >;
+  declare hasParticipant1: BelongsToManyHasAssociationMixin<User, number>;
+  declare hasParticipant1s: BelongsToManyHasAssociationsMixin<User, number>;
   declare countParticipant1s: BelongsToManyCountAssociationsMixin;
-  declare createParticipant1: BelongsToManyCreateAssociationMixin<
-    DB['User'] & Model
-  >;
+  declare createParticipant1: BelongsToManyCreateAssociationMixin<User>;
 
-  declare getParticipant2s: BelongsToManyGetAssociationsMixin<DB['User']>;
-  declare addParticipant2: BelongsToManyAddAssociationMixin<DB['User'], number>;
-  declare addParticipant2s: BelongsToManyAddAssociationsMixin<
-    DB['User'],
-    number
-  >;
-  declare setParticipant2s: BelongsToManySetAssociationsMixin<
-    DB['User'],
-    number
-  >;
-  declare removeParticipant2: BelongsToManyRemoveAssociationMixin<
-    DB['User'],
-    number
-  >;
+  declare getParticipant2s: BelongsToManyGetAssociationsMixin<User>;
+  declare addParticipant2: BelongsToManyAddAssociationMixin<User, number>;
+  declare addParticipant2s: BelongsToManyAddAssociationsMixin<User, number>;
+  declare setParticipant2s: BelongsToManySetAssociationsMixin<User, number>;
+  declare removeParticipant2: BelongsToManyRemoveAssociationMixin<User, number>;
   declare removeParticipant2s: BelongsToManyRemoveAssociationsMixin<
-    DB['User'],
+    User,
     number
   >;
-  declare hasParticipant2: BelongsToManyHasAssociationMixin<DB['User'], number>;
-  declare hasParticipant2s: BelongsToManyHasAssociationsMixin<
-    DB['User'],
-    number
-  >;
+  declare hasParticipant2: BelongsToManyHasAssociationMixin<User, number>;
+  declare hasParticipant2s: BelongsToManyHasAssociationsMixin<User, number>;
   declare countParticipant2s: BelongsToManyCountAssociationsMixin;
-  declare createParticipant2: BelongsToManyCreateAssociationMixin<
-    DB['User'] & Model
-  >;
+  declare createParticipant2: BelongsToManyCreateAssociationMixin<User>;
 }
-
-export default Conversation;

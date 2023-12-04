@@ -21,9 +21,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { DB, User } from 'types/models';
+import type { Catalog, Conversation, DB, User } from 'types/models';
 
-const Catalog = (sequelize: Sequelize) => {
+export default function Catalog(sequelize: Sequelize) {
   class Catalog extends _Catalog {
     static associate({ Conversation, User }: DB) {
       Catalog.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
@@ -56,7 +56,7 @@ const Catalog = (sequelize: Sequelize) => {
     },
   );
   return Catalog;
-};
+}
 
 abstract class _Catalog extends Model<
   InferAttributes<_Catalog>,
@@ -71,44 +71,25 @@ abstract class _Catalog extends Model<
   declare users?: NonAttribute<DB['User'][]>;
 
   declare static associations: {
-    conversations: Association<
-      DB['Catalog'] & Model,
-      DB['Conversation'] & Model
-    >;
-    users: Association<DB['Catalog'] & Model, DB['User'] & Model>;
+    conversations: Association<Catalog, User>;
+    users: Association<Catalog, User>;
   };
 
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
 
-  declare getChats: BelongsToManyGetAssociationsMixin<DB['Conversation']>;
-  declare addChat: BelongsToManyAddAssociationMixin<DB['Conversation'], number>;
-  declare addChats: BelongsToManyAddAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare setChats: BelongsToManySetAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare removeChat: BelongsToManyRemoveAssociationMixin<
-    DB['Conversation'],
-    number
-  >;
+  declare getChats: BelongsToManyGetAssociationsMixin<Conversation>;
+  declare addChat: BelongsToManyAddAssociationMixin<Conversation, number>;
+  declare addChats: BelongsToManyAddAssociationsMixin<Conversation, number>;
+  declare setChats: BelongsToManySetAssociationsMixin<Conversation, number>;
+  declare removeChat: BelongsToManyRemoveAssociationMixin<Conversation, number>;
   declare removeChats: BelongsToManyRemoveAssociationsMixin<
-    DB['Conversation'],
+    Conversation,
     number
   >;
-  declare hasChat: BelongsToManyHasAssociationMixin<DB['Conversation'], number>;
-  declare hasChats: BelongsToManyHasAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
+  declare hasChat: BelongsToManyHasAssociationMixin<Conversation, number>;
+  declare hasChats: BelongsToManyHasAssociationsMixin<Conversation, number>;
   declare countChats: BelongsToManyCountAssociationsMixin;
-  declare createChat: BelongsToManyCreateAssociationMixin<
-    DB['Conversation'] & Model
-  >;
+  declare createChat: BelongsToManyCreateAssociationMixin<Conversation>;
 }
-
-export default Catalog;

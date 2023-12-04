@@ -3,11 +3,11 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import sendEmail from 'email';
 import { OFFER_COMMAND_APPROVE, READ_FILE_OPTIONS } from 'constants/backend';
-import type { Offer as _Offer, User as _User } from 'types/models';
+import type { Offer as _Offer } from 'types/models';
 
 export async function sendCreatorOfferEmail(offer: _Offer, command: string) {
   try {
-    const user = (await offer.getUser()) as unknown as _User;
+    const user = await offer.getUser();
     const fullName = `${user.firstName} ${user.lastName}`;
     const offerText = offer.text ?? (offer.originalFileName as string);
     const action =

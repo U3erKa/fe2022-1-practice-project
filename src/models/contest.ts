@@ -1,3 +1,4 @@
+import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
@@ -21,9 +22,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { DB, User } from 'types/models';
+import type { Contest, DB, Offer, User } from 'types/models';
 
-const Contest = (sequelize: Sequelize) => {
+export default function Contest(sequelize: Sequelize) {
   class Contest extends _Contest {
     static associate({ User, Offer }: DB) {
       Contest.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
@@ -52,7 +53,7 @@ const Contest = (sequelize: Sequelize) => {
       },
       contestType: {
         allowNull: false,
-        type: DataTypes.ENUM('name', 'tagline', 'logo'),
+        type: DataTypes.ENUM(NAME_CONTEST, TAGLINE_CONTEST, LOGO_CONTEST),
       },
       fileName: {
         allowNull: true,
@@ -122,13 +123,16 @@ const Contest = (sequelize: Sequelize) => {
     },
   );
   return Contest;
-};
+}
 
 abstract class _Contest extends Model<
   InferAttributes<_Contest>,
   InferCreationAttributes<_Contest>
 > {
-  declare contestType: 'name' | 'tagline' | 'logo';
+  declare contestType:
+    | typeof NAME_CONTEST
+    | typeof TAGLINE_CONTEST
+    | typeof LOGO_CONTEST;
   declare fileName?: CreationOptional<string>;
   declare originalFileName?: CreationOptional<string>;
   declare title?: CreationOptional<string>;
@@ -153,27 +157,22 @@ abstract class _Contest extends Model<
   declare offers?: NonAttribute<DB['Offer'][]>;
 
   declare static associations: {
-    user: Association<DB['Contest'] & Model, DB['User'] & Model>;
-    offers: Association<DB['Contest'] & Model, DB['Offer'] & Model>;
+    user: Association<Contest, User>;
+    offers: Association<Contest, Offer>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
 
-  declare getOffers: HasManyGetAssociationsMixin<DB['Offer']>;
-  declare addOffer: HasManyAddAssociationMixin<DB['Offer'], number>;
-  declare addOffers: HasManyAddAssociationsMixin<DB['Offer'], number>;
-  declare setOffers: HasManySetAssociationsMixin<DB['Offer'], number>;
-  declare removeOffer: HasManyRemoveAssociationMixin<DB['Offer'], number>;
-  declare removeOffers: HasManyRemoveAssociationsMixin<DB['Offer'], number>;
-  declare hasOffer: HasManyHasAssociationMixin<DB['Offer'], number>;
-  declare hasOffers: HasManyHasAssociationsMixin<DB['Offer'], number>;
+  declare getOffers: HasManyGetAssociationsMixin<Offer>;
+  declare addOffer: HasManyAddAssociationMixin<Offer, number>;
+  declare addOffers: HasManyAddAssociationsMixin<Offer, number>;
+  declare setOffers: HasManySetAssociationsMixin<Offer, number>;
+  declare removeOffer: HasManyRemoveAssociationMixin<Offer, number>;
+  declare removeOffers: HasManyRemoveAssociationsMixin<Offer, number>;
+  declare hasOffer: HasManyHasAssociationMixin<Offer, number>;
+  declare hasOffers: HasManyHasAssociationsMixin<Offer, number>;
   declare countOffers: HasManyCountAssociationsMixin;
-  declare createOffer: HasManyCreateAssociationMixin<
-    DB['Offer'] & Model,
-    'contestId'
-  >;
+  declare createOffer: HasManyCreateAssociationMixin<Offer, 'contestId'>;
 }
-
-export default Contest;

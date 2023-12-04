@@ -15,9 +15,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { Contest, DB, User } from 'types/models';
+import type { Contest, DB, Offer, Rating, User } from 'types/models';
 
-const Offer = (sequelize: Sequelize) => {
+export default function Offer(sequelize: Sequelize) {
   class Offer extends _Offer {
     static associate({ User, Contest, Rating }: DB) {
       Offer.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
@@ -66,7 +66,7 @@ const Offer = (sequelize: Sequelize) => {
     },
   );
   return Offer;
-};
+}
 
 abstract class _Offer extends Model<
   InferAttributes<_Offer>,
@@ -86,22 +86,20 @@ abstract class _Offer extends Model<
   declare rating?: NonAttribute<DB['Rating'][]>;
 
   declare static associations: {
-    user: Association<DB['Offer'] & Model, DB['User'] & Model>;
-    contest: Association<DB['Offer'] & Model, DB['Contest'] & Model>;
-    rating: Association<DB['Offer'] & Model, DB['Rating'] & Model>;
+    user: Association<Offer, User>;
+    contest: Association<Offer, Contest>;
+    rating: Association<Offer, Rating>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
 
-  declare createContest: BelongsToCreateAssociationMixin<DB['Contest'] & Model>;
-  declare getContest: BelongsToGetAssociationMixin<DB['Contest']>;
-  declare addContest: BelongsToSetAssociationMixin<DB['Contest'], number>;
+  declare createContest: BelongsToCreateAssociationMixin<Contest>;
+  declare getContest: BelongsToGetAssociationMixin<Contest>;
+  declare addContest: BelongsToSetAssociationMixin<Contest, number>;
 
-  declare createRating: HasOneCreateAssociationMixin<DB['Rating'] & Model>;
-  declare getRating: HasOneGetAssociationMixin<DB['Rating']>;
-  declare addRating: HasOneSetAssociationMixin<DB['Rating'], number>;
+  declare createRating: HasOneCreateAssociationMixin<Rating>;
+  declare getRating: HasOneGetAssociationMixin<Rating>;
+  declare addRating: HasOneSetAssociationMixin<Rating, number>;
 }
-
-export default Offer;

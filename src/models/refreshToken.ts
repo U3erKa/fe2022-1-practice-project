@@ -11,9 +11,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { DB, User } from 'types/models';
+import type { DB, RefreshToken, User } from 'types/models';
 
-const RefreshToken = (sequelize: Sequelize) => {
+export default function RefreshToken(sequelize: Sequelize) {
   class RefreshToken extends _RefreshToken {
     static associate({ User }: DB) {
       RefreshToken.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
@@ -37,7 +37,7 @@ const RefreshToken = (sequelize: Sequelize) => {
     },
   );
   return RefreshToken;
-};
+}
 
 abstract class _RefreshToken extends Model<
   InferAttributes<_RefreshToken>,
@@ -53,12 +53,10 @@ abstract class _RefreshToken extends Model<
   declare user?: NonAttribute<DB['User'][]>;
 
   declare static associations: {
-    user: Association<DB['RefreshToken'] & Model, DB['User'] & Model>;
+    user: Association<RefreshToken, User>;
   };
 
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
 }
-
-export default RefreshToken;

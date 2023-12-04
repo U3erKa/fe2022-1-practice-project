@@ -17,7 +17,7 @@ import type __Conversation from 'models/mongoModels/Conversation';
 import type __Message from 'models/mongoModels/Message';
 import type { WithTimeStamps } from '.';
 
-export type DB = {
+export interface DB {
   Bank: ReturnType<typeof _Bank>;
   Catalog: ReturnType<typeof _Catalog>;
   Contest: ReturnType<typeof _Contest>;
@@ -29,7 +29,7 @@ export type DB = {
   RefreshToken: ReturnType<typeof _RefreshToken>;
   Select: ReturnType<typeof _Select>;
   User: ReturnType<typeof _User>;
-};
+}
 
 /** @deprecated */
 export type CatalogSchema = {
@@ -52,16 +52,17 @@ export type MessageSchema = WithTimeStamps & {
   conversation: Types.ObjectId;
 };
 
-export type Bank = InstanceType<DB['Bank']>;
-export type Catalog = InstanceType<DB['Catalog']>;
-export type Contest = InstanceType<DB['Contest']>;
-export type Conversation = InstanceType<DB['Conversation']>;
-export type Message = InstanceType<DB['Message']>;
-export type Offer = InstanceType<DB['Offer']>;
-export type Rating = InstanceType<DB['Rating']>;
-export type RefreshToken = InstanceType<DB['RefreshToken']>;
-export type Select = InstanceType<DB['Select']>;
-export type User = InstanceType<DB['User']>;
+export interface Bank extends InstanceType<DB['Bank']> {}
+export interface Catalog extends InstanceType<DB['Catalog']> {}
+export interface Contest extends InstanceType<DB['Contest']> {}
+export interface Conversation extends InstanceType<DB['Conversation']> {}
+export interface Event extends InstanceType<DB['Event']> {}
+export interface Message extends InstanceType<DB['Message']> {}
+export interface Offer extends InstanceType<DB['Offer']> {}
+export interface Rating extends InstanceType<DB['Rating']> {}
+export interface RefreshToken extends InstanceType<DB['RefreshToken']> {}
+export interface Select extends InstanceType<DB['Select']> {}
+export interface User extends InstanceType<DB['User']> {}
 
 /** @deprecated */
 export type _Catalog = InstanceType<typeof __Catalog>;

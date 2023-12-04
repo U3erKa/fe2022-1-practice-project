@@ -19,8 +19,8 @@ export const {
 } = process.env;
 
 export const SALT_ROUNDS = isNaN(+_SALT_ROUNDS!)
-? _SALT_ROUNDS!
-: +_SALT_ROUNDS!;
+  ? _SALT_ROUNDS!
+  : +_SALT_ROUNDS!;
 export const CREATOR_ENTRIES = 'creator_entries';
 export const CONTESTS_DEFAULT_DIR = 'public/contestFiles/';
 export const OFFER_COMMAND_RESOLVE = 'resolve';

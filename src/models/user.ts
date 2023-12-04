@@ -19,22 +19,33 @@ import type {
 } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from 'constants/backend';
-import type { DB, User as __User } from 'types/models';
 import {
   ANONYM_IMAGE_NAME,
   CREATOR,
   CUSTOMER,
   MODERATOR,
 } from 'constants/general';
+import type {
+  Catalog,
+  Contest,
+  Conversation,
+  DB,
+  Event,
+  Message,
+  Offer,
+  Rating,
+  RefreshToken,
+  User,
+} from 'types/models';
 
-const hashPassword = async (user: __User) => {
+const hashPassword = async (user: User) => {
   if (user.changed('password')) {
     const passwordHash = await bcrypt.hash(user.password, SALT_ROUNDS);
     user.password = passwordHash;
   }
 };
 
-const User = (sequelize: Sequelize) => {
+export default function User(sequelize: Sequelize) {
   class User extends _User {
     async comparePassword(password: string | Buffer) {
       return await bcrypt.compare(password, this.password);
@@ -131,7 +142,7 @@ const User = (sequelize: Sequelize) => {
   User.beforeUpdate(hashPassword);
 
   return User;
-};
+}
 
 abstract class _User extends Model<
   InferAttributes<_User>,
@@ -160,168 +171,116 @@ abstract class _User extends Model<
   declare refreshTokens?: NonAttribute<DB['RefreshToken'][]>;
 
   declare static associations: {
-    catalogs: Association<DB['User'] & Model, DB['Catalog'] & Model>;
-    contests: Association<DB['User'] & Model, DB['Contest'] & Model>;
-    events: Association<DB['User'] & Model, DB['Event'] & Model>;
-    conversations: Association<DB['User'] & Model, DB['Conversation'] & Model>;
-    messages: Association<DB['User'] & Model, DB['Message'] & Model>;
-    offers: Association<DB['User'] & Model, DB['Offer'] & Model>;
-    ratings: Association<DB['User'] & Model, DB['Rating'] & Model>;
-    refreshTokens: Association<DB['User'] & Model, DB['RefreshToken'] & Model>;
+    catalogs: Association<User, Catalog>;
+    contests: Association<User, Contest>;
+    events: Association<User, Event>;
+    conversations: Association<User, Conversation>;
+    messages: Association<User, Message>;
+    offers: Association<User, Offer>;
+    ratings: Association<User, Rating>;
+    refreshTokens: Association<User, RefreshToken>;
   };
 
-  declare getOffers: HasManyGetAssociationsMixin<DB['Offer']>;
-  declare addOffer: HasManyAddAssociationMixin<DB['Offer'], number>;
-  declare addOffers: HasManyAddAssociationsMixin<DB['Offer'], number>;
-  declare setOffers: HasManySetAssociationsMixin<DB['Offer'], number>;
-  declare removeOffer: HasManyRemoveAssociationMixin<DB['Offer'], number>;
-  declare removeOffers: HasManyRemoveAssociationsMixin<DB['Offer'], number>;
-  declare hasOffer: HasManyHasAssociationMixin<DB['Offer'], number>;
-  declare hasOffers: HasManyHasAssociationsMixin<DB['Offer'], number>;
+  declare getOffers: HasManyGetAssociationsMixin<Offer>;
+  declare addOffer: HasManyAddAssociationMixin<Offer, number>;
+  declare addOffers: HasManyAddAssociationsMixin<Offer, number>;
+  declare setOffers: HasManySetAssociationsMixin<Offer, number>;
+  declare removeOffer: HasManyRemoveAssociationMixin<Offer, number>;
+  declare removeOffers: HasManyRemoveAssociationsMixin<Offer, number>;
+  declare hasOffer: HasManyHasAssociationMixin<Offer, number>;
+  declare hasOffers: HasManyHasAssociationsMixin<Offer, number>;
   declare countOffers: HasManyCountAssociationsMixin;
-  declare createOffer: HasManyCreateAssociationMixin<
-    DB['Offer'] & Model,
-    'userId'
-  >;
+  declare createOffer: HasManyCreateAssociationMixin<Offer, 'userId'>;
 
-  declare getCatalogs: HasManyGetAssociationsMixin<DB['Catalog']>;
-  declare addCatalog: HasManyAddAssociationMixin<DB['Catalog'], number>;
-  declare addCatalogs: HasManyAddAssociationsMixin<DB['Catalog'], number>;
-  declare setCatalogs: HasManySetAssociationsMixin<DB['Catalog'], number>;
-  declare removeCatalog: HasManyRemoveAssociationMixin<DB['Catalog'], number>;
-  declare removeCatalogs: HasManyRemoveAssociationsMixin<DB['Catalog'], number>;
-  declare hasCatalog: HasManyHasAssociationMixin<DB['Catalog'], number>;
-  declare hasCatalogs: HasManyHasAssociationsMixin<DB['Catalog'], number>;
+  declare getCatalogs: HasManyGetAssociationsMixin<Catalog>;
+  declare addCatalog: HasManyAddAssociationMixin<Catalog, number>;
+  declare addCatalogs: HasManyAddAssociationsMixin<Catalog, number>;
+  declare setCatalogs: HasManySetAssociationsMixin<Catalog, number>;
+  declare removeCatalog: HasManyRemoveAssociationMixin<Catalog, number>;
+  declare removeCatalogs: HasManyRemoveAssociationsMixin<Catalog, number>;
+  declare hasCatalog: HasManyHasAssociationMixin<Catalog, number>;
+  declare hasCatalogs: HasManyHasAssociationsMixin<Catalog, number>;
   declare countCatalogs: HasManyCountAssociationsMixin;
-  declare createCatalog: HasManyCreateAssociationMixin<
-    DB['Catalog'] & Model,
-    'userId'
-  >;
+  declare createCatalog: HasManyCreateAssociationMixin<Catalog, 'userId'>;
 
-  declare getContests: HasManyGetAssociationsMixin<DB['Contest']>;
-  declare addContest: HasManyAddAssociationMixin<DB['Contest'], number>;
-  declare addContests: HasManyAddAssociationsMixin<DB['Contest'], number>;
-  declare setContests: HasManySetAssociationsMixin<DB['Contest'], number>;
-  declare removeContest: HasManyRemoveAssociationMixin<DB['Contest'], number>;
-  declare removeContests: HasManyRemoveAssociationsMixin<DB['Contest'], number>;
-  declare hasContest: HasManyHasAssociationMixin<DB['Contest'], number>;
-  declare hasContests: HasManyHasAssociationsMixin<DB['Contest'], number>;
+  declare getContests: HasManyGetAssociationsMixin<Contest>;
+  declare addContest: HasManyAddAssociationMixin<Contest, number>;
+  declare addContests: HasManyAddAssociationsMixin<Contest, number>;
+  declare setContests: HasManySetAssociationsMixin<Contest, number>;
+  declare removeContest: HasManyRemoveAssociationMixin<Contest, number>;
+  declare removeContests: HasManyRemoveAssociationsMixin<Contest, number>;
+  declare hasContest: HasManyHasAssociationMixin<Contest, number>;
+  declare hasContests: HasManyHasAssociationsMixin<Contest, number>;
   declare countContests: HasManyCountAssociationsMixin;
-  declare createContest: HasManyCreateAssociationMixin<
-    DB['Contest'] & Model,
-    'userId'
-  >;
+  declare createContest: HasManyCreateAssociationMixin<Contest, 'userId'>;
 
-  declare getEvents: HasManyGetAssociationsMixin<DB['Event']>;
-  declare addEvent: HasManyAddAssociationMixin<DB['Event'], number>;
-  declare addEvents: HasManyAddAssociationsMixin<DB['Event'], number>;
-  declare setEvents: HasManySetAssociationsMixin<DB['Event'], number>;
-  declare removeEvent: HasManyRemoveAssociationMixin<DB['Event'], number>;
-  declare removeEvents: HasManyRemoveAssociationsMixin<DB['Event'], number>;
-  declare hasEvent: HasManyHasAssociationMixin<DB['Event'], number>;
-  declare hasEvents: HasManyHasAssociationsMixin<DB['Event'], number>;
+  declare getEvents: HasManyGetAssociationsMixin<Event>;
+  declare addEvent: HasManyAddAssociationMixin<Event, number>;
+  declare addEvents: HasManyAddAssociationsMixin<Event, number>;
+  declare setEvents: HasManySetAssociationsMixin<Event, number>;
+  declare removeEvent: HasManyRemoveAssociationMixin<Event, number>;
+  declare removeEvents: HasManyRemoveAssociationsMixin<Event, number>;
+  declare hasEvent: HasManyHasAssociationMixin<Event, number>;
+  declare hasEvents: HasManyHasAssociationsMixin<Event, number>;
   declare countEvents: HasManyCountAssociationsMixin;
-  declare createEvent: HasManyCreateAssociationMixin<
-    DB['Event'] & Model,
-    'userId'
-  >;
+  declare createEvent: HasManyCreateAssociationMixin<Event, 'userId'>;
 
-  declare getMessages: HasManyGetAssociationsMixin<DB['Message']>;
-  declare addMessage: HasManyAddAssociationMixin<DB['Message'], number>;
-  declare addMessages: HasManyAddAssociationsMixin<DB['Message'], number>;
-  declare setMessages: HasManySetAssociationsMixin<DB['Message'], number>;
-  declare removeMessage: HasManyRemoveAssociationMixin<DB['Message'], number>;
-  declare removeMessages: HasManyRemoveAssociationsMixin<DB['Message'], number>;
-  declare hasMessage: HasManyHasAssociationMixin<DB['Message'], number>;
-  declare hasMessages: HasManyHasAssociationsMixin<DB['Message'], number>;
+  declare getMessages: HasManyGetAssociationsMixin<Message>;
+  declare addMessage: HasManyAddAssociationMixin<Message, number>;
+  declare addMessages: HasManyAddAssociationsMixin<Message, number>;
+  declare setMessages: HasManySetAssociationsMixin<Message, number>;
+  declare removeMessage: HasManyRemoveAssociationMixin<Message, number>;
+  declare removeMessages: HasManyRemoveAssociationsMixin<Message, number>;
+  declare hasMessage: HasManyHasAssociationMixin<Message, number>;
+  declare hasMessages: HasManyHasAssociationsMixin<Message, number>;
   declare countMessages: HasManyCountAssociationsMixin;
-  declare createMessage: HasManyCreateAssociationMixin<
-    DB['Message'] & Model,
-    'sender'
-  >;
+  declare createMessage: HasManyCreateAssociationMixin<Message, 'sender'>;
 
-  declare getRatings: HasManyGetAssociationsMixin<DB['Rating']>;
-  declare addRating: HasManyAddAssociationMixin<DB['Rating'], number>;
-  declare addRatings: HasManyAddAssociationsMixin<DB['Rating'], number>;
-  declare setRatings: HasManySetAssociationsMixin<DB['Rating'], number>;
-  declare removeRating: HasManyRemoveAssociationMixin<DB['Rating'], number>;
-  declare removeRatings: HasManyRemoveAssociationsMixin<DB['Rating'], number>;
-  declare hasRating: HasManyHasAssociationMixin<DB['Rating'], number>;
-  declare hasRatings: HasManyHasAssociationsMixin<DB['Rating'], number>;
+  declare getRatings: HasManyGetAssociationsMixin<Rating>;
+  declare addRating: HasManyAddAssociationMixin<Rating, number>;
+  declare addRatings: HasManyAddAssociationsMixin<Rating, number>;
+  declare setRatings: HasManySetAssociationsMixin<Rating, number>;
+  declare removeRating: HasManyRemoveAssociationMixin<Rating, number>;
+  declare removeRatings: HasManyRemoveAssociationsMixin<Rating, number>;
+  declare hasRating: HasManyHasAssociationMixin<Rating, number>;
+  declare hasRatings: HasManyHasAssociationsMixin<Rating, number>;
   declare countRatings: HasManyCountAssociationsMixin;
-  declare createRating: HasManyCreateAssociationMixin<
-    DB['Rating'] & Model,
-    'userId'
-  >;
+  declare createRating: HasManyCreateAssociationMixin<Rating, 'userId'>;
 
-  declare getRefreshTokens: HasManyGetAssociationsMixin<DB['RefreshToken']>;
-  declare addRefreshToken: HasManyAddAssociationMixin<
-    DB['RefreshToken'],
-    number
-  >;
-  declare addRefreshTokens: HasManyAddAssociationsMixin<
-    DB['RefreshToken'],
-    number
-  >;
-  declare setRefreshTokens: HasManySetAssociationsMixin<
-    DB['RefreshToken'],
-    number
-  >;
+  declare getRefreshTokens: HasManyGetAssociationsMixin<RefreshToken>;
+  declare addRefreshToken: HasManyAddAssociationMixin<RefreshToken, number>;
+  declare addRefreshTokens: HasManyAddAssociationsMixin<RefreshToken, number>;
+  declare setRefreshTokens: HasManySetAssociationsMixin<RefreshToken, number>;
   declare removeRefreshToken: HasManyRemoveAssociationMixin<
-    DB['RefreshToken'],
+    RefreshToken,
     number
   >;
   declare removeRefreshTokens: HasManyRemoveAssociationsMixin<
-    DB['RefreshToken'],
+    RefreshToken,
     number
   >;
-  declare hasRefreshToken: HasManyHasAssociationMixin<
-    DB['RefreshToken'],
-    number
-  >;
-  declare hasRefreshTokens: HasManyHasAssociationsMixin<
-    DB['RefreshToken'],
-    number
-  >;
+  declare hasRefreshToken: HasManyHasAssociationMixin<RefreshToken, number>;
+  declare hasRefreshTokens: HasManyHasAssociationsMixin<RefreshToken, number>;
   declare countRefreshTokens: HasManyCountAssociationsMixin;
   declare createRefreshToken: HasManyCreateAssociationMixin<
-    DB['RefreshToken'] & Model,
+    RefreshToken,
     'userId'
   >;
 
-  declare getConversations: HasManyGetAssociationsMixin<DB['Conversation']>;
-  declare addConversation: HasManyAddAssociationMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare addConversations: HasManyAddAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare setConversations: HasManySetAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
+  declare getConversations: HasManyGetAssociationsMixin<Conversation>;
+  declare addConversation: HasManyAddAssociationMixin<Conversation, number>;
+  declare addConversations: HasManyAddAssociationsMixin<Conversation, number>;
+  declare setConversations: HasManySetAssociationsMixin<Conversation, number>;
   declare removeConversation: HasManyRemoveAssociationMixin<
-    DB['Conversation'],
+    Conversation,
     number
   >;
   declare removeConversations: HasManyRemoveAssociationsMixin<
-    DB['Conversation'],
+    Conversation,
     number
   >;
-  declare hasConversation: HasManyHasAssociationMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare hasConversations: HasManyHasAssociationsMixin<
-    DB['Conversation'],
-    number
-  >;
+  declare hasConversation: HasManyHasAssociationMixin<Conversation, number>;
+  declare hasConversations: HasManyHasAssociationsMixin<Conversation, number>;
   declare countConversations: HasManyCountAssociationsMixin;
-  declare createConversation: HasManyCreateAssociationMixin<
-    DB['Conversation'] & Model
-  >;
+  declare createConversation: HasManyCreateAssociationMixin<Conversation>;
 }
-
-export default User;

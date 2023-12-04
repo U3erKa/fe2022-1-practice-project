@@ -11,9 +11,9 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import type { Conversation, DB, User } from 'types/models';
+import type { Conversation, DB, Message, User } from 'types/models';
 
-const Message = (sequelize: Sequelize) => {
+export default function Message(sequelize: Sequelize) {
   class Message extends _Message {
     static associate({ Conversation, User }: DB) {
       Message.belongsTo(User, { foreignKey: 'sender', targetKey: 'id' });
@@ -53,7 +53,7 @@ const Message = (sequelize: Sequelize) => {
     },
   );
   return Message;
-};
+}
 
 abstract class _Message extends Model<
   InferAttributes<_Message>,
@@ -71,25 +71,15 @@ abstract class _Message extends Model<
   declare users?: NonAttribute<DB['User'][]>;
 
   declare static associations: {
-    conversations: Association<
-      DB['Message'] & Model,
-      DB['Conversation'] & Model
-    >;
-    users: Association<DB['Message'] & Model, DB['User'] & Model>;
+    conversations: Association<Message, Conversation>;
+    users: Association<Message, User>;
   };
 
-  declare getConversation: BelongsToGetAssociationMixin<DB['Conversation']>;
-  declare addConversation: BelongsToSetAssociationMixin<
-    DB['Conversation'],
-    number
-  >;
-  declare createConversation: BelongsToCreateAssociationMixin<
-    DB['Conversation'] & Model
-  >;
+  declare getConversation: BelongsToGetAssociationMixin<Conversation>;
+  declare addConversation: BelongsToSetAssociationMixin<Conversation, number>;
+  declare createConversation: BelongsToCreateAssociationMixin<Conversation>;
 
-  declare getUser: BelongsToGetAssociationMixin<DB['User']>;
-  declare addUser: BelongsToSetAssociationMixin<DB['User'], number>;
-  declare createUser: BelongsToCreateAssociationMixin<DB['User'] & Model>;
+  declare getUser: BelongsToGetAssociationMixin<User>;
+  declare addUser: BelongsToSetAssociationMixin<User, number>;
+  declare createUser: BelongsToCreateAssociationMixin<User>;
 }
-
-export default Message;

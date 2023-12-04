@@ -6,7 +6,7 @@ import type {
 } from 'sequelize';
 import type { DB } from 'types/models';
 
-const Select = (sequelize: Sequelize) => {
+export default function Select(sequelize: Sequelize) {
   class Select extends _Select {
     static associate(models: DB) {}
   }
@@ -30,7 +30,7 @@ const Select = (sequelize: Sequelize) => {
     },
   );
   return Select;
-};
+}
 
 class _Select extends Model<
   InferAttributes<_Select>,
@@ -39,5 +39,3 @@ class _Select extends Model<
   declare type: string;
   declare describe: string;
 }
-
-export default Select;
