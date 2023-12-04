@@ -66,14 +66,14 @@ const CreatorDashboard = () => {
   ));
 
   const getPredicateOfRequest = () => {
-    const obj: _CreatorFilter = {};
-    Object.keys(creatorFilter).forEach((el) => {
-      if (creatorFilter[el as keyof _CreatorFilter]) {
+    const obj: typeof creatorFilter = {};
+    for (const el in creatorFilter) {
+      if (Object.hasOwn(creatorFilter, el)) {
+        const value = creatorFilter[el as keyof typeof creatorFilter];
         // @ts-expect-error
-        obj[el] = creatorFilter[el as keyof _CreatorFilter];
+        if (value != null) obj[el] = value;
       }
-    });
-    obj.ownEntries = creatorFilter.ownEntries;
+    }
     return obj;
   };
 

@@ -66,8 +66,8 @@ const ContestInfo: FC<Props> = ({
     const currentParticipants = [userId, interlocutorId].sort(
       (participant1, participant2) => participant1 - participant2,
     );
-    for (let i = 0; i < messagesPreview.length; i++) {
-      const { _id, participants, blackList, favoriteList } = messagesPreview[i];
+    for (const preview of messagesPreview) {
+      const { _id, participants, blackList, favoriteList } = preview;
       if (isEqual(currentParticipants, participants)) {
         return { _id, participants, blackList, favoriteList };
       }

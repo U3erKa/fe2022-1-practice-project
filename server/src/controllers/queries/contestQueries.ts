@@ -141,7 +141,7 @@ END
   );
   transaction.commit();
 
-  const arrayRoomsId: unknown[] = [];
+  const arrayRoomsId: number[] = [];
   updatedOffers.forEach((offer) => {
     if (offer.status === OFFER_STATUS_REJECTED && creatorId !== offer.userId) {
       arrayRoomsId.push(offer.userId);

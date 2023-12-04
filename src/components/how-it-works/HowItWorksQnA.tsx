@@ -7,7 +7,7 @@ export const HowItWorksQnA: FC = () => {
   const links: JSX.Element[] = [];
   const answers: JSX.Element[] = [];
 
-  HOW_IT_WORKS_QNA.forEach(({ id, title, questions }) => {
+  for (const { id, title, questions } of HOW_IT_WORKS_QNA) {
     links.push(
       <p className={styles.link} key={id}>
         <a href={`#${id}`}>{title}</a>
@@ -20,7 +20,7 @@ export const HowItWorksQnA: FC = () => {
         <Questions questions={questions} />
       </section>,
     );
-  });
+  }
 
   return (
     <article className={styles.container}>

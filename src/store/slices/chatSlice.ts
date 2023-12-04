@@ -278,9 +278,9 @@ const addChatToCatalogExtraReducers = createExtraReducers({
     { payload }: PayloadAction<AddChatToCatalogResponse>,
   ) => {
     const { catalogList } = state;
-    for (let i = 0; i < catalogList.length; i++) {
-      if (catalogList[i]._id === payload._id) {
-        catalogList[i].chats = payload.chats;
+    for (const catalog of catalogList) {
+      if (catalog._id === payload._id) {
+        catalog.chats = payload.chats;
         break;
       }
     }
@@ -376,9 +376,9 @@ const removeChatFromCatalogExtraReducers = createExtraReducers({
     { payload }: PayloadAction<RemoveChatFromCatalogResponse>,
   ) => {
     const { catalogList } = state;
-    for (let i = 0; i < catalogList.length; i++) {
-      if (catalogList[i]._id === payload._id) {
-        catalogList[i].chats = payload.chats;
+    for (const catalog of catalogList) {
+      if (catalog._id === payload._id) {
+        catalog.chats = payload.chats;
         break;
       }
     }
@@ -409,9 +409,9 @@ const changeCatalogNameExtraReducers = createExtraReducers({
     { payload }: PayloadAction<ChangeCatalogNameResponse>,
   ) => {
     const { catalogList } = state;
-    for (let i = 0; i < catalogList.length; i++) {
-      if (catalogList[i]._id === payload._id) {
-        catalogList[i].catalogName = payload.catalogName;
+    for (const catalog of catalogList) {
+      if (catalog._id === payload._id) {
+        catalog.catalogName = payload.catalogName;
         break;
       }
     }

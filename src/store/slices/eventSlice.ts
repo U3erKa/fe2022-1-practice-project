@@ -31,10 +31,10 @@ export const getEvents = decorateAsyncThunk({
   key: `${EVENT_SLICE_NAME}/getEvents`,
   thunk: async () => {
     const { data } = await eventController.getEvents();
-    data.forEach((event) => {
+    for (const event of data) {
       const date = new Date(Date.parse(event.date) + timezoneOffsetInMs);
       Object.assign(event, { date: date.toString() });
-    });
+    }
     return data;
   },
 });

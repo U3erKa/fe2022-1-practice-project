@@ -15,7 +15,9 @@ const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
   const messagesArray: ReactNode[] = [];
   let currentTime = Date.now();
 
-  messages.forEach(({ createdAt, sender, body }, i) => {
+  for (let i = 0; i < messages.length; i++) {
+    const { createdAt, sender, body } = messages[i]!;
+
     if (getDays(currentTime) !== getDays(Date.parse(createdAt))) {
       messagesArray.push(
         <div key={createdAt} className={styles.date}>
@@ -38,7 +40,7 @@ const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
         <div ref={messagesEnd} />
       </div>,
     );
-  });
+  }
   return <div className={styles.messageList}>{messagesArray}</div>;
 };
 

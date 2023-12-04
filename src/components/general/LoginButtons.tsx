@@ -15,9 +15,8 @@ export default function LoginButtons({ data }: { data: User }) {
   const { events } = useSelector(({ events }) => events);
   const currentDate = Date.now();
   let activeEvents = 0;
-  let shouldNotifyAboutEvents = false;
 
-  events.forEach(({ date, notify }) => {
+  for (const { date, notify } of events) {
     if (notify === 'never') return;
     const plannedDate = Date.parse(date);
     const timeframe = plannedDate - currentDate;
@@ -36,15 +35,12 @@ export default function LoginButtons({ data }: { data: User }) {
       case '1 week before':
         shouldNotify = getDays(timeframe) < 7;
         break;
-      default:
-        shouldNotify = false;
     }
 
     if (shouldNotify) {
       activeEvents++;
-      shouldNotifyAboutEvents = true;
     }
-  });
+  }
 
   return (
     <>
@@ -57,7 +53,7 @@ export default function LoginButtons({ data }: { data: User }) {
           }
           alt="user"
         />
-        {shouldNotifyAboutEvents && <div className={styles.badge}></div>}
+        {activeEvents > 0 && <div className={styles.badge}></div>}
         <span>{`Hi, ${data.displayName}`}</span>
         <Picture
           srcSet={[

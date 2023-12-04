@@ -20,10 +20,10 @@ export async function POST(req: NextRequest) {
     });
     if (!characteristics) throw new ServerError();
 
-    characteristics.forEach((characteristic) => {
-      response[characteristic.type] ??= [];
-      response[characteristic.type]!.push(characteristic.describe);
-    });
+    for (const { type, describe } of characteristics) {
+      response[type] ??= [];
+      response[type]!.push(describe);
+    }
     return NextResponse.json(response, { status: 200 });
   } catch (error) {
     return handleError(error);

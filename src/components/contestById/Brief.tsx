@@ -26,13 +26,15 @@ const Brief = () => {
   const setNewContestData = (values: _ContestInfo) => {
     const data = new FormData();
 
-    Object.keys(values).forEach((key) => {
-      if (key !== 'file' && values[key as keyof _ContestInfo])
-        data.append(key, values[key as keyof _ContestInfo]!);
-    });
-    if (values.file instanceof File) {
-      data.append('file', values.file);
+    for (const key in values) {
+      if (Object.hasOwn(values, key)) {
+        const value = values[key as keyof typeof values];
+        if ((key !== 'file' && value) || value instanceof File) {
+          data.append(key, value);
+        }
+      }
     }
+
     data.append('contestId', contestData!.id as unknown as string);
 
     dispatch(updateContest(data));

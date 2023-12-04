@@ -125,7 +125,7 @@ const setOfferStatusExtraReducers = createExtraReducers({
     state: ContestByIdState,
     { payload }: PayloadAction<SetOfferStatusResponse>,
   ) => {
-    state.offers.forEach((offer) => {
+    for (const offer of state.offers) {
       switch (payload.status) {
         case OFFER_STATUS_WON:
           offer.status =
@@ -139,7 +139,7 @@ const setOfferStatusExtraReducers = createExtraReducers({
         default:
           break;
       }
-    });
+    }
     state.error = null;
   },
   rejectedReducer: (

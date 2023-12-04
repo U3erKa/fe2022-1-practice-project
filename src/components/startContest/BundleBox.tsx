@@ -14,18 +14,15 @@ const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
   const defaultPathToImages = `${STATIC_IMAGES_PATH}contestLabels/`;
 
   const renderImage = () => {
-    const array: JSX.Element[] = [];
-    for (let i = 0; i < path.length; i++) {
-      array.push(
-        <img
-          src={defaultPathToImages + path[i]}
-          key={i}
-          className={styles.imgContainer}
-          alt={path[i].replace(/.png/g, 'Contest')}
-        />,
-      );
-    }
-    return array;
+    const images = path.map((image, i) => (
+      <img
+        src={defaultPathToImages + image}
+        key={i}
+        className={styles.imgContainer}
+        alt={image.replace(/.png/g, 'Contest')}
+      />
+    ));
+    return images;
   };
 
   const mouseOverHandler = () => {

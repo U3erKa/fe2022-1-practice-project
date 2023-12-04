@@ -73,11 +73,12 @@ export const CreatorFilter = () => {
 
   const parseParamsToUrl = (creatorFilter: _CreatorFilter) => {
     const obj: Record<string, any> = {};
-    Object.keys(creatorFilter).forEach((el) => {
-      if (creatorFilter[el as keyof _CreatorFilter]) {
-        obj[el] = creatorFilter[el as keyof _CreatorFilter];
+    for (const el in creatorFilter) {
+      if (Object.hasOwn(creatorFilter, el)) {
+        const value = creatorFilter[el as keyof typeof creatorFilter];
+        if (value != null) obj[el] = value;
       }
-    });
+    }
 
     router.push(`${PAGE.DASHBOARD}?${new URLSearchParams(obj)}`);
   };

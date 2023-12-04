@@ -73,7 +73,7 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
   ) => {
     const arrayList: JSX.Element[] = [];
     messagesPreview.forEach((chatPreview, index) => {
-      if (!filterFunc || (filterFunc && filterFunc(chatPreview, userId))) {
+      if (!filterFunc || filterFunc(chatPreview, userId)) {
         const dialogNode = (
           <DialogBox
             interlocutor={chatPreview.interlocutor}

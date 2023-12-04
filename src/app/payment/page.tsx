@@ -27,20 +27,20 @@ const Payment = () => {
   }, [contests]);
 
   const payMethod = (values: Payment) => {
-    const contestArray: any[] = Object.keys(contests).map((key) => ({
+    const submittedContests: any[] = Object.keys(contests).map((key) => ({
       ...contests[key as keyof typeof contests],
     }));
 
     const { number, expiry, cvc } = values;
     const formData = new FormData();
-    for (let i = 0; i < contestArray.length; i++) {
-      formData.append('files', contestArray[i].file);
-      contestArray[i].haveFile = !!contestArray[i].file;
+    for (const contest of submittedContests) {
+      formData.append('files', contest.file);
+      contest.haveFile = !!contest.file;
     }
     formData.append('number', number);
     formData.append('expiry', expiry);
     formData.append('cvc', cvc);
-    formData.append('contests', JSON.stringify(contestArray));
+    formData.append('contests', JSON.stringify(submittedContests));
     formData.append('price', '100');
     dispatch(pay({ data: { formData }, navigate: router.push }));
   };

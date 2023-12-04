@@ -17,10 +17,10 @@ const AddToCatalog = () => {
 
   const catalogNames: string[] = [];
   const catalogIds: CatalogId[] = [];
-  catalogList.forEach(({ catalogName, _id }) => {
+  for (const { catalogName, _id } of catalogList) {
     catalogNames.push(catalogName);
     catalogIds.push(_id);
-  });
+  }
 
   const { handleSubmit, control } = useForm({
     defaultValues: { catalogId: catalogIds[0] },

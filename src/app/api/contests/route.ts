@@ -75,11 +75,10 @@ export async function GET(req: NextRequest) {
       where: predicates.where as any,
     });
 
-    contests.forEach(
-      (contest) =>
-        // @ts-expect-error
-        (contest.dataValues.count = contest.dataValues.Offers.length),
-    );
+    for (const { dataValues } of contests) {
+      // @ts-expect-error
+      dataValues.count = dataValues.Offers.length;
+    }
     const haveMore = contestsCount > offset + contests.length;
 
     return NextResponse.json({ contests, haveMore }, { status: 200 });
