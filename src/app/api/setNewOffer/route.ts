@@ -1,0 +1,65 @@
+import { type NextRequest, NextResponse } from 'next/server';
+import { Contest } from 'models';
+import { createOffer } from 'controllers/queries/contestQueries';
+import { verifyAccessToken } from 'services/jwtService';
+import { getNotificationController } from 'socketInit';
+import { uploadFile } from 'utils/backend';
+import { SetNewOfferSchema } from 'utils/schemas';
+import handleError from 'utils/handleError';
+import NotFoundError from 'errors/NotFoundError';
+import RightsError from 'errors/RightsError';
+import BadRequestError from 'errors/BadRequestError';
+import {
+  CONTEST_STATUS_ACTIVE,
+  CREATOR,
+  LOGO_CONTEST,
+} from 'constants/general';
+
+export async function POST(req: NextRequest) {
+  try {
+    const { formData, headers } = req;
+    const authorization = headers.get('Authorization')!.split(' ')[1]!;
+    const tokenData = await verifyAccessToken(authorization);
+    const data = await formData();
+    const body = Object.fromEntries(data);
+
+    const validationResult = await SetNewOfferSchema.safeParseAsync(body);
+    if (!validationResult.success) throw new BadRequestError();
+    const {
+      data: { contestType, offerData, contestId, customerId },
+    } = validationResult;
+
+    if (tokenData.role !== CREATOR) throw new RightsError();
+    const result = await Contest.findOne({
+      where: {
+        id: contestId,
+      },
+      attributes: ['status'],
+    });
+
+    if (!result) throw new NotFoundError('Contest not found');
+
+    if (result.get({ plain: true }).status !== CONTEST_STATUS_ACTIVE) {
+      throw new RightsError();
+    }
+
+    const obj: { [key: string]: unknown } = {
+      userId: tokenData.userId,
+      contestId,
+    };
+
+    if (contestType === LOGO_CONTEST) {
+      const fileData = await uploadFile(offerData as File);
+      Object.assign(obj, fileData);
+    } else {
+      Object.assign(obj, { text: offerData as string });
+    }
+
+    const { userId, contestId: _contestId, ...offer } = await createOffer(obj);
+    getNotificationController().emitEntryCreated(customerId);
+    const User = Object.assign({}, tokenData, { id: tokenData.userId });
+    return NextResponse.json(Object.assign({}, offer, { User }));
+  } catch (error) {
+    return handleError(error);
+  }
+}

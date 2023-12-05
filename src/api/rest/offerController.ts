@@ -12,7 +12,7 @@ import type {
 } from 'types/api/offer';
 
 export const setNewOffer = (data: FormData) =>
-  http.post<SetNewOfferResponse>('setNewOffer', data);
+  http.post<SetNewOfferResponse>(ROUTE.SET_NEW_OFFER, data);
 
 export const setOfferStatus = <
   T extends SetOfferStatusParams = SetOfferStatusParams,
@@ -36,5 +36,9 @@ export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
   isReviewed,
 }: GetOffersParams) =>
   http.get<GetOffersResponse<IsReviewed>>(
-    `${ROUTE.OFFERS}?${new URLSearchParams({ limit, offset, isReviewed } as any)}`,
+    `${ROUTE.OFFERS}?${new URLSearchParams({
+      limit,
+      offset,
+      isReviewed,
+    } as any)}`,
   );

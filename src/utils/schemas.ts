@@ -151,6 +151,21 @@ export const LogoOfferSchema = z.object({
   offerData: FileSchema,
 });
 
+export const SetNewOfferSchema = z.union([
+  z.object({
+    offerData: StringSchema,
+    contestType: z.enum([NAME_CONTEST, TAGLINE_CONTEST]),
+    contestId: StringSchema,
+    customerId: StringSchema,
+  }),
+  z.object({
+    offerData: z.instanceof(File),
+    contestType: z.literal(LOGO_CONTEST),
+    contestId: StringSchema,
+    customerId: StringSchema,
+  }),
+]);
+
 export const FilterSchema = z.object({
   awardSort: z.union([z.null(), OrderBySchema]).optional(),
   contestId: z.union([z.null(), z.string()]).optional(),
@@ -256,6 +271,7 @@ export type Cashout = z.infer<typeof CashoutSchema>;
 export type Payment = z.infer<typeof PaymentSchema>;
 export type TextOffer = z.infer<typeof TextOfferSchema>;
 export type LogoOffer = z.infer<typeof LogoOfferSchema>;
+export type SetNewOffer = z.infer<typeof SetNewOfferSchema>;
 export type Filter = z.infer<typeof FilterSchema>;
 export type Contest = z.infer<typeof ContestSchema>;
 export type TaglineContest = z.infer<typeof TaglineContestSchema>;

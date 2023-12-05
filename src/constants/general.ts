@@ -138,13 +138,14 @@ export const BASE_URL = `http://${serverIP}:${serverPort}${API_ROUTE}` as const;
 
 export const ROUTE = {
   LOGIN: '/auth/login',
-  REGISTER: '/auth/registration',
   REFRESH: '/auth/refresh',
+  REGISTER: '/auth/registration',
   CONTESTS: '/contests',
   DATA_FOR_CONTEST: '/dataForContest',
   EVENTS: '/events',
-  SET_OFFER_STATUS: '/setOfferStatus',
   OFFERS: '/offers',
+  SET_NEW_OFFER: '/setNewOffer',
+  SET_OFFER_STATUS: '/setOfferStatus',
 } as const;
 
 export const CONTEST_TYPES = [
