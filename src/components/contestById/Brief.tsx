@@ -75,16 +75,17 @@ const Brief = () => {
     };
 
     const defaultData = {} as DefaultData;
-    Object.keys(data).forEach((key) => {
-      if (data[key as keyof typeof data]) {
+    for (const key in data) {
+      if (Object.hasOwn(data, key)) {
+        const element = data[key as keyof typeof data];
         if (key === 'originalFileName') {
           defaultData.file = { name: data[key] };
         } else {
           // @ts-expect-error
-          defaultData[key] = data[key as keyof typeof data];
+          defaultData[key] = element;
         }
       }
-    });
+    }
     return defaultData;
   };
 

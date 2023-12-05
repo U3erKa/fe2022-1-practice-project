@@ -11,7 +11,7 @@ export type Props = {
 
 const isAnswer = (contents: unknown): contents is AnswerProps => {
   if (!contents) return false;
-  return isEqual(Object.keys(contents), ['description', 'list'].sort());
+  return isEqual(Object.keys(contents).sort(), ['description', 'list'].sort());
 };
 
 export const Answer: FC<Props> = ({ active, contents }) => {

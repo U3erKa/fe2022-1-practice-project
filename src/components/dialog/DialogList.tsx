@@ -7,6 +7,7 @@ import {
   goToExpandedDialog,
 } from 'store/slices/chatSlice';
 import { DialogBox } from 'components/dialog';
+import { uniqueId } from 'utils/functions';
 import {
   BLOCKED_PREVIEW_CHAT_MODE,
   CATALOG_PREVIEW_CHAT_MODE,
@@ -72,14 +73,14 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
       | typeof onlyBlockDialogs,
   ) => {
     const arrayList: JSX.Element[] = [];
-    messagesPreview.forEach((chatPreview, index) => {
+    for (const chatPreview of messagesPreview) {
       if (!filterFunc || filterFunc(chatPreview, userId)) {
         const dialogNode = (
           <DialogBox
             interlocutor={chatPreview.interlocutor}
             chatPreview={chatPreview}
             userId={userId}
-            key={index}
+            key={uniqueId()}
             changeFavorite={changeFavorite}
             changeBlackList={changeBlackList}
             chatMode={chatMode}
@@ -95,7 +96,7 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
         );
         arrayList.push(dialogNode);
       }
-    });
+    }
 
     return arrayList.length ? (
       arrayList

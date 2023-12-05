@@ -81,7 +81,7 @@ const OfferForm: FC<OfferFormProps> = ({
     data.append('customerId', customerId as unknown as string);
     data.append(
       'offerData',
-      offerData instanceof FileList ? (offerData[0] as any) : offerData,
+      offerData instanceof FileList ? (offerData[0] as File) : offerData,
     );
 
     dispatch(addOffer(data));

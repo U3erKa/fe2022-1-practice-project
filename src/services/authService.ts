@@ -24,7 +24,7 @@ export const createSession = async (user: User) => {
 };
 
 export const refreshSession = async (refreshTokenInstance: _RefreshToken) => {
-  const user = (await refreshTokenInstance.getUser()) as unknown as User;
+  const user = await refreshTokenInstance.getUser();
 
   const tokenPair = await generateTokenPair({
     firstName: user.firstName,

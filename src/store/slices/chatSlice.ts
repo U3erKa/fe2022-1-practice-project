@@ -145,14 +145,14 @@ const sendMessageExtraReducers = createExtraReducers({
   ) => {
     const { messagesPreview } = state;
     let isNew = true;
-    messagesPreview.forEach((preview) => {
+    for (const preview of messagesPreview) {
       if (isEqual(preview.participants, payload.message.participants)) {
         preview.text = payload.message.body;
         preview.sender = payload.message.sender;
         preview.createdAt = payload.message.createdAt;
         isNew = false;
       }
-    });
+    }
     if (isNew) {
       messagesPreview.push(payload.preview);
     }
@@ -190,10 +190,10 @@ const changeChatFavoriteExtraReducers = createExtraReducers({
     { payload }: PayloadAction<ChangeChatFavoriteResponse>,
   ) => {
     const { messagesPreview } = state;
-    messagesPreview.forEach((preview) => {
+    for (const preview of messagesPreview) {
       if (isEqual(preview.participants, payload.participants))
         preview.favoriteList = payload.favoriteList;
-    });
+    }
     state.chatData = payload;
     state.messagesPreview = messagesPreview;
   },
@@ -221,10 +221,10 @@ const changeChatBlockExtraReducers = createExtraReducers({
     { payload }: PayloadAction<ChangeChatBlockResponse>,
   ) => {
     const { messagesPreview } = state;
-    messagesPreview.forEach((preview) => {
+    for (const preview of messagesPreview) {
       if (isEqual(preview.participants, payload.participants))
         preview.blackList = payload.blackList;
-    });
+    }
     state.chatData = payload;
     state.messagesPreview = messagesPreview;
   },
@@ -241,11 +241,11 @@ export const getCatalogList = decorateAsyncThunk({
   key: `${CHAT_SLICE_NAME}/getCatalogList`,
   thunk: async () => {
     const { data } = await catalogController.getCatalogList();
-    data.forEach(({ chats }) => {
+    for (const { chats } of data) {
       // @ts-expect-error
       const chatIds = chats.map(({ _id }) => _id);
       Object.assign(chats, chatIds);
-    });
+    }
     return data;
   },
 });
@@ -358,10 +358,11 @@ export const removeChatFromCatalog = decorateAsyncThunk({
   thunk: async (payload: RemoveChatFromCatalogParams) => {
     const { data } = await catalogController.removeChatFromCatalog(payload);
     const chatIds: string[] = [];
+
     // @ts-expect-error
-    data.chats.forEach(({ _id }) => {
+    for (const { _id } of data.chats) {
       if (_id !== payload.chatId) chatIds.push(_id);
-    });
+    }
 
     Object.assign(data, { chats: chatIds });
 
@@ -431,10 +432,10 @@ const reducers = {
     { payload }: PayloadAction<ChatData>,
   ) => {
     const { messagesPreview } = state;
-    messagesPreview.forEach((preview) => {
+    for (const preview of messagesPreview) {
       if (isEqual(preview.participants, payload.participants))
         preview.blackList = payload.blackList;
-    });
+    }
     state.chatData = payload;
     state.messagesPreview = messagesPreview;
   },
@@ -443,14 +444,14 @@ const reducers = {
     const { message, preview } = payload;
     const { messagesPreview } = state;
     let isNew = true;
-    messagesPreview.forEach((preview) => {
+    for (const preview of messagesPreview) {
       if (isEqual(preview.participants, message.participants)) {
         preview.text = message.body;
         preview.sender = message.sender;
         preview.createdAt = message.createdAt;
         isNew = false;
       }
-    });
+    }
     if (isNew) {
       messagesPreview.push(preview);
     }

@@ -19,7 +19,7 @@ export const sequelize = new Sequelize(POSTGRES_DB_STRING, {
   dialectModule: pg,
 });
 
-[
+for (const createModel of [
   _Bank,
   _Catalog,
   _Contest,
@@ -31,19 +31,18 @@ export const sequelize = new Sequelize(POSTGRES_DB_STRING, {
   _RefreshToken,
   _Select,
   _User,
-].forEach((createModel) => {
+]) {
   const model = createModel(sequelize);
   // @ts-expect-error
   db[model.name as keyof DB] = model;
-});
+}
 
-Object.keys(db).forEach((modelName) => {
-  // @ts-expect-error
-  if (db[modelName].associate) {
-    // @ts-expect-error
-    db[modelName].associate(db);
+for (const key in db) {
+  if (Object.hasOwn(db, key)) {
+    const model = db[key as keyof typeof db];
+    if (model.associate) model.associate(db);
   }
-});
+}
 /* eslint-disable no-console */
 console.log('db is =>>>>>>>>>>');
 console.log(Object.keys(db));

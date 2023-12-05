@@ -134,7 +134,7 @@ CASE
   WHEN "status"=${OFFER_STATUS_APPROVED} THEN '${OFFER_STATUS_REJECTED}'
   ELSE '${OFFER_STATUS_DISCARDED}'
 END
-      `),
+`),
     },
     { contestId },
     transaction,
@@ -142,11 +142,11 @@ END
   transaction.commit();
 
   const arrayRoomsId: number[] = [];
-  updatedOffers.forEach((offer) => {
+  for (const offer of updatedOffers) {
     if (offer.status === OFFER_STATUS_REJECTED && creatorId !== offer.userId) {
       arrayRoomsId.push(offer.userId);
     }
-  });
+  }
   getNotificationController().emitChangeOfferStatus(
     creatorId,
     'Some of your offers WIN',

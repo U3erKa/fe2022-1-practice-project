@@ -16,6 +16,7 @@ import {
   OFFER_STATUS_PENDING,
 } from 'constants/general';
 import type { Context } from 'types/api/_common';
+import type { Offer as _Offer, Rating as _Rating } from 'types/models';
 
 type RouteContext = Context<{
   contestId: `${number}`;
@@ -103,13 +104,15 @@ export async function GET(
     if (!contests) throw new NotFoundError('Contests not found');
 
     const contestInfo = contests.get({ plain: true });
-    // @ts-expect-error
-    contestInfo.Offers.forEach((offer) => {
-      if (offer.Rating) {
-        offer.mark = offer.Rating.mark;
-      }
+    type ContestInfo = typeof contestInfo & {
+      Offers: (_Offer & { Rating: _Rating })[];
+    };
+
+    for (const offer of (contestInfo as ContestInfo).Offers) {
+      if (offer.Rating) Object.assign(offer, { mark: offer.Rating.mark });
+      // @ts-expect-error
       delete offer.Rating;
-    });
+    }
     return NextResponse.json(contestInfo, { status: 200 });
   } catch (e) {
     return handleError(e);

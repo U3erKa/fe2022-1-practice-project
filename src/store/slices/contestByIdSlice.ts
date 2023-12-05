@@ -171,14 +171,14 @@ const changeMarkExtraReducers = createExtraReducers({
       mark: ChangeMarkParams['mark'];
     }>,
   ) => {
-    state.offers.forEach((offer) => {
+    for (const offer of state.offers) {
       if (offer.User.id === data.userId) {
         offer.User.rating = data.rating;
       }
       if (offer.id === offerId) {
         offer.mark = mark;
       }
-    });
+    }
     state.error = null;
   },
   rejectedReducer: (
