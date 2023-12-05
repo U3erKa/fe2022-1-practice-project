@@ -144,6 +144,7 @@ export const ROUTE = {
   DATA_FOR_CONTEST: '/dataForContest',
   EVENTS: '/events',
   SET_OFFER_STATUS: '/setOfferStatus',
+  OFFERS: '/offers',
 } as const;
 
 export const CONTEST_TYPES = [

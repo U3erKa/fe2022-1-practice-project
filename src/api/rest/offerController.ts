@@ -36,5 +36,5 @@ export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
   isReviewed,
 }: GetOffersParams) =>
   http.get<GetOffersResponse<IsReviewed>>(
-    `offers?${new URLSearchParams({ limit, offset, isReviewed } as any)}`,
+    `${ROUTE.OFFERS}?${new URLSearchParams({ limit, offset, isReviewed } as any)}`,
   );
