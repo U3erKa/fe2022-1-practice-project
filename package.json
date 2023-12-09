@@ -21,7 +21,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "styles": "typed-scss-modules 'src/**/*.{css,scss}'",
-    "styles:watch": "turbo styles -- -w"
+    "styles:watch": "pnpm styles -w"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
