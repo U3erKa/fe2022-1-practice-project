@@ -141,16 +141,17 @@ export const API_ROUTE = '/api';
 export const BASE_URL = `http://${serverIP}:${serverPort}${API_ROUTE}` as const;
 
 export const ROUTE = {
-  LOGIN: '/auth/login',
-  REFRESH: '/auth/refresh',
-  REGISTER: '/auth/registration',
+  CHANGE_MARK: '/changeMark',
   CONTESTS: '/contests',
   DATA_FOR_CONTEST: '/dataForContest',
   EVENTS: '/events',
+  LOGIN: '/auth/login',
   OFFERS: '/offers',
+  REFRESH: '/auth/refresh',
+  REGISTER: '/auth/registration',
   SET_NEW_OFFER: '/setNewOffer',
   SET_OFFER_STATUS: '/setOfferStatus',
-  CHANGE_MARK: '/changeMark',
+  UPDATE_USER: '/updateUser',
 } as const;
 
 export const CONTEST_TYPES = [

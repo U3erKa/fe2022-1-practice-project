@@ -62,28 +62,6 @@ END
   }
 };
 
-export const updateUser: RequestHandler = async (req, res, next) => {
-  const { tokenData, file, body } = req;
-  try {
-    if (file) {
-      body.avatar = file.filename;
-    }
-    const updatedUser = await userQueries.updateUser(body, tokenData.userId);
-    res.send({
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
-      displayName: updatedUser.displayName,
-      avatar: updatedUser.avatar,
-      email: updatedUser.email,
-      balance: updatedUser.balance,
-      role: updatedUser.role,
-      id: updatedUser.id,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const cashout: RequestHandler = async (req, res, next) => {
   const {
     body: { number, expiry, cvc, sum },
