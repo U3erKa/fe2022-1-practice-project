@@ -25,7 +25,7 @@ export const changeMark = (data: ChangeMarkParams) =>
   http.post<ChangeMarkResponse>(ROUTE.CHANGE_MARK, data);
 
 export const payMent = (data: { formData: FormData }) =>
-  http.post<void>('pay', data.formData);
+  http.post<void>(ROUTE.PAY, data.formData);
 
 export const cashOut = (data: CashOutParams) =>
   http.post<void>(ROUTE.CASHOUT, data);

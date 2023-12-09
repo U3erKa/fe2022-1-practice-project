@@ -148,6 +148,7 @@ export const ROUTE = {
   EVENTS: '/events',
   LOGIN: '/auth/login',
   OFFERS: '/offers',
+  PAY: '/pay',
   REFRESH: '/auth/refresh',
   REGISTER: '/auth/registration',
   SET_NEW_OFFER: '/setNewOffer',

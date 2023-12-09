@@ -198,6 +198,7 @@ export const BaseContestSchema = z.object({
   industry: StringSchema,
   targetCustomer: StringSchema,
   title: StringSchema,
+  haveFile: z.boolean(),
 });
 
 export const TaglineContestSchema = z.intersection(
