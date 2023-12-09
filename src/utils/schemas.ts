@@ -70,7 +70,16 @@ export const StringSchema = z
       });
     }
   });
-globalThis.FileList ??= Object as any;
+
+export const NumberAsStringSchema = z
+  .string()
+  .superRefine((value, { addIssue, path }) => {
+    if (!/^\d+$/.test(value)) {
+      addIssue({ code: 'custom', message: `${path} must be number` });
+    }
+  });
+
+globalThis.FileList ??= File as any;
 export const NotifySchema = z.enum(NOTIFY_OPTIONS);
 export const FileSchema = z.instanceof(FileList);
 export const OrderBySchema = z.enum(['asc', 'desc']);
@@ -140,7 +149,16 @@ export const PaymentSchema = z.object({
 
 export const CashoutSchema = z.intersection(
   PaymentSchema,
-  z.object({ sum: z.number().min(5) }),
+  z.object({
+    sum: z.union([
+      z.number().min(5),
+      NumberAsStringSchema.superRefine((value, { addIssue, path }) => {
+        if (+value < 5) {
+          addIssue({ code: 'custom', message: `${path} must be at least 5` });
+        }
+      }),
+    ]),
+  }),
 );
 
 export const TextOfferSchema = z.object({
