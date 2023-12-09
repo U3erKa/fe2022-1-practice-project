@@ -10,7 +10,7 @@ import type {
   OFFER_COMMAND_DISCARD,
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
-} from 'constants/backend';
+} from 'constants/general';
 
 import type { Card, User } from './user';
 

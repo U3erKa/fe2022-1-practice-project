@@ -15,6 +15,10 @@ export const OFFER_STATUS_WON = 'won';
 export const OFFER_STATUS_DISCARDED = 'discarded';
 export const OFFER_STATUS_APPROVED = 'approved';
 export const OFFER_STATUS_PENDING = 'pending';
+export const OFFER_COMMAND_RESOLVE = 'resolve';
+export const OFFER_COMMAND_REJECT = 'reject';
+export const OFFER_COMMAND_APPROVE = 'approve';
+export const OFFER_COMMAND_DISCARD = 'discard';
 
 export const SOCKET_CONNECTION = 'connection';
 export const SOCKET_SUBSCRIBE = 'subscribe';

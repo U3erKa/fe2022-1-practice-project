@@ -2,7 +2,8 @@ import { template } from 'radash';
 import { promises as fs } from 'fs';
 import path from 'path';
 import sendEmail from 'email';
-import { OFFER_COMMAND_APPROVE, READ_FILE_OPTIONS } from 'constants/backend';
+import { READ_FILE_OPTIONS } from 'constants/backend';
+import { OFFER_COMMAND_APPROVE } from 'constants/general';
 import type { Offer as _Offer } from 'types/models';
 
 export async function sendCreatorOfferEmail(offer: _Offer, command: string) {

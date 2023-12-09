@@ -24,6 +24,10 @@ import {
   CUSTOMER,
   LOGO_CONTEST,
   MODERATOR,
+  OFFER_COMMAND_APPROVE,
+  OFFER_COMMAND_DISCARD,
+  OFFER_COMMAND_REJECT,
+  OFFER_COMMAND_RESOLVE,
   OFFER_STATUS_APPROVED,
   OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
@@ -32,12 +36,6 @@ import {
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-import {
-  OFFER_COMMAND_APPROVE,
-  OFFER_COMMAND_DISCARD,
-  OFFER_COMMAND_REJECT,
-  OFFER_COMMAND_RESOLVE,
-} from 'constants/backend';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './styles/confirmStyle.css';
 import type { OfferStatus, Rating as _Rating } from 'types/api/offer';

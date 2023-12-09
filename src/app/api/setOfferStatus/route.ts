@@ -22,7 +22,7 @@ import {
   OFFER_COMMAND_DISCARD,
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
-} from 'constants/backend';
+} from 'constants/general';
 
 export async function POST(req: NextRequest) {
   try {

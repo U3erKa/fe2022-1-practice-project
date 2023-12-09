@@ -23,10 +23,6 @@ export const SALT_ROUNDS = isNaN(+_SALT_ROUNDS!)
   : +_SALT_ROUNDS!;
 export const CREATOR_ENTRIES = 'creator_entries';
 export const CONTESTS_DEFAULT_DIR = 'public/contestFiles/';
-export const OFFER_COMMAND_RESOLVE = 'resolve';
-export const OFFER_COMMAND_REJECT = 'reject';
-export const OFFER_COMMAND_APPROVE = 'approve';
-export const OFFER_COMMAND_DISCARD = 'discard';
 export const MONGO_DEPRECATED_MESSAGE =
   'Mongoose models are deprecated. Use sequelize models instead';
 export const LOG_PATH = path.resolve(__dirname, '../logs') as `${string}/logs`;
