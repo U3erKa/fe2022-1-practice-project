@@ -22,7 +22,7 @@ export const setOfferStatus = <
   http.post<SetOfferStatusResponse<T['command']>>(ROUTE.SET_OFFER_STATUS, data);
 
 export const changeMark = (data: ChangeMarkParams) =>
-  http.post<ChangeMarkResponse>('changeMark', data);
+  http.post<ChangeMarkResponse>(ROUTE.CHANGE_MARK, data);
 
 export const payMent = (data: { formData: FormData }) =>
   http.post<void>('pay', data.formData);

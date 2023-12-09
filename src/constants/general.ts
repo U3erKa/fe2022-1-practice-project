@@ -150,6 +150,7 @@ export const ROUTE = {
   OFFERS: '/offers',
   SET_NEW_OFFER: '/setNewOffer',
   SET_OFFER_STATUS: '/setOfferStatus',
+  CHANGE_MARK: '/changeMark',
 } as const;
 
 export const CONTEST_TYPES = [

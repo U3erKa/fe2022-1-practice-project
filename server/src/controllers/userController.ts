@@ -1,73 +1,11 @@
 import type { RequestHandler } from 'express';
-import { Op, Transaction } from 'sequelize';
+import { Op } from 'sequelize';
 import * as CONSTANTS from '../constants';
-import { Contest, Offer, Rating, sequelize } from '../models';
+import { Contest, sequelize } from '../models';
 import { v4 as uuid } from 'uuid';
-import * as controller from '../socketInit';
 import * as userQueries from './queries/userQueries';
 import * as bankQueries from './queries/bankQueries';
-import * as ratingQueries from './queries/ratingQueries';
 import type { Contest as _Contest } from '../types/models';
-
-function getQuery(
-  offerId: number,
-  userId: number,
-  mark: number,
-  isFirst: boolean,
-  transaction?: Transaction,
-) {
-  const getCreateQuery = () =>
-    ratingQueries.createRating(
-      {
-        offerId,
-        mark,
-        userId,
-      },
-      transaction,
-    );
-  const getUpdateQuery = () =>
-    ratingQueries.updateRating({ mark }, { offerId, userId }, transaction);
-  return isFirst ? getCreateQuery : getUpdateQuery;
-}
-
-export const changeMark: RequestHandler = async (req, res, next) => {
-  let sum = 0;
-  let avg = 0;
-  const { isFirst, offerId, mark, creatorId } = req.body;
-  const { userId } = req.tokenData;
-  const transaction = await sequelize.transaction({
-    isolationLevel: Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
-  });
-
-  try {
-    const query = getQuery(offerId, userId, mark, isFirst, transaction);
-    await query();
-
-    const offersArray = await Rating.findAll({
-      include: [
-        {
-          model: Offer,
-          required: true,
-          where: { userId: creatorId },
-        },
-      ],
-      transaction,
-    });
-
-    for (let i = 0; i < offersArray.length; i++) {
-      sum += offersArray[i].dataValues.mark;
-    }
-    avg = sum / offersArray.length;
-
-    await userQueries.updateUser({ rating: avg }, creatorId, transaction);
-    transaction.commit();
-    controller.getNotificationController().emitChangeMark(creatorId);
-    res.send({ userId: creatorId, rating: avg });
-  } catch (err) {
-    transaction.rollback();
-    next(err);
-  }
-};
 
 export const payment: RequestHandler = async (req, res, next) => {
   const {
