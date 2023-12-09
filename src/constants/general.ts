@@ -141,6 +141,7 @@ export const API_ROUTE = '/api';
 export const BASE_URL = `http://${serverIP}:${serverPort}${API_ROUTE}` as const;
 
 export const ROUTE = {
+  CASHOUT: '/cashout',
   CHANGE_MARK: '/changeMark',
   CONTESTS: '/contests',
   DATA_FOR_CONTEST: '/dataForContest',

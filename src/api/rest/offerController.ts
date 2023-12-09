@@ -28,7 +28,7 @@ export const payMent = (data: { formData: FormData }) =>
   http.post<void>('pay', data.formData);
 
 export const cashOut = (data: CashOutParams) =>
-  http.post<void>('cashout', data);
+  http.post<void>(ROUTE.CASHOUT, data);
 
 export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
   limit,
