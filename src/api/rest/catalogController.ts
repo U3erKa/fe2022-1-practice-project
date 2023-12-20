@@ -1,4 +1,5 @@
 import http from 'api/interceptor';
+import { ROUTE } from 'constants/general';
 import type {
   AddChatToCatalogParams,
   AddChatToCatalogResponse,
@@ -23,7 +24,7 @@ export const getCatalogList = () =>
   http.post<GetCatalogListResponse>('getCatalogs');
 
 export const createCatalog = (data: CreateCatalogParams) =>
-  http.post<CreateCatalogResponse>('createCatalog', data);
+  http.post<CreateCatalogResponse>(ROUTE.CREATE_CATALOG, data);
 
 export const deleteCatalog = (data: DeleteCatalogParams) =>
   http.post<DeleteCatalogResponse>('deleteCatalog', data);

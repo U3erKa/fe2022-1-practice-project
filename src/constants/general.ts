@@ -144,6 +144,7 @@ export const ROUTE = {
   CASHOUT: '/cashout',
   CHANGE_MARK: '/changeMark',
   CONTESTS: '/contests',
+  CREATE_CATALOG: '/createCatalog',
   DATA_FOR_CONTEST: '/dataForContest',
   EVENTS: '/events',
   FAVORITE: '/favorite',

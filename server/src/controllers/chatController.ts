@@ -119,26 +119,6 @@ export const blackList: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const createCatalog: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { chatId, catalogName },
-  } = req;
-
-  try {
-    const catalog = await Catalog.create(
-      { userId, catalogName },
-      { returning: true },
-    );
-    await catalog.addChat(chatId);
-    Object.assign(catalog.dataValues, { chats: [chatId] });
-
-    res.send(catalog);
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const updateNameCatalog: RequestHandler = async (req, res, next) => {
   const {
     tokenData: { userId },
