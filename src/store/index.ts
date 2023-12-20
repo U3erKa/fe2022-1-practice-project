@@ -3,14 +3,14 @@ import {
   type ThunkAction,
   configureStore,
 } from '@reduxjs/toolkit';
+import { isEqual } from 'radash';
 import {
   type TypedUseSelectorHook,
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,
 } from 'react-redux';
-import { isEqual } from 'radash';
-import reducer from './reducer';
 import { initSocket } from 'api/ws/socketController';
+import reducer from './reducer';
 
 const store = configureStore({
   reducer: reducer,

@@ -1,5 +1,5 @@
-import { type FC, type ImgHTMLAttributes } from 'react';
 import Link from 'next/link';
+import { type FC, type ImgHTMLAttributes } from 'react';
 import { Picture } from 'components/general';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 

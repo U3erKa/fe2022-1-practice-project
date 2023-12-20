@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { Footer, Header } from 'components/general';
 import {
   ContactUs,
@@ -9,7 +10,6 @@ import {
   HowItWorksIntro,
   HowItWorksQnA,
 } from 'components/how-it-works';
-import type { FC } from 'react';
 
 const HowItWorksPage: FC = () => {
   return (

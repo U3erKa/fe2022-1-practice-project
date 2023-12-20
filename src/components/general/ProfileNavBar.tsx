@@ -1,10 +1,10 @@
+import { useDispatch } from 'hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useDispatch } from 'hooks';
-import { clearUserStore } from 'store/slices/userSlice';
 import { PAGE } from 'constants/general';
-import styles from './styles/ProfileNavBar.module.scss';
 import type { PROFILE_NAVBAR } from 'constants/header';
+import { clearUserStore } from 'store/slices/userSlice';
+import styles from './styles/ProfileNavBar.module.scss';
 
 export type Props = {
   list: typeof PROFILE_NAVBAR;

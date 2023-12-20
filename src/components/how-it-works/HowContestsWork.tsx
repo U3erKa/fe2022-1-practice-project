@@ -1,7 +1,7 @@
+import type { FC } from 'react';
 import { HOW_IT_WORKS_PATH } from 'constants/general';
 import { HOW_CONTESTS_WORK } from 'constants/howItWorks';
 import styles from './styles/HowContestsWork.module.scss';
-import type { FC } from 'react';
 
 export const HowContestsWork: FC = () => {
   const howContestsWork = HOW_CONTESTS_WORK.map((listEntry, i) => (

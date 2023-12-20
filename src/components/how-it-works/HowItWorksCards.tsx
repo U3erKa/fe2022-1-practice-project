@@ -1,8 +1,8 @@
 import Link from 'next/link';
+import type { FC } from 'react';
 import { PAGE } from 'constants/general';
 import { HOW_IT_WORKS_CARDS } from 'constants/howItWorks';
 import styles from './styles/HowItWorksCards.module.scss';
-import type { FC } from 'react';
 
 export const HowItWorksCards: FC = () => {
   const cards = HOW_IT_WORKS_CARDS.map(

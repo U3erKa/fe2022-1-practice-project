@@ -1,13 +1,13 @@
 import { useRouter } from 'next/navigation';
-import { type FC } from 'react';
 import { capitalize } from 'radash';
+import { type FC } from 'react';
 import { Picture } from 'components/general';
-import { getLongTimeStr } from 'utils/functions';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
+import { getLongTimeStr } from 'utils/functions';
 import type { ContestId } from 'types/api/_common';
 import type { Contest } from 'types/contest';
 import styles from './styles/ContestBox.module.scss';

@@ -1,17 +1,16 @@
 import { combineReducers } from '@reduxjs/toolkit';
-
 import authReducer from './slices/authSlice';
-import userReducer from './slices/userSlice';
-import dataForContestReducer from './slices/dataForContestSlice';
-import paymentReducer from './slices/paymentSlice';
-import contestsReducer from './slices/contestsSlice';
-import contestCreationReducer from './slices/contestCreationSlice';
 import bundleReducer from './slices/bundleSlice';
-import contestByIdReducer from './slices/contestByIdSlice';
-import contestUpdationReducer from './slices/contestUpdationSlice';
 import chatReducer from './slices/chatSlice';
-import userProfileReducer from './slices/userProfileSlice';
+import contestByIdReducer from './slices/contestByIdSlice';
+import contestCreationReducer from './slices/contestCreationSlice';
+import contestUpdationReducer from './slices/contestUpdationSlice';
+import contestsReducer from './slices/contestsSlice';
+import dataForContestReducer from './slices/dataForContestSlice';
 import eventReducer from './slices/eventSlice';
+import paymentReducer from './slices/paymentSlice';
+import userProfileReducer from './slices/userProfileSlice';
+import userReducer from './slices/userSlice';
 
 const rootReducer = combineReducers({
   userStore: userReducer,

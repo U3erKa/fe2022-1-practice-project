@@ -1,14 +1,7 @@
-import { type NextRequest, NextResponse } from 'next/server';
-import { Op } from 'sequelize';
 import { randomUUID } from 'crypto';
 import { Contest, sequelize } from 'models';
-import { verifyAccessToken } from 'services/jwtService';
-import { updateBankBalance } from 'controllers/queries/bankQueries';
-import { ContestSchema, type Contest as __Contest } from 'utils/schemas';
-import handleError from 'utils/handleError';
-import RightsError from 'errors/RightsError';
-import BadRequestError from 'errors/BadRequestError';
-import { uploadFile } from 'utils/backend';
+import { type NextRequest, NextResponse } from 'next/server';
+import { Op } from 'sequelize';
 import {
   SQUADHELP_BANK_CVC,
   SQUADHELP_BANK_EXPIRY,
@@ -19,6 +12,13 @@ import {
   CONTEST_STATUS_PENDING,
   CUSTOMER,
 } from 'constants/general';
+import { updateBankBalance } from 'controllers/queries/bankQueries';
+import BadRequestError from 'errors/BadRequestError';
+import RightsError from 'errors/RightsError';
+import { verifyAccessToken } from 'services/jwtService';
+import { uploadFile } from 'utils/backend';
+import handleError from 'utils/handleError';
+import { ContestSchema, type Contest as __Contest } from 'utils/schemas';
 import type { Contest as _Contest } from 'types/models';
 
 export async function POST(req: NextRequest) {

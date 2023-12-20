@@ -1,7 +1,7 @@
-import { HOW_IT_WORKS_PATH } from 'constants/general';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { FC } from 'react';
+import { HOW_IT_WORKS_PATH } from 'constants/general';
 import styles from './styles/HowItWorksIntro.module.scss';
 
 export const HowItWorksIntro: FC = () => {

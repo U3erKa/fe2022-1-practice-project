@@ -1,6 +1,7 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
 import type { FC } from 'react';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/scss';
 import { Picture } from 'components/general';
 import {
   EXAMPLE_SLIDER,
@@ -10,7 +11,6 @@ import {
   MAIN_SLIDER,
 } from 'constants/carousel';
 import styles from './styles/SlideBar.module.scss';
-import 'swiper/scss';
 
 export type Props = {
   carouselType:

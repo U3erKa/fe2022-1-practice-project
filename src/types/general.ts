@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import type { LinkProps } from 'next/link';
+import type { ReactNode } from 'react';
 
 export type TextEntry = {
   id: string | number;

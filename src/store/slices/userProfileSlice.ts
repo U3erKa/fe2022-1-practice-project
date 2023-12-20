@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import { USER_INFO_MODE } from 'constants/general';
-
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { USER_INFO_MODE } from 'constants/general';
 import type { UserProfileState } from 'types/slices';
 
 const USER_PROFILE_SLICE_NAME = 'userProfile';

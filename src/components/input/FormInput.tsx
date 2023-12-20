@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { type DetailedHTMLProps, type InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
-import clsx from 'clsx';
 
 export type FormInputClasses = Partial<
   Record<

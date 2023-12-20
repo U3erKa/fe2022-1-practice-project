@@ -1,5 +1,5 @@
-import { Spinner } from 'components/general';
 import type { FC, ReactNode } from 'react';
+import { Spinner } from 'components/general';
 import styles from './styles/ContestContainer.module.scss';
 
 export type Props = {

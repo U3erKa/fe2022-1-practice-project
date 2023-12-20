@@ -1,8 +1,8 @@
+import { Select } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
-import { Select } from 'models';
-import handleError from 'utils/handleError';
 import ServerError from 'errors/ServerError';
+import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   try {

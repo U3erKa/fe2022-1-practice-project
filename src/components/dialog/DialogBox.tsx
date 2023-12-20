@@ -1,26 +1,26 @@
-import { type FC, type MouseEvent } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faSquarePlus,
+  faHeart as farFaHeart,
+} from '@fortawesome/free-regular-svg-icons';
 import {
   faCircleMinus,
   faUnlock,
   faUserLock,
   faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  faSquarePlus,
-  faHeart as farFaHeart,
-} from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { type FC, type MouseEvent } from 'react';
 import {
   ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   CATALOG_PREVIEW_CHAT_MODE,
   PUBLIC_URL,
 } from 'constants/general';
-import styles from './styles/DialogBox.module.scss';
 import { getShortTimeStr } from 'utils/functions';
 import type { ChatId, UserId } from 'types/api/_common';
-import type { ChatMode, MessagePreview } from 'types/chat';
 import type { GoToExtendedDialog, Interlocutor } from 'types/api/chat';
+import type { ChatMode, MessagePreview } from 'types/chat';
+import styles from './styles/DialogBox.module.scss';
 
 export type Props = {
   chatPreview: MessagePreview;

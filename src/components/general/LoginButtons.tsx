@@ -1,6 +1,5 @@
 import { useSelector } from 'hooks';
 import { Picture, ProfileNavBar } from 'components/general';
-import { getDays, getHours, getRemainingTime } from 'utils/functions';
 import {
   ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
@@ -8,6 +7,7 @@ import {
   STATIC_IMAGES_PATH,
 } from 'constants/general';
 import { PROFILE_NAVBAR } from 'constants/header';
+import { getDays, getHours, getRemainingTime } from 'utils/functions';
 import type { User } from 'types/api/user';
 import styles from './styles/LoginButtons.module.scss';
 

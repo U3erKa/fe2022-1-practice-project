@@ -1,11 +1,12 @@
 'use client';
+
+import { useDispatch } from 'hooks';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { useDispatch } from 'hooks';
-import { clearAuthError } from 'store/slices/authSlice';
-import { Logo } from 'components/general';
 import { LoginForm } from 'components/form';
+import { Logo } from 'components/general';
 import { PAGE, STATIC_IMAGES_PATH } from 'constants/general';
+import { clearAuthError } from 'store/slices/authSlice';
 import styles from './styles/page.module.scss';
 
 const LoginPage = () => {

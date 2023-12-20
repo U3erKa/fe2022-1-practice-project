@@ -4,18 +4,18 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import * as offerController from 'api/rest/offerController';
-import { clearContestStore } from './contestCreationSlice';
-import { changeProfileViewMode } from './userProfileSlice';
-import { updateUser } from './userSlice';
+import { PAGE, USER_INFO_MODE } from 'constants/general';
 import {
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import { PAGE, USER_INFO_MODE } from 'constants/general';
-import type { PaymentState } from 'types/slices';
 import type { WithNavigate } from 'types/_common';
 import type { CashOutParams } from 'types/api/offer';
+import type { PaymentState } from 'types/slices';
+import { clearContestStore } from './contestCreationSlice';
+import { changeProfileViewMode } from './userProfileSlice';
+import { updateUser } from './userSlice';
 
 const PAYMENT_SLICE_NAME = 'payment';
 

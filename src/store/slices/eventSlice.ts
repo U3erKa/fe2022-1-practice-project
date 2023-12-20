@@ -3,16 +3,16 @@ import {
   type PayloadAction,
   createSlice,
 } from '@reduxjs/toolkit';
+import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 import * as eventController from 'api/rest/eventController';
+import { timezoneOffsetInMs } from 'constants/general';
+import type { NewEvent } from 'utils/schemas';
 import {
   createExtraReducers,
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import { timezoneOffsetInMs } from 'constants/general';
-import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
-import type { NewEvent } from 'utils/schemas';
 import type {
   CreateEventResponse,
   EventState,

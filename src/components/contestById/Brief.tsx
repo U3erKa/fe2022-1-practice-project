@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'store';
+import { ContestForm, ContestInfo } from 'components/contest';
+import { Error } from 'components/general';
+import { changeEditContest } from 'store/slices/contestByIdSlice';
 import {
   clearContestUpdationStore,
   updateContest,
 } from 'store/slices/contestUpdationSlice';
-import { changeEditContest } from 'store/slices/contestByIdSlice';
-import { Error } from 'components/general';
-import { ContestForm, ContestInfo } from 'components/contest';
 import type { ContestInfo as _ContestInfo } from 'types/api/contest';
 import type { ContestData } from 'types/slices';
 import styles from './styles/Brief.module.scss';

@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { updateUser } from 'controllers/queries/userQueries';
 import { verifyAccessToken } from 'services/jwtService';
-import handleError from 'utils/handleError';
 import { uploadFile } from 'utils/backend';
+import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   try {

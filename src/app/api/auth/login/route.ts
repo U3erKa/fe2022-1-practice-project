@@ -1,10 +1,10 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { User } from 'models';
+import { type NextRequest, NextResponse } from 'next/server';
+import BadRequestError from 'errors/BadRequestError';
+import UserNotFoundError from 'errors/UserNotFoundError';
 import { createSession } from 'services/authService';
 import handleError from 'utils/handleError';
-import UserNotFoundError from 'errors/UserNotFoundError';
 import { LoginSchema } from 'utils/schemas';
-import BadRequestError from 'errors/BadRequestError';
 
 export async function POST(req: NextRequest) {
   try {

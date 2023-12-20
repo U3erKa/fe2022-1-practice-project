@@ -1,13 +1,13 @@
+import { Offer, Rating, sequelize } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
 import { Transaction } from 'sequelize';
-import { Offer, Rating, sequelize } from 'models';
+import { getNotificationController } from 'socketInit';
+import { CUSTOMER } from 'constants/general';
 import { createRating, updateRating } from 'controllers/queries/ratingQueries';
 import { updateUser } from 'controllers/queries/userQueries';
-import { verifyAccessToken } from 'services/jwtService';
-import { getNotificationController } from 'socketInit';
-import handleError from 'utils/handleError';
 import RightsError from 'errors/RightsError';
-import { CUSTOMER } from 'constants/general';
+import { verifyAccessToken } from 'services/jwtService';
+import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   const transaction = await sequelize.transaction({

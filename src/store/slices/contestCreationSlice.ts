@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SIMILAR_CHOISE } from 'constants/buttonGroup';
-
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { SIMILAR_CHOISE } from 'constants/buttonGroup';
 import type { SaveContestToStore } from 'types/api/contest';
 import type { ContestCreationState, NameMatchesDomain } from 'types/slices';
 

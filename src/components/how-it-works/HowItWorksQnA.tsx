@@ -1,7 +1,7 @@
-import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
-import styles from './styles/HowItWorksQnA.module.scss';
 import type { FC } from 'react';
+import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Questions } from './Questions';
+import styles from './styles/HowItWorksQnA.module.scss';
 
 export const HowItWorksQnA: FC = () => {
   const links: JSX.Element[] = [];

@@ -1,14 +1,14 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useDispatch, useSelector } from 'hooks';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'hooks';
-import { checkAuth, clearAuth } from 'store/slices/authSlice';
-import { FormInput } from 'components/input';
 import { Error } from 'components/general';
-import { type Login, LoginSchema } from 'utils/schemas';
-import { AUTH_MODE } from 'constants/general';
+import { FormInput } from 'components/input';
 import type { FormInputClasses } from 'components/input/FormInput';
+import { AUTH_MODE } from 'constants/general';
+import { checkAuth, clearAuth } from 'store/slices/authSlice';
+import { type Login, LoginSchema } from 'utils/schemas';
 import styles from './styles/LoginForm.module.scss';
 
 const formInputClasses = {

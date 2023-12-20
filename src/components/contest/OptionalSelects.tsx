@@ -1,8 +1,8 @@
+import { useSelector } from 'hooks';
 import { type FC } from 'react';
 import { type Control } from 'react-hook-form';
 import { Spinner } from 'components/general';
 import { FormInput, SelectInput } from 'components/input';
-import { useSelector } from 'hooks';
 import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type {
   ContestType,

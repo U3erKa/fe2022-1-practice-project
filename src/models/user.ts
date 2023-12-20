@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
@@ -17,7 +18,6 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
-import bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from 'constants/backend';
 import {
   ANONYM_IMAGE_NAME,

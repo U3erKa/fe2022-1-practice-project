@@ -1,5 +1,4 @@
 import http from 'api/interceptor';
-
 import type {
   ChangeChatBlockParams,
   ChangeChatBlockResponse,

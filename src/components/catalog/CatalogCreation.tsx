@@ -1,18 +1,18 @@
-import { useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
-import {
-  changeShowAddChatToCatalogMenu,
-  changeTypeOfChatAdding,
-  getCatalogList,
-} from 'store/slices/chatSlice';
+import { useEffect } from 'react';
 import { AddToCatalog, CreateCatalog } from 'components/catalog';
 import {
   ADD_CHAT_TO_OLD_CATALOG,
   CREATE_NEW_CATALOG_AND_ADD_CHAT,
 } from 'constants/general';
+import {
+  changeShowAddChatToCatalogMenu,
+  changeTypeOfChatAdding,
+  getCatalogList,
+} from 'store/slices/chatSlice';
 import styles from './styles/CatalogCreation.module.scss';
 
 const CatalogCreation = () => {

@@ -1,5 +1,4 @@
 import { useSelector } from 'hooks';
-
 import { Chat } from 'components/chat';
 
 const ChatContainer = () => {

@@ -1,4 +1,3 @@
-import { OFFER_STATUS_PENDING } from 'constants/general';
 import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
@@ -15,6 +14,7 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
+import { OFFER_STATUS_PENDING } from 'constants/general';
 import type { Contest, DB, Offer, Rating, User } from 'types/models';
 
 export default function Offer(sequelize: Sequelize) {

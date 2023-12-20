@@ -7,30 +7,14 @@ import { isEqual } from 'radash';
 import * as catalogController from 'api/rest/catalogController';
 import * as chatController from 'api/rest/chatController';
 import {
+  ADD_CHAT_TO_OLD_CATALOG,
+  NORMAL_PREVIEW_CHAT_MODE,
+} from 'constants/general';
+import {
   createExtraReducers,
   decorateAsyncThunk,
   rejectedReducer,
 } from 'utils/store';
-import {
-  ADD_CHAT_TO_OLD_CATALOG,
-  NORMAL_PREVIEW_CHAT_MODE,
-} from 'constants/general';
-
-import type { ChatState } from 'types/slices';
-
-import type {
-  AddMessage,
-  ChangeChatBlockParams,
-  ChangeChatBlockResponse,
-  ChangeChatFavoriteParams,
-  ChangeChatFavoriteResponse,
-  GetDialogParams,
-  GetDialogResponse,
-  GoToExtendedDialog,
-  NewMessageParams,
-  NewMessageResponse,
-} from 'types/api/chat';
-
 import type {
   AddChatToCatalogParams,
   AddChatToCatalogResponse,
@@ -44,13 +28,25 @@ import type {
   RemoveChatFromCatalogParams,
   RemoveChatFromCatalogResponse,
 } from 'types/api/catalog';
-
+import type {
+  AddMessage,
+  ChangeChatBlockParams,
+  ChangeChatBlockResponse,
+  ChangeChatFavoriteParams,
+  ChangeChatFavoriteResponse,
+  GetDialogParams,
+  GetDialogResponse,
+  GoToExtendedDialog,
+  NewMessageParams,
+  NewMessageResponse,
+} from 'types/api/chat';
 import type {
   Catalog,
   CatalogCreationMode,
   ChatData,
   ChatMode,
 } from 'types/chat';
+import type { ChatState } from 'types/slices';
 
 const CHAT_SLICE_NAME = 'chat';
 

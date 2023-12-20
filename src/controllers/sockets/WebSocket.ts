@@ -1,9 +1,9 @@
+import type { Server, Socket } from 'socket.io';
 import {
   SOCKET_CONNECTION,
   SOCKET_SUBSCRIBE,
   SOCKET_UNSUBSCRIBE,
 } from 'constants/general';
-import type { Server, Socket } from 'socket.io';
 
 class WebSocket {
   // @ts-expect-error

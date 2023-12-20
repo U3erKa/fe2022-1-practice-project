@@ -1,16 +1,16 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import type { Replacement } from '@react-input/mask';
+import { useDispatch } from 'hooks';
 import { usePathname, useRouter } from 'next/navigation';
 import { type FC } from 'react';
-import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch } from 'hooks';
-import { changeFocusOnCard } from 'store/slices/paymentSlice';
-import { PayInput } from 'components/input';
-import { CashoutSchema, type Payment, PaymentSchema } from 'utils/schemas';
-import { PAGE } from 'constants/general';
-import type { CardField } from 'types/api/offer';
 import 'react-credit-cards-2/dist/es/styles.scss';
+import { useForm } from 'react-hook-form';
+import { PayInput } from 'components/input';
+import { PAGE } from 'constants/general';
+import { changeFocusOnCard } from 'store/slices/paymentSlice';
+import { CashoutSchema, type Payment, PaymentSchema } from 'utils/schemas';
+import type { CardField } from 'types/api/offer';
 import styles from './styles/PayForm.module.scss';
 
 export type Props = {

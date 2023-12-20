@@ -1,11 +1,11 @@
 'use client';
-import Link from 'next/link';
 
 import { useSelector } from 'hooks';
+import Link from 'next/link';
 import { Logo, Picture, Spinner } from 'components/general';
-import { LoginButtons, NavList } from '.';
 import { CUSTOMER, PAGE, STATIC_IMAGES_PATH } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
+import { LoginButtons, NavList } from '.';
 import styles from './styles/Header.module.scss';
 
 const Header = () => {

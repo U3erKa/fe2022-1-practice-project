@@ -1,5 +1,4 @@
 import type { Socket } from 'socket.io';
-import WebSocket from './WebSocket';
 import {
   CHANGE_BLOCK_STATUS,
   NEW_MESSAGE,
@@ -8,6 +7,7 @@ import {
 } from 'constants/general';
 import type { Conversation } from 'types/models';
 import type { WebSocketMessage } from 'types/websocket';
+import WebSocket from './WebSocket';
 
 class ChatController extends WebSocket {
   anotherSubscribes(socket: Socket) {

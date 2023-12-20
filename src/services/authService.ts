@@ -1,6 +1,6 @@
-import { generateTokenPair } from './jwtService';
 import { RefreshToken } from 'models';
 import type { User, RefreshToken as _RefreshToken } from 'types/models';
+import { generateTokenPair } from './jwtService';
 
 export const createSession = async (user: User) => {
   const tokenPair = await generateTokenPair({

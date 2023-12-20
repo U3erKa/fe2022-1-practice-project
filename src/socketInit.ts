@@ -1,8 +1,8 @@
+import type http from 'http';
 import { Server } from 'socket.io';
+import type { ServerOptions } from 'socket.io';
 import ChatController from './controllers/sockets/ChatController';
 import NotificationController from './controllers/sockets/NotificationController';
-import type http from 'http';
-import type { ServerOptions } from 'socket.io';
 
 let notificationController: NotificationController;
 let chatController: ChatController;

@@ -1,17 +1,12 @@
-import { type FC, type MouseEvent } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as farFaHeart } from '@fortawesome/free-regular-svg-icons';
 import {
   faUnlock,
   faUserLock,
   faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farFaHeart } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'hooks';
-import {
-  backToDialogList,
-  changeChatBlock,
-  changeChatFavorite,
-} from 'store/slices/chatSlice';
+import { type FC, type MouseEvent } from 'react';
 import { Picture } from 'components/general';
 import {
   ANONYM_IMAGE_NAME,
@@ -19,13 +14,18 @@ import {
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
+import {
+  backToDialogList,
+  changeChatBlock,
+  changeChatFavorite,
+} from 'store/slices/chatSlice';
+import type { UserId } from 'types/api/_common';
 import type {
   ChangeChatBlockParams,
   ChangeChatFavoriteParams,
 } from 'types/api/chat';
-import type { UserId } from 'types/api/_common';
-import styles from './styles/ChatHeader.module.scss';
 import type { ChatData } from 'types/chat';
+import styles from './styles/ChatHeader.module.scss';
 
 export type Props = {
   userId: UserId;

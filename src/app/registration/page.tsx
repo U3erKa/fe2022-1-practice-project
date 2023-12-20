@@ -1,16 +1,17 @@
 'use client';
+
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch } from 'store';
-import { clearAuthError } from 'store/slices/authSlice';
-import { Logo } from 'components/general';
 import { RegistrationForm } from 'components/form';
+import { Logo } from 'components/general';
 import { RegistrationArticles } from 'components/registration';
 import { PAGE, STATIC_IMAGES_PATH } from 'constants/general';
 import {
   REGISTRATION_ARTICLES_LEFT,
   REGISTRATION_ARTICLES_RIGHT,
 } from 'constants/registration';
+import { clearAuthError } from 'store/slices/authSlice';
 import styles from './styles/page.module.scss';
 
 const RegistrationPage = () => {

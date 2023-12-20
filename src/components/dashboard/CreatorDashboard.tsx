@@ -1,19 +1,19 @@
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
 import { isEqual } from 'radash';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'store';
+import { ContestBox } from 'components/contest';
+import { ItemsContainer, TryAgain } from 'components/general';
+import { CREATOR } from 'constants/general';
 import {
   clearContestsList,
   getContests,
   setNewCreatorFilter,
 } from 'store/slices/contestsSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-import { ItemsContainer, TryAgain } from 'components/general';
-import { ContestBox } from 'components/contest';
-import { CreatorFilter } from './CreatorFilter';
-import { CREATOR } from 'constants/general';
-import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import type { GetActiveContestsParams } from 'types/api/contest';
+import type { CreatorFilter as _CreatorFilter } from 'types/slices';
+import { CreatorFilter } from './CreatorFilter';
 import styles from './styles/CreatorDashboard.module.scss';
 
 const CreatorDashboard = () => {

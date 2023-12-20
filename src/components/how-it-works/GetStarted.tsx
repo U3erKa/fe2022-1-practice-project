@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import styles from './styles/GetStarted.module.scss';
 import type { FC } from 'react';
 import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import styles from './styles/GetStarted.module.scss';
 
 export const GetStarted: FC = () => {
   return (

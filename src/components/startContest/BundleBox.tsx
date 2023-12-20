@@ -1,5 +1,5 @@
-import type { FC } from 'react';
 import clsx from 'clsx';
+import type { FC } from 'react';
 import { STATIC_IMAGES_PATH } from 'constants/general';
 import styles from './styles/BundleBox.module.scss';
 

@@ -1,9 +1,10 @@
 'use client';
-import { fork } from 'radash';
+
 import { useForceUpdate } from 'hooks';
+import { fork } from 'radash';
 import { useSelector } from 'store';
-import { Footer, Header } from 'components/general';
 import { CreateEvent, EventsList } from 'components/events';
+import { Footer, Header } from 'components/general';
 import { getRemainingTime } from 'utils/functions';
 
 export default function EventsPage() {

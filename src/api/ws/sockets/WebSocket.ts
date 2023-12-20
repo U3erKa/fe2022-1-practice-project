@@ -1,7 +1,6 @@
 import socketIoClient from 'socket.io-client';
-
-import { BASE_URL } from 'constants/general';
 import type { AppDispatch, default as store } from 'store';
+import { BASE_URL } from 'constants/general';
 
 class WebSocket {
   socket: ReturnType<typeof socketIoClient>;

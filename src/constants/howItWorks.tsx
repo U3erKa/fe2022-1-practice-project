@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { uniqueId } from 'utils/functions';
 import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import { uniqueId } from 'utils/functions';
 import type { QNAItems } from 'types/general';
 
 const LINK_ID_PREFIX = 'link';

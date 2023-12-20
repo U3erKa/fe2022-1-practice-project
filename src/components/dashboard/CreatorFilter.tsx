@@ -1,10 +1,10 @@
-import { useRouter } from 'next/navigation';
-import { type ChangeEventHandler, type FC } from 'react';
-import { select } from 'radash';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import { select } from 'radash';
+import { type ChangeEventHandler, type FC } from 'react';
 import { useDispatch, useSelector } from 'store';
-import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import { CONTEST_TYPES, PAGE } from 'constants/general';
+import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import type { Industry } from 'types/contest';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from './styles/CreatorDashboard.module.scss';

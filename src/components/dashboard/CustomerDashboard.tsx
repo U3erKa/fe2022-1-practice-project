@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'store';
-import {
-  clearContestsList,
-  getContests,
-  setNewCustomerFilter,
-} from 'store/slices/contestsSlice';
-import { ItemsContainer, TryAgain } from 'components/general';
 import { ContestBox } from 'components/contest';
-import { CustomFilter } from './CustomFilter';
+import { ItemsContainer, TryAgain } from 'components/general';
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
   CONTEST_STATUS_PENDING,
   CUSTOMER,
 } from 'constants/general';
+import {
+  clearContestsList,
+  getContests,
+  setNewCustomerFilter,
+} from 'store/slices/contestsSlice';
 import type { Status } from 'types/contest';
+import { CustomFilter } from './CustomFilter';
 import styles from './styles/CustomerDashboard.module.scss';
 
 const buttons: { name: string; filter: Status }[] = [

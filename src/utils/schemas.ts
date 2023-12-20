@@ -1,5 +1,5 @@
-import { z } from 'zod';
 import valid from 'card-validator';
+import { z } from 'zod';
 import {
   CREATOR,
   CUSTOMER,

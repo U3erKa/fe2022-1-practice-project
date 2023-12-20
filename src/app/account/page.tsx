@@ -1,12 +1,13 @@
 'use client';
+
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'store';
-import { changeProfileViewMode } from 'store/slices/userProfileSlice';
-import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
-import { Error, Header } from 'components/general';
-import { PayForm } from 'components/form';
 import { UserInfo } from 'components/account';
+import { PayForm } from 'components/form';
+import { Error, Header } from 'components/general';
 import { CASHOUT_MODE, CREATOR, USER_INFO_MODE } from 'constants/general';
+import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
+import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import type { CashOutParams } from 'types/api/offer';
 import styles from './styles/page.module.scss';
 

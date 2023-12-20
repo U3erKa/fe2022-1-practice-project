@@ -1,7 +1,5 @@
 import { toast } from 'react-toastify';
-import WebSocket from './WebSocket';
 import { Notification } from 'components/general';
-import type { ChatId } from 'types/api/_common';
 import {
   NOTIFICATION_CHANGE_MARK,
   NOTIFICATION_CHANGE_OFFER_STATUS,
@@ -9,6 +7,8 @@ import {
   SOCKET_SUBSCRIBE,
   SOCKET_UNSUBSCRIBE,
 } from 'constants/general';
+import type { ChatId } from 'types/api/_common';
+import WebSocket from './WebSocket';
 
 class NotificationSocket extends WebSocket {
   anotherSubscribes = () => {

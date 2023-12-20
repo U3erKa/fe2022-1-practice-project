@@ -1,25 +1,25 @@
-import { type FC, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
+import { type FC, type MouseEvent } from 'react';
+import { DialogBox } from 'components/dialog';
+import {
+  BLOCKED_PREVIEW_CHAT_MODE,
+  CATALOG_PREVIEW_CHAT_MODE,
+  FAVORITE_PREVIEW_CHAT_MODE,
+} from 'constants/general';
 import {
   changeChatBlock,
   changeChatFavorite,
   changeShowAddChatToCatalogMenu,
   goToExpandedDialog,
 } from 'store/slices/chatSlice';
-import { DialogBox } from 'components/dialog';
 import { uniqueId } from 'utils/functions';
-import {
-  BLOCKED_PREVIEW_CHAT_MODE,
-  CATALOG_PREVIEW_CHAT_MODE,
-  FAVORITE_PREVIEW_CHAT_MODE,
-} from 'constants/general';
-import type { MessagePreview } from 'types/chat';
+import type { ChatId, UserId } from 'types/api/_common';
 import type {
   ChangeChatBlockParams,
   ChangeChatFavoriteParams,
   GoToExtendedDialog,
 } from 'types/api/chat';
-import type { ChatId, UserId } from 'types/api/_common';
+import type { MessagePreview } from 'types/chat';
 import styles from './styles/DialogList.module.scss';
 
 export type Props = {

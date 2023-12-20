@@ -1,5 +1,5 @@
-import { type ChangeEventHandler, type FC } from 'react';
 import clsx from 'clsx';
+import { type ChangeEventHandler, type FC } from 'react';
 import {
   type Control,
   type UseFormRegister,

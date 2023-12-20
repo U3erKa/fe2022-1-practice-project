@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { EventListItems } from '.';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { CreateEventResponse } from 'types/api/event';
+import { EventListItems } from '.';
 import styles from './styles/EventsList.module.scss';
 
 export type Props = {

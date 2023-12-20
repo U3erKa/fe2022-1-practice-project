@@ -1,12 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
 import type {
   ActionReducerMapBuilder,
   AsyncThunkPayloadCreator,
   CaseReducer,
   PayloadAction,
 } from '@reduxjs/toolkit';
-
 import type { DefaultState, ExtraReducersCreator } from 'types/redux';
 
 export const pendingReducer: CaseReducer<DefaultState> = (state) => {

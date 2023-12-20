@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
-import { changeChatShow, getPreviewChat } from 'store/slices/chatSlice';
+import { useEffect } from 'react';
 import { chatController } from 'api/ws/socketController';
 import { CatalogCreation } from 'components/catalog';
 import { ChatError, ChatList } from 'components/chat';
 import { Dialog } from 'components/dialog';
+import { changeChatShow, getPreviewChat } from 'store/slices/chatSlice';
 import styles from './styles/Chat.module.scss';
 
 const Chat = () => {

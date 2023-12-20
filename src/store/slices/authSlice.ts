@@ -1,16 +1,13 @@
 import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
-
 import * as authController from 'api/rest/authController';
 import { controller } from 'api/ws/socketController';
-
+import { AUTH_MODE, PAGE } from 'constants/general';
 import {
   decorateAsyncThunk,
   fulfilledReducer,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import { AUTH_MODE, PAGE } from 'constants/general';
-
 import type { CheckAuth } from 'types/auth';
 import type { AuthState } from 'types/slices';
 

@@ -1,19 +1,19 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { Contest } from 'models';
-import { createOffer } from 'controllers/queries/contestQueries';
-import { verifyAccessToken } from 'services/jwtService';
+import { type NextRequest, NextResponse } from 'next/server';
 import { getNotificationController } from 'socketInit';
-import { uploadFile } from 'utils/backend';
-import { SetNewOfferSchema } from 'utils/schemas';
-import handleError from 'utils/handleError';
-import NotFoundError from 'errors/NotFoundError';
-import RightsError from 'errors/RightsError';
-import BadRequestError from 'errors/BadRequestError';
 import {
   CONTEST_STATUS_ACTIVE,
   CREATOR,
   LOGO_CONTEST,
 } from 'constants/general';
+import { createOffer } from 'controllers/queries/contestQueries';
+import BadRequestError from 'errors/BadRequestError';
+import NotFoundError from 'errors/NotFoundError';
+import RightsError from 'errors/RightsError';
+import { verifyAccessToken } from 'services/jwtService';
+import { uploadFile } from 'utils/backend';
+import handleError from 'utils/handleError';
+import { SetNewOfferSchema } from 'utils/schemas';
 
 export async function POST(req: NextRequest) {
   try {

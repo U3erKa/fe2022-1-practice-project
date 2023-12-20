@@ -1,12 +1,6 @@
+import { Contest, Offer, Rating, User } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
-import { Contest, Offer, Rating, User } from 'models';
-import { updateContest } from 'controllers/queries/contestQueries';
-import { verifyAccessToken } from 'services/jwtService';
-import handleError from 'utils/handleError';
-import NotFoundError from 'errors/NotFoundError';
-import RightsError from 'errors/RightsError';
-import { uploadFile } from 'utils/backend';
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
@@ -15,6 +9,12 @@ import {
   OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
 } from 'constants/general';
+import { updateContest } from 'controllers/queries/contestQueries';
+import NotFoundError from 'errors/NotFoundError';
+import RightsError from 'errors/RightsError';
+import { verifyAccessToken } from 'services/jwtService';
+import { uploadFile } from 'utils/backend';
+import handleError from 'utils/handleError';
 import type { Context } from 'types/api/_common';
 import type { Offer as _Offer, Rating as _Rating } from 'types/models';
 

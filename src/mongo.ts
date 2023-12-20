@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import configObj from './config/mongo.json' assert { type: 'json' };
+
 const env = process.env.NODE_ENV || 'development';
 const config = configObj[env];
 /*

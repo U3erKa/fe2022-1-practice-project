@@ -11,9 +11,6 @@ import type {
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
-
-import type { Card, User } from './user';
-
 import type {
   ContestId,
   CreatorId,
@@ -26,6 +23,7 @@ import type {
   WithPagination,
   WithUUID,
 } from './_common';
+import type { Card, User } from './user';
 
 export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
   (

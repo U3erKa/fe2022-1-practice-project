@@ -1,16 +1,17 @@
 'use client';
+
 import { type FC, useEffect } from 'react';
-import LightBox from 'yet-another-react-lightbox';
 import { useDispatch, useSelector } from 'store';
+import LightBox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+import { ContestPageContents } from 'components/contestById';
+import { Header } from 'components/general';
+import { PUBLIC_URL } from 'constants/general';
 import {
   changeEditContest,
   changeShowImage,
   getContestById,
 } from 'store/slices/contestByIdSlice';
-import { ContestPageContents } from 'components/contestById';
-import { Header } from 'components/general';
-import { PUBLIC_URL } from 'constants/general';
-import 'yet-another-react-lightbox/styles.css';
 
 export type Props = {
   params: { id: number };

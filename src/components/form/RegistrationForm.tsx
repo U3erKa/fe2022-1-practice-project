@@ -1,17 +1,17 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useDispatch, useSelector } from 'hooks';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
-import { checkAuth, clearAuth } from 'store/slices/authSlice';
 import { Error } from 'components/general';
 import {
   AgreeTermOfServiceInput,
   FormInput,
   RoleInput,
 } from 'components/input';
-import { type Registration, RegistrationSchema } from 'utils/schemas';
 import { AUTH_MODE, CREATOR, CUSTOMER } from 'constants/general';
+import { checkAuth, clearAuth } from 'store/slices/authSlice';
+import { type Registration, RegistrationSchema } from 'utils/schemas';
 import styles from './styles/RegistrationForm.module.scss';
 
 const formInputClasses = {

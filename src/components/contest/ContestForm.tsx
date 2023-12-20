@@ -1,27 +1,27 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useDispatch, useSelector } from 'hooks';
 import { useRouter } from 'next/navigation';
 import { type FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
-import { saveContestToStore } from 'store/slices/contestCreationSlice';
-import { getDataForContest } from 'store/slices/dataForContestSlice';
-import { Spinner, TryAgain } from 'components/general';
 import { OptionalSelects } from 'components/contest';
+import { Spinner, TryAgain } from 'components/general';
 import {
   FieldFileInput,
   FormInput,
   FormTextArea,
   SelectInput,
 } from 'components/input';
-import { type Contest, ContestSchema } from 'utils/schemas';
 import {
   LOGO_CONTEST,
   NAME_CONTEST,
   PAGE,
   TAGLINE_CONTEST,
 } from 'constants/general';
-import type { ContestType } from 'types/contest';
+import { saveContestToStore } from 'store/slices/contestCreationSlice';
+import { getDataForContest } from 'store/slices/dataForContestSlice';
+import { type Contest, ContestSchema } from 'utils/schemas';
 import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
+import type { ContestType } from 'types/contest';
 import styles from './styles/ContestForm.module.scss';
 
 const variableOptions = {

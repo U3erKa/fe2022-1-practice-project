@@ -5,7 +5,6 @@ import type {
   NAME_CONTEST,
   TAGLINE_CONTEST,
 } from 'constants/general';
-
 import type {
   BrandStyle,
   Contest,
@@ -14,11 +13,7 @@ import type {
   TypeOfName,
   TypeOfTagline,
 } from 'types/contest';
-
 import type { CreatorFilter } from 'types/slices';
-import type { Rating, WithOfferStatus } from './offer';
-import type { UserInOffer } from './user';
-
 import type {
   ContestId,
   OfferId,
@@ -26,6 +21,8 @@ import type {
   WithId,
   WithPagination,
 } from './_common';
+import type { Rating, WithOfferStatus } from './offer';
+import type { UserInOffer } from './user';
 
 export type GetContestsThunk =
   | {

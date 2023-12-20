@@ -1,8 +1,8 @@
 import { useSelector } from 'store';
 import { Spinner } from 'components/general';
+import type { CreateEventResponse } from 'types/api/event';
 import { Event } from '.';
 import styles from './styles/EventListItems.module.scss';
-import type { CreateEventResponse } from 'types/api/event';
 
 export type Props = {
   events: CreateEventResponse[];

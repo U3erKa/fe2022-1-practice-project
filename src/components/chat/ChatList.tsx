@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'hooks';
-import { setPreviewChatMode } from 'store/slices/chatSlice';
 import { CatalogListContainer, CatalogListHeader } from 'components/catalog';
 import { DialogList } from 'components/dialog';
+import { Picture } from 'components/general';
+import { dialogButtons } from 'constants/chat';
 import {
   CATALOG_PREVIEW_CHAT_MODE,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-import { dialogButtons } from 'constants/chat';
+import { setPreviewChatMode } from 'store/slices/chatSlice';
 import styles from './styles/ChatList.module.scss';
-import { Picture } from 'components/general';
 
 const ChatList = () => {
   const {

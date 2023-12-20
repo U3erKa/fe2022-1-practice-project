@@ -1,16 +1,12 @@
 'use client';
+
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'hooks';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'hooks';
 import { Footer, Header, Picture, Spinner } from 'components/general';
 import { SlideBar } from 'components/home';
-import {
-  HEADER_ANIMATION_TEXT,
-  PAGE,
-  STATIC_IMAGES_PATH,
-} from 'constants/general';
 import {
   EXAMPLE_SLIDER,
   EXAMPLE_SLIDER_IMAGES,
@@ -19,6 +15,11 @@ import {
   MAIN_SLIDER,
   MAIN_SLIDER_IMAGES,
 } from 'constants/carousel';
+import {
+  HEADER_ANIMATION_TEXT,
+  PAGE,
+  STATIC_IMAGES_PATH,
+} from 'constants/general';
 import styles from './styles/page.module.scss';
 
 const Home = () => {

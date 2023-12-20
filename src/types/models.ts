@@ -1,20 +1,20 @@
+import type { Types } from 'mongoose';
 import type { Attributes, Model, Sequelize } from 'sequelize';
 import type { Col, Fn, Literal } from 'sequelize/types/utils';
-import type { Types } from 'mongoose';
 import type _Bank from 'models/bank';
 import type _Catalog from 'models/catalog';
 import type _Contest from 'models/contest';
-import type _Event from 'models/event';
 import type _Conversation from 'models/conversation';
+import type _Event from 'models/event';
 import type _Message from 'models/message';
+import type __Catalog from 'models/mongoModels/Catalog';
+import type __Conversation from 'models/mongoModels/Conversation';
+import type __Message from 'models/mongoModels/Message';
 import type _Offer from 'models/offer';
 import type _Rating from 'models/rating';
 import type _RefreshToken from 'models/refreshToken';
 import type _Select from 'models/select';
 import type _User from 'models/user';
-import type __Catalog from 'models/mongoModels/Catalog';
-import type __Conversation from 'models/mongoModels/Conversation';
-import type __Message from 'models/mongoModels/Message';
 import type { WithTimeStamps } from '.';
 
 export interface DB {

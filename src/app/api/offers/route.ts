@@ -1,10 +1,6 @@
+import { Contest, Offer, User } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
 import { type Attributes, Op, type WhereOptions } from 'sequelize';
-import { Contest, Offer, User } from 'models';
-import { verifyAccessToken } from 'services/jwtService';
-import RightsError from 'errors/RightsError';
-import NotFoundError from 'errors/NotFoundError';
-import handleError from 'utils/handleError';
 import {
   MODERATOR,
   OFFER_STATUS_APPROVED,
@@ -13,6 +9,10 @@ import {
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
 } from 'constants/general';
+import NotFoundError from 'errors/NotFoundError';
+import RightsError from 'errors/RightsError';
+import { verifyAccessToken } from 'services/jwtService';
+import handleError from 'utils/handleError';
 import type { Contest as _Contest, Offer as _Offer } from 'types/models';
 
 export async function GET(req: NextRequest) {

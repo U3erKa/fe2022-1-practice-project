@@ -1,7 +1,7 @@
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
 import styles from './styles/ContactUs.module.scss';
 

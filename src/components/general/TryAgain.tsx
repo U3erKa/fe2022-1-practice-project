@@ -1,6 +1,6 @@
-import { type FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { type FC } from 'react';
 import styles from './styles/TryAgain.module.scss';
 
 export type Props = {

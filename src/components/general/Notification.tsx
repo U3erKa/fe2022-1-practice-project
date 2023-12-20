@@ -1,5 +1,4 @@
 import Link from 'next/link';
-
 import styles from './styles/Notification.module.scss';
 
 export type Props = {

@@ -1,6 +1,6 @@
-import { type FC, type MouseEvent } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { type FC, type MouseEvent } from 'react';
 import type { CatalogId } from 'types/api/_common';
 import type { Catalog as _Catalog } from 'types/chat';
 import styles from './styles/Catalog.module.scss';

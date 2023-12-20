@@ -1,5 +1,7 @@
-import { Sequelize } from 'sequelize';
 import pg from 'pg';
+import { Sequelize } from 'sequelize';
+import { POSTGRES_DB_STRING } from 'constants/backend';
+import type { DB } from 'types/models';
 import _Bank from './bank';
 import _Catalog from './catalog';
 import _Contest from './contest';
@@ -11,8 +13,6 @@ import _Rating from './rating';
 import _RefreshToken from './refreshToken';
 import _Select from './select';
 import _User from './user';
-import { POSTGRES_DB_STRING } from 'constants/backend';
-import type { DB } from 'types/models';
 
 const db = {} as DB;
 export const sequelize = new Sequelize(POSTGRES_DB_STRING, {

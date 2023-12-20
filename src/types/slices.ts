@@ -1,3 +1,13 @@
+import type {
+  EXACT_CHOISE,
+  NAME_ONLY_CHOISE,
+  SIMILAR_CHOISE,
+} from 'constants/buttonGroup';
+import type {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 import type { ChatId, ContestId, WithId } from './api/_common';
 import type { Interlocutor, Message } from './api/chat';
 import type {
@@ -17,16 +27,6 @@ import type {
   MessagePreview,
 } from './chat';
 import type { Contest, Industry, Status } from './contest';
-import type {
-  LOGO_CONTEST,
-  NAME_CONTEST,
-  TAGLINE_CONTEST,
-} from 'constants/general';
-import type {
-  EXACT_CHOISE,
-  NAME_ONLY_CHOISE,
-  SIMILAR_CHOISE,
-} from 'constants/buttonGroup';
 
 export type AuthState = WithFetch;
 

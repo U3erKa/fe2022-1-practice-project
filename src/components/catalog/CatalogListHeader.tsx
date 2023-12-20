@@ -1,14 +1,14 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
+import { useForm } from 'react-hook-form';
+import { FormInput } from 'components/input';
 import {
   changeCatalogName,
   changeRenameCatalogMode,
   changeShowModeCatalog,
 } from 'store/slices/chatSlice';
-import { FormInput } from 'components/input';
 import { CatalogSchema } from 'utils/schemas';
 import type { Catalog } from 'types/chat';
 import styles from './styles/CatalogHeader.module.scss';

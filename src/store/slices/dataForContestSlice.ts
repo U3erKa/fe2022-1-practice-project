@@ -3,11 +3,10 @@ import {
   type PayloadAction,
   createSlice,
 } from '@reduxjs/toolkit';
-
 import * as contestController from 'api/rest/contestController';
+import { decorateAsyncThunk, rejectedReducer } from 'utils/store';
 import type { DataForContest, DataForContestParams } from 'types/api/contest';
 import type { DataForContestState } from 'types/slices';
-import { decorateAsyncThunk, rejectedReducer } from 'utils/store';
 
 const DATA_FOR_CONTEST_SLICE_NAME = 'dataForContest';
 

@@ -1,4 +1,3 @@
-import type { JWT, UserId, WithId } from './_common';
 import type {
   CASHOUT_MODE,
   CREATOR,
@@ -6,6 +5,7 @@ import type {
   MODERATOR,
   USER_INFO_MODE,
 } from 'constants/general';
+import type { JWT, UserId, WithId } from './_common';
 
 export type UpdateUserResponse = UserWithoutPassword;
 

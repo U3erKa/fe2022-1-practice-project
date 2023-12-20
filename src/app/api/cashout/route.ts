@@ -1,17 +1,17 @@
+import { sequelize } from 'models';
 import { NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
-import { sequelize } from 'models';
-import { updateBankBalance } from 'controllers/queries/bankQueries';
-import { updateUser } from 'controllers/queries/userQueries';
-import { verifyAccessToken } from 'services/jwtService';
-import handleError from 'utils/handleError';
-import RightsError from 'errors/RightsError';
-import { CREATOR } from 'constants/general';
 import {
   SQUADHELP_BANK_CVC,
   SQUADHELP_BANK_EXPIRY,
   SQUADHELP_BANK_NUMBER,
 } from 'constants/backend';
+import { CREATOR } from 'constants/general';
+import { updateBankBalance } from 'controllers/queries/bankQueries';
+import { updateUser } from 'controllers/queries/userQueries';
+import RightsError from 'errors/RightsError';
+import { verifyAccessToken } from 'services/jwtService';
+import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   const transaction = await sequelize.transaction();

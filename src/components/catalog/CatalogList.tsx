@@ -1,10 +1,10 @@
-import { type FC, type MouseEvent } from 'react';
 import { useDispatch } from 'hooks';
-import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
+import { type FC, type MouseEvent } from 'react';
 import { Catalog } from 'components/catalog';
-import type { Catalog as _Catalog } from 'types/chat';
-import type { CatalogId } from 'types/api/_common';
 import styles from 'components/dialog/styles/DialogList.module.scss';
+import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
+import type { CatalogId } from 'types/api/_common';
+import type { Catalog as _Catalog } from 'types/chat';
 
 export type Props = {
   catalogList: _Catalog[];

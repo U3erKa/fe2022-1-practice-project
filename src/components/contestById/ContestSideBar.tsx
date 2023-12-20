@@ -1,13 +1,13 @@
+import type { FC } from 'react';
 import { useSelector } from 'store';
 import { Picture } from 'components/general';
-import { getLongTimeStr } from 'utils/functions';
 import {
   ANONYM_IMAGE_NAME,
   ANONYM_IMAGE_PATH,
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-import type { FC } from 'react';
+import { getLongTimeStr } from 'utils/functions';
 import type { ContestData } from 'types/slices';
 import styles from './styles/ContestSideBar.module.scss';
 

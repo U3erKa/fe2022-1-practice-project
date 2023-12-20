@@ -1,4 +1,3 @@
-import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import { DataTypes, Model } from 'sequelize';
 import type {
   Association,
@@ -22,6 +21,7 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
+import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type { Contest, DB, Offer, User } from 'types/models';
 
 export default function Contest(sequelize: Sequelize) {

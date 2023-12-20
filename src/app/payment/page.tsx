@@ -1,13 +1,14 @@
 'use client';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { isEmpty } from 'radash';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'store';
-import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
-import { Error, Logo } from 'components/general';
 import { PayForm } from 'components/form';
+import { Error, Logo } from 'components/general';
 import { PAGE } from 'constants/general';
+import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
 import { type Payment } from 'utils/schemas';
 import styles from './styles/page.module.scss';
 

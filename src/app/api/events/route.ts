@@ -1,9 +1,9 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { Event, User } from 'models';
+import { type NextRequest, NextResponse } from 'next/server';
+import BadRequestError from 'errors/BadRequestError';
+import NotFoundError from 'errors/NotFoundError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
-import NotFoundError from 'errors/NotFoundError';
-import BadRequestError from 'errors/BadRequestError';
 import { NewEventSchema } from 'utils/schemas';
 
 export async function GET(req: NextRequest) {

@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-
 import type { FC } from 'react';
 import type { TextEntry as TextEntryT } from 'types/general';
 

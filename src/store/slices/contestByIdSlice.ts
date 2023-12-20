@@ -3,14 +3,8 @@ import {
   type PayloadAction,
   createSlice,
 } from '@reduxjs/toolkit';
-import * as offerController from 'api/rest/offerController';
 import * as contestController from 'api/rest/contestController';
-import {
-  createExtraReducers,
-  decorateAsyncThunk,
-  pendingReducer,
-  rejectedReducer,
-} from 'utils/store';
+import * as offerController from 'api/rest/offerController';
 import {
   OFFER_STATUS_APPROVED,
   OFFER_STATUS_DISCARDED,
@@ -18,6 +12,12 @@ import {
   OFFER_STATUS_WON,
 } from 'constants/general';
 import { addNewItems } from 'utils/functions';
+import {
+  createExtraReducers,
+  decorateAsyncThunk,
+  pendingReducer,
+  rejectedReducer,
+} from 'utils/store';
 import type { GetContestParams, GetContestResponse } from 'types/api/contest';
 import type {
   ChangeMarkParams,

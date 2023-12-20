@@ -1,9 +1,10 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
 import { type FC, useEffect } from 'react';
 import { useSelector } from 'store';
-import { Footer, Header, ProgressBar } from 'components/general';
 import { ContestForm } from 'components/contest';
+import { Footer, Header, ProgressBar } from 'components/general';
 import { PAGE } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/page.module.scss';

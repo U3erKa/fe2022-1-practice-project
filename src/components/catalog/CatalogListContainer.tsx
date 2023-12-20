@@ -1,8 +1,8 @@
-import { type MouseEvent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
-import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';
+import { type MouseEvent, useEffect } from 'react';
 import { CatalogList } from 'components/catalog';
 import { DialogList } from 'components/dialog';
+import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';
 import type { ChatId } from 'types/api/_common';
 
 const CatalogListContainer = () => {

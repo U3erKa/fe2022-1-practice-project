@@ -1,6 +1,6 @@
+import type _store from 'store';
 import ChatSocket from './sockets/ChatSocket';
 import NotificationSocket from './sockets/NotificationSocket';
-import type _store from 'store';
 
 export let controller: NotificationSocket;
 export let chatController: ChatSocket;

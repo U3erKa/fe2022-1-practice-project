@@ -1,5 +1,5 @@
-import type { User } from './user';
 import type { JWT } from './_common';
+import type { User } from './user';
 
 export type RefreshParams = string;
 export type AuthResponse = {

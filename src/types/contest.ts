@@ -1,4 +1,12 @@
 import type {
+  CONTEST_STATUS_ACTIVE,
+  CONTEST_STATUS_FINISHED,
+  CONTEST_STATUS_PENDING,
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  TAGLINE_CONTEST,
+} from 'constants/general';
+import type {
   OfferId,
   OrderId,
   UserId,
@@ -8,14 +16,6 @@ import type {
   WithUUID,
 } from './api/_common';
 import type { Priority } from './api/offer';
-import type {
-  CONTEST_STATUS_ACTIVE,
-  CONTEST_STATUS_FINISHED,
-  CONTEST_STATUS_PENDING,
-  LOGO_CONTEST,
-  NAME_CONTEST,
-  TAGLINE_CONTEST,
-} from 'constants/general';
 
 export type Contest = NameContest | LogoContest | TaglineContest;
 

@@ -1,10 +1,10 @@
+import { isEqual } from 'radash';
 import { useEffect, useRef, useState } from 'react';
 import {
   useSelector as useReduxSelector,
   useDispatch as useReduxDispatch,
   type TypedUseSelectorHook,
 } from 'react-redux';
-import { isEqual } from 'radash';
 import type { AppDispatch, RootState } from 'store';
 
 export const useSelector: TypedUseSelectorHook<RootState> = (

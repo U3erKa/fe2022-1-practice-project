@@ -1,8 +1,8 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
-import { createCatalog } from 'store/slices/chatSlice';
+import { useForm } from 'react-hook-form';
 import { FormInput } from 'components/input';
+import { createCatalog } from 'store/slices/chatSlice';
 import { CatalogSchema } from 'utils/schemas';
 import type { Catalog } from 'types/chat';
 import styles from './styles/CreateCatalog.module.scss';

@@ -1,5 +1,4 @@
 import { ClipLoader } from 'react-spinners';
-
 import styles from './styles/Spinner.module.scss';
 
 const SpinnerLoader = () => (

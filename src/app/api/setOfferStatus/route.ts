@@ -1,15 +1,5 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { Contest, sequelize } from 'models';
-import {
-  rejectOffer,
-  resolveOffer,
-  updateOfferStatus,
-} from 'controllers/queries/contestQueries';
-import { verifyAccessToken } from 'services/jwtService';
-import { sendCreatorOfferEmail } from 'utils/email';
-import handleError from 'utils/handleError';
-import BadRequestError from 'errors/BadRequestError';
-import RightsError from 'errors/RightsError';
+import { type NextRequest, NextResponse } from 'next/server';
 import {
   CONTEST_STATUS_ACTIVE,
   CUSTOMER,
@@ -23,6 +13,16 @@ import {
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
+import {
+  rejectOffer,
+  resolveOffer,
+  updateOfferStatus,
+} from 'controllers/queries/contestQueries';
+import BadRequestError from 'errors/BadRequestError';
+import RightsError from 'errors/RightsError';
+import { verifyAccessToken } from 'services/jwtService';
+import { sendCreatorOfferEmail } from 'utils/email';
+import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   try {

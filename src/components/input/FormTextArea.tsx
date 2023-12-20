@@ -1,10 +1,10 @@
+import clsx from 'clsx';
 import {
   type DetailedHTMLProps,
   type FC,
   type InputHTMLAttributes,
 } from 'react';
 import { type Control, useController } from 'react-hook-form';
-import clsx from 'clsx';
 
 export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLTextAreaElement>,

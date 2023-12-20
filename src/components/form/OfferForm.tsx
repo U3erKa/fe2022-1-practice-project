@@ -1,20 +1,20 @@
-import { type FC } from 'react';
-import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
-import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
+import { type FC } from 'react';
+import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
 import { Error } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
+import type { FormInputClasses } from 'components/input/FormInput';
+import { LOGO_CONTEST } from 'constants/general';
+import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
 import {
   type LogoOffer,
   LogoOfferSchema,
   type TextOffer,
   TextOfferSchema,
 } from 'utils/schemas';
-import { LOGO_CONTEST } from 'constants/general';
-import type { ContestType } from 'types/contest';
 import type { Id, WithId } from 'types/api/_common';
-import type { FormInputClasses } from 'components/input/FormInput';
+import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.scss';
 
 export type Props = {

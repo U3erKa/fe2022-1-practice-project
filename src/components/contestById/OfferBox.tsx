@@ -1,20 +1,16 @@
-import { confirmAlert } from 'react-confirm-alert';
-import Rating from 'react-rating';
-import { isEqual } from 'radash';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleCheck,
   faCircleXmark,
   faClock,
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { isEqual } from 'radash';
+import type { FC } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import Rating from 'react-rating';
 import { useDispatch, useSelector } from 'store';
-import { goToExpandedDialog } from 'store/slices/chatSlice';
-import {
-  changeMark,
-  changeShowImage,
-  clearChangeMarkError,
-} from 'store/slices/contestByIdSlice';
 import { Picture } from 'components/general';
 import {
   ANONYM_IMAGE_NAME,
@@ -36,15 +32,19 @@ import {
   PUBLIC_URL,
   STATIC_IMAGES_PATH,
 } from 'constants/general';
-import 'react-confirm-alert/src/react-confirm-alert.css';
-import './styles/confirmStyle.css';
-import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
-import type { FC } from 'react';
-import type { ContestData } from 'types/slices';
+import { goToExpandedDialog } from 'store/slices/chatSlice';
+import {
+  changeMark,
+  changeShowImage,
+  clearChangeMarkError,
+} from 'store/slices/contestByIdSlice';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
+import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
 import type { User } from 'types/api/user';
+import type { ContestData } from 'types/slices';
 import styles from './styles/OfferBox.module.scss';
+import './styles/confirmStyle.css';
 
 export type Props = {
   data: Offer;

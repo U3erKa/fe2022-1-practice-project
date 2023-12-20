@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { RefreshToken } from 'models';
+import { type NextRequest, NextResponse } from 'next/server';
 import TokenError from 'errors/TokenError';
-import { verifyRefreshToken } from 'services/jwtService';
 import { refreshSession } from 'services/authService';
+import { verifyRefreshToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {

@@ -6,7 +6,6 @@ import type {
   FAVORITE_PREVIEW_CHAT_MODE,
   NORMAL_PREVIEW_CHAT_MODE,
 } from 'constants/general';
-
 import type {
   CatalogId,
   ChatId,
@@ -14,7 +13,6 @@ import type {
   WithTimeStamps,
   With_id,
 } from './api/_common';
-
 import type {
   Interlocutor,
   Message,

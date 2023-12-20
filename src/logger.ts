@@ -1,14 +1,14 @@
-import cron from 'node-cron';
-import { promises as fs } from 'fs';
-import path from 'path';
 import sendEmail from 'email';
-import { createFileIfNotExists } from 'utils/backend';
+import { promises as fs } from 'fs';
+import cron from 'node-cron';
+import path from 'path';
 import {
   CRON_DAILY_AT_MIDNIGHT,
   LOG_PATH,
   READ_FILE_OPTIONS,
 } from 'constants/backend';
 import type ApplicationError from 'errors/ApplicationError';
+import { createFileIfNotExists } from 'utils/backend';
 
 const LATEST_LOG_PATH = path.resolve(LOG_PATH, 'latest.log');
 await createFileIfNotExists(LATEST_LOG_PATH);

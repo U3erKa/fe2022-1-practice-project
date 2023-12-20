@@ -4,9 +4,9 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
-import { decorateAsyncThunk, pendingReducer } from 'utils/store';
 import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
 import { addNewItems } from 'utils/functions';
+import { decorateAsyncThunk, pendingReducer } from 'utils/store';
 import type { GetContestsThunk } from 'types/api/contest';
 import type { ContestsState } from 'types/slices';
 

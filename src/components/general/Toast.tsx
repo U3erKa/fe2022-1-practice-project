@@ -1,11 +1,12 @@
 'use client';
+
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'store';
-import { getEvents } from 'store/slices/eventSlice';
-import { refresh } from 'store/slices/userSlice';
 import { ChatContainer } from 'components/chat';
 import { REFRESH_TOKEN } from 'constants/general';
+import { getEvents } from 'store/slices/eventSlice';
+import { refresh } from 'store/slices/userSlice';
 
 function Toast({ children }: React.PropsWithChildren) {
   const user = useSelector(({ userStore }) => userStore.data);

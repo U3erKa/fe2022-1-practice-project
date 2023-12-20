@@ -1,12 +1,9 @@
-import { useDispatch } from 'react-redux';
-import { isEqual } from 'radash';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
-import LogoContestSpecialInfo from './LogoContestSpecialInfo';
-import NameContestSpecialInfo from './NameContestSpecialInfo';
-import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'hooks';
-import { goToExpandedDialog } from 'store/slices/chatSlice';
+import { isEqual } from 'radash';
+import type { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   CONTEST_STATUS_FINISHED,
   CUSTOMER,
@@ -14,11 +11,14 @@ import {
   PUBLIC_URL,
   TAGLINE_CONTEST,
 } from 'constants/general';
+import { goToExpandedDialog } from 'store/slices/chatSlice';
 import type { InterlocutorId, UserId } from 'types/api/_common';
-import styles from './styles/ContestInfo.module.scss';
-import type { FC } from 'react';
-import type { ContestData } from 'types/slices';
 import type { LogoContest, NameContest, TaglineContest } from 'types/contest';
+import type { ContestData } from 'types/slices';
+import LogoContestSpecialInfo from './LogoContestSpecialInfo';
+import NameContestSpecialInfo from './NameContestSpecialInfo';
+import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
+import styles from './styles/ContestInfo.module.scss';
 
 export type Props = {
   changeEditContest: (isEditContest: boolean) => void;

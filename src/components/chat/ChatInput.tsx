@@ -1,11 +1,11 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'hooks';
-import { sendMessage } from 'store/slices/chatSlice';
-import { FormInput } from 'components/input';
+import { useForm } from 'react-hook-form';
 import { Picture } from 'components/general';
-import { type Message, MessageSchema } from 'utils/schemas';
+import { FormInput } from 'components/input';
 import { STATIC_IMAGES_PATH } from 'constants/general';
+import { sendMessage } from 'store/slices/chatSlice';
+import { type Message, MessageSchema } from 'utils/schemas';
 import styles from './styles/ChatInput.module.scss';
 
 const classes = {

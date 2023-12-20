@@ -1,15 +1,15 @@
+import type { FC } from 'react';
 import { useDispatch, useSelector } from 'store';
+import { Error } from 'components/general';
 import {
   clearSetOfferStatusError,
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
-import { Error } from 'components/general';
-import { OfferBox } from '.';
 import type { OfferId, UserId } from 'types/api/_common';
-import type { FC } from 'react';
 import type { Offer } from 'types/api/contest';
-import type { ContestData } from 'types/slices';
 import type { CustomerCommand } from 'types/api/offer';
+import type { ContestData } from 'types/slices';
+import { OfferBox } from '.';
 import styles from './styles/ContestOfferList.module.scss';
 
 export type Props = {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'store';
-import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
+import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import styles from './styles/ButtonGroup.module.scss';
 
 export default function ButtonGroup() {
