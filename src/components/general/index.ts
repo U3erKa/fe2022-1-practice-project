@@ -14,3 +14,4 @@ export { default as Toast } from './Toast';
 export { default as LoginButtons } from './LoginButtons';
 export { default as NavList } from './NavList';
 export { default as ProfileNavBar } from './ProfileNavBar';
+export { default as UserImage } from './UserImage';
