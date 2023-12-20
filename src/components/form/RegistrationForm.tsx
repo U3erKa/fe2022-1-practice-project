@@ -1,8 +1,8 @@
-import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
 import {
   AgreeTermOfServiceInput,

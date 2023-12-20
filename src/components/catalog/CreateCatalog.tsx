@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { FormInput } from 'components/input';
 import { createCatalog } from 'store/slices/chatSlice';
 import { CatalogSchema } from 'utils/schemas';

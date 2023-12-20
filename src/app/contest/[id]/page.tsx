@@ -1,9 +1,9 @@
 'use client';
 
 import { type FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'store';
 import LightBox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { useDispatch, useSelector } from 'store';
 import { ContestPageContents } from 'components/contestById';
 import { Header } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';

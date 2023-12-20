@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'hooks';
 import { type FC, type MouseEvent } from 'react';
+import { useDispatch, useSelector } from 'hooks';
 import { DialogBox } from 'components/dialog';
 import {
   BLOCKED_PREVIEW_CHAT_MODE,

@@ -1,8 +1,8 @@
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'hooks';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'hooks';
 import { AddToCatalog, CreateCatalog } from 'components/catalog';
 import {
   ADD_CHAT_TO_OLD_CATALOG,

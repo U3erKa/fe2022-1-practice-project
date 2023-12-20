@@ -1,6 +1,6 @@
-import type http from 'http';
 import { Server } from 'socket.io';
 import type { ServerOptions } from 'socket.io';
+import type http from 'http';
 import ChatController from './controllers/sockets/ChatController';
 import NotificationController from './controllers/sockets/NotificationController';
 

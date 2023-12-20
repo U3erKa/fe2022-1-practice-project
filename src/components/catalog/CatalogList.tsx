@@ -1,5 +1,5 @@
-import { useDispatch } from 'hooks';
 import { type FC, type MouseEvent } from 'react';
+import { useDispatch } from 'hooks';
 import { Catalog } from 'components/catalog';
 import styles from 'components/dialog/styles/DialogList.module.scss';
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';

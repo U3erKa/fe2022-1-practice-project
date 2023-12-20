@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'hooks';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { SelectInput } from 'components/input';
 import { addChatToCatalog } from 'store/slices/chatSlice';
 import type { CatalogId } from 'types/api/_common';

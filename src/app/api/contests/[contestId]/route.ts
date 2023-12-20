@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { Contest, Offer, Rating, User } from 'models';
 import { Op } from 'sequelize';
+import { Contest, Offer, Rating, User } from 'models';
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,

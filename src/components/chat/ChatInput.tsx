@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { Picture } from 'components/general';
 import { FormInput } from 'components/input';
 import { STATIC_IMAGES_PATH } from 'constants/general';

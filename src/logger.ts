@@ -1,6 +1,6 @@
+import cron from 'node-cron';
 import sendEmail from 'email';
 import { promises as fs } from 'fs';
-import cron from 'node-cron';
 import path from 'path';
 import {
   CRON_DAILY_AT_MIDNIGHT,

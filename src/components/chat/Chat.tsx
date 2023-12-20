@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'hooks';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'hooks';
 import { chatController } from 'api/ws/socketController';
 import { CatalogCreation } from 'components/catalog';
 import { ChatError, ChatList } from 'components/chat';

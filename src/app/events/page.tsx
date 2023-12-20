@@ -1,7 +1,7 @@
 'use client';
 
-import { useForceUpdate } from 'hooks';
 import { fork } from 'radash';
+import { useForceUpdate } from 'hooks';
 import { useSelector } from 'store';
 import { CreateEvent, EventsList } from 'components/events';
 import { Footer, Header } from 'components/general';

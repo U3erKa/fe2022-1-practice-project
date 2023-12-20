@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'hooks';
 import { type MouseEvent, useEffect } from 'react';
+import { useDispatch, useSelector } from 'hooks';
 import { CatalogList } from 'components/catalog';
 import { DialogList } from 'components/dialog';
 import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';

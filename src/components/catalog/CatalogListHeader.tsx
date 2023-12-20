@@ -1,8 +1,8 @@
 import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { FormInput } from 'components/input';
 import {
   changeCatalogName,

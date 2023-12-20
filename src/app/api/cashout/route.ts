@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sequelize } from 'models';
 import { Op } from 'sequelize';
+import { sequelize } from 'models';
 import {
   SQUADHELP_BANK_CVC,
   SQUADHELP_BANK_EXPIRY,

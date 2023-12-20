@@ -1,11 +1,11 @@
-import { usePathname, useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { Replacement } from '@react-input/mask';
-import { useDispatch } from 'hooks';
+import { usePathname, useRouter } from 'next/navigation';
 import { type FC } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles.scss';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'hooks';
 import { PayInput } from 'components/input';
 import { PAGE } from 'constants/general';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';

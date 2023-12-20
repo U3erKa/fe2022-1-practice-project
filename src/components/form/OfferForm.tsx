@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
 import { type FC } from 'react';
 import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 import type { FormInputClasses } from 'components/input/FormInput';

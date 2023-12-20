@@ -5,8 +5,8 @@ import {
   faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch, useSelector } from 'hooks';
 import { type FC, type MouseEvent } from 'react';
+import { useDispatch, useSelector } from 'hooks';
 import { Picture } from 'components/general';
 import {
   ANONYM_IMAGE_NAME,

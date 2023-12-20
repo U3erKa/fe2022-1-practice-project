@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { Conversation, Message, User } from 'models';
 import { Op } from 'sequelize';
+import { Conversation, Message, User } from 'models';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 

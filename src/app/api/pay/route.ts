@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { Op } from 'sequelize';
 import { randomUUID } from 'crypto';
 import { Contest, sequelize } from 'models';
-import { Op } from 'sequelize';
 import {
   SQUADHELP_BANK_CVC,
   SQUADHELP_BANK_EXPIRY,

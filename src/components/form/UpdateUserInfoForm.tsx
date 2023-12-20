@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch, useSelector } from 'hooks';
 import { type FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'hooks';
 import { Error, Spinner } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 import { clearUserError } from 'store/slices/userSlice';

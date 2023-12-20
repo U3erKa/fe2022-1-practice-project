@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useDispatch } from 'hooks';
 import { useEffect } from 'react';
+import { useDispatch } from 'hooks';
 import { LoginForm } from 'components/form';
 import { Logo } from 'components/general';
 import { PAGE, STATIC_IMAGES_PATH } from 'constants/general';

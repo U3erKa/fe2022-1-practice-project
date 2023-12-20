@@ -1,9 +1,9 @@
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSelector } from 'hooks';
 import { isEqual } from 'radash';
 import type { FC } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'hooks';
 import {
   CONTEST_STATUS_FINISHED,
   CUSTOMER,

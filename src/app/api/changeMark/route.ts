@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { Offer, Rating, sequelize } from 'models';
 import { Transaction } from 'sequelize';
+import { Offer, Rating, sequelize } from 'models';
 import { getNotificationController } from 'socketInit';
 import { CUSTOMER } from 'constants/general';
 import { createRating, updateRating } from 'controllers/queries/ratingQueries';
