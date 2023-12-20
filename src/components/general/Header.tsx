@@ -1,7 +1,7 @@
 'use client';
 
-import { useSelector } from 'hooks';
 import Link from 'next/link';
+import { useSelector } from 'hooks';
 import { Logo, Picture, Spinner } from 'components/general';
 import { CUSTOMER, PAGE, STATIC_IMAGES_PATH } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';

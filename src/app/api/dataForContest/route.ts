@@ -1,5 +1,5 @@
-import { Select } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Select } from 'models';
 import { Op } from 'sequelize';
 import ServerError from 'errors/ServerError';
 import handleError from 'utils/handleError';

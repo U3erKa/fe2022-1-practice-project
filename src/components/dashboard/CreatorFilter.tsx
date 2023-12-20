@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 import { select } from 'radash';
 import { type ChangeEventHandler, type FC } from 'react';
 import { useDispatch, useSelector } from 'store';

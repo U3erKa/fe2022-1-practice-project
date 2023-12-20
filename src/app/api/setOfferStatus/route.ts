@@ -1,5 +1,5 @@
-import { Contest, sequelize } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Contest, sequelize } from 'models';
 import {
   CONTEST_STATUS_ACTIVE,
   CUSTOMER,

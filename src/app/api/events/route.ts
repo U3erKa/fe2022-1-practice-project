@@ -1,5 +1,5 @@
-import { Event, User } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Event, User } from 'models';
 import BadRequestError from 'errors/BadRequestError';
 import NotFoundError from 'errors/NotFoundError';
 import { verifyAccessToken } from 'services/jwtService';

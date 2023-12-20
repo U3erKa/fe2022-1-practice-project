@@ -1,5 +1,5 @@
-import { Contest } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Contest } from 'models';
 import { getNotificationController } from 'socketInit';
 import {
   CONTEST_STATUS_ACTIVE,

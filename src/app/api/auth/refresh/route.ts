@@ -1,5 +1,5 @@
-import { RefreshToken } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { RefreshToken } from 'models';
 import TokenError from 'errors/TokenError';
 import { refreshSession } from 'services/authService';
 import { verifyRefreshToken } from 'services/jwtService';

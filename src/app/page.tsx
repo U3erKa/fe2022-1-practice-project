@@ -1,9 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'hooks';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Footer, Header, Picture, Spinner } from 'components/general';
 import { SlideBar } from 'components/home';

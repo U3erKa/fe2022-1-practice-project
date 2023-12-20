@@ -1,5 +1,5 @@
-import { User } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { User } from 'models';
 import BadRequestError from 'errors/BadRequestError';
 import { createSession } from 'services/authService';
 import handleError from 'utils/handleError';

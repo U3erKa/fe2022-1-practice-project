@@ -1,5 +1,5 @@
-import { sequelize } from 'models';
 import { NextRequest, NextResponse } from 'next/server';
+import { sequelize } from 'models';
 import { Op } from 'sequelize';
 import {
   SQUADHELP_BANK_CVC,

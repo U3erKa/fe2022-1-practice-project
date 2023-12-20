@@ -1,5 +1,5 @@
-import { Contest, Offer } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Contest, Offer } from 'models';
 import { CREATOR, CUSTOMER } from 'constants/general';
 import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';

@@ -1,5 +1,5 @@
-import { Contest, Offer, Rating, User } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Contest, Offer, Rating, User } from 'models';
 import { Op } from 'sequelize';
 import {
   CONTEST_STATUS_ACTIVE,

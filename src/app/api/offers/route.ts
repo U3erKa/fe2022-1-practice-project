@@ -1,5 +1,5 @@
-import { Contest, Offer, User } from 'models';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Contest, Offer, User } from 'models';
 import { type Attributes, Op, type WhereOptions } from 'sequelize';
 import {
   MODERATOR,

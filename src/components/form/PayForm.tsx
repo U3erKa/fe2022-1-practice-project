@@ -1,7 +1,7 @@
+import { usePathname, useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { Replacement } from '@react-input/mask';
 import { useDispatch } from 'hooks';
-import { usePathname, useRouter } from 'next/navigation';
 import { type FC } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles.scss';
