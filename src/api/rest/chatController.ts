@@ -25,4 +25,4 @@ export const changeChatBlock = (data: ChangeChatBlockParams) =>
   http.post<ChangeChatBlockResponse>('blackList', data);
 
 export const newMessage = (data: NewMessageParams) =>
-  http.post<NewMessageResponse>('newMessage', data);
+  http.post<NewMessageResponse>(ROUTE.NEW_MESSAGE, data);

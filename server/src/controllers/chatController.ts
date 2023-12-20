@@ -1,83 +1,12 @@
-import { Conversation, Message } from '../models';
+import { Conversation } from '../models';
 import * as controller from '../socketInit';
 import NotFoundError from '../errors/NotFoundError';
-import RightsError from '../errors/RightsError';
 import type { RequestHandler } from 'express';
 import type {
   Catalog as _Catalog,
   Conversation as _Conversation,
   Message as _Message,
 } from '../types/models';
-
-export const addMessage: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId, firstName, lastName, displayName, avatar, email },
-    body: { recipient, messageBody, interlocutor },
-  } = req;
-
-  const participants = [userId, recipient].sort(
-    (participant1, participant2) => participant1 - participant2,
-  ) as [number, number];
-  const [participant1, participant2] = participants;
-  try {
-    const [newConversation, isCreated] = await Conversation.findOrCreate({
-      where: { participant1, participant2 },
-      defaults: {
-        participant1,
-        participant2,
-        blackList: [false, false],
-        favoriteList: [false, false],
-      },
-    });
-
-    const { _id, blackList, favoriteList } = newConversation;
-    if (blackList.includes(true)) {
-      throw new RightsError(
-        'Cannot send message while one of the interlocutors is blacklisted',
-      );
-    }
-
-    const message = await Message.create({
-      sender: userId,
-      body: messageBody,
-      conversation: _id,
-    });
-
-    Object.assign(message.dataValues, { participants });
-    const [interlocutorId] = participants.filter(
-      (participant) => participant !== userId,
-    );
-
-    const preview = {
-      _id,
-      sender: userId,
-      text: messageBody,
-      createdAt: message.createdAt,
-      participants,
-      blackList,
-      favoriteList,
-    };
-
-    controller.getChatController().emitNewMessage(interlocutorId, {
-      message,
-      preview: {
-        ...preview,
-        interlocutor: {
-          id: userId,
-          firstName,
-          lastName,
-          displayName,
-          avatar,
-          email,
-        },
-      },
-    });
-
-    res.send({ message, preview: { ...preview, interlocutor } });
-  } catch (err) {
-    next(err);
-  }
-};
 
 export const blackList: RequestHandler = async (req, res, next) => {
   const {

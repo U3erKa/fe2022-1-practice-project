@@ -154,6 +154,7 @@ export const ROUTE = {
   GET_CHAT: '/getChat',
   GET_PREVIEW: '/getPreview',
   LOGIN: '/auth/login',
+  NEW_MESSAGE: '/newMessage',
   OFFERS: '/offers',
   PAY: '/pay',
   REFRESH: '/auth/refresh',
