@@ -147,6 +147,7 @@ export const ROUTE = {
   CONTESTS: '/contests',
   CREATE_CATALOG: '/createCatalog',
   DATA_FOR_CONTEST: '/dataForContest',
+  DELETE_CATALOG: '/deleteCatalog',
   EVENTS: '/events',
   FAVORITE: '/favorite',
   GET_CHAT: '/getChat',

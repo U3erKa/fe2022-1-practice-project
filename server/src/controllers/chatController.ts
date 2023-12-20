@@ -119,20 +119,6 @@ export const blackList: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const deleteCatalog: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { catalogId },
-  } = req;
-
-  try {
-    await Catalog.destroy({ where: { _id: catalogId, userId } });
-    res.end();
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const getCatalogs: RequestHandler = async (req, res, next) => {
   const {
     tokenData: { userId },
