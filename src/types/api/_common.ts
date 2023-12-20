@@ -1,6 +1,6 @@
 import type { UUID } from 'crypto';
 
-export type With_id<T extends _Id = _Id, K extends string = '_id'> = {
+export type With_id<T extends Id = Id, K extends string = '_id'> = {
   [key in K]: T;
 };
 export type WithId<T extends Id = Id, K extends string = 'id'> = {
@@ -20,18 +20,14 @@ export type WithPagination = { limit: number; offset: number };
 
 /** SQL's unique id parameter */
 export type Id = number;
-/** MongoDB's `_id` parameter */
-export type _Id = number;
-/** MongoDB's `__v` parameter */
-export type __V = 0;
 /** JSON Web Token */
 export type JWT = string;
 
-export type CatalogId = _Id;
-export type CatalogListId = _Id;
-export type ChatId = _Id;
-export type ConversationId = _Id;
-export type MessageId = _Id;
+export type CatalogId = Id;
+export type CatalogListId = Id;
+export type ChatId = Id;
+export type ConversationId = Id;
+export type MessageId = Id;
 
 export type ContestId = Id;
 export type CreatorId = Id;

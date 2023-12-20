@@ -15,15 +15,15 @@ export type GetDialogParams = {
 
 export type GetDialogResponse = WithInterlocutor & { messages: Message[] };
 export type ChangeChatFavoriteParams = WithParticipants & {
-  favoriteFlag: FavoriteFlag;
+  favoriteFlag: boolean;
 };
 
-export type ChangeChatFavoriteResponse = ChangeChatResponse;
+export type ChangeChatFavoriteResponse = WithParticipantTuples & WithTimeStamps;
 export type ChangeChatBlockParams = WithParticipants & {
-  blackListFlag: BlackListFlag;
+  blackListFlag: boolean;
 };
 
-export type ChangeChatBlockResponse = ChangeChatResponse;
+export type ChangeChatBlockResponse = WithParticipantTuples & WithTimeStamps;
 export type NewMessageParams = WithInterlocutor & {
   recipient: InterlocutorId;
   messageBody: Message['body'];
@@ -38,28 +38,22 @@ export type NewMessageResponse = {
 };
 
 export type GetPreviewChatResponse = WithParticipantTuples &
+  WithInterlocutor &
   WithTimeStamps['createdAt'] & {
     sender: SenderId;
     text: Message['body'];
   };
-
-export type ChangeChatResponse = WithParticipantTuples & WithTimeStamps;
 
 export type AddMessage = NewMessageResponse & {
   preview: { interlocutor: { email: string } };
 };
 
 export type GoToExtendedDialog = WithInterlocutor & {
-  conversationData: Omit<WithParticipantTuples, 'interlocutor'>;
+  conversationData: WithParticipantTuples;
 };
 
-export type Interlocutor = {
-  id: InterlocutorId;
-  firstName: User['firstName'];
-  lastName: User['lastName'];
-  displayName: User['displayName'];
-  avatar: User['avatar'];
-};
+export type Interlocutor = WithId<InterlocutorId> &
+  Pick<User, 'firstName' | 'lastName' | 'displayName' | 'avatar'>;
 
 export type Message = With_id<MessageId> &
   With_id<ConversationId, 'conversation'> &
@@ -68,16 +62,12 @@ export type Message = With_id<MessageId> &
     body: string;
   };
 
-export type FavoriteFlag = boolean;
-export type BlackListFlag = boolean;
-
 export type WithParticipantTuples = With_id<ConversationId> &
   WithParticipants &
   WithFavoriteList &
-  WithBlackList &
-  WithInterlocutor;
+  WithBlackList;
 
 export type WithInterlocutor = { interlocutor: Interlocutor };
 export type WithParticipants = { participants: [InterlocutorId, SenderId] };
-export type WithFavoriteList = { favoriteList: [FavoriteFlag, FavoriteFlag] };
-export type WithBlackList = { blackList: [BlackListFlag, BlackListFlag] };
+export type WithFavoriteList = { favoriteList: [boolean, boolean] };
+export type WithBlackList = { blackList: [boolean, boolean] };

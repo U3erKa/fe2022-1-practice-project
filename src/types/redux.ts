@@ -1,16 +1,4 @@
-import type {
-  ActionReducerMapBuilder,
-  AsyncThunk,
-  AsyncThunkPayloadCreator,
-} from '@reduxjs/toolkit';
-
-export type AsyncThunkDecorator = <Return, Payload = void, Arg = void>({
-  key,
-  thunk,
-}: {
-  key: string;
-  thunk: AsyncThunkPayloadCreator<Return, Arg>;
-}) => AsyncThunk<Return, Payload, {}>;
+import type { ActionReducerMapBuilder, AsyncThunk } from '@reduxjs/toolkit';
 
 export type ExtraReducersCreator = <State, Return, Payload>(options: {
   thunk: AsyncThunk<Return, Payload, {}>;

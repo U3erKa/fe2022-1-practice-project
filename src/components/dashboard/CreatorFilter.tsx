@@ -14,6 +14,11 @@ export type Props = {
   value: (typeof CONTEST_TYPES)[number];
 };
 
+export type Props2 = Pick<Props, 'onChange'> & {
+  industries?: Industry[];
+  filter?: Industry | '';
+};
+
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {
   const contestTypes = select(
     CONTEST_TYPES,
@@ -30,11 +35,6 @@ export const ContestTypes: FC<Props> = ({ onChange, value }) => {
       {contestTypes}
     </select>
   );
-};
-
-export type Props2 = Pick<Props, 'onChange'> & {
-  industries?: Industry[];
-  filter?: Industry | '';
 };
 
 export const IndustryType: FC<Props2> = ({ industries, filter, onChange }) => {

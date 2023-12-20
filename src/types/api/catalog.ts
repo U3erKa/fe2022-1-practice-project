@@ -41,5 +41,4 @@ export type ChatsInCatalog = With_id<CatalogId> &
   WithChats;
 
 export type WithChats = { chats: ChatId[] };
-export type WithChatObjs = { chats: { _id: ChatId }[] };
 export type WithCatalogName = { catalogName: string };

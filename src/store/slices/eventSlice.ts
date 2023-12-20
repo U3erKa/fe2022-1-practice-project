@@ -3,7 +3,7 @@ import {
   type PayloadAction,
   createSlice,
 } from '@reduxjs/toolkit';
-import type { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
+import type { NoInfer } from 'react-redux';
 import * as eventController from 'api/rest/eventController';
 import { timezoneOffsetInMs } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';
