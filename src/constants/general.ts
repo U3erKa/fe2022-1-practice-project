@@ -150,6 +150,7 @@ export const ROUTE = {
   DELETE_CATALOG: '/deleteCatalog',
   EVENTS: '/events',
   FAVORITE: '/favorite',
+  GET_CATALOGS: '/getCatalogs',
   GET_CHAT: '/getChat',
   GET_PREVIEW: '/getPreview',
   LOGIN: '/auth/login',

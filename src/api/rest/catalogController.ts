@@ -22,7 +22,7 @@ export const removeChatFromCatalog = (data: RemoveChatFromCatalogParams) =>
   http.post<RemoveChatFromCatalogResponse>(ROUTE.REMOVE_CHAT_FROM_CATALOG, data);
 
 export const getCatalogList = () =>
-  http.post<GetCatalogListResponse>('getCatalogs');
+  http.post<GetCatalogListResponse>(ROUTE.GET_CATALOGS);
 
 export const createCatalog = (data: CreateCatalogParams) =>
   http.post<CreateCatalogResponse>(ROUTE.CREATE_CATALOG, data);

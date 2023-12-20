@@ -1,4 +1,4 @@
-import { Catalog, Conversation, Message, User } from '../models';
+import { Conversation, Message } from '../models';
 import * as controller from '../socketInit';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
@@ -116,28 +116,5 @@ export const blackList: RequestHandler = async (req, res, next) => {
     controller.getChatController().emitChangeBlockStatus(interlocutorId, chat);
   } catch (err) {
     res.send(err);
-  }
-};
-
-export const getCatalogs: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-  } = req;
-
-  try {
-    const catalogs = (await Catalog.findAll({
-      where: { userId },
-      attributes: ['_id', 'catalogName'],
-      include: {
-        model: Conversation,
-        as: 'chats',
-        attributes: ['_id'],
-        through: { attributes: [] },
-      },
-    })) as unknown as _Catalog[];
-
-    res.send(catalogs);
-  } catch (err) {
-    next(err);
   }
 };
