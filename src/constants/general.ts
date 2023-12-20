@@ -155,6 +155,7 @@ export const ROUTE = {
   OFFERS: '/offers',
   PAY: '/pay',
   REFRESH: '/auth/refresh',
+  REMOVE_CHAT_FROM_CATALOG: '/removeChatFromCatalog',
   REGISTER: '/auth/registration',
   SET_NEW_OFFER: '/setNewOffer',
   SET_OFFER_STATUS: '/setOfferStatus',

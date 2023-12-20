@@ -18,7 +18,8 @@ export const addChatToCatalog = (data: AddChatToCatalogParams) =>
   http.post<AddChatToCatalogResponse>(ROUTE.ADD_NEW_CHAT_TO_CATALOG, data);
 
 export const removeChatFromCatalog = (data: RemoveChatFromCatalogParams) =>
-  http.post<RemoveChatFromCatalogResponse>('removeChatFromCatalog', data);
+  // prettier-ignore
+  http.post<RemoveChatFromCatalogResponse>(ROUTE.REMOVE_CHAT_FROM_CATALOG, data);
 
 export const getCatalogList = () =>
   http.post<GetCatalogListResponse>('getCatalogs');

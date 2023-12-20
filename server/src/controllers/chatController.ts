@@ -119,29 +119,6 @@ export const blackList: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const removeChatFromCatalog: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { catalogId, chatId },
-  } = req;
-
-  try {
-    const catalog = await Catalog.findOne({
-      where: { _id: catalogId, userId },
-      include: { model: Conversation, as: 'chats', attributes: ['_id'] },
-    });
-
-    if (!catalog) {
-      throw new NotFoundError('Catalog not found');
-    }
-    await catalog.removeChat(chatId);
-
-    res.send(catalog);
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const deleteCatalog: RequestHandler = async (req, res, next) => {
   const {
     tokenData: { userId },
