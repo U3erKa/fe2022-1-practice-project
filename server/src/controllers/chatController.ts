@@ -119,42 +119,6 @@ export const blackList: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const favoriteChat: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { participants, favoriteFlag },
-  } = req;
-
-  try {
-    const [participant1, participant2] = participants;
-    const predicate = participants.indexOf(userId);
-
-    const foundChat = await Conversation.findOne({
-      where: { participant1, participant2 },
-    });
-    if (!foundChat) {
-      throw new NotFoundError('Conversation was not found');
-    }
-    foundChat.favoriteList[predicate] = favoriteFlag;
-
-    const [count, [chat]] = await Conversation.update(
-      { favoriteList: foundChat.favoriteList },
-      { where: { participant1, participant2 }, returning: true },
-    );
-    if (!count) {
-      throw new NotFoundError('Conversation could not be modified');
-    }
-
-    Object.assign(chat.dataValues, {
-      participants: [participant1, participant2],
-    });
-
-    res.send(chat);
-  } catch (err) {
-    res.send(err);
-  }
-};
-
 export const createCatalog: RequestHandler = async (req, res, next) => {
   const {
     tokenData: { userId },

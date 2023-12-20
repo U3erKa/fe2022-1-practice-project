@@ -146,6 +146,7 @@ export const ROUTE = {
   CONTESTS: '/contests',
   DATA_FOR_CONTEST: '/dataForContest',
   EVENTS: '/events',
+  FAVORITE: '/favorite',
   GET_CHAT: '/getChat',
   GET_PREVIEW: '/getPreview',
   LOGIN: '/auth/login',

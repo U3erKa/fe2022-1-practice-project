@@ -19,7 +19,7 @@ export const getPreviewChat = () =>
   http.post<GetPreviewChatResponse>(ROUTE.GET_PREVIEW);
 
 export const changeChatFavorite = (data: ChangeChatFavoriteParams) =>
-  http.post<ChangeChatFavoriteResponse>('favorite', data);
+  http.post<ChangeChatFavoriteResponse>(ROUTE.FAVORITE, data);
 
 export const changeChatBlock = (data: ChangeChatBlockParams) =>
   http.post<ChangeChatBlockResponse>('blackList', data);
