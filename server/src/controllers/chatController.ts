@@ -1,6 +1,5 @@
 import { Op } from 'sequelize';
 import { Catalog, Conversation, Message, User } from '../models';
-import * as userQueries from './queries/userQueries';
 import * as controller from '../socketInit';
 import NotFoundError from '../errors/NotFoundError';
 import RightsError from '../errors/RightsError';
@@ -76,52 +75,6 @@ export const addMessage: RequestHandler = async (req, res, next) => {
     });
 
     res.send({ message, preview: { ...preview, interlocutor } });
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const getChat: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { interlocutorId },
-  } = req;
-
-  const [participant1, participant2] = [userId, interlocutorId].sort(
-    (participant1, participant2) => participant1 - participant2,
-  ) as [number, number];
-  try {
-    const [conversation, isCreated] = await Conversation.findOrCreate({
-      include: {
-        model: Message,
-        as: 'messages',
-        order: [['createdAt', 'ASC']],
-      },
-      attributes: ['participant1', 'participant2'],
-      where: { participant1, participant2 },
-      defaults: {
-        blackList: [false, false],
-        favoriteList: [false, false],
-        participant1,
-        participant2,
-      },
-    });
-
-    const { messages } = conversation.dataValues as unknown as {
-      messages: _Message[];
-    };
-
-    const { id, firstName, lastName, displayName, avatar } =
-      await userQueries.findUser({ id: interlocutorId });
-
-    Object.assign(conversation, {
-      participants: [conversation.participant1, conversation.participant2],
-    });
-
-    res.send({
-      messages,
-      interlocutor: { id, firstName, lastName, displayName, avatar },
-    });
   } catch (err) {
     next(err);
   }

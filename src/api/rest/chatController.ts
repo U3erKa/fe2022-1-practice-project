@@ -1,4 +1,5 @@
 import http from 'api/interceptor';
+import { ROUTE } from 'constants/general';
 import type {
   ChangeChatBlockParams,
   ChangeChatBlockResponse,
@@ -12,7 +13,7 @@ import type {
 } from 'types/api/chat';
 
 export const getDialog = (data: GetDialogParams) =>
-  http.post<GetDialogResponse>('getChat', data);
+  http.post<GetDialogResponse>(ROUTE.GET_CHAT, data);
 
 export const getPreviewChat = () =>
   http.post<GetPreviewChatResponse>('getPreview');
