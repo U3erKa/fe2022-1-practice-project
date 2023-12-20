@@ -119,32 +119,6 @@ export const blackList: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const updateNameCatalog: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { catalogId, catalogName },
-  } = req;
-
-  try {
-    const [count, [catalog]] = await Catalog.update(
-      { catalogName },
-      { where: { _id: catalogId, userId }, returning: true },
-    );
-    if (!count) {
-      throw new NotFoundError('Catalog not found');
-    }
-    const chats = (await catalog.getChats({
-      attributes: ['_id'],
-    })) as unknown as _Conversation[];
-    const chatIds = chats.map(({ _id }) => _id);
-    Object.assign(catalog.dataValues, { chats: chatIds });
-
-    res.send(catalog);
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const addNewChatToCatalog: RequestHandler = async (req, res, next) => {
   const {
     tokenData: { userId },

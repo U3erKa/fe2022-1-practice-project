@@ -30,4 +30,4 @@ export const deleteCatalog = (data: DeleteCatalogParams) =>
   http.post<DeleteCatalogResponse>('deleteCatalog', data);
 
 export const changeCatalogName = (data: ChangeCatalogNameParams) =>
-  http.post<ChangeCatalogNameResponse>('updateNameCatalog', data);
+  http.post<ChangeCatalogNameResponse>(ROUTE.UPDATE_NAME_CATALOG, data);

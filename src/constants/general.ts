@@ -157,6 +157,7 @@ export const ROUTE = {
   REGISTER: '/auth/registration',
   SET_NEW_OFFER: '/setNewOffer',
   SET_OFFER_STATUS: '/setOfferStatus',
+  UPDATE_NAME_CATALOG: '/updateNameCatalog',
   UPDATE_USER: '/updateUser',
 } as const;
 
