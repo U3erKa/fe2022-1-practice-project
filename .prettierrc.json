@@ -4,6 +4,7 @@
   "singleQuote": true,
   "semi": true,
   "importOrder": [
+    "^next.*",
     "<THIRD_PARTY_MODULES>",
     "^api/.*",
     "^app/.*",
