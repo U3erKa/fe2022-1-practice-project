@@ -1,20 +1,16 @@
-import { Conversation } from '../models';
-import * as controller from '../socketInit';
-import NotFoundError from '../errors/NotFoundError';
-import type { RequestHandler } from 'express';
-import type {
-  Catalog as _Catalog,
-  Conversation as _Conversation,
-  Message as _Message,
-} from '../types/models';
+import { type NextRequest, NextResponse } from 'next/server';
+import { Conversation } from 'models';
+import { getChatController } from 'socketInit';
+import NotFoundError from 'errors/NotFoundError';
+import { verifyAccessToken } from 'services/jwtService';
+import type { Message as _Message } from 'types/models';
 
-export const blackList: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { participants, blackListFlag },
-  } = req;
-
+export async function blackList(req: NextRequest) {
   try {
+    const { headers, json } = req;
+    const authorization = headers.get('Authorization')!.split(' ')[1]!;
+    const { userId } = await verifyAccessToken(authorization);
+    const { participants, blackListFlag } = await json();
     const [participant1, participant2] = participants;
     const predicate = participants.indexOf(userId);
 
@@ -34,16 +30,16 @@ export const blackList: RequestHandler = async (req, res, next) => {
       throw new NotFoundError('Conversation could not be modified');
     }
 
-    Object.assign(chat.dataValues, {
+    Object.assign(chat!.dataValues, {
       participants: [participant1, participant2],
     });
-    res.send(chat);
 
     const [interlocutorId] = participants.filter(
       (participant: number) => participant !== userId,
     );
-    controller.getChatController().emitChangeBlockStatus(interlocutorId, chat);
-  } catch (err) {
-    res.send(err);
+    getChatController().emitChangeBlockStatus(interlocutorId, chat!);
+    return NextResponse.json(chat);
+  } catch (error) {
+    return NextResponse.json(error);
   }
-};
+}

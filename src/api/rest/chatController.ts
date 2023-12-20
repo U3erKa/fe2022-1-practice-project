@@ -22,7 +22,7 @@ export const changeChatFavorite = (data: ChangeChatFavoriteParams) =>
   http.post<ChangeChatFavoriteResponse>(ROUTE.FAVORITE, data);
 
 export const changeChatBlock = (data: ChangeChatBlockParams) =>
-  http.post<ChangeChatBlockResponse>('blackList', data);
+  http.post<ChangeChatBlockResponse>(ROUTE.BLACKLIST, data);
 
 export const newMessage = (data: NewMessageParams) =>
   http.post<NewMessageResponse>(ROUTE.NEW_MESSAGE, data);
