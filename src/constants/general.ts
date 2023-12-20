@@ -141,6 +141,7 @@ export const API_ROUTE = '/api';
 export const BASE_URL = `http://${serverIP}:${serverPort}${API_ROUTE}` as const;
 
 export const ROUTE = {
+  ADD_NEW_CHAT_TO_CATALOG: '/addNewChatToCatalog',
   CASHOUT: '/cashout',
   CHANGE_MARK: '/changeMark',
   CONTESTS: '/contests',

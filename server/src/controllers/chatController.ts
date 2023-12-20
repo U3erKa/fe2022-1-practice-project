@@ -119,36 +119,6 @@ export const blackList: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const addNewChatToCatalog: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-    body: { catalogId, chatId },
-  } = req;
-
-  try {
-    const catalog = await Catalog.findOne({
-      where: { _id: catalogId, userId },
-    });
-
-    if (!catalog) {
-      throw new NotFoundError('Catalog not found');
-    }
-    await catalog.addChat(chatId);
-    const chats = (await catalog.getChats()) as unknown as _Conversation[];
-
-    chats.forEach((chat) => {
-      Object.assign(chat.dataValues, {
-        participants: [chat.participant1, chat.participant2],
-      });
-    });
-    Object.assign(catalog.dataValues, { chats: chats ?? [] });
-
-    res.send(catalog);
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const removeChatFromCatalog: RequestHandler = async (req, res, next) => {
   const {
     tokenData: { userId },

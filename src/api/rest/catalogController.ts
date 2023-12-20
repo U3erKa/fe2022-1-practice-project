@@ -15,7 +15,7 @@ import type {
 } from 'types/api/catalog';
 
 export const addChatToCatalog = (data: AddChatToCatalogParams) =>
-  http.post<AddChatToCatalogResponse>('addNewChatToCatalog', data);
+  http.post<AddChatToCatalogResponse>(ROUTE.ADD_NEW_CHAT_TO_CATALOG, data);
 
 export const removeChatFromCatalog = (data: RemoveChatFromCatalogParams) =>
   http.post<RemoveChatFromCatalogResponse>('removeChatFromCatalog', data);
