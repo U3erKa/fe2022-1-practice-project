@@ -16,7 +16,7 @@ export const getDialog = (data: GetDialogParams) =>
   http.post<GetDialogResponse>(ROUTE.GET_CHAT, data);
 
 export const getPreviewChat = () =>
-  http.post<GetPreviewChatResponse>('getPreview');
+  http.post<GetPreviewChatResponse>(ROUTE.GET_PREVIEW);
 
 export const changeChatFavorite = (data: ChangeChatFavoriteParams) =>
   http.post<ChangeChatFavoriteResponse>('favorite', data);

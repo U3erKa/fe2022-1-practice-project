@@ -1,4 +1,3 @@
-import { Op } from 'sequelize';
 import { Catalog, Conversation, Message, User } from '../models';
 import * as controller from '../socketInit';
 import NotFoundError from '../errors/NotFoundError';
@@ -75,66 +74,6 @@ export const addMessage: RequestHandler = async (req, res, next) => {
     });
 
     res.send({ message, preview: { ...preview, interlocutor } });
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const getPreview: RequestHandler = async (req, res, next) => {
-  const {
-    tokenData: { userId },
-  } = req;
-
-  try {
-    const conversations = await Conversation.findAll({
-      include: {
-        model: Message,
-        as: 'messages',
-        attributes: ['body', 'sender', 'createdAt'],
-      },
-      order: [['createdAt', 'DESC']],
-      attributes: [
-        '_id',
-        'participant1',
-        'participant2',
-        'blackList',
-        'favoriteList',
-        'createdAt',
-      ],
-      where: {
-        [Op.or]: [{ participant1: userId }, { participant2: userId }],
-      },
-    });
-
-    const interlocutors = conversations.map(({ participant1, participant2 }) =>
-      participant1 === userId ? participant2 : participant1,
-    ) as [number, number];
-
-    const senders = await User.findAll({
-      where: { id: interlocutors },
-      attributes: ['id', 'firstName', 'lastName', 'displayName', 'avatar'],
-    });
-
-    conversations.forEach((conversation) => {
-      const { participant1, participant2, dataValues, messages } = conversation;
-      Object.assign(dataValues, {
-        // @ts-expect-error
-        text: messages[0]?.body,
-        participants: [participant1, participant2],
-      });
-
-      senders.forEach(
-        ({ dataValues: { id, firstName, lastName, displayName, avatar } }) => {
-          if ([participant1, participant2].includes(id)) {
-            Object.assign(dataValues, {
-              interlocutor: { id, firstName, lastName, displayName, avatar },
-            });
-          }
-        },
-      );
-    });
-
-    res.send(conversations);
   } catch (err) {
     next(err);
   }
