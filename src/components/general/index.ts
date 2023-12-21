@@ -5,7 +5,6 @@ export { default as ItemsContainer } from './ItemsContainer';
 export { default as Logo } from './Logo';
 export { default as Notification } from './Notification';
 export { default as ProgressBar } from './ProgressBar';
-export { default as Picture } from './Picture';
 export { default as Spinner } from './Spinner';
 export { default as TextEntry } from './TextEntry';
 export { default as TryAgain } from './TryAgain';

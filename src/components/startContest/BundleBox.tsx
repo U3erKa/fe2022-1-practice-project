@@ -1,58 +1,45 @@
 import clsx from 'clsx';
-import type { FC } from 'react';
-import { STATIC_IMAGES_PATH } from 'constants/general';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
+import { type FC } from 'react';
 import styles from './styles/BundleBox.module.scss';
 
 export type Props = {
   header: string;
   describe: string;
-  path: string[];
+  icons: [StaticImageData, StaticImageData][];
   setBundle: (bundleStr: string) => void;
 };
 
-const BundleBox: FC<Props> = ({ header, path, setBundle, describe }) => {
-  const defaultPathToImages = `${STATIC_IMAGES_PATH}contestLabels/`;
-
-  const renderImage = () => {
-    const images = path.map((image, i) => (
-      <img
-        src={defaultPathToImages + image}
-        key={i}
+const BundleBox: FC<Props> = ({ header, icons, setBundle, describe }) => {
+  const images = icons.map(([image, activeImage], i) => (
+    <div className={styles.images} key={i}>
+      <Image
+        width={48}
+        height={48}
+        src={image}
         className={styles.imgContainer}
-        alt={image.replace(/.png/g, 'Contest')}
+        alt={image.src.replace(/.png/g, 'Contest')}
       />
-    ));
-    return images;
-  };
-
-  const mouseOverHandler = () => {
-    const element = document.getElementById(header);
-    const [{ children }] = element!.children;
-    for (let i = 0; i < children.length; i++) {
-      (children[i] as HTMLImageElement).src =
-        `${defaultPathToImages}blue_${path[i]}`;
-    }
-  };
-
-  const mouseOutHandler = () => {
-    const element = document.getElementById(header);
-    const [{ children }] = element!.children;
-    for (let i = 0; i < children.length; i++) {
-      (children[i] as HTMLImageElement).src = defaultPathToImages + path[i];
-    }
-  };
+      <Image
+        width={48}
+        height={48}
+        src={activeImage}
+        className={styles.imgContainer}
+        alt={image.src.replace(/.png/g, 'Contest')}
+      />
+    </div>
+  ));
 
   return (
     <div
-      onMouseOver={mouseOverHandler}
-      onMouseOut={mouseOutHandler}
       onClick={() => setBundle(header)}
       id={header}
       className={clsx(styles.bundleContainer, {
-        [styles.combinedBundle]: path.length === 1,
+        [styles.combinedBundle]: icons.length === 1,
       })}
     >
-      <div>{renderImage()}</div>
+      {images}
       <div className={styles.infoContainer}>
         <span className={styles.bundleName}>{header}</span>
         <hr />

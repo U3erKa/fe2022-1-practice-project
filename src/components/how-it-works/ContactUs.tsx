@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import { PAGE } from 'constants/general';
 import PhoneImage from 'assets/howItWorks/phone.svg';
 import styles from './styles/ContactUs.module.scss';
 

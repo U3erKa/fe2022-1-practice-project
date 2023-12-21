@@ -7,6 +7,12 @@ import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from 'components/startContest';
 import { CUSTOMER, PAGE } from 'constants/general';
 import { updateBundle } from 'store/slices/bundleSlice';
+import LogoIcon from 'assets/contestLabels/Logo.png';
+import NameIcon from 'assets/contestLabels/Name.png';
+import TaglineIcon from 'assets/contestLabels/Tagline.png';
+import BlueLogoIcon from 'assets/contestLabels/blue_Logo.png';
+import BlueNameIcon from 'assets/contestLabels/blue_Name.png';
+import BlueTaglineIcon from 'assets/contestLabels/blue_Tagline.png';
 import type { Bundle } from 'types/slices';
 import styles from './styles/page.module.scss';
 
@@ -60,19 +66,19 @@ const StartContestPage = () => {
         </div>
         <div className={styles.baseBundles}>
           <BundleBox
-            path={['Name.png']}
+            icons={[[NameIcon, BlueNameIcon]]}
             header="Name"
             describe="Get up and running with the perfect name."
             setBundle={setBundle}
           />
           <BundleBox
-            path={['Logo.png']}
+            icons={[[LogoIcon, BlueLogoIcon]]}
             header="Logo"
             describe="Kickstart your venture with a unique, memorable logo."
             setBundle={setBundle}
           />
           <BundleBox
-            path={['Tagline.png']}
+            icons={[[TaglineIcon, BlueTaglineIcon]]}
             header="Tagline"
             describe="Connect deeply with your target audience with an on-target tagline."
             setBundle={setBundle}
@@ -91,25 +97,38 @@ const StartContestPage = () => {
         </div>
         <div className={styles.baseBundles}>
           <BundleBox
-            path={['Name.png', 'Logo.png']}
+            icons={[
+              [NameIcon, BlueNameIcon],
+              [LogoIcon, BlueLogoIcon],
+            ]}
             header="Name+Logo"
             describe="Get the essentials needed to establish your brand together and save."
             setBundle={setBundle}
           />
           <BundleBox
-            path={['Name.png', 'Tagline.png']}
+            icons={[
+              [NameIcon, BlueNameIcon],
+              [TaglineIcon, BlueTaglineIcon],
+            ]}
             header="Name+Tagline"
             describe="Communicate your vision with the perfect Name/Tagline combo."
             setBundle={setBundle}
           />
           <BundleBox
-            path={['Logo.png', 'Tagline.png']}
+            icons={[
+              [LogoIcon, BlueLogoIcon],
+              [TaglineIcon, BlueTaglineIcon],
+            ]}
             header="Tagline+Logo"
             describe="Description for Logo + Tagline will come here."
             setBundle={setBundle}
           />
           <BundleBox
-            path={['Name.png', 'Logo.png', 'Tagline.png']}
+            icons={[
+              [NameIcon, BlueNameIcon],
+              [LogoIcon, BlueLogoIcon],
+              [TaglineIcon, BlueTaglineIcon],
+            ]}
             header="Name+Tagline+Logo"
             describe="Establish your entire brand identity and save with this bundle."
             setBundle={setBundle}

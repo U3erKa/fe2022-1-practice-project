@@ -30,10 +30,7 @@ export const NOTIFICATION_CHANGE_MARK = 'changeMark';
 export const NOTIFICATION_CHANGE_OFFER_STATUS = 'changeOfferStatus';
 export const NEW_MESSAGE = 'newMessage';
 
-export const STATIC_IMAGES_PATH = '/staticImages/';
 export const ANONYM_IMAGE_NAME = 'anon.png';
-export const ANONYM_IMAGE_PATH = `${STATIC_IMAGES_PATH}anonym.png` as const;
-export const HOW_IT_WORKS_PATH = `${STATIC_IMAGES_PATH}howItWorks/` as const;
 export const REFRESH_TOKEN = 'refreshToken';
 export const PUBLIC_URL = '/images/';
 

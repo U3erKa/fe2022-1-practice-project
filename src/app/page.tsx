@@ -10,11 +10,8 @@ import { Footer, Header, Spinner } from 'components/general';
 import { SlideBar } from 'components/home';
 import {
   EXAMPLE_SLIDER,
-  EXAMPLE_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
-  FEEDBACK_SLIDER_IMAGES,
   MAIN_SLIDER,
-  MAIN_SLIDER_IMAGES,
 } from 'constants/carousel';
 import { HEADER_ANIMATION_TEXT, PAGE } from 'constants/general';
 import CompressedIcon1 from 'assets/gif/1-compressed.gif';

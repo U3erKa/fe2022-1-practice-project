@@ -27,7 +27,7 @@ export const HowItWorksIntro: FC = () => {
         </a>
       </section>
       <figure className={styles.imageContainer}>
-        <Image src={MainImage} alt="main icon" />
+        <Image src={MainImage} alt="main icon" width={393} />
       </figure>
     </article>
   );

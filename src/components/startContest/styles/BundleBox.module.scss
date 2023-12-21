@@ -26,9 +26,36 @@
 }
 
 .imgContainer {
-  inline-size: 48px;
-  block-size: 48px;
   margin: 20px 0;
+}
+
+.images {
+  display: inline-block;
+  margin-inline: 8px;
+
+  img {
+    &:first-child {
+      display: block;
+    }
+
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .images:hover {
+    img {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
 }
 
 .infoContainer {
