@@ -1,11 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
-import { Picture } from 'components/general';
 import { FormInput } from 'components/input';
-import { STATIC_IMAGES_PATH } from 'constants/general';
 import { sendMessage } from 'store/slices/chatSlice';
 import { type Message, MessageSchema } from 'utils/schemas';
+import SendMessageIcon from 'assets/icons/send.png';
 import styles from './styles/ChatInput.module.scss';
 
 const classes = {
@@ -46,14 +46,7 @@ const ChatInput = () => {
           classes={classes}
         />
         <button type="submit">
-          <Picture
-            srcSet={[
-              `${STATIC_IMAGES_PATH}send.avif`,
-              `${STATIC_IMAGES_PATH}send.webp`,
-            ]}
-            src={`${STATIC_IMAGES_PATH}send.png`}
-            alt="send Message"
-          />
+          <Image src={SendMessageIcon} alt="send Message" />
         </button>
       </form>
     </div>

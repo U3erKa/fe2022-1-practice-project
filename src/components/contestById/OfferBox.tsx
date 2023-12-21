@@ -5,6 +5,7 @@ import {
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import { isEqual } from 'radash';
 import type { FC } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
@@ -28,7 +29,6 @@ import {
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
   PUBLIC_URL,
-  STATIC_IMAGES_PATH,
 } from 'constants/general';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import {
@@ -36,6 +36,8 @@ import {
   changeShowImage,
   clearChangeMarkError,
 } from 'store/slices/contestByIdSlice';
+import StarOutlineIcon from 'assets/icons/star-outline.png';
+import StarIcon from 'assets/icons/star.png';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
 import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
@@ -172,38 +174,8 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     );
   };
 
-  const fullSymbol = (
-    <Picture
-      srcSet={[
-        `${STATIC_IMAGES_PATH}star.avif`,
-        `${STATIC_IMAGES_PATH}star.webp`,
-      ]}
-      src={`${STATIC_IMAGES_PATH}star.png`}
-      alt="star"
-    />
-  );
-
-  const placeholderSymbol = (
-    <Picture
-      srcSet={[
-        `${STATIC_IMAGES_PATH}star.avif`,
-        `${STATIC_IMAGES_PATH}star.webp`,
-      ]}
-      src={`${STATIC_IMAGES_PATH}star.png`}
-      alt="star"
-    />
-  );
-
-  const emptySymbol = (
-    <Picture
-      srcSet={[
-        `${STATIC_IMAGES_PATH}star-outline.avif`,
-        `${STATIC_IMAGES_PATH}star-outline.webp`,
-      ]}
-      src={`${STATIC_IMAGES_PATH}star-outline.png`}
-      alt="star-outline"
-    />
-  );
+  const fullSymbol = <Image src={StarIcon} alt="star" />;
+  const emptySymbol = <Image src={StarOutlineIcon} alt="star-outline" />;
 
   return (
     <div className={styles.offerContainer}>
@@ -223,7 +195,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
             <Rating
               fractions={2}
               fullSymbol={fullSymbol}
-              placeholderSymbol={placeholderSymbol}
+              placeholderSymbol={fullSymbol}
               emptySymbol={emptySymbol}
               initialRating={rating}
               readonly
@@ -254,7 +226,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
             <Rating
               fractions={2}
               fullSymbol={fullSymbol}
-              placeholderSymbol={placeholderSymbol}
+              placeholderSymbol={fullSymbol}
               emptySymbol={emptySymbol}
               onClick={changeMarkMethod}
               placeholderRating={data.mark}

@@ -75,10 +75,6 @@
     line-height: 20px;
   }
 
-  img {
-    max-block-size: 85px;
-  }
-
   &:last-child {
     margin-inline-end: 0;
   }
@@ -107,10 +103,6 @@
 
   div {
     @include stepCard;
-  }
-
-  img {
-    inline-size: 100%;
   }
 }
 
@@ -147,7 +139,7 @@
 .images {
   img {
     cursor: pointer;
-    max-block-size: 40px;
+    margin: 0 30px;
 
     &:first-child {
       display: block;
@@ -157,20 +149,11 @@
       display: none;
     }
   }
-  @media (width <= 414px) {
-    img {
-      max-inline-size: 70px;
-      max-block-size: 20px;
-      margin: 0 30px;
-    }
-  }
 }
+
 @media (hover: hover) {
   .images:hover {
     img {
-      cursor: pointer;
-      max-block-size: 40px;
-
       &:first-child {
         display: none;
       }
@@ -178,13 +161,6 @@
       &:last-child {
         display: block;
       }
-    }
-  }
-  @media (width <= 414px) {
-    .images:hover {
-      max-inline-size: 70px;
-      max-block-size: 20px;
-      margin: 0 30px;
     }
   }
 }

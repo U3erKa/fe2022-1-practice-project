@@ -2,10 +2,11 @@
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { type CSSProperties, useEffect, useState } from 'react';
 import { useSelector } from 'hooks';
-import { Footer, Header, Picture, Spinner } from 'components/general';
+import { Footer, Header, Spinner } from 'components/general';
 import { SlideBar } from 'components/home';
 import {
   EXAMPLE_SLIDER,
@@ -15,12 +16,22 @@ import {
   MAIN_SLIDER,
   MAIN_SLIDER_IMAGES,
 } from 'constants/carousel';
-import {
-  HEADER_ANIMATION_TEXT,
-  PAGE,
-  STATIC_IMAGES_PATH,
-} from 'constants/general';
+import { HEADER_ANIMATION_TEXT, PAGE } from 'constants/general';
+import CompressedIcon1 from 'assets/gif/1-compressed.gif';
+import CompressedIcon2 from 'assets/gif/2-compressed-new.gif';
+import CompressedIcon3 from 'assets/gif/3-compressed.gif';
+import MoreBenefitsHighQualityIcon from 'assets/icons/more-benifits-high-quality-icon.png';
+import MoreBenefitsTrademarkIcon from 'assets/icons/more-benifits-trademark-icon.png';
+import MoreBenefitsIcon from 'assets/icons/more-benifits-world-icon.png';
+import ForbesActiveIcon from 'assets/sponsors/Forbes-active.png';
+import ForbesInactiveIcon from 'assets/sponsors/Forbes-inactive.png';
+import MashableActiveIcon from 'assets/sponsors/mashable-active.png';
+import MashableInactiveIcon from 'assets/sponsors/mashable-inactive.png';
+import TheNextWebActiveIcon from 'assets/sponsors/the_next_web_active.png';
+import TheNextWebInactiveIcon from 'assets/sponsors/the_next_web_inactive.png';
 import styles from './styles/page.module.scss';
+
+const GREEN_COLOR = { color: '#006d00' } satisfies CSSProperties;
 
 const Home = () => {
   const { isFetching } = useSelector((state) => state.userStore);
@@ -76,14 +87,7 @@ const Home = () => {
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
               <div className={styles.cardContainer}>
                 <div className={styles.card}>
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}more-benifits-world-icon.avif`,
-                      `${STATIC_IMAGES_PATH}more-benifits-world-icon.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}more-benifits-world-icon.png`}
-                    alt="globe"
-                  />
+                  <Image src={MoreBenefitsIcon} height={85} alt="globe" />
                   <h3>Largest Naming Community</h3>
                   <p>
                     Our unique approach allows you to receive an unmatched
@@ -94,12 +98,9 @@ const Home = () => {
                   </p>
                 </div>
                 <div className={styles.card}>
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.avif`,
-                      `${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}more-benifits-high-quality-icon.png`}
+                  <Image
+                    src={MoreBenefitsHighQualityIcon}
+                    height={85}
                     alt="desktop"
                   />
                   <h3>High Quality & Collaboration</h3>
@@ -111,13 +112,10 @@ const Home = () => {
                   </p>
                 </div>
                 <div className={styles.card}>
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}more-benifits-trademark-icon.avif`,
-                      `${STATIC_IMAGES_PATH}more-benifits-trademark-icon.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}more-benifits-trademark-icon.png`}
-                    alt="cards"
+                  <Image
+                    src={MoreBenefitsTrademarkIcon}
+                    height={85}
+                    alt="desktop"
                   />
                   <h3>Agency-Level Features</h3>
                   <p>
@@ -133,58 +131,20 @@ const Home = () => {
             <div className={styles.greyContainer}>
               <div className={styles.adv}>
                 <div className={styles.images}>
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.avif`,
-                      `${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}sponsors/Forbes-inactive.png`}
-                    alt="forbes"
-                  />
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}sponsors/Forbes-active.avif`,
-                      `${STATIC_IMAGES_PATH}sponsors/Forbes-active.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}sponsors/Forbes-active.png`}
-                    alt="forbes"
-                  />
+                  <Image src={ForbesInactiveIcon} height={50} alt="forbes" />
+                  <Image src={ForbesActiveIcon} height={50} alt="forbes" />
                 </div>
                 <div className={styles.images}>
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.avif`,
-                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}sponsors/the_next_web_inactive.png`}
-                    alt="web"
-                  />
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_active.avif`,
-                      `${STATIC_IMAGES_PATH}sponsors/the_next_web_active.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}sponsors/the_next_web_active.png`}
-                    alt="web"
-                  />
+                  <Image src={TheNextWebInactiveIcon} height={40} alt="web" />
+                  <Image src={TheNextWebActiveIcon} height={40} alt="web" />
                 </div>
                 <div className={styles.images}>
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}sponsors/mashable-inactive.avif`,
-                      `${STATIC_IMAGES_PATH}sponsors/mashable-inactive.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}sponsors/mashable-inactive.png`}
+                  <Image
+                    src={MashableInactiveIcon}
+                    height={20}
                     alt="mashable"
                   />
-                  <Picture
-                    srcSet={[
-                      `${STATIC_IMAGES_PATH}sponsors/mashable-active.avif`,
-                      `${STATIC_IMAGES_PATH}sponsors/mashable-active.webp`,
-                    ]}
-                    src={`${STATIC_IMAGES_PATH}sponsors/mashable-active.png`}
-                    alt="mashable"
-                  />
+                  <Image src={MashableActiveIcon} height={20} alt="mashable" />
                 </div>
               </div>
               <div className={styles.stats}>
@@ -208,56 +168,36 @@ const Home = () => {
                 <div>
                   <h3>Step 1: Launch a Naming Contest</h3>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>
                       Start your project right with our proven Naming Brief
                       template
                     </span>
                   </p>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>
                       We’ll walk you through exactly what you need to share
                       about your project in order to get an awesome Name
                     </span>
                   </p>
                 </div>
-                <Picture
-                  srcSet={[`${STATIC_IMAGES_PATH}gif/1-compressed.avif`]}
-                  src={`${STATIC_IMAGES_PATH}gif/1-compressed.gif`}
-                  alt="compressed"
-                />
+                <Image src={CompressedIcon1} alt="compressed" />
               </div>
             </div>
             <div className={styles.greenContainer}>
               <div className={styles.step}>
-                <Picture
-                  srcSet={[`${STATIC_IMAGES_PATH}gif/2-compressed-new.avif`]}
-                  src={`${STATIC_IMAGES_PATH}gif/2-compressed-new.gif`}
-                  alt="compressed"
-                />
+                <Image src={CompressedIcon2} alt="compressed" />
                 <div className={styles.greenStep}>
                   <h3>Step 2: Ideas start pouring in within minutes</h3>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>
                       100s of naming experts start submitting name ideas
                     </span>
                   </p>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>
                       Names automatically checked for URL availability
                     </span>
@@ -270,37 +210,24 @@ const Home = () => {
                 <div>
                   <h3>Step 3: Rate Entries & Brainstorm with Creatives</h3>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>Provide instant feedback on Names</span>
                   </p>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>
                       Send private feedback or public messages to all creatives
                     </span>
                   </p>
                   <p>
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      style={{ color: '#006d00' }}
-                    />
+                    <FontAwesomeIcon icon={faCheck} style={GREEN_COLOR} />
                     <span>
                       The more entries you rate - the submissions get better and
                       better
                     </span>
                   </p>
                 </div>
-                <Picture
-                  srcSet={[`${STATIC_IMAGES_PATH}gif/3-compressed.avif`]}
-                  src={`${STATIC_IMAGES_PATH}gif/3-compressed.gif`}
-                  alt="compressed"
-                />
+                <Image src={CompressedIcon3} alt="compressed" />
               </div>
             </div>
             <div className={styles.headerBar}>

@@ -1,13 +1,12 @@
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { capitalize } from 'radash';
 import { type FC } from 'react';
-import { Picture } from 'components/general';
-import {
-  LOGO_CONTEST,
-  NAME_CONTEST,
-  STATIC_IMAGES_PATH,
-} from 'constants/general';
+import { LOGO_CONTEST, NAME_CONTEST } from 'constants/general';
 import { getLongTimeStr } from 'utils/functions';
+import DiamondIcon from 'assets/icons/diamond.png';
+import EntryImageIcon from 'assets/icons/entrieImage.png';
+import SmallCheckIcon from 'assets/icons/smallCheck.png';
 import type { ContestId } from 'types/api/_common';
 import type { Contest } from 'types/contest';
 import styles from './styles/ContestBox.module.scss';
@@ -39,9 +38,8 @@ const ContestBox: FC<Props> = ({ data }) => {
           <span className={styles.id}>{`(#${id})`}</span>
         </div>
         <div className={styles.contestType}>
-          <span>{`${capitalize(
-            contestType,
-          )} / ${getPreferenceContest()}`}</span>
+          {/* prettier-ignore */}
+          <span>{`${capitalize(contestType)} / ${getPreferenceContest()}`}</span>
         </div>
         <div className={styles.contestType}>
           <span>
@@ -52,26 +50,12 @@ const ContestBox: FC<Props> = ({ data }) => {
         <div className={styles.prizeContainer}>
           <div className={styles.guaranteedContainer}>
             <div>
-              <Picture
-                srcSet={[
-                  `${STATIC_IMAGES_PATH}smallCheck.avif`,
-                  `${STATIC_IMAGES_PATH}smallCheck.webp`,
-                ]}
-                src={`${STATIC_IMAGES_PATH}smallCheck.png`}
-                alt="check"
-              />
+              <Image src={SmallCheckIcon} alt="check" />
             </div>
             <span>Guaranteed prize</span>
           </div>
           <div className={styles.prize}>
-            <Picture
-              srcSet={[
-                `${STATIC_IMAGES_PATH}diamond.avif`,
-                `${STATIC_IMAGES_PATH}diamond.webp`,
-              ]}
-              src={`${STATIC_IMAGES_PATH}diamond.png`}
-              alt="diamond"
-            />
+            <Image src={DiamondIcon} alt="diamond" />
             <span>{`$${prize}`}</span>
           </div>
         </div>
@@ -79,14 +63,7 @@ const ContestBox: FC<Props> = ({ data }) => {
       <div className={styles.entryAndTimeContainer}>
         <div className={styles.entriesContainer}>
           <div className={styles.entriesCounter}>
-            <Picture
-              srcSet={[
-                `${STATIC_IMAGES_PATH}entrieImage.avif`,
-                `${STATIC_IMAGES_PATH}entrieImage.webp`,
-              ]}
-              src={`${STATIC_IMAGES_PATH}entrieImage.png`}
-              alt="logo"
-            />
+            <Image src={EntryImageIcon} alt="entry image" />
             <span>{count}</span>
           </div>
           <span>Entries</span>

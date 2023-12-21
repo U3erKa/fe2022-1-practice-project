@@ -5,15 +5,17 @@ import {
   faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import { type FC, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
-import { Picture, UserImage } from 'components/general';
+import { UserImage } from 'components/general';
 import { PUBLIC_URL, STATIC_IMAGES_PATH } from 'constants/general';
 import {
   backToDialogList,
   changeChatBlock,
   changeChatFavorite,
 } from 'store/slices/chatSlice';
+import LeftArrowIcon from 'assets/icons/arrow-left-thick.png';
 import type { UserId } from 'types/api/_common';
 import type {
   ChangeChatBlockParams,
@@ -64,14 +66,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
         className={styles.buttonContainer}
         onClick={() => dispatch(backToDialogList())}
       >
-        <Picture
-          srcSet={[
-            `${STATIC_IMAGES_PATH}arrow-left-thick.avif`,
-            `${STATIC_IMAGES_PATH}arrow-left-thick.webp`,
-          ]}
-          src={`${STATIC_IMAGES_PATH}arrow-left-thick.png`}
-          alt="back"
-        />
+        <Image src={LeftArrowIcon} alt="back" />
       </div>
       <div className={styles.infoContainer}>
         <div>

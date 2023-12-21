@@ -1,11 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector } from 'hooks';
-import { Logo, Picture, Spinner } from 'components/general';
-import { CUSTOMER, PAGE, STATIC_IMAGES_PATH } from 'constants/general';
+import { Logo, Spinner } from 'components/general';
+import { CUSTOMER, PAGE } from 'constants/general';
 import { HEADER_LIST } from 'constants/header';
 import { LoginButtons, NavList } from '.';
+import PhoneIcon from 'assets/icons/phone.png';
 import styles from './styles/Header.module.scss';
 
 const Header = () => {
@@ -42,14 +44,7 @@ const Header = () => {
       </div>
       <div className={styles.loginSignnUpHeaders}>
         <div className={styles.numberContainer}>
-          <Picture
-            srcSet={[
-              `${STATIC_IMAGES_PATH}phone.avif`,
-              `${STATIC_IMAGES_PATH}phone.webp`,
-            ]}
-            src={`${STATIC_IMAGES_PATH}phone.png`}
-            alt="phone"
-          />
+          <Image src={PhoneIcon} alt="phone" />
           <a href="tel:8773553585">(877)&nbsp;355-3585</a>
         </div>
         <div className={styles.userButtonsContainer}>

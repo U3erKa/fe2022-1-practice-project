@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { Picture } from 'components/general';
-import { STATIC_IMAGES_PATH } from 'constants/general';
 import type { HEADER_LIST } from 'constants/header';
+import MenuDownIcon from 'assets/icons/menu-down.png';
 import styles from './styles/NavList.module.scss';
 
 export type List = typeof HEADER_LIST;
@@ -11,14 +11,7 @@ export default function NavList({ list }: { list: List }) {
   const mapList = list.map(({ id, text, listItem }) => (
     <li key={id}>
       <span>{text}</span>
-      <Picture
-        srcSet={[
-          `${STATIC_IMAGES_PATH}menu-down.avif`,
-          `${STATIC_IMAGES_PATH}menu-down.webp`,
-        ]}
-        src={`${STATIC_IMAGES_PATH}menu-down.png`}
-        alt="menu"
-      />
+      <Image src={MenuDownIcon} alt="menu" />
       <NavListItem list={listItem} />
     </li>
   ));
