@@ -1,12 +1,8 @@
 import { type FC } from 'react';
 import { useDispatch, useSelector } from 'store';
 import { UpdateUserInfoForm } from 'components/form';
-import {
-  ANONYM_IMAGE_NAME,
-  ANONYM_IMAGE_PATH,
-  CREATOR,
-  PUBLIC_URL,
-} from 'constants/general';
+import { UserImage } from 'components/general';
+import { CREATOR, PUBLIC_URL } from 'constants/general';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
 import { updateUser } from 'store/slices/userSlice';
 import { uniqueId } from 'utils/functions';
@@ -81,15 +77,7 @@ const UserInfo: FC = () => {
         <UpdateUserInfoForm onSubmit={updateUserData} />
       ) : (
         <div className={styles.infoContainer}>
-          <img
-            src={
-              avatar === ANONYM_IMAGE_NAME
-                ? ANONYM_IMAGE_PATH
-                : `${PUBLIC_URL}${avatar}`
-            }
-            className={styles.avatar}
-            alt="user"
-          />
+          <UserImage src={`${PUBLIC_URL}${avatar}`} className={styles.avatar} />
           <UserInfoData userData={userData} />
         </div>
       )}

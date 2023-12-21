@@ -5,11 +5,11 @@ import {
   clearSetOfferStatusError,
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
+import { OfferBox } from '.';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
 import type { CustomerCommand } from 'types/api/offer';
 import type { ContestData } from 'types/slices';
-import { OfferBox } from '.';
 import styles from './styles/ContestOfferList.module.scss';
 
 export type Props = {

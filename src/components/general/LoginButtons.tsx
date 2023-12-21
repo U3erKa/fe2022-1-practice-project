@@ -1,8 +1,11 @@
+import Image from 'next/image';
 import { useSelector } from 'hooks';
 import { ProfileNavBar, UserImage } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';
 import { PROFILE_NAVBAR } from 'constants/header';
 import { getDays, getHours, getRemainingTime } from 'utils/functions';
+import EmailIcon from 'assets/icons/email.png';
+import MenuIcon from 'assets/icons/menu-down.png';
 import type { User } from 'types/api/user';
 import styles from './styles/LoginButtons.module.scss';
 
@@ -40,31 +43,13 @@ export default function LoginButtons({ data }: { data: User }) {
   return (
     <>
       <div className={styles.userInfo}>
-        <UserImage
-          avatar={data.avatar}
-          src={`${PUBLIC_URL}${data.avatar}`}
-        />
+        <UserImage src={`${PUBLIC_URL}${data.avatar}`} />
         {activeEvents > 0 && <div className={styles.badge}></div>}
         <span>{`Hi, ${data.displayName}`}</span>
-        <Picture
-          srcSet={[
-            `${STATIC_IMAGES_PATH}menu-down.avif`,
-            `${STATIC_IMAGES_PATH}menu-down.webp`,
-          ]}
-          src={`${STATIC_IMAGES_PATH}menu-down.png`}
-          alt="menu"
-        />
+        <Image src={MenuIcon} alt="menu" />
         <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />
       </div>
-      <Picture
-        srcSet={[
-          `${STATIC_IMAGES_PATH}email.avif`,
-          `${STATIC_IMAGES_PATH}email.webp`,
-        ]}
-        src={`${STATIC_IMAGES_PATH}email.png`}
-        className={styles.emailIcon}
-        alt="email"
-      />
+      <Image className={styles.emailIcon} src={EmailIcon} alt="email" />
     </>
   );
 }

@@ -11,10 +11,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Rating from 'react-rating';
 import { useDispatch, useSelector } from 'store';
-import { Picture } from 'components/general';
+import { Picture, UserImage } from 'components/general';
 import {
-  ANONYM_IMAGE_NAME,
-  ANONYM_IMAGE_PATH,
   CONTEST_STATUS_ACTIVE,
   CREATOR,
   CUSTOMER,
@@ -213,14 +211,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       <div className={styles.mainInfoContainer}>
         <div className={styles.userInfo}>
           <div className={styles.creativeInfoContainer}>
-            <img
-              src={
-                avatar === ANONYM_IMAGE_NAME
-                  ? ANONYM_IMAGE_PATH
-                  : `${PUBLIC_URL}${avatar}`
-              }
-              alt="user"
-            />
+            <UserImage src={`${PUBLIC_URL}${avatar}`} />
             <div className={styles.nameAndEmail}>
               <span>{`${firstName} ${lastName}`}</span>
               <span>{email}</span>

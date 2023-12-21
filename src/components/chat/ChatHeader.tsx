@@ -7,13 +7,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type FC, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
-import { Picture } from 'components/general';
-import {
-  ANONYM_IMAGE_NAME,
-  ANONYM_IMAGE_PATH,
-  PUBLIC_URL,
-  STATIC_IMAGES_PATH,
-} from 'constants/general';
+import { Picture, UserImage } from 'components/general';
+import { PUBLIC_URL, STATIC_IMAGES_PATH } from 'constants/general';
 import {
   backToDialogList,
   changeChatBlock,
@@ -80,14 +75,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
       </div>
       <div className={styles.infoContainer}>
         <div>
-          <img
-            src={
-              avatar === ANONYM_IMAGE_NAME
-                ? ANONYM_IMAGE_PATH
-                : `${PUBLIC_URL}${avatar}`
-            }
-            alt="user"
-          />
+          <UserImage src={`${PUBLIC_URL}${avatar}`} />
           <span>{firstName}</span>
         </div>
         {chatData && (

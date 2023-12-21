@@ -1,12 +1,7 @@
 import type { FC } from 'react';
 import { useSelector } from 'store';
-import { Picture } from 'components/general';
-import {
-  ANONYM_IMAGE_NAME,
-  ANONYM_IMAGE_PATH,
-  PUBLIC_URL,
-  STATIC_IMAGES_PATH,
-} from 'constants/general';
+import { Picture, UserImage } from 'components/general';
+import { PUBLIC_URL, STATIC_IMAGES_PATH } from 'constants/general';
 import { getLongTimeStr } from 'utils/functions';
 import type { ContestData } from 'types/slices';
 import styles from './styles/ContestSideBar.module.scss';
@@ -77,14 +72,7 @@ const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {
         <div className={styles.infoCustomerContainer}>
           <span className={styles.labelCustomerInfo}>About Contest Holder</span>
           <div className={styles.customerInfo}>
-            <img
-              src={
-                User.avatar === ANONYM_IMAGE_NAME
-                  ? ANONYM_IMAGE_PATH
-                  : `${PUBLIC_URL}${User.avatar}`
-              }
-              alt="user"
-            />
+            <UserImage src={`${PUBLIC_URL}${User.avatar}`} />
             <div className={styles.customerNameContainer}>
               <span>{`${User.firstName} ${User.lastName}`}</span>
               <span>{User.displayName}</span>

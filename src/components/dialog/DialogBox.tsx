@@ -10,12 +10,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type FC, type MouseEvent } from 'react';
-import {
-  ANONYM_IMAGE_NAME,
-  ANONYM_IMAGE_PATH,
-  CATALOG_PREVIEW_CHAT_MODE,
-  PUBLIC_URL,
-} from 'constants/general';
+import { UserImage } from 'components/general';
+import { CATALOG_PREVIEW_CHAT_MODE, PUBLIC_URL } from 'constants/general';
 import { getShortTimeStr } from 'utils/functions';
 import type { ChatId, UserId } from 'types/api/_common';
 import type { GoToExtendedDialog, Interlocutor } from 'types/api/chat';
@@ -53,6 +49,7 @@ const DialogBox: FC<Props> = ({
     chatPreview;
   const isFavorite = favoriteList[participants.indexOf(userId)];
   const isBlocked = blackList[participants.indexOf(userId)];
+  if (!interlocutor) return null;
   return (
     <div
       className={styles.previewChatBox}
@@ -68,14 +65,7 @@ const DialogBox: FC<Props> = ({
         })
       }
     >
-      <img
-        src={
-          interlocutor.avatar === ANONYM_IMAGE_NAME
-            ? ANONYM_IMAGE_PATH
-            : `${PUBLIC_URL}${interlocutor.avatar}`
-        }
-        alt="user"
-      />
+      <UserImage src={`${PUBLIC_URL}${interlocutor.avatar}`} />
       <div className={styles.infoContainer}>
         <div className={styles.interlocutorInfo}>
           <span className={styles.interlocutorName}>
