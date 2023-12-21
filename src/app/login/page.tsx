@@ -5,8 +5,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'hooks';
 import { LoginForm } from 'components/form';
 import { Logo } from 'components/general';
-import { PAGE, STATIC_IMAGES_PATH } from 'constants/general';
+import { PAGE } from 'constants/general';
 import { clearAuthError } from 'store/slices/authSlice';
+import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/page.module.scss';
 
 const LoginPage = () => {
@@ -21,14 +22,7 @@ const LoginPage = () => {
     <div className={styles.mainContainer}>
       <div className={styles.loginContainer}>
         <div className={styles.headerSignUpPage}>
-          <Logo
-            srcSet={[
-              `${STATIC_IMAGES_PATH}logo.avif`,
-              `${STATIC_IMAGES_PATH}logo.webp`,
-            ]}
-            src={`${STATIC_IMAGES_PATH}logo.png`}
-            alt="logo"
-          />
+          <Logo src={LogoIcon} />
           <div className={styles.linkLoginContainer}>
             <Link href={PAGE.REGISTER} style={{ textDecoration: 'none' }}>
               <span>Signup</span>

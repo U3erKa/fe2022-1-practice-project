@@ -78,10 +78,7 @@ const Home = () => {
               </div>
             </div>
             <div className={styles.greyContainer}>
-              <SlideBar
-                images={MAIN_SLIDER_IMAGES}
-                carouselType={MAIN_SLIDER}
-              />
+              <SlideBar carouselType={MAIN_SLIDER} />
             </div>
             <div className={styles.containerDescription}>
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
@@ -239,10 +236,7 @@ const Home = () => {
                 Logo design
               </p>
             </div>
-            <SlideBar
-              images={EXAMPLE_SLIDER_IMAGES}
-              carouselType={EXAMPLE_SLIDER}
-            />
+            <SlideBar carouselType={EXAMPLE_SLIDER} />
             <div className={styles.button}>
               <Link className={styles.buttonLink} href={PAGE.DASHBOARD}>
                 DASHBOARD
@@ -250,10 +244,7 @@ const Home = () => {
             </div>
             <div className={styles.blueContainer}>
               <h2 className={styles.whiteUnderline}>What our customers say</h2>
-              <SlideBar
-                images={FEEDBACK_SLIDER_IMAGES}
-                carouselType={FEEDBACK_SLIDER}
-              />
+              <SlideBar carouselType={FEEDBACK_SLIDER} />
             </div>
           </div>
           <Footer />

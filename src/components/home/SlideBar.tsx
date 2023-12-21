@@ -1,14 +1,15 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
-import { Picture } from 'components/general';
 import {
   EXAMPLE_SLIDER,
-  EXAMPLE_SLIDER_TEXT,
+  EXAMPLE_SLIDER_IMAGES,
   FEEDBACK_SLIDER,
-  FEEDBACK_SLIDER_TEXT,
+  FEEDBACK_SLIDER_IMAGES,
   MAIN_SLIDER,
+  MAIN_SLIDER_IMAGES,
 } from 'constants/carousel';
 import styles from './styles/SlideBar.module.scss';
 
@@ -17,7 +18,6 @@ export type Props = {
     | typeof MAIN_SLIDER
     | typeof EXAMPLE_SLIDER
     | typeof FEEDBACK_SLIDER;
-  images: { src: string; srcSet?: string[] }[];
 };
 
 const CONTAINER_STYLE = {
@@ -26,30 +26,30 @@ const CONTAINER_STYLE = {
   [FEEDBACK_SLIDER]: styles.feedbackCarousel,
 };
 
-const SliderBar: FC<Props> = ({ carouselType, images }) => {
+const SliderBar: FC<Props> = ({ carouselType }) => {
   const renderSlides = () => {
     switch (carouselType) {
       case MAIN_SLIDER: {
-        return images.map(({ src, srcSet }, index) => (
-          <SwiperSlide className={styles.carouselCell} key={index}>
-            <Picture src={src} srcSet={srcSet} alt="slide" />
+        return MAIN_SLIDER_IMAGES.map(({ id, ...props }) => (
+          <SwiperSlide className={styles.carouselCell} key={id}>
+            <Image alt="slide" {...props} />
           </SwiperSlide>
         ));
       }
       case EXAMPLE_SLIDER: {
-        return images.map(({ src, srcSet }, index) => (
-          <SwiperSlide className={styles.exampleCell} key={index}>
-            <Picture src={src} srcSet={srcSet} alt="slide" />
-            <p>{EXAMPLE_SLIDER_TEXT[index]}</p>
+        return EXAMPLE_SLIDER_IMAGES.map(({ text, ...props }) => (
+          <SwiperSlide className={styles.exampleCell} key={text}>
+            <Image alt="slide" {...props} />
+            <p>{text}</p>
           </SwiperSlide>
         ));
       }
       case FEEDBACK_SLIDER: {
-        return images.map(({ src, srcSet }, index) => (
-          <SwiperSlide className={styles.feedbackCell} key={index}>
-            <Picture src={src} srcSet={srcSet} alt="slide" />
-            <p>{FEEDBACK_SLIDER_TEXT[index].feedback}</p>
-            <span>{FEEDBACK_SLIDER_TEXT[index].name}</span>
+        return FEEDBACK_SLIDER_IMAGES.map(({ feedback, name, ...props }) => (
+          <SwiperSlide className={styles.feedbackCell} key={name}>
+            <Image alt="slide" {...props} />
+            <p>{feedback}</p>
+            <span>{name}</span>
           </SwiperSlide>
         ));
       }
