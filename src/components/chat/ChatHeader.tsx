@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { type FC, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserImage } from 'components/general';
-import { PUBLIC_URL, STATIC_IMAGES_PATH } from 'constants/general';
+import { PUBLIC_URL } from 'constants/general';
 import {
   backToDialogList,
   changeChatBlock,

@@ -12,7 +12,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Rating from 'react-rating';
 import { useDispatch, useSelector } from 'store';
-import { Picture, UserImage } from 'components/general';
+import { UserImage } from 'components/general';
 import {
   CONTEST_STATUS_ACTIVE,
   CREATOR,
@@ -40,7 +40,11 @@ import StarOutlineIcon from 'assets/icons/star-outline.png';
 import StarIcon from 'assets/icons/star.png';
 import type { OfferId, UserId } from 'types/api/_common';
 import type { Offer } from 'types/api/contest';
-import type { OfferStatus, Rating as _Rating } from 'types/api/offer';
+import type {
+  OfferStatus,
+  OfferStatus as OfferStatusIcon,
+  Rating as _Rating,
+} from 'types/api/offer';
 import type { User } from 'types/api/user';
 import type { ContestData } from 'types/slices';
 import styles from './styles/OfferBox.module.scss';
@@ -50,6 +54,31 @@ export type Props = {
   data: Offer;
   contestData: ContestData;
   setOfferStatus: (creatorId: UserId, offerId: OfferId, command: any) => void;
+};
+
+export type Props2 = {
+  status: OfferStatus;
+  role: User['role'];
+};
+
+const fullSymbol = <Image src={StarIcon} alt="star" />;
+const emptySymbol = <Image src={StarOutlineIcon} alt="star-outline" />;
+
+const OfferStatusIcon = ({ status, role }: Props2) => {
+  switch (status) {
+    case OFFER_STATUS_REJECTED:
+    case OFFER_STATUS_DISCARDED:
+      return <FontAwesomeIcon icon={faCircleXmark} className={styles.reject} />;
+    case OFFER_STATUS_WON:
+    case role === MODERATOR && OFFER_STATUS_APPROVED:
+      return (
+        <FontAwesomeIcon icon={faCircleCheck} className={styles.resolve} />
+      );
+    case role === CREATOR && (OFFER_STATUS_PENDING as any):
+      return <FontAwesomeIcon icon={faClock} className={styles.pending} />;
+    default:
+      return null;
+  }
 };
 
 const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
@@ -133,26 +162,6 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     );
   };
 
-  const offerStatus = () => {
-    const { status } = data;
-    switch (status) {
-      case OFFER_STATUS_REJECTED:
-      case OFFER_STATUS_DISCARDED:
-        return (
-          <FontAwesomeIcon icon={faCircleXmark} className={styles.reject} />
-        );
-      case OFFER_STATUS_WON:
-      case role === MODERATOR && OFFER_STATUS_APPROVED:
-        return (
-          <FontAwesomeIcon icon={faCircleCheck} className={styles.resolve} />
-        );
-      case role === CREATOR && (OFFER_STATUS_PENDING as any):
-        return <FontAwesomeIcon icon={faClock} className={styles.pending} />;
-      default:
-        return null;
-    }
-  };
-
   const goChat = () => {
     dispatch(
       goToExpandedDialog({
@@ -162,7 +171,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     );
   };
 
-  const needButtons = (offerStatus: OfferStatus) => {
+  const needButtons = (offerStatus: OfferStatusIcon) => {
     if (role === MODERATOR) return true;
 
     const contestCreatorId = contestData.User.id;
@@ -174,12 +183,9 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     );
   };
 
-  const fullSymbol = <Image src={StarIcon} alt="star" />;
-  const emptySymbol = <Image src={StarOutlineIcon} alt="star-outline" />;
-
   return (
     <div className={styles.offerContainer}>
-      {offerStatus()}
+      <OfferStatusIcon status={data.status} role={role} />
       <div className={styles.mainInfoContainer}>
         <div className={styles.userInfo}>
           <div className={styles.creativeInfoContainer}>
@@ -204,8 +210,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
         </div>
         <div className={styles.responseConainer}>
           {(contestData?.contestType ?? data?.contestType) === LOGO_CONTEST ? (
-            <Picture
-              srcSet={[]}
+            <Image
               onClick={() =>
                 dispatch(
                   changeShowImage({
@@ -215,6 +220,8 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
                 )
               }
               className={styles.responseLogo}
+              width={150}
+              height={100}
               src={`${PUBLIC_URL}${data.fileName}`}
               alt="logo"
             />
