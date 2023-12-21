@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { PAGE } from 'constants/general';
@@ -8,7 +9,7 @@ export const HowItWorksCards: FC = () => {
   const cards = HOW_IT_WORKS_CARDS.map(
     ({ heading, text, src, href, linkText }) => (
       <section className={styles.card} key={src}>
-        <img
+        <Image
           className={styles.icon}
           src={src}
           alt={`${heading.toLowerCase()} icon`}

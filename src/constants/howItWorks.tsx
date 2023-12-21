@@ -1,6 +1,16 @@
 import Link from 'next/link';
-import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import { PAGE } from 'constants/general';
 import { uniqueId } from 'utils/functions';
+import ChicagoTribuneImage from 'assets/howItWorks/ChicagoTribune.svg';
+import ForbesImage from 'assets/howItWorks/Forbes.svg';
+import MashableImage from 'assets/howItWorks/Mashable.svg';
+import TheNextWebImage from 'assets/howItWorks/TheNextWeb.png';
+import BrandingCommunityImage from 'assets/howItWorks/brandingCommunity.webp';
+import ExploreNamesImage from 'assets/howItWorks/exploreNames.svg';
+import IndustriesImage from 'assets/howItWorks/industries.svg';
+import LaunchContestImage from 'assets/howItWorks/launchContest.svg';
+import ManagedContestImage from 'assets/howItWorks/managedContest.svg';
+import StarsImage from 'assets/howItWorks/stars.svg';
 import type { QNAItems } from 'types/general';
 
 const LINK_ID_PREFIX = 'link';
@@ -14,14 +24,14 @@ export const HOW_IT_WORKS_CARDS = [
       'Work with hundreds of creative experts to get custom name suggestions for your business or brand. ' +
       'All names are auto-checked for URL availability.',
     href: PAGE.START_CONTEST,
-    src: `${HOW_IT_WORKS_PATH}launchContest.svg`,
+    src: LaunchContestImage,
   },
   {
     heading: 'Explore Names For Sale',
     text:
       'Our branding team has curated thousands of pre-made names that you can purchase instantly. ' +
       'All names include a matching URL and a complimentary Logo Design',
-    src: `${HOW_IT_WORKS_PATH}exploreNames.svg`,
+    src: ExploreNamesImage,
   },
   {
     heading: 'Agency-level Managed Contests',
@@ -29,7 +39,7 @@ export const HOW_IT_WORKS_CARDS = [
       'Our Managed contests combine the power of crowdsourcing with the rich experience of our branding consultants. ' +
       'Get a complete agency-level experience at a fraction of Agency costs',
     linkText: 'Learn more',
-    src: `${HOW_IT_WORKS_PATH}managedContest.svg`,
+    src: ManagedContestImage,
   },
 ];
 
@@ -343,7 +353,7 @@ export const HOW_IT_WORKS_QNA = [
 export const GET_STARTED_IMAGES = [
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}stars.svg`,
+    src: StarsImage,
     alt: 'stars icon',
     caption: [
       <b key={uniqueId()}>4.9 out of 5 stars</b>,
@@ -352,7 +362,7 @@ export const GET_STARTED_IMAGES = [
   },
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}brandingCommunity.webp`,
+    src: BrandingCommunityImage,
     alt: 'community icon',
     caption: [
       'Our branding community stands ',
@@ -362,7 +372,7 @@ export const GET_STARTED_IMAGES = [
   },
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}industries.svg`,
+    src: IndustriesImage,
     alt: 'industries icon',
     caption: [
       <b key={uniqueId()}>140+ Industries</b>,
@@ -376,29 +386,25 @@ export const GET_STARTED_IMAGES = [
 export const FEATURED = [
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}Forbes.svg`,
+    src: ForbesImage,
     alt: 'Forbes',
     href: 'http://www.forbes.com/sites/forbestreptalks/2016/07/11/not-sure-how-to-name-a-startup-squadhelp-will-crowdsource-it-for-199',
   },
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}TheNextWeb.png`,
-    srcSet: [
-      `${HOW_IT_WORKS_PATH}TheNextWeb.webp`,
-      `${HOW_IT_WORKS_PATH}TheNextWeb.avif`,
-    ],
+    src: TheNextWebImage,
     alt: 'The Next Web',
     href: 'http://thenextweb.com/contributors/crowdsource-startup-name-with-squadhelp/',
   },
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}ChicagoTribune.svg`,
+    src: ChicagoTribuneImage,
     alt: 'Chicago Tribune',
     href: 'http://www.chicagotribune.com/bluesky/originals/ct-squadhelp-startup-names-bsi-20170331-story.html',
   },
   {
     id: uniqueId(IMG_ID_PREFIX),
-    src: `${HOW_IT_WORKS_PATH}Mashable.svg`,
+    src: MashableImage,
     alt: 'Mashable',
     href: 'http://mashable.com/2011/04/01/make-money-crowdworking/',
   },

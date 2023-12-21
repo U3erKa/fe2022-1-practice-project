@@ -22,13 +22,13 @@
   inline-size: 200px;
 
   &:first-child {
-    inset-block-start: 0;
+    inset-block-start: -31%;
     inset-inline-start: 0;
     align-self: flex-start;
   }
 
   &:last-child {
-    inset-block-end: 0;
+    inset-block-end: -33%;
     inset-inline-end: 0;
     align-self: flex-end;
   }

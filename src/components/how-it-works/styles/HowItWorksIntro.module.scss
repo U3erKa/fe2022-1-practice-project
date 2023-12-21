@@ -24,6 +24,7 @@ $contentWidth: calc($containerWidth - $imageWidth);
 }
 
 .imageContainer {
+  aspect-ratio: 1343 / 1166;
   inline-size: clamp($minWidth, 40%, $imageWidth);
   @media (width < 1000px) {
     display: none;

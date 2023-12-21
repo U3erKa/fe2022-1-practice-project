@@ -1,7 +1,8 @@
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import type { FC } from 'react';
-import { HOW_IT_WORKS_PATH } from 'constants/general';
+import MainImage from 'assets/howItWorks/main.svg';
 import styles from './styles/HowItWorksIntro.module.scss';
 
 export const HowItWorksIntro: FC = () => {
@@ -26,7 +27,7 @@ export const HowItWorksIntro: FC = () => {
         </a>
       </section>
       <figure className={styles.imageContainer}>
-        <img src={`${HOW_IT_WORKS_PATH}main.svg`} alt="main icon" />
+        <Image src={MainImage} alt="main icon" />
       </figure>
     </article>
   );

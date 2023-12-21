@@ -1,8 +1,10 @@
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import PhoneImage from 'assets/howItWorks/phone.svg';
 import styles from './styles/ContactUs.module.scss';
 
 export const ContactUs: FC = () => {
@@ -41,7 +43,7 @@ export const ContactUs: FC = () => {
         </p>
         <button className={styles.button}>Schedule Consultation</button>
         <a className={styles.link} href="tel:+8773553585">
-          <img src={`${HOW_IT_WORKS_PATH}phone.svg`} alt="phone" />
+          <Image src={PhoneImage} alt="phone" />
           (877) 355-3585
         </a>
         <p>Call us for assistance</p>

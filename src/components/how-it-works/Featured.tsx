@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { FEATURED } from 'constants/howItWorks';
 import styles from './styles/Featured.module.scss';
@@ -6,7 +7,7 @@ export const Featured: FC = () => {
   const featuredLinks = FEATURED.map(({ src, alt, href }) => (
     <p key={alt} className={styles.link}>
       <a href={href}>
-        <img src={src} alt={alt} />
+        <Image src={src} alt={alt} />
       </a>
     </p>
   ));

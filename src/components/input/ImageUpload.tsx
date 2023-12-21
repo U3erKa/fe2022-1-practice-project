@@ -13,17 +13,18 @@ export type Props = {
   classes: Record<string, string>;
 };
 
+const imageId = 'imagePreview';
+const fileInputId = 'fileInput';
+const imageType = /image.*/;
+
 const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
   const { field } = useController({ name, control });
   const { uploadContainer, inputContainer, imgStyle } = classes;
 
   const { onChange, ...inputregister } = register(name);
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const node = window.document.getElementById(
-      'imagePreview',
-    ) as HTMLImageElement;
+    const node = window.document.getElementById(imageId) as HTMLImageElement;
     const [file] = e.target.files!;
-    const imageType = /image.*/;
 
     if (file?.type.match(imageType)) {
       const reader = new FileReader();
@@ -40,17 +41,20 @@ const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
       <div className={inputContainer}>
         <span>Support only images (*.jpg, *.png, *.jpeg)</span>
         <input
-          id="fileInput"
+          id={fileInputId}
           type="file"
           accept=".jpg, .png, .jpeg"
           onChange={handleChange}
           {...inputregister}
         />
-        <label htmlFor="fileInput">Choose file</label>
+        <label htmlFor={fileInputId}>Choose file</label>
       </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        id="imagePreview"
-        className={clsx({ [imgStyle]: !!field.value })}
+        width={120}
+        height={120}
+        id={imageId}
+        className={clsx({ [imgStyle!]: !!field.value })}
         alt="user"
       />
     </div>

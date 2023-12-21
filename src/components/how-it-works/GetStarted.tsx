@@ -1,16 +1,16 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { HOW_IT_WORKS_PATH, PAGE } from 'constants/general';
+import { PAGE } from 'constants/general';
+import GetStartedImage1 from 'assets/howItWorks/getStartedBG1.svg';
+import GetStartedImage2 from 'assets/howItWorks/getStartedBG2.svg';
 import styles from './styles/GetStarted.module.scss';
 
 export const GetStarted: FC = () => {
   return (
     <article className={styles.container}>
       <figure className={styles.icon}>
-        <img
-          src={`${HOW_IT_WORKS_PATH}getStartedBG1.svg`}
-          alt="get started icon"
-        />
+        <Image src={GetStartedImage1} alt="get started icon" />
       </figure>
       <section className={styles.headingContainer}>
         <h2 className={styles.getStartedHeading}>Ready to get started?</h2>
@@ -23,10 +23,7 @@ export const GetStarted: FC = () => {
         </Link>
       </section>
       <figure className={styles.icon}>
-        <img
-          src={`${HOW_IT_WORKS_PATH}getStartedBG2.svg`}
-          alt="get started icon"
-        />
+        <Image src={GetStartedImage2} alt="get started icon" />
       </figure>
     </article>
   );

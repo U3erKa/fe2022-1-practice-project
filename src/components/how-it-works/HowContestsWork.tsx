@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import type { FC } from 'react';
-import { HOW_IT_WORKS_PATH } from 'constants/general';
 import { HOW_CONTESTS_WORK } from 'constants/howItWorks';
+import HowContestsWorkImage1 from 'assets/howItWorks/howContestsWork1.svg';
+import HowContestsWorkImage2 from 'assets/howItWorks/howContestsWork2.svg';
 import styles from './styles/HowContestsWork.module.scss';
 
 export const HowContestsWork: FC = () => {
@@ -14,16 +16,13 @@ export const HowContestsWork: FC = () => {
     <article className={styles.container}>
       <section className={styles.headingContainer}>
         <figure className={styles.icon}>
-          <img src={`${HOW_IT_WORKS_PATH}howContestsWork1.svg`} alt="icon" />
+          <Image src={HowContestsWorkImage1} alt="how contests work icon" />
         </figure>
         <h2 className={styles.heading}>How Do Naming Contests Work?</h2>
       </section>
       <section className={styles.listContainer}>
         <figure className={styles.listIcon}>
-          <img
-            src={`${HOW_IT_WORKS_PATH}howContestsWork2.svg`}
-            alt="how contests work icon"
-          />
+          <Image src={HowContestsWorkImage2} alt="how contests work icon" />
         </figure>
         <section className={styles.howToContainer}>
           <ol className={styles.howTo}>{howContestsWork}</ol>
