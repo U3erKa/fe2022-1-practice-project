@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
+import type { EventResponse } from 'api/rest/eventController';
 import { getEventProgress } from 'utils/functions';
-import type { CreateEventResponse } from 'types/api/event';
 import styles from './styles/EventListItems.module.scss';
 
-export type Props = CreateEventResponse;
-
-export default function Event({ id, name, date, createdAt }: Props) {
+export default function Event({ id, name, date, createdAt }: EventResponse) {
   const [time, setTime] = useState('');
   const [progress, setProgress] = useState(0);
 

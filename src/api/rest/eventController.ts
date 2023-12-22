@@ -1,8 +1,11 @@
 import http from 'api/interceptor';
 import { ROUTE } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';
-import type { CreateEventResponse, GetEventsResponse } from 'types/api/event';
+import type { WithTimeStamps } from 'types/api/_common';
+import type { Event } from 'types/models';
 
-export const getEvents = () => http.get<GetEventsResponse>(ROUTE.EVENTS);
+export type EventResponse = Event['dataValues'] & WithTimeStamps;
+
+export const getEvents = () => http.get<EventResponse[]>(ROUTE.EVENTS);
 export const createEvent = (data: NewEvent) =>
-  http.post<CreateEventResponse>(ROUTE.EVENTS, data);
+  http.post<EventResponse>(ROUTE.EVENTS, data);

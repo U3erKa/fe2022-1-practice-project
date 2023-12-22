@@ -1,4 +1,5 @@
 import type { UUID } from 'crypto';
+import type { User } from 'types/models';
 
 export type With_id<T extends Id = Id, K extends string = '_id'> = {
   [key in K]: T;
@@ -40,3 +41,8 @@ export type OrderId = UUID;
 
 export type TimeStamp = string;
 export type NumTimeStamp = number;
+
+export type UserInOffer = Omit<
+  User['dataValues'],
+  'password' | 'accessToken' | 'balance' | 'role'
+>;

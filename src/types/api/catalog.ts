@@ -5,7 +5,7 @@ import type {
   UserId,
   WithId,
   With_id,
-} from './_common';
+} from 'types/api/_common';
 
 export type AddChatToCatalogParams = With_id<CatalogId, 'catalogId'> &
   With_id<ChatId, 'chatId'>;

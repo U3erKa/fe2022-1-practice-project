@@ -6,10 +6,15 @@ import { PROFILE_NAVBAR } from 'constants/header';
 import { getDays, getHours, getRemainingTime } from 'utils/functions';
 import EmailIcon from 'assets/icons/email.png';
 import MenuIcon from 'assets/icons/menu-down.png';
-import type { User } from 'types/api/user';
+import type { User } from 'types/models';
 import styles from './styles/LoginButtons.module.scss';
 
-export default function LoginButtons({ data }: { data: User }) {
+type Props = {
+  data: Pick<User, 'avatar' | 'displayName'>;
+};
+
+export default function LoginButtons({ data }: Props) {
+  const { avatar, displayName } = data;
   const { events } = useSelector(({ events }) => events);
   const currentDate = Date.now();
   let activeEvents = 0;
@@ -43,9 +48,9 @@ export default function LoginButtons({ data }: { data: User }) {
   return (
     <>
       <div className={styles.userInfo}>
-        <UserImage src={`${PUBLIC_URL}${data.avatar}`} />
+        <UserImage src={`${PUBLIC_URL}${avatar}`} />
         {activeEvents > 0 && <div className={styles.badge}></div>}
-        <span>{`Hi, ${data.displayName}`}</span>
+        <span>{`Hi, ${displayName}`}</span>
         <Image src={MenuIcon} alt="menu" />
         <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />
       </div>

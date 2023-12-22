@@ -11,11 +11,11 @@ import type {
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
+import type { Bank, User } from 'types/models';
 import type {
   ContestId,
   CreatorId,
   OfferId,
-  OrderId,
   UserId,
   WithFile,
   WithId,
@@ -23,7 +23,6 @@ import type {
   WithPagination,
   WithUUID,
 } from './_common';
-import type { Card, User } from './user';
 
 export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
   (
@@ -47,8 +46,12 @@ export type ChangeMarkParams = WithId<CreatorId, 'creatorId'> &
 
 export type ChangeMarkResponse = WithId<UserId, 'userId'> & { rating: Rating };
 
-export type CashOutParams = Omit<Card, 'name' | 'balance'> & {
-  sum: Card['balance'];
+export type CashOutParams = Omit<
+  Bank['dataValues'],
+  'name' | 'balance' | 'cardNumber'
+> & {
+  sum: Bank['balance'];
+  number: Bank['cardNumber'];
 };
 
 export type SetNewOfferResponse = WithId<OfferId> &
@@ -69,7 +72,7 @@ export type GetOffersResponse<IsReviewed> = {
 
 export type UserInOffer = WithId<UserId> &
   WithId<UserId, 'userId'> &
-  Omit<User, 'password' | 'accessToken'> &
+  Omit<User['dataValues'], 'password' | 'accessToken'> &
   WithLifeSpan;
 
 export type Offer = WithId<OfferId> &
@@ -102,7 +105,9 @@ export type CustomerCommand =
 export type ModeratorCommand =
   | typeof OFFER_COMMAND_APPROVE
   | typeof OFFER_COMMAND_DISCARD;
-export type CardField = keyof Omit<Card, 'balance'>;
+export type CardField =
+  | keyof Omit<Bank['dataValues'], 'balance' | 'cardNumber'>
+  | 'number';
 
 export type WithOfferStatus<T = Commands> = {
   status: OfferStatus<T>;

@@ -6,11 +6,11 @@ import { CREATOR, PUBLIC_URL } from 'constants/general';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
 import { updateUser } from 'store/slices/userSlice';
 import { uniqueId } from 'utils/functions';
-import type { User } from 'types/api/user';
+import type { UserState } from 'types/slices';
 import styles from './styles/UserInfo.module.scss';
 
 export type Props = {
-  userData: Omit<User, 'avatar'>;
+  userData: Omit<NonNullable<UserState['data']>, 'avatar'>;
 };
 
 const InfoBlock: FC<{ label: string; value: string }> = ({ label, value }) => {
@@ -53,12 +53,14 @@ const UserInfo: FC = () => {
   });
   const dispatch = useDispatch();
 
-  const { avatar, ...userData } = data || ({} as User);
+  const { avatar, ...userData } =
+    data || ({} as NonNullable<UserState['data']>);
 
   const updateUserData = (
-    values: Pick<User, 'firstName' | 'lastName' | 'displayName'> & {
-      file: FileList;
-    },
+    values: Pick<
+      NonNullable<UserState['data']>,
+      'firstName' | 'lastName' | 'displayName'
+    > & { file: FileList },
   ) => {
     const formData = new FormData();
 

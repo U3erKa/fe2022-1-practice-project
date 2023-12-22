@@ -5,9 +5,21 @@ import {
   SOCKET_SUBSCRIBE_CHAT,
   SOCKET_UNSUBSCRIBE_CHAT,
 } from 'constants/general';
-import type { Conversation } from 'types/models';
-import type { WebSocketMessage } from 'types/websocket';
+import type { Conversation, Message, User } from 'types/models';
 import WebSocket from './WebSocket';
+
+export type WebSocketMessage = {
+  message: Message;
+  preview: Pick<Message, '_id' | 'sender' | 'createdAt'> &
+    Pick<Conversation, 'blackList' | 'favoriteList'> & {
+      text: Message['body'];
+      participants: [User['id'], User['id']];
+      interlocutor: Pick<
+        User,
+        'id' | 'firstName' | 'lastName' | 'displayName' | 'avatar' | 'email'
+      >;
+    };
+};
 
 class ChatController extends WebSocket {
   anotherSubscribes(socket: Socket) {

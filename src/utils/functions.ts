@@ -1,5 +1,5 @@
+import type { EventResponse } from 'api/rest/eventController';
 import ApplicationError from 'errors/ApplicationError';
-import type { CreateEventResponse } from 'types/api/event';
 
 /**
  * Filters old items by id and appends new items. Returns new array
@@ -55,7 +55,7 @@ export const getShortTimeStr = (time: string | number | Date) => {
   return date.toDateString();
 };
 
-export function getEventProgress({ date, createdAt }: CreateEventResponse) {
+export function getEventProgress({ date, createdAt }: EventResponse) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);
   const createdAtDate = Date.parse(createdAt);

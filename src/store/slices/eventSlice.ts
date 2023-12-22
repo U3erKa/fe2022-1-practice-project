@@ -13,11 +13,7 @@ import {
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import type {
-  CreateEventResponse,
-  EventState,
-  GetEventsResponse,
-} from 'types/api/event';
+import type { EventState } from 'types/slices';
 
 const EVENT_SLICE_NAME = 'event';
 
@@ -58,7 +54,7 @@ const getEventsExtraReducers = createExtraReducers({
   rejectedReducer,
   fulfilledReducer: (
     state: EventState,
-    { payload }: PayloadAction<GetEventsResponse>,
+    { payload }: PayloadAction<eventController.EventResponse[]>,
   ) => {
     state.isFetching = false;
     state.error = null;
@@ -73,7 +69,7 @@ const createEventExtraReducers = createExtraReducers({
   rejectedReducer,
   fulfilledReducer: (
     state: EventState,
-    { payload }: PayloadAction<CreateEventResponse>,
+    { payload }: PayloadAction<eventController.EventResponse>,
   ) => {
     state.isFetching = false;
     state.error = null;

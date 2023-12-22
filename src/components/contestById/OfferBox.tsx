@@ -45,8 +45,7 @@ import type {
   OfferStatus as OfferStatusIcon,
   Rating as _Rating,
 } from 'types/api/offer';
-import type { User } from 'types/api/user';
-import type { ContestData } from 'types/slices';
+import type { ContestData, UserState } from 'types/slices';
 import styles from './styles/OfferBox.module.scss';
 import './styles/confirmStyle.css';
 
@@ -57,7 +56,7 @@ export type Props = {
 };
 
 export type Props2 = {
-  role: User['role'];
+  role: NonNullable<UserState['data']>['role'];
   status: OfferStatus;
 };
 
@@ -83,7 +82,8 @@ const OfferStatusIcon = ({ status, role }: Props2) => {
 
 const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
   const selector = useSelector(({ userStore, chatStore }) => {
-    const { id, role } = userStore.data ?? ({} as User);
+    const { id, role } =
+      userStore.data ?? ({} as NonNullable<UserState['data']>);
     const { messagesPreview } = chatStore;
 
     return { id, messagesPreview, role };

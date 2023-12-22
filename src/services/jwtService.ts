@@ -6,8 +6,20 @@ import {
   REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_TIME,
 } from 'constants/backend';
+import type { User } from 'types/models';
 import type { JwtSign, JwtVerify, TokenOptions } from 'types/services';
-import type { TokenData } from 'types/user';
+
+export type TokenData = { userId: User['id'] } & Pick<
+  User,
+  | 'firstName'
+  | 'lastName'
+  | 'avatar'
+  | 'displayName'
+  | 'email'
+  | 'balance'
+  | 'role'
+  | 'rating'
+>;
 
 // @ts-expect-error
 const jwtSign: JwtSign = promisify(jwt.sign);

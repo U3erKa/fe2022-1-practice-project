@@ -1,32 +1,36 @@
+import type { EventResponse } from 'api/rest/eventController';
 import type {
   EXACT_CHOISE,
   NAME_ONLY_CHOISE,
   SIMILAR_CHOISE,
 } from 'constants/buttonGroup';
 import type {
+  CASHOUT_MODE,
   LOGO_CONTEST,
   NAME_CONTEST,
   TAGLINE_CONTEST,
+  USER_INFO_MODE,
 } from 'constants/general';
-import type { ChatId, ContestId, WithId } from './api/_common';
-import type { Interlocutor, Message } from './api/chat';
+import type { ChatId, ContestId, WithId } from 'types/api/_common';
+import type { Interlocutor, Message } from 'types/api/chat';
 import type {
   DataForContest,
   LogoContestInfo,
   NameContestInfo,
   Offer,
   TaglineContestInfo,
-} from './api/contest';
-import type { CardField } from './api/offer';
-import type { ProfileViewMode, User, UserInOffer } from './api/user';
+} from 'types/api/contest';
+import type { CardField } from 'types/api/offer';
 import type {
   Catalog,
   CatalogCreationMode,
   ChatData,
   ChatMode,
   MessagePreview,
-} from './chat';
-import type { Contest, Industry, Status } from './contest';
+} from 'types/chat';
+import type { Contest, Industry, Status } from 'types/contest';
+import type { User } from 'types/models';
+import type { UserInOffer } from './api/_common';
 
 export type AuthState = WithFetch;
 
@@ -88,17 +92,19 @@ export type DataForContestState = WithFetch & {
   data: DataForContest | null;
 };
 
+export type EventState = WithFetch & { events: EventResponse[] };
+
 export type PaymentState = WithFetch & {
   focusOnElement: CardField;
 };
 
 export type UserProfileState = {
-  profileViewMode: ProfileViewMode;
+  profileViewMode: typeof USER_INFO_MODE | typeof CASHOUT_MODE;
   isEdit: boolean;
 };
 
 export type UserState = WithFetch & {
-  data: User | null;
+  data: User['dataValues'] | null;
 };
 
 export type Bundle = {

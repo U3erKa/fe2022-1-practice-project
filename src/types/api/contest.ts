@@ -22,7 +22,7 @@ import type {
   WithPagination,
 } from './_common';
 import type { Rating, WithOfferStatus } from './offer';
-import type { UserInOffer } from './user';
+import type { UserInOffer } from './_common';
 
 export type GetContestsThunk =
   | {

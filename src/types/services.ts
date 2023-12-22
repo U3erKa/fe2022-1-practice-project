@@ -15,7 +15,7 @@ export type JwtSign = (
   payload: string | Buffer | object,
   secretOrPrivateKey: Secret,
   options?: SignOptions,
-) => Promise<string | undefined>;
+) => Promise<string>;
 
 export type JwtVerify<Complete = unknown> = (
   token: string,

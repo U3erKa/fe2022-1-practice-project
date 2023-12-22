@@ -1,3 +1,4 @@
+import type { User } from 'types/models';
 import type {
   ConversationId,
   InterlocutorId,
@@ -7,7 +8,6 @@ import type {
   WithTimeStamps,
   With_id,
 } from './_common';
-import type { User } from './user';
 
 export type GetDialogParams = {
   interlocutorId: InterlocutorId;
