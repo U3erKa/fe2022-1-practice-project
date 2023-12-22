@@ -32,7 +32,7 @@ export const pay = decorateAsyncThunk({
     { dispatch },
   ) => {
     await offerController.payMent(data);
-    navigate(PAGE.DASHBOARD, { replace: true });
+    navigate(PAGE.DASHBOARD);
     dispatch(clearContestStore());
   },
 });

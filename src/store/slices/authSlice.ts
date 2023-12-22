@@ -28,7 +28,7 @@ export const checkAuth = decorateAsyncThunk({
         ? await authController.login(authInfo)
         : await authController.registration(authInfo);
 
-    navigate(PAGE.HOME, { replace: true });
+    navigate(PAGE.HOME);
     controller.subscribe(user.id);
     return user;
   },

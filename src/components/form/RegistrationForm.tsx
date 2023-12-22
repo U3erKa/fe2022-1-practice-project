@@ -54,7 +54,7 @@ const RegistrationForm = () => {
       checkAuth({
         authMode: AUTH_MODE.REGISTER,
         data: values,
-        navigate: router.push,
+        navigate: router.replace,
       }),
     );
   };

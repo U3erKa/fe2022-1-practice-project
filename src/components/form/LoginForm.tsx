@@ -42,7 +42,7 @@ const LoginForm = () => {
       checkAuth({
         authMode: AUTH_MODE.LOGIN,
         data: values,
-        navigate: router.push,
+        navigate: router.replace,
       }),
     );
   };
