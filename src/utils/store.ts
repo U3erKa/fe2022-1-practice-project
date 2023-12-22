@@ -3,23 +3,22 @@ import type {
   ActionReducerMapBuilder,
   AsyncThunkPayloadCreator,
   CaseReducer,
-  PayloadAction,
 } from '@reduxjs/toolkit';
-import type { DefaultState, ExtraReducersCreator } from 'types/redux';
+import type { ExtraReducersCreator, RootStateWithAsync } from 'types/redux';
 
-export const pendingReducer: CaseReducer<DefaultState> = (state) => {
+export const pendingReducer: CaseReducer<RootStateWithAsync> = (state) => {
   state.isFetching = true;
   state.error = null;
 };
 
-export const fulfilledReducer: CaseReducer<DefaultState> = (state) => {
+export const fulfilledReducer: CaseReducer<RootStateWithAsync> = (state) => {
   state.isFetching = false;
 };
 
-export const rejectedReducer: CaseReducer<
-  DefaultState,
-  PayloadAction<Error>
-> = (state, { payload }) => {
+export const rejectedReducer: CaseReducer<RootStateWithAsync> = (
+  state,
+  { payload },
+) => {
   state.isFetching = false;
   state.error = payload;
 };
