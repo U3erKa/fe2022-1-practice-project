@@ -27,6 +27,10 @@ export default function Event(sequelize: Sequelize) {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      userId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
       name: {
         allowNull: false,
         type: DataTypes.STRING,
@@ -38,10 +42,6 @@ export default function Event(sequelize: Sequelize) {
       notify: {
         allowNull: false,
         type: DataTypes.STRING,
-      },
-      userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
       },
     },
     {

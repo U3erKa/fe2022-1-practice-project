@@ -23,12 +23,12 @@ export default function RefreshToken(sequelize: Sequelize) {
     // @ts-expect-error
     {
       token: {
-        type: DataTypes.TEXT,
         allowNull: false,
+        type: DataTypes.TEXT,
       },
       userId: {
-        type: DataTypes.INTEGER,
         allowNull: false,
+        type: DataTypes.INTEGER,
       },
     },
     {

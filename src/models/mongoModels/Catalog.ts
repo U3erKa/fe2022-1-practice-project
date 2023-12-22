@@ -5,18 +5,18 @@ import type { CatalogSchema } from 'types/models';
 
 const Schema = new mongoose.Schema({
   userId: {
-    type: 'Number',
     required: true,
+    type: 'Number',
   },
   catalogName: {
-    type: 'String',
     required: true,
+    type: 'String',
   },
   chats: [
     {
+      required: false,
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Conversation',
-      required: false,
       unique: false,
     },
   ],

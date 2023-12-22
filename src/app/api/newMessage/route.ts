@@ -21,10 +21,10 @@ export async function POST(req: NextRequest) {
     const [newConversation, isCreated] = await Conversation.findOrCreate({
       where: { participant1, participant2 },
       defaults: {
-        participant1,
-        participant2,
         blackList: [false, false],
         favoriteList: [false, false],
+        participant1,
+        participant2,
       },
     });
 
@@ -36,9 +36,9 @@ export async function POST(req: NextRequest) {
     }
 
     const message = await Message.create({
-      sender: userId,
       body: messageBody,
       conversation: _id,
+      sender: userId,
     });
 
     Object.assign(message.dataValues, { participants });
@@ -48,12 +48,12 @@ export async function POST(req: NextRequest) {
 
     const preview = {
       _id,
+      blackList,
+      createdAt: message.createdAt,
+      favoriteList,
+      participants,
       sender: userId,
       text: messageBody,
-      createdAt: message.createdAt,
-      participants,
-      blackList,
-      favoriteList,
     };
 
     getChatController().emitNewMessage(interlocutorId, {
@@ -61,12 +61,12 @@ export async function POST(req: NextRequest) {
       preview: {
         ...preview,
         interlocutor: {
-          id: userId,
-          firstName,
-          lastName,
-          displayName,
           avatar,
+          displayName,
           email,
+          firstName,
+          id: userId,
+          lastName,
         },
       },
     });

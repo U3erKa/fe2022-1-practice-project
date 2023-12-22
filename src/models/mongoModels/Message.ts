@@ -5,17 +5,17 @@ import type { MessageSchema } from 'types/models';
 
 const Schema = new mongoose.Schema(
   {
-    sender: {
-      type: 'Number',
+    conversation: {
       required: true,
+      type: mongoose.Schema.ObjectId,
     },
     body: {
+      required: true,
       type: 'String',
-      required: true,
     },
-    conversation: {
-      type: mongoose.Schema.ObjectId,
+    sender: {
       required: true,
+      type: 'Number',
     },
   },
   {

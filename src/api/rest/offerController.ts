@@ -31,14 +31,14 @@ export const cashOut = (data: CashOutParams) =>
   http.post<void>(ROUTE.CASHOUT, data);
 
 export const getOffers = <IsReviewed = GetOffersParams['isReviewed']>({
+  isReviewed,
   limit,
   offset,
-  isReviewed,
 }: GetOffersParams) =>
   http.get<GetOffersResponse<IsReviewed>>(
     `${ROUTE.OFFERS}?${new URLSearchParams({
+      isReviewed,
       limit,
       offset,
-      isReviewed,
     } as any)}`,
   );

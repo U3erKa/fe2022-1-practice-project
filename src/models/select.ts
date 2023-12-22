@@ -12,15 +12,15 @@ export default function Select(sequelize: Sequelize) {
   }
   Select.init(
     {
-      type: {
-        allowNull: false,
-        primaryKey: true,
-        type: DataTypes.STRING,
-      },
       describe: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      type: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        primaryKey: true,
       },
     },
     {

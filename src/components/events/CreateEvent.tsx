@@ -9,8 +9,8 @@ import { type NewEvent, NewEventSchema, type Notify } from 'utils/schemas';
 import styles from './styles/CreateEvent.module.scss';
 
 export const defaultValues = {
-  name: '',
   date: '',
+  name: '',
   notify: NOTIFY_OPTIONS[0] as Notify,
 };
 
@@ -20,8 +20,8 @@ export type Props = {
 
 const selectInputClasses = {
   inputContainer: styles.inputContainer,
-  selectInput: styles.input,
   inputHeader: styles.text,
+  selectInput: styles.input,
 };
 
 const formInputClasses = {

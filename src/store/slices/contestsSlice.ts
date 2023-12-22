@@ -18,11 +18,11 @@ const initialState: ContestsState = {
   contests: [],
   customerFilter: CONTEST_STATUS_ACTIVE,
   creatorFilter: {
-    typeIndex: 1,
+    awardSort: 'ASC',
     contestId: '' as any,
     industry: '',
-    awardSort: 'ASC',
     ownEntries: false,
+    typeIndex: 1,
   },
   haveMore: true,
 };
@@ -43,21 +43,21 @@ const reducers = {
     state.error = null;
     state.contests = [];
   },
-  setNewCustomerFilter: (
-    state: ContestsState,
-    { payload }: PayloadAction<ContestsState['customerFilter']>,
-  ) => ({
-    ...initialState,
-    isFetching: false,
-    customerFilter: payload,
-  }),
   setNewCreatorFilter: (
     state: ContestsState,
     { payload }: PayloadAction<ContestsState['creatorFilter']>,
   ) => ({
     ...initialState,
-    isFetching: false,
     creatorFilter: { ...state.creatorFilter, ...payload },
+    isFetching: false,
+  }),
+  setNewCustomerFilter: (
+    state: ContestsState,
+    { payload }: PayloadAction<ContestsState['customerFilter']>,
+  ) => ({
+    ...initialState,
+    customerFilter: payload,
+    isFetching: false,
   }),
 };
 

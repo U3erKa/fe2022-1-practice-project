@@ -40,7 +40,7 @@ const ContestPage: FC<Props> = ({ params: { id } }) => {
           open
           slides={[{ src: `${PUBLIC_URL}${imagePath}` }]}
           close={() =>
-            dispatch(changeShowImage({ isShowOnFull: false, imagePath: null }))
+            dispatch(changeShowImage({ imagePath: null, isShowOnFull: false }))
           }
         />
       )}

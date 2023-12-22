@@ -13,18 +13,18 @@ import userProfileReducer from './slices/userProfileSlice';
 import userReducer from './slices/userSlice';
 
 const rootReducer = combineReducers({
-  userStore: userReducer,
   auth: authReducer,
-  dataForContest: dataForContestReducer,
-  payment: paymentReducer,
-  contestByIdStore: contestByIdReducer,
-  contestsList: contestsReducer,
-  contestCreationStore: contestCreationReducer,
   bundleStore: bundleReducer,
-  contestUpdationStore: contestUpdationReducer,
   chatStore: chatReducer,
-  userProfile: userProfileReducer,
+  contestByIdStore: contestByIdReducer,
+  contestCreationStore: contestCreationReducer,
+  contestUpdationStore: contestUpdationReducer,
+  contestsList: contestsReducer,
+  dataForContest: dataForContestReducer,
   events: eventReducer,
+  payment: paymentReducer,
+  userProfile: userProfileReducer,
+  userStore: userReducer,
 });
 
 export default rootReducer;

@@ -27,7 +27,7 @@ const CatalogListHeader = () => {
 
   const changeCatalogNameMethod = (values: Pick<Catalog, 'catalogName'>) => {
     dispatch(
-      changeCatalogName({ catalogName: values.catalogName, catalogId: _id }),
+      changeCatalogName({ catalogId: _id, catalogName: values.catalogName }),
     );
   };
 
@@ -54,8 +54,8 @@ const CatalogListHeader = () => {
               classes={{
                 container: styles.inputContainer,
                 input: styles.input,
-                warning: styles.fieldWarning,
                 notValid: styles.notValid,
+                warning: styles.fieldWarning,
               }}
               placeholder="Catalog Name"
             />

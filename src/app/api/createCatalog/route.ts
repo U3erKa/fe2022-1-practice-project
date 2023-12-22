@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const { chatId, catalogName } = await json();
 
     const catalog = await Catalog.create(
-      { userId, catalogName },
+      { catalogName, userId },
       { returning: true },
     );
     await catalog.addChat(chatId);

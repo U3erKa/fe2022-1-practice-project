@@ -21,7 +21,7 @@ const CatalogListContainer = () => {
     event: MouseEvent<SVGSVGElement>,
     chatId: ChatId,
   ) => {
-    dispatch(removeChatFromCatalog({ chatId, catalogId: currentCatalog!._id }));
+    dispatch(removeChatFromCatalog({ catalogId: currentCatalog!._id, chatId }));
     event.stopPropagation();
   };
 

@@ -14,8 +14,8 @@ import styles from './styles/page.module.scss';
 
 const Payment = () => {
   const { error, contests } = useSelector((state) => ({
-    error: state.payment.error,
     contests: state.contestCreationStore.contests,
+    error: state.payment.error,
   }));
   const dispatch = useDispatch();
   const router = useRouter();

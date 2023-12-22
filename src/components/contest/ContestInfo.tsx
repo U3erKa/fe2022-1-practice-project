@@ -69,7 +69,7 @@ const ContestInfo: FC<Props> = ({
     for (const preview of messagesPreview) {
       const { _id, participants, blackList, favoriteList } = preview;
       if (isEqual(currentParticipants, participants)) {
-        return { _id, participants, blackList, favoriteList };
+        return { _id, blackList, favoriteList, participants };
       }
     }
     throw new Error(`Conversation info not found: ${currentParticipants}`);
@@ -78,8 +78,8 @@ const ContestInfo: FC<Props> = ({
   const goChat = () => {
     dispatch(
       goToExpandedDialog({
-        interlocutor: User,
         conversationData: findConversationInfo(User.id),
+        interlocutor: User,
       }),
     );
   };

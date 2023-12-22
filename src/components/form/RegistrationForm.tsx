@@ -36,14 +36,14 @@ const RegistrationForm = () => {
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      agreeOfTerms: false,
+      confirmPassword: '',
       displayName: '',
       email: '',
+      firstName: '',
+      lastName: '',
       password: '',
-      confirmPassword: '',
       role: CUSTOMER,
-      agreeOfTerms: false,
     },
     resolver: zodResolver(RegistrationSchema),
     mode: 'all',
@@ -52,9 +52,9 @@ const RegistrationForm = () => {
   const onSubmit = (values: Registration) => {
     dispatch(
       checkAuth({
+        authMode: AUTH_MODE.REGISTER,
         data: values,
         navigate: router.push,
-        authMode: AUTH_MODE.REGISTER,
       }),
     );
   };

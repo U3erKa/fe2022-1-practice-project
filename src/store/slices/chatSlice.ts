@@ -52,21 +52,21 @@ const CHAT_SLICE_NAME = 'chat';
 
 const initialState: ChatState = {
   isFetching: true,
-  addChatId: null,
-  isShowCatalogCreation: false,
-  currentCatalog: null,
-  chatData: null,
-  messages: [],
   error: null,
-  isExpanded: false,
-  interlocutor: null,
-  messagesPreview: [],
-  isShow: false,
-  chatMode: NORMAL_PREVIEW_CHAT_MODE,
-  catalogList: [],
-  isRenameCatalog: false,
-  isShowChatsInCatalog: false,
+  addChatId: null,
   catalogCreationMode: ADD_CHAT_TO_OLD_CATALOG,
+  catalogList: [],
+  chatData: null,
+  chatMode: NORMAL_PREVIEW_CHAT_MODE,
+  currentCatalog: null,
+  interlocutor: null,
+  isExpanded: false,
+  isRenameCatalog: false,
+  isShow: false,
+  isShowCatalogCreation: false,
+  isShowChatsInCatalog: false,
+  messages: [],
+  messagesPreview: [],
 };
 
 //---------- getPreviewChat
@@ -143,9 +143,9 @@ const sendMessageExtraReducers = createExtraReducers({
     let isNew = true;
     for (const preview of messagesPreview) {
       if (isEqual(preview.participants, payload.message.participants)) {
-        preview.text = payload.message.body;
-        preview.sender = payload.message.sender;
         preview.createdAt = payload.message.createdAt;
+        preview.sender = payload.message.sender;
+        preview.text = payload.message.body;
         isNew = false;
       }
     }
@@ -154,13 +154,13 @@ const sendMessageExtraReducers = createExtraReducers({
     }
     const chatData = {
       _id: payload.preview._id,
-      participants: payload.preview.participants,
-      favoriteList: payload.preview.favoriteList,
       blackList: payload.preview.blackList,
+      favoriteList: payload.preview.favoriteList,
+      participants: payload.preview.participants,
     };
     state.chatData = { ...state.chatData, ...chatData };
-    state.messagesPreview = messagesPreview;
     state.messages = [...state.messages, payload.message];
+    state.messagesPreview = messagesPreview;
   },
   rejectedReducer: (
     state: ChatState,
@@ -442,9 +442,9 @@ const reducers = {
     let isNew = true;
     for (const preview of messagesPreview) {
       if (isEqual(preview.participants, message.participants)) {
-        preview.text = message.body;
-        preview.sender = message.sender;
         preview.createdAt = message.createdAt;
+        preview.sender = message.sender;
+        preview.text = message.body;
         isNew = false;
       }
     }
@@ -521,17 +521,17 @@ const reducers = {
 };
 
 const extraReducers = (builder: ActionReducerMapBuilder<ChatState>) => {
-  getPreviewChatExtraReducers(builder);
-  getDialogMessagesExtraReducers(builder);
-  sendMessageExtraReducers(builder);
-  changeChatFavoriteExtraReducers(builder);
-  changeChatBlockExtraReducers(builder);
-  getCatalogListExtraReducers(builder);
   addChatToCatalogExtraReducers(builder);
+  changeCatalogNameExtraReducers(builder);
+  changeChatBlockExtraReducers(builder);
+  changeChatFavoriteExtraReducers(builder);
   createCatalogExtraReducers(builder);
   deleteCatalogExtraReducers(builder);
+  getCatalogListExtraReducers(builder);
+  getDialogMessagesExtraReducers(builder);
+  getPreviewChatExtraReducers(builder);
   removeChatFromCatalogExtraReducers(builder);
-  changeCatalogNameExtraReducers(builder);
+  sendMessageExtraReducers(builder);
 };
 
 const chatSlice = createSlice({

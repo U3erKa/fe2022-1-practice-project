@@ -13,8 +13,8 @@ import type { ContestData } from 'types/slices';
 import styles from './styles/ContestOfferList.module.scss';
 
 export type Props = {
-  offers: Offer[];
   contestData: ContestData;
+  offers: Offer[];
   userId?: UserId;
 };
 
@@ -33,11 +33,11 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
     const { id, orderId, priority } = contestData;
     const obj = {
       command,
-      offerId,
+      contestId: id,
       creatorId,
+      offerId,
       orderId,
       priority,
-      contestId: id,
     };
     dispatch(setOfferStatus(obj));
   };

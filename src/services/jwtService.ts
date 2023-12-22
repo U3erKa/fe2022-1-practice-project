@@ -15,12 +15,12 @@ const jwtVerify: JwtVerify = promisify(jwt.verify);
 
 const tokenOptions = {
   access: {
-    secret: ACCESS_TOKEN_SECRET!,
     expiresIn: ACCESS_TOKEN_TIME,
+    secret: ACCESS_TOKEN_SECRET!,
   },
   refresh: {
-    secret: REFRESH_TOKEN_SECRET!,
     expiresIn: REFRESH_TOKEN_TIME,
+    secret: REFRESH_TOKEN_SECRET!,
   },
 } satisfies TokenOptions;
 

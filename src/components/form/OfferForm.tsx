@@ -30,14 +30,14 @@ export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & {
 const formInputClassses = {
   container: styles.inputContainer,
   input: styles.input,
-  warning: styles.fieldWarning,
   notValid: styles.notValid,
+  warning: styles.fieldWarning,
 } satisfies FormInputClasses;
 
 const imageUploadClasses = {
-  uploadContainer: styles.imageUploadContainer,
-  inputContainer: styles.uploadInputContainer,
   imgStyle: styles.imgStyle,
+  inputContainer: styles.uploadInputContainer,
+  uploadContainer: styles.imageUploadContainer,
 };
 
 const OfferInput: FC<Props> = ({ control, register, contestType }) => {

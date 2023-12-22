@@ -57,12 +57,12 @@ export const updateUser = createAsyncThunk(
 );
 
 const reducers = {
+  clearUserError: (state: UserState) => {
+    state.error = null;
+  },
   clearUserStore: (state: UserState) => {
     state.error = null;
     state.data = null;
-  },
-  clearUserError: (state: UserState) => {
-    state.error = null;
   },
 };
 

@@ -21,7 +21,7 @@ const CreatorDashboard = () => {
     ({ contestsList }) => contestsList,
   );
   const dispatch = useDispatch();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams()!;
 
   const getContestsMethod = useCallback(
     (filter: GetActiveContestsParams) => {
@@ -37,11 +37,11 @@ const CreatorDashboard = () => {
 
   const parseUrlForParams = useCallback(() => {
     const filter = {
-      typeIndex: searchParams.get('typeIndex') ?? '1',
+      awardSort: searchParams.get('awardSort') ?? 'asc',
       contestId: searchParams.get('contestId') ?? '',
       industry: searchParams.get('industry') ?? '',
-      awardSort: searchParams.get('awardSort') ?? 'asc',
       ownEntries: searchParams.get('ownEntries') ?? false,
+      typeIndex: searchParams.get('typeIndex') ?? '1',
     } as unknown as _CreatorFilter;
     if (isEqual(filter, creatorFilter)) return true;
     dispatch(setNewCreatorFilter(filter));

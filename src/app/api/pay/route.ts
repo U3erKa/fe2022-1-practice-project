@@ -85,12 +85,12 @@ END`),
           ? Math.ceil(+price! / parsedContests.length)
           : Math.floor(+price! / parsedContests.length);
       Object.assign(contest, {
+        createdAt: new Date().toISOString(),
+        orderId,
+        priority: index + 1,
+        prize,
         status: index === 0 ? CONTEST_STATUS_ACTIVE : CONTEST_STATUS_PENDING,
         userId,
-        priority: index + 1,
-        orderId,
-        createdAt: new Date().toISOString(),
-        prize,
       });
     }
     await Contest.bulkCreate(parsedContests as any, { transaction });

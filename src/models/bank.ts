@@ -13,25 +13,25 @@ export default function Bank(sequelize: Sequelize) {
   Bank.init(
     {
       cardNumber: {
-        type: DataTypes.STRING,
         allowNull: false,
+        type: DataTypes.STRING,
         primaryKey: true,
       },
       name: {
-        type: DataTypes.STRING,
         allowNull: false,
+        type: DataTypes.STRING,
       },
       expiry: {
-        type: DataTypes.STRING,
         allowNull: false,
+        type: DataTypes.STRING,
       },
       cvc: {
-        type: DataTypes.STRING,
         allowNull: false,
+        type: DataTypes.STRING,
       },
       balance: {
-        type: DataTypes.DECIMAL,
         allowNull: false,
+        type: DataTypes.DECIMAL,
         defaultValue: 0,
       },
     },

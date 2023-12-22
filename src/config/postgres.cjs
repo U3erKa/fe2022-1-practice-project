@@ -3,25 +3,25 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    use_env_variable: 'POSTGRES_DB_STRING',
-    url: process.env.POSTGRES_DB_STRING,
     dialect: 'postgres',
     operatorsAliases: 'Op',
     seederStorage: 'sequelize',
+    url: process.env.POSTGRES_DB_STRING,
+    use_env_variable: 'POSTGRES_DB_STRING',
   },
   test: {
-    use_env_variable: 'POSTGRES_DB_STRING',
-    url: process.env.POSTGRES_DB_STRING,
     dialect: 'postgres',
     operatorsAliases: 'Op',
     seederStorage: 'sequelize',
+    url: process.env.POSTGRES_DB_STRING,
+    use_env_variable: 'POSTGRES_DB_STRING',
   },
   production: {
-    use_env_variable: 'POSTGRES_DB_STRING',
-    url: process.env.POSTGRES_DB_STRING,
     dialect: 'postgres',
     operatorsAliases: 'Op',
     seederStorage: 'sequelize',
+    url: process.env.POSTGRES_DB_STRING,
+    use_env_variable: 'POSTGRES_DB_STRING',
     // dialectOptions: {
     //   ssl: {
     //     ca: fs.readFileSync(__dirname + '/postgres-ca-main.crt'),

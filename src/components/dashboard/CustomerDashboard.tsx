@@ -18,9 +18,9 @@ import { CustomFilter } from './CustomFilter';
 import styles from './styles/CustomerDashboard.module.scss';
 
 const buttons: { name: string; filter: Status }[] = [
-  { name: 'Active Contests', filter: CONTEST_STATUS_ACTIVE },
-  { name: 'Completed contests', filter: CONTEST_STATUS_FINISHED },
-  { name: 'Inactive contests', filter: CONTEST_STATUS_PENDING },
+  { filter: CONTEST_STATUS_ACTIVE, name: 'Active Contests' },
+  { filter: CONTEST_STATUS_FINISHED, name: 'Completed contests' },
+  { filter: CONTEST_STATUS_PENDING, name: 'Inactive contests' },
 ];
 
 const CustomerDashboard = () => {
@@ -49,9 +49,9 @@ const CustomerDashboard = () => {
     dispatch(
       getContests({
         requestData: {
+          contestStatus: customerFilter,
           limit: 8,
           offset: startFrom,
-          contestStatus: customerFilter,
         },
         role: CUSTOMER,
       }),

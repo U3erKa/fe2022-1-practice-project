@@ -47,8 +47,8 @@ export default function Contest(sequelize: Sequelize) {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Users',
           key: 'id',
+          model: 'Users',
         },
       },
       contestType: {

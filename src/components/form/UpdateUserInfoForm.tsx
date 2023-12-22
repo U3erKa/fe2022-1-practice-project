@@ -23,14 +23,14 @@ const INPUT_CONTAINERS = [
 const inputClasses = {
   container: styles.inputContainer,
   input: styles.input,
-  warning: styles.error,
   notValid: styles.notValid,
+  warning: styles.error,
 };
 
 const imageUploadClasses = {
-  uploadContainer: styles.imageUploadContainer,
-  inputContainer: styles.uploadInputContainer,
   imgStyle: styles.imgStyle,
+  inputContainer: styles.uploadInputContainer,
+  uploadContainer: styles.imageUploadContainer,
 };
 
 const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
@@ -38,9 +38,9 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   const dispatch = useDispatch();
   const { handleSubmit, control, register } = useForm({
     defaultValues: {
+      displayName: user?.displayName,
       firstName: user?.firstName,
       lastName: user?.lastName,
-      displayName: user?.displayName,
     },
     resolver: zodResolver(UpdateUserSchema),
   });

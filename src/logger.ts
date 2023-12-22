@@ -34,11 +34,11 @@ const flushLogs = async () => {
 };
 
 export const saveErrorToLog = async ({
+  code = 500,
   message,
   stack: stackTrace,
-  code = 500,
 }: ApplicationError) => {
-  const errorToLog = { message, stackTrace, code, time: Date.now() };
+  const errorToLog = { code, message, stackTrace, time: Date.now() };
 
   await fs.appendFile(
     LATEST_LOG_PATH,

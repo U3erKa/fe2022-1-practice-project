@@ -51,14 +51,14 @@ import styles from './styles/OfferBox.module.scss';
 import './styles/confirmStyle.css';
 
 export type Props = {
-  data: Offer;
   contestData: ContestData;
+  data: Offer;
   setOfferStatus: (creatorId: UserId, offerId: OfferId, command: any) => void;
 };
 
 export type Props2 = {
-  status: OfferStatus;
   role: User['role'];
+  status: OfferStatus;
 };
 
 const fullSymbol = <Image src={StarIcon} alt="star" />;
@@ -86,7 +86,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     const { id, role } = userStore.data ?? ({} as User);
     const { messagesPreview } = chatStore;
 
-    return { id, role, messagesPreview };
+    return { id, messagesPreview, role };
   });
   const dispatch = useDispatch();
 
@@ -98,9 +98,9 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       (participant1, participant2) => participant1 - participant2,
     );
     for (const preview of messagesPreview) {
-      const { _id, participants, blackList, favoriteList } = preview;
+      const { _id, blackList, favoriteList, participants } = preview;
       if (isEqual(currentParticipants, participants)) {
-        return { _id, participants, blackList, favoriteList };
+        return { _id, blackList, favoriteList, participants };
       }
     }
     throw new Error(`Conversation info not found: ${currentParticipants}`);
@@ -154,10 +154,10 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     dispatch(clearChangeMarkError());
     dispatch(
       changeMark({
+        creatorId: id,
+        isFirst: !data.mark,
         mark: value as _Rating,
         offerId: data.id,
-        isFirst: !data.mark,
-        creatorId: id,
       }),
     );
   };
@@ -165,8 +165,8 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
   const goChat = () => {
     dispatch(
       goToExpandedDialog({
-        interlocutor: data.User,
         conversationData: findConversationInfo(),
+        interlocutor: data.User,
       }),
     );
   };

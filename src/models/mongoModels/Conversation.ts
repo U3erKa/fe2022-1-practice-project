@@ -6,16 +6,16 @@ import type { ConversationSchema } from 'types/models';
 const Schema = new mongoose.Schema(
   {
     participants: {
-      type: [Number],
       required: true,
+      type: [Number],
     },
     blackList: {
-      type: [Boolean],
       required: true,
+      type: [Boolean],
     },
     favoriteList: {
-      type: [Boolean],
       required: true,
+      type: [Boolean],
     },
   },
   {

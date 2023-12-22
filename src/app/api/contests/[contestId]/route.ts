@@ -64,7 +64,7 @@ export async function GET(
           model: User,
           required: true,
           attributes: {
-            exclude: ['password', 'role', 'balance', 'accessToken'],
+            exclude: ['accessToken', 'balance', 'password', 'role'],
           },
         },
         {
@@ -81,20 +81,20 @@ export async function GET(
                     ],
                   },
                 },
-          attributes: { exclude: ['userId', 'contestId'] },
+          attributes: { exclude: ['contestId', 'userId'] },
           include: [
             {
               model: User,
               required: true,
               attributes: {
-                exclude: ['password', 'role', 'balance', 'accessToken'],
+                exclude: ['accessToken', 'balance', 'password', 'role'],
               },
             },
             {
               model: Rating,
               required: false,
               where: { userId },
-              attributes: { exclude: ['userId', 'offerId'] },
+              attributes: { exclude: ['offerId', 'userId'] },
             },
           ],
         },
@@ -132,9 +132,9 @@ export async function PUT(
 
     const result = await Contest.findOne({
       where: {
-        userId,
         id: contestId,
         status: { [Op.not]: CONTEST_STATUS_FINISHED },
+        userId,
       },
     });
     if (!result) throw new RightsError();

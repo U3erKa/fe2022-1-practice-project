@@ -20,7 +20,7 @@ export async function sendCreatorOfferEmail(offer: _Offer, command: string) {
       path.resolve(__dirname, '../email/moderatedCreatorOffer.html'),
       READ_FILE_OPTIONS,
     );
-    const html = template(email, { command, fullName, offerText, action });
+    const html = template(email, { action, command, fullName, offerText });
 
     return await sendEmail({
       to: `"${fullName}" <${user.email}>`,

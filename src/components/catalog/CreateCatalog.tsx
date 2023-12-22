@@ -10,8 +10,8 @@ import styles from './styles/CreateCatalog.module.scss';
 const classes = {
   container: styles.inputContainer,
   input: styles.input,
-  warning: styles.fieldWarning,
   notValid: styles.notValid,
+  warning: styles.fieldWarning,
 };
 
 const CreateCatalog = () => {

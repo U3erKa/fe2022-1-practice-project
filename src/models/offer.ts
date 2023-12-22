@@ -33,30 +33,30 @@ export default function Offer(sequelize: Sequelize) {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       contestId: {
-        type: DataTypes.INTEGER,
         allowNull: false,
+        type: DataTypes.INTEGER,
       },
-      text: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      userId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
       },
       fileName: {
-        type: DataTypes.STRING,
         allowNull: true,
+        type: DataTypes.STRING,
       },
       originalFileName: {
-        type: DataTypes.STRING,
         allowNull: true,
+        type: DataTypes.STRING,
       },
       status: {
-        type: DataTypes.STRING,
         allowNull: true,
+        type: DataTypes.STRING,
         defaultValue: OFFER_STATUS_PENDING,
+      },
+      text: {
+        allowNull: true,
+        type: DataTypes.STRING,
       },
     },
     {

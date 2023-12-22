@@ -12,7 +12,7 @@ export default function Event({ id, name, date, createdAt }: Props) {
   useEffect(() => {
     const interval = setInterval(() => {
       // @ts-expect-error
-      const { progress, time } = getEventProgress({ date, createdAt });
+      const { progress, time } = getEventProgress({ createdAt, date });
       setTime(time);
       setProgress(progress);
     }, 1000);

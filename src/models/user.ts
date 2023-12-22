@@ -83,52 +83,50 @@ export default function User(sequelize: Sequelize) {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      displayName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+      accessToken: {
+        allowNull: true,
+        type: DataTypes.TEXT,
       },
       avatar: {
-        type: DataTypes.STRING,
         allowNull: false,
+        type: DataTypes.STRING,
         defaultValue: ANONYM_IMAGE_NAME,
       },
-      role: {
-        type: DataTypes.ENUM(CUSTOMER, CREATOR),
-        allowNull: false,
-      },
       balance: {
-        type: DataTypes.DECIMAL,
         allowNull: false,
+        type: DataTypes.DECIMAL,
         defaultValue: 0,
-        validate: {
-          min: 0,
-        },
+        validate: { min: 0 },
       },
-      accessToken: {
-        type: DataTypes.TEXT,
-        allowNull: true,
+      displayName: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      email: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        unique: true,
+      },
+      firstName: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      lastName: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      password: {
+        allowNull: false,
+        type: DataTypes.STRING,
       },
       rating: {
-        type: DataTypes.FLOAT,
         allowNull: false,
+        type: DataTypes.FLOAT,
         defaultValue: 0,
+      },
+      role: {
+        allowNull: false,
+        type: DataTypes.ENUM(CUSTOMER, CREATOR),
       },
     },
     {

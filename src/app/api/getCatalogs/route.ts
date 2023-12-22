@@ -12,9 +12,9 @@ export async function POST(req: NextRequest) {
       where: { userId },
       attributes: ['_id', 'catalogName'],
       include: {
-        model: Conversation,
         as: 'chats',
         attributes: ['_id'],
+        model: Conversation,
         through: { attributes: [] },
       },
     });

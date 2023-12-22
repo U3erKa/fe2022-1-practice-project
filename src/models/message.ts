@@ -33,16 +33,16 @@ export default function Message(sequelize: Sequelize) {
         type: DataTypes.INTEGER,
       },
       body: {
-        type: DataTypes.TEXT,
         allowNull: false,
+        type: DataTypes.TEXT,
       },
       createdAt: {
-        type: DataTypes.DATE,
         allowNull: true,
+        type: DataTypes.DATE,
       },
       updatedAt: {
-        type: DataTypes.DATE,
         allowNull: true,
+        type: DataTypes.DATE,
       },
     },
     {

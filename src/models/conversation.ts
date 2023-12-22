@@ -41,14 +41,14 @@ export default function Conversation(sequelize: Sequelize) {
       });
       Conversation.belongsToMany(Catalog, {
         as: 'catalogs',
-        through: 'catalogs_to_conversations',
         foreignKey: 'conversationId',
         targetKey: '_id',
+        through: 'catalogs_to_conversations',
       });
       Conversation.belongsToMany(User, {
-        through: 'Users_to_conversations',
         foreignKey: 'conversationId',
         targetKey: 'id',
+        through: 'Users_to_conversations',
       });
     }
   }
@@ -61,46 +61,46 @@ export default function Conversation(sequelize: Sequelize) {
         type: DataTypes.INTEGER,
       },
       participant1: {
-        type: DataTypes.INTEGER,
         allowNull: false,
+        type: DataTypes.INTEGER,
         references: {
-          model: 'Users',
           key: 'id',
+          model: 'Users',
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
       participant2: {
-        type: DataTypes.INTEGER,
         allowNull: false,
+        type: DataTypes.INTEGER,
         references: {
-          model: 'Users',
           key: 'id',
+          model: 'Users',
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
       blackList: {
-        type: DataTypes.ARRAY(DataTypes.BOOLEAN),
         allowNull: false,
+        type: DataTypes.ARRAY(DataTypes.BOOLEAN),
         validate: {
           isTuple,
         },
       },
       favoriteList: {
-        type: DataTypes.ARRAY(DataTypes.BOOLEAN),
         allowNull: false,
+        type: DataTypes.ARRAY(DataTypes.BOOLEAN),
         validate: {
           isTuple,
         },
       },
       createdAt: {
-        type: DataTypes.DATE,
         allowNull: true,
+        type: DataTypes.DATE,
       },
       updatedAt: {
-        type: DataTypes.DATE,
         allowNull: true,
+        type: DataTypes.DATE,
       },
     },
     {

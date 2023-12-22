@@ -19,14 +19,14 @@ export async function POST(req: NextRequest) {
     const updatedUser = await updateUser(restBody, userId);
 
     return NextResponse.json({
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
-      displayName: updatedUser.displayName,
       avatar: updatedUser.avatar,
-      email: updatedUser.email,
       balance: updatedUser.balance,
-      role: updatedUser.role,
+      displayName: updatedUser.displayName,
+      email: updatedUser.email,
+      firstName: updatedUser.firstName,
       id: updatedUser.id,
+      lastName: updatedUser.lastName,
+      role: updatedUser.role,
     });
   } catch (err) {
     return handleError(err);

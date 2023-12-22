@@ -34,19 +34,19 @@ const CONTEST_BY_ID_SLICE_NAME = 'getContestById';
 
 const initialState: ContestByIdState = {
   isFetching: true,
-  contestData: null,
   error: null,
-  offers: [],
-  haveMore: false,
   addOfferError: null,
-  setOfferStatusError: null,
   changeMarkError: null,
-  isReviewed: false,
-  isEditContest: false,
-  isBrief: true,
-  isShowOnFull: false,
-  isShowModal: false,
+  contestData: null,
+  haveMore: false,
   imagePath: null,
+  isBrief: true,
+  isEditContest: false,
+  isReviewed: false,
+  isShowModal: false,
+  isShowOnFull: false,
+  offers: [],
+  setOfferStatusError: null,
 };
 
 //---------- getContestById
@@ -202,6 +202,7 @@ export const getOffers = decorateAsyncThunk({
 const getOffersExtraReducers = createExtraReducers({
   thunk: getOffers,
   pendingReducer,
+  rejectedReducer,
   fulfilledReducer: <IsReviewed>(
     state: ContestByIdState,
     { payload }: PayloadAction<GetOffersResponse<IsReviewed>>,
@@ -211,20 +212,11 @@ const getOffersExtraReducers = createExtraReducers({
     state.haveMore = payload.haveMore;
     state.error = null;
   },
-  rejectedReducer,
 });
 
 //-----------------------------------------------------
 
 const reducers = {
-  updateStoreAfterUpdateContest: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<NonNullable<ContestByIdState['contestData']>>,
-  ) => {
-    state.error = null;
-    state.isEditContest = false;
-    state.contestData = { ...state.contestData, ...payload };
-  },
   changeContestViewMode: (
     state: ContestByIdState,
     { payload }: PayloadAction<ContestByIdState['isBrief']>,
@@ -238,22 +230,6 @@ const reducers = {
   ) => {
     state.isEditContest = payload;
   },
-  setIsReviewed: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<ContestByIdState['isReviewed']>,
-  ) => {
-    state.isReviewed = payload;
-    state.offers = [];
-  },
-  clearAddOfferError: (state: ContestByIdState) => {
-    state.addOfferError = null;
-  },
-  clearSetOfferStatusError: (state: ContestByIdState) => {
-    state.setOfferStatusError = null;
-  },
-  clearChangeMarkError: (state: ContestByIdState) => {
-    state.changeMarkError = null;
-  },
   changeShowImage: (
     state: ContestByIdState,
     {
@@ -263,14 +239,38 @@ const reducers = {
     state.isShowOnFull = isShowOnFull;
     state.imagePath = imagePath;
   },
+  clearAddOfferError: (state: ContestByIdState) => {
+    state.addOfferError = null;
+  },
+  clearChangeMarkError: (state: ContestByIdState) => {
+    state.changeMarkError = null;
+  },
+  clearSetOfferStatusError: (state: ContestByIdState) => {
+    state.setOfferStatusError = null;
+  },
+  setIsReviewed: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<ContestByIdState['isReviewed']>,
+  ) => {
+    state.isReviewed = payload;
+    state.offers = [];
+  },
+  updateStoreAfterUpdateContest: (
+    state: ContestByIdState,
+    { payload }: PayloadAction<NonNullable<ContestByIdState['contestData']>>,
+  ) => {
+    state.error = null;
+    state.isEditContest = false;
+    state.contestData = { ...state.contestData, ...payload };
+  },
 };
 
 const extraReducers = (builder: ActionReducerMapBuilder<ContestByIdState>) => {
-  getContestByIdExtraReducers(builder);
   addOfferExtraReducers(builder);
-  setOfferStatusExtraReducers(builder);
   changeMarkExtraReducers(builder);
+  getContestByIdExtraReducers(builder);
   getOffersExtraReducers(builder);
+  setOfferStatusExtraReducers(builder);
 };
 
 const contestByIdSlice = createSlice({

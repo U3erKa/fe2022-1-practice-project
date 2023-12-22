@@ -17,13 +17,13 @@ const UserProfile = () => {
     const { profileViewMode } = state.userProfile;
     const { error } = state.payment;
 
-    return { balance, role, profileViewMode, error };
+    return { balance, error, profileViewMode, role };
   });
 
   const dispatch = useDispatch();
 
   const pay = ({ number, expiry, cvc, sum }: CashOutParams) => {
-    dispatch(cashOut({ number, expiry, cvc, sum }));
+    dispatch(cashOut({ cvc, expiry, number, sum }));
   };
 
   return (

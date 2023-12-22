@@ -27,13 +27,13 @@ export default function Rating(sequelize: Sequelize) {
         type: DataTypes.INTEGER,
       },
       userId: {
-        type: DataTypes.INTEGER,
         allowNull: false,
+        type: DataTypes.INTEGER,
         primaryKey: true,
       },
       mark: {
-        type: DataTypes.FLOAT,
         allowNull: false,
+        type: DataTypes.FLOAT,
         defaultValue: 0,
         validate: {
           min: 0,

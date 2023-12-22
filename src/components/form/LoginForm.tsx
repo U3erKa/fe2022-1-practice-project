@@ -14,9 +14,9 @@ import styles from './styles/LoginForm.module.scss';
 const formInputClasses = {
   container: styles.inputContainer,
   input: styles.input,
-  warning: styles.fieldWarning,
   notValid: styles.notValid,
   valid: styles.valid,
+  warning: styles.fieldWarning,
 } satisfies FormInputClasses;
 
 const LoginForm = () => {
@@ -40,9 +40,9 @@ const LoginForm = () => {
   const onSubmit = (values: Login) => {
     dispatch(
       checkAuth({
+        authMode: AUTH_MODE.LOGIN,
         data: values,
         navigate: router.push,
-        authMode: AUTH_MODE.LOGIN,
       }),
     );
   };

@@ -171,16 +171,16 @@ export const LogoOfferSchema = z.object({
 
 export const SetNewOfferSchema = z.union([
   z.object({
-    offerData: StringSchema,
-    contestType: z.enum([NAME_CONTEST, TAGLINE_CONTEST]),
     contestId: StringSchema,
+    contestType: z.enum([NAME_CONTEST, TAGLINE_CONTEST]),
     customerId: StringSchema,
+    offerData: StringSchema,
   }),
   z.object({
-    offerData: z.instanceof(File),
-    contestType: z.literal(LOGO_CONTEST),
     contestId: StringSchema,
+    contestType: z.literal(LOGO_CONTEST),
     customerId: StringSchema,
+    offerData: z.instanceof(File),
   }),
 ]);
 
@@ -195,26 +195,26 @@ export const BaseContestSchema = z.object({
   contestType: StringSchema,
   file: z.union([FileSchema, z.null()]).optional(),
   focusOfWork: StringSchema,
+  haveFile: z.boolean(),
   industry: StringSchema,
   targetCustomer: StringSchema,
   title: StringSchema,
-  haveFile: z.boolean(),
 });
 
 export const TaglineContestSchema = z.intersection(
   BaseContestSchema,
   z.object({
     contestType: TaglineContestTypeSchema,
-    typeOfTagline: TypeOfTaglineSchema,
     nameVenture: z.string().min(3),
+    typeOfTagline: TypeOfTaglineSchema,
   }),
 );
 
 export const LogoContestSchema = z.intersection(
   BaseContestSchema,
   z.object({
-    contestType: LogoContestTypeSchema,
     brandStyle: BrandStyleSchema,
+    contestType: LogoContestTypeSchema,
     nameVenture: z.string().min(3),
   }),
 );
@@ -237,8 +237,8 @@ export const ContestSchema = z.union([
 export const RegistrationSchema = z
   .object({
     agreeOfTerms: z.literal(true, {
-      required_error: 'Must Accept Terms and Conditions',
       invalid_type_error: 'Must Accept Terms and Conditions',
+      required_error: 'Must Accept Terms and Conditions',
     }),
     confirmPassword: z.string().min(6),
     displayName: StringSchema,
@@ -252,8 +252,8 @@ export const RegistrationSchema = z
     if (confirmPassword !== password) {
       addIssue({
         code: 'custom',
-        path: ['confirmPassword'],
         message: 'Confirmation password must match password',
+        path: ['confirmPassword'],
       });
     }
   });

@@ -21,8 +21,8 @@ export type Props = {
 
 const classes = {
   container: styles.inputContainer,
-  notValid: styles.notValid,
   error: styles.error,
+  notValid: styles.notValid,
 };
 
 const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {

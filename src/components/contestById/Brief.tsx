@@ -12,13 +12,13 @@ import styles from './styles/Brief.module.scss';
 
 const Brief = () => {
   const selector = useSelector((state) => {
-    const { contestUpdationStore, userStore, contestByIdStore } = state;
-    return { contestUpdationStore, userStore, contestByIdStore };
+    const { contestByIdStore, contestUpdationStore, userStore } = state;
+    return { contestByIdStore, contestUpdationStore, userStore };
   });
   const dispatch = useDispatch();
 
   const {
-    contestByIdStore: { isEditContest, contestData },
+    contestByIdStore: { contestData, isEditContest },
     contestUpdationStore: { error },
     userStore: { data: user },
   } = selector;
@@ -48,30 +48,30 @@ const Brief = () => {
     };
 
     const {
+      brandStyle,
+      contestType,
       focusOfWork,
       industry,
       nameVenture,
+      originalFileName,
       styleName,
       targetCustomer,
       title,
-      brandStyle,
       typeOfName,
       typeOfTagline,
-      originalFileName,
-      contestType,
     } = contestData ?? ({} as ContestData);
     const data = {
+      brandStyle,
+      contestType,
       focusOfWork,
       industry,
       nameVenture,
+      originalFileName,
       styleName,
       targetCustomer,
       title,
-      brandStyle,
       typeOfName,
       typeOfTagline,
-      originalFileName,
-      contestType,
     };
 
     const defaultData = {} as DefaultData;

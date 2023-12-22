@@ -15,8 +15,8 @@ import { CustomFilter } from './CustomFilter';
 import styles from './styles/CustomerDashboard.module.scss';
 
 const buttons = [
-  { name: 'Offers to review', filter: false },
-  { name: 'Reviewed offers', filter: true },
+  { filter: false, name: 'Offers to review' },
+  { filter: true, name: 'Reviewed offers' },
 ];
 
 export default function ModeratorDashboard() {
@@ -30,7 +30,7 @@ export default function ModeratorDashboard() {
   }, [isReviewed]);
 
   const getOffersMethod = (offset = 0) => {
-    dispatch(getOffers({ limit: 8, offset, isReviewed }));
+    dispatch(getOffers({ isReviewed, limit: 8, offset }));
   };
 
   const setOfferStatusMethod = (

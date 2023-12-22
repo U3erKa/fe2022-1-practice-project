@@ -24,9 +24,9 @@ export async function GET(req: NextRequest) {
       throw new RightsError('This page is only for moderators');
 
     const { searchParams } = nextUrl;
-    const offset = +(searchParams.get('offset') ?? 0);
-    const limit = +(searchParams.get('limit') ?? 8);
     const isReviewed = searchParams.get('isReviewed') === 'true';
+    const limit = +(searchParams.get('limit') ?? 8);
+    const offset = +(searchParams.get('offset') ?? 0);
 
     const where: WhereOptions<Attributes<_Offer>> = {
       [Op.or]: isReviewed
@@ -52,7 +52,7 @@ export async function GET(req: NextRequest) {
         {
           model: User,
           required: true,
-          attributes: { exclude: ['password', 'accessToken'] },
+          attributes: { exclude: ['accessToken', 'password'] },
         },
       ],
     });
@@ -67,7 +67,7 @@ export async function GET(req: NextRequest) {
       // @ts-expect-error
       delete Contest.dataValues;
     }
-    return NextResponse.json({ offers, haveMore });
+    return NextResponse.json({ haveMore, offers });
   } catch (error) {
     return handleError(error);
   }

@@ -16,13 +16,13 @@ export async function POST(req: NextRequest) {
     ) as [number, number];
 
     const [conversation, isCreated] = await Conversation.findOrCreate({
+      where: { participant1, participant2 },
       include: {
-        model: Message,
         as: 'messages',
+        model: Message,
         order: [['createdAt', 'ASC']],
       },
       attributes: ['participant1', 'participant2'],
-      where: { participant1, participant2 },
       defaults: {
         blackList: [false, false],
         favoriteList: [false, false],
@@ -45,8 +45,8 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({
+      interlocutor: { avatar, displayName, firstName, id, lastName },
       messages,
-      interlocutor: { id, firstName, lastName, displayName, avatar },
     });
   } catch (error) {
     return handleError(error);

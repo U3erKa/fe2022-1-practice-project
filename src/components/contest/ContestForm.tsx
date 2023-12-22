@@ -60,25 +60,25 @@ const textareaClasses = {
   warning: styles.warning,
 };
 const fileClasses = {
+  fileInput: styles.fileInput,
+  fileNameClass: styles.fileName,
   fileUploadContainer: styles.fileUploadContainer,
   labelClass: styles.label,
-  fileNameClass: styles.fileName,
-  fileInput: styles.fileInput,
   warning: styles.warning,
 };
 
 const ContestForm: FC<Props> = ({ contestType }) => {
   const { isEditContest, dataForContest, bundle, contests } = useSelector(
     ({
-      contestCreationStore,
-      contestByIdStore,
-      dataForContest,
       bundleStore,
-    }) => ({
-      isEditContest: contestByIdStore.isEditContest,
+      contestByIdStore,
+      contestCreationStore,
       dataForContest,
+    }) => ({
       bundle: bundleStore.bundle,
       contests: contestCreationStore.contests,
+      dataForContest,
+      isEditContest: contestByIdStore.isEditContest,
     }),
   );
   const dispatch = useDispatch();
@@ -91,11 +91,11 @@ const ContestForm: FC<Props> = ({ contestType }) => {
 
   const { handleSubmit, control, register } = useForm({
     defaultValues: {
-      title: '',
-      industry: '',
-      focusOfWork: '',
-      targetCustomer: '',
       file: '',
+      focusOfWork: '',
+      industry: '',
+      targetCustomer: '',
+      title: '',
       ...variableOptions[contestType],
       ...defaultContestData,
     },
@@ -112,8 +112,8 @@ const ContestForm: FC<Props> = ({ contestType }) => {
 
     dispatch(
       saveContestToStore({
-        type: contestType,
         info: restValues,
+        type: contestType,
       } as SaveContestToStore),
     );
     const route =

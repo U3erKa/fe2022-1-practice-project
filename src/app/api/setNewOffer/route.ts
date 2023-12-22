@@ -44,8 +44,8 @@ export async function POST(req: NextRequest) {
     }
 
     const obj: { [key: string]: unknown } = {
-      userId: tokenData.userId,
       contestId,
+      userId: tokenData.userId,
     };
 
     if (contestType === LOGO_CONTEST) {
@@ -57,8 +57,8 @@ export async function POST(req: NextRequest) {
 
     const { userId, contestId: _contestId, ...offer } = await createOffer(obj);
     getNotificationController().emitEntryCreated(customerId);
-    const User = Object.assign({}, tokenData, { id: tokenData.userId });
-    return NextResponse.json(Object.assign({}, offer, { User }));
+    const User = { ...tokenData, id: tokenData.userId };
+    return NextResponse.json({ ...offer, User });
   } catch (error) {
     return handleError(error);
   }

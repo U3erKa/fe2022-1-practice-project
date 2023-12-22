@@ -6,22 +6,22 @@ import type { UserProfileState } from 'types/slices';
 const USER_PROFILE_SLICE_NAME = 'userProfile';
 
 const initialState: UserProfileState = {
-  profileViewMode: USER_INFO_MODE,
   isEdit: false,
+  profileViewMode: USER_INFO_MODE,
 };
 
 const reducers = {
-  changeProfileViewMode: (
-    state: UserProfileState,
-    { payload }: PayloadAction<UserProfileState['profileViewMode']>,
-  ) => {
-    state.profileViewMode = payload;
-  },
   changeEditModeOnUserProfile: (
     state: UserProfileState,
     { payload }: PayloadAction<UserProfileState['isEdit']>,
   ) => {
     state.isEdit = payload;
+  },
+  changeProfileViewMode: (
+    state: UserProfileState,
+    { payload }: PayloadAction<UserProfileState['profileViewMode']>,
+  ) => {
+    state.profileViewMode = payload;
   },
 };
 

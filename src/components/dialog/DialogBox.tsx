@@ -55,13 +55,8 @@ const DialogBox: FC<Props> = ({
       className={styles.previewChatBox}
       onClick={() =>
         goToExpandedDialog({
+          conversationData: { _id, blackList, favoriteList, participants },
           interlocutor,
-          conversationData: {
-            participants,
-            _id,
-            blackList,
-            favoriteList,
-          },
         })
       }
     >
@@ -78,23 +73,14 @@ const DialogBox: FC<Props> = ({
           <FontAwesomeIcon
             icon={isFavorite ? fasFaHeart : farFaHeart}
             onClick={(event) =>
-              changeFavorite(
-                {
-                  participants,
-                  favoriteFlag: !isFavorite,
-                },
-                event,
-              )
+              changeFavorite({ favoriteFlag: !isFavorite, participants }, event)
             }
           />
           <FontAwesomeIcon
             icon={isBlocked ? faUnlock : faUserLock}
             onClick={(event) =>
               changeBlackList(
-                {
-                  participants,
-                  blackListFlag: !isBlocked,
-                },
+                { blackListFlag: !isBlocked, participants },
                 event,
               )
             }

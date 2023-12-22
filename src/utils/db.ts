@@ -41,7 +41,7 @@ export const createWhereForAllContests = ({
     },
   });
 
-  return { where, order };
+  return { order, where };
 };
 
 export const createWhereForCustomerContests = ({ status, userId }: Contest) => {
@@ -55,7 +55,7 @@ export const createWhereForCustomerContests = ({ status, userId }: Contest) => {
     Object.assign(where, { userId });
   }
 
-  return { where, order };
+  return { order, where };
 };
 
 function getPredicateTypes(index: number) {

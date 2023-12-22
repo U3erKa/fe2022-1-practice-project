@@ -19,13 +19,13 @@ export async function GET(req: NextRequest) {
     const status = headers.get('Status');
     const { role, userId } = await verifyAccessToken(authorization);
 
-    const offset = +(searchParams.get('offset') ?? 0);
-    const limit = +(searchParams.get('limit') ?? 8);
-    const typeIndex = searchParams.get('typeIndex');
+    const awardSort = searchParams.get('awardSort');
     const contestId = searchParams.get('contestId');
     const industry = searchParams.get('industry');
-    const awardSort = searchParams.get('awardSort');
+    const limit = +(searchParams.get('limit') ?? 8);
+    const offset = +(searchParams.get('offset') ?? 0);
     const ownEntries = searchParams.get('ownEntries') === 'true';
+    const typeIndex = searchParams.get('typeIndex');
 
     let predicates: ReturnType<
       typeof createWhereForAllContests | typeof createWhereForCustomerContests
@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
 
     switch (role) {
       case CREATOR: {
-        const sellerParams = { typeIndex, contestId, industry, awardSort };
+        const sellerParams = { awardSort, contestId, industry, typeIndex };
 
         predicates = createWhereForAllContests(sellerParams);
         isRequiredOffer = ownEntries;
@@ -63,10 +63,10 @@ export async function GET(req: NextRequest) {
       offset,
       include: [
         {
+          attributes: ['id'],
           model: Offer,
           required: isRequiredOffer,
           where: offerFilter,
-          attributes: ['id'],
         },
       ],
     });

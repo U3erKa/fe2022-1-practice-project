@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     if (role !== CUSTOMER && role !== MODERATOR) throw new RightsError();
 
     const result = await Contest.findOne({
-      where: { userId, id: contestId, status: CONTEST_STATUS_ACTIVE },
+      where: { id: contestId, status: CONTEST_STATUS_ACTIVE, userId },
     });
     if (!result) throw new RightsError();
 

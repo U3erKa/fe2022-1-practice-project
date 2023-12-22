@@ -4,41 +4,41 @@ import { generateTokenPair } from './jwtService';
 
 export const createSession = async (user: User) => {
   const tokenPair = await generateTokenPair({
-    firstName: user.firstName,
-    userId: user.id,
-    role: user.role,
-    lastName: user.lastName,
     avatar: user.avatar,
-    displayName: user.displayName,
     balance: user.balance,
+    displayName: user.displayName,
     email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
     rating: user.rating,
+    role: user.role,
+    userId: user.id,
   });
 
   await RefreshToken.create({
-    userId: user.id,
     token: tokenPair.refreshToken!,
+    userId: user.id,
   });
 
-  return { user, tokenPair };
+  return { tokenPair, user };
 };
 
 export const refreshSession = async (refreshTokenInstance: _RefreshToken) => {
   const user = await refreshTokenInstance.getUser();
 
   const tokenPair = await generateTokenPair({
-    firstName: user.firstName,
-    userId: user.id,
-    role: user.role,
-    lastName: user.lastName,
     avatar: user.avatar,
-    displayName: user.displayName,
     balance: user.balance,
+    displayName: user.displayName,
     email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
     rating: user.rating,
+    role: user.role,
+    userId: user.id,
   });
 
   await refreshTokenInstance.update({ token: tokenPair.refreshToken });
 
-  return { user, tokenPair };
+  return { tokenPair, user };
 };
