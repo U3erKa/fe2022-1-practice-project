@@ -6,10 +6,7 @@ let user = MAIL_USER;
 let pass = MAIL_PASS;
 if (!MAIL_USER || !MAIL_PASS) {
   const testAccount = await nodemailer.createTestAccount();
-  /* eslint-disable prefer-destructuring */
-  user = testAccount.user;
-  pass = testAccount.pass;
-  /* eslint-enable prefer-destructuring */
+  ({ user, pass } = testAccount);
 }
 
 const transporter = nodemailer.createTransport({
