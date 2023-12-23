@@ -130,7 +130,7 @@ export type ContestData = WithId<ContestId> &
   };
 
 export type ServerError = { data: string; status: number };
-export type WithFetch = { isFetching: boolean; error: ServerError | null };
+export type WithFetch = { isFetching: boolean; error: unknown };
 
 export type NameMatchesDomain =
   | typeof EXACT_CHOISE

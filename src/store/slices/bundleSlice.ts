@@ -18,7 +18,7 @@ const reducers = {
 };
 
 const bundleSlice = createSlice({
-  name: `${BUNDLE_SLICE_NAME}`,
+  name: BUNDLE_SLICE_NAME,
   initialState,
   reducers,
 });

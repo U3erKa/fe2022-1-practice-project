@@ -42,13 +42,14 @@ const reducers = {
 };
 
 const extraReducers = (builder: ActionReducerMapBuilder<AuthState>) => {
-  builder.addCase(checkAuth.pending, pendingReducer);
-  builder.addCase(checkAuth.fulfilled, fulfilledReducer);
-  builder.addCase(checkAuth.rejected, rejectedReducer);
+  builder
+    .addCase(checkAuth.pending, pendingReducer)
+    .addCase(checkAuth.fulfilled, fulfilledReducer)
+    .addCase(checkAuth.rejected, rejectedReducer);
 };
 
 const authSlice = createSlice({
-  name: `${AUTH_SLICE_NAME}`,
+  name: AUTH_SLICE_NAME,
   initialState,
   reducers,
   extraReducers,

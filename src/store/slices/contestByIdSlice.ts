@@ -13,20 +13,15 @@ import {
 } from 'constants/general';
 import { addNewItems } from 'utils/functions';
 import {
-  createExtraReducers,
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import type { GetContestParams, GetContestResponse } from 'types/api/contest';
+import type { GetContestParams } from 'types/api/contest';
 import type {
   ChangeMarkParams,
-  ChangeMarkResponse,
   GetOffersParams,
-  GetOffersResponse,
-  SetNewOfferResponse,
   SetOfferStatusParams,
-  SetOfferStatusResponse,
 } from 'types/api/offer';
 import type { ContestByIdState } from 'types/slices';
 
@@ -49,7 +44,6 @@ const initialState: ContestByIdState = {
   setOfferStatusError: null,
 };
 
-//---------- getContestById
 export const getContestById = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/getContest`,
   thunk: async (payload: GetContestParams) => {
@@ -59,32 +53,26 @@ export const getContestById = decorateAsyncThunk({
   },
 });
 
-const getContestByIdExtraReducers = createExtraReducers({
-  thunk: getContestById,
-  pendingReducer: (state: ContestByIdState) => {
-    state.isFetching = true;
-    state.contestData = null;
-    state.error = null;
-    state.offers = [];
-  },
-  fulfilledReducer: (
-    state: ContestByIdState,
-    {
-      payload: { contestData, offers },
-    }: PayloadAction<{
-      contestData: Omit<GetContestResponse, 'Offers'>;
-      offers: GetContestResponse['Offers'];
-    }>,
-  ) => {
-    state.isFetching = false;
-    state.contestData = contestData;
-    state.error = null;
-    state.offers = offers;
-  },
-  rejectedReducer,
-});
+const getContestByIdExtraReducers = (
+  builder: ActionReducerMapBuilder<ContestByIdState>,
+) => {
+  builder
+    .addCase(getContestById.pending, (state) => {
+      state.isFetching = true;
+      state.contestData = null;
+      state.error = null;
+      state.offers = [];
+    })
+    .addCase(getContestById.fulfilled, (state, { payload }) => {
+      const { contestData, offers } = payload;
+      state.isFetching = false;
+      state.contestData = contestData;
+      state.error = null;
+      state.offers = offers;
+    })
+    .addCase(getContestById.rejected, rejectedReducer);
+};
 
-//---------- addOffer
 export const addOffer = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/addOffer`,
   thunk: async (payload: FormData) => {
@@ -93,24 +81,19 @@ export const addOffer = decorateAsyncThunk({
   },
 });
 
-const addOfferExtraReducers = createExtraReducers({
-  thunk: addOffer,
-  fulfilledReducer: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<SetNewOfferResponse>,
-  ) => {
-    state.offers.unshift(payload);
-    state.error = null;
-  },
-  rejectedReducer: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<ContestByIdState['addOfferError']>,
-  ) => {
-    state.addOfferError = payload;
-  },
-});
+const addOfferExtraReducers = (
+  builder: ActionReducerMapBuilder<ContestByIdState>,
+) => {
+  builder
+    .addCase(addOffer.fulfilled, (state, { payload }) => {
+      state.offers.unshift(payload);
+      state.error = null;
+    })
+    .addCase(addOffer.rejected, (state, { payload }) => {
+      state.addOfferError = payload;
+    });
+};
 
-//---------- setOfferStatus
 export const setOfferStatus = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/setOfferStatus`,
   thunk: async (payload: SetOfferStatusParams) => {
@@ -119,38 +102,35 @@ export const setOfferStatus = decorateAsyncThunk({
   },
 });
 
-const setOfferStatusExtraReducers = createExtraReducers({
-  thunk: setOfferStatus,
-  fulfilledReducer: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<SetOfferStatusResponse>,
-  ) => {
-    for (const offer of state.offers) {
-      switch (payload.status) {
-        case OFFER_STATUS_WON:
-          offer.status =
-            payload.id === offer.id ? OFFER_STATUS_WON : OFFER_STATUS_REJECTED;
-          break;
-        case OFFER_STATUS_REJECTED:
-        case OFFER_STATUS_APPROVED:
-        case OFFER_STATUS_DISCARDED:
-          if (payload.id === offer.id) offer.status = payload.status;
-          break;
-        default:
-          break;
+const setOfferStatusExtraReducers = (
+  builder: ActionReducerMapBuilder<ContestByIdState>,
+) => {
+  builder
+    .addCase(setOfferStatus.fulfilled, (state, { payload }) => {
+      for (const offer of state.offers) {
+        switch (payload.status) {
+          case OFFER_STATUS_WON:
+            offer.status =
+              payload.id === offer.id
+                ? OFFER_STATUS_WON
+                : OFFER_STATUS_REJECTED;
+            break;
+          case OFFER_STATUS_REJECTED:
+          case OFFER_STATUS_APPROVED:
+          case OFFER_STATUS_DISCARDED:
+            if (payload.id === offer.id) offer.status = payload.status;
+            break;
+          default:
+            break;
+        }
       }
-    }
-    state.error = null;
-  },
-  rejectedReducer: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<ContestByIdState['setOfferStatusError']>,
-  ) => {
-    state.setOfferStatusError = payload;
-  },
-});
+      state.error = null;
+    })
+    .addCase(setOfferStatus.rejected, (state, { payload }) => {
+      state.setOfferStatusError = payload;
+    });
+};
 
-//---------- changeMark
 export const changeMark = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/changeMark`,
   thunk: async (payload: ChangeMarkParams) => {
@@ -159,37 +139,27 @@ export const changeMark = decorateAsyncThunk({
   },
 });
 
-const changeMarkExtraReducers = createExtraReducers({
-  thunk: changeMark,
-  fulfilledReducer: (
-    state: ContestByIdState,
-    {
-      payload: { data, offerId, mark },
-    }: PayloadAction<{
-      data: ChangeMarkResponse;
-      offerId: ChangeMarkParams['offerId'];
-      mark: ChangeMarkParams['mark'];
-    }>,
-  ) => {
-    for (const offer of state.offers) {
-      if (offer.User.id === data.userId) {
-        offer.User.rating = data.rating;
+const changeMarkExtraReducers = (
+  builder: ActionReducerMapBuilder<ContestByIdState>,
+) => {
+  builder
+    .addCase(changeMark.fulfilled, (state, { payload }) => {
+      const { data, offerId, mark } = payload;
+      for (const offer of state.offers) {
+        if (offer.User.id === data.userId) {
+          offer.User.rating = data.rating;
+        }
+        if (offer.id === offerId) {
+          offer.mark = mark;
+        }
       }
-      if (offer.id === offerId) {
-        offer.mark = mark;
-      }
-    }
-    state.error = null;
-  },
-  rejectedReducer: (
-    state: ContestByIdState,
-    { payload }: PayloadAction<ContestByIdState['changeMarkError']>,
-  ) => {
-    state.changeMarkError = payload;
-  },
-});
+      state.error = null;
+    })
+    .addCase(changeMark.rejected, (state, { payload }) => {
+      state.changeMarkError = payload;
+    });
+};
 
-//-----------getOffers
 export const getOffers = decorateAsyncThunk({
   key: `${CONTEST_BY_ID_SLICE_NAME}/getOffers`,
   thunk: async (payload: GetOffersParams) => {
@@ -199,22 +169,20 @@ export const getOffers = decorateAsyncThunk({
   },
 });
 
-const getOffersExtraReducers = createExtraReducers({
-  thunk: getOffers,
-  pendingReducer,
-  rejectedReducer,
-  fulfilledReducer: <IsReviewed>(
-    state: ContestByIdState,
-    { payload }: PayloadAction<GetOffersResponse<IsReviewed>>,
-  ) => {
-    state.isFetching = false;
-    state.offers = addNewItems(state.offers, payload.offers as any[]);
-    state.haveMore = payload.haveMore;
-    state.error = null;
-  },
-});
+const getOffersExtraReducers = (
+  builder: ActionReducerMapBuilder<ContestByIdState>,
+) => {
+  builder
+    .addCase(getOffers.pending, pendingReducer)
 
-//-----------------------------------------------------
+    .addCase(getOffers.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
+      state.offers = addNewItems(state.offers, payload.offers as any[]);
+      state.haveMore = payload.haveMore;
+      state.error = null;
+    })
+    .addCase(getOffers.rejected, rejectedReducer);
+};
 
 const reducers = {
   changeContestViewMode: (

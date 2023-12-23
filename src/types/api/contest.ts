@@ -21,18 +21,12 @@ import type {
   WithId,
   WithPagination,
 } from './_common';
-import type { Rating, WithOfferStatus } from './offer';
 import type { UserInOffer } from './_common';
+import type { Rating, WithOfferStatus } from './offer';
 
 export type GetContestsThunk =
-  | {
-      requestData: GetCustomersContestsParams;
-      role: typeof CUSTOMER;
-    }
-  | {
-      requestData: GetActiveContestsParams;
-      role: typeof CREATOR;
-    };
+  | { requestData: GetCustomersContestsParams; role: typeof CUSTOMER }
+  | { requestData: GetActiveContestsParams; role: typeof CREATOR };
 
 export type GetCustomersContestsParams = Partial<WithPagination> & {
   contestStatus?: Contest['status'];

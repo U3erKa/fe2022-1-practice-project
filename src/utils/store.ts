@@ -1,36 +1,25 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type {
-  ActionReducerMapBuilder,
-  AsyncThunk,
   AsyncThunkPayloadCreator,
   CaseReducer,
+  PayloadAction,
 } from '@reduxjs/toolkit';
-import type { RootState } from 'store';
+import type { WithFetch } from 'types/slices';
 
-export type ExtraReducersCreator = <State, Return, Payload>(options: {
-  thunk: AsyncThunk<Return, Payload, {}>;
-  pendingReducer?: any;
-  fulfilledReducer?: any;
-  rejectedReducer?: any;
-}) => (builder: ActionReducerMapBuilder<State>) => void;
-
-export type RootStateWithAsync = RootState[keyof RootState] & {
-  isFetching: any;
-  error: any;
-};
-
-export const pendingReducer: CaseReducer<RootStateWithAsync> = (state) => {
+export const pendingReducer: CaseReducer = <T extends WithFetch>(state: T) => {
   state.isFetching = true;
   state.error = null;
 };
 
-export const fulfilledReducer: CaseReducer<RootStateWithAsync> = (state) => {
+export const fulfilledReducer: CaseReducer = <T extends WithFetch>(
+  state: T,
+) => {
   state.isFetching = false;
 };
 
-export const rejectedReducer: CaseReducer<RootStateWithAsync> = (
-  state,
-  { payload },
+export const rejectedReducer = <T extends WithFetch>(
+  state: T,
+  { payload }: PayloadAction<unknown>,
 ) => {
   state.isFetching = false;
   state.error = payload;
@@ -60,12 +49,3 @@ export const decorateAsyncThunk = <Return, Payload = void>({
   );
   return asyncThunk;
 };
-
-/** Create extra reducers for async thunk */
-export const createExtraReducers: ExtraReducersCreator =
-  ({ thunk, pendingReducer, fulfilledReducer, rejectedReducer }) =>
-  (builder: ActionReducerMapBuilder<any>) => {
-    pendingReducer && builder.addCase(thunk.pending, pendingReducer);
-    fulfilledReducer && builder.addCase(thunk.fulfilled, fulfilledReducer);
-    rejectedReducer && builder.addCase(thunk.rejected, rejectedReducer);
-  };

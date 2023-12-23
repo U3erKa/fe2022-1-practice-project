@@ -27,22 +27,23 @@ export const getDataForContest = decorateAsyncThunk({
 const extraReducers = (
   builder: ActionReducerMapBuilder<DataForContestState>,
 ) => {
-  builder.addCase(getDataForContest.pending, (state: DataForContestState) => {
-    state.isFetching = true;
-    state.data = null;
-    state.error = null;
-  });
-  builder.addCase(
-    getDataForContest.fulfilled,
-    (
-      state: DataForContestState,
-      { payload }: PayloadAction<DataForContest>,
-    ) => {
-      state.isFetching = false;
-      state.data = payload;
-    },
-  );
-  builder.addCase(getDataForContest.rejected, rejectedReducer);
+  builder
+    .addCase(getDataForContest.pending, (state: DataForContestState) => {
+      state.isFetching = true;
+      state.data = null;
+      state.error = null;
+    })
+    .addCase(
+      getDataForContest.fulfilled,
+      (
+        state: DataForContestState,
+        { payload }: PayloadAction<DataForContest>,
+      ) => {
+        state.isFetching = false;
+        state.data = payload;
+      },
+    )
+    .addCase(getDataForContest.rejected, rejectedReducer);
 };
 
 const dataForContestSlice = createSlice({

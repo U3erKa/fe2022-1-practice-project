@@ -1,14 +1,9 @@
-import {
-  type ActionReducerMapBuilder,
-  type PayloadAction,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
 import type { NoInfer } from 'react-redux';
 import * as eventController from 'api/rest/eventController';
 import { timezoneOffsetInMs } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';
 import {
-  createExtraReducers,
   decorateAsyncThunk,
   pendingReducer,
   rejectedReducer,
@@ -48,35 +43,33 @@ export const createEvent = decorateAsyncThunk({
 const closestEventFirst = ({ date }: NewEvent, { date: other }: NewEvent) =>
   Date.parse(date) - Date.parse(other);
 
-const getEventsExtraReducers = createExtraReducers({
-  thunk: getEvents,
-  pendingReducer,
-  rejectedReducer,
-  fulfilledReducer: (
-    state: EventState,
-    { payload }: PayloadAction<eventController.EventResponse[]>,
-  ) => {
-    state.isFetching = false;
-    state.error = null;
-    state.events = payload;
-    state.events.sort(closestEventFirst);
-  },
-});
+const getEventsExtraReducers = (
+  builder: ActionReducerMapBuilder<EventState>,
+) => {
+  builder
+    .addCase(getEvents.pending, pendingReducer)
+    .addCase(getEvents.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
+      state.error = null;
+      state.events = payload;
+      state.events.sort(closestEventFirst);
+    })
+    .addCase(getEvents.rejected, rejectedReducer);
+};
 
-const createEventExtraReducers = createExtraReducers({
-  thunk: createEvent,
-  pendingReducer,
-  rejectedReducer,
-  fulfilledReducer: (
-    state: EventState,
-    { payload }: PayloadAction<eventController.EventResponse>,
-  ) => {
-    state.isFetching = false;
-    state.error = null;
-    state.events.push(payload);
-    state.events.sort(closestEventFirst);
-  },
-});
+const createEventExtraReducers = (
+  builder: ActionReducerMapBuilder<EventState>,
+) => {
+  builder
+    .addCase(createEvent.pending, pendingReducer)
+    .addCase(createEvent.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
+      state.error = null;
+      state.events.push(payload);
+      state.events.sort(closestEventFirst);
+    })
+    .addCase(createEvent.rejected, rejectedReducer);
+};
 
 const extraReducers = (
   builder: ActionReducerMapBuilder<NoInfer<EventState>>,
