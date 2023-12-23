@@ -3,26 +3,14 @@ import {
   type ThunkAction,
   configureStore,
 } from '@reduxjs/toolkit';
-import { isEqual } from 'radash';
-import {
-  type TypedUseSelectorHook,
-  useDispatch as useReduxDispatch,
-  useSelector as useReduxSelector,
-} from 'react-redux';
 import { initSocket } from 'api/ws/socketController';
 import reducer from './reducer';
-
-const store = configureStore({
-  reducer: reducer,
-});
-
-initSocket(store);
-
-export default store;
 
 export const reduxStore = configureStore({
   reducer,
 });
+
+initSocket(reduxStore);
 
 export type RootStore = typeof reduxStore;
 export type RootState = ReturnType<typeof reduxStore.getState>;

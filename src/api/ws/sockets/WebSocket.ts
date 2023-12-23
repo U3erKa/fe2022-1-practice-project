@@ -1,12 +1,12 @@
 import socketIoClient from 'socket.io-client';
-import type { AppDispatch, default as store } from 'store';
+import type { AppDispatch, RootState, reduxStore } from 'store';
 import { BASE_URL } from 'constants/general';
 
 class WebSocket {
   socket: ReturnType<typeof socketIoClient>;
   constructor(
     public dispatch: AppDispatch,
-    public getState: (typeof store)['getState'],
+    public getState: (typeof reduxStore)['getState'],
     room: string,
   ) {
     this.socket = socketIoClient(`${BASE_URL}${room}`, {
