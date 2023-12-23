@@ -1,15 +1,14 @@
 import {
   type ActionReducerMapBuilder,
-  type PayloadAction,
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
 import * as authController from 'api/rest/authController';
 import * as userController from 'api/rest/userController';
 import { controller } from 'api/ws/socketController';
-import { rejectedReducer } from 'utils/store';
+import { pendingReducer, rejectedReducer } from 'utils/store';
 import type { JWT } from 'types/api/_common';
-import type { ServerError, UserState } from 'types/slices';
+import type { UserState } from 'types/slices';
 import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';
 
@@ -67,45 +66,42 @@ const reducers = {
 };
 
 const extraReducers = (builder: ActionReducerMapBuilder<UserState>) => {
-  builder.addCase(checkAuth.pending, (state: UserState) => {
-    state.isFetching = true;
-    state.error = null;
-    state.data = null;
-  });
-  builder.addCase(checkAuth.fulfilled, (state: UserState, { payload }) => {
-    state.data = payload;
-    state.isFetching = false;
-  });
-  builder.addCase(checkAuth.rejected, rejectedReducer);
-
-  builder.addCase(refresh.pending, (state: UserState) => {
-    state.isFetching = true;
-    state.error = null;
-    state.data = null;
-  });
-  builder.addCase(
-    refresh.fulfilled,
-    (state: UserState, { payload }: PayloadAction<UserState['data']>) => {
+  builder
+    .addCase(checkAuth.pending, (state) => {
+      state.isFetching = true;
+      state.error = null;
+      state.data = null;
+    })
+    .addCase(checkAuth.fulfilled, (state, { payload }) => {
       state.data = payload;
       state.isFetching = false;
-    },
-  );
-  builder.addCase(refresh.rejected, rejectedReducer);
+    })
+    .addCase(checkAuth.rejected, rejectedReducer);
 
-  builder.addCase(
-    updateUser.fulfilled,
-    (state: UserState, { payload }: PayloadAction<UserState['data']>) => {
+  builder
+    .addCase(refresh.pending, (state) => {
+      state.isFetching = true;
+      state.error = null;
+      state.data = null;
+    })
+    .addCase(refresh.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
+      state.data = payload;
+    })
+    .addCase(refresh.rejected, rejectedReducer);
+
+  builder
+    .addCase(updateUser.pending, pendingReducer)
+    .addCase(updateUser.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       // @ts-expect-error
       state.data = { ...state.data, ...payload };
       state.error = null;
-    },
-  );
-  builder.addCase(
-    updateUser.rejected,
-    (state: UserState, { payload }: PayloadAction<ServerError>) => {
+    })
+    .addCase(updateUser.rejected, (state, { payload }) => {
+      state.isFetching = false;
       state.error = payload;
-    },
-  );
+    });
 };
 
 const userSlice = createSlice({

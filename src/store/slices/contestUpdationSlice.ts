@@ -32,9 +32,10 @@ const reducers = {
 const extraReducers = (
   builder: ActionReducerMapBuilder<ContestUpdationState>,
 ) => {
-  builder.addCase(updateContest.pending, pendingReducer);
-  builder.addCase(updateContest.fulfilled, fulfilledReducer);
-  builder.addCase(updateContest.rejected, rejectedReducer);
+  builder
+    .addCase(updateContest.pending, pendingReducer)
+    .addCase(updateContest.fulfilled, fulfilledReducer)
+    .addCase(updateContest.rejected, rejectedReducer);
 };
 
 const contestUpdationSlice = createSlice({

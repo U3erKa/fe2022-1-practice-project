@@ -10,7 +10,11 @@ import {
   ADD_CHAT_TO_OLD_CATALOG,
   NORMAL_PREVIEW_CHAT_MODE,
 } from 'constants/general';
-import { decorateAsyncThunk, rejectedReducer } from 'utils/store';
+import {
+  decorateAsyncThunk,
+  pendingReducer,
+  rejectedReducer,
+} from 'utils/store';
 import type {
   AddChatToCatalogParams,
   ChangeCatalogNameParams,
@@ -67,11 +71,14 @@ const getPreviewChatExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(getPreviewChat.pending, pendingReducer)
     .addCase(getPreviewChat.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       state.messagesPreview = payload;
       state.error = null;
     })
     .addCase(getPreviewChat.rejected, (state, { payload }) => {
+      state.isFetching = false;
       state.error = payload;
       state.messagesPreview = [];
     });
@@ -89,13 +96,17 @@ const getDialogMessagesExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(getDialogMessages.pending, pendingReducer)
     .addCase(getDialogMessages.fulfilled, (state, { payload }) => {
-      state.messages = payload.messages;
-      state.interlocutor = payload.interlocutor;
+      state.isFetching = false;
+      const { interlocutor, messages } = payload;
+      state.interlocutor = interlocutor;
+      state.messages = messages;
     })
     .addCase(getDialogMessages.rejected, (state, { payload }) => {
-      state.messages = [];
+      state.isFetching = false;
       state.interlocutor = null;
+      state.messages = [];
       state.error = payload;
     });
 };
@@ -112,33 +123,34 @@ const sendMessageExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(sendMessage.pending, pendingReducer)
     .addCase(sendMessage.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { messagesPreview } = state;
+      const { message, preview } = payload;
       let isNew = true;
       for (const preview of messagesPreview) {
-        if (isEqual(preview.participants, payload.message.participants)) {
-          preview.createdAt = payload.message.createdAt;
-          preview.sender = payload.message.sender;
-          preview.text = payload.message.body;
+        if (isEqual(preview.participants, message.participants)) {
+          preview.createdAt = message.createdAt;
+          preview.sender = message.sender;
+          preview.text = message.body;
           isNew = false;
         }
       }
       if (isNew) {
-        messagesPreview.push(payload.preview);
+        messagesPreview.push(preview);
       }
       const chatData = {
-        _id: payload.preview._id,
-        blackList: payload.preview.blackList,
-        favoriteList: payload.preview.favoriteList,
-        participants: payload.preview.participants,
+        _id: preview._id,
+        blackList: preview.blackList,
+        favoriteList: preview.favoriteList,
+        participants: preview.participants,
       };
       state.chatData = { ...state.chatData, ...chatData };
-      state.messages = [...state.messages, payload.message];
+      state.messages = [...state.messages, message];
       state.messagesPreview = messagesPreview;
     })
-    .addCase(sendMessage.rejected, (state, { payload }) => {
-      state.error = payload;
-    });
+    .addCase(sendMessage.rejected, rejectedReducer);
 };
 
 export const changeChatFavorite = decorateAsyncThunk({
@@ -153,7 +165,9 @@ const changeChatFavoriteExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(changeChatFavorite.pending, pendingReducer)
     .addCase(changeChatFavorite.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { messagesPreview } = state;
       for (const preview of messagesPreview) {
         if (isEqual(preview.participants, payload.participants))
@@ -162,9 +176,7 @@ const changeChatFavoriteExtraReducers = (
       state.chatData = payload;
       state.messagesPreview = messagesPreview;
     })
-    .addCase(changeChatFavorite.rejected, (state, { payload }) => {
-      state.error = payload;
-    });
+    .addCase(changeChatFavorite.rejected, rejectedReducer);
 };
 
 export const changeChatBlock = decorateAsyncThunk({
@@ -179,7 +191,9 @@ const changeChatBlockExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(changeChatBlock.pending, pendingReducer)
     .addCase(changeChatBlock.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { messagesPreview } = state;
       for (const preview of messagesPreview) {
         if (isEqual(preview.participants, payload.participants))
@@ -188,9 +202,7 @@ const changeChatBlockExtraReducers = (
       state.chatData = payload;
       state.messagesPreview = messagesPreview;
     })
-    .addCase(changeChatBlock.rejected, (state, { payload }) => {
-      state.error = payload;
-    });
+    .addCase(changeChatBlock.rejected, rejectedReducer);
 };
 
 export const getCatalogList = decorateAsyncThunk({
@@ -210,11 +222,12 @@ const getCatalogListExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(getCatalogList.pending, pendingReducer)
     .addCase(getCatalogList.fulfilled, (state, { payload }) => {
       state.isFetching = false;
-      state.catalogList = [...payload];
+      state.catalogList = payload;
     })
-    .addCase(getCatalogList.rejected, rejectedReducer as any);
+    .addCase(getCatalogList.rejected, rejectedReducer);
 };
 
 export const addChatToCatalog = decorateAsyncThunk({
@@ -229,7 +242,9 @@ const addChatToCatalogExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(addChatToCatalog.pending, pendingReducer)
     .addCase(addChatToCatalog.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { catalogList } = state;
       for (const catalog of catalogList) {
         if (catalog._id === payload._id) {
@@ -241,6 +256,7 @@ const addChatToCatalogExtraReducers = (
       state.catalogList = [...catalogList];
     })
     .addCase(addChatToCatalog.rejected, (state, { payload }) => {
+      state.isFetching = false;
       state.error = payload;
       state.isShowCatalogCreation = false;
     });
@@ -258,11 +274,14 @@ const createCatalogExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(createCatalog.pending, pendingReducer)
     .addCase(createCatalog.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       state.catalogList = [...state.catalogList, payload];
       state.isShowCatalogCreation = false;
     })
     .addCase(createCatalog.rejected, (state, { payload }) => {
+      state.isFetching = false;
       state.isShowCatalogCreation = false;
       state.error = payload;
     });
@@ -280,16 +299,16 @@ const deleteCatalogExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(deleteCatalog.pending, pendingReducer)
     .addCase(deleteCatalog.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { catalogList } = state;
       const newCatalogList = catalogList.filter(
         (catalog) => payload.catalogId !== catalog._id,
       );
-      state.catalogList = [...newCatalogList];
+      state.catalogList = newCatalogList;
     })
-    .addCase(deleteCatalog.rejected, (state, { payload }) => {
-      state.error = payload;
-    });
+    .addCase(deleteCatalog.rejected, rejectedReducer);
 };
 
 export const removeChatFromCatalog = decorateAsyncThunk({
@@ -313,7 +332,9 @@ const removeChatFromCatalogExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(removeChatFromCatalog.pending, pendingReducer)
     .addCase(removeChatFromCatalog.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { catalogList } = state;
       for (const catalog of catalogList) {
         if (catalog._id === payload._id) {
@@ -324,9 +345,7 @@ const removeChatFromCatalogExtraReducers = (
       state.currentCatalog = payload;
       state.catalogList = [...catalogList];
     })
-    .addCase(removeChatFromCatalog.rejected, (state, { payload }) => {
-      state.error = payload;
-    });
+    .addCase(removeChatFromCatalog.rejected, rejectedReducer);
 };
 
 export const changeCatalogName = decorateAsyncThunk({
@@ -341,7 +360,9 @@ const changeCatalogNameExtraReducers = (
   builder: ActionReducerMapBuilder<ChatState>,
 ) => {
   builder
+    .addCase(changeCatalogName.pending, pendingReducer)
     .addCase(changeCatalogName.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { catalogList } = state;
       for (const catalog of catalogList) {
         if (catalog._id === payload._id) {
@@ -354,6 +375,7 @@ const changeCatalogNameExtraReducers = (
       state.isRenameCatalog = false;
     })
     .addCase(changeCatalogName.rejected, (state, { payload }) => {
+      state.isFetching = false;
       state.isRenameCatalog = false;
       state.error = payload;
     });

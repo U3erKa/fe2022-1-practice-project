@@ -1,8 +1,8 @@
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { EventResponse } from 'api/rest/eventController';
 import { EventListItems } from '.';
 import styles from './styles/EventsList.module.scss';
-import type { EventResponse } from 'api/rest/eventController';
 
 export type Props = {
   events: EventResponse[];

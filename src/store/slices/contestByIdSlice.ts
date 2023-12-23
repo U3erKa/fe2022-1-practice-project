@@ -64,11 +64,11 @@ const getContestByIdExtraReducers = (
       state.offers = [];
     })
     .addCase(getContestById.fulfilled, (state, { payload }) => {
-      const { contestData, offers } = payload;
       state.isFetching = false;
+      const { contestData, offers } = payload;
       state.contestData = contestData;
-      state.error = null;
       state.offers = offers;
+      state.error = null;
     })
     .addCase(getContestById.rejected, rejectedReducer);
 };
@@ -85,6 +85,7 @@ const addOfferExtraReducers = (
   builder: ActionReducerMapBuilder<ContestByIdState>,
 ) => {
   builder
+    .addCase(addOffer.pending, pendingReducer)
     .addCase(addOffer.fulfilled, (state, { payload }) => {
       state.offers.unshift(payload);
       state.error = null;
@@ -106,7 +107,9 @@ const setOfferStatusExtraReducers = (
   builder: ActionReducerMapBuilder<ContestByIdState>,
 ) => {
   builder
+    .addCase(setOfferStatus.pending, pendingReducer)
     .addCase(setOfferStatus.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       for (const offer of state.offers) {
         switch (payload.status) {
           case OFFER_STATUS_WON:
@@ -143,7 +146,9 @@ const changeMarkExtraReducers = (
   builder: ActionReducerMapBuilder<ContestByIdState>,
 ) => {
   builder
+    .addCase(changeMark.pending, pendingReducer)
     .addCase(changeMark.fulfilled, (state, { payload }) => {
+      state.isFetching = false;
       const { data, offerId, mark } = payload;
       for (const offer of state.offers) {
         if (offer.User.id === data.userId) {
@@ -174,7 +179,6 @@ const getOffersExtraReducers = (
 ) => {
   builder
     .addCase(getOffers.pending, pendingReducer)
-
     .addCase(getOffers.fulfilled, (state, { payload }) => {
       state.isFetching = false;
       state.offers = addNewItems(state.offers, payload.offers as any[]);

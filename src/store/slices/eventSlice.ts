@@ -1,5 +1,4 @@
 import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
-import type { NoInfer } from 'react-redux';
 import * as eventController from 'api/rest/eventController';
 import { timezoneOffsetInMs } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';
@@ -43,9 +42,7 @@ export const createEvent = decorateAsyncThunk({
 const closestEventFirst = ({ date }: NewEvent, { date: other }: NewEvent) =>
   Date.parse(date) - Date.parse(other);
 
-const getEventsExtraReducers = (
-  builder: ActionReducerMapBuilder<EventState>,
-) => {
+const extraReducers = (builder: ActionReducerMapBuilder<EventState>) => {
   builder
     .addCase(getEvents.pending, pendingReducer)
     .addCase(getEvents.fulfilled, (state, { payload }) => {
@@ -55,11 +52,7 @@ const getEventsExtraReducers = (
       state.events.sort(closestEventFirst);
     })
     .addCase(getEvents.rejected, rejectedReducer);
-};
 
-const createEventExtraReducers = (
-  builder: ActionReducerMapBuilder<EventState>,
-) => {
   builder
     .addCase(createEvent.pending, pendingReducer)
     .addCase(createEvent.fulfilled, (state, { payload }) => {
@@ -69,13 +62,6 @@ const createEventExtraReducers = (
       state.events.sort(closestEventFirst);
     })
     .addCase(createEvent.rejected, rejectedReducer);
-};
-
-const extraReducers = (
-  builder: ActionReducerMapBuilder<NoInfer<EventState>>,
-) => {
-  getEventsExtraReducers(builder);
-  createEventExtraReducers(builder);
 };
 
 const eventSlice = createSlice({

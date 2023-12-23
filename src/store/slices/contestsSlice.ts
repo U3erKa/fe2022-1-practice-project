@@ -61,23 +61,20 @@ const reducers = {
   }),
 };
 
-export type GetContests = Pick<ContestsState, 'contests' | 'haveMore'>;
-
 const extraReducers = (builder: ActionReducerMapBuilder<ContestsState>) => {
-  builder.addCase(getContests.pending, pendingReducer);
-  builder.addCase(
-    getContests.fulfilled,
-    (state: ContestsState, { payload }: PayloadAction<GetContests>) => {
+  builder
+    .addCase(getContests.pending, pendingReducer)
+    .addCase(getContests.fulfilled, (state, { payload }) => {
+      const { contests, haveMore } = payload;
       state.isFetching = false;
-      state.contests = addNewItems(state.contests, payload.contests);
-      state.haveMore = payload.haveMore;
-    },
-  );
-  builder.addCase(getContests.rejected, (state: ContestsState, { payload }) => {
-    state.isFetching = false;
-    state.error = payload;
-    state.contests = [];
-  });
+      state.contests = addNewItems(state.contests, contests);
+      state.haveMore = haveMore;
+    })
+    .addCase(getContests.rejected, (state, { payload }) => {
+      state.isFetching = false;
+      state.error = payload;
+      state.contests = [];
+    });
 };
 
 const contestsSlice = createSlice({

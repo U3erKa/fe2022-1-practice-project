@@ -57,14 +57,16 @@ const reducers = {
   clearPaymentStore: () => initialState,
 };
 
-const extraReducers = (builder: ActionReducerMapBuilder<any>) => {
-  builder.addCase(pay.pending, pendingReducer);
-  builder.addCase(pay.fulfilled, () => initialState);
-  builder.addCase(pay.rejected, rejectedReducer);
+const extraReducers = (builder: ActionReducerMapBuilder<PaymentState>) => {
+  builder
+    .addCase(pay.pending, pendingReducer)
+    .addCase(pay.fulfilled, () => initialState)
+    .addCase(pay.rejected, rejectedReducer);
 
-  builder.addCase(cashOut.pending, pendingReducer);
-  builder.addCase(cashOut.fulfilled, () => initialState);
-  builder.addCase(cashOut.rejected, rejectedReducer);
+  builder
+    .addCase(cashOut.pending, pendingReducer)
+    .addCase(cashOut.fulfilled, () => initialState)
+    .addCase(cashOut.rejected, rejectedReducer);
 };
 
 const paymentSlice = createSlice({
