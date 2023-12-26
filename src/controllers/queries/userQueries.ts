@@ -5,10 +5,10 @@ import type {
   WhereOptions,
 } from 'sequelize';
 import { User } from 'models';
-import NotFound from 'errors/UserNotFoundError';
-import ServerError from 'errors/ServerError';
-import type { ModelUpdateAttributes, User as _User } from 'types/models';
 import type { UserId } from 'types';
+import ServerError from 'errors/ServerError';
+import NotFound from 'errors/UserNotFoundError';
+import type { ModelUpdateAttributes, User as _User } from 'types/models';
 
 export const updateUser = async (
   data: ModelUpdateAttributes<_User>,
