@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { useSelector } from 'store';
-// import { useSelector } from 'hooks';
+import { useSelector } from 'hooks';
 import { Logo, Picture, Spinner } from 'components/general';
 import { LoginButtons, NavList } from '.';
 

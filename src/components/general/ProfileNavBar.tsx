@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useDispatch } from 'store';
+import { useDispatch } from 'hooks';
 import { clearUserStore } from 'store/slices/userSlice';
 import { ROUTE } from 'constants/general';
 import styles from './styles/ProfileNavBar.module.scss';

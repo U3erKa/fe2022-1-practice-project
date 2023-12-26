@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { useDispatch } from 'store';
+import { useDispatch } from 'hooks';
 import { clearAuthError } from 'store/slices/authSlice';
 import { Logo } from 'components/general';
 import { LoginForm } from 'components/form';

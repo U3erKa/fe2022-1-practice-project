@@ -1,8 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  useDispatch as _useDispatch,
-  useSelector as _useSelector,
+  useSelector as useReduxSelector,
+  useDispatch as useReduxDispatch,
+  type TypedUseSelectorHook,
 } from 'react-redux';
+import { isEqual } from 'radash';
+import type { AppDispatch, RootState } from 'store';
+
+export const useSelector: TypedUseSelectorHook<RootState> = (
+  selector,
+  equalityFn = isEqual,
+) => useReduxSelector(selector, equalityFn as any);
+
+export const useDispatch: () => AppDispatch = useReduxDispatch;
 
 export function useForceUpdate() {
   const [value, setValue] = useState(0);

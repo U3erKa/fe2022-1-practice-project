@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'store';
+import { useSelector } from 'hooks';
 import { Footer, Header, Picture, Spinner } from 'components/general';
 import { SlideBar } from 'components/home';
 import { HEADER_ANIMATION_TEXT, STATIC_IMAGES_PATH } from 'constants/general';

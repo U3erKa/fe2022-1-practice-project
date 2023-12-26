@@ -3,7 +3,7 @@ import type { Replacement } from '@react-input/mask';
 import Cards from 'react-credit-cards-2';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useDispatch } from 'store';
+import { useDispatch } from 'hooks';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { PayInput } from 'components/input';
 import {
