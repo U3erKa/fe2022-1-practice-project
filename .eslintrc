@@ -50,19 +50,19 @@
       { "validStrategies": ["ternary", "coerce"] }
     ],
     "react/jsx-no-useless-fragment": ["warn", { "allowExpressions": true }],
-    // "react/jsx-sort-props": [
-    //   "warn",
-    //   {
-    //     "callbacksLast": true,
-    //     "shorthandFirst": true,
-    //     "shorthandLast": false,
-    //     "multiline": "last",
-    //     "ignoreCase": false,
-    //     "noSortAlphabetically": false,
-    //     "reservedFirst": false,
-    //     "locale": "auto"
-    //   }
-    // ],
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "shorthandLast": false,
+        "multiline": "last",
+        "ignoreCase": false,
+        "noSortAlphabetically": false,
+        "reservedFirst": false,
+        "locale": "auto"
+      }
+    ],
     "react/no-array-index-key": "warn",
     "react/no-invalid-html-attribute": ["warn", ["rel"]],
     "react/no-multi-comp": ["warn", { "ignoreStateless": true }],
