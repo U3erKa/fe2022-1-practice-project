@@ -1,7 +1,7 @@
 import { useSearchParams } from 'next/navigation';
 import { isEqual } from 'radash';
 import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { ContestBox } from 'components/contest';
 import { ItemsContainer, TryAgain } from 'components/general';
 import { CREATOR } from 'constants/general';

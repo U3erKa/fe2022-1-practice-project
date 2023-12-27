@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { isEmpty } from 'radash';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { PayForm } from 'components/form';
 import { Error, Logo } from 'components/general';
 import { PAGE } from 'constants/general';

@@ -2,7 +2,7 @@
 
 import { fork } from 'radash';
 import { useForceUpdate } from 'hooks';
-import { useSelector } from 'store';
+import { useSelector } from 'hooks';
 import { CreateEvent, EventsList } from 'components/events';
 import { Footer, Header } from 'components/general';
 import { getRemainingTime } from 'utils/functions';

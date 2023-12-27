@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { UpdateUserInfoForm } from 'components/form';
 import { UserImage } from 'components/general';
 import { CREATOR, PUBLIC_URL } from 'constants/general';

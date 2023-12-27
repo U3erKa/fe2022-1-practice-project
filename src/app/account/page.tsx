@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { UserInfo } from 'components/account';
 import { PayForm } from 'components/form';
 import { Error, Header } from 'components/general';

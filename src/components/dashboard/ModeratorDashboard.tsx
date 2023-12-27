@@ -1,6 +1,6 @@
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { OfferBox } from 'components/contestById';
 import { ItemsContainer, TryAgain } from 'components/general';
 import {

@@ -1,7 +1,7 @@
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import clsx from 'clsx';
 import type { FC } from 'react';
-import { useDispatch } from 'store';
+import { useDispatch } from 'hooks';
 import styles from './styles/CustomerDashboard.module.scss';
 
 export type Props<Filter = any> = {

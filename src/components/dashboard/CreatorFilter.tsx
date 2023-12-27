@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { select } from 'radash';
 import { type ChangeEventHandler, type FC } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { CONTEST_TYPES, PAGE } from 'constants/general';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import type { Industry } from 'types/contest';

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { useDispatch } from 'store';
+import { useDispatch } from 'hooks';
 import { RegistrationForm } from 'components/form';
 import { Logo } from 'components/general';
 import { RegistrationArticles } from 'components/registration';

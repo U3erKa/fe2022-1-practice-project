@@ -1,4 +1,4 @@
-import { useSelector } from 'store';
+import { useSelector } from 'hooks';
 import type { EventResponse } from 'api/rest/eventController';
 import { Spinner } from 'components/general';
 import { Event } from '.';

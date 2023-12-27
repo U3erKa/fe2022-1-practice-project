@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { ChatContainer } from 'components/chat';
 import { REFRESH_TOKEN } from 'constants/general';
 import { getEvents } from 'store/slices/eventSlice';

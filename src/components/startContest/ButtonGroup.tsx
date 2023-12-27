@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
 import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import styles from './styles/ButtonGroup.module.scss';

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { ContestForm, ContestInfo } from 'components/contest';
 import { Error } from 'components/general';
 import { changeEditContest } from 'store/slices/contestByIdSlice';

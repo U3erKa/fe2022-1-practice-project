@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from 'components/startContest';
 import { CUSTOMER, PAGE } from 'constants/general';

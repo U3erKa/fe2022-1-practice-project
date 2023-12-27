@@ -1,5 +1,5 @@
 import socketIoClient from 'socket.io-client';
-import type { AppDispatch, RootState, reduxStore } from 'store';
+import type { AppDispatch, reduxStore } from 'store';
 import { BASE_URL } from 'constants/general';
 
 class WebSocket {

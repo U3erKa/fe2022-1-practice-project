@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { type FC, useEffect } from 'react';
-import { useSelector } from 'store';
+import { useSelector } from 'hooks';
 import { ContestForm } from 'components/contest';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { PAGE } from 'constants/general';

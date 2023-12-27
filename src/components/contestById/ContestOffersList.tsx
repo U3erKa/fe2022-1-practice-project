@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
 import {
   clearSetOfferStatusError,

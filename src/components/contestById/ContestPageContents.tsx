@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { OfferForm } from 'components/form';
 import { Spinner, TryAgain } from 'components/general';
 import { CONTEST_STATUS_ACTIVE, CREATOR } from 'constants/general';

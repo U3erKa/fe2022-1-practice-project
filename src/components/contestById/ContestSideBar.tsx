@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import { useSelector } from 'store';
+import { useSelector } from 'hooks';
 import { UserImage } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';
 import { getLongTimeStr } from 'utils/functions';

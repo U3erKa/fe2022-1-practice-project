@@ -1,6 +1,6 @@
 'use client';
 
-import { useSelector } from 'store';
+import { useSelector } from 'hooks';
 import {
   CreatorDashboard,
   CustomerDashboard,

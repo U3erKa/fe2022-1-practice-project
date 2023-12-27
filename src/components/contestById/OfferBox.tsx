@@ -11,7 +11,7 @@ import type { FC } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Rating from 'react-rating';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { UserImage } from 'components/general';
 import {
   CONTEST_STATUS_ACTIVE,

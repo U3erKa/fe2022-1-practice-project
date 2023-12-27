@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import type { useForceUpdate } from 'hooks';
-import { useDispatch } from 'store';
+import { useDispatch } from 'hooks';
 import { FormInput, SelectInput } from 'components/input';
 import { NOTIFY_OPTIONS } from 'constants/general';
 import { createEvent } from 'store/slices/eventSlice';

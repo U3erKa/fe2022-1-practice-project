@@ -3,7 +3,7 @@
 import { type FC, useEffect } from 'react';
 import LightBox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { useDispatch, useSelector } from 'store';
+import { useDispatch, useSelector } from 'hooks';
 import { ContestPageContents } from 'components/contestById';
 import { Header } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';
