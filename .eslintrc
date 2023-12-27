@@ -72,7 +72,7 @@
       "warn",
       { "allowAsProps": false, "customValidators": [] }
     ],
-    // "react/prefer-read-only-props": "warn",
+    "react/prefer-read-only-props": "warn",
     "react/self-closing-comp": ["warn", { "component": true, "html": true }],
     "react/void-dom-elements-no-children": "warn",
     "block-scoped-var": "warn",
