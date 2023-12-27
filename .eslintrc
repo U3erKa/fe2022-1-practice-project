@@ -34,16 +34,16 @@
     "react/jsx-fragments": ["warn", "syntax"],
     "react/jsx-key": "warn",
     "react/jsx-max-depth": ["warn", { "max": 10 }],
-    // "react/jsx-no-bind": [
-    //   "warn",
-    //   {
-    //     "ignoreDOMComponents": false,
-    //     "ignoreRefs": false,
-    //     "allowArrowFunctions": false,
-    //     "allowFunctions": false,
-    //     "allowBind": false
-    //   }
-    // ],
+    "react/jsx-no-bind": [
+      "warn",
+      {
+        "ignoreDOMComponents": true,
+        "ignoreRefs": true,
+        "allowArrowFunctions": false,
+        "allowFunctions": false,
+        "allowBind": false
+      }
+    ],
     "react/jsx-no-constructed-context-values": "warn",
     "react/jsx-no-leaked-render": [
       "warn",
