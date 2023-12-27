@@ -15,7 +15,7 @@ export const defaultValues = {
 };
 
 export type Props = {
-  forceUpdate: ReturnType<typeof useForceUpdate>;
+  readonly forceUpdate: ReturnType<typeof useForceUpdate>;
 };
 
 const selectInputClasses = {

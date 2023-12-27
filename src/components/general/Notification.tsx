@@ -2,8 +2,8 @@ import Link from 'next/link';
 import styles from './styles/Notification.module.scss';
 
 export type Props = {
-  contestId?: number;
-  message: string;
+  readonly contestId?: number;
+  readonly message: string;
 };
 
 const Notification = ({ contestId, message }: Props) => (

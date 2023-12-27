@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import type { TextEntry as TextEntryT } from 'types/general';
 
 export type Props = {
-  text: TextEntryT[];
+  readonly text: TextEntryT[];
 };
 
 const TextEntry: FC<Props> = ({ text }) => {

@@ -10,8 +10,8 @@ import { type UpdateUser, UpdateUserSchema } from 'utils/schemas';
 import styles from './styles/UpdateUserInfoForm.module.scss';
 
 export type Props = {
-  onSubmit: (values: UpdateUser) => void;
-  submitting?: boolean;
+  readonly onSubmit: (values: UpdateUser) => void;
+  readonly submitting?: boolean;
 };
 
 const INPUT_CONTAINERS = [

@@ -6,12 +6,15 @@ import type { Catalog as _Catalog } from 'types/chat';
 import styles from './styles/Catalog.module.scss';
 
 export type Props = {
-  catalog: _Catalog;
-  deleteCatalog: (
+  readonly catalog: _Catalog;
+  readonly deleteCatalog: (
     event: MouseEvent<SVGSVGElement>,
     catalogId: CatalogId,
   ) => void;
-  goToCatalog: (event: MouseEvent<HTMLDivElement>, catalog: _Catalog) => void;
+  readonly goToCatalog: (
+    event: MouseEvent<HTMLDivElement>,
+    catalog: _Catalog,
+  ) => void;
 };
 
 const Catalog: FC<Props> = ({ catalog, deleteCatalog, goToCatalog }) => {

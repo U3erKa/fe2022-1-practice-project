@@ -10,7 +10,7 @@ import {
 import { Brief, ContestOffersList, ContestSideBar } from '.';
 import styles from './styles/ContestPage.module.scss';
 
-function ContestPageContents({ contestId }: { contestId: number }) {
+function ContestPageContents({ contestId }: { readonly contestId: number }) {
   const {
     contestByIdStore: { error, isFetching, isBrief, contestData, offers },
     userStore: { data: user },

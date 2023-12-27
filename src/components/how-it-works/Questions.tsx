@@ -9,7 +9,7 @@ import { Answer } from '.';
 import styles from './styles/Questions.module.scss';
 
 export type Props = {
-  questions: (typeof HOW_IT_WORKS_QNA)[0]['questions'];
+  readonly questions: (typeof HOW_IT_WORKS_QNA)[0]['questions'];
 };
 
 export const Questions: FC<Props> = ({ questions }) => {

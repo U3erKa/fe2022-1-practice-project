@@ -11,7 +11,7 @@ import type { ContestId } from 'types/api/_common';
 import type { Contest } from 'types/contest';
 import styles from './styles/ContestBox.module.scss';
 
-export type Props = { data: Contest };
+export type Props = { readonly data: Contest };
 
 const ContestBox: FC<Props> = ({ data }) => {
   const router = useRouter();

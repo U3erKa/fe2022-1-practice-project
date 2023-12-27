@@ -11,8 +11,8 @@ import type { ContestData } from 'types/slices';
 import styles from './styles/ContestSideBar.module.scss';
 
 export type Props = {
-  totalEntries: number;
-  contestData: ContestData;
+  readonly totalEntries: number;
+  readonly contestData: ContestData;
 };
 
 const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {

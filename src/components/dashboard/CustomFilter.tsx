@@ -5,9 +5,9 @@ import { useDispatch } from 'hooks';
 import styles from './styles/CustomerDashboard.module.scss';
 
 export type Props<Filter = any> = {
-  buttons: { name: string; filter: Filter }[];
-  filterAction: ActionCreatorWithPayload<Filter>;
-  predicate: Filter;
+  readonly buttons: { name: string; filter: Filter }[];
+  readonly filterAction: ActionCreatorWithPayload<Filter>;
+  readonly predicate: Filter;
   [key: string]: any;
 } & JSX.IntrinsicElements['div'];
 

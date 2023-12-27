@@ -10,7 +10,7 @@ import type { User } from 'types/models';
 import styles from './styles/LoginButtons.module.scss';
 
 type Props = {
-  data: Pick<User, 'avatar' | 'displayName'>;
+  readonly data: Pick<User, 'avatar' | 'displayName'>;
 };
 
 export default function LoginButtons({ data }: Props) {

@@ -23,8 +23,11 @@ import type { MessagePreview } from 'types/chat';
 import styles from './styles/DialogList.module.scss';
 
 export type Props = {
-  userId: UserId;
-  removeChat: (event: MouseEvent<SVGSVGElement>, chatId: ChatId) => void;
+  readonly userId: UserId;
+  readonly removeChat: (
+    event: MouseEvent<SVGSVGElement>,
+    chatId: ChatId,
+  ) => void;
 };
 
 const DialogList: FC<Props> = ({ userId, removeChat }) => {

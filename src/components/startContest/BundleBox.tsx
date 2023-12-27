@@ -5,10 +5,10 @@ import { type FC } from 'react';
 import styles from './styles/BundleBox.module.scss';
 
 export type Props = {
-  header: string;
-  describe: string;
-  icons: [StaticImageData, StaticImageData][];
-  setBundle: (bundleStr: string) => void;
+  readonly header: string;
+  readonly describe: string;
+  readonly icons: [StaticImageData, StaticImageData][];
+  readonly setBundle: (bundleStr: string) => void;
 };
 
 const BundleBox: FC<Props> = ({ header, icons, setBundle, describe }) => {

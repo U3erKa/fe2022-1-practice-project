@@ -13,9 +13,9 @@ import type { ContestData } from 'types/slices';
 import styles from './styles/ContestOfferList.module.scss';
 
 export type Props = {
-  contestData: ContestData;
-  offers: Offer[];
-  userId?: UserId;
+  readonly contestData: ContestData;
+  readonly offers: Offer[];
+  readonly userId?: UserId;
 };
 
 const ContestOffersList: FC<Props> = ({ offers, contestData }) => {

@@ -25,7 +25,7 @@ import type { ChatData } from 'types/chat';
 import styles from './styles/ChatHeader.module.scss';
 
 export type Props = {
-  userId: UserId;
+  readonly userId: UserId;
 };
 
 const ChatHeader: FC<Props> = ({ userId }) => {

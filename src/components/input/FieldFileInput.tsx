@@ -13,10 +13,10 @@ export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  name: string;
-  control: Control<any>;
-  register: UseFormRegister<any>;
-  classes: Record<string, string>;
+  readonly name: string;
+  readonly control: Control<any>;
+  readonly register: UseFormRegister<any>;
+  readonly classes: Record<string, string>;
 };
 
 const FieldFileInput: FC<Props> = ({

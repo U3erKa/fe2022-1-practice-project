@@ -7,10 +7,10 @@ import {
 } from 'react-hook-form';
 
 export type Props = {
-  name: string;
-  control: Control<any>;
-  register: UseFormRegister<any>;
-  classes: Record<string, string>;
+  readonly name: string;
+  readonly control: Control<any>;
+  readonly register: UseFormRegister<any>;
+  readonly classes: Record<string, string>;
 };
 
 const imageId = 'imagePreview';

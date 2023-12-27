@@ -10,8 +10,8 @@ import type { ContestType } from 'types/contest';
 import styles from './styles/page.module.scss';
 
 export type Props = {
-  params: { contestType: ContestType };
-  title: string;
+  readonly params: { contestType: ContestType };
+  readonly title: string;
 };
 
 const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {

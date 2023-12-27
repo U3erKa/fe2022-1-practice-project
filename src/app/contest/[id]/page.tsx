@@ -14,7 +14,7 @@ import {
 } from 'store/slices/contestByIdSlice';
 
 export type Props = {
-  params: { id: number };
+  readonly params: { id: number };
 };
 
 const ContestPage: FC<Props> = ({ params: { id } }) => {

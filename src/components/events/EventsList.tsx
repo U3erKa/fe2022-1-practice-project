@@ -5,8 +5,8 @@ import { EventListItems } from '.';
 import styles from './styles/EventsList.module.scss';
 
 export type Props = {
-  events: EventResponse[];
-  isPast?: boolean;
+  readonly events: EventResponse[];
+  readonly isPast?: boolean;
 };
 
 export default function EventsList({ isPast = false, events }: Props) {

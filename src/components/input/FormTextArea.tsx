@@ -10,9 +10,9 @@ export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
 > & {
-  name: string;
-  control: Control<any>;
-  classes: Partial<
+  readonly name: string;
+  readonly control: Control<any>;
+  readonly classes: Partial<
     Record<'container' | 'inputStyle' | 'notValid' | 'warning', string>
   >;
 };

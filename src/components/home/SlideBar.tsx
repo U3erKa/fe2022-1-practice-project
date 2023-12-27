@@ -14,7 +14,7 @@ import {
 import styles from './styles/SlideBar.module.scss';
 
 export type Props = {
-  carouselType:
+  readonly carouselType:
     | typeof MAIN_SLIDER
     | typeof EXAMPLE_SLIDER
     | typeof FEEDBACK_SLIDER;

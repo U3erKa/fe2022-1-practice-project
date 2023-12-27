@@ -10,10 +10,15 @@ import type { UserState } from 'types/slices';
 import styles from './styles/UserInfo.module.scss';
 
 export type Props = {
-  userData: Omit<NonNullable<UserState['data']>, 'avatar'>;
+  readonly userData: Omit<NonNullable<UserState['data']>, 'avatar'>;
 };
 
-const InfoBlock: FC<{ label: string; value: string }> = ({ label, value }) => {
+type Props2 = {
+  readonly label: string;
+  readonly value: string;
+};
+
+const InfoBlock: FC<Props2> = ({ label, value }) => {
   return (
     <div className={styles.infoBlock}>
       <span className={styles.label}>{label}</span>

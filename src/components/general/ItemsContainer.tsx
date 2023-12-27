@@ -3,10 +3,10 @@ import { Spinner } from 'components/general';
 import styles from './styles/ContestContainer.module.scss';
 
 export type Props = {
-  isFetching?: boolean;
-  haveMore: boolean;
-  items: ReactNode[];
-  loadMore: (offset: number) => void;
+  readonly isFetching?: boolean;
+  readonly haveMore: boolean;
+  readonly items: ReactNode[];
+  readonly loadMore: (offset: number) => void;
 };
 
 const ItemsContainer: FC<Props> = ({

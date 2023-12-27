@@ -6,9 +6,9 @@ import type { Message } from 'types/api/chat';
 import styles from './styles/MainDialog.module.scss';
 
 export type Props = {
-  messages: Message[];
-  userId: UserId;
-  messagesEnd: MutableRefObject<HTMLDivElement | undefined>;
+  readonly messages: Message[];
+  readonly userId: UserId;
+  readonly messagesEnd: MutableRefObject<HTMLDivElement | undefined>;
 };
 
 const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {

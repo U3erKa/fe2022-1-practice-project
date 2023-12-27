@@ -7,7 +7,7 @@ import styles from './styles/NavList.module.scss';
 export type List = typeof HEADER_LIST;
 export type ListItem = List[number]['listItem'];
 
-export default function NavList({ list }: { list: List }) {
+export default function NavList({ list }: { readonly list: List }) {
   const mapList = list.map(({ id, text, listItem }) => (
     <li key={id}>
       <span>{text}</span>
@@ -18,7 +18,7 @@ export default function NavList({ list }: { list: List }) {
   return <ul className={styles.nav}>{mapList}</ul>;
 }
 
-export function NavListItem({ list }: { list: ListItem }) {
+export function NavListItem({ list }: { readonly list: ListItem }) {
   const mapList = list.map(({ id, href, text }, i) => (
     <li key={id} className={list.length - 1 === i ? styles.last : undefined}>
       <Link href={href}>{text}</Link>

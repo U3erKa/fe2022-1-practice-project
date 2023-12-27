@@ -4,7 +4,7 @@ import type { FC, MouseEventHandler } from 'react';
 import styles from './styles/ChatError.module.scss';
 
 export type Props = {
-  getData: MouseEventHandler<HTMLDivElement>;
+  readonly getData: MouseEventHandler<HTMLDivElement>;
 };
 
 const ChatError: FC<Props> = ({ getData }) => {

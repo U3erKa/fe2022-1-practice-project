@@ -4,9 +4,9 @@ import { type FC } from 'react';
 import styles from './styles/Error.module.scss';
 
 export type Props = {
-  status: number;
-  data: string;
-  clearError: () => void;
+  readonly status: number;
+  readonly data: string;
+  readonly clearError: () => void;
 };
 
 const Error: FC<Props> = ({ status, data, clearError }) => {

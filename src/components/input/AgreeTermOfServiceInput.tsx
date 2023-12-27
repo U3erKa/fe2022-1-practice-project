@@ -10,9 +10,9 @@ export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  classes: Record<'container' | 'warning', string>;
-  control: Control<any>;
-  name: string;
+  readonly classes: Record<'container' | 'warning', string>;
+  readonly control: Control<any>;
+  readonly name: string;
 };
 
 const AgreeTermOfServiceInput: FC<Props> = function AgreeTermOfServiceInput({

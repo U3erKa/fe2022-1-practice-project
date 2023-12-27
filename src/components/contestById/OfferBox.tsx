@@ -50,14 +50,18 @@ import styles from './styles/OfferBox.module.scss';
 import './styles/confirmStyle.css';
 
 export type Props = {
-  contestData: ContestData;
-  data: Offer;
-  setOfferStatus: (creatorId: UserId, offerId: OfferId, command: any) => void;
+  readonly contestData: ContestData;
+  readonly data: Offer;
+  readonly setOfferStatus: (
+    creatorId: UserId,
+    offerId: OfferId,
+    command: any,
+  ) => void;
 };
 
 export type Props2 = {
-  role: NonNullable<UserState['data']>['role'];
-  status: OfferStatus;
+  readonly role: NonNullable<UserState['data']>['role'];
+  readonly status: OfferStatus;
 };
 
 const fullSymbol = <Image src={StarIcon} alt="star" />;

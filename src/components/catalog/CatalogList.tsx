@@ -7,7 +7,7 @@ import type { CatalogId } from 'types/api/_common';
 import type { Catalog as _Catalog } from 'types/chat';
 
 export type Props = {
-  catalogList: _Catalog[];
+  readonly catalogList: _Catalog[];
 };
 
 const CatalogList: FC<Props> = ({ catalogList }) => {

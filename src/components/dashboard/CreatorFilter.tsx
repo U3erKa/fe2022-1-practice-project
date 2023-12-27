@@ -10,13 +10,13 @@ import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from './styles/CreatorDashboard.module.scss';
 
 export type Props = {
-  onChange: ChangeEventHandler<HTMLSelectElement>;
-  value: (typeof CONTEST_TYPES)[number];
+  readonly onChange: ChangeEventHandler<HTMLSelectElement>;
+  readonly value: (typeof CONTEST_TYPES)[number];
 };
 
 export type Props2 = Pick<Props, 'onChange'> & {
-  industries?: Industry[];
-  filter?: Industry | '';
+  readonly industries?: Industry[];
+  readonly filter?: Industry | '';
 };
 
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {

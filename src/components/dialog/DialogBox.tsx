@@ -19,20 +19,23 @@ import type { ChatMode, MessagePreview } from 'types/chat';
 import styles from './styles/DialogBox.module.scss';
 
 export type Props = {
-  chatPreview: MessagePreview;
-  userId: UserId;
-  changeFavorite: (
+  readonly chatPreview: MessagePreview;
+  readonly userId: UserId;
+  readonly changeFavorite: (
     parameters: { participants: [UserId, UserId]; favoriteFlag: boolean },
     event: MouseEvent<SVGSVGElement>,
   ) => void;
-  changeBlackList: (
+  readonly changeBlackList: (
     parameters: { participants: [UserId, UserId]; blackListFlag: boolean },
     event: MouseEvent<SVGSVGElement>,
   ) => void;
-  catalogOperation: (event: MouseEvent<SVGSVGElement>, chatId: ChatId) => void;
-  goToExpandedDialog: (data: GoToExtendedDialog) => void;
-  chatMode: ChatMode;
-  interlocutor: Interlocutor;
+  readonly catalogOperation: (
+    event: MouseEvent<SVGSVGElement>,
+    chatId: ChatId,
+  ) => void;
+  readonly goToExpandedDialog: (data: GoToExtendedDialog) => void;
+  readonly chatMode: ChatMode;
+  readonly interlocutor: Interlocutor;
 };
 
 const DialogBox: FC<Props> = ({

@@ -6,7 +6,7 @@ import { clearMessageList, getDialogMessages } from 'store/slices/chatSlice';
 import type { UserId } from 'types/api/_common';
 
 type Props = {
-  userId: UserId;
+  readonly userId: UserId;
 };
 
 const Dialog: FC<Props> = ({ userId }) => {

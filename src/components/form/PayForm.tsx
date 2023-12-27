@@ -14,9 +14,9 @@ import type { CardField } from 'types/api/offer';
 import styles from './styles/PayForm.module.scss';
 
 export type Props = {
-  sendRequest: (values: Payment) => void;
-  focusOnElement?: CardField;
-  isPayForOrder?: boolean;
+  readonly sendRequest: (values: Payment) => void;
+  readonly focusOnElement?: CardField;
+  readonly isPayForOrder?: boolean;
 };
 
 const classes = {

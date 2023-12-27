@@ -4,7 +4,7 @@ import { type FC } from 'react';
 import BlueLogoIcon from 'assets/icons/blue-logo.png';
 
 export type Props = Partial<ImageProps> & {
-  href?: string;
+  readonly href?: string;
 };
 
 const Logo: FC<Props> = ({ href = '/', ...props }) => (

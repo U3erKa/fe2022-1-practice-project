@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import styles from './styles/ProgressBar.module.scss';
 
-export type Props = { currentStep: number };
+export type Props = { readonly currentStep: number };
 
 const ProgressBar: FC<Props> = ({ currentStep }) => {
   const renderProgress = () => {

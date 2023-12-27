@@ -4,8 +4,8 @@ import type { ChatData } from 'types/chat';
 import styles from './styles/BlockMessage.module.scss';
 
 export type Props = {
-  chatData: ChatData;
-  userId: UserId;
+  readonly chatData: ChatData;
+  readonly userId: UserId;
 };
 
 const BlockMessage: FC<Props> = ({ chatData, userId }) => {

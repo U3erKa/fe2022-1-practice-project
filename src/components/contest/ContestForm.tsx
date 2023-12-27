@@ -40,7 +40,7 @@ const variableOptions = {
 };
 
 export type Props = {
-  contestType: ContestType;
+  readonly contestType: ContestType;
 };
 
 const inputClasses = {

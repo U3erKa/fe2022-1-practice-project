@@ -4,7 +4,7 @@ import { type FC } from 'react';
 import styles from './styles/TryAgain.module.scss';
 
 export type Props = {
-  getData: () => void;
+  readonly getData: () => void;
 };
 
 const TryAgain: FC<Props> = ({ getData }) => {

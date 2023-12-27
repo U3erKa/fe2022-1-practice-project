@@ -13,8 +13,8 @@ import type {
 import styles from './styles/ContestForm.module.scss';
 
 export type Props = {
-  control: Control<any>;
-  contestType: ContestType;
+  readonly control: Control<any>;
+  readonly contestType: ContestType;
 };
 
 const selectClasses = {

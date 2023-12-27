@@ -11,11 +11,11 @@ export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  strRole: string;
-  infoRole: string;
-  type: HTMLInputTypeAttribute;
-  control: Control<any>;
-  name: string;
+  readonly strRole: string;
+  readonly infoRole: string;
+  readonly type: HTMLInputTypeAttribute;
+  readonly control: Control<any>;
+  readonly name: string;
 };
 
 const RoleInput: FC<Props> = function RoleInput({

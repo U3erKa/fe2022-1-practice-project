@@ -5,8 +5,8 @@ import type { AnswerProps } from 'types/general';
 import styles from './styles/Answer.module.scss';
 
 export type Props = {
-  active: boolean;
-  contents: string | AnswerProps | ReactNode;
+  readonly active: boolean;
+  readonly contents: string | AnswerProps | ReactNode;
 };
 
 const isAnswer = (contents: unknown): contents is AnswerProps => {

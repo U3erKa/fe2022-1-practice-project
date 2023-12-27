@@ -21,13 +21,18 @@ import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 import styles from './styles/ContestInfo.module.scss';
 
 export type Props = {
-  changeEditContest: (isEditContest: boolean) => void;
-  userId: UserId;
-  contestData: ContestData;
-  role: string;
+  readonly changeEditContest: (isEditContest: boolean) => void;
+  readonly userId: UserId;
+  readonly contestData: ContestData;
+  readonly role: string;
 };
 
-function DataContainer({ label, value }: { label: string; value: string }) {
+type Props2 = {
+  readonly label: string;
+  readonly value: string;
+};
+
+function DataContainer({ label, value }: Props2) {
   return (
     <div className={styles.dataContainer}>
       <span className={styles.label}>{label}</span>

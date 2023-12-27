@@ -13,10 +13,10 @@ export type FormInputProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  name: string;
-  control: Control<any>;
-  classes?: FormInputClasses;
-  label?: string;
+  readonly name: string;
+  readonly control: Control<any>;
+  readonly classes?: FormInputClasses;
+  readonly label?: string;
 };
 
 const DEFAULT_CLASSES = {};

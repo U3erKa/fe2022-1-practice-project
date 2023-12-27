@@ -12,11 +12,11 @@ export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  name: string;
-  control: Control<any>;
-  changeFocus: (name: CardField) => void;
-  classes: Record<string, string>;
-  replacement?: MaskProps['replacement'];
+  readonly name: string;
+  readonly control: Control<any>;
+  readonly changeFocus: (name: CardField) => void;
+  readonly classes: Record<string, string>;
+  readonly replacement?: MaskProps['replacement'];
 } & ({ mask?: undefined } | Pick<MaskProps, 'mask' | 'replacement'>);
 
 const PayInput: FC<Props> = ({

@@ -7,8 +7,8 @@ import { clearUserStore } from 'store/slices/userSlice';
 import styles from './styles/ProfileNavBar.module.scss';
 
 export type Props = {
-  list: typeof PROFILE_NAVBAR;
-  activeEvents: number;
+  readonly list: typeof PROFILE_NAVBAR;
+  readonly activeEvents: number;
 };
 
 export default function ProfileNavBar({ list, activeEvents }: Props) {

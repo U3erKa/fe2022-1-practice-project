@@ -4,7 +4,7 @@ import type { TextEntry as TextEntryT } from 'types/general';
 import styles from './styles/RegistrationArticles.module.scss';
 
 export type Props = {
-  articles: Article[];
+  readonly articles: Article[];
 };
 
 export type Article = {

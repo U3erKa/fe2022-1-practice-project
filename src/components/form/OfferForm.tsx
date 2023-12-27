@@ -18,13 +18,13 @@ import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.scss';
 
 export type Props = {
-  contestType: ContestType;
-  control: Control<any>;
-  register: UseFormRegister<any>;
+  readonly contestType: ContestType;
+  readonly control: Control<any>;
+  readonly register: UseFormRegister<any>;
 };
 
 export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & {
-  contestType: ContestType;
+  readonly contestType: ContestType;
 };
 
 const formInputClassses = {

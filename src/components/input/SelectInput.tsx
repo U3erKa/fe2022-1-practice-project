@@ -17,12 +17,12 @@ export type FormSelectProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 > & {
-  name: string;
-  control: Control<any>;
-  header: string;
-  classes: FormSelectClasses;
-  optionsArray: readonly string[];
-  valueArray?: readonly number[];
+  readonly name: string;
+  readonly control: Control<any>;
+  readonly header: string;
+  readonly classes: FormSelectClasses;
+  readonly optionsArray: readonly string[];
+  readonly valueArray?: readonly number[];
 };
 
 const SelectInput: FC<FormSelectProps> = function SelectInput({

@@ -5,7 +5,7 @@ import { Event } from '.';
 import styles from './styles/EventListItems.module.scss';
 
 export type Props = {
-  events: EventResponse[];
+  readonly events: EventResponse[];
 };
 
 export default function EventListItems({ events }: Props) {
