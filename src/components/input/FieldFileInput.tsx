@@ -32,10 +32,10 @@ const FieldFileInput: FC<Props> = ({
 
   return (
     <div className={fileUploadContainer}>
-      <label htmlFor={id ?? 'fileInput'} className={labelClass}>
+      <label className={labelClass} htmlFor={id ?? 'fileInput'}>
         Choose file
       </label>
-      <span id="fileNameContainer" className={fileNameClass}>
+      <span className={fileNameClass} id="fileNameContainer">
         {field.value?.[0]?.name}
       </span>
       <input

@@ -46,9 +46,9 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
     <>
       {setOfferStatusError ? (
         <Error
+          clearError={() => dispatch(clearSetOfferStatusError())}
           data={setOfferStatusError.data}
           status={setOfferStatusError.status}
-          clearError={() => dispatch(clearSetOfferStatusError())}
         />
       ) : null}
 
@@ -60,10 +60,10 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
         ) : (
           offers.map((offer) => (
             <OfferBox
+              contestData={contestData}
               data={offer}
               key={offer.id}
               setOfferStatus={setOfferStatusMethod}
-              contestData={contestData}
             />
           ))
         )}

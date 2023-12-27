@@ -37,16 +37,16 @@ const ChatInput = () => {
 
   return (
     <div className={styles.inputContainer}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <FormInput
-          name="message"
-          control={control}
-          placeholder="message"
           autoComplete="off"
           classes={classes}
+          control={control}
+          name="message"
+          placeholder="message"
         />
         <button type="submit">
-          <Image src={SendMessageIcon} alt="send Message" />
+          <Image alt="send Message" src={SendMessageIcon} />
         </button>
       </form>
     </div>

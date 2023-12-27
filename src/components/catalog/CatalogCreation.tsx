@@ -38,23 +38,23 @@ const CatalogCreation = () => {
       />
       <div className={styles.buttonsContainer}>
         <span
-          onClick={() =>
-            dispatch(changeTypeOfChatAdding(ADD_CHAT_TO_OLD_CATALOG))
-          }
           className={clsx({
             [styles.active]: catalogCreationMode === ADD_CHAT_TO_OLD_CATALOG,
           })}
+          onClick={() =>
+            dispatch(changeTypeOfChatAdding(ADD_CHAT_TO_OLD_CATALOG))
+          }
         >
           Old
         </span>
         <span
-          onClick={() =>
-            dispatch(changeTypeOfChatAdding(CREATE_NEW_CATALOG_AND_ADD_CHAT))
-          }
           className={clsx({
             [styles.active]:
               catalogCreationMode === CREATE_NEW_CATALOG_AND_ADD_CHAT,
           })}
+          onClick={() =>
+            dispatch(changeTypeOfChatAdding(CREATE_NEW_CATALOG_AND_ADD_CHAT))
+          }
         >
           New
         </span>

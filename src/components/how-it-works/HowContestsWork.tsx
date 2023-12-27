@@ -16,13 +16,13 @@ export const HowContestsWork: FC = () => {
     <article className={styles.container}>
       <section className={styles.headingContainer}>
         <figure className={styles.icon}>
-          <Image src={HowContestsWorkImage1} alt="how contests work icon" />
+          <Image alt="how contests work icon" src={HowContestsWorkImage1} />
         </figure>
         <h2 className={styles.heading}>How Do Naming Contests Work?</h2>
       </section>
       <section className={styles.listContainer}>
         <figure className={styles.listIcon}>
-          <Image src={HowContestsWorkImage2} alt="how contests work icon" />
+          <Image alt="how contests work icon" src={HowContestsWorkImage2} />
         </figure>
         <section className={styles.howToContainer}>
           <ol className={styles.howTo}>{howContestsWork}</ol>

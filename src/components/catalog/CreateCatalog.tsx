@@ -30,12 +30,12 @@ const CreateCatalog = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormInput
-        name="catalogName"
-        control={control}
-        placeholder="name of catalog"
         classes={classes}
+        control={control}
+        name="catalogName"
+        placeholder="name of catalog"
       />
       <button type="submit">Create Catalog</button>
     </form>

@@ -26,16 +26,16 @@ function Toast({ children }: React.PropsWithChildren) {
   return (
     <>
       <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
         closeOnClick
-        rtl={false}
+        draggable
+        hideProgressBar
+        pauseOnHover
         // @ts-expect-error
         pauseOnVisibilityChange
-        draggable
-        pauseOnHover
+        autoClose={5000}
+        newestOnTop={false}
+        position="top-center"
+        rtl={false}
       />
       {children}
       <ChatContainer />

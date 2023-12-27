@@ -20,7 +20,7 @@ const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
 
     if (getDays(currentTime) !== getDays(Date.parse(createdAt))) {
       messagesArray.push(
-        <div key={createdAt} className={styles.date}>
+        <div className={styles.date} key={createdAt}>
           {new Date(createdAt).toDateString()}
         </div>,
       );
@@ -29,8 +29,8 @@ const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
 
     messagesArray.push(
       <div
-        key={i}
         className={clsx(userId === sender ? styles.ownMessage : styles.message)}
+        key={i}
       >
         <span>{body}</span>
         <span className={styles.messageTime}>

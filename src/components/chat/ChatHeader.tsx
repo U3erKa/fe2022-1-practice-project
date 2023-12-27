@@ -66,7 +66,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
         className={styles.buttonContainer}
         onClick={() => dispatch(backToDialogList())}
       >
-        <Image src={LeftArrowIcon} alt="back" />
+        <Image alt="back" src={LeftArrowIcon} />
       </div>
       <div className={styles.infoContainer}>
         <div>

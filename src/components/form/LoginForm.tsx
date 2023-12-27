@@ -51,33 +51,33 @@ const LoginForm = () => {
     <div className={styles.loginForm}>
       {error ? (
         <Error
+          clearError={() => dispatch(clearAuth())}
           data={error.data}
           status={error.status}
-          clearError={() => dispatch(clearAuth())}
         />
       ) : null}
       <h2>LOGIN TO YOUR ACCOUNT</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <FormInput
-          control={control}
-          classes={formInputClasses}
-          type="email"
           autoComplete="username"
-          placeholder="Email Address"
+          classes={formInputClasses}
+          control={control}
           name={'email'}
+          placeholder="Email Address"
+          type="email"
         />
         <FormInput
-          control={control}
-          classes={formInputClasses}
-          type="password"
           autoComplete="current-password"
-          placeholder="Password"
+          classes={formInputClasses}
+          control={control}
           name={'password'}
+          placeholder="Password"
+          type="password"
         />
         <button
-          type="submit"
-          disabled={isFetching}
           className={styles.submitContainer}
+          disabled={isFetching}
+          type="submit"
         >
           <span className={styles.inscription}>
             {isFetching ? 'Submitting...' : 'Login'}

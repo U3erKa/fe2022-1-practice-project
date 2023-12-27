@@ -10,9 +10,9 @@ export const HowItWorksCards: FC = () => {
     ({ heading, text, src, href, linkText }) => (
       <section className={styles.card} key={src}>
         <Image
+          alt={`${heading.toLowerCase()} icon`}
           className={styles.icon}
           src={src}
-          alt={`${heading.toLowerCase()} icon`}
         />
         <h3 className={`${styles.heading} ${styles.smallHeading}`}>
           {heading}

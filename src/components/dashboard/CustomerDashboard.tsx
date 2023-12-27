@@ -66,8 +66,8 @@ const CustomerDashboard = () => {
   return (
     <div className={styles.mainContainer}>
       <CustomFilter
-        filterAction={setNewCustomerFilter}
         buttons={buttons}
+        filterAction={setNewCustomerFilter}
         predicate={customerFilter}
       />
       <div className={styles.contestsContainer}>
@@ -75,8 +75,8 @@ const CustomerDashboard = () => {
           <TryAgain getData={() => tryToGetContest()} />
         ) : (
           <ItemsContainer
-            isFetching={isFetching}
             haveMore={haveMore}
+            isFetching={isFetching}
             items={contestsList}
             loadMore={getContestsMethod}
           />

@@ -96,8 +96,8 @@ const ContestInfo: FC<Props> = ({
           <DataContainer label="Contest Type" value={contestType} />
           {User.id === userId && status !== CONTEST_STATUS_FINISHED && (
             <div
-              onClick={() => changeEditContest(true)}
               className={styles.editBtn}
+              onClick={() => changeEditContest(true)}
             >
               Edit
             </div>
@@ -109,13 +109,13 @@ const ContestInfo: FC<Props> = ({
         <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            typeOfName={typeOfName as NameContest['typeOfName']}
             styleName={styleName as NameContest['styleName']}
+            typeOfName={typeOfName as NameContest['typeOfName']}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            typeOfTagline={typeOfTagline as TaglineContest['typeOfTagline']}
             nameVenture={nameVenture as TaglineContest['nameVenture']}
+            typeOfTagline={typeOfTagline as TaglineContest['typeOfTagline']}
           />
         ) : (
           <LogoContestSpecialInfo
@@ -136,11 +136,11 @@ const ContestInfo: FC<Props> = ({
           <div className={styles.dataContainer}>
             <span className={styles.label}>Additional File</span>
             <a
-              target="_blank"
               className={styles.file}
-              href={`${PUBLIC_URL}${fileName}`}
               download={originalFileName}
+              href={`${PUBLIC_URL}${fileName}`}
               rel="noreferrer"
+              target="_blank"
             >
               {originalFileName}
             </a>

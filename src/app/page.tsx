@@ -81,7 +81,7 @@ const Home = () => {
               <h2 className={styles.blueUnderline}>Why Squadhelp?</h2>
               <div className={styles.cardContainer}>
                 <div className={styles.card}>
-                  <Image src={MoreBenefitsIcon} height={85} alt="globe" />
+                  <Image alt="globe" height={85} src={MoreBenefitsIcon} />
                   <h3>Largest Naming Community</h3>
                   <p>
                     Our unique approach allows you to receive an unmatched
@@ -93,9 +93,9 @@ const Home = () => {
                 </div>
                 <div className={styles.card}>
                   <Image
-                    src={MoreBenefitsHighQualityIcon}
-                    height={85}
                     alt="desktop"
+                    height={85}
+                    src={MoreBenefitsHighQualityIcon}
                   />
                   <h3>High Quality & Collaboration</h3>
                   <p>
@@ -107,9 +107,9 @@ const Home = () => {
                 </div>
                 <div className={styles.card}>
                   <Image
-                    src={MoreBenefitsTrademarkIcon}
-                    height={85}
                     alt="desktop"
+                    height={85}
+                    src={MoreBenefitsTrademarkIcon}
                   />
                   <h3>Agency-Level Features</h3>
                   <p>
@@ -125,20 +125,20 @@ const Home = () => {
             <div className={styles.greyContainer}>
               <div className={styles.adv}>
                 <div className={styles.images}>
-                  <Image src={ForbesInactiveIcon} height={50} alt="forbes" />
-                  <Image src={ForbesActiveIcon} height={50} alt="forbes" />
+                  <Image alt="forbes" height={50} src={ForbesInactiveIcon} />
+                  <Image alt="forbes" height={50} src={ForbesActiveIcon} />
                 </div>
                 <div className={styles.images}>
-                  <Image src={TheNextWebInactiveIcon} height={40} alt="web" />
-                  <Image src={TheNextWebActiveIcon} height={40} alt="web" />
+                  <Image alt="web" height={40} src={TheNextWebInactiveIcon} />
+                  <Image alt="web" height={40} src={TheNextWebActiveIcon} />
                 </div>
                 <div className={styles.images}>
                   <Image
-                    src={MashableInactiveIcon}
-                    height={20}
                     alt="mashable"
+                    height={20}
+                    src={MashableInactiveIcon}
                   />
-                  <Image src={MashableActiveIcon} height={20} alt="mashable" />
+                  <Image alt="mashable" height={20} src={MashableActiveIcon} />
                 </div>
               </div>
               <div className={styles.stats}>
@@ -176,12 +176,12 @@ const Home = () => {
                     </span>
                   </p>
                 </div>
-                <Image src={CompressedIcon1} alt="compressed" />
+                <Image alt="compressed" src={CompressedIcon1} />
               </div>
             </div>
             <div className={styles.greenContainer}>
               <div className={styles.step}>
-                <Image src={CompressedIcon2} alt="compressed" />
+                <Image alt="compressed" src={CompressedIcon2} />
                 <div className={styles.greenStep}>
                   <h3>Step 2: Ideas start pouring in within minutes</h3>
                   <p>
@@ -221,7 +221,7 @@ const Home = () => {
                     </span>
                   </p>
                 </div>
-                <Image src={CompressedIcon3} alt="compressed" />
+                <Image alt="compressed" src={CompressedIcon3} />
               </div>
             </div>
             <div className={styles.headerBar}>

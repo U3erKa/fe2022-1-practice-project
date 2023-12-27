@@ -61,9 +61,9 @@ const UserProfile = () => {
               <div>
                 {error ? (
                   <Error
+                    clearError={clearPaymentStore}
                     data={error.data}
                     status={error.status}
-                    clearError={clearPaymentStore}
                   />
                 ) : null}
                 <PayForm sendRequest={pay} />

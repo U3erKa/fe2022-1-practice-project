@@ -5,9 +5,9 @@ import styles from './styles/Featured.module.scss';
 
 export const Featured: FC = () => {
   const featuredLinks = FEATURED.map(({ src, alt, href }) => (
-    <p key={alt} className={styles.link}>
+    <p className={styles.link} key={alt}>
       <a href={href}>
-        <Image src={src} alt={alt} />
+        <Image alt={alt} src={src} />
       </a>
     </p>
   ));

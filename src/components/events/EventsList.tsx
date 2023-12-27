@@ -18,7 +18,7 @@ export default function EventsList({ isPast = false, events }: Props) {
         </h1>
         <p className={styles.textContainer}>
           <span>Remaining time</span>
-          <FontAwesomeIcon icon={faClock} className={styles.pending} />
+          <FontAwesomeIcon className={styles.pending} icon={faClock} />
         </p>
       </section>
       <EventListItems events={events} />

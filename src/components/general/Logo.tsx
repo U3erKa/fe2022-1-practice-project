@@ -9,7 +9,7 @@ export type Props = Partial<ImageProps> & {
 
 const Logo: FC<Props> = ({ href = '/', ...props }) => (
   <Link href={href}>
-    <Image src={BlueLogoIcon} alt="logo" {...props} />
+    <Image alt="logo" src={BlueLogoIcon} {...props} />
   </Link>
 );
 

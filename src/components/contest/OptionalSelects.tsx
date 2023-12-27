@@ -51,17 +51,17 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
       return (
         <>
           <SelectInput
-            name={firstContestName}
-            header="type of company"
-            control={control}
             classes={selectClasses}
+            control={control}
+            header="type of company"
+            name={firstContestName}
             optionsArray={data.typeOfName as NameContest['typeOfName'][]}
           />
           <SelectInput
-            name={secondContestName}
-            header="Style name"
-            control={control}
             classes={selectClasses}
+            control={control}
+            header="Style name"
+            name={secondContestName}
             optionsArray={data.nameStyle as NameContest['styleName'][]}
           />
         </>
@@ -75,17 +75,17 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
               What name of your venture?
             </span>
             <FormInput
+              classes={inputClasses}
+              control={control}
               name={firstContestName}
               placeholder="name of venture"
-              control={control}
-              classes={inputClasses}
             />
           </div>
           <SelectInput
-            name={secondContestName}
-            header="Brand Style"
-            control={control}
             classes={selectClasses}
+            control={control}
+            header="Brand Style"
+            name={secondContestName}
             optionsArray={data.brandStyle as LogoContest['brandStyle'][]}
           />
         </>
@@ -99,17 +99,17 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
               What name of your venture?
             </span>
             <FormInput
+              classes={inputClasses}
+              control={control}
               name={firstContestName}
               placeholder="name of venture"
-              control={control}
-              classes={inputClasses}
             />
           </div>
           <SelectInput
-            name={secondContestName}
-            header="Type tagline"
-            control={control}
             classes={selectClasses}
+            control={control}
+            header="Type tagline"
+            name={secondContestName}
             optionsArray={
               data.typeOfTagline as TaglineContest['typeOfTagline'][]
             }

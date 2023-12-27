@@ -50,12 +50,12 @@ const ContestBox: FC<Props> = ({ data }) => {
         <div className={styles.prizeContainer}>
           <div className={styles.guaranteedContainer}>
             <div>
-              <Image src={SmallCheckIcon} alt="check" />
+              <Image alt="check" src={SmallCheckIcon} />
             </div>
             <span>Guaranteed prize</span>
           </div>
           <div className={styles.prize}>
-            <Image src={DiamondIcon} alt="diamond" />
+            <Image alt="diamond" src={DiamondIcon} />
             <span>{`$${prize}`}</span>
           </div>
         </div>
@@ -63,7 +63,7 @@ const ContestBox: FC<Props> = ({ data }) => {
       <div className={styles.entryAndTimeContainer}>
         <div className={styles.entriesContainer}>
           <div className={styles.entriesCounter}>
-            <Image src={EntryImageIcon} alt="entry image" />
+            <Image alt="entry image" src={EntryImageIcon} />
             <span>{count}</span>
           </div>
           <span>Entries</span>

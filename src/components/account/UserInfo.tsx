@@ -84,13 +84,13 @@ const UserInfo: FC = () => {
         <UpdateUserInfoForm onSubmit={updateUserData} />
       ) : (
         <div className={styles.infoContainer}>
-          <UserImage src={`${PUBLIC_URL}${avatar}`} className={styles.avatar} />
+          <UserImage className={styles.avatar} src={`${PUBLIC_URL}${avatar}`} />
           <UserInfoData userData={userData} />
         </div>
       )}
       <div
-        onClick={() => dispatch(changeEditModeOnUserProfile(!isEdit))}
         className={styles.buttonEdit}
+        onClick={() => dispatch(changeEditModeOnUserProfile(!isEdit))}
       >
         {isEdit ? 'Cancel' : 'Edit'}
       </div>

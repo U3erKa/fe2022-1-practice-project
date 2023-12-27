@@ -7,7 +7,7 @@ const Footer = () => {
     <section key={title}>
       <h2>{title}</h2>
       {items.map((item) => (
-        <Link key={item} href={PAGE.DUMMY_LINK}>
+        <Link href={PAGE.DUMMY_LINK} key={item}>
           {item}
         </Link>
       ))}

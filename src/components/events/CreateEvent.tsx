@@ -47,26 +47,26 @@ export default function CreateEvent({ forceUpdate }: Props) {
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={styles.heading}>Create new event:</h2>
       <FormInput
-        name="name"
+        classes={formInputClasses}
         control={control}
         label="Name of event:"
-        classes={formInputClasses}
+        name="name"
       />
       <FormInput
-        name="date"
+        classes={formInputClasses}
         control={control}
         label="Date & time of the event:"
+        name="date"
         type="datetime-local"
-        classes={formInputClasses}
       />
       <SelectInput
-        name="notify"
+        classes={selectInputClasses}
         control={control}
         header="When to remind me about the event:"
+        name="notify"
         optionsArray={NOTIFY_OPTIONS}
-        classes={selectInputClasses}
       />
-      <button type="submit" className={styles.submit}>
+      <button className={styles.submit} type="submit">
         Create event
       </button>
     </form>

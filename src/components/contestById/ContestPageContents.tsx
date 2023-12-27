@@ -39,14 +39,14 @@ function ContestPageContents({ contestId }: { readonly contestId: number }) {
       <div className={styles.infoContainer}>
         <div className={styles.buttonsContainer}>
           <span
-            onClick={() => dispatch(changeContestViewMode(true))}
             className={clsx(styles.btn, { [styles.activeBtn]: isBrief })}
+            onClick={() => dispatch(changeContestViewMode(true))}
           >
             Brief
           </span>
           <span
-            onClick={() => dispatch(changeContestViewMode(false))}
             className={clsx(styles.btn, { [styles.activeBtn]: !isBrief })}
+            onClick={() => dispatch(changeContestViewMode(false))}
           >
             Offer
           </span>
@@ -58,15 +58,15 @@ function ContestPageContents({ contestId }: { readonly contestId: number }) {
             {role === CREATOR &&
               contestData?.status === CONTEST_STATUS_ACTIVE && (
                 <OfferForm
-                  contestType={contestData.contestType}
                   contestId={contestData.id}
+                  contestType={contestData.contestType}
                   customerId={contestData.User.id}
                 />
               )}
             <ContestOffersList
-              userId={userId}
-              offers={offers}
               contestData={contestData}
+              offers={offers}
+              userId={userId}
             />
           </div>
         )}

@@ -64,21 +64,21 @@ export type Props2 = {
   readonly status: OfferStatus;
 };
 
-const fullSymbol = <Image src={StarIcon} alt="star" />;
-const emptySymbol = <Image src={StarOutlineIcon} alt="star-outline" />;
+const fullSymbol = <Image alt="star" src={StarIcon} />;
+const emptySymbol = <Image alt="star-outline" src={StarOutlineIcon} />;
 
 const OfferStatusIcon = ({ status, role }: Props2) => {
   switch (status) {
     case OFFER_STATUS_REJECTED:
     case OFFER_STATUS_DISCARDED:
-      return <FontAwesomeIcon icon={faCircleXmark} className={styles.reject} />;
+      return <FontAwesomeIcon className={styles.reject} icon={faCircleXmark} />;
     case OFFER_STATUS_WON:
     case role === MODERATOR && OFFER_STATUS_APPROVED:
       return (
-        <FontAwesomeIcon icon={faCircleCheck} className={styles.resolve} />
+        <FontAwesomeIcon className={styles.resolve} icon={faCircleCheck} />
       );
     case role === CREATOR && (OFFER_STATUS_PENDING as any):
-      return <FontAwesomeIcon icon={faClock} className={styles.pending} />;
+      return <FontAwesomeIcon className={styles.pending} icon={faClock} />;
     default:
       return null;
   }
@@ -189,7 +189,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
 
   return (
     <div className={styles.offerContainer}>
-      <OfferStatusIcon status={data.status} role={role} />
+      <OfferStatusIcon role={role} status={data.status} />
       <div className={styles.mainInfoContainer}>
         <div className={styles.userInfo}>
           <div className={styles.creativeInfoContainer}>
@@ -203,18 +203,23 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
             <span className={styles.userScoreLabel}>Creative Rating </span>
             {/* @ts-expect-error */}
             <Rating
+              readonly
+              emptySymbol={emptySymbol}
               fractions={2}
               fullSymbol={fullSymbol}
-              placeholderSymbol={fullSymbol}
-              emptySymbol={emptySymbol}
               initialRating={rating}
-              readonly
+              placeholderSymbol={fullSymbol}
             />
           </div>
         </div>
         <div className={styles.responseConainer}>
           {(contestData?.contestType ?? data?.contestType) === LOGO_CONTEST ? (
             <Image
+              alt="logo"
+              className={styles.responseLogo}
+              height={100}
+              src={`${PUBLIC_URL}${data.fileName}`}
+              width={150}
               onClick={() =>
                 dispatch(
                   changeShowImage({
@@ -223,11 +228,6 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
                   }),
                 )
               }
-              className={styles.responseLogo}
-              width={150}
-              height={100}
-              src={`${PUBLIC_URL}${data.fileName}`}
-              alt="logo"
             />
           ) : (
             <span className={styles.response}>{data.text}</span>
@@ -235,12 +235,12 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
           {id !== userId && role === CUSTOMER && (
             // @ts-expect-error
             <Rating
+              emptySymbol={emptySymbol}
               fractions={2}
               fullSymbol={fullSymbol}
-              placeholderSymbol={fullSymbol}
-              emptySymbol={emptySymbol}
-              onClick={changeMarkMethod}
               placeholderRating={data.mark}
+              placeholderSymbol={fullSymbol}
+              onClick={changeMarkMethod}
             />
           )}
         </div>
@@ -251,10 +251,10 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       </div>
       {needButtons(data.status) && (
         <div className={styles.btnsContainer}>
-          <div onClick={resolveOffer} className={styles.resolveBtn}>
+          <div className={styles.resolveBtn} onClick={resolveOffer}>
             Resolve
           </div>
-          <div onClick={rejectOffer} className={styles.rejectBtn}>
+          <div className={styles.rejectBtn} onClick={rejectOffer}>
             Reject
           </div>
         </div>

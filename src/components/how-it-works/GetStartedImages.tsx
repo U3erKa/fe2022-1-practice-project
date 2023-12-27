@@ -6,7 +6,7 @@ const GetStartedImages = () => {
   const images = GET_STARTED_IMAGES.map(({ id, src, alt, caption }) => {
     return (
       <figure className={styles.card} key={id}>
-        <Image className={styles.icon} src={src} alt={alt} />
+        <Image alt={alt} className={styles.icon} src={src} />
         <figcaption className={styles.text}>{caption}</figcaption>
       </figure>
     );

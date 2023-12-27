@@ -51,10 +51,10 @@ export default function LoginButtons({ data }: Props) {
         <UserImage src={`${PUBLIC_URL}${avatar}`} />
         {activeEvents > 0 && <div className={styles.badge} />}
         <span>{`Hi, ${displayName}`}</span>
-        <Image src={MenuIcon} alt="menu" />
-        <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />
+        <Image alt="menu" src={MenuIcon} />
+        <ProfileNavBar activeEvents={activeEvents} list={PROFILE_NAVBAR} />
       </div>
-      <Image className={styles.emailIcon} src={EmailIcon} alt="email" />
+      <Image alt="email" className={styles.emailIcon} src={EmailIcon} />
     </>
   );
 }

@@ -66,21 +66,21 @@ const StartContestPage = () => {
         </div>
         <div className={styles.baseBundles}>
           <BundleBox
-            icons={[[NameIcon, BlueNameIcon]]}
-            header="Name"
             describe="Get up and running with the perfect name."
+            header="Name"
+            icons={[[NameIcon, BlueNameIcon]]}
             setBundle={setBundle}
           />
           <BundleBox
-            icons={[[LogoIcon, BlueLogoIcon]]}
-            header="Logo"
             describe="Kickstart your venture with a unique, memorable logo."
+            header="Logo"
+            icons={[[LogoIcon, BlueLogoIcon]]}
             setBundle={setBundle}
           />
           <BundleBox
-            icons={[[TaglineIcon, BlueTaglineIcon]]}
-            header="Tagline"
             describe="Connect deeply with your target audience with an on-target tagline."
+            header="Tagline"
+            icons={[[TaglineIcon, BlueTaglineIcon]]}
             setBundle={setBundle}
           />
         </div>
@@ -97,41 +97,41 @@ const StartContestPage = () => {
         </div>
         <div className={styles.baseBundles}>
           <BundleBox
-            icons={[
-              [NameIcon, BlueNameIcon],
-              [LogoIcon, BlueLogoIcon],
-            ]}
-            header="Name+Logo"
             describe="Get the essentials needed to establish your brand together and save."
+            header="Name+Logo"
             setBundle={setBundle}
-          />
-          <BundleBox
             icons={[
               [NameIcon, BlueNameIcon],
-              [TaglineIcon, BlueTaglineIcon],
+              [LogoIcon, BlueLogoIcon],
             ]}
-            header="Name+Tagline"
+          />
+          <BundleBox
             describe="Communicate your vision with the perfect Name/Tagline combo."
+            header="Name+Tagline"
             setBundle={setBundle}
+            icons={[
+              [NameIcon, BlueNameIcon],
+              [TaglineIcon, BlueTaglineIcon],
+            ]}
           />
           <BundleBox
+            describe="Description for Logo + Tagline will come here."
+            header="Tagline+Logo"
+            setBundle={setBundle}
             icons={[
               [LogoIcon, BlueLogoIcon],
               [TaglineIcon, BlueTaglineIcon],
             ]}
-            header="Tagline+Logo"
-            describe="Description for Logo + Tagline will come here."
-            setBundle={setBundle}
           />
           <BundleBox
+            describe="Establish your entire brand identity and save with this bundle."
+            header="Name+Tagline+Logo"
+            setBundle={setBundle}
             icons={[
               [NameIcon, BlueNameIcon],
               [LogoIcon, BlueLogoIcon],
               [TaglineIcon, BlueTaglineIcon],
             ]}
-            header="Name+Tagline+Logo"
-            describe="Establish your entire brand identity and save with this bundle."
-            setBundle={setBundle}
           />
         </div>
       </div>

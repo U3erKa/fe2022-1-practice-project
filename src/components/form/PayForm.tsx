@@ -57,80 +57,80 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
       <span className={styles.headerInfo}>Payment Information</span>
       <div className={styles.cardContainer}>
         <Cards
-          number={number}
-          name={name}
-          expiry={expiry}
           cvc={cvc}
+          expiry={expiry}
           focused={focusOnElement}
+          name={name}
+          number={number}
         />
       </div>
       <form
+        className={styles.formContainer}
         id="myForm"
         onSubmit={handleSubmit(sendRequest)}
-        className={styles.formContainer}
       >
         <div className={styles.bigInput}>
           <span>Name</span>
           <PayInput
-            name="name"
-            control={control}
-            classes={classes}
-            type="text"
-            placeholder="name"
             changeFocus={changeFocusOnCardMethod}
+            classes={classes}
+            control={control}
+            name="name"
+            placeholder="name"
+            type="text"
           />
         </div>
         {!isPayForOrder && (
           <div className={styles.bigInput}>
             <span>Sum</span>
             <PayInput
-              name="sum"
-              control={control}
-              classes={classes}
-              type="text"
-              placeholder="sum"
               changeFocus={changeFocusOnCardMethod}
+              classes={classes}
+              control={control}
+              name="sum"
+              placeholder="sum"
+              type="text"
             />
           </div>
         )}
         <div className={styles.bigInput}>
           <span>Card Number</span>
           <PayInput
+            changeFocus={changeFocusOnCardMethod}
+            classes={classes}
             control={control}
             mask="____ ____ ____ ____ ___"
-            replacement={replacement}
             name="number"
-            classes={classes}
-            type="text"
             placeholder="card number"
-            changeFocus={changeFocusOnCardMethod}
+            replacement={replacement}
+            type="text"
           />
         </div>
         <div className={styles.smallInputContainer}>
           <div className={styles.smallInput}>
             <span>* Expires</span>
             <PayInput
+              changeFocus={changeFocusOnCardMethod}
+              classes={classes}
               control={control}
               mask="__/__"
-              replacement={replacement}
               name="expiry"
-              classes={classes}
-              type="text"
               placeholder="expiry"
-              changeFocus={changeFocusOnCardMethod}
+              replacement={replacement}
+              type="text"
             />
           </div>
           <div className={styles.smallInput}>
             <span>* Security Code</span>
             <PayInput
+              changeFocus={changeFocusOnCardMethod}
+              classes={classes}
               control={control}
               mask="____"
-              replacement={replacement}
               name="cvc"
-              classes={classes}
-              type="text"
               placeholder="cvc"
-              changeFocus={changeFocusOnCardMethod}
+              replacement={replacement}
+              type="text"
             />
           </div>
         </div>
@@ -141,11 +141,11 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
         </div>
       ) : null}
       <div className={styles.buttonsContainer}>
-        <button form="myForm" className={styles.payButton} type="submit">
+        <button className={styles.payButton} form="myForm" type="submit">
           <span>{isPayForOrder ? 'Pay Now' : 'CashOut'}</span>
         </button>
         {isPayForOrder ? (
-          <div onClick={router.back} className={styles.backButton}>
+          <div className={styles.backButton} onClick={router.back}>
             <span>Back</span>
           </div>
         ) : null}

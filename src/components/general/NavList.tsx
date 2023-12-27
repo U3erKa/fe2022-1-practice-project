@@ -11,7 +11,7 @@ export default function NavList({ list }: { readonly list: List }) {
   const mapList = list.map(({ id, text, listItem }) => (
     <li key={id}>
       <span>{text}</span>
-      <Image src={MenuDownIcon} alt="menu" />
+      <Image alt="menu" src={MenuDownIcon} />
       <NavListItem list={listItem} />
     </li>
   ));
@@ -20,7 +20,7 @@ export default function NavList({ list }: { readonly list: List }) {
 
 export function NavListItem({ list }: { readonly list: ListItem }) {
   const mapList = list.map(({ id, href, text }, i) => (
-    <li key={id} className={list.length - 1 === i ? styles.last : undefined}>
+    <li className={list.length - 1 === i ? styles.last : undefined} key={id}>
       <Link href={href}>{text}</Link>
     </li>
   ));

@@ -161,18 +161,18 @@ const ContestForm: FC<Props> = ({ contestType }) => {
         <div className={styles.inputContainer}>
           <span className={styles.inputHeader}>Title of contest</span>
           <FormInput
-            name="title"
-            control={control}
-            placeholder="Title"
             classes={inputClasses}
+            control={control}
+            name="title"
+            placeholder="Title"
           />
         </div>
         <div className={styles.inputContainer}>
           <SelectInput
-            name="industry"
-            control={control}
             classes={selectClasses}
+            control={control}
             header="Describe industry associated with your venture"
+            name="industry"
             // @ts-expect-error
             optionsArray={contestData?.industry}
           />
@@ -182,10 +182,10 @@ const ContestForm: FC<Props> = ({ contestType }) => {
             What does your company / business do?
           </span>
           <FormTextArea
-            name="focusOfWork"
-            control={control}
-            placeholder="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
             classes={textareaClasses}
+            control={control}
+            name="focusOfWork"
+            placeholder="e.g. We`re an online lifestyle brand that provides stylish and high quality apparel to the expert eco-conscious shopper"
           />
         </div>
         <div className={styles.inputContainer}>
@@ -193,21 +193,21 @@ const ContestForm: FC<Props> = ({ contestType }) => {
             Tell us about your customers
           </span>
           <FormTextArea
-            name="targetCustomer"
-            control={control}
-            placeholder="customers"
             classes={textareaClasses}
+            control={control}
+            name="targetCustomer"
+            placeholder="customers"
           />
         </div>
-        <OptionalSelects control={control} contestType={contestType} />
+        <OptionalSelects contestType={contestType} control={control} />
         <FieldFileInput
-          name="file"
-          control={control}
-          register={register}
           classes={fileClasses}
+          control={control}
+          name="file"
+          register={register}
         />
         {isEditContest ? (
-          <button type="submit" className={styles.changeData}>
+          <button className={styles.changeData} type="submit">
             Set Data
           </button>
         ) : null}
@@ -215,13 +215,13 @@ const ContestForm: FC<Props> = ({ contestType }) => {
           <div className={styles.lastContainer}>
             <div className={styles.buttonsContainer}>
               <button
+                className={styles.prevButtonContainer}
                 type="button"
                 onClick={router.back}
-                className={styles.prevButtonContainer}
               >
                 Back
               </button>
-              <button type="submit" className={styles.nextButtonContainer}>
+              <button className={styles.nextButtonContainer} type="submit">
                 Next
               </button>
             </div>

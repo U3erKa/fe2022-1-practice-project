@@ -30,7 +30,7 @@ export const Questions: FC<Props> = ({ questions }) => {
               onClick={() => setActiveQuestion(active ? -1 : i)}
             >
               {question}
-              <FontAwesomeIcon icon={faArrowRight} className={iconStyles} />
+              <FontAwesomeIcon className={iconStyles} icon={faArrowRight} />
             </button>
             <Answer active={active} contents={answer} />
           </section>

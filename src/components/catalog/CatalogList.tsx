@@ -37,9 +37,9 @@ const CatalogList: FC<Props> = ({ catalogList }) => {
     const elementList = catalogList.map((catalog) => (
       <Catalog
         catalog={catalog}
-        key={catalog._id}
         deleteCatalog={deleteCatalogMethod}
         goToCatalog={goToCatalog}
+        key={catalog._id}
       />
     ));
 

@@ -59,8 +59,9 @@ const SliderBar: FC<Props> = ({ carouselType }) => {
   };
   return (
     <Swiper
-      className={CONTAINER_STYLE[carouselType]}
       loop
+      className={CONTAINER_STYLE[carouselType]}
+      modules={[Autoplay]}
       slidesPerView={1}
       spaceBetween={10}
       autoplay={{
@@ -71,7 +72,6 @@ const SliderBar: FC<Props> = ({ carouselType }) => {
         512: { slidesPerView: 2, spaceBetween: 20 },
         1024: { slidesPerView: 3, spaceBetween: 30 },
       }}
-      modules={[Autoplay]}
     >
       {renderSlides()}
     </Swiper>

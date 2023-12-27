@@ -44,7 +44,7 @@ const Header = () => {
       </div>
       <div className={styles.loginSignnUpHeaders}>
         <div className={styles.numberContainer}>
-          <Image src={PhoneIcon} alt="phone" />
+          <Image alt="phone" src={PhoneIcon} />
           <a href="tel:8773553585">(877)&nbsp;355-3585</a>
         </div>
         <div className={styles.userButtonsContainer}>
@@ -58,7 +58,7 @@ const Header = () => {
             <NavList list={HEADER_LIST} />
           </div>
           {user && user.role === CUSTOMER ? (
-            <Link href={PAGE.START_CONTEST} className={styles.startContestBtn}>
+            <Link className={styles.startContestBtn} href={PAGE.START_CONTEST}>
               START CONTEST
             </Link>
           ) : null}

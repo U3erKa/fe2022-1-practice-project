@@ -33,10 +33,10 @@ const AddToCatalog = () => {
   return catalogNames.length !== 0 ? (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <SelectInput
-        name="catalogId"
+        classes={classes}
         control={control}
         header="name of catalog"
-        classes={classes}
+        name="catalogId"
         optionsArray={catalogNames}
         valueArray={catalogIds}
       />

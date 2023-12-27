@@ -31,7 +31,7 @@ export const ContestTypes: FC<Props> = ({ onChange, value }) => {
   );
 
   return (
-    <select onChange={onChange} value={value} className={styles.input}>
+    <select className={styles.input} value={value} onChange={onChange}>
       {contestTypes}
     </select>
   );
@@ -53,7 +53,7 @@ export const IndustryType: FC<Props2> = ({ industries, filter, onChange }) => {
   );
 
   return (
-    <select onChange={onChange} value={filter} className={styles.input}>
+    <select className={styles.input} value={filter} onChange={onChange}>
       {options}
     </select>
   );
@@ -100,51 +100,51 @@ export const CreatorFilter = () => {
       <span className={styles.headerFilter}>Filter Results</span>
       <div className={styles.inputsContainer}>
         <div
+          className={clsx(styles.myEntries, {
+            [styles.activeMyEntries]: creatorFilter.ownEntries,
+          })}
           onClick={() =>
             changePredicate({
               name: 'ownEntries',
               value: !creatorFilter.ownEntries,
             })
           }
-          className={clsx(styles.myEntries, {
-            [styles.activeMyEntries]: creatorFilter.ownEntries,
-          })}
         >
           My Entries
         </div>
         <div className={styles.inputContainer}>
           <span>By contest type</span>
           <ContestTypes
+            value={CONTEST_TYPES[creatorFilter.typeIndex as number]}
             onChange={({ target }) =>
               changePredicate({
                 name: 'typeIndex',
                 value: CONTEST_TYPES.indexOf(target.value),
               })
             }
-            value={CONTEST_TYPES[creatorFilter.typeIndex as number]}
           />
         </div>
         <div className={styles.inputContainer}>
           <span>By contest ID</span>
           <input
+            className={styles.input}
+            name="contestId"
             type="text"
+            value={creatorFilter.contestId}
             onChange={({ target }) =>
               changePredicate({
                 name: 'contestId',
                 value: target.value,
               })
             }
-            name="contestId"
-            value={creatorFilter.contestId}
-            className={styles.input}
           />
         </div>
         {!isFetching && (
           <div className={styles.inputContainer}>
             <span>By industry</span>
             <IndustryType
-              industries={industry}
               filter={creatorFilter.industry}
+              industries={industry}
               onChange={({ target }) =>
                 changePredicate({
                   name: 'industry',
@@ -157,14 +157,14 @@ export const CreatorFilter = () => {
         <div className={styles.inputContainer}>
           <span>By amount award</span>
           <select
+            className={styles.input}
+            value={creatorFilter.awardSort}
             onChange={({ target }) =>
               changePredicate({
                 name: 'awardSort',
                 value: target.value,
               })
             }
-            value={creatorFilter.awardSort}
-            className={styles.input}
           >
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>

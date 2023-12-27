@@ -56,12 +56,12 @@ const Payment = () => {
           <span className={styles.headerLabel}>Checkout</span>
           {error ? (
             <Error
+              clearError={() => dispatch(clearPaymentStore())}
               data={error.data}
               status={error.status}
-              clearError={() => dispatch(clearPaymentStore())}
             />
           ) : null}
-          <PayForm sendRequest={payMethod} isPayForOrder />
+          <PayForm isPayForOrder sendRequest={payMethod} />
         </div>
         <div className={styles.orderInfoContainer}>
           <span className={styles.orderHeader}>Order Summary</span>

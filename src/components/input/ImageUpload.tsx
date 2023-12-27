@@ -41,9 +41,9 @@ const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
       <div className={inputContainer}>
         <span>Support only images (*.jpg, *.png, *.jpeg)</span>
         <input
+          accept=".jpg, .png, .jpeg"
           id={fileInputId}
           type="file"
-          accept=".jpg, .png, .jpeg"
           onChange={handleChange}
           {...inputregister}
         />
@@ -51,11 +51,11 @@ const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        width={120}
+        alt="user"
+        className={clsx({ [imgStyle!]: !!field.value })}
         height={120}
         id={imageId}
-        className={clsx({ [imgStyle!]: !!field.value })}
-        alt="user"
+        width={120}
       />
     </div>
   );

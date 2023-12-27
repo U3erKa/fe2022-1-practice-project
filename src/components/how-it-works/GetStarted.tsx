@@ -10,7 +10,7 @@ export const GetStarted: FC = () => {
   return (
     <article className={styles.container}>
       <figure className={styles.icon}>
-        <Image src={GetStartedImage1} alt="get started icon" />
+        <Image alt="get started icon" src={GetStartedImage1} />
       </figure>
       <section className={styles.headingContainer}>
         <h2 className={styles.getStartedHeading}>Ready to get started?</h2>
@@ -23,7 +23,7 @@ export const GetStarted: FC = () => {
         </Link>
       </section>
       <figure className={styles.icon}>
-        <Image src={GetStartedImage2} alt="get started icon" />
+        <Image alt="get started icon" src={GetStartedImage2} />
       </figure>
     </article>
   );

@@ -47,8 +47,8 @@ const Dialog: FC<Props> = ({ userId }) => {
       <ChatHeader userId={userId} />
       <MainDialog
         messages={messages}
-        userId={userId}
         messagesEnd={messagesEnd}
+        userId={userId}
       />
       {chatData && chatData.blackList.includes(true) ? (
         <BlockMessage chatData={chatData} userId={userId} />

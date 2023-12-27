@@ -25,10 +25,10 @@ const ChatList = () => {
   const dialogs = dialogButtons.map(({ id, name, mode }) => (
     <span
       key={id}
-      onClick={() => dispatch(setPreviewChatMode(mode))}
       className={clsx(styles.button, {
         [styles.activeButton]: chatMode === mode,
       })}
+      onClick={() => dispatch(setPreviewChatMode(mode))}
     >
       {name}
     </span>
@@ -41,7 +41,7 @@ const ChatList = () => {
       ) : (
         <>
           <div className={styles.chatHeader}>
-            <Image src={LogoIcon} alt="send Message" />
+            <Image alt="send Message" src={LogoIcon} />
           </div>
           <div className={styles.buttonsContainer}>{dialogs}</div>
         </>

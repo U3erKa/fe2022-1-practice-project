@@ -15,29 +15,29 @@ const BundleBox: FC<Props> = ({ header, icons, setBundle, describe }) => {
   const images = icons.map(([image, activeImage], i) => (
     <div className={styles.images} key={i}>
       <Image
-        width={48}
+        alt={image.src.replace(/.png/g, 'Contest')}
+        className={styles.imgContainer}
         height={48}
         src={image}
-        className={styles.imgContainer}
-        alt={image.src.replace(/.png/g, 'Contest')}
+        width={48}
       />
       <Image
-        width={48}
+        alt={image.src.replace(/.png/g, 'Contest')}
+        className={styles.imgContainer}
         height={48}
         src={activeImage}
-        className={styles.imgContainer}
-        alt={image.src.replace(/.png/g, 'Contest')}
+        width={48}
       />
     </div>
   ));
 
   return (
     <div
-      onClick={() => setBundle(header)}
       id={header}
       className={clsx(styles.bundleContainer, {
         [styles.combinedBundle]: icons.length === 1,
       })}
+      onClick={() => setBundle(header)}
     >
       {images}
       <div className={styles.infoContainer}>

@@ -13,14 +13,14 @@ const TextEntry: FC<Props> = ({ text }) => {
       switch (type) {
         case 'link': {
           return (
-            <a key={id} className={className} href={href} {...props}>
+            <a className={className} href={href} key={id} {...props}>
               {text}
             </a>
           );
         }
         case 'span': {
           return (
-            <span key={id} className={className} {...props}>
+            <span className={className} key={id} {...props}>
               {text}
             </span>
           );

@@ -80,13 +80,13 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
       if (!filterFunc || filterFunc(chatPreview, userId)) {
         const dialogNode = (
           <DialogBox
-            interlocutor={chatPreview.interlocutor}
-            chatPreview={chatPreview}
-            userId={userId}
-            key={uniqueId()}
-            changeFavorite={changeFavorite}
             changeBlackList={changeBlackList}
+            changeFavorite={changeFavorite}
             chatMode={chatMode}
+            chatPreview={chatPreview}
+            interlocutor={chatPreview.interlocutor}
+            key={uniqueId()}
+            userId={userId}
             catalogOperation={
               chatMode === CATALOG_PREVIEW_CHAT_MODE
                 ? removeChat

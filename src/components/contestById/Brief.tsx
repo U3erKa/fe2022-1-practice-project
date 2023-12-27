@@ -97,10 +97,10 @@ const Brief = () => {
   if (!isEditContest) {
     return (
       <ContestInfo
-        userId={userId}
-        contestData={contestData}
         changeEditContest={(data) => dispatch(changeEditContest(data))}
+        contestData={contestData}
         role={role}
+        userId={userId}
       />
     );
   }
@@ -108,9 +108,9 @@ const Brief = () => {
     <div className={styles.contestForm}>
       {error ? (
         <Error
+          clearError={() => dispatch(clearContestUpdationStore())}
           data={error.data}
           status={error.status}
-          clearError={() => dispatch(clearContestUpdationStore())}
         />
       ) : null}
       <ContestForm

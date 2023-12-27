@@ -33,7 +33,7 @@ const AgreeTermOfServiceInput: FC<Props> = function AgreeTermOfServiceInput({
         <input id={id} type="checkbox" {...field} {...rest} />
         <label htmlFor={id}>
           By clicking this checkbox, you agree to our{' '}
-          <a href={PAGE.DUMMY_LINK} target="_blank" rel="noreferrer">
+          <a href={PAGE.DUMMY_LINK} rel="noreferrer" target="_blank">
             Terms of Service.
           </a>
         </label>

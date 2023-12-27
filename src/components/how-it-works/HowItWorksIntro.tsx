@@ -19,15 +19,15 @@ export const HowItWorksIntro: FC = () => {
         <a
           className={styles.button}
           href="https://vimeo.com/368584367"
-          target="_blank"
           rel="noreferrer"
+          target="_blank"
         >
           <FontAwesomeIcon icon={faPlay} />
           Play video
         </a>
       </section>
       <figure className={styles.imageContainer}>
-        <Image src={MainImage} alt="main icon" width={393} />
+        <Image alt="main icon" src={MainImage} width={393} />
       </figure>
     </article>
   );

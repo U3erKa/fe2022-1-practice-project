@@ -26,19 +26,19 @@ const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {
       <div className={styles.contestInfo}>
         <div className={styles.awardAndTimeContainer}>
           <div className={styles.prizeContainer}>
-            <Image src={BigDiamondIcon} alt="diamond" />
+            <Image alt="diamond" src={BigDiamondIcon} />
             <span>{`$ ${prize}`}</span>
           </div>
           <div className={styles.timeContainer}>
             <div className={styles.timeDesc}>
-              <Image src={ClockIcon} alt="clock" />
+              <Image alt="clock" src={ClockIcon} />
               <span>Going</span>
             </div>
             <span className={styles.time}>{getLongTimeStr(createdAt)}</span>
           </div>
           <div className={styles.guaranteedPrize}>
             <div>
-              <Image src={SmallCheckIcon} alt="check" />
+              <Image alt="check" src={SmallCheckIcon} />
             </div>
             <span>Guaranteed prize</span>
           </div>

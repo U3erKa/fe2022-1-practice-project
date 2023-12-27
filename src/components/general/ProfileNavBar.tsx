@@ -22,7 +22,7 @@ export default function ProfileNavBar({ list, activeEvents }: Props) {
   };
 
   const mapList = list.map(({ id, href, text }) => (
-    <li key={id} className={styles.navListItem}>
+    <li className={styles.navListItem} key={id}>
       <Link href={href} style={{ textDecoration: 'none' }}>
         <span className={styles.navListLinkText}>{text}</span>
         {href === PAGE.EVENTS && !!activeEvents && (

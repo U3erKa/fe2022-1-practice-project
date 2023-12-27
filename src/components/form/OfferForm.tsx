@@ -43,16 +43,16 @@ const imageUploadClasses = {
 const OfferInput: FC<Props> = ({ control, register, contestType }) => {
   return contestType === LOGO_CONTEST ? (
     <ImageUpload
-      name="offerData"
-      control={control}
-      register={register}
       classes={imageUploadClasses}
+      control={control}
+      name="offerData"
+      register={register}
     />
   ) : (
     <FormInput
-      name="offerData"
-      control={control}
       classes={formInputClassses}
+      control={control}
+      name="offerData"
       placeholder="your suggestion"
     />
   );
@@ -92,18 +92,18 @@ const OfferForm: FC<OfferFormProps> = ({
     <div className={styles.offerContainer}>
       {addOfferError ? (
         <Error
+          clearError={() => dispatch(clearAddOfferError())}
           data={addOfferError.data}
           status={addOfferError.status}
-          clearError={() => dispatch(clearAddOfferError())}
         />
       ) : null}
       <form className={styles.form} onSubmit={handleSubmit(setOffer)}>
         <OfferInput
+          contestType={contestType}
           control={control}
           register={register}
-          contestType={contestType}
         />
-        <button type="submit" className={styles.btnOffer}>
+        <button className={styles.btnOffer} type="submit">
           Send Offer
         </button>
       </form>

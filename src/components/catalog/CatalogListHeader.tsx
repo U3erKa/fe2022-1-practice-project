@@ -49,15 +49,15 @@ const CatalogListHeader = () => {
         <div className={styles.changeContainer}>
           <form onSubmit={handleSubmit(changeCatalogNameMethod)}>
             <FormInput
-              name="catalogName"
               control={control}
+              name="catalogName"
+              placeholder="Catalog Name"
               classes={{
                 container: styles.inputContainer,
                 input: styles.input,
                 notValid: styles.notValid,
                 warning: styles.fieldWarning,
               }}
-              placeholder="Catalog Name"
             />
             <button type="submit">Change</button>
           </form>

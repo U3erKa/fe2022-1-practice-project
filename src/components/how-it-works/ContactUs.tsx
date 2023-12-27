@@ -43,7 +43,7 @@ export const ContactUs: FC = () => {
         </p>
         <button className={styles.button}>Schedule Consultation</button>
         <a className={styles.link} href="tel:+8773553585">
-          <Image src={PhoneImage} alt="phone" />
+          <Image alt="phone" src={PhoneImage} />
           (877) 355-3585
         </a>
         <p>Call us for assistance</p>

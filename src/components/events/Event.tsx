@@ -24,7 +24,7 @@ export default function Event({ id, name, date, createdAt }: EventResponse) {
   }, []);
 
   return (
-    <section key={id} className={styles.eventContainer}>
+    <section className={styles.eventContainer} key={id}>
       <p className={styles.name}>{name}</p>
       <p className={styles.time}>{time}</p>
       <progress className={styles.progress} value={progress} />

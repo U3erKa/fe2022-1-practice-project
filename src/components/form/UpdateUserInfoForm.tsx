@@ -49,12 +49,12 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
 
   const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
     <FormInput
-      key={id}
-      name={name}
-      control={control}
-      label={label}
-      placeholder={label}
       classes={inputClasses}
+      control={control}
+      key={id}
+      label={label}
+      name={name}
+      placeholder={label}
     />
   ));
 
@@ -62,19 +62,19 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
     <form className={styles.updateContainer} onSubmit={handleSubmit(onSubmit)}>
       {error ? (
         <Error
+          clearError={() => dispatch(clearUserError())}
           data={error.data}
           status={error.status}
-          clearError={() => dispatch(clearUserError())}
         />
       ) : null}
       {inputContainers}
       <ImageUpload
-        name="file"
-        control={control}
-        register={register}
         classes={imageUploadClasses}
+        control={control}
+        name="file"
+        register={register}
       />
-      <button type="submit" disabled={submitting}>
+      <button disabled={submitting} type="submit">
         Submit
       </button>
     </form>

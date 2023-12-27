@@ -22,11 +22,11 @@ export const CustomFilter: FC<Props> = ({
   const filterButtons = buttons.map(({ name, filter }, i) => (
     <div
       key={i}
-      onClick={() => dispatch(filterAction(filter))}
       className={clsx({
         [styles.activeFilter]: filter === predicate,
         [styles.filter]: filter !== predicate,
       })}
+      onClick={() => dispatch(filterAction(filter))}
       {...props}
     >
       {name}

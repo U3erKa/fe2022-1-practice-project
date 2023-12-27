@@ -7,10 +7,10 @@ type Props = Partial<ImageProps> & Pick<ImageProps, 'src'>;
 export default function UserImage({ src, ...props }: Props) {
   return (
     <Image
+      alt="user"
+      height={40}
       src={src === `${PUBLIC_URL}${ANONYM_IMAGE_NAME}` ? AnonymIcon : src}
       width={40}
-      height={40}
-      alt="user"
       {...props}
     />
   );

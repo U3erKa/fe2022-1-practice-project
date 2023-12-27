@@ -38,12 +38,12 @@ const PayInput: FC<Props> = ({
   return (
     <div className={classes.container}>
       <input
+        ref={isMaskable ? inputRef : ref}
+        value={isMaskable ? undefined : value}
         className={clsx(classes.input, {
           [classes.notValid]: isTouched && error,
         })}
         onFocus={() => changeFocus(field.name as CardField)}
-        value={isMaskable ? undefined : value}
-        ref={isMaskable ? inputRef : ref}
         {...field}
         {...rest}
       />

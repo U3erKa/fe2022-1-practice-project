@@ -45,10 +45,10 @@ export default function ModeratorDashboard() {
 
   const items = offers.map((offer) => (
     <OfferBox
+      contestData={contestData}
       data={offer}
       key={offer.id}
       setOfferStatus={setOfferStatusMethod}
-      contestData={contestData}
     />
   ));
 
@@ -70,8 +70,8 @@ export default function ModeratorDashboard() {
           <TryAgain getData={getOffersMethod} />
         ) : (
           <ItemsContainer
-            isFetching={isFetching}
             haveMore={haveMore}
+            isFetching={isFetching}
             items={items}
             loadMore={getOffersMethod}
           />
