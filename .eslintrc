@@ -4,20 +4,77 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "next/core-web-vitals",
     "prettier"
   ],
   "ignorePatterns": ["dist", ".eslintrc*"],
-  "plugins": ["react-refresh", "react-hooks"],
+  "plugins": ["react", "react-refresh", "react-hooks"],
   "rules": {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "react/destructuring-assignment": ["warn", "always"],
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": [
+          "function-declaration",
+          "function-expression",
+          "arrow-function"
+        ],
+        "unnamedComponents": []
+      }
+    ],
+    "react/iframe-missing-sandbox": "warn",
+    "react/jsx-boolean-value": ["warn", "never"],
+    "react/jsx-fragments": ["warn", "syntax"],
     "react/jsx-key": "warn",
+    "react/jsx-max-depth": ["warn", { "max": 10 }],
+    // "react/jsx-no-bind": [
+    //   "warn",
+    //   {
+    //     "ignoreDOMComponents": false,
+    //     "ignoreRefs": false,
+    //     "allowArrowFunctions": false,
+    //     "allowFunctions": false,
+    //     "allowBind": false
+    //   }
+    // ],
+    "react/jsx-no-constructed-context-values": "warn",
+    "react/jsx-no-leaked-render": [
+      "warn",
+      { "validStrategies": ["ternary", "coerce"] }
+    ],
+    "react/jsx-no-useless-fragment": ["warn", { "allowExpressions": true }],
+    // "react/jsx-sort-props": [
+    //   "warn",
+    //   {
+    //     "callbacksLast": true,
+    //     "shorthandFirst": true,
+    //     "shorthandLast": false,
+    //     "multiline": "last",
+    //     "ignoreCase": false,
+    //     "noSortAlphabetically": false,
+    //     "reservedFirst": false,
+    //     "locale": "auto"
+    //   }
+    // ],
+    "react/no-array-index-key": "warn",
+    "react/no-invalid-html-attribute": ["warn", ["rel"]],
+    "react/no-multi-comp": ["warn", { "ignoreStateless": true }],
+    "react/no-object-type-as-default-prop": "warn",
     "react/no-unescaped-entities": "off",
+    "react/no-unstable-nested-components": [
+      "warn",
+      { "allowAsProps": false, "customValidators": [] }
+    ],
+    // "react/prefer-read-only-props": "warn",
+    "react/self-closing-comp": ["warn", { "component": true, "html": true }],
+    "react/void-dom-elements-no-children": "warn",
     "block-scoped-var": "warn",
     "class-methods-use-this": "warn",
     "func-name-matching": [
