@@ -1,5 +1,5 @@
 import type { Types } from 'mongoose';
-import type { Attributes, Model, Sequelize } from 'sequelize';
+import type { Attributes, Model } from 'sequelize';
 import type { Col, Fn, Literal } from 'sequelize/types/utils';
 import type _Bank from 'models/bank';
 import type _Catalog from 'models/catalog';

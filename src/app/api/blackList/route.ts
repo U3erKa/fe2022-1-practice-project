@@ -3,7 +3,6 @@ import { Conversation } from 'models';
 import { getChatController } from 'socketInit';
 import NotFoundError from 'errors/NotFoundError';
 import { verifyAccessToken } from 'services/jwtService';
-import type { Message as _Message } from 'types/models';
 
 export async function blackList(req: NextRequest) {
   try {

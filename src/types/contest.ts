@@ -8,7 +8,6 @@ import type {
 } from 'constants/general';
 import type {
   OfferId,
-  OrderId,
   UserId,
   WithFile,
   WithId,

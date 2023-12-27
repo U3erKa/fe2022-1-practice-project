@@ -8,9 +8,8 @@ export const updateBankBalance = async (
   predicate: WhereOptions<Attributes<_Bank>>,
   transaction?: Transaction,
 ) => {
-  const [updatedCount, [updatedBank]] = await Bank.update(data, {
+  const [updatedCount] = await Bank.update(data, {
     where: predicate,
-    returning: true,
     transaction,
   });
   if (updatedCount < 2) {

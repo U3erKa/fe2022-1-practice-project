@@ -4,7 +4,6 @@ import { getChatController } from 'socketInit';
 import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
-import type { Message as _Message } from 'types/models';
 
 export async function POST(req: NextRequest) {
   try {

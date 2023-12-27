@@ -19,7 +19,6 @@ import { verifyAccessToken } from 'services/jwtService';
 import { uploadFile } from 'utils/backend';
 import handleError from 'utils/handleError';
 import { ContestSchema, type Contest as __Contest } from 'utils/schemas';
-import type { Contest as _Contest } from 'types/models';
 
 export async function POST(req: NextRequest) {
   const transaction = await sequelize.transaction();
