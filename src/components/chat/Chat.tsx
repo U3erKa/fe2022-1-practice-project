@@ -37,8 +37,8 @@ const Chat = () => {
         [styles.showChat]: isShow,
       })}
     >
-      {error && <ChatError getData={() => dispatch(getPreviewChat())} />}
-      {isShowCatalogCreation && <CatalogCreation />}
+      {error ? <ChatError getData={() => dispatch(getPreviewChat())} /> : null}
+      {isShowCatalogCreation ? <CatalogCreation /> : null}
       {isExpanded ? <Dialog userId={userId} /> : <ChatList />}
       <div
         className={styles.toggleChat}

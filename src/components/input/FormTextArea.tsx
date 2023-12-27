@@ -32,7 +32,7 @@ const FormTextArea: FC<Props> = ({ name, control, classes, ...rest }) => {
         {...field}
         {...rest}
       />
-      {error && <span className={warning}>{error.message}</span>}
+      {error ? <span className={warning}>{error.message}</span> : null}
     </div>
   );
 };

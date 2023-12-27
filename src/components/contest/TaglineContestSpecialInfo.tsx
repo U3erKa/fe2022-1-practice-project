@@ -10,12 +10,12 @@ const TaglineContestSpecialInfo: FC<Props> = ({
 }) => {
   return (
     <>
-      {nameVenture && (
+      {nameVenture ? (
         <div className={styles.dataContainer}>
           <span className={styles.label}>Name ventrure</span>
           <span className={styles.data}>{nameVenture}</span>
         </div>
-      )}
+      ) : null}
       <div className={styles.dataContainer}>
         <span className={styles.label}>Type of Taglinee</span>
         <span className={styles.data}>{typeOfTagline}</span>

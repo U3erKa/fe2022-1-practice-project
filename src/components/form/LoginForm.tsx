@@ -49,13 +49,13 @@ const LoginForm = () => {
 
   return (
     <div className={styles.loginForm}>
-      {error && (
+      {error ? (
         <Error
           data={error.data}
           status={error.status}
           clearError={() => dispatch(clearAuth())}
         />
-      )}
+      ) : null}
       <h2>LOGIN TO YOUR ACCOUNT</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <FormInput

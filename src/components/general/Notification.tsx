@@ -11,11 +11,11 @@ const Notification = ({ contestId, message }: Props) => (
     <br />
     <span>{message}</span>
     <br />
-    {contestId && (
+    {contestId ? (
       <Link href={`/contest/${contestId}`} className={styles.goToContest}>
         Go to contest
       </Link>
-    )}
+    ) : null}
   </div>
 );
 

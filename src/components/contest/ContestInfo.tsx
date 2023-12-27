@@ -127,7 +127,7 @@ const ContestInfo: FC<Props> = ({
           value={targetCustomer}
         />
         <DataContainer label="Industry of company" value={industry} />
-        {originalFileName && (
+        {originalFileName ? (
           <div className={styles.dataContainer}>
             <span className={styles.label}>Additional File</span>
             <a
@@ -140,7 +140,7 @@ const ContestInfo: FC<Props> = ({
               {originalFileName}
             </a>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

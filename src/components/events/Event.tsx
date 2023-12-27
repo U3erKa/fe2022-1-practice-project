@@ -27,7 +27,7 @@ export default function Event({ id, name, date, createdAt }: EventResponse) {
     <section key={id} className={styles.eventContainer}>
       <p className={styles.name}>{name}</p>
       <p className={styles.time}>{time}</p>
-      <progress className={styles.progress} value={progress}></progress>
+      <progress className={styles.progress} value={progress} />
     </section>
   );
 }

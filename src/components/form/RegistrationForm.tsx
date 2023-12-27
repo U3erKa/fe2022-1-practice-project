@@ -61,13 +61,13 @@ const RegistrationForm = () => {
 
   return (
     <div className={styles.signUpFormContainer}>
-      {error && (
+      {error ? (
         <Error
           data={error.data}
           status={error.status}
           clearError={() => dispatch(clearAuth())}
         />
-      )}
+      ) : null}
       <div className={styles.headerFormContainer}>
         <h2>CREATE AN ACCOUNT</h2>
         <h4>We always keep your name and email address private.</h4>

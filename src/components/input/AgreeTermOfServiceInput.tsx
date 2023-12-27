@@ -38,9 +38,9 @@ const AgreeTermOfServiceInput: FC<Props> = function AgreeTermOfServiceInput({
           </a>
         </label>
       </div>
-      {isTouched && error?.message && (
+      {isTouched && error?.message ? (
         <span className={classes.warning}>{error.message}</span>
-      )}
+      ) : null}
     </div>
   );
 };

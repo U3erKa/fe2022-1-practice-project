@@ -7,12 +7,12 @@ export type Props = Pick<LogoContestInfo, 'nameVenture' | 'brandStyle'>;
 const LogoContestSpecialInfo: FC<Props> = ({ nameVenture, brandStyle }) => {
   return (
     <>
-      {nameVenture && (
+      {nameVenture ? (
         <div className={styles.dataContainer}>
           <span className={styles.label}>Name ventrure</span>
           <span className={styles.data}>{nameVenture}</span>
         </div>
-      )}
+      ) : null}
       <div className={styles.dataContainer}>
         <span className={styles.label}>Brand Style</span>
         <span className={styles.data}>{brandStyle}</span>

@@ -73,7 +73,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
           <UserImage src={`${PUBLIC_URL}${avatar}`} />
           <span>{firstName}</span>
         </div>
-        {chatData && (
+        {chatData ? (
           <div>
             <FontAwesomeIcon
               icon={isFavorite(chatData, userId) ? fasFaHeart : farFaHeart}
@@ -100,7 +100,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
               }
             />
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ export default function LoginButtons({ data }: Props) {
     <>
       <div className={styles.userInfo}>
         <UserImage src={`${PUBLIC_URL}${avatar}`} />
-        {activeEvents > 0 && <div className={styles.badge}></div>}
+        {activeEvents > 0 && <div className={styles.badge} />}
         <span>{`Hi, ${displayName}`}</span>
         <Image src={MenuIcon} alt="menu" />
         <ProfileNavBar list={PROFILE_NAVBAR} activeEvents={activeEvents} />

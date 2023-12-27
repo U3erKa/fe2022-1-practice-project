@@ -59,13 +59,13 @@ const UserProfile = () => {
           <div className={styles.container}>
             {balance ? (
               <div>
-                {error && (
+                {error ? (
                   <Error
                     data={error.data}
                     status={error.status}
                     clearError={clearPaymentStore}
                   />
-                )}
+                ) : null}
                 <PayForm sendRequest={pay} />
               </div>
             ) : (

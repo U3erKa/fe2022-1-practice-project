@@ -60,13 +60,13 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
 
   return (
     <form className={styles.updateContainer} onSubmit={handleSubmit(onSubmit)}>
-      {error && (
+      {error ? (
         <Error
           data={error.data}
           status={error.status}
           clearError={() => dispatch(clearUserError())}
         />
-      )}
+      ) : null}
       {inputContainers}
       <ImageUpload
         name="file"

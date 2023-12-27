@@ -135,20 +135,20 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
           </div>
         </div>
       </form>
-      {isPayForOrder && (
+      {isPayForOrder ? (
         <div className={styles.totalSum}>
           <span>Total: $100.00</span>
         </div>
-      )}
+      ) : null}
       <div className={styles.buttonsContainer}>
         <button form="myForm" className={styles.payButton} type="submit">
           <span>{isPayForOrder ? 'Pay Now' : 'CashOut'}</span>
         </button>
-        {isPayForOrder && (
+        {isPayForOrder ? (
           <div onClick={router.back} className={styles.backButton}>
             <span>Back</span>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

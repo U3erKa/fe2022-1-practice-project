@@ -90,13 +90,13 @@ const OfferForm: FC<OfferFormProps> = ({
 
   return (
     <div className={styles.offerContainer}>
-      {addOfferError && (
+      {addOfferError ? (
         <Error
           data={addOfferError.data}
           status={addOfferError.status}
           clearError={() => dispatch(clearAddOfferError())}
         />
-      )}
+      ) : null}
       <form className={styles.form} onSubmit={handleSubmit(setOffer)}>
         <OfferInput
           control={control}

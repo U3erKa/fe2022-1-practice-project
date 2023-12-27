@@ -19,10 +19,12 @@ export type FormInputProps = DetailedHTMLProps<
   label?: string;
 };
 
+const DEFAULT_CLASSES = {};
+
 const FormInput = function FormInput({
   name,
   control,
-  classes = {},
+  classes = DEFAULT_CLASSES,
   label,
   ...props
 }: FormInputProps) {
@@ -38,9 +40,9 @@ const FormInput = function FormInput({
 
   return (
     <label className={classes.container}>
-      {label && <p className={classes.label}>{label}</p>}
+      {label ? <p className={classes.label}>{label}</p> : null}
       <input className={inputClassName} type="text" {...field} {...props} />
-      {error && <p className={classes.warning}>{error.message}</p>}
+      {error ? <p className={classes.warning}>{error.message}</p> : null}
     </label>
   );
 };

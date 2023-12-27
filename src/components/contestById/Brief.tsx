@@ -106,13 +106,13 @@ const Brief = () => {
   }
   return (
     <div className={styles.contestForm}>
-      {error && (
+      {error ? (
         <Error
           data={error.data}
           status={error.status}
           clearError={() => dispatch(clearContestUpdationStore())}
         />
-      )}
+      ) : null}
       <ContestForm
         contestType={contestData.contestType}
         defaultData={getContestObjInfo()}

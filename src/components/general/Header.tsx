@@ -57,11 +57,11 @@ const Header = () => {
           <div>
             <NavList list={HEADER_LIST} />
           </div>
-          {user && user.role === CUSTOMER && (
+          {user && user.role === CUSTOMER ? (
             <Link href={PAGE.START_CONTEST} className={styles.startContestBtn}>
               START CONTEST
             </Link>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

@@ -58,7 +58,7 @@ const SelectInput: FC<FormSelectProps> = function SelectInput({
           ))}
         </select>
       </label>
-      {error && <p className={classes.warning}>{error.message}</p>}
+      {error ? <p className={classes.warning}>{error.message}</p> : null}
     </>
   );
 };

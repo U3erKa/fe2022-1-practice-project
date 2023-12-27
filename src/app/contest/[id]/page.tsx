@@ -35,7 +35,7 @@ const ContestPage: FC<Props> = ({ params: { id } }) => {
 
   return (
     <div>
-      {isShowOnFull && (
+      {isShowOnFull ? (
         <LightBox
           open
           slides={[{ src: `${PUBLIC_URL}${imagePath}` }]}
@@ -43,7 +43,7 @@ const ContestPage: FC<Props> = ({ params: { id } }) => {
             dispatch(changeShowImage({ imagePath: null, isShowOnFull: false }))
           }
         />
-      )}
+      ) : null}
       <Header />
       <ContestPageContents contestId={id} />
     </div>

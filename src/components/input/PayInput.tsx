@@ -47,9 +47,9 @@ const PayInput: FC<Props> = ({
         {...field}
         {...rest}
       />
-      {isTouched && error && (
+      {isTouched && error ? (
         <span className={classes.error}>{error.message}!</span>
-      )}
+      ) : null}
     </div>
   );
 };

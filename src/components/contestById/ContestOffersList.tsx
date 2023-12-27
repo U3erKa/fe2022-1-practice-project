@@ -44,13 +44,13 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
 
   return (
     <>
-      {setOfferStatusError && (
+      {setOfferStatusError ? (
         <Error
           data={setOfferStatusError.data}
           status={setOfferStatusError.status}
           clearError={() => dispatch(clearSetOfferStatusError())}
         />
-      )}
+      ) : null}
 
       <div className={styles.offers}>
         {offers.length === 0 ? (
