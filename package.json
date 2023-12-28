@@ -92,5 +92,10 @@
     "turbo": "^1.11.2",
     "typed-scss-modules": "^8.0.0",
     "typescript": "^5.3.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@typescript-eslint/eslint-plugin@6.16.0": "patches/@typescript-eslint__eslint-plugin@6.16.0.patch"
+    }
   }
 }
