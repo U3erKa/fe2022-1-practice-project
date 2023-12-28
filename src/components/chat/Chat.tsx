@@ -9,16 +9,13 @@ import { changeChatShow, getPreviewChat } from 'store/slices/chatSlice';
 import styles from './styles/Chat.module.scss';
 
 const Chat = () => {
-  const {
-    chatStore: { isExpanded, isShow, isShowCatalogCreation, error },
-    userStore: {
-      // @ts-expect-error
-      data: { id: userId },
-    },
-  } = useSelector(({ chatStore, userStore }) => ({
-    chatStore,
-    userStore,
-  }));
+  const { error, isExpanded, isShow, isShowCatalogCreation, userId } =
+    useSelector(({ chatStore, userStore }) => {
+      const { error, isExpanded, isShow, isShowCatalogCreation } = chatStore;
+      const { data } = userStore;
+      const { id: userId } = data!;
+      return { error, isExpanded, isShow, isShowCatalogCreation, userId };
+    });
   const dispatch = useDispatch();
 
   useEffect(() => {

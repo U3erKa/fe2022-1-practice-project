@@ -35,35 +35,38 @@ const isBlocked = (chatData: ChatData, userId: UserId) => {
 };
 
 const ChatHeader: FC<Props> = ({ userId }) => {
-  const { interlocutor, chatData } = useSelector(({ chatStore }) => chatStore);
+  const { chatData, avatar, firstName } = useSelector(({ chatStore }) => {
+    const { chatData, interlocutor } = chatStore;
+    const { avatar, firstName } = interlocutor || {};
+    return { chatData, avatar, firstName };
+  });
+  const { participants } = chatData ?? {};
   const dispatch = useDispatch();
-
-  const { avatar, firstName } = interlocutor || {};
 
   const handleChangeFavorite: MouseEventHandler<SVGSVGElement> = useCallback(
     (event) => {
       dispatch(
         changeChatFavorite({
-          participants: chatData.participants,
+          participants,
           favoriteFlag: !isFavorite(chatData, userId),
         }),
       );
       event.stopPropagation();
     },
-    [chatData, userId, dispatch],
+    [userId, chatData, participants, dispatch],
   );
 
   const handleChangeBlock: MouseEventHandler<SVGSVGElement> = useCallback(
     (event) => {
       dispatch(
         changeChatBlock({
-          participants: chatData.participants,
+          participants,
           blackListFlag: !isBlocked(chatData, userId),
         }),
       );
       event.stopPropagation();
     },
-    [userId, chatData, dispatch],
+    [userId, chatData, participants, dispatch],
   );
 
   return (

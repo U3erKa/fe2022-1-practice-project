@@ -6,10 +6,12 @@ import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';
 import type { ChatId } from 'types/api/_common';
 
 const CatalogListContainer = () => {
-  const {
-    chatStore: { currentCatalog, catalogList, isShowChatsInCatalog },
-    userStore: { data },
-  } = useSelector(({ chatStore, userStore }) => ({ chatStore, userStore }));
+  const { catalogList, currentCatalog, data, isShowChatsInCatalog } =
+    useSelector(({ chatStore, userStore }) => {
+      const { currentCatalog, catalogList, isShowChatsInCatalog } = chatStore;
+      const { data } = userStore;
+      return { catalogList, currentCatalog, data, isShowChatsInCatalog };
+    });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const CatalogListContainer = () => {
       dispatch(
         removeChatFromCatalog({ catalogId: currentCatalog!._id, chatId }),
       );
-    event.stopPropagation();
+      event.stopPropagation();
     },
     [currentCatalog, dispatch],
   );

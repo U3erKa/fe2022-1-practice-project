@@ -19,24 +19,24 @@ export type Props = {
 };
 
 const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
-  const { setOfferStatusError } = useSelector(
-    (state) => state.contestByIdStore,
+  const setOfferStatusError = useSelector(
+    ({ contestByIdStore }) => contestByIdStore.setOfferStatusError,
   );
   const dispatch = useDispatch();
 
   const handleSetOfferStatus = useCallback(
     (creatorId: UserId, offerId: OfferId, command: CustomerCommand) => {
-    dispatch(clearSetOfferStatusError());
-    const { id, orderId, priority } = contestData;
-    const obj = {
-      command,
-      contestId: id,
-      creatorId,
-      offerId,
-      orderId,
-      priority,
-    };
-    dispatch(setOfferStatus(obj));
+      dispatch(clearSetOfferStatusError());
+      const { id, orderId, priority } = contestData;
+      const obj = {
+        command,
+        contestId: id,
+        creatorId,
+        offerId,
+        orderId,
+        priority,
+      };
+      dispatch(setOfferStatus(obj));
     },
     [contestData, dispatch],
   );

@@ -5,8 +5,8 @@ import {
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import isEqual from 'fast-deep-equal/es6/react';
 import Image from 'next/image';
-import { isEqual } from 'radash';
 import { type FC, useCallback } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';

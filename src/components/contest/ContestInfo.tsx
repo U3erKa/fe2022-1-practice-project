@@ -1,6 +1,6 @@
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { isEqual } from 'radash';
+import isEqual from 'fast-deep-equal/es6/react';
 import { type FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'hooks';
@@ -47,7 +47,9 @@ const ContestInfo: FC<Props> = ({
   contestData,
   role,
 }) => {
-  const { messagesPreview } = useSelector((state) => state.chatStore);
+  const messagesPreview = useSelector(
+    ({ chatStore }) => chatStore.messagesPreview,
+  );
   const dispatch = useDispatch();
 
   const {
@@ -69,16 +71,16 @@ const ContestInfo: FC<Props> = ({
 
   const findConversationInfo = useCallback(
     (interlocutorId: InterlocutorId) => {
-    const currentParticipants = [userId, interlocutorId].sort(
-      (participant1, participant2) => participant1 - participant2,
-    );
-    for (const preview of messagesPreview) {
-      const { _id, participants, blackList, favoriteList } = preview;
-      if (isEqual(currentParticipants, participants)) {
-        return { _id, blackList, favoriteList, participants };
+      const currentParticipants = [userId, interlocutorId].sort(
+        (participant1, participant2) => participant1 - participant2,
+      );
+      for (const preview of messagesPreview) {
+        const { _id, participants, blackList, favoriteList } = preview;
+        if (isEqual(currentParticipants, participants)) {
+          return { _id, blackList, favoriteList, participants };
+        }
       }
-    }
-    throw new Error(`Conversation info not found: ${currentParticipants}`);
+      throw new Error(`Conversation info not found: ${currentParticipants}`);
     },
     [messagesPreview, userId],
   );

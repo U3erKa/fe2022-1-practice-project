@@ -3,7 +3,7 @@ import {
   type PayloadAction,
   createSlice,
 } from '@reduxjs/toolkit';
-import { isEqual } from 'radash';
+import isEqual from 'fast-deep-equal/es6/react';
 import * as catalogController from 'api/rest/catalogController';
 import * as chatController from 'api/rest/chatController';
 import {

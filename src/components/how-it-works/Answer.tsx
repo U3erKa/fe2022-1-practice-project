@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { isEqual } from 'radash';
+import isEqual from 'fast-deep-equal/es6/react';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
 import styles from './styles/Answer.module.scss';

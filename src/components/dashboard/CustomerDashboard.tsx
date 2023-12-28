@@ -24,8 +24,12 @@ const buttons: { name: string; filter: Status }[] = [
 ];
 
 const CustomerDashboard = () => {
-  const { isFetching, haveMore, error, customerFilter, contests } = useSelector(
-    (state) => state.contestsList,
+  const { contests, customerFilter, error, haveMore, isFetching } = useSelector(
+    ({ contestsList }) => {
+      const { contests, customerFilter, error, haveMore, isFetching } =
+        contestsList;
+      return { contests, customerFilter, error, haveMore, isFetching };
+    },
   );
   const dispatch = useDispatch();
 
@@ -47,16 +51,16 @@ const CustomerDashboard = () => {
 
   const getContestsMethod = useCallback(
     (startFrom = 0) => {
-    dispatch(
-      getContests({
-        requestData: {
-          contestStatus: customerFilter,
-          limit: 8,
-          offset: startFrom,
-        },
-        role: CUSTOMER,
-      }),
-    );
+      dispatch(
+        getContests({
+          requestData: {
+            contestStatus: customerFilter,
+            limit: 8,
+            offset: startFrom,
+          },
+          role: CUSTOMER,
+        }),
+      );
     },
     [customerFilter, dispatch],
   );

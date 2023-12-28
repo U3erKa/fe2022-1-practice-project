@@ -16,9 +16,10 @@ import {
 import styles from './styles/CatalogCreation.module.scss';
 
 const CatalogCreation = () => {
-  const { catalogCreationMode, isFetching } = useSelector(
-    (state) => state.chatStore,
-  );
+  const { catalogCreationMode, isFetching } = useSelector(({ chatStore }) => {
+    const { catalogCreationMode, isFetching } = chatStore;
+    return { catalogCreationMode, isFetching };
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {

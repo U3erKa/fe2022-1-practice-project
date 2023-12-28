@@ -1,5 +1,5 @@
+import isEqual from 'fast-deep-equal/es6/react';
 import { useSearchParams } from 'next/navigation';
-import { isEqual } from 'radash';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { ContestBox } from 'components/contest';

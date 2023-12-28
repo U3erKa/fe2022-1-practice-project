@@ -15,9 +15,10 @@ import type { Catalog } from 'types/chat';
 import styles from './styles/CatalogHeader.module.scss';
 
 const CatalogListHeader = () => {
-  const { isRenameCatalog, currentCatalog } = useSelector(
-    ({ chatStore }) => chatStore,
-  );
+  const { isRenameCatalog, currentCatalog } = useSelector(({ chatStore }) => {
+    const { isRenameCatalog, currentCatalog } = chatStore;
+    return { isRenameCatalog, currentCatalog };
+  });
   const dispatch = useDispatch();
   const { _id, catalogName } = currentCatalog ?? ({} as Catalog);
 

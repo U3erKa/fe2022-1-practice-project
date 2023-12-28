@@ -12,15 +12,15 @@ import { Brief, ContestOffersList, ContestSideBar } from '.';
 import styles from './styles/ContestPage.module.scss';
 
 function ContestPageContents({ contestId }: { readonly contestId: number }) {
-  const {
-    contestByIdStore: { error, isFetching, isBrief, contestData, offers },
-    userStore: { data: user },
-  } = useSelector(({ contestByIdStore, userStore }) => ({
-    contestByIdStore,
-    userStore,
-  }));
+  const { contestData, error, isBrief, isFetching, offers, userId, role } =
+    useSelector(({ contestByIdStore, userStore }) => {
+      const { error, isFetching, isBrief, contestData, offers } =
+        contestByIdStore;
+      const { data: user } = userStore;
+      const { id: userId, role } = user ?? {};
+      return { contestData, error, isBrief, isFetching, offers, userId, role };
+    });
   const dispatch = useDispatch();
-  const { id: userId, role } = user ?? {};
 
   const getData = useCallback(
     () => dispatch(getContestById({ contestId })),
