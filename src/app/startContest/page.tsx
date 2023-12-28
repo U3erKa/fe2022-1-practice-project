@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from 'components/startContest';
@@ -27,16 +27,20 @@ const StartContestPage = () => {
     }
   }, [router, userStore.data?.role]);
 
-  const setBundle = (bundleStr: string) => {
-    const array = bundleStr.toLowerCase().split('+');
-    const bundleList = { first: array[0] } as unknown as Bundle;
-    for (let i = 0; i < array.length; i++) {
-      bundleList[array[i] as keyof typeof bundleList] =
-        i === array.length - 1 ? 'payment' : array[i + 1];
-    }
-    dispatch(updateBundle(bundleList));
-    router.push(`${PAGE.START_CONTEST}/${bundleList.first}`);
-  };
+  const setBundle = useCallback(
+    (bundleStr: string) => {
+      const array = bundleStr.toLowerCase().split('+');
+      const bundleList = { first: array[0] } as unknown as Bundle;
+      for (let i = 0; i < array.length; i++) {
+        // @ts-expect-error
+        bundleList[array[i] as keyof typeof bundleList] =
+          i === array.length - 1 ? 'payment' : array[i + 1];
+      }
+      dispatch(updateBundle(bundleList));
+      router.push(`${PAGE.START_CONTEST}/${bundleList.first}`);
+    },
+    [dispatch, router],
+  );
 
   return (
     <div>

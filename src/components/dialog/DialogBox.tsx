@@ -9,7 +9,12 @@ import {
   faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type FC, type MouseEvent } from 'react';
+import {
+  type FC,
+  type MouseEvent,
+  type MouseEventHandler,
+  useCallback,
+} from 'react';
 import { UserImage } from 'components/general';
 import { CATALOG_PREVIEW_CHAT_MODE, PUBLIC_URL } from 'constants/general';
 import { getShortTimeStr } from 'utils/functions';
@@ -39,19 +44,37 @@ export type Props = {
 };
 
 const DialogBox: FC<Props> = ({
-  chatPreview,
-  userId,
-  changeFavorite,
-  changeBlackList,
   catalogOperation,
-  goToExpandedDialog,
+  changeBlackList,
+  changeFavorite,
   chatMode,
+  chatPreview,
+  goToExpandedDialog,
   interlocutor,
+  userId,
 }) => {
   const { favoriteList, participants, blackList, _id, text, createdAt } =
     chatPreview;
   const isFavorite = favoriteList[participants.indexOf(userId)];
   const isBlocked = blackList[participants.indexOf(userId)];
+
+  const handleChangeFavorite: MouseEventHandler<SVGSVGElement> = useCallback(
+    (event) =>
+      changeFavorite({ favoriteFlag: !isFavorite, participants }, event),
+    [isFavorite, participants, changeFavorite],
+  );
+
+  const handleChangeBlock: MouseEventHandler<SVGSVGElement> = useCallback(
+    (event) =>
+      changeBlackList({ blackListFlag: !isBlocked, participants }, event),
+    [isBlocked, participants, changeBlackList],
+  );
+
+  const handleChangeChatMode: MouseEventHandler<SVGSVGElement> = useCallback(
+    (event) => catalogOperation(event, _id),
+    [_id, catalogOperation],
+  );
+
   if (!interlocutor) return null;
   return (
     <div
@@ -75,18 +98,11 @@ const DialogBox: FC<Props> = ({
           <span className={styles.time}>{getShortTimeStr(createdAt)}</span>
           <FontAwesomeIcon
             icon={isFavorite ? fasFaHeart : farFaHeart}
-            onClick={(event) =>
-              changeFavorite({ favoriteFlag: !isFavorite, participants }, event)
-            }
+            onClick={handleChangeFavorite}
           />
           <FontAwesomeIcon
             icon={isBlocked ? faUnlock : faUserLock}
-            onClick={(event) =>
-              changeBlackList(
-                { blackListFlag: !isBlocked, participants },
-                event,
-              )
-            }
+            onClick={handleChangeBlock}
           />
           <FontAwesomeIcon
             icon={
@@ -94,7 +110,7 @@ const DialogBox: FC<Props> = ({
                 ? faCircleMinus
                 : faSquarePlus
             }
-            onClick={(event) => catalogOperation(event, _id)}
+            onClick={handleChangeChatMode}
           />
         </div>
       </div>

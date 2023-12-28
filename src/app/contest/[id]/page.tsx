@@ -1,6 +1,6 @@
 'use client';
 
-import { type FC, useEffect } from 'react';
+import { type FC, useCallback, useEffect } from 'react';
 import LightBox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { useDispatch, useSelector } from 'hooks';
@@ -33,15 +33,18 @@ const ContestPage: FC<Props> = ({ params: { id } }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleShowOnFull = useCallback(
+    () => dispatch(changeShowImage({ imagePath: null, isShowOnFull: false })),
+    [dispatch],
+  );
+
   return (
     <div>
       {isShowOnFull ? (
         <LightBox
           open
+          close={handleShowOnFull}
           slides={[{ src: `${PUBLIC_URL}${imagePath}` }]}
-          close={() =>
-            dispatch(changeShowImage({ imagePath: null, isShowOnFull: false }))
-          }
         />
       ) : null}
       <Header />

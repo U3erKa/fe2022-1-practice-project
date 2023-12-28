@@ -1,6 +1,7 @@
 import { faLeftLong, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { FormInput } from 'components/input';
@@ -25,25 +26,31 @@ const CatalogListHeader = () => {
     resolver: zodResolver(CatalogSchema),
   });
 
-  const changeCatalogNameMethod = (values: Pick<Catalog, 'catalogName'>) => {
-    dispatch(
-      changeCatalogName({ catalogId: _id, catalogName: values.catalogName }),
-    );
-  };
+  const changeCatalogNameMethod = useCallback(
+    (values: Pick<Catalog, 'catalogName'>) => {
+      dispatch(
+        changeCatalogName({ catalogId: _id, catalogName: values.catalogName }),
+      );
+    },
+    [_id, dispatch],
+  );
+
+  const handleShowModeCatalogClick = useCallback(
+    () => dispatch(changeShowModeCatalog()),
+    [dispatch],
+  );
+  const handleCatalogRename = useCallback(
+    () => dispatch(changeRenameCatalogMode()),
+    [dispatch],
+  );
 
   return (
     <div className={styles.headerContainer}>
-      <FontAwesomeIcon
-        icon={faLeftLong}
-        onClick={() => dispatch(changeShowModeCatalog())}
-      />
+      <FontAwesomeIcon icon={faLeftLong} onClick={handleShowModeCatalogClick} />
       {!isRenameCatalog ? (
         <div className={styles.infoContainer}>
           <span>{catalogName}</span>
-          <FontAwesomeIcon
-            icon={faPenToSquare}
-            onClick={() => dispatch(changeRenameCatalogMode())}
-          />
+          <FontAwesomeIcon icon={faPenToSquare} onClick={handleCatalogRename} />
         </div>
       ) : (
         <div className={styles.changeContainer}>

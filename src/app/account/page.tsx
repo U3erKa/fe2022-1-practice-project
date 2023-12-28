@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserInfo } from 'components/account';
 import { PayForm } from 'components/form';
@@ -22,9 +23,12 @@ const UserProfile = () => {
 
   const dispatch = useDispatch();
 
-  const pay = ({ number, expiry, cvc, sum }: CashOutParams) => {
-    dispatch(cashOut({ cvc, expiry, number, sum }));
-  };
+  const pay = useCallback(
+    ({ number, expiry, cvc, sum }: CashOutParams) => {
+      dispatch(cashOut({ cvc, expiry, number, sum }));
+    },
+    [dispatch],
+  );
 
   return (
     <div>

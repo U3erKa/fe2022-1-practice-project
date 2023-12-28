@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UpdateUserInfoForm } from 'components/form';
 import { UserImage } from 'components/general';
@@ -61,21 +61,24 @@ const UserInfo: FC = () => {
   const { avatar, ...userData } =
     data || ({} as NonNullable<UserState['data']>);
 
-  const updateUserData = (
-    values: Pick<
-      NonNullable<UserState['data']>,
-      'firstName' | 'lastName' | 'displayName'
-    > & { file: FileList },
-  ) => {
-    const formData = new FormData();
+  const updateUserData = useCallback(
+    (
+      values: Pick<
+        NonNullable<UserState['data']>,
+        'firstName' | 'lastName' | 'displayName'
+      > & { file: FileList },
+    ) => {
+      const formData = new FormData();
 
-    formData.append('file', values.file[0]);
-    formData.append('firstName', values.firstName);
-    formData.append('lastName', values.lastName);
-    formData.append('displayName', values.displayName);
+      formData.append('file', values.file[0]);
+      formData.append('firstName', values.firstName);
+      formData.append('lastName', values.lastName);
+      formData.append('displayName', values.displayName);
 
-    dispatch(updateUser(formData));
-  };
+      dispatch(updateUser(formData));
+    },
+    [dispatch],
+  );
 
   return (
     <div className={styles.mainContainer}>

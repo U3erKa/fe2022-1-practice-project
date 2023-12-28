@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { select } from 'radash';
-import { type ChangeEventHandler, type FC } from 'react';
+import { type ChangeEventHandler, type FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { CONTEST_TYPES, PAGE } from 'constants/general';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
@@ -39,8 +39,8 @@ export const ContestTypes: FC<Props> = ({ onChange, value }) => {
 
 export const IndustryType: FC<Props2> = ({ industries, filter, onChange }) => {
   const options = industries
-    ? industries.map((industry, i) => (
-        <option key={i + 1} value={industry}>
+    ? industries.map((industry) => (
+        <option key={industry} value={industry}>
           {industry}
         </option>
       ))
@@ -71,29 +71,49 @@ export const CreatorFilter = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const parseParamsToUrl = (creatorFilter: _CreatorFilter) => {
-    const obj: Record<string, any> = {};
-    for (const el in creatorFilter) {
-      if (Object.hasOwn(creatorFilter, el)) {
-        const value = creatorFilter[el as keyof typeof creatorFilter];
-        if (value != null) obj[el] = value;
-      }
-    }
-
-    router.push(`${PAGE.DASHBOARD}?${new URLSearchParams(obj)}`);
-  };
-
-  const changePredicate = ({ name, value }: { name: string; value: any }) => {
-    dispatch(
-      setNewCreatorFilter({
+  const changePredicate = useCallback(
+    ({ name, value }: { name: string; value: string | number | boolean }) => {
+      const newCreatorFilterValue = {
         [name]: value === 'Choose industry' ? null : value,
-      }),
+      };
+      dispatch(setNewCreatorFilter(newCreatorFilterValue));
+      const newCreatorFilter = { ...creatorFilter, ...newCreatorFilterValue };
+      const params: typeof newCreatorFilter = {};
+
+      for (const el in newCreatorFilter) {
+        if (Object.hasOwn(newCreatorFilter, el)) {
+          const value = newCreatorFilter[el as keyof typeof newCreatorFilter];
+          // @ts-expect-error
+          if (value != null) params[el] = value;
+        }
+      }
+
+      router.push(`${PAGE.DASHBOARD}?${new URLSearchParams(params as any)}`);
+    },
+    [creatorFilter, dispatch, router],
+  );
+
+  const handleContestTypeChange: ChangeEventHandler<HTMLSelectElement> =
+    useCallback(
+      ({ target }) =>
+        changePredicate({
+          name: 'typeIndex',
+          value: CONTEST_TYPES.indexOf(
+            target.value as (typeof CONTEST_TYPES)[number],
+          ),
+        }),
+      [changePredicate],
     );
-    parseParamsToUrl({
-      ...creatorFilter,
-      ...{ [name]: value === 'Choose industry' ? null : value },
-    });
-  };
+
+  const handleIndustryTypeChange: ChangeEventHandler<HTMLSelectElement> =
+    useCallback(
+      ({ target }) =>
+        changePredicate({
+          name: 'industry',
+          value: target.value,
+        }),
+      [changePredicate],
+    );
 
   return (
     <div className={styles.filterContainer}>
@@ -115,13 +135,8 @@ export const CreatorFilter = () => {
         <div className={styles.inputContainer}>
           <span>By contest type</span>
           <ContestTypes
-            value={CONTEST_TYPES[creatorFilter.typeIndex as number]}
-            onChange={({ target }) =>
-              changePredicate({
-                name: 'typeIndex',
-                value: CONTEST_TYPES.indexOf(target.value),
-              })
-            }
+            value={CONTEST_TYPES[creatorFilter.typeIndex as number]!}
+            onChange={handleContestTypeChange}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -145,12 +160,7 @@ export const CreatorFilter = () => {
             <IndustryType
               filter={creatorFilter.industry}
               industries={industry}
-              onChange={({ target }) =>
-                changePredicate({
-                  name: 'industry',
-                  value: target.value,
-                })
-              }
+              onChange={handleIndustryTypeChange}
             />
           </div>
         )}

@@ -1,5 +1,4 @@
-import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { OfferBox } from 'components/contestById';
 import { ItemsContainer, TryAgain } from 'components/general';
@@ -29,19 +28,20 @@ export default function ModeratorDashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReviewed]);
 
-  const getOffersMethod = (offset = 0) => {
-    dispatch(getOffers({ isReviewed, limit: 8, offset }));
-  };
+  const getOffersMethod = useCallback(
+    (offset = 0) => {
+      dispatch(getOffers({ isReviewed, limit: 8, offset }));
+    },
+    [isReviewed, dispatch],
+  );
 
-  const setOfferStatusMethod = (
-    _creatorId: UserId,
-    offerId: OfferId,
-    command: ModeratorCommand,
-  ) => {
-    dispatch(clearSetOfferStatusError());
-    const obj = { command, offerId };
-    dispatch(setOfferStatus(obj));
-  };
+  const setOfferStatusMethod = useCallback(
+    (_creatorId: UserId, offerId: OfferId, command: ModeratorCommand) => {
+      dispatch(clearSetOfferStatusError());
+      dispatch(setOfferStatus({ command, offerId }));
+    },
+    [dispatch],
+  );
 
   const items = offers.map((offer) => (
     <OfferBox
@@ -52,18 +52,12 @@ export default function ModeratorDashboard() {
     />
   ));
 
-  const setOfferReviewStatus = (status: boolean) => {
-    return setIsReviewed(status);
-  };
-
   return (
     <div className={styles.mainContainer}>
       <CustomFilter
         buttons={buttons}
+        filterAction={setIsReviewed}
         predicate={isReviewed}
-        filterAction={
-          setOfferReviewStatus as ActionCreatorWithPayload<any, string>
-        }
       />
       <div className={styles.contestsContainer}>
         {error ? (

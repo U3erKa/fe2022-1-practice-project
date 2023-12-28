@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { type FC, useEffect } from 'react';
+import { type FC, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { OptionalSelects } from 'components/contest';
@@ -123,7 +123,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
     router.push(route);
   };
 
-  const getPreference = () => {
+  const getPreference = useCallback(() => {
     switch (contestType) {
       case NAME_CONTEST: {
         dispatch(
@@ -146,7 +146,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
         throw new TypeError(`${contestType} is not supported contest type`);
       }
     }
-  };
+  }, [contestType, dispatch]);
 
   if (error) {
     return <TryAgain getData={getPreference} />;

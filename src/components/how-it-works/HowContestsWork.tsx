@@ -6,8 +6,8 @@ import HowContestsWorkImage2 from 'assets/howItWorks/howContestsWork2.svg';
 import styles from './styles/HowContestsWork.module.scss';
 
 export const HowContestsWork: FC = () => {
-  const howContestsWork = HOW_CONTESTS_WORK.map((listEntry, i) => (
-    <li className={styles.howToItem} key={i}>
+  const howContestsWork = HOW_CONTESTS_WORK.map((listEntry) => (
+    <li className={styles.howToItem} key={listEntry}>
       <p className={styles.text}>{listEntry}</p>
     </li>
   ));

@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { type FC, type MouseEvent } from 'react';
+import { type FC, type MouseEventHandler, useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserImage } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';
@@ -17,15 +17,21 @@ import {
 } from 'store/slices/chatSlice';
 import LeftArrowIcon from 'assets/icons/arrow-left-thick.png';
 import type { UserId } from 'types/api/_common';
-import type {
-  ChangeChatBlockParams,
-  ChangeChatFavoriteParams,
-} from 'types/api/chat';
 import type { ChatData } from 'types/chat';
 import styles from './styles/ChatHeader.module.scss';
 
 export type Props = {
   readonly userId: UserId;
+};
+
+const isFavorite = (chatData: ChatData, userId: UserId) => {
+  const { favoriteList, participants } = chatData;
+  return favoriteList[participants.indexOf(userId)];
+};
+
+const isBlocked = (chatData: ChatData, userId: UserId) => {
+  const { participants, blackList } = chatData;
+  return blackList[participants.indexOf(userId)];
 };
 
 const ChatHeader: FC<Props> = ({ userId }) => {
@@ -34,31 +40,31 @@ const ChatHeader: FC<Props> = ({ userId }) => {
 
   const { avatar, firstName } = interlocutor || {};
 
-  const changeFavorite = (
-    data: ChangeChatFavoriteParams,
-    event: MouseEvent<SVGSVGElement>,
-  ) => {
-    dispatch(changeChatFavorite(data));
-    event.stopPropagation();
-  };
+  const handleChangeFavorite: MouseEventHandler<SVGSVGElement> = useCallback(
+    (event) => {
+      dispatch(
+        changeChatFavorite({
+          participants: chatData.participants,
+          favoriteFlag: !isFavorite(chatData, userId),
+        }),
+      );
+      event.stopPropagation();
+    },
+    [chatData, userId, dispatch],
+  );
 
-  const changeBlackList = (
-    data: ChangeChatBlockParams,
-    event: MouseEvent<SVGSVGElement>,
-  ) => {
-    dispatch(changeChatBlock(data));
-    event.stopPropagation();
-  };
-
-  const isFavorite = (chatData: ChatData, userId: UserId) => {
-    const { favoriteList, participants } = chatData;
-    return favoriteList[participants.indexOf(userId)];
-  };
-
-  const isBlocked = (chatData: ChatData, userId: UserId) => {
-    const { participants, blackList } = chatData;
-    return blackList[participants.indexOf(userId)];
-  };
+  const handleChangeBlock: MouseEventHandler<SVGSVGElement> = useCallback(
+    (event) => {
+      dispatch(
+        changeChatBlock({
+          participants: chatData.participants,
+          blackListFlag: !isBlocked(chatData, userId),
+        }),
+      );
+      event.stopPropagation();
+    },
+    [userId, chatData, dispatch],
+  );
 
   return (
     <div className={styles.chatHeader}>
@@ -77,27 +83,11 @@ const ChatHeader: FC<Props> = ({ userId }) => {
           <div>
             <FontAwesomeIcon
               icon={isFavorite(chatData, userId) ? fasFaHeart : farFaHeart}
-              onClick={(event) =>
-                changeFavorite(
-                  {
-                    participants: chatData.participants,
-                    favoriteFlag: !isFavorite(chatData, userId),
-                  },
-                  event,
-                )
-              }
+              onClick={handleChangeFavorite}
             />
             <FontAwesomeIcon
               icon={isBlocked(chatData, userId) ? faUnlock : faUserLock}
-              onClick={(event) =>
-                changeBlackList(
-                  {
-                    participants: chatData.participants,
-                    blackListFlag: !isBlocked(chatData, userId),
-                  },
-                  event,
-                )
-              }
+              onClick={handleChangeBlock}
             />
           </div>
         ) : null}

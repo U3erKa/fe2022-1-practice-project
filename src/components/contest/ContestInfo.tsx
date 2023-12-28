@@ -1,7 +1,7 @@
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { isEqual } from 'radash';
-import type { FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'hooks';
 import {
@@ -67,7 +67,8 @@ const ContestInfo: FC<Props> = ({
     status,
   } = contestData;
 
-  const findConversationInfo = (interlocutorId: InterlocutorId) => {
+  const findConversationInfo = useCallback(
+    (interlocutorId: InterlocutorId) => {
     const currentParticipants = [userId, interlocutorId].sort(
       (participant1, participant2) => participant1 - participant2,
     );
@@ -78,16 +79,18 @@ const ContestInfo: FC<Props> = ({
       }
     }
     throw new Error(`Conversation info not found: ${currentParticipants}`);
-  };
+    },
+    [messagesPreview, userId],
+  );
 
-  const goChat = () => {
+  const goChat = useCallback(() => {
     dispatch(
       goToExpandedDialog({
         conversationData: findConversationInfo(User.id),
         interlocutor: User,
       }),
     );
-  };
+  }, [findConversationInfo, User, dispatch]);
 
   return (
     <div className={styles.mainContestInfoContainer}>

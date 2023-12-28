@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { Replacement } from '@react-input/mask';
 import { usePathname, useRouter } from 'next/navigation';
-import { type FC } from 'react';
+import { type FC, useCallback } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles.scss';
 import { useForm } from 'react-hook-form';
@@ -30,9 +30,12 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const changeFocusOnCardMethod = (name: CardField) => {
-    dispatch(changeFocusOnCard(name));
-  };
+  const changeFocusOnCardMethod = useCallback(
+    (name: CardField) => {
+      dispatch(changeFocusOnCard(name));
+    },
+    [dispatch],
+  );
 
   const isCashoutPage = pathname === PAGE.ACCOUNT;
   const defaultValues = {
@@ -49,7 +52,8 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
     defaultValues,
     resolver: zodResolver(isCashoutPage ? CashoutSchema : PaymentSchema),
   });
-  const { name, number, expiry, cvc } = watch();
+  // prettier-ignore
+  const [name, number, expiry, cvc] = watch(['name', 'number', 'expiry', 'cvc']);
 
   const replacement = { _: /\d/ } satisfies string | Replacement;
   return (

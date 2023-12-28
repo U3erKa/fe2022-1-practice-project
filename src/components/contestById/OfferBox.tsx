@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { isEqual } from 'radash';
-import type { FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Rating from 'react-rating';
@@ -97,7 +97,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
   const { id: userId, role, messagesPreview } = selector;
   const { id, avatar, firstName, lastName, email, rating } = data.User;
 
-  const findConversationInfo = () => {
+  const findConversationInfo = useCallback(() => {
     const currentParticipants = [userId, id].sort(
       (participant1, participant2) => participant1 - participant2,
     );
@@ -108,9 +108,9 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       }
     }
     throw new Error(`Conversation info not found: ${currentParticipants}`);
-  };
+  }, [id, messagesPreview, userId]);
 
-  const resolveOffer = () => {
+  const resolveOffer = useCallback(() => {
     confirmAlert({
       title: 'confirm',
       message: 'Are u sure?',
@@ -131,9 +131,9 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
         },
       ],
     });
-  };
+  }, [data.id, id, role, setOfferStatus]);
 
-  const rejectOffer = () => {
+  const rejectOffer = useCallback(() => {
     confirmAlert({
       title: 'confirm',
       message: 'Are u sure?',
@@ -152,28 +152,31 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
         },
       ],
     });
-  };
+  }, [data.id, id, role, setOfferStatus]);
 
-  const changeMarkMethod = (value: number) => {
-    dispatch(clearChangeMarkError());
-    dispatch(
-      changeMark({
-        creatorId: id,
-        isFirst: !data.mark,
-        mark: value as _Rating,
-        offerId: data.id,
-      }),
-    );
-  };
+  const changeMarkMethod = useCallback(
+    (value: number) => {
+      dispatch(clearChangeMarkError());
+      dispatch(
+        changeMark({
+          creatorId: id,
+          isFirst: !data.mark,
+          mark: value as _Rating,
+          offerId: data.id,
+        }),
+      );
+    },
+    [data.id, data.mark, dispatch, id],
+  );
 
-  const goChat = () => {
+  const goChat = useCallback(() => {
     dispatch(
       goToExpandedDialog({
         conversationData: findConversationInfo(),
         interlocutor: data.User,
       }),
     );
-  };
+  }, [data.User, findConversationInfo, dispatch]);
 
   const needButtons = (offerStatus: OfferStatusIcon) => {
     if (role === MODERATOR) return true;
@@ -186,6 +189,17 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       offerStatus === OFFER_STATUS_APPROVED
     );
   };
+
+  const handleLogoClick = useCallback(
+    () =>
+      dispatch(
+        changeShowImage({
+          imagePath: data.fileName,
+          isShowOnFull: true,
+        }),
+      ),
+    [data.fileName, dispatch],
+  );
 
   return (
     <div className={styles.offerContainer}>
@@ -220,14 +234,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
               height={100}
               src={`${PUBLIC_URL}${data.fileName}`}
               width={150}
-              onClick={() =>
-                dispatch(
-                  changeShowImage({
-                    imagePath: data.fileName,
-                    isShowOnFull: true,
-                  }),
-                )
-              }
+              onClick={handleLogoClick}
             />
           ) : (
             <span className={styles.response}>{data.text}</span>

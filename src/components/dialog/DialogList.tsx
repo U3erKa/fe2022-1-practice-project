@@ -1,4 +1,4 @@
-import { type FC, type MouseEvent } from 'react';
+import { type FC, type MouseEvent, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { DialogBox } from 'components/dialog';
 import {
@@ -30,85 +30,107 @@ export type Props = {
   ) => void;
 };
 
+const onlyFavoriteDialogs = (chatPreview: MessagePreview, userId: UserId) =>
+  chatPreview.favoriteList[chatPreview.participants.indexOf(userId)];
+
+const onlyBlockDialogs = (chatPreview: MessagePreview, userId: UserId) =>
+  chatPreview.blackList[chatPreview.participants.indexOf(userId)];
+
 const DialogList: FC<Props> = ({ userId, removeChat }) => {
   const { chatMode, messagesPreview, isShowChatsInCatalog, currentCatalog } =
-    useSelector((state) => state.chatStore);
+    // prettier-ignore
+    useSelector(({ chatStore }) => {
+      const { chatMode, currentCatalog, isShowChatsInCatalog, messagesPreview }
+        = chatStore;
+      return { chatMode, currentCatalog, isShowChatsInCatalog, messagesPreview };
+    });
   const dispatch = useDispatch();
 
-  const changeFavorite = (
-    data: ChangeChatFavoriteParams,
-    event: MouseEvent<SVGSVGElement>,
-  ) => {
-    dispatch(changeChatFavorite(data));
-    event.stopPropagation();
-  };
+  const changeFavorite = useCallback(
+    (data: ChangeChatFavoriteParams, event: MouseEvent<SVGSVGElement>) => {
+      dispatch(changeChatFavorite(data));
+      event.stopPropagation();
+    },
+    [dispatch],
+  );
 
-  const changeBlackList = (
-    data: ChangeChatBlockParams,
-    event: MouseEvent<SVGSVGElement>,
-  ) => {
-    dispatch(changeChatBlock(data));
-    event.stopPropagation();
-  };
+  const changeBlackList = useCallback(
+    (data: ChangeChatBlockParams, event: MouseEvent<SVGSVGElement>) => {
+      dispatch(changeChatBlock(data));
+      event.stopPropagation();
+    },
+    [dispatch],
+  );
 
-  const changeShowCatalogCreation = (
-    event: MouseEvent<SVGSVGElement>,
-    chatId: ChatId,
-  ) => {
-    dispatch(changeShowAddChatToCatalogMenu(chatId));
-    event.stopPropagation();
-  };
+  const changeShowCatalogCreation = useCallback(
+    (event: MouseEvent<SVGSVGElement>, chatId: ChatId) => {
+      dispatch(changeShowAddChatToCatalogMenu(chatId));
+      event.stopPropagation();
+    },
+    [dispatch],
+  );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onlyChatsInCatalog = (chatPreview: MessagePreview, _userId: UserId) =>
-    currentCatalog?.chats.includes(chatPreview._id);
+  const onlyChatsInCatalog = useCallback(
+    (chatPreview: MessagePreview, _userId: UserId) =>
+      currentCatalog?.chats.includes(chatPreview._id),
+    [currentCatalog?.chats],
+  );
 
-  const onlyFavoriteDialogs = (chatPreview: MessagePreview, userId: UserId) =>
-    chatPreview.favoriteList[chatPreview.participants.indexOf(userId)];
+  const handleGoToExpandedDialog = useCallback(
+    (data: GoToExtendedDialog) => dispatch(goToExpandedDialog(data)),
+    [dispatch],
+  );
 
-  const onlyBlockDialogs = (chatPreview: MessagePreview, userId: UserId) =>
-    chatPreview.blackList[chatPreview.participants.indexOf(userId)];
-
-  const renderPreview = (
-    filterFunc?:
-      | typeof onlyChatsInCatalog
-      | typeof onlyFavoriteDialogs
-      | typeof onlyBlockDialogs,
-  ) => {
-    const arrayList: JSX.Element[] = [];
-    for (const chatPreview of messagesPreview) {
-      if (!filterFunc || filterFunc(chatPreview, userId)) {
-        const dialogNode = (
-          <DialogBox
-            changeBlackList={changeBlackList}
-            changeFavorite={changeFavorite}
-            chatMode={chatMode}
-            chatPreview={chatPreview}
-            interlocutor={chatPreview.interlocutor}
-            key={uniqueId()}
-            userId={userId}
-            catalogOperation={
-              chatMode === CATALOG_PREVIEW_CHAT_MODE
-                ? removeChat
-                : changeShowCatalogCreation
-            }
-            goToExpandedDialog={(data: GoToExtendedDialog) =>
-              dispatch(goToExpandedDialog(data))
-            }
-          />
-        );
-        arrayList.push(dialogNode);
+  const renderPreview = useCallback(
+    (
+      filterFunc?:
+        | typeof onlyChatsInCatalog
+        | typeof onlyFavoriteDialogs
+        | typeof onlyBlockDialogs,
+    ) => {
+      const arrayList: JSX.Element[] = [];
+      for (const chatPreview of messagesPreview) {
+        if (!filterFunc || filterFunc(chatPreview, userId)) {
+          const dialogNode = (
+            <DialogBox
+              changeBlackList={changeBlackList}
+              changeFavorite={changeFavorite}
+              chatMode={chatMode}
+              chatPreview={chatPreview}
+              goToExpandedDialog={handleGoToExpandedDialog}
+              interlocutor={chatPreview.interlocutor}
+              key={uniqueId()}
+              userId={userId}
+              catalogOperation={
+                chatMode === CATALOG_PREVIEW_CHAT_MODE
+                  ? removeChat
+                  : changeShowCatalogCreation
+              }
+            />
+          );
+          arrayList.push(dialogNode);
+        }
       }
-    }
 
-    return arrayList.length ? (
-      arrayList
-    ) : (
-      <span className={styles.notFound}>Not found</span>
-    );
-  };
+      return arrayList.length ? (
+        arrayList
+      ) : (
+        <span className={styles.notFound}>Not found</span>
+      );
+    },
+    [
+      changeBlackList,
+      changeFavorite,
+      changeShowCatalogCreation,
+      chatMode,
+      handleGoToExpandedDialog,
+      messagesPreview,
+      removeChat,
+      userId,
+    ],
+  );
 
-  const renderChatPreview = () => {
+  const chatPreview = useMemo(() => {
     if (isShowChatsInCatalog) {
       return renderPreview(onlyChatsInCatalog);
     }
@@ -117,9 +139,9 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
     if (chatMode === BLOCKED_PREVIEW_CHAT_MODE)
       return renderPreview(onlyBlockDialogs);
     return renderPreview();
-  };
+  }, [chatMode, isShowChatsInCatalog, onlyChatsInCatalog, renderPreview]);
 
-  return <div className={styles.previewContainer}>{renderChatPreview()}</div>;
+  return <div className={styles.previewContainer}>{chatPreview}</div>;
 };
 
 export default DialogList;

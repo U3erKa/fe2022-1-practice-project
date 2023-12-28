@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
@@ -47,11 +47,13 @@ const LoginForm = () => {
     );
   };
 
+  const handleClearError = useCallback(() => dispatch(clearAuth()), [dispatch]);
+
   return (
     <div className={styles.loginForm}>
       {error ? (
         <Error
-          clearError={() => dispatch(clearAuth())}
+          clearError={handleClearError}
           data={error.data}
           status={error.status}
         />

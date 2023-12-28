@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
@@ -72,27 +72,35 @@ const OfferForm: FC<OfferFormProps> = ({
     ),
   });
 
-  const setOffer = ({ offerData }: LogoOffer | TextOffer) => {
-    dispatch(clearAddOfferError());
-    const data = new FormData();
+  const setOffer = useCallback(
+    ({ offerData }: LogoOffer | TextOffer) => {
+      dispatch(clearAddOfferError());
+      const data = new FormData();
 
-    data.append('contestId', contestId as unknown as string);
-    data.append('contestType', contestType);
-    data.append('customerId', customerId as unknown as string);
-    data.append(
-      'offerData',
-      offerData instanceof FileList ? (offerData[0] as File) : offerData,
-    );
+      data.append('contestId', contestId as unknown as string);
+      data.append('contestType', contestType);
+      data.append('customerId', customerId as unknown as string);
+      data.append(
+        'offerData',
+        offerData instanceof FileList ? (offerData[0] as File) : offerData,
+      );
 
-    dispatch(addOffer(data));
-    reset();
-  };
+      dispatch(addOffer(data));
+      reset();
+    },
+    [contestId, contestType, customerId, dispatch, reset],
+  );
+
+  const handleClearError = useCallback(
+    () => dispatch(clearAddOfferError()),
+    [dispatch],
+  );
 
   return (
     <div className={styles.offerContainer}>
       {addOfferError ? (
         <Error
-          clearError={() => dispatch(clearAddOfferError())}
+          clearError={handleClearError}
           data={addOfferError.data}
           status={addOfferError.status}
         />

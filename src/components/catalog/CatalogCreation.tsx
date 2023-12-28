@@ -1,7 +1,7 @@
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { AddToCatalog, CreateCatalog } from 'components/catalog';
 import {
@@ -26,16 +26,18 @@ const CatalogCreation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleClick = useCallback(
+    () => dispatch(changeShowAddChatToCatalogMenu(null)),
+    [dispatch],
+  );
+
   if (isFetching) {
     return null;
   }
 
   return (
     <div className={styles.catalogCreationContainer}>
-      <FontAwesomeIcon
-        icon={faCircleXmark}
-        onClick={() => dispatch(changeShowAddChatToCatalogMenu(null))}
-      />
+      <FontAwesomeIcon icon={faCircleXmark} onClick={handleClick} />
       <div className={styles.buttonsContainer}>
         <span
           className={clsx({

@@ -1,4 +1,4 @@
-import { type FC, type MouseEvent } from 'react';
+import { type FC, type MouseEvent, useCallback } from 'react';
 import { useDispatch } from 'hooks';
 import { Catalog } from 'components/catalog';
 import styles from 'components/dialog/styles/DialogList.module.scss';
@@ -13,21 +13,21 @@ export type Props = {
 const CatalogList: FC<Props> = ({ catalogList }) => {
   const dispatch = useDispatch();
 
-  const goToCatalog = (
-    event: MouseEvent<HTMLDivElement>,
-    catalog: _Catalog,
-  ) => {
-    dispatch(changeShowModeCatalog(catalog));
-    event.stopPropagation();
-  };
+  const goToCatalog = useCallback(
+    (event: MouseEvent<HTMLDivElement>, catalog: _Catalog) => {
+      dispatch(changeShowModeCatalog(catalog));
+      event.stopPropagation();
+    },
+    [dispatch],
+  );
 
-  const deleteCatalogMethod = (
-    event: MouseEvent<SVGSVGElement>,
-    catalogId: CatalogId,
-  ) => {
-    dispatch(deleteCatalog({ catalogId }));
-    event.stopPropagation();
-  };
+  const deleteCatalogMethod = useCallback(
+    (event: MouseEvent<SVGSVGElement>, catalogId: CatalogId) => {
+      dispatch(deleteCatalog({ catalogId }));
+      event.stopPropagation();
+    },
+    [dispatch],
+  );
 
   const getListCatalog = () => {
     if (!catalogList.length) {

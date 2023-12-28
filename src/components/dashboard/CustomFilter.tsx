@@ -19,9 +19,9 @@ export const CustomFilter: FC<Props> = ({
 }) => {
   const dispatch = useDispatch();
 
-  const filterButtons = buttons.map(({ name, filter }, i) => (
+  const filterButtons = buttons.map(({ name, filter }) => (
     <div
-      key={i}
+      key={name}
       className={clsx({
         [styles.activeFilter]: filter === predicate,
         [styles.filter]: filter !== predicate,

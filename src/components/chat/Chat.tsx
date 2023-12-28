@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { chatController } from 'api/ws/socketController';
 import { CatalogCreation } from 'components/catalog';
@@ -25,11 +25,11 @@ const Chat = () => {
     chatController.subscribeChat(userId);
     dispatch(getPreviewChat());
 
-    return () => {
-      chatController.unsubscribeChat(userId);
-    };
+    return () => chatController.unsubscribeChat(userId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const getData = useCallback(() => dispatch(getPreviewChat()), [dispatch]);
 
   return (
     <div
@@ -37,7 +37,7 @@ const Chat = () => {
         [styles.showChat]: isShow,
       })}
     >
-      {error ? <ChatError getData={() => dispatch(getPreviewChat())} /> : null}
+      {error ? <ChatError getData={getData} /> : null}
       {isShowCatalogCreation ? <CatalogCreation /> : null}
       {isExpanded ? <Dialog userId={userId} /> : <ChatList />}
       <div

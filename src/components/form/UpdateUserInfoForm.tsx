@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error, Spinner } from 'components/general';
@@ -45,6 +45,11 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
     resolver: zodResolver(UpdateUserSchema),
   });
 
+  const handleClearError = useCallback(
+    () => dispatch(clearUserError()),
+    [dispatch],
+  );
+
   if (!user) return <Spinner />;
 
   const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
@@ -62,7 +67,7 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
     <form className={styles.updateContainer} onSubmit={handleSubmit(onSubmit)}>
       {error ? (
         <Error
-          clearError={() => dispatch(clearUserError())}
+          clearError={handleClearError}
           data={error.data}
           status={error.status}
         />

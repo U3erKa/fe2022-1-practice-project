@@ -12,8 +12,8 @@ export type Props = {
 };
 
 const BundleBox: FC<Props> = ({ header, icons, setBundle, describe }) => {
-  const images = icons.map(([image, activeImage], i) => (
-    <div className={styles.images} key={i}>
+  const images = icons.map(([image, activeImage]) => (
+    <div className={styles.images} key={`${image.src}_${activeImage.src}`}>
       <Image
         alt={image.src.replace(/.png/g, 'Contest')}
         className={styles.imgContainer}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { isEmpty } from 'radash';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { PayForm } from 'components/form';
 import { Error, Logo } from 'components/general';
@@ -27,24 +27,32 @@ const Payment = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contests]);
 
-  const payMethod = (values: Payment) => {
-    const submittedContests: any[] = Object.keys(contests).map((key) => ({
-      ...contests[key as keyof typeof contests],
-    }));
+  const payMethod = useCallback(
+    (values: Payment) => {
+      const submittedContests: any[] = Object.keys(contests).map((key) => ({
+        ...contests[key as keyof typeof contests],
+      }));
 
-    const { number, expiry, cvc } = values;
-    const formData = new FormData();
-    for (const contest of submittedContests) {
-      formData.append('files', contest.file);
-      contest.haveFile = !!contest.file;
-    }
-    formData.append('number', number);
-    formData.append('expiry', expiry);
-    formData.append('cvc', cvc);
-    formData.append('contests', JSON.stringify(submittedContests));
-    formData.append('price', '100');
-    dispatch(pay({ data: { formData }, navigate: router.push }));
-  };
+      const { number, expiry, cvc } = values;
+      const formData = new FormData();
+      for (const contest of submittedContests) {
+        formData.append('files', contest.file);
+        contest.haveFile = !!contest.file;
+      }
+      formData.append('number', number);
+      formData.append('expiry', expiry);
+      formData.append('cvc', cvc);
+      formData.append('contests', JSON.stringify(submittedContests));
+      formData.append('price', '100');
+      dispatch(pay({ data: { formData }, navigate: router.push }));
+    },
+    [contests, dispatch, router.push],
+  );
+
+  const clearError = useCallback(
+    () => dispatch(clearPaymentStore()),
+    [dispatch],
+  );
 
   return (
     <div>
@@ -56,7 +64,7 @@ const Payment = () => {
           <span className={styles.headerLabel}>Checkout</span>
           {error ? (
             <Error
-              clearError={() => dispatch(clearPaymentStore())}
+              clearError={clearError}
               data={error.data}
               status={error.status}
             />

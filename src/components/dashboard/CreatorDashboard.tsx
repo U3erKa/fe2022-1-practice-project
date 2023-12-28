@@ -59,13 +59,13 @@ const CreatorDashboard = () => {
 
   useEffect(() => {
     parseUrlForParams();
-  }, [parseUrlForParams, searchParams]);
+  }, [searchParams, parseUrlForParams]);
 
   const contestsList = contests.map((contest) => (
     <ContestBox data={contest} key={contest.id} />
   ));
 
-  const getPredicateOfRequest = () => {
+  const getPredicateOfRequest = useCallback(() => {
     const obj: typeof creatorFilter = {};
     for (const el in creatorFilter) {
       if (Object.hasOwn(creatorFilter, el)) {
@@ -75,24 +75,23 @@ const CreatorDashboard = () => {
       }
     }
     return obj;
-  };
+  }, [creatorFilter]);
 
-  const loadMore = (startFrom: number) => {
-    getContestsMethod({
-      limit: 8,
-      offset: startFrom,
-      ...getPredicateOfRequest(),
-    });
-  };
+  const loadMore = useCallback(
+    (startFrom: number) => {
+      getContestsMethod({
+        limit: 8,
+        offset: startFrom,
+        ...getPredicateOfRequest(),
+      });
+    },
+    [getContestsMethod, getPredicateOfRequest],
+  );
 
-  const tryLoadAgain = () => {
+  const tryLoadAgain = useCallback(() => {
     dispatch(clearContestsList());
-    getContestsMethod({
-      limit: 8,
-      offset: 0,
-      ...getPredicateOfRequest(),
-    });
-  };
+    loadMore(contests.length);
+  }, [contests.length, loadMore, dispatch]);
 
   return (
     <div className={styles.mainContainer}>

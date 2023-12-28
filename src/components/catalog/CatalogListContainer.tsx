@@ -1,4 +1,4 @@
-import { type MouseEvent, useEffect } from 'react';
+import { type MouseEvent, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { CatalogList } from 'components/catalog';
 import { DialogList } from 'components/dialog';
@@ -17,13 +17,15 @@ const CatalogListContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const removeChatFromCatalogMethod = (
-    event: MouseEvent<SVGSVGElement>,
-    chatId: ChatId,
-  ) => {
-    dispatch(removeChatFromCatalog({ catalogId: currentCatalog!._id, chatId }));
+  const removeChatFromCatalogMethod = useCallback(
+    (event: MouseEvent<SVGSVGElement>, chatId: ChatId) => {
+      dispatch(
+        removeChatFromCatalog({ catalogId: currentCatalog!._id, chatId }),
+      );
     event.stopPropagation();
-  };
+    },
+    [currentCatalog, dispatch],
+  );
 
   const { id } = data;
   return (

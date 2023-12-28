@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { ContestBox } from 'components/contest';
 import { ItemsContainer, TryAgain } from 'components/general';
@@ -45,7 +45,8 @@ const CustomerDashboard = () => {
     <ContestBox data={contest} key={contest.id} />
   ));
 
-  const getContestsMethod = (startFrom = 0) => {
+  const getContestsMethod = useCallback(
+    (startFrom = 0) => {
     dispatch(
       getContests({
         requestData: {
@@ -56,12 +57,14 @@ const CustomerDashboard = () => {
         role: CUSTOMER,
       }),
     );
-  };
+    },
+    [customerFilter, dispatch],
+  );
 
-  const tryToGetContest = () => {
+  const tryToGetContest = useCallback(() => {
     dispatch(clearContestsList());
     getContestsMethod();
-  };
+  }, [getContestsMethod, dispatch]);
 
   return (
     <div className={styles.mainContainer}>
@@ -72,7 +75,7 @@ const CustomerDashboard = () => {
       />
       <div className={styles.contestsContainer}>
         {error ? (
-          <TryAgain getData={() => tryToGetContest()} />
+          <TryAgain getData={tryToGetContest} />
         ) : (
           <ItemsContainer
             haveMore={haveMore}

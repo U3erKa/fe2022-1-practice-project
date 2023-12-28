@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { OfferForm } from 'components/form';
 import { Spinner, TryAgain } from 'components/general';
@@ -21,10 +22,15 @@ function ContestPageContents({ contestId }: { readonly contestId: number }) {
   const dispatch = useDispatch();
   const { id: userId, role } = user ?? {};
 
+  const getData = useCallback(
+    () => dispatch(getContestById({ contestId })),
+    [contestId, dispatch],
+  );
+
   if (error) {
     return (
       <div className={styles.tryContainer}>
-        <TryAgain getData={() => dispatch(getContestById({ contestId }))} />
+        <TryAgain getData={getData} />
       </div>
     );
   }

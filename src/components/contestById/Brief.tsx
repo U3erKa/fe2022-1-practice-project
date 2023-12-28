@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { ContestForm, ContestInfo } from 'components/contest';
 import { Error } from 'components/general';
@@ -11,36 +12,16 @@ import type { ContestData } from 'types/slices';
 import styles from './styles/Brief.module.scss';
 
 const Brief = () => {
-  const selector = useSelector((state) => {
+  const { contestData, isEditContest, error, user } = useSelector((state) => {
     const { contestByIdStore, contestUpdationStore, userStore } = state;
-    return { contestByIdStore, contestUpdationStore, userStore };
+    const { contestData, isEditContest } = contestByIdStore;
+    const { error } = contestUpdationStore;
+    const { data: user } = userStore;
+    return { contestData, isEditContest, error, user };
   });
   const dispatch = useDispatch();
 
-  const {
-    contestByIdStore: { contestData, isEditContest },
-    contestUpdationStore: { error },
-    userStore: { data: user },
-  } = selector;
-
-  const setNewContestData = (values: _ContestInfo) => {
-    const data = new FormData();
-
-    for (const key in values) {
-      if (Object.hasOwn(values, key)) {
-        const value = values[key as keyof typeof values];
-        if ((key !== 'file' && value) || value instanceof File) {
-          data.append(key, value);
-        }
-      }
-    }
-
-    data.append('contestId', contestData!.id as unknown as string);
-
-    dispatch(updateContest(data));
-  };
-
-  const getContestObjInfo = () => {
+  const defaultData = useMemo(() => {
     type DefaultData = Omit<typeof data, 'originalFileName'> & {
       file: {
         name: typeof data.originalFileName;
@@ -87,7 +68,37 @@ const Brief = () => {
       }
     }
     return defaultData;
-  };
+  }, [contestData]);
+
+  const setNewContestData = useCallback(
+    (values: _ContestInfo) => {
+      const data = new FormData();
+
+      for (const key in values) {
+        if (Object.hasOwn(values, key)) {
+          const value = values[key as keyof typeof values];
+          if ((key !== 'file' && value) || value instanceof File) {
+            data.append(key, value);
+          }
+        }
+      }
+
+      data.append('contestId', contestData!.id as unknown as string);
+
+      dispatch(updateContest(data));
+    },
+    [contestData, dispatch],
+  );
+
+  const handleChangeEditContest = useCallback(
+    (data: boolean) => dispatch(changeEditContest(data)),
+    [dispatch],
+  );
+
+  const handleClearError = useCallback(
+    () => dispatch(clearContestUpdationStore()),
+    [dispatch],
+  );
 
   if (!contestData || !user) {
     return null;
@@ -97,25 +108,26 @@ const Brief = () => {
   if (!isEditContest) {
     return (
       <ContestInfo
-        changeEditContest={(data) => dispatch(changeEditContest(data))}
+        changeEditContest={handleChangeEditContest}
         contestData={contestData}
         role={role}
         userId={userId}
       />
     );
   }
+
   return (
     <div className={styles.contestForm}>
       {error ? (
         <Error
-          clearError={() => dispatch(clearContestUpdationStore())}
+          clearError={handleClearError}
           data={error.data}
           status={error.status}
         />
       ) : null}
       <ContestForm
         contestType={contestData.contestType}
-        defaultData={getContestObjInfo()}
+        defaultData={defaultData}
         handleSubmit={setNewContestData}
       />
     </div>

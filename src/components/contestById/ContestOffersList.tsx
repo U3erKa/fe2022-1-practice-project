@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
 import {
@@ -24,11 +24,8 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
   );
   const dispatch = useDispatch();
 
-  const setOfferStatusMethod = (
-    creatorId: UserId,
-    offerId: OfferId,
-    command: CustomerCommand,
-  ) => {
+  const handleSetOfferStatus = useCallback(
+    (creatorId: UserId, offerId: OfferId, command: CustomerCommand) => {
     dispatch(clearSetOfferStatusError());
     const { id, orderId, priority } = contestData;
     const obj = {
@@ -40,13 +37,20 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
       priority,
     };
     dispatch(setOfferStatus(obj));
-  };
+    },
+    [contestData, dispatch],
+  );
+
+  const handleClearError = useCallback(
+    () => dispatch(clearSetOfferStatusError()),
+    [dispatch],
+  );
 
   return (
     <>
       {setOfferStatusError ? (
         <Error
-          clearError={() => dispatch(clearSetOfferStatusError())}
+          clearError={handleClearError}
           data={setOfferStatusError.data}
           status={setOfferStatusError.status}
         />
@@ -63,7 +67,7 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
               contestData={contestData}
               data={offer}
               key={offer.id}
-              setOfferStatus={setOfferStatusMethod}
+              setOfferStatus={handleSetOfferStatus}
             />
           ))
         )}

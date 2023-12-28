@@ -51,9 +51,9 @@ const SelectInput: FC<FormSelectProps> = function SelectInput({
       <label className={classes.inputContainer}>
         <p className={classes.inputHeader}>{header}</p>
         <select className={classes.selectInput} {...field} {...rest}>
-          {optionsArray?.map((_, i) => (
-            <option key={i} value={valueArray ? valueArray[i] : undefined}>
-              {optionsArray[i]}
+          {optionsArray?.map((option, i) => (
+            <option key={option} value={valueArray ? valueArray[i] : undefined}>
+              {option}
             </option>
           ))}
         </select>

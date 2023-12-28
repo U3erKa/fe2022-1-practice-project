@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
@@ -34,9 +34,9 @@ const RegistrationForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control } = useForm<Registration>({
     defaultValues: {
-      agreeOfTerms: false,
+      agreeOfTerms: false as any,
       confirmPassword: '',
       displayName: '',
       email: '',
@@ -49,21 +49,26 @@ const RegistrationForm = () => {
     mode: 'all',
   });
 
-  const onSubmit = (values: Registration) => {
-    dispatch(
-      checkAuth({
-        authMode: AUTH_MODE.REGISTER,
-        data: values,
-        navigate: router.replace,
-      }),
-    );
-  };
+  const onSubmit = useCallback(
+    (values: Registration) => {
+      dispatch(
+        checkAuth({
+          authMode: AUTH_MODE.REGISTER,
+          data: values,
+          navigate: router.replace,
+        }),
+      );
+    },
+    [dispatch, router.replace],
+  );
+
+  const handleClearError = useCallback(() => dispatch(clearAuth()), [dispatch]);
 
   return (
     <div className={styles.signUpFormContainer}>
       {error ? (
         <Error
-          clearError={() => dispatch(clearAuth())}
+          clearError={handleClearError}
           data={error.data}
           status={error.status}
         />
