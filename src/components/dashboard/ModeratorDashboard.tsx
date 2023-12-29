@@ -19,8 +19,12 @@ const buttons = [
 ];
 
 export default function ModeratorDashboard() {
-  const { isFetching, haveMore, error, offers, isReviewed, contestData } =
-    useSelector(({ contestByIdStore }) => contestByIdStore);
+  const { contestData, error, haveMore, isFetching, isReviewed, offers } =
+    useSelector(({ contestByIdStore }) => {
+      const { contestData, error, haveMore, isFetching, isReviewed, offers } =
+        contestByIdStore;
+      return { contestData, error, haveMore, isFetching, isReviewed, offers };
+    });
   const dispatch = useDispatch();
 
   useEffect(() => {

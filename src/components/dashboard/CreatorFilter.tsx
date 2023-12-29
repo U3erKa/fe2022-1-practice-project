@@ -22,8 +22,8 @@ export type Props2 = Pick<Props, 'onChange'> & {
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {
   const contestTypes = select(
     CONTEST_TYPES,
-    (type, i) => (
-      <option key={i} value={type}>
+    (type) => (
+      <option key={type} value={type}>
         {type}
       </option>
     ),
@@ -60,13 +60,14 @@ export const IndustryType: FC<Props2> = ({ industries, filter, onChange }) => {
 };
 
 export const CreatorFilter = () => {
-  const { contestsList, dataForContest } = useSelector(
-    ({ contestsList, dataForContest }) => ({ contestsList, dataForContest }),
+  const { creatorFilter, industry, isFetching } = useSelector(
+    ({ contestsList, dataForContest }) => {
+      const { creatorFilter } = contestsList;
+      const { isFetching, data: contestData } = dataForContest;
+      const { industry = [] } = contestData ?? {};
+      return { creatorFilter, industry, isFetching };
+    },
   );
-
-  const { creatorFilter } = contestsList;
-  const { isFetching, data: contestData } = dataForContest;
-  const { industry } = contestData || {};
 
   const dispatch = useDispatch();
   const router = useRouter();

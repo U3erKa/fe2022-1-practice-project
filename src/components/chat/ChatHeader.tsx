@@ -37,7 +37,7 @@ const isBlocked = (chatData: ChatData, userId: UserId) => {
 const ChatHeader: FC<Props> = ({ userId }) => {
   const { chatData, avatar, firstName } = useSelector(({ chatStore }) => {
     const { chatData, interlocutor } = chatStore;
-    const { avatar, firstName } = interlocutor || {};
+    const { avatar, firstName } = interlocutor ?? {};
     return { chatData, avatar, firstName };
   });
   const { participants } = chatData ?? {};

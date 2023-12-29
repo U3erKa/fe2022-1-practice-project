@@ -10,12 +10,13 @@ type Props = {
 };
 
 const Dialog: FC<Props> = ({ userId }) => {
-  const {
-    chatData,
-    // @ts-expect-error
-    interlocutor: { id: interlocutorId },
-    messages,
-  } = useSelector((state) => state.chatStore);
+  const { chatData, interlocutorId, messages } = useSelector(
+    ({ chatStore }) => {
+      const { chatData, interlocutor, messages } = chatStore;
+      const { id: interlocutorId } = interlocutor ?? {};
+      return { chatData, interlocutorId, messages };
+    },
+  );
   const dispatch = useDispatch();
 
   const messagesEnd = useRef<HTMLDivElement>();

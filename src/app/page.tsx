@@ -31,7 +31,7 @@ import styles from './styles/page.module.scss';
 const GREEN_COLOR = { color: '#006d00' } satisfies CSSProperties;
 
 const Home = () => {
-  const { isFetching } = useSelector((state) => state.userStore);
+  const isFetching = useSelector(({ userStore }) => userStore.isFetching);
   const [index, setIndex] = useState(0);
   const [styleName, setStyle] = useState(styles.headlineStatic);
 

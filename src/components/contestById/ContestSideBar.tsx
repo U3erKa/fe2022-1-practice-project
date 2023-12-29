@@ -16,7 +16,7 @@ export type Props = {
 };
 
 const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {
-  const { data } = useSelector((state) => state.userStore);
+  const data = useSelector(({ userStore }) => userStore.data);
   const { User, prize, createdAt } = contestData ?? {};
 
   if (!User) return null;

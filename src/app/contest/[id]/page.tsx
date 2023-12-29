@@ -18,9 +18,10 @@ export type Props = {
 };
 
 const ContestPage: FC<Props> = ({ params: { id } }) => {
-  const { isShowOnFull, imagePath } = useSelector(
-    ({ contestByIdStore }) => contestByIdStore,
-  );
+  const { imagePath, isShowOnFull } = useSelector(({ contestByIdStore }) => {
+    const { imagePath, isShowOnFull } = contestByIdStore;
+    return { imagePath, isShowOnFull };
+  });
 
   const dispatch = useDispatch();
 

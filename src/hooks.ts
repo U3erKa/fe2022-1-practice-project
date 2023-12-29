@@ -3,6 +3,7 @@
 import isEqual from 'fast-deep-equal/es6/react';
 import { useEffect, useRef, useState } from 'react';
 import {
+  type EqualityFn,
   type TypedUseSelectorHook,
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,
@@ -12,7 +13,7 @@ import type { AppDispatch, RootState } from 'store';
 export const useSelector: TypedUseSelectorHook<RootState> = (
   selector,
   equalityFn = isEqual,
-) => useReduxSelector(selector, equalityFn as any);
+) => useReduxSelector(selector, equalityFn as EqualityFn<unknown>);
 
 export const useDispatch: () => AppDispatch = useReduxDispatch;
 

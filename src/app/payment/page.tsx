@@ -13,10 +13,13 @@ import type { Payment } from 'utils/schemas';
 import styles from './styles/page.module.scss';
 
 const Payment = () => {
-  const { error, contests } = useSelector((state) => ({
-    contests: state.contestCreationStore.contests,
-    error: state.payment.error,
-  }));
+  const { error, contests } = useSelector(
+    ({ contestCreationStore, payment }) => {
+      const { contests } = contestCreationStore;
+      const { error } = payment;
+      return { contests, error };
+    },
+  );
   const dispatch = useDispatch();
   const router = useRouter();
 

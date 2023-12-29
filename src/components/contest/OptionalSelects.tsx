@@ -4,12 +4,7 @@ import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
 import { FormInput, SelectInput } from 'components/input';
 import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
-import type {
-  ContestType,
-  LogoContest,
-  NameContest,
-  TaglineContest,
-} from 'types/contest';
+import type { ContestType } from 'types/contest';
 import styles from './styles/ContestForm.module.scss';
 
 export type Props = {
@@ -36,9 +31,10 @@ const CONTEST_NAME = {
 } as const;
 
 const OptionalSelects: FC<Props> = ({ contestType, control }) => {
-  const { data, isFetching } = useSelector(
-    ({ dataForContest }) => dataForContest,
-  );
+  const { data, isFetching } = useSelector(({ dataForContest }) => {
+    const { data, isFetching } = dataForContest;
+    return { data, isFetching };
+  });
 
   const [firstContestName, secondContestName] = CONTEST_NAME[contestType];
 

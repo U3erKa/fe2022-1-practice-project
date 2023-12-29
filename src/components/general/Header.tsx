@@ -11,7 +11,10 @@ import PhoneIcon from 'assets/icons/phone.png';
 import styles from './styles/Header.module.scss';
 
 const Header = () => {
-  const { data: user, isFetching } = useSelector((state) => state.userStore);
+  const { isFetching, user } = useSelector(({ userStore }) => {
+    const { isFetching, data: user } = userStore;
+    return { isFetching, user };
+  });
 
   const renderLoginButtons = () => {
     if (user) {

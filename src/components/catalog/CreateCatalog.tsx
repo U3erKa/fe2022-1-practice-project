@@ -15,7 +15,7 @@ const classes = {
 };
 
 const CreateCatalog = () => {
-  const { addChatId } = useSelector((state) => state.chatStore);
+  const addChatId = useSelector(({chatStore}) => chatStore.addChatId);
   const dispatch = useDispatch();
 
   const { handleSubmit, control } = useForm({

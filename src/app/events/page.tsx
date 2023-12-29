@@ -8,7 +8,7 @@ import { Footer, Header } from 'components/general';
 import { getRemainingTime } from 'utils/functions';
 
 export default function EventsPage() {
-  const { events } = useSelector(({ events }) => events);
+  const events = useSelector(({ events }) => events.events);
   const forceUpdate = useForceUpdate();
 
   const currentDate = Date.now();

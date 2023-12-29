@@ -20,7 +20,10 @@ const formInputClasses = {
 } satisfies FormInputClasses;
 
 const LoginForm = () => {
-  const { error, isFetching } = useSelector(({ auth }) => auth);
+  const { error, isFetching } = useSelector(({ auth }) => {
+    const { error, isFetching } = auth;
+    return { error, isFetching };
+  });
   const dispatch = useDispatch();
   const router = useRouter();
 

@@ -10,16 +10,14 @@ import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/ChatList.module.scss';
 
 const ChatList = () => {
-  const {
-    chatStore: { chatMode, isShowChatsInCatalog },
-    userStore: {
-      // @ts-expect-error
-      data: { id: userId },
+  const { chatMode, isShowChatsInCatalog, userId } = useSelector(
+    ({ chatStore, userStore }) => {
+      const { chatMode, isShowChatsInCatalog } = chatStore;
+      const { data } = userStore;
+      const { id: userId } = data ?? {};
+      return { chatMode, isShowChatsInCatalog, userId };
     },
-  } = useSelector(({ chatStore, userStore }) => ({
-    chatStore,
-    userStore,
-  }));
+  );
   const dispatch = useDispatch();
 
   const dialogs = dialogButtons.map(({ id, name, mode }) => (

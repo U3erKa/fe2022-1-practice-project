@@ -51,15 +51,16 @@ const UserInfoData: FC<Props> = ({ userData }) => {
 };
 
 const UserInfo: FC = () => {
-  const { data, isEdit } = useSelector((state) => {
-    const { data } = state.userStore;
-    const { isEdit } = state.userProfile;
-    return { data, isEdit };
-  });
-  const dispatch = useDispatch();
+  const { avatar, userData, isEdit } = useSelector(
+    ({ userStore, userProfile }) => {
+      const { data } = userStore;
+      const { isEdit } = userProfile;
+      const { avatar, ...userData } = data ?? {};
 
-  const { avatar, ...userData } =
-    data || ({} as NonNullable<UserState['data']>);
+      return { avatar, userData, isEdit };
+    },
+  );
+  const dispatch = useDispatch();
 
   const updateUserData = useCallback(
     (

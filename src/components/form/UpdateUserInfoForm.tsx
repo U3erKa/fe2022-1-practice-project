@@ -34,7 +34,10 @@ const imageUploadClasses = {
 };
 
 const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
-  const { data: user, error } = useSelector((state) => state.userStore);
+  const { error, user } = useSelector(({ userStore }) => {
+    const { error, data: user } = userStore;
+    return { error, user };
+  });
   const dispatch = useDispatch();
   const { handleSubmit, control, register } = useForm({
     defaultValues: {

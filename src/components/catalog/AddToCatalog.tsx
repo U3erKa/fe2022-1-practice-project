@@ -12,7 +12,10 @@ const classes = {
 };
 
 const AddToCatalog = () => {
-  const { catalogList, addChatId } = useSelector((state) => state.chatStore);
+  const { addChatId, catalogList } = useSelector(({ chatStore }) => {
+    const { addChatId, catalogList } = chatStore;
+    return { addChatId, catalogList };
+  });
   const dispatch = useDispatch();
 
   const catalogNames: string[] = [];

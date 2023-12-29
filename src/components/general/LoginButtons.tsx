@@ -15,7 +15,7 @@ type Props = {
 
 export default function LoginButtons({ data }: Props) {
   const { avatar, displayName } = data;
-  const { events } = useSelector(({ events }) => events);
+  const events = useSelector(({ events }) => events.events);
   const currentDate = Date.now();
   let activeEvents = 0;
 

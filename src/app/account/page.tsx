@@ -14,7 +14,7 @@ import styles from './styles/page.module.scss';
 
 const UserProfile = () => {
   const { balance, role, profileViewMode, error } = useSelector((state) => {
-    const { balance, role } = state.userStore.data || {};
+    const { balance, role } = state.userStore.data ?? {};
     const { profileViewMode } = state.userProfile;
     const { error } = state.payment;
 

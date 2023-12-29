@@ -8,12 +8,14 @@ export type Props = {
   readonly events: EventResponse[];
 };
 
-export default function EventListItems({ events }: Props) {
-  const { isFetching } = useSelector(({ events }) => events);
+const EVENTS: [] = [];
+
+export default function EventListItems({ events = EVENTS }: Props) {
+  const isFetching = useSelector(({ events }) => events.isFetching);
 
   if (isFetching) return <Spinner />;
 
-  if (!events?.length)
+  if (!events.length)
     return <section>No events here yet. Feel Free to create one!</section>;
 
   return (

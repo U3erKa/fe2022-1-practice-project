@@ -18,7 +18,10 @@ import styles from './styles/CreatorDashboard.module.scss';
 
 const CreatorDashboard = () => {
   const { contests, creatorFilter, error, haveMore } = useSelector(
-    ({ contestsList }) => contestsList,
+    ({ contestsList }) => {
+      const { contests, creatorFilter, error, haveMore } = contestsList;
+      return { contests, creatorFilter, error, haveMore };
+    },
   );
   const dispatch = useDispatch();
   const searchParams = useSearchParams()!;

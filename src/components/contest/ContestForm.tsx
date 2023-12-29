@@ -68,18 +68,18 @@ const fileClasses = {
 };
 
 const ContestForm: FC<Props> = ({ contestType }) => {
-  const { isEditContest, dataForContest, bundle, contests } = useSelector(
+  const { bundle, contests, dataForContest, isEditContest } = useSelector(
     ({
       bundleStore,
       contestByIdStore,
       contestCreationStore,
       dataForContest,
-    }) => ({
-      bundle: bundleStore.bundle,
-      contests: contestCreationStore.contests,
-      dataForContest,
-      isEditContest: contestByIdStore.isEditContest,
-    }),
+    }) => {
+      const { bundle } = bundleStore;
+      const { contests } = contestCreationStore;
+      const { isEditContest } = contestByIdStore;
+      return { bundle, contests, dataForContest, isEditContest };
+    },
   );
   const dispatch = useDispatch();
   const router = useRouter();

@@ -63,7 +63,9 @@ const OfferForm: FC<OfferFormProps> = ({
   contestType,
   customerId,
 }) => {
-  const { addOfferError } = useSelector((state) => state.contestByIdStore);
+  const addOfferError = useSelector(
+    ({ contestByIdStore }) => contestByIdStore.addOfferError,
+  );
   const dispatch = useDispatch();
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: { offerData: '' },

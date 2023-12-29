@@ -5,8 +5,8 @@ import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import styles from './styles/ButtonGroup.module.scss';
 
 export default function ButtonGroup() {
-  const { nameMathesDomain } = useSelector(
-    ({ contestCreationStore }) => contestCreationStore,
+  const nameMathesDomain = useSelector(
+    ({ contestCreationStore }) => contestCreationStore.nameMathesDomain,
   );
   const dispatch = useDispatch();
 

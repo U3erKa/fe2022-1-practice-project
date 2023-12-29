@@ -10,8 +10,7 @@ import { Header } from 'components/general';
 import { CREATOR, CUSTOMER, MODERATOR } from 'constants/general';
 
 const Dashboard = () => {
-  // @ts-expect-error
-  const { role } = useSelector((state) => state.userStore?.data || {});
+  const role = useSelector((state) => state.userStore.data?.role);
 
   return (
     <div>
