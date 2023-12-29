@@ -31,7 +31,7 @@ export async function GET(
     const authorization = headers.get('Authorization')!.split(' ')[1]!;
     const { role, userId } = await verifyAccessToken(authorization);
 
-    let result: number | boolean = [CUSTOMER, CREATOR].includes(role);
+    let result: boolean | number = [CUSTOMER, CREATOR].includes(role);
     if (!result) throw new RightsError();
 
     switch (role) {

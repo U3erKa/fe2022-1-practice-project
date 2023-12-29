@@ -130,9 +130,9 @@ abstract class _Contest extends Model<
   InferCreationAttributes<_Contest>
 > {
   declare contestType:
+    | typeof LOGO_CONTEST
     | typeof NAME_CONTEST
-    | typeof TAGLINE_CONTEST
-    | typeof LOGO_CONTEST;
+    | typeof TAGLINE_CONTEST;
   declare fileName?: CreationOptional<string>;
   declare originalFileName?: CreationOptional<string>;
   declare title?: CreationOptional<string>;

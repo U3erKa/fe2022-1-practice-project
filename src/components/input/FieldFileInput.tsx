@@ -1,8 +1,4 @@
-import {
-  type DetailedHTMLProps,
-  type FC,
-  type InputHTMLAttributes,
-} from 'react';
+import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 import {
   type Control,
   type UseFormRegister,

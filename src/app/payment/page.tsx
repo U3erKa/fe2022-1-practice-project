@@ -9,7 +9,7 @@ import { PayForm } from 'components/form';
 import { Error, Logo } from 'components/general';
 import { PAGE } from 'constants/general';
 import { clearPaymentStore, pay } from 'store/slices/paymentSlice';
-import { type Payment } from 'utils/schemas';
+import type { Payment } from 'utils/schemas';
 import styles from './styles/page.module.scss';
 
 const Payment = () => {

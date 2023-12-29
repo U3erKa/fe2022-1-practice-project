@@ -1,8 +1,8 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import type { NameContestInfo } from 'types/api/contest';
 import styles from './styles/ContestInfo.module.scss';
 
-export type Props = Pick<NameContestInfo, 'typeOfName' | 'styleName'>;
+export type Props = Pick<NameContestInfo, 'styleName' | 'typeOfName'>;
 
 const NameContestSpecialInfo: FC<Props> = ({ typeOfName, styleName }) => {
   return (

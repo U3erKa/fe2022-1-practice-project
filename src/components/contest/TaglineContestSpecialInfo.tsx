@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import type { TaglineContestInfo } from 'types/api/contest';
 import styles from './styles/ContestInfo.module.scss';
 

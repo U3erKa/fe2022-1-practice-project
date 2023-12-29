@@ -33,7 +33,7 @@ export const getRemainingTime = (time: number) => {
   return result.join(' ') || '0s';
 };
 
-export const getLongTimeStr = (date: string | number | Date) => {
+export const getLongTimeStr = (date: Date | number | string) => {
   const diff = Date.now() - new Date(date).valueOf();
   const days = getDays(diff);
   const hours = getHours(diff);
@@ -44,7 +44,7 @@ export const getLongTimeStr = (date: string | number | Date) => {
   return result.join(' ') || 'less than one hour';
 };
 
-export const getShortTimeStr = (time: string | number | Date) => {
+export const getShortTimeStr = (time: Date | number | string) => {
   const currentTime = Date.now();
   const date = new Date(time);
   const days = getDays(currentTime) - getDays(date.valueOf());

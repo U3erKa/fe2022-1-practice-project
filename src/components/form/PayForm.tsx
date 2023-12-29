@@ -55,7 +55,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   // prettier-ignore
   const [name, number, expiry, cvc] = watch(['name', 'number', 'expiry', 'cvc']);
 
-  const replacement = { _: /\d/ } satisfies string | Replacement;
+  const replacement = { _: /\d/ } satisfies Replacement | string;
   return (
     <div className={styles.payFormContainer}>
       <span className={styles.headerInfo}>Payment Information</span>

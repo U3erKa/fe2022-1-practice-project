@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { capitalize } from 'radash';
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { LOGO_CONTEST, NAME_CONTEST } from 'constants/general';
 import { getLongTimeStr } from 'utils/functions';
 import DiamondIcon from 'assets/icons/diamond.png';

@@ -44,5 +44,5 @@ export type NumTimeStamp = number;
 
 export type UserInOffer = Omit<
   User['dataValues'],
-  'password' | 'accessToken' | 'balance' | 'role'
+  'accessToken' | 'balance' | 'password' | 'role'
 >;

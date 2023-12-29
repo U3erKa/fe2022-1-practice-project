@@ -63,7 +63,7 @@ export const ContestContestTypeSchema = z.enum([
 export const StringSchema = z
   .string()
   .superRefine((value, { addIssue, path }) => {
-    if (!value || !value.trim().length) {
+    if (!value?.trim().length) {
       addIssue({
         code: 'custom',
         message: `${path} is a required field`,

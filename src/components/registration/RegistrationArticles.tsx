@@ -10,7 +10,7 @@ export type Props = {
 export type Article = {
   id: number;
   header: string;
-  article: string | TextEntryT;
+  article: TextEntryT | string;
 };
 
 const RegistrationArticles: FC<Props> = ({ articles }) => {

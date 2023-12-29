@@ -22,10 +22,10 @@ import type {
 } from './api/chat';
 
 export type ChatMode =
-  | typeof NORMAL_PREVIEW_CHAT_MODE
-  | typeof FAVORITE_PREVIEW_CHAT_MODE
   | typeof BLOCKED_PREVIEW_CHAT_MODE
-  | typeof CATALOG_PREVIEW_CHAT_MODE;
+  | typeof CATALOG_PREVIEW_CHAT_MODE
+  | typeof FAVORITE_PREVIEW_CHAT_MODE
+  | typeof NORMAL_PREVIEW_CHAT_MODE;
 
 export type CatalogCreationMode =
   | typeof ADD_CHAT_TO_OLD_CATALOG
@@ -36,15 +36,15 @@ export type Catalog = With_id<CatalogId> & {
   catalogName: string;
 };
 
-export type MessagePreview = With_id<ChatId> &
-  ChatData &
-  Omit<WithTimeStamps, 'updatedAt'> & {
+export type MessagePreview = ChatData &
+  Omit<WithTimeStamps, 'updatedAt'> &
+  With_id<ChatId> & {
     interlocutor: Interlocutor;
     sender: SenderId;
     text: Message['body'];
   };
 
 export type ChatData = With_id<ChatId> &
-  WithParticipants &
+  WithBlackList &
   WithFavoriteList &
-  WithBlackList;
+  WithParticipants;

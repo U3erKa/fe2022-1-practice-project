@@ -1,5 +1,5 @@
-import { type FC } from 'react';
-import { type Control } from 'react-hook-form';
+import type { FC } from 'react';
+import type { Control } from 'react-hook-form';
 import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
 import { FormInput, SelectInput } from 'components/input';
@@ -55,14 +55,14 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             control={control}
             header="type of company"
             name={firstContestName}
-            optionsArray={data.typeOfName as NameContest['typeOfName'][]}
+            optionsArray={data.typeOfName!}
           />
           <SelectInput
             classes={selectClasses}
             control={control}
             header="Style name"
             name={secondContestName}
-            optionsArray={data.nameStyle as NameContest['styleName'][]}
+            optionsArray={data.nameStyle!}
           />
         </>
       );
@@ -86,7 +86,7 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             control={control}
             header="Brand Style"
             name={secondContestName}
-            optionsArray={data.brandStyle as LogoContest['brandStyle'][]}
+            optionsArray={data.brandStyle!}
           />
         </>
       );
@@ -110,9 +110,7 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             control={control}
             header="Type tagline"
             name={secondContestName}
-            optionsArray={
-              data.typeOfTagline as TaglineContest['typeOfTagline'][]
-            }
+            optionsArray={data.typeOfTagline!}
           />
         </>
       );

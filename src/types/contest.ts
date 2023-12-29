@@ -16,7 +16,7 @@ import type {
 } from './api/_common';
 import type { Priority } from './api/offer';
 
-export type Contest = NameContest | LogoContest | TaglineContest;
+export type Contest = LogoContest | NameContest | TaglineContest;
 
 export type NameContest = BaseContest & {
   contestType: typeof NAME_CONTEST;
@@ -45,15 +45,15 @@ export type TaglineContest = BaseContest & {
   brandStyle?: null;
 };
 
-export type BaseContest = WithId &
+export type BaseContest = Omit<WithTimeStamps, 'updatedAt'> &
+  Partial<WithFile> &
+  WithId &
   WithId<UserId, 'userId'> &
-  WithUUID<'orderId'> &
-  Omit<WithTimeStamps, 'updatedAt'> &
-  Partial<WithFile> & {
+  WithUUID<'orderId'> & {
     title: string;
     focusOfWork: string;
     targetCustomer: string;
-    prize: string | number;
+    prize: number | string;
     industry: Industry;
     status: Status;
     priority: Priority;
@@ -64,39 +64,39 @@ export type BaseContest = WithId &
 export type TypeOfName = 'Company' | 'Product' | 'Project';
 
 export type StyleName =
+  | 'Any'
   | 'Classic'
+  | 'Descriptive'
   | 'Fun'
   | 'Professional'
-  | 'Descriptive'
-  | 'Youthful'
-  | 'Any';
+  | 'Youthful';
 
 export type BrandStyle =
-  | 'Techy'
-  | 'Fun'
-  | 'Fancy'
-  | 'Minimal'
   | 'Brick & Mortar'
-  | 'Photo-based';
+  | 'Fancy'
+  | 'Fun'
+  | 'Minimal'
+  | 'Photo-based'
+  | 'Techy';
 
 export type Industry =
-  | 'Creative Agency'
-  | 'Consulting Firm'
-  | 'Skin care'
   | 'Biotech'
-  | 'Publisher'
+  | 'Builders'
+  | 'Consulting Firm'
+  | 'Creative Agency'
   | 'Education'
   | 'Footwear'
   | 'Medical'
-  | 'Builders';
+  | 'Publisher'
+  | 'Skin care';
 
 export type TypeOfTagline =
+  | 'Any'
   | 'Classic'
-  | 'Fun'
-  | 'Powerful'
   | 'Descriptive'
+  | 'Fun'
   | 'Modern'
-  | 'Any';
+  | 'Powerful';
 
 export type Status =
   | typeof CONTEST_STATUS_ACTIVE
@@ -104,6 +104,6 @@ export type Status =
   | typeof CONTEST_STATUS_PENDING;
 
 export type ContestType =
-  | typeof NAME_CONTEST
   | typeof LOGO_CONTEST
+  | typeof NAME_CONTEST
   | typeof TAGLINE_CONTEST;

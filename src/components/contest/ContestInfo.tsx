@@ -114,18 +114,18 @@ const ContestInfo: FC<Props> = ({
         <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            styleName={styleName as NameContest['styleName']}
-            typeOfName={typeOfName as NameContest['typeOfName']}
+            styleName={styleName!}
+            typeOfName={typeOfName!}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            nameVenture={nameVenture as TaglineContest['nameVenture']}
-            typeOfTagline={typeOfTagline as TaglineContest['typeOfTagline']}
+            nameVenture={nameVenture!}
+            typeOfTagline={typeOfTagline!}
           />
         ) : (
           <LogoContestSpecialInfo
-            brandStyle={brandStyle as LogoContest['brandStyle']}
-            nameVenture={nameVenture as LogoContest['nameVenture']}
+            brandStyle={brandStyle!}
+            nameVenture={nameVenture!}
           />
         )}
         <DataContainer

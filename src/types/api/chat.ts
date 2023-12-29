@@ -37,8 +37,8 @@ export type NewMessageResponse = {
     };
 };
 
-export type GetPreviewChatResponse = WithParticipantTuples &
-  WithInterlocutor &
+export type GetPreviewChatResponse = WithInterlocutor &
+  WithParticipantTuples &
   WithTimeStamps['createdAt'] & {
     sender: SenderId;
     text: Message['body'];
@@ -52,20 +52,23 @@ export type GoToExtendedDialog = WithInterlocutor & {
   conversationData: WithParticipantTuples;
 };
 
-export type Interlocutor = WithId<InterlocutorId> &
-  Pick<User, 'firstName' | 'lastName' | 'displayName' | 'avatar'>;
+export type Interlocutor = Pick<
+  User,
+  'avatar' | 'displayName' | 'firstName' | 'lastName'
+> &
+  WithId<InterlocutorId>;
 
-export type Message = With_id<MessageId> &
-  With_id<ConversationId, 'conversation'> &
+export type Message = With_id<ConversationId, 'conversation'> &
+  With_id<MessageId> &
   WithId<SenderId, 'sender'> &
   WithTimeStamps & {
     body: string;
   };
 
 export type WithParticipantTuples = With_id<ConversationId> &
-  WithParticipants &
+  WithBlackList &
   WithFavoriteList &
-  WithBlackList;
+  WithParticipants;
 
 export type WithInterlocutor = { interlocutor: Interlocutor };
 export type WithParticipants = { participants: [InterlocutorId, SenderId] };

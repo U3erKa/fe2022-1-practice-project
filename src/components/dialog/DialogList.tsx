@@ -84,9 +84,9 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
   const renderPreview = useCallback(
     (
       filterFunc?:
+        | typeof onlyBlockDialogs
         | typeof onlyChatsInCatalog
-        | typeof onlyFavoriteDialogs
-        | typeof onlyBlockDialogs,
+        | typeof onlyFavoriteDialogs,
     ) => {
       const arrayList: JSX.Element[] = [];
       for (const chatPreview of messagesPreview) {

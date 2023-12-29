@@ -47,7 +47,7 @@ const hashPassword = async (user: User) => {
 
 export default function User(sequelize: Sequelize) {
   class User extends _User {
-    async comparePassword(password: string | Buffer) {
+    async comparePassword(password: Buffer | string) {
       return await bcrypt.compare(password, this.password);
     }
 
@@ -152,7 +152,7 @@ abstract class _User extends Model<
   declare password: string;
   declare email: string;
   declare avatar: CreationOptional<string>;
-  declare role: typeof CUSTOMER | typeof CREATOR | typeof MODERATOR;
+  declare role: typeof CREATOR | typeof CUSTOMER | typeof MODERATOR;
   declare balance: CreationOptional<number>;
   declare accessToken?: CreationOptional<string>;
   declare rating: CreationOptional<number>;

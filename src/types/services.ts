@@ -12,7 +12,7 @@ import type {
 import type { UserId } from '.';
 
 export type JwtSign = (
-  payload: string | Buffer | object,
+  payload: Buffer | object | string,
   secretOrPrivateKey: Secret,
   options?: SignOptions,
 ) => Promise<string>;
@@ -41,25 +41,23 @@ export type TokenOptions = {
 };
 
 export interface ParsedQs {
-  [key: string]: undefined | string | string[] | ParsedQs | ParsedQs[];
+  [key: string]: ParsedQs | ParsedQs[] | string[] | string | undefined;
 }
 
 export type ContestData = {
-  typeIndex?: string | string[] | ParsedQs | ParsedQs[];
-  contestId?: string | string[] | ParsedQs | ParsedQs[];
-  industry?: string | string[] | ParsedQs | ParsedQs[];
-  awardSort?: string | string[] | ParsedQs | ParsedQs[];
+  typeIndex?: ParsedQs | ParsedQs[] | string[] | string;
+  contestId?: ParsedQs | ParsedQs[] | string[] | string;
+  industry?: ParsedQs | ParsedQs[] | string[] | string;
+  awardSort?: ParsedQs | ParsedQs[] | string[] | string;
 };
 
 export type Status = {
-  status: {
-    [Or: symbol]: [
-      typeof CONTEST_STATUS_FINISHED,
-      typeof CONTEST_STATUS_ACTIVE,
-    ];
-  };
+  status: Record<
+    symbol,
+    [typeof CONTEST_STATUS_FINISHED, typeof CONTEST_STATUS_ACTIVE]
+  >;
 };
 
 export type WhereForAllContests = ContestData & Status;
-export type Contest = { status?: string | string[]; userId?: UserId };
+export type Contest = { status?: string[] | string; userId?: UserId };
 export type WhereForCustomerContests = Contest & {};

@@ -15,9 +15,9 @@ import styles from './styles/SlideBar.module.scss';
 
 export type Props = {
   readonly carouselType:
-    | typeof MAIN_SLIDER
     | typeof EXAMPLE_SLIDER
-    | typeof FEEDBACK_SLIDER;
+    | typeof FEEDBACK_SLIDER
+    | typeof MAIN_SLIDER;
 };
 
 const CONTAINER_STYLE = {

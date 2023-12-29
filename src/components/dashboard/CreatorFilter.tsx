@@ -72,7 +72,7 @@ export const CreatorFilter = () => {
   const router = useRouter();
 
   const changePredicate = useCallback(
-    ({ name, value }: { name: string; value: string | number | boolean }) => {
+    ({ name, value }: { name: string; value: boolean | number | string }) => {
       const newCreatorFilterValue = {
         [name]: value === 'Choose industry' ? null : value,
       };

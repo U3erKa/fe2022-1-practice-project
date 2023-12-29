@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
     const offersCount = await Offer.count({ where });
     const haveMore = offersCount > offset + offers.length;
 
-    type Offers = typeof offers & { Contest: _Contest }[];
+    type Offers = { Contest: _Contest }[] & typeof offers;
     for (const { Contest, dataValues } of offers as Offers) {
       Object.assign(dataValues, Contest.dataValues);
       // @ts-expect-error

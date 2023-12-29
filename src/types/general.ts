@@ -2,23 +2,23 @@ import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
 
 export type TextEntry = {
-  id: string | number;
+  id: number | string;
   text: string;
   className?: string;
   [key: string]: any;
 } & (
-  | { type: 'plain' | 'span' }
   | { type: 'link'; href: string }
-  | ({ type: 'anchor' } & LinkProps)
+  | { type: 'plain' | 'span' }
+  | (LinkProps & { type: 'anchor' })
 );
 
 export type QNAItems = {
   id: string;
   question: string;
-  answer: string | string[] | AnswerProps | ReactNode;
+  answer: AnswerProps | ReactNode | string[] | string;
 }[];
 
 export type AnswerProps = {
   description: string;
-  list: (string | ReactNode)[];
+  list: (ReactNode | string)[];
 };

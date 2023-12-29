@@ -1,8 +1,8 @@
-import {
-  type DetailedHTMLProps,
-  type FC,
-  type HTMLInputTypeAttribute,
-  type InputHTMLAttributes,
+import type {
+  DetailedHTMLProps,
+  FC,
+  HTMLInputTypeAttribute,
+  InputHTMLAttributes,
 } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import styles from './styles/RoleInput.module.scss';

@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       throw new RightsError();
     }
 
-    const obj: { [key: string]: unknown } = {
+    const obj: Record<string, unknown> = {
       contestId,
       userId: tokenData.userId,
     };

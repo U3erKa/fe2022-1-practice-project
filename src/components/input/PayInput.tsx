@@ -1,10 +1,6 @@
 import { type MaskProps, useMask } from '@react-input/mask';
 import clsx from 'clsx';
-import {
-  type DetailedHTMLProps,
-  type FC,
-  type InputHTMLAttributes,
-} from 'react';
+import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import type { CardField } from 'types/api/offer';
 
@@ -17,7 +13,7 @@ export type Props = DetailedHTMLProps<
   readonly changeFocus: (name: CardField) => void;
   readonly classes: Record<string, string>;
   readonly replacement?: MaskProps['replacement'];
-} & ({ mask?: undefined } | Pick<MaskProps, 'mask' | 'replacement'>);
+} & (Pick<MaskProps, 'mask' | 'replacement'> | { mask?: undefined });
 
 const PayInput: FC<Props> = ({
   changeFocus,

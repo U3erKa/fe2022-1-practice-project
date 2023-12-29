@@ -9,17 +9,17 @@ import {
 import type { User } from 'types/models';
 import type { JwtSign, JwtVerify, TokenOptions } from 'types/services';
 
-export type TokenData = { userId: User['id'] } & Pick<
+export type TokenData = Pick<
   User,
-  | 'firstName'
-  | 'lastName'
   | 'avatar'
+  | 'balance'
   | 'displayName'
   | 'email'
-  | 'balance'
-  | 'role'
+  | 'firstName'
+  | 'lastName'
   | 'rating'
->;
+  | 'role'
+> & { userId: User['id'] };
 
 // @ts-expect-error
 const jwtSign: JwtSign = promisify(jwt.sign);

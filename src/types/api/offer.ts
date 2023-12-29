@@ -26,13 +26,13 @@ import type {
 
 export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
   (
+    | { command: ModeratorCommand }
     | (WithId<ContestId, 'contestId'> &
         WithId<CreatorId, 'creatorId'> &
         WithUUID<'orderId'> & {
           command: CustomerCommand;
           priority: Priority;
         })
-    | { command: ModeratorCommand }
   );
 
 export type SetOfferStatusResponse<T extends Commands = Commands> = Offer &
@@ -48,14 +48,14 @@ export type ChangeMarkResponse = WithId<UserId, 'userId'> & { rating: Rating };
 
 export type CashOutParams = Omit<
   Bank['dataValues'],
-  'name' | 'balance' | 'cardNumber'
+  'balance' | 'cardNumber' | 'name'
 > & {
   sum: Bank['balance'];
   number: Bank['cardNumber'];
 };
 
-export type SetNewOfferResponse = WithId<OfferId> &
-  Partial<WithFile> & {
+export type SetNewOfferResponse = Partial<WithFile> &
+  WithId<OfferId> & {
     status: typeof OFFER_STATUS_APPROVED;
     text: Offer['text'];
     User: UserInOffer;
@@ -70,15 +70,15 @@ export type GetOffersResponse<IsReviewed> = {
   haveMore: boolean;
 };
 
-export type UserInOffer = WithId<UserId> &
+export type UserInOffer = Omit<User['dataValues'], 'accessToken' | 'password'> &
   WithId<UserId, 'userId'> &
-  Omit<User['dataValues'], 'password' | 'accessToken'> &
+  WithId<UserId> &
   WithLifeSpan;
 
-export type Offer = WithId<OfferId> &
-  WithId<UserId, 'userId'> &
+export type Offer = Partial<WithFile> &
   WithId<ContestId, 'contestId'> &
-  Partial<WithFile> &
+  WithId<OfferId> &
+  WithId<UserId, 'userId'> &
   WithOfferStatus & { text: string };
 
 export type ModeratorOffer<IsReviewed> = Offer &
@@ -100,8 +100,8 @@ export type Priority = 1 | 2 | 3;
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
 export type Commands = CustomerCommand | ModeratorCommand;
 export type CustomerCommand =
-  | typeof OFFER_COMMAND_RESOLVE
-  | typeof OFFER_COMMAND_REJECT;
+  | typeof OFFER_COMMAND_REJECT
+  | typeof OFFER_COMMAND_RESOLVE;
 export type ModeratorCommand =
   | typeof OFFER_COMMAND_APPROVE
   | typeof OFFER_COMMAND_DISCARD;

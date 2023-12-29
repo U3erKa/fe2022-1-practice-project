@@ -25,21 +25,21 @@ import type { UserInOffer } from './_common';
 import type { Rating, WithOfferStatus } from './offer';
 
 export type GetContestsThunk =
-  | { requestData: GetCustomersContestsParams; role: typeof CUSTOMER }
-  | { requestData: GetActiveContestsParams; role: typeof CREATOR };
+  | { requestData: GetActiveContestsParams; role: typeof CREATOR }
+  | { requestData: GetCustomersContestsParams; role: typeof CUSTOMER };
 
 export type GetCustomersContestsParams = Partial<WithPagination> & {
   contestStatus?: Contest['status'];
 };
 
-export type GetActiveContestsParams = Partial<WithPagination> & CreatorFilter;
+export type GetActiveContestsParams = CreatorFilter & Partial<WithPagination>;
 
 export type GetContestParams = WithId<ContestId, 'contestId'>;
-export type GetContestResponse = WithId<ContestId> &
-  Contest & { User: UserInOffer; Offers: Offer[] };
+export type GetContestResponse = Contest &
+  WithId<ContestId> & { User: UserInOffer; Offers: Offer[] };
 
 export type DataForContestParams = {
-  characteristic1?: 'nameStyle' | 'typeOfTagline' | 'brandStyle';
+  characteristic1?: 'brandStyle' | 'nameStyle' | 'typeOfTagline';
   characteristic2?: 'typeOfName';
 };
 
@@ -48,8 +48,8 @@ export type DataForContestResponse = DataForContest;
 export type GetContestsResponse = { contests: Contest[]; haveMore: boolean };
 export type UpdateContestResponse = Contest;
 
-export type Offer = WithId<OfferId> &
-  Partial<WithFile> &
+export type Offer = Partial<WithFile> &
+  WithId<OfferId> &
   WithOfferStatus & {
     User: UserInOffer;
     text: string;
@@ -65,13 +65,13 @@ export type DataForContest = {
 };
 
 export type SaveContestToStore =
-  | { type: typeof NAME_CONTEST; info: NameContestInfo }
   | { type: typeof LOGO_CONTEST; info: LogoContestInfo }
+  | { type: typeof NAME_CONTEST; info: NameContestInfo }
   | { type: typeof TAGLINE_CONTEST; info: TaglineContestInfo };
 
 export type ContestInfo =
-  | NameContestInfo
   | LogoContestInfo
+  | NameContestInfo
   | TaglineContestInfo;
 
 export type NameContestInfo = BaseContestInfo & {

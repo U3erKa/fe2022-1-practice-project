@@ -72,5 +72,5 @@ export type _Conversation = InstanceType<typeof __Conversation>;
 export type _Message = InstanceType<typeof __Message>;
 
 export type ModelUpdateAttributes<M extends Model> = {
-  [key in keyof Attributes<M>]?: Attributes<M>[key] | Fn | Col | Literal;
+  [key in keyof Attributes<M>]?: Attributes<M>[key] | Col | Fn | Literal;
 };

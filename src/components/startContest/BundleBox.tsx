@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import { type FC } from 'react';
+import type { FC } from 'react';
 import styles from './styles/BundleBox.module.scss';
 
 export type Props = {

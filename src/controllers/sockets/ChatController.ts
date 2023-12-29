@@ -10,13 +10,13 @@ import WebSocket from './WebSocket';
 
 export type WebSocketMessage = {
   message: Message;
-  preview: Pick<Message, '_id' | 'sender' | 'createdAt'> &
-    Pick<Conversation, 'blackList' | 'favoriteList'> & {
+  preview: Pick<Conversation, 'blackList' | 'favoriteList'> &
+    Pick<Message, '_id' | 'createdAt' | 'sender'> & {
       text: Message['body'];
       participants: [User['id'], User['id']];
       interlocutor: Pick<
         User,
-        'id' | 'firstName' | 'lastName' | 'displayName' | 'avatar' | 'email'
+        'avatar' | 'displayName' | 'email' | 'firstName' | 'id' | 'lastName'
       >;
     };
 };

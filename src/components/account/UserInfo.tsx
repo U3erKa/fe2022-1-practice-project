@@ -65,7 +65,7 @@ const UserInfo: FC = () => {
     (
       values: Pick<
         NonNullable<UserState['data']>,
-        'firstName' | 'lastName' | 'displayName'
+        'displayName' | 'firstName' | 'lastName'
       > & { file: FileList },
     ) => {
       const formData = new FormData();

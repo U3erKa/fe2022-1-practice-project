@@ -206,7 +206,7 @@ const reducers = {
     state: ContestByIdState,
     {
       payload: { isShowOnFull, imagePath },
-    }: PayloadAction<Pick<ContestByIdState, 'isShowOnFull' | 'imagePath'>>,
+    }: PayloadAction<Pick<ContestByIdState, 'imagePath' | 'isShowOnFull'>>,
   ) => {
     state.isShowOnFull = isShowOnFull;
     state.imagePath = imagePath;

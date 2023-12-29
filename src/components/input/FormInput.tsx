@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { type DetailedHTMLProps, type InputHTMLAttributes } from 'react';
+import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
 export type FormInputClasses = Partial<

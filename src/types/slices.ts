@@ -99,7 +99,7 @@ export type PaymentState = WithFetch & {
 };
 
 export type UserProfileState = {
-  profileViewMode: typeof USER_INFO_MODE | typeof CASHOUT_MODE;
+  profileViewMode: typeof CASHOUT_MODE | typeof USER_INFO_MODE;
   isEdit: boolean;
 };
 
@@ -110,22 +110,22 @@ export type UserState = WithFetch & {
 export type Bundle = {
   first: Omit<ContestsOrder, 'payment'>;
   name: Omit<ContestsOrder, 'name'>;
-  logo: Omit<ContestsOrder, 'name' | 'logo'>;
-  tagline: Omit<ContestsOrder, 'name' | 'logo' | 'payment'>;
+  logo: Omit<ContestsOrder, 'logo' | 'name'>;
+  tagline: Omit<ContestsOrder, 'logo' | 'name' | 'payment'>;
 };
 
-export type ContestsOrder = 'name' | 'logo' | 'tagline' | 'payment';
+export type ContestsOrder = 'logo' | 'name' | 'payment' | 'tagline';
 
 export type CreatorFilter = {
   contestId?: ContestId;
-  typeIndex?: string | number;
+  typeIndex?: number | string;
   industry?: Industry | '';
   awardSort?: 'ASC' | 'DESC';
   ownEntries?: boolean;
 };
 
-export type ContestData = WithId<ContestId> &
-  Omit<Contest, 'Offers'> & {
+export type ContestData = Omit<Contest, 'Offers'> &
+  WithId<ContestId> & {
     User: UserInOffer;
   };
 
@@ -134,5 +134,5 @@ export type WithFetch = { isFetching: boolean; error: unknown };
 
 export type NameMatchesDomain =
   | typeof EXACT_CHOISE
-  | typeof SIMILAR_CHOISE
-  | typeof NAME_ONLY_CHOISE;
+  | typeof NAME_ONLY_CHOISE
+  | typeof SIMILAR_CHOISE;
