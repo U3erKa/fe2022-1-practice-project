@@ -30,7 +30,9 @@ const ContestBox: FC<Props> = ({ data }) => {
   return (
     <div
       className={styles.contestBoxContainer}
-      onClick={() => goToExtended(id)}
+      onClick={() => {
+        goToExtended(id);
+      }}
     >
       <div className={styles.mainContestInfo}>
         <div className={styles.titleAndIdContainer}>

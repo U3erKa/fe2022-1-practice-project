@@ -117,14 +117,15 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () =>
+          onClick: () => {
             setOfferStatus(
               id,
               data.id,
               role === MODERATOR
                 ? OFFER_COMMAND_APPROVE
                 : OFFER_COMMAND_RESOLVE,
-            ),
+            );
+          },
         },
         {
           label: 'No',
@@ -140,12 +141,13 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () =>
+          onClick: () => {
             setOfferStatus(
               id,
               data.id,
               role === MODERATOR ? OFFER_COMMAND_DISCARD : OFFER_COMMAND_REJECT,
-            ),
+            );
+          },
         },
         {
           label: 'No',
@@ -227,7 +229,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {(contestData?.contestType ?? data?.contestType) === LOGO_CONTEST ? (
+          {(contestData.contestType ?? data.contestType) === LOGO_CONTEST ? (
             <Image
               alt="logo"
               className={styles.responseLogo}

@@ -22,7 +22,9 @@ const Chat = () => {
     chatController.subscribeChat(userId);
     dispatch(getPreviewChat());
 
-    return () => chatController.unsubscribeChat(userId);
+    return () => {
+      chatController.unsubscribeChat(userId);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

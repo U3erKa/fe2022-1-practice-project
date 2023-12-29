@@ -22,7 +22,7 @@ export async function sendCreatorOfferEmail(offer: _Offer, command: string) {
     );
     const html = template(email, { action, command, fullName, offerText });
 
-    return await sendEmail({
+    await sendEmail({
       to: `"${fullName}" <${user.email}>`,
       subject: `We decided to ${command} your offer`,
       text: `Hello ${fullName}!

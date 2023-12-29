@@ -59,19 +59,23 @@ const DialogBox: FC<Props> = ({
   const isBlocked = blackList[participants.indexOf(userId)];
 
   const handleChangeFavorite: MouseEventHandler<SVGSVGElement> = useCallback(
-    (event) =>
-      changeFavorite({ favoriteFlag: !isFavorite, participants }, event),
+    (event) => {
+      changeFavorite({ favoriteFlag: !isFavorite, participants }, event);
+    },
     [isFavorite, participants, changeFavorite],
   );
 
   const handleChangeBlock: MouseEventHandler<SVGSVGElement> = useCallback(
-    (event) =>
-      changeBlackList({ blackListFlag: !isBlocked, participants }, event),
+    (event) => {
+      changeBlackList({ blackListFlag: !isBlocked, participants }, event);
+    },
     [isBlocked, participants, changeBlackList],
   );
 
   const handleChangeChatMode: MouseEventHandler<SVGSVGElement> = useCallback(
-    (event) => catalogOperation(event, _id),
+    (event) => {
+      catalogOperation(event, _id);
+    },
     [_id, catalogOperation],
   );
 
@@ -79,12 +83,12 @@ const DialogBox: FC<Props> = ({
   return (
     <div
       className={styles.previewChatBox}
-      onClick={() =>
+      onClick={() => {
         goToExpandedDialog({
           conversationData: { _id, blackList, favoriteList, participants },
           interlocutor,
-        })
-      }
+        });
+      }}
     >
       <UserImage src={`${PUBLIC_URL}${interlocutor.avatar}`} />
       <div className={styles.infoContainer}>

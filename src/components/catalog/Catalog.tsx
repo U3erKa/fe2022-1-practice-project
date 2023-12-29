@@ -26,14 +26,18 @@ const Catalog: FC<Props> = ({ catalog, deleteCatalog, goToCatalog }) => {
   const { catalogName, chats, _id } = catalog;
 
   const handleClick: MouseEventHandler<SVGSVGElement> = useCallback(
-    (event) => deleteCatalog(event, _id),
+    (event) => {
+      deleteCatalog(event, _id);
+    },
     [_id, deleteCatalog],
   );
 
   return (
     <div
       className={styles.catalogContainer}
-      onClick={(event) => goToCatalog(event, catalog)}
+      onClick={(event) => {
+        goToCatalog(event, catalog);
+      }}
     >
       <span className={styles.catalogName}>{catalogName}</span>
       <div className={styles.infoContainer}>

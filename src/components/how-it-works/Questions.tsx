@@ -27,7 +27,9 @@ export const Questions: FC<Props> = ({ questions }) => {
           <section className={styles.questionContainer} key={id}>
             <button
               className={styles.question}
-              onClick={() => setActiveQuestion(active ? -1 : i)}
+              onClick={() => {
+                setActiveQuestion(active ? -1 : i);
+              }}
             >
               {question}
               <FontAwesomeIcon className={iconStyles} icon={faArrowRight} />

@@ -19,7 +19,9 @@ export default function Event({ id, name, date, createdAt }: EventResponse) {
       clearInterval(interval);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

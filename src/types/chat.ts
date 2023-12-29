@@ -31,20 +31,20 @@ export type CatalogCreationMode =
   | typeof ADD_CHAT_TO_OLD_CATALOG
   | typeof CREATE_NEW_CATALOG_AND_ADD_CHAT;
 
-export type Catalog = With_id<CatalogId> & {
+export type Catalog = With_id & {
   chats: ChatId[];
   catalogName: string;
 };
 
 export type MessagePreview = ChatData &
   Omit<WithTimeStamps, 'updatedAt'> &
-  With_id<ChatId> & {
+  With_id & {
     interlocutor: Interlocutor;
     sender: SenderId;
     text: Message['body'];
   };
 
-export type ChatData = With_id<ChatId> &
+export type ChatData = With_id &
   WithBlackList &
   WithFavoriteList &
   WithParticipants;

@@ -19,7 +19,7 @@ httpClient.interceptors.request.use(
 
 httpClient.interceptors.response.use(
   (response) => {
-    if (response?.data?.tokenPair) {
+    if (response.data?.tokenPair) {
       const { accessToken: newAccessToken, refreshToken } =
         response.data.tokenPair;
 

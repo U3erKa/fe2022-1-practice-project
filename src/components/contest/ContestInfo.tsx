@@ -102,7 +102,9 @@ const ContestInfo: FC<Props> = ({
           {User.id === userId && status !== CONTEST_STATUS_FINISHED && (
             <div
               className={styles.editBtn}
-              onClick={() => changeEditContest(true)}
+              onClick={() => {
+                changeEditContest(true);
+              }}
             >
               Edit
             </div>

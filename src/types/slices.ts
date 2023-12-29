@@ -125,9 +125,7 @@ export type CreatorFilter = {
 };
 
 export type ContestData = Omit<Contest, 'Offers'> &
-  WithId<ContestId> & {
-    User: UserInOffer;
-  };
+  WithId & { User: UserInOffer };
 
 export type ServerError = { data: string; status: number };
 export type WithFetch = { isFetching: boolean; error: unknown };

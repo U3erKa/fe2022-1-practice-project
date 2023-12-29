@@ -37,7 +37,9 @@ const BundleBox: FC<Props> = ({ header, icons, setBundle, describe }) => {
       className={clsx(styles.bundleContainer, {
         [styles.combinedBundle]: icons.length === 1,
       })}
-      onClick={() => setBundle(header)}
+      onClick={() => {
+        setBundle(header);
+      }}
     >
       {images}
       <div className={styles.infoContainer}>

@@ -16,7 +16,7 @@ export const createSession = async (user: User) => {
   });
 
   await RefreshToken.create({
-    token: tokenPair.refreshToken!,
+    token: tokenPair.refreshToken,
     userId: user.id,
   });
 

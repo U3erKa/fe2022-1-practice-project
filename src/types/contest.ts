@@ -57,7 +57,7 @@ export type BaseContest = Omit<WithTimeStamps, 'updatedAt'> &
     industry: Industry;
     status: Status;
     priority: Priority;
-    Offers: WithId<OfferId>[];
+    Offers: WithId[];
     count: BaseContest['Offers']['length'];
   };
 

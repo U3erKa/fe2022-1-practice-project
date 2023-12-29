@@ -95,23 +95,25 @@ export const CreatorFilter = () => {
 
   const handleContestTypeChange: ChangeEventHandler<HTMLSelectElement> =
     useCallback(
-      ({ target }) =>
+      ({ target }) => {
         changePredicate({
           name: 'typeIndex',
           value: CONTEST_TYPES.indexOf(
             target.value as (typeof CONTEST_TYPES)[number],
           ),
-        }),
+        });
+      },
       [changePredicate],
     );
 
   const handleIndustryTypeChange: ChangeEventHandler<HTMLSelectElement> =
     useCallback(
-      ({ target }) =>
+      ({ target }) => {
         changePredicate({
           name: 'industry',
           value: target.value,
-        }),
+        });
+      },
       [changePredicate],
     );
 
@@ -123,12 +125,12 @@ export const CreatorFilter = () => {
           className={clsx(styles.myEntries, {
             [styles.activeMyEntries]: creatorFilter.ownEntries,
           })}
-          onClick={() =>
+          onClick={() => {
             changePredicate({
               name: 'ownEntries',
               value: !creatorFilter.ownEntries,
-            })
-          }
+            });
+          }}
         >
           My Entries
         </div>
@@ -146,12 +148,12 @@ export const CreatorFilter = () => {
             name="contestId"
             type="text"
             value={creatorFilter.contestId}
-            onChange={({ target }) =>
+            onChange={({ target }) => {
               changePredicate({
                 name: 'contestId',
                 value: target.value,
-              })
-            }
+              });
+            }}
           />
         </div>
         {!isFetching && (
@@ -169,12 +171,12 @@ export const CreatorFilter = () => {
           <select
             className={styles.input}
             value={creatorFilter.awardSort}
-            onChange={({ target }) =>
+            onChange={({ target }) => {
               changePredicate({
                 name: 'awardSort',
                 value: target.value,
-              })
-            }
+              });
+            }}
           >
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>

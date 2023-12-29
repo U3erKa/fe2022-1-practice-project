@@ -39,7 +39,9 @@ const PayInput: FC<Props> = ({
         className={clsx(classes.input, {
           [classes.notValid]: isTouched && error,
         })}
-        onFocus={() => changeFocus(field.name as CardField)}
+        onFocus={() => {
+          changeFocus(field.name as CardField);
+        }}
         {...field}
         {...rest}
       />

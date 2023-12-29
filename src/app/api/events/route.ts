@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     const { userId } = await verifyAccessToken(authorization);
 
     const events = await Event.findAll({ where: { userId } });
-    if (!events?.length) throw new NotFoundError('Events not found');
+    if (!events.length) throw new NotFoundError('Events not found');
 
     return NextResponse.json(events, { status: 200 });
   } catch (error) {
