@@ -1,3 +1,5 @@
+'use client';
+
 import isEqual from 'fast-deep-equal/es6/react';
 import { useEffect, useRef, useState } from 'react';
 import {
