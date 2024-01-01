@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { useDispatch } from 'hooks';
+import { useDispatch, useSelector } from 'hooks';
 import { RegistrationForm } from 'components/form';
 import { Logo } from 'components/general';
 import { RegistrationArticles } from 'components/registration';
@@ -16,12 +17,19 @@ import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/page.module.scss';
 
 const RegistrationPage = () => {
+  const user = useSelector(({ userStore }) => userStore.data);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(clearAuthError());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (user) {
+    router.replace(PAGE.HOME);
+    return null;
+  }
 
   return (
     <div className={styles.signUpPage}>

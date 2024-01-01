@@ -15,13 +15,17 @@ export type Props = {
 };
 
 const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
-  const bundle = useSelector(({ bundleStore }) => bundleStore.bundle);
+  const { bundle, user } = useSelector(({ bundleStore, userStore }) => {
+    const { bundle } = bundleStore;
+    const { data: user } = userStore;
+    return { bundle, user };
+  });
   const router = useRouter();
 
-  useEffect(() => {
-    !bundle && router.replace(PAGE.START_CONTEST);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bundle]);
+  if (!user || !bundle) {
+    router.replace(user ? PAGE.START_CONTEST : PAGE.HOME);
+    return null;
+  }
 
   return (
     <div>

@@ -17,13 +17,9 @@ import type { Bundle } from 'types/slices';
 import styles from './styles/page.module.scss';
 
 const StartContestPage = () => {
-  const role = useSelector(({ userStore }) => userStore.data?.role);
+  const user = useSelector(({ userStore }) => userStore.data);
   const dispatch = useDispatch();
   const router = useRouter();
-
-  useEffect(() => {
-    if (role !== CUSTOMER) router.replace(PAGE.HOME);
-  }, [role, router]);
 
   const setBundle = useCallback(
     (bundleStr: string) => {
@@ -39,6 +35,11 @@ const StartContestPage = () => {
     },
     [dispatch, router],
   );
+
+  if (user?.role !== CUSTOMER) {
+    router.replace(PAGE.HOME);
+    return null;
+  }
 
   return (
     <div>

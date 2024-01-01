@@ -7,9 +7,14 @@ import { ChatContainer } from 'components/chat';
 import { REFRESH_TOKEN } from 'constants/general';
 import { getEvents } from 'store/slices/eventSlice';
 import { refresh } from 'store/slices/userSlice';
+import { Spinner } from '.';
 
 function Toast({ children }: React.PropsWithChildren) {
-  const user = useSelector(({ userStore }) => userStore.data);
+  const { isFetching, user } = useSelector(({ userStore, events }) => {
+    const { data: user, isFetching: isFetchingUsers } = userStore;
+    const { isFetching: isFetchingEvents } = events;
+    return { isFetching: isFetchingUsers || isFetchingEvents, user };
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +28,7 @@ function Toast({ children }: React.PropsWithChildren) {
     }
   }, [dispatch, user]);
 
+  if (isFetching) return <Spinner />;
   return (
     <>
       <ToastContainer
