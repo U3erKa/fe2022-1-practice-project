@@ -3,8 +3,9 @@ import { NotFoundError } from 'errors';
 import { Conversation } from 'models';
 import { getChatController } from 'socketInit';
 import { verifyAccessToken } from 'services/jwtService';
+import handleError from 'utils/handleError';
 
-export async function blackList(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     const { headers, json } = req;
     const authorization = headers.get('Authorization')!.split(' ')[1]!;
@@ -39,6 +40,6 @@ export async function blackList(req: NextRequest) {
     getChatController().emitChangeBlockStatus(interlocutorId, chat!);
     return NextResponse.json(chat);
   } catch (error) {
-    return NextResponse.json(error);
+    return handleError(error);
   }
 }
