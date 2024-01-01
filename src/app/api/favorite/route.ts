@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
       participants: [participant1, participant2],
     });
 
-    return NextResponse.json(chat);
+    return NextResponse.json(chat!);
   } catch (error) {
     return handleError(error);
   }

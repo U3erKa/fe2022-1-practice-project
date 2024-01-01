@@ -1,15 +1,27 @@
 import http from 'api/interceptor';
+import type {
+  GET as GetContestHandler,
+  PUT as UpdateContestHandler,
+} from 'app/api/contests/[contestId]/route';
+import type { GET as GetContestsHandler } from 'app/api/contests/route';
+import type { POST as DataForContestHandler } from 'app/api/dataForContest/route';
 import { ROUTE } from 'constants/general';
+import type { APIHandlerReturn } from 'types/_common';
 import type {
   DataForContestParams,
-  DataForContestResponse,
   GetActiveContestsParams,
   GetContestParams,
-  GetContestResponse,
-  GetContestsResponse,
   GetCustomersContestsParams,
-  UpdateContestResponse,
 } from 'types/api/contest';
+
+export type DataForContestResponse = APIHandlerReturn<
+  typeof DataForContestHandler
+>;
+export type GetContestsResponse = APIHandlerReturn<typeof GetContestsHandler>;
+export type GetContestResponse = APIHandlerReturn<typeof GetContestHandler>;
+export type UpdateContestResponse = APIHandlerReturn<
+  typeof UpdateContestHandler
+>;
 
 export const dataForContest = (data?: DataForContestParams) =>
   http.post<DataForContestResponse>(ROUTE.DATA_FOR_CONTEST, data);

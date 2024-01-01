@@ -1,18 +1,9 @@
 import http from 'api/interceptor';
+import type { POST as UpdateUserHandler } from 'app/api/updateUser/route';
 import { ROUTE } from 'constants/general';
-import type { updateUser as updateUserQuery } from 'controllers/queries/userQueries';
+import type { APIHandlerReturn } from 'types/_common';
 
-type UpdateUserResponse = Pick<
-  Awaited<ReturnType<typeof updateUserQuery>>,
-  | 'avatar'
-  | 'balance'
-  | 'displayName'
-  | 'email'
-  | 'firstName'
-  | 'id'
-  | 'lastName'
-  | 'role'
->;
+export type UpdateUserResponse = APIHandlerReturn<typeof UpdateUserHandler>;
 
 export const updateUser = (data: FormData) =>
   http.post<UpdateUserResponse>(ROUTE.UPDATE_USER, data);

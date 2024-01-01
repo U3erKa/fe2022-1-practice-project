@@ -21,7 +21,7 @@ const handleError = (err: any) => {
     err.code = 406;
   }
 
-  return new NextResponse(err?.message ?? 'Server Error', {
+  return new NextResponse<never>(err?.message ?? 'Server Error', {
     status: err.code ?? 500,
   });
 };

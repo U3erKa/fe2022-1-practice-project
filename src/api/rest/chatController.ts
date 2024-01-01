@@ -1,28 +1,35 @@
 import http from 'api/interceptor';
+import type { POST as BlackListHandler } from 'app/api/blackList/route';
+import type { POST as FavoriteHandler } from 'app/api/favorite/route';
+import type { POST as GetChatHandler } from 'app/api/getChat/route';
+import type { POST as GetPreviewHandler } from 'app/api/getPreview/route';
+import type { POST as NewMessageHandler } from 'app/api/newMessage/route';
 import { ROUTE } from 'constants/general';
+import type { APIHandlerReturn } from 'types/_common';
 import type {
   ChangeChatBlockParams,
-  ChangeChatBlockResponse,
   ChangeChatFavoriteParams,
-  ChangeChatFavoriteResponse,
   GetDialogParams,
-  GetDialogResponse,
-  GetPreviewChatResponse,
   NewMessageParams,
-  NewMessageResponse,
 } from 'types/api/chat';
 
+export type GetChatResponse = APIHandlerReturn<typeof GetChatHandler>;
+export type GetPreviewResponse = APIHandlerReturn<typeof GetPreviewHandler>;
+export type FavoriteResponse = APIHandlerReturn<typeof FavoriteHandler>;
+export type BlackListResponse = APIHandlerReturn<typeof BlackListHandler>;
+export type NewMessageResponse = APIHandlerReturn<typeof NewMessageHandler>;
+
 export const getDialog = (data: GetDialogParams) =>
-  http.post<GetDialogResponse>(ROUTE.GET_CHAT, data);
+  http.post<GetChatResponse>(ROUTE.GET_CHAT, data);
 
 export const getPreviewChat = () =>
-  http.post<GetPreviewChatResponse>(ROUTE.GET_PREVIEW);
+  http.post<GetPreviewResponse>(ROUTE.GET_PREVIEW);
 
 export const changeChatFavorite = (data: ChangeChatFavoriteParams) =>
-  http.post<ChangeChatFavoriteResponse>(ROUTE.FAVORITE, data);
+  http.post<FavoriteResponse>(ROUTE.FAVORITE, data);
 
 export const changeChatBlock = (data: ChangeChatBlockParams) =>
-  http.post<ChangeChatBlockResponse>(ROUTE.BLACKLIST, data);
+  http.post<BlackListResponse>(ROUTE.BLACKLIST, data);
 
 export const newMessage = (data: NewMessageParams) =>
   http.post<NewMessageResponse>(ROUTE.NEW_MESSAGE, data);

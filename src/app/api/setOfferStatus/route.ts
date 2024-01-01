@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
           { id: offerId },
         );
         sendCreatorOfferEmail(offer!, command);
-        return NextResponse.json(offer, { status: 200 });
+        return NextResponse.json(offer!, { status: 200 });
       }
     }
     throw new BadRequestError('Invalid command');
