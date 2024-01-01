@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { BadRequestError, NotFoundError } from 'errors';
 import { Event, User } from 'models';
-import BadRequestError from 'errors/BadRequestError';
-import NotFoundError from 'errors/NotFoundError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 import { NewEventSchema } from 'utils/schemas';

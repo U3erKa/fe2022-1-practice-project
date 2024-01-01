@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { RightsError } from 'errors';
 import { Contest, Offer } from 'models';
 import { CREATOR, CUSTOMER } from 'constants/general';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import {
   createWhereForAllContests,

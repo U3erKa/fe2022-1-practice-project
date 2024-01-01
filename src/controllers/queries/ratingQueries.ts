@@ -4,8 +4,8 @@ import type {
   Transaction,
   WhereOptions,
 } from 'sequelize';
+import { ServerError } from 'errors';
 import { Rating } from 'models';
-import ServerError from 'errors/ServerError';
 import type { Rating as _Rating } from 'types/models';
 import type { ModelUpdateAttributes } from 'types/models';
 

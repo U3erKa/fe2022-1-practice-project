@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { RightsError } from 'errors';
 import { Conversation, Message } from 'models';
 import { getChatController } from 'socketInit';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 

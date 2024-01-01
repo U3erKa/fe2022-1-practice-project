@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
 import { randomUUID } from 'crypto';
+import { BadRequestError, RightsError } from 'errors';
 import { Contest, sequelize } from 'models';
 import {
   SQUADHELP_BANK_CVC,
@@ -13,8 +14,6 @@ import {
   CUSTOMER,
 } from 'constants/general';
 import { updateBankBalance } from 'controllers/queries/bankQueries';
-import BadRequestError from 'errors/BadRequestError';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import { uploadFile } from 'utils/backend';
 import handleError from 'utils/handleError';

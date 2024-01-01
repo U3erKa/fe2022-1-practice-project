@@ -1,6 +1,6 @@
 import type { Attributes, Transaction, WhereOptions } from 'sequelize';
+import { BankDeclineError } from 'errors';
 import { Bank } from 'models';
-import BankDeclineError from 'errors/BankDeclineError';
 import type { ModelUpdateAttributes, Bank as _Bank } from 'types/models';
 
 export const updateBankBalance = async (

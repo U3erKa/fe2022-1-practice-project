@@ -1,4 +1,4 @@
-import TokenError from 'errors/TokenError';
+import { TokenError } from 'errors';
 
 export function checkAuthorization(
   authorization: unknown,

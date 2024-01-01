@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { BadRequestError, RightsError } from 'errors';
 import { Contest, sequelize } from 'models';
 import {
   CONTEST_STATUS_ACTIVE,
@@ -18,8 +19,6 @@ import {
   resolveOffer,
   updateOfferStatus,
 } from 'controllers/queries/contestQueries';
-import BadRequestError from 'errors/BadRequestError';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import { sendCreatorOfferEmail } from 'utils/email';
 import handleError from 'utils/handleError';

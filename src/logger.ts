@@ -1,5 +1,6 @@
 import cron from 'node-cron';
 import sendEmail from 'email';
+import type { ApplicationError } from 'errors';
 import { promises as fs } from 'fs';
 import path from 'path';
 import {
@@ -7,7 +8,6 @@ import {
   LOG_PATH,
   READ_FILE_OPTIONS,
 } from 'constants/backend';
-import type ApplicationError from 'errors/ApplicationError';
 import { createFileIfNotExists } from 'utils/backend';
 
 const LATEST_LOG_PATH = path.resolve(LOG_PATH, 'latest.log');

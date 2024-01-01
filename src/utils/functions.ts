@@ -1,5 +1,5 @@
+import { ApplicationError } from 'errors';
 import type { EventResponse } from 'api/rest/eventController';
-import ApplicationError from 'errors/ApplicationError';
 
 /**
  * Filters old items by id and appends new items. Returns new array

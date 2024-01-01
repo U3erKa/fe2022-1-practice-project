@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { BadRequestError, UserNotFoundError } from 'errors';
 import { User } from 'models';
-import BadRequestError from 'errors/BadRequestError';
-import UserNotFoundError from 'errors/UserNotFoundError';
 import { createSession } from 'services/authService';
 import handleError from 'utils/handleError';
 import { LoginSchema } from 'utils/schemas';

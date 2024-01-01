@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { NotFoundError } from 'errors';
 import { Catalog, Conversation } from 'models';
-import NotFoundError from 'errors/NotFoundError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 

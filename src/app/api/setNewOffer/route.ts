@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { BadRequestError, NotFoundError, RightsError } from 'errors';
 import { Contest } from 'models';
 import { getNotificationController } from 'socketInit';
 import {
@@ -7,9 +8,6 @@ import {
   LOGO_CONTEST,
 } from 'constants/general';
 import { createOffer } from 'controllers/queries/contestQueries';
-import BadRequestError from 'errors/BadRequestError';
-import NotFoundError from 'errors/NotFoundError';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import { uploadFile } from 'utils/backend';
 import handleError from 'utils/handleError';

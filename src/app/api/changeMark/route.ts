@@ -1,11 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { Transaction } from 'sequelize';
+import { RightsError } from 'errors';
 import { Offer, Rating, sequelize } from 'models';
 import { getNotificationController } from 'socketInit';
 import { CUSTOMER } from 'constants/general';
 import { createRating, updateRating } from 'controllers/queries/ratingQueries';
 import { updateUser } from 'controllers/queries/userQueries';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 

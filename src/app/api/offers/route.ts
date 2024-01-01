@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { type Attributes, Op, type WhereOptions } from 'sequelize';
+import { NotFoundError, RightsError } from 'errors';
 import { Contest, Offer, User } from 'models';
 import {
   MODERATOR,
@@ -9,8 +10,6 @@ import {
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
 } from 'constants/general';
-import NotFoundError from 'errors/NotFoundError';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 import type { Contest as _Contest, Offer as _Offer } from 'types/models';

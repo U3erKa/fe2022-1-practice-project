@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
+import { NotFoundError, RightsError } from 'errors';
 import { Contest, Offer, Rating, User } from 'models';
 import {
   CONTEST_STATUS_ACTIVE,
@@ -10,8 +11,6 @@ import {
   OFFER_STATUS_PENDING,
 } from 'constants/general';
 import { updateContest } from 'controllers/queries/contestQueries';
-import NotFoundError from 'errors/NotFoundError';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import { uploadFile } from 'utils/backend';
 import handleError from 'utils/handleError';

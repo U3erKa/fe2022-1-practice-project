@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { NotFoundError } from 'errors';
 import { Conversation } from 'models';
 import { getChatController } from 'socketInit';
-import NotFoundError from 'errors/NotFoundError';
 import { verifyAccessToken } from 'services/jwtService';
 
 export async function blackList(req: NextRequest) {

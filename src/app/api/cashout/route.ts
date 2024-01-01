@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Op } from 'sequelize';
+import { RightsError } from 'errors';
 import { sequelize } from 'models';
 import {
   SQUADHELP_BANK_CVC,
@@ -9,7 +10,6 @@ import {
 import { CREATOR } from 'constants/general';
 import { updateBankBalance } from 'controllers/queries/bankQueries';
 import { updateUser } from 'controllers/queries/userQueries';
-import RightsError from 'errors/RightsError';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 

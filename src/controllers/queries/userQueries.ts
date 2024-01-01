@@ -4,10 +4,9 @@ import type {
   Transaction,
   WhereOptions,
 } from 'sequelize';
+import { NotFoundError, ServerError } from 'errors';
 import { User } from 'models';
 import type { UserId } from 'types';
-import ServerError from 'errors/ServerError';
-import NotFound from 'errors/UserNotFoundError';
 import type { ModelUpdateAttributes, User as _User } from 'types/models';
 
 export const updateUser = async (
@@ -32,7 +31,7 @@ export const findUser = async (
 ) => {
   const user = await User.findOne({ where: predicate, transaction });
   if (!user) {
-    throw new NotFound('user with this data didn`t exist');
+    throw new NotFoundError('user with this data didn`t exist');
   }
   return user.get({ plain: true });
 };

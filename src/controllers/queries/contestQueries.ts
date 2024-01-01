@@ -5,6 +5,7 @@ import type {
   Transaction,
   WhereOptions,
 } from 'sequelize';
+import { ServerError } from 'errors';
 import { Contest, Offer, sequelize } from 'models';
 import { getNotificationController } from 'socketInit';
 import {
@@ -17,7 +18,6 @@ import {
   OFFER_STATUS_WON,
 } from 'constants/general';
 import { updateUser } from 'controllers/queries/userQueries';
-import ServerError from 'errors/ServerError';
 import type {
   ModelUpdateAttributes,
   Contest as _Contest,
