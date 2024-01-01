@@ -9,30 +9,23 @@ import type { ChatId } from 'types/api/_common';
 import WebSocket from './WebSocket';
 
 class ChatSocket extends WebSocket {
-  anotherSubscribes = () => {
-    this.onNewMessage();
-    this.onChangeBlockStatus();
-  };
+  anotherSubscribes() {
+    this.socket
+      .on(NEW_MESSAGE, (data) => {
+        this.dispatch(addMessage(data.message));
+      })
+      .on(CHANGE_BLOCK_STATUS, (data) => {
+        this.dispatch(changeBlockStatusInStore(data.message));
+      });
+  }
 
-  onChangeBlockStatus = () => {
-    this.socket.on(CHANGE_BLOCK_STATUS, (data) => {
-      this.dispatch(changeBlockStatusInStore(data.message));
-    });
-  };
-
-  onNewMessage = () => {
-    this.socket.on(NEW_MESSAGE, (data) => {
-      this.dispatch(addMessage(data.message));
-    });
-  };
-
-  subscribeChat = (id: ChatId) => {
+  subscribe(id: ChatId) {
     this.socket.emit(SOCKET_SUBSCRIBE_CHAT, id);
-  };
+  }
 
-  unsubscribeChat = (id: ChatId) => {
+  unsubscribe(id: ChatId) {
     this.socket.emit(SOCKET_UNSUBSCRIBE_CHAT, id);
-  };
+  }
 }
 
 export default ChatSocket;

@@ -19,11 +19,11 @@ const Chat = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    chatController.subscribeChat(userId);
+    chatController.subscribe(userId);
     dispatch(getPreviewChat());
 
     return () => {
-      chatController.unsubscribeChat(userId);
+      chatController.unsubscribe(userId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

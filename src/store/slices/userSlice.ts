@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import * as authController from 'api/rest/authController';
 import * as userController from 'api/rest/userController';
-import { controller } from 'api/ws/socketController';
+import { notificationController } from 'api/ws/socketController';
 import { pendingReducer, rejectedReducer } from 'utils/store';
 import type { JWT } from 'types/api/_common';
 import type { UserState } from 'types/slices';
@@ -27,7 +27,7 @@ export const refresh = createAsyncThunk(
       const {
         data: { user },
       } = await authController.refresh(refreshToken);
-      controller.subscribe(user.id);
+      notificationController.subscribe(user.id);
 
       return user;
     } catch (err: any) {

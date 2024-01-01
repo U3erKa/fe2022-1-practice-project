@@ -23,20 +23,13 @@ export type WebSocketMessage = {
 
 class ChatController extends WebSocket {
   anotherSubscribes(socket: Socket) {
-    this.onSubscribeChat(socket);
-    this.onUnsubscribeChat(socket);
-  }
-
-  onSubscribeChat(socket: Socket) {
-    socket.on(SOCKET_SUBSCRIBE_CHAT, (id) => {
-      socket.join(id);
-    });
-  }
-
-  onUnsubscribeChat(socket: Socket) {
-    socket.on(SOCKET_UNSUBSCRIBE_CHAT, (id) => {
-      socket.join(id);
-    });
+    socket
+      .on(SOCKET_SUBSCRIBE_CHAT, (id: string[] | string) => {
+        return socket.join(id);
+      })
+      .on(SOCKET_UNSUBSCRIBE_CHAT, (id: string) => {
+        return socket.leave(id);
+      });
   }
 
   emitNewMessage(target: number | string, message: WebSocketMessage) {

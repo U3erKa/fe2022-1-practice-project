@@ -14,17 +14,14 @@ class WebSocket {
       origins: 'localhost:*',
       transports: ['websocket', 'polling'],
     });
-    this.listen();
-  }
 
-  listen = () => {
     this.socket.on('connect', () => {
       this.anotherSubscribes();
     });
-  };
+  }
 
-  // eslint-disable-next-line class-methods-use-this
-  anotherSubscribes = () => {};
+  // eslint-disable-next-line class-methods-use-this, @typescript-eslint/no-empty-function
+  anotherSubscribes() {}
 }
 
 export default WebSocket;

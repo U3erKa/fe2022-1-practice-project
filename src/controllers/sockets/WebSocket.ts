@@ -10,30 +10,21 @@ class WebSocket {
   io: ReturnType<Server['of']>;
   connect(namespace: RegExp | string, io: Server) {
     this.io = io.of(namespace);
-    this.listen();
-  }
 
-  listen() {
     this.io.on(SOCKET_CONNECTION, (socket) => {
-      this.onSubscribe(socket);
-      this.onUnsubscribe(socket);
+      socket
+        .on(SOCKET_SUBSCRIBE, (id: string[] | string) => {
+          return socket.join(id);
+        })
+        .on(SOCKET_UNSUBSCRIBE, (id: string) => {
+          return socket.leave(id);
+        });
       this.anotherSubscribes(socket);
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this, @typescript-eslint/no-empty-function
   anotherSubscribes(socket: Socket) {}
-
-  onSubscribe(socket: Socket) {
-    socket.on(SOCKET_SUBSCRIBE, (id) => {
-      socket.join(id);
-    });
-  }
-
-  onUnsubscribe(socket: Socket) {
-    socket.on(SOCKET_UNSUBSCRIBE, (id) => {
-      socket.leave(id);
-    });
-  }
 }
 
 export default WebSocket;

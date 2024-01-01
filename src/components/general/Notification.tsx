@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import styles from './styles/Notification.module.scss';
 
-export type Props = {
-  readonly contestId?: number;
+export type NotificationProps = {
+  readonly contestId: number;
   readonly message: string;
 };
 
-const Notification = ({ contestId, message }: Props) => (
+const Notification = ({ contestId, message }: NotificationProps) => (
   <div>
     <br />
     <span>{message}</span>

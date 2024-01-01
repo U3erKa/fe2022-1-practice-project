@@ -1,6 +1,6 @@
 import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
 import * as authController from 'api/rest/authController';
-import { controller } from 'api/ws/socketController';
+import { notificationController } from 'api/ws/socketController';
 import { AUTH_MODE, PAGE } from 'constants/general';
 import {
   decorateAsyncThunk,
@@ -29,7 +29,7 @@ export const checkAuth = decorateAsyncThunk({
         : await authController.registration(authInfo);
 
     navigate(PAGE.HOME);
-    controller.subscribe(user.id);
+    notificationController.subscribe(user.id);
     return user;
   },
 });
