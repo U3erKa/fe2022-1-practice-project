@@ -24,10 +24,13 @@
     // ],
     "@typescript-eslint/method-signature-style": ["warn", "property"],
     // "@typescript-eslint/naming-convention": "warn",
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-import-type-side-effects": "warn",
     "@typescript-eslint/no-loop-func": "warn",
+    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     // "@typescript-eslint/no-shadow": [
     //   "warn",
@@ -36,6 +39,12 @@
     //     "ignoreFunctionTypeParameterNameValueShadow": false
     //   }
     // ],
+    "@typescript-eslint/no-unnecessary-condition": "off",
+    "@typescript-eslint/no-unnecessary-type-arguments": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/prefer-destructuring": [
@@ -59,6 +68,7 @@
       "warn",
       { "onlyInlineLambdas": false }
     ],
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/sort-type-constituents": [
       "warn",
       {
@@ -81,6 +91,7 @@
       }
     ],
     "@typescript-eslint/switch-exhaustiveness-check": "warn",
+    "@typescript-eslint/unbound-method": "off",
     "react/function-component-definition": [
       "warn",
       {
