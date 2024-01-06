@@ -1,6 +1,6 @@
 import { ApplicationError } from 'errors';
-import type { WithId } from 'types';
 import type { EventResponse } from 'api/rest/eventController';
+import type { WithId } from 'types/api/_common';
 
 /**
  * Filters old items by id and appends new items. Returns new array

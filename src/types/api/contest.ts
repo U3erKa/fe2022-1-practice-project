@@ -49,14 +49,6 @@ export type Offer = Partial<WithFile> &
     mark?: Rating;
   };
 
-export type DataForContest = {
-  nameStyle?: StyleName[];
-  typeOfName?: TypeOfName[];
-  brandStyle?: BrandStyle[];
-  typeOfTagline?: TypeOfTagline[];
-  industry?: Industry[];
-};
-
 export type SaveContestToStore =
   | { type: typeof LOGO_CONTEST; info: LogoContestInfo }
   | { type: typeof NAME_CONTEST; info: NameContestInfo }

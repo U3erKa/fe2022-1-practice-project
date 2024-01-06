@@ -11,18 +11,15 @@ import type {
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
-import type { Bank, User } from 'types/models';
 import type {
   ContestId,
   CreatorId,
   OfferId,
-  UserId,
-  WithFile,
   WithId,
-  WithLifeSpan,
   WithPagination,
   WithUUID,
-} from './_common';
+} from 'types/api/_common';
+import type { Bank } from 'types/models';
 
 export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
   (
@@ -52,22 +49,6 @@ export type CashOutParams = Omit<
 export type GetOffersParams = Partial<WithPagination> & {
   isReviewed?: boolean;
 };
-
-export type UserInOffer = Omit<User['dataValues'], 'accessToken' | 'password'> &
-  WithId<UserId, 'userId'> &
-  WithId<UserId> &
-  WithLifeSpan;
-
-export type Offer = Partial<WithFile> &
-  WithId<ContestId, 'contestId'> &
-  WithId<OfferId> &
-  WithId<UserId, 'userId'> &
-  WithOfferStatus & { text: string };
-
-export type ModeratorOffer<IsReviewed> = Offer &
-  (IsReviewed extends true
-    ? WithOfferStatus<ModeratorCommand>
-    : WithOfferStatus<CustomerCommand | ''>);
 
 export type OfferStatus<T = Commands> = T extends typeof OFFER_COMMAND_RESOLVE
   ? typeof OFFER_STATUS_WON

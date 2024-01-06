@@ -5,11 +5,6 @@ import type {
   SignOptions,
   VerifyOptions,
 } from 'jsonwebtoken';
-import type {
-  CONTEST_STATUS_ACTIVE,
-  CONTEST_STATUS_FINISHED,
-} from 'constants/general';
-import type { UserId } from '.';
 
 export type JwtSign = (
   payload: Buffer | object | string,
@@ -50,14 +45,3 @@ export type ContestData = {
   industry?: ParsedQs | ParsedQs[] | string[] | string;
   awardSort?: ParsedQs | ParsedQs[] | string[] | string;
 };
-
-export type Status = {
-  status: Record<
-    symbol,
-    [typeof CONTEST_STATUS_FINISHED, typeof CONTEST_STATUS_ACTIVE]
-  >;
-};
-
-export type WhereForAllContests = ContestData & Status;
-export type Contest = { status?: string[] | string; userId?: UserId };
-export type WhereForCustomerContests = Contest & {};

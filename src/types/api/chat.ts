@@ -29,7 +29,7 @@ export type NewMessageParams = WithInterlocutor & {
 export type AddMessage = {
   message: Message & WithParticipants;
   preview: Omit<Message, 'body' | 'conversation' | 'updatedAt'> &
-    Omit<WithParticipantTuples, '_id'> & {
+    WithParticipantTuples & {
       text: Message['body'];
     };
 } & {
@@ -37,7 +37,7 @@ export type AddMessage = {
 };
 
 export type GoToExtendedDialog = WithInterlocutor & {
-  conversationData: WithParticipantTuples;
+  conversationData: With_id<ConversationId> & WithParticipantTuples;
 };
 
 export type Interlocutor = Pick<
@@ -53,8 +53,7 @@ export type Message = With_id<ConversationId, 'conversation'> &
     body: string;
   };
 
-export type WithParticipantTuples = With_id<ConversationId> &
-  WithBlackList &
+export type WithParticipantTuples = WithBlackList &
   WithFavoriteList &
   WithParticipants;
 
