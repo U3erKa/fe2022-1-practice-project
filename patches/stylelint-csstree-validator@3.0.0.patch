@@ -1,0 +1,61 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+deleted file mode 100644
+index 1b4d76ce4f7385da96f36d78329b77fd940c0d64..0000000000000000000000000000000000000000
+diff --git a/cjs/index.cjs b/cjs/index.cjs
+index 6c387d877ed5b4a9e99bf910eef99897233ce411..e3f7b26a34db9bd7fe75890c3e76857a8bfb9dcb 100644
+--- a/cjs/index.cjs
++++ b/cjs/index.cjs
+@@ -1,10 +1,10 @@
+ 'use strict';
+ 
+ const stylelint = require('stylelint');
+-const isStandardSyntaxAtRule = require('stylelint/lib/utils/isStandardSyntaxAtRule.js');
+-const isStandardSyntaxDeclaration = require('stylelint/lib/utils/isStandardSyntaxDeclaration.js');
+-const isStandardSyntaxProperty = require('stylelint/lib/utils/isStandardSyntaxProperty.js');
+-const isStandardSyntaxValue = require('stylelint/lib/utils/isStandardSyntaxValue.js');
++const isStandardSyntaxAtRule = require('stylelint/lib/utils/isStandardSyntaxAtRule.cjs');
++const isStandardSyntaxDeclaration = require('stylelint/lib/utils/isStandardSyntaxDeclaration.cjs');
++const isStandardSyntaxProperty = require('stylelint/lib/utils/isStandardSyntaxProperty.cjs');
++const isStandardSyntaxValue = require('stylelint/lib/utils/isStandardSyntaxValue.cjs');
+ const cssTree = require('css-tree');
+ const index$1 = require('./syntax-extension/less/index.cjs');
+ const index$2 = require('./syntax-extension/sass/index.cjs');
+diff --git a/lib/index.js b/lib/index.js
+index 53f89e1599551e15815afe97173427684fe47c6f..78072372778b76b378e1c7b224f8ee6fa888eb4e 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -1,8 +1,8 @@
+ import stylelint from 'stylelint';
+-import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule.js';
+-import isStandardSyntaxDeclaration from 'stylelint/lib/utils/isStandardSyntaxDeclaration.js';
+-import isStandardSyntaxProperty from 'stylelint/lib/utils/isStandardSyntaxProperty.js';
+-import isStandardSyntaxValue from 'stylelint/lib/utils/isStandardSyntaxValue.js';
++import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule.mjs';
++import isStandardSyntaxDeclaration from 'stylelint/lib/utils/isStandardSyntaxDeclaration.mjs';
++import isStandardSyntaxProperty from 'stylelint/lib/utils/isStandardSyntaxProperty.mjs';
++import isStandardSyntaxValue from 'stylelint/lib/utils/isStandardSyntaxValue.mjs';
+ import { fork, lexer, parse } from 'css-tree';
+ import { less, sass } from './syntax-extension/index.js';
+ 
+diff --git a/package.json b/package.json
+index 77f4ec0926fc3bf17c33673cb462e6055feacde5..b80efdc0878ba29792c2b64ea0ed325fad0f268b 100644
+--- a/package.json
++++ b/package.json
+@@ -41,7 +41,7 @@
+     "css-tree": "^2.3.1"
+   },
+   "peerDependencies": {
+-    "stylelint": ">=7.0.0 <16.0.0"
++    "stylelint": ">=7.0.0 <17.0.0"
+   },
+   "devDependencies": {
+     "c8": "^7.12.0",
+@@ -50,7 +50,7 @@
+     "postcss-less": "^6.0.0",
+     "postcss-scss": "^4.0.6",
+     "rollup": "^2.79.1",
+-    "stylelint": "^15.7.0"
++    "stylelint": "^16.1.0"
+   },
+   "files": [
+     "cjs",

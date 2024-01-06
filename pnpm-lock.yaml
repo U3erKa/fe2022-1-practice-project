@@ -11,6 +11,9 @@ patchedDependencies:
   fast-deep-equal@3.1.3:
     hash: u27lgmnfd7jx3rfl3ppf6yjk2m
     path: patches/fast-deep-equal@3.1.3.patch
+  stylelint-csstree-validator@3.0.0:
+    hash: 2phz36slecfi5fwxrucpslf4xi
+    path: patches/stylelint-csstree-validator@3.0.0.patch
 
 dependencies:
   '@fortawesome/fontawesome-svg-core':
@@ -194,7 +197,7 @@ devDependencies:
     version: 13.0.0(postcss@8.4.33)(stylelint@16.1.0)
   stylelint-csstree-validator:
     specifier: ^3.0.0
-    version: 3.0.0(stylelint@16.1.0)
+    version: 3.0.0(patch_hash=2phz36slecfi5fwxrucpslf4xi)(stylelint@16.1.0)
   stylelint-declaration-block-no-ignored-properties:
     specifier: ^2.8.0
     version: 2.8.0(stylelint@16.1.0)
@@ -4911,7 +4914,7 @@ packages:
       stylelint-config-recommended: 14.0.0(stylelint@16.1.0)
     dev: true
 
-  /stylelint-csstree-validator@3.0.0(stylelint@16.1.0):
+  /stylelint-csstree-validator@3.0.0(patch_hash=2phz36slecfi5fwxrucpslf4xi)(stylelint@16.1.0):
     resolution: {integrity: sha512-/CPYhwchWZbyZK2LVGKvt1ivISYZyRSRhrY4cMArlwYh1DxwygubR0nBv+5upuX23j1qBfJWdv6xx9dsUZF+OA==}
     engines: {node: ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
     peerDependencies:
@@ -4920,6 +4923,7 @@ packages:
       css-tree: 2.3.1
       stylelint: 16.1.0(typescript@5.3.3)
     dev: true
+    patched: true
 
   /stylelint-declaration-block-no-ignored-properties@2.8.0(stylelint@16.1.0):
     resolution: {integrity: sha512-Ws8Cav7Y+SPN0JsV407LrnNXWOrqGjxShf+37GBtnU/C58Syve9c0+I/xpLcFOosST3ternykn3Lp77f3ITnFw==}
