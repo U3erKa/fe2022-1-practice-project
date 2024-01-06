@@ -15,7 +15,7 @@ import _Select from './select';
 import _User from './user';
 
 const db = {} as DB;
-export const sequelize = new Sequelize(POSTGRES_DB_STRING, {
+export const sequelize = new Sequelize(POSTGRES_DB_STRING!, {
   dialectModule: pg,
 });
 

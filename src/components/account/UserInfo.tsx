@@ -71,7 +71,7 @@ const UserInfo: FC = () => {
     ) => {
       const formData = new FormData();
 
-      formData.append('file', values.file[0]);
+      formData.append('file', values.file[0]!);
       formData.append('firstName', values.firstName);
       formData.append('lastName', values.lastName);
       formData.append('displayName', values.displayName);

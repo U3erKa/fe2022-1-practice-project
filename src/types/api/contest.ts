@@ -35,18 +35,11 @@ export type GetCustomersContestsParams = Partial<WithPagination> & {
 export type GetActiveContestsParams = CreatorFilter & Partial<WithPagination>;
 
 export type GetContestParams = WithId<ContestId, 'contestId'>;
-export type GetContestResponse = Contest &
-  WithId<ContestId> & { User: UserInOffer; Offers: Offer[] };
 
 export type DataForContestParams = {
   characteristic1?: 'brandStyle' | 'nameStyle' | 'typeOfTagline';
   characteristic2?: 'typeOfName';
 };
-
-export type DataForContestResponse = DataForContest;
-
-export type GetContestsResponse = { contests: Contest[]; haveMore: boolean };
-export type UpdateContestResponse = Contest;
 
 export type Offer = Partial<WithFile> &
   WithId<OfferId> &

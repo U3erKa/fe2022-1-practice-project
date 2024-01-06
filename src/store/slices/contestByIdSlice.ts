@@ -180,7 +180,7 @@ const getOffersExtraReducers = (
     .addCase(getOffers.pending, pendingReducer)
     .addCase(getOffers.fulfilled, (state, { payload }) => {
       state.isFetching = false;
-      state.offers = addNewItems(state.offers, payload.offers as any[]);
+      state.offers = addNewItems(state.offers, payload.offers);
       state.haveMore = payload.haveMore;
       state.error = null;
     })

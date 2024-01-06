@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const { catalogId } = await json();
 
     await Catalog.destroy({ where: { _id: catalogId, userId } });
-    return new NextResponse();
+    return new NextResponse<void>();
   } catch (error) {
     return handleError(error);
   }

@@ -1,4 +1,18 @@
-import type { EventResponse } from 'api/rest/eventController';
+import type { RefreshResponse } from 'api/rest/authController';
+import type {
+  GetCatalogsResponse,
+  RemoveChatFromCatalogResponse,
+} from 'api/rest/catalogController';
+import type {
+  GetChatResponse,
+  GetPreviewResponse,
+} from 'api/rest/chatController';
+import type {
+  DataForContestResponse,
+  GetContestResponse,
+  GetContestsResponse,
+} from 'api/rest/contestController';
+import type { GetEventsResponse } from 'api/rest/eventController';
 import type {
   EXACT_CHOISE,
   NAME_ONLY_CHOISE,
@@ -11,25 +25,21 @@ import type {
   TAGLINE_CONTEST,
   USER_INFO_MODE,
 } from 'constants/general';
-import type { ChatId, ContestId, WithId } from 'types/api/_common';
-import type { Interlocutor, Message } from 'types/api/chat';
 import type {
-  DataForContest,
+  LogoContestContestType,
+  NameContestContestType,
+  TaglineContestContestType,
+} from 'utils/schemas';
+import type { ChatId, ContestId, WithId } from 'types/api/_common';
+import type {
   LogoContestInfo,
   NameContestInfo,
-  Offer,
   TaglineContestInfo,
 } from 'types/api/contest';
 import type { CardField } from 'types/api/offer';
-import type {
-  Catalog,
-  CatalogCreationMode,
-  ChatData,
-  ChatMode,
-  MessagePreview,
-} from 'types/chat';
+import type { CatalogCreationMode, ChatData, ChatMode } from 'types/chat';
 import type { Contest, Industry, Status } from 'types/contest';
-import type { User } from 'types/models';
+import type { Offer } from 'types/models';
 import type { UserInOffer } from './api/_common';
 
 export type AuthState = WithFetch;
@@ -45,23 +55,23 @@ export type ChatState = WithFetch & {
   isRenameCatalog: boolean;
   isShowChatsInCatalog: boolean;
   addChatId: ChatId | null;
-  currentCatalog: Catalog | null;
+  currentCatalog: RemoveChatFromCatalogResponse | null;
   chatData: ChatData | null;
-  messages: Message[];
-  interlocutor: Interlocutor | null;
-  messagesPreview: MessagePreview[];
-  catalogList: Catalog[];
+  messagesPreview: GetPreviewResponse;
+  catalogList: GetCatalogsResponse;
   chatMode: ChatMode;
   catalogCreationMode: CatalogCreationMode;
-};
+} & (GetChatResponse | { messages: null; interlocutor: null });
 
 export type ContestByIdState = WithFetch & {
-  contestData: ContestData | null;
-  offers: Offer[];
+  contestData:
+    | (GetContestResponse & { Offers: ContestByIdState['offers'] })
+    | null;
+  offers: Offer['dataValues'][];
   haveMore: boolean;
-  addOfferError: ServerError | null;
-  setOfferStatusError: ServerError | null;
-  changeMarkError: Error | null;
+  addOfferError: unknown;
+  setOfferStatusError: unknown;
+  changeMarkError: unknown;
   isReviewed: boolean;
   isEditContest: boolean;
   isBrief: boolean;
@@ -79,20 +89,19 @@ export type ContestCreationState = {
   nameMathesDomain: NameMatchesDomain;
 };
 
-export type ContestsState = WithFetch & {
-  contests: Contest[];
-  customerFilter: Status;
-  creatorFilter: CreatorFilter;
-  haveMore: boolean;
-};
+export type ContestsState = GetContestsResponse &
+  WithFetch & {
+    customerFilter: Status;
+    creatorFilter: CreatorFilter;
+  };
 
 export type ContestUpdationState = WithFetch;
 
 export type DataForContestState = WithFetch & {
-  data: DataForContest | null;
+  data: DataForContestResponse | null;
 };
 
-export type EventState = WithFetch & { events: EventResponse[] };
+export type EventState = WithFetch & { events: GetEventsResponse };
 
 export type PaymentState = WithFetch & {
   focusOnElement: CardField;
@@ -104,17 +113,24 @@ export type UserProfileState = {
 };
 
 export type UserState = WithFetch & {
-  data: User['dataValues'] | null;
+  data: RefreshResponse['user'] | null;
 };
 
 export type Bundle = {
   first: Omit<ContestsOrder, 'payment'>;
-  name: Omit<ContestsOrder, 'name'>;
-  logo: Omit<ContestsOrder, 'logo' | 'name'>;
-  tagline: Omit<ContestsOrder, 'logo' | 'name' | 'payment'>;
+  name: Omit<ContestsOrder, NameContestContestType>;
+  logo: Omit<ContestsOrder, LogoContestContestType | NameContestContestType>;
+  tagline: Omit<
+    ContestsOrder,
+    LogoContestContestType | NameContestContestType | TaglineContestContestType
+  >;
 };
 
-export type ContestsOrder = 'logo' | 'name' | 'payment' | 'tagline';
+export type ContestsOrder =
+  | LogoContestContestType
+  | NameContestContestType
+  | TaglineContestContestType
+  | 'payment';
 
 export type CreatorFilter = {
   contestId?: ContestId;

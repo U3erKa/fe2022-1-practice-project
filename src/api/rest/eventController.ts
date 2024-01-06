@@ -9,15 +9,11 @@ import type { APIHandlerReturn } from 'types/_common';
 import type { WithTimeStamps } from 'types/api/_common';
 import type { Event } from 'types/models';
 
-export type GetEventsHandlerResponse = APIHandlerReturn<
-  typeof GetEventsHandler
->;
-export type CreateEventHandlerResponse = APIHandlerReturn<
-  typeof CreateEventHandler
->;
+export type GetEventsResponse = APIHandlerReturn<typeof GetEventsHandler>;
+export type CreateEventResponse = APIHandlerReturn<typeof CreateEventHandler>;
 
 export type EventResponse = Event['dataValues'] & WithTimeStamps;
 
-export const getEvents = () => http.get<GetEventsHandlerResponse>(ROUTE.EVENTS);
+export const getEvents = () => http.get<GetEventsResponse>(ROUTE.EVENTS);
 export const createEvent = (data: NewEvent) =>
-  http.post<CreateEventHandlerResponse>(ROUTE.EVENTS, data);
+  http.post<CreateEventResponse>(ROUTE.EVENTS, data);

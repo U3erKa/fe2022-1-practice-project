@@ -58,7 +58,7 @@ abstract class _Event extends Model<
   InferCreationAttributes<_Event>
 > {
   declare name: string;
-  declare date: Date;
+  declare date: string;
   declare notify: string;
 
   declare id: CreationOptional<number>;

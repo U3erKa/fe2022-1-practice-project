@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
           { id: offerId },
         );
         sendCreatorOfferEmail(offer!, command);
-        return NextResponse.json(offer, { status: 200 });
+        return NextResponse.json(offer!, { status: 200 });
       }
       if (command === OFFER_COMMAND_DISCARD) {
         const [offer] = await updateOfferStatus(

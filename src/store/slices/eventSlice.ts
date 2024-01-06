@@ -49,7 +49,7 @@ const extraReducers = (builder: ActionReducerMapBuilder<EventState>) => {
       state.isFetching = false;
       state.error = null;
       state.events = payload;
-      state.events.sort(closestEventFirst);
+      (state.events as NewEvent[]).sort(closestEventFirst);
     })
     .addCase(getEvents.rejected, rejectedReducer);
 
@@ -59,7 +59,7 @@ const extraReducers = (builder: ActionReducerMapBuilder<EventState>) => {
       state.isFetching = false;
       state.error = null;
       state.events.push(payload);
-      state.events.sort(closestEventFirst);
+      (state.events as NewEvent[]).sort(closestEventFirst);
     })
     .addCase(createEvent.rejected, rejectedReducer);
 };

@@ -35,16 +35,11 @@ export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
         })
   );
 
-export type SetOfferStatusResponse<T extends Commands = Commands> = Offer &
-  OfferStatus<T>;
-
 export type ChangeMarkParams = WithId<CreatorId, 'creatorId'> &
   WithId<OfferId, 'offerId'> & {
     mark: Rating;
     isFirst: boolean;
   };
-
-export type ChangeMarkResponse = WithId<UserId, 'userId'> & { rating: Rating };
 
 export type CashOutParams = Omit<
   Bank['dataValues'],
@@ -54,20 +49,8 @@ export type CashOutParams = Omit<
   number: Bank['cardNumber'];
 };
 
-export type SetNewOfferResponse = Partial<WithFile> &
-  WithId<OfferId> & {
-    status: typeof OFFER_STATUS_APPROVED;
-    text: Offer['text'];
-    User: UserInOffer;
-  };
-
 export type GetOffersParams = Partial<WithPagination> & {
   isReviewed?: boolean;
-};
-
-export type GetOffersResponse<IsReviewed> = {
-  offers: ModeratorOffer<IsReviewed>[];
-  haveMore: boolean;
 };
 
 export type UserInOffer = Omit<User['dataValues'], 'accessToken' | 'password'> &

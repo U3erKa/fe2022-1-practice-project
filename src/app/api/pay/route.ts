@@ -93,7 +93,7 @@ END`),
     }
     await Contest.bulkCreate(parsedContests as any, { transaction });
     transaction.commit();
-    return new NextResponse();
+    return new NextResponse<void>();
   } catch (error) {
     transaction.rollback();
     return handleError(error);

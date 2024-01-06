@@ -152,5 +152,5 @@ END
     'Some of your offers WIN',
     contestId,
   );
-  return updatedOffers[0].dataValues;
+  return updatedOffers[0]!.dataValues;
 };

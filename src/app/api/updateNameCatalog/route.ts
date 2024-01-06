@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const chatIds = chats.map(({ _id }) => _id);
     Object.assign(catalog!.dataValues, { chats: chatIds });
 
-    return NextResponse.json(catalog);
+    return NextResponse.json(catalog!);
   } catch (error) {
     return handleError(error);
   }
