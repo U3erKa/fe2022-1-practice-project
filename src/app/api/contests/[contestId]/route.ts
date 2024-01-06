@@ -30,13 +30,11 @@ export async function GET(
     const authorization = headers.get('Authorization')!.split(' ')[1]!;
     const { role, userId } = await verifyAccessToken(authorization);
 
-    let result: boolean | number = [CUSTOMER, CREATOR].includes(role);
-    if (!result) throw new RightsError();
-
+    let result: number;
     switch (role) {
       case CUSTOMER: {
         result = await Contest.count({
-          where: { id: contestId, userId: userId },
+          where: { id: contestId, userId },
         });
         break;
       }
@@ -50,6 +48,9 @@ export async function GET(
           },
         });
         break;
+      }
+      default: {
+        throw new RightsError();
       }
     }
 
@@ -112,7 +113,7 @@ export async function GET(
       // @ts-expect-error
       delete offer.Rating;
     }
-    return NextResponse.json(contestInfo, { status: 200 });
+    return NextResponse.json(contestInfo as ContestInfo, { status: 200 });
   } catch (e) {
     return handleError(e);
   }

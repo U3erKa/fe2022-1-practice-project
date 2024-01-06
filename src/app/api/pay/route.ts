@@ -92,10 +92,10 @@ END`),
       });
     }
     await Contest.bulkCreate(parsedContests as any, { transaction });
-    transaction.commit();
+    await transaction.commit();
     return new NextResponse<void>();
   } catch (error) {
-    transaction.rollback();
+    await transaction.rollback();
     return handleError(error);
   }
 }

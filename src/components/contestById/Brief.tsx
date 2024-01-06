@@ -77,7 +77,7 @@ const Brief = () => {
       for (const key in values) {
         if (Object.hasOwn(values, key)) {
           const value = values[key as keyof typeof values];
-          if ((key !== 'file' && value) || value instanceof File) {
+          if ((key !== 'file' && value) ?? value instanceof File) {
             data.append(key, value);
           }
         }

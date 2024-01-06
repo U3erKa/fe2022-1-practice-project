@@ -139,7 +139,7 @@ END
     { contestId },
     transaction,
   );
-  transaction.commit();
+  await transaction.commit();
 
   const arrayRoomsId: number[] = [];
   for (const offer of updatedOffers) {

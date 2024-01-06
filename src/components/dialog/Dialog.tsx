@@ -32,6 +32,7 @@ const Dialog: FC<Props> = ({ userId }) => {
   });
 
   useEffect(() => {
+    if (!interlocutorId) return;
     dispatch(getDialogMessages({ interlocutorId }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [interlocutorId]);

@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
           );
           return NextResponse.json(winningOffer, { status: 200 });
         } catch (err) {
-          transaction.rollback();
+          await transaction.rollback();
           throw err;
         }
       }

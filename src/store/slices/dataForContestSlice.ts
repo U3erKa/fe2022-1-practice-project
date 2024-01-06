@@ -37,7 +37,7 @@ const extraReducers = (
 };
 
 const dataForContestSlice = createSlice({
-  name: `${DATA_FOR_CONTEST_SLICE_NAME}`,
+  name: DATA_FOR_CONTEST_SLICE_NAME,
   initialState,
   reducers: {},
   extraReducers,

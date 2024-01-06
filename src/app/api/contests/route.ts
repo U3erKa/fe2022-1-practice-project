@@ -1,13 +1,17 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { type Attributes, Op, type Order, type WhereOptions } from 'sequelize';
 import { RightsError } from 'errors';
 import { Contest, Offer } from 'models';
-import { CREATOR, CUSTOMER } from 'constants/general';
-import { verifyAccessToken } from 'services/jwtService';
 import {
-  createWhereForAllContests,
-  createWhereForCustomerContests,
-} from 'utils/db';
+  CONTEST_STATUS_ACTIVE,
+  CONTEST_STATUS_FINISHED,
+  CONTEST_TYPES,
+  CREATOR,
+  CUSTOMER,
+} from 'constants/general';
+import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
+import type { Contest as _Contest, Offer as _Offer } from 'types/models';
 
 export async function GET(req: NextRequest) {
   try {
@@ -27,26 +31,38 @@ export async function GET(req: NextRequest) {
     const ownEntries = searchParams.get('ownEntries') === 'true';
     const typeIndex = searchParams.get('typeIndex');
 
-    let predicates: ReturnType<
-      typeof createWhereForAllContests | typeof createWhereForCustomerContests
-    >;
+    let where: WhereOptions<Attributes<_Contest>>;
+    let order: Order;
     let isRequiredOffer: boolean;
-    const offerFilter = {};
+    let offerFilter: WhereOptions<Attributes<_Offer>> | undefined;
 
     switch (role) {
       case CREATOR: {
-        const sellerParams = { awardSort, contestId, industry, typeIndex };
+        const _order = [['id', 'desc']] satisfies Order;
+        if (awardSort) _order.push(['prize', awardSort]);
 
-        predicates = createWhereForAllContests(sellerParams);
+        where = {
+          id: contestId!,
+          industry: industry!,
+          contestType: {
+            [Op.or]: [
+              CONTEST_TYPES[typeIndex as unknown as number]?.split(','),
+            ],
+          },
+          status: {
+            [Op.or]: [CONTEST_STATUS_FINISHED, CONTEST_STATUS_ACTIVE],
+          },
+        };
+
+        order = _order;
         isRequiredOffer = ownEntries;
-        Object.assign(offerFilter, { userId });
+        offerFilter = { userId };
         break;
       }
 
       case CUSTOMER: {
-        const buyerParams = { status, userId };
-
-        predicates = createWhereForCustomerContests(buyerParams);
+        where = { status: status!, userId };
+        order = [['id', 'desc']];
         isRequiredOffer = false;
         break;
       }
@@ -57,8 +73,8 @@ export async function GET(req: NextRequest) {
     }
 
     const contests = await Contest.findAll({
-      where: predicates.where as any,
-      order: predicates.order,
+      where,
+      order,
       limit,
       offset,
       include: [
@@ -71,9 +87,7 @@ export async function GET(req: NextRequest) {
       ],
     });
 
-    const contestsCount = await Contest.count({
-      where: predicates.where as any,
-    });
+    const contestsCount = await Contest.count({ where });
 
     for (const { dataValues } of contests) {
       // @ts-expect-error

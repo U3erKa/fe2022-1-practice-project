@@ -51,10 +51,10 @@ END`),
       transaction,
     );
 
-    transaction.commit();
+    await transaction.commit();
     return NextResponse.json({ balance: updatedUser.balance });
   } catch (err) {
-    transaction.rollback();
+    await transaction.rollback();
     return handleError(err);
   }
 }

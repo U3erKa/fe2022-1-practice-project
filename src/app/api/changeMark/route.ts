@@ -44,11 +44,11 @@ export async function POST(req: NextRequest) {
     const avg = sum / offers.length;
 
     await updateUser({ rating: avg }, creatorId, transaction);
-    transaction.commit();
+    await transaction.commit();
     getNotificationController()?.emitChangeMark(creatorId);
     return NextResponse.json({ userId: creatorId, rating: avg });
   } catch (error) {
-    transaction.rollback();
+    await transaction.rollback();
     return handleError(error);
   }
 }
