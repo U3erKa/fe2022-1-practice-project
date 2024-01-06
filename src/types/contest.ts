@@ -6,14 +6,7 @@ import type {
   NAME_CONTEST,
   TAGLINE_CONTEST,
 } from 'constants/general';
-import type {
-  OfferId,
-  UserId,
-  WithFile,
-  WithId,
-  WithTimeStamps,
-  WithUUID,
-} from './api/_common';
+import type { WithFile, WithId, WithTimeStamps, WithUUID } from './api/_common';
 import type { Priority } from './api/offer';
 
 export type Contest = LogoContest | NameContest | TaglineContest;
@@ -47,8 +40,7 @@ export type TaglineContest = BaseContest & {
 
 export type BaseContest = Omit<WithTimeStamps, 'updatedAt'> &
   Partial<WithFile> &
-  WithId &
-  WithId<UserId, 'userId'> &
+  WithId<'id' | 'userId'> &
   WithUUID<'orderId'> & {
     title: string;
     focusOfWork: string;

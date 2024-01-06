@@ -1,11 +1,8 @@
 import type { UUID } from 'crypto';
 import type { User } from 'types/models';
 
-export type With_id<T extends Id = Id, K extends string = '_id'> = {
-  [key in K]: T;
-};
-export type WithId<T extends Id = Id, K extends string = 'id'> = {
-  [key in K]: T;
+export type WithId<K extends string = 'id'> = {
+  [key in K]: Id;
 };
 export type WithUUID<K extends string = 'id'> = {
   [key in K]: UUID;

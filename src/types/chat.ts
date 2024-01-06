@@ -6,13 +6,7 @@ import type {
   FAVORITE_PREVIEW_CHAT_MODE,
   NORMAL_PREVIEW_CHAT_MODE,
 } from 'constants/general';
-import type {
-  CatalogId,
-  ChatId,
-  SenderId,
-  WithTimeStamps,
-  With_id,
-} from './api/_common';
+import type { ChatId, SenderId, WithId, WithTimeStamps } from './api/_common';
 import type {
   Interlocutor,
   Message,
@@ -31,20 +25,20 @@ export type CatalogCreationMode =
   | typeof ADD_CHAT_TO_OLD_CATALOG
   | typeof CREATE_NEW_CATALOG_AND_ADD_CHAT;
 
-export type Catalog = With_id & {
+export type Catalog = WithId<'_id'> & {
   chats: ChatId[];
   catalogName: string;
 };
 
 export type MessagePreview = ChatData &
   Omit<WithTimeStamps, 'updatedAt'> &
-  With_id & {
+  WithId<'_id'> & {
     interlocutor: Interlocutor;
     sender: SenderId;
     text: Message['body'];
   };
 
-export type ChatData = With_id &
-  WithBlackList &
+export type ChatData = WithBlackList &
   WithFavoriteList &
+  WithId<'_id'> &
   WithParticipants;

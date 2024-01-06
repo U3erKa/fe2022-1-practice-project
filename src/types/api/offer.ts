@@ -11,32 +11,23 @@ import type {
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
-import type {
-  ContestId,
-  CreatorId,
-  OfferId,
-  WithId,
-  WithPagination,
-  WithUUID,
-} from 'types/api/_common';
+import type { WithId, WithPagination, WithUUID } from 'types/api/_common';
 import type { Bank } from 'types/models';
 
-export type SetOfferStatusParams = WithId<OfferId, 'offerId'> &
+export type SetOfferStatusParams = WithId<'offerId'> &
   (
     | { command: ModeratorCommand }
-    | (WithId<ContestId, 'contestId'> &
-        WithId<CreatorId, 'creatorId'> &
+    | (WithId<'contestId' | 'creatorId'> &
         WithUUID<'orderId'> & {
           command: CustomerCommand;
           priority: Priority;
         })
   );
 
-export type ChangeMarkParams = WithId<CreatorId, 'creatorId'> &
-  WithId<OfferId, 'offerId'> & {
-    mark: Rating;
-    isFirst: boolean;
-  };
+export type ChangeMarkParams = WithId<'creatorId' | 'offerId'> & {
+  mark: Rating;
+  isFirst: boolean;
+};
 
 export type CashOutParams = Omit<
   Bank['dataValues'],

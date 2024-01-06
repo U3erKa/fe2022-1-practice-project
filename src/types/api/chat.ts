@@ -1,12 +1,9 @@
 import type { User } from 'types/models';
 import type {
-  ConversationId,
   InterlocutorId,
-  MessageId,
   SenderId,
   WithId,
   WithTimeStamps,
-  With_id,
 } from './_common';
 
 export type GetDialogParams = {
@@ -37,18 +34,16 @@ export type AddMessage = {
 };
 
 export type GoToExtendedDialog = WithInterlocutor & {
-  conversationData: With_id<ConversationId> & WithParticipantTuples;
+  conversationData: WithId<'_id'> & WithParticipantTuples;
 };
 
 export type Interlocutor = Pick<
   User,
   'avatar' | 'displayName' | 'firstName' | 'lastName'
 > &
-  WithId<InterlocutorId>;
+  WithId;
 
-export type Message = With_id<ConversationId, 'conversation'> &
-  With_id<MessageId> &
-  WithId<SenderId, 'sender'> &
+export type Message = WithId<'_id' | 'conversation' | 'sender'> &
   WithTimeStamps & {
     body: string;
   };

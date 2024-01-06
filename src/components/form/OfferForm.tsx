@@ -23,7 +23,7 @@ export type Props = {
   readonly register: UseFormRegister<any>;
 };
 
-export type OfferFormProps = WithId<Id, 'contestId' | 'customerId'> & {
+export type OfferFormProps = WithId<'contestId' | 'customerId'> & {
   readonly contestType: ContestType;
 };
 

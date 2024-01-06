@@ -14,13 +14,7 @@ import type {
   TypeOfTagline,
 } from 'types/contest';
 import type { CreatorFilter } from 'types/slices';
-import type {
-  ContestId,
-  OfferId,
-  WithFile,
-  WithId,
-  WithPagination,
-} from './_common';
+import type { ContestId, WithFile, WithId, WithPagination } from './_common';
 import type { UserInOffer } from './_common';
 import type { Rating, WithOfferStatus } from './offer';
 
@@ -34,7 +28,7 @@ export type GetCustomersContestsParams = Partial<WithPagination> & {
 
 export type GetActiveContestsParams = CreatorFilter & Partial<WithPagination>;
 
-export type GetContestParams = WithId<ContestId, 'contestId'>;
+export type GetContestParams = WithId<'contestId'>;
 
 export type DataForContestParams = {
   characteristic1?: 'brandStyle' | 'nameStyle' | 'typeOfTagline';
@@ -42,7 +36,7 @@ export type DataForContestParams = {
 };
 
 export type Offer = Partial<WithFile> &
-  WithId<OfferId> &
+  WithId &
   WithOfferStatus & {
     User: UserInOffer;
     text: string;
