@@ -40,22 +40,6 @@ export const updateContest = async (
   return updatedContest!.dataValues;
 };
 
-export const updateOffer = async (
-  data: ModelUpdateAttributes<_Offer>,
-  predicate: WhereOptions<InferAttributes<_Offer>>,
-  transaction?: Transaction,
-) => {
-  const [updatedCount, [updatedOffer]] = await Offer.update(data, {
-    where: predicate,
-    returning: true,
-    transaction,
-  });
-  if (updatedCount !== 1) {
-    throw new ServerError('cannot update offer!');
-  }
-  return updatedOffer!.dataValues;
-};
-
 export const updateOfferStatus = async (
   data: ModelUpdateAttributes<_Offer>,
   predicate: WhereOptions<InferAttributes<_Offer>>,
@@ -86,7 +70,7 @@ export const rejectOffer = async (
   creatorId: number,
   contestId: number,
 ) => {
-  const rejectedOffer = await updateOffer(
+  const [rejectedOffer] = await updateOfferStatus(
     { status: OFFER_STATUS_REJECTED },
     { id: offerId },
   );
@@ -95,7 +79,7 @@ export const rejectOffer = async (
     'Some of yours offers was rejected',
     contestId,
   );
-  return rejectedOffer;
+  return rejectedOffer!.dataValues;
 };
 
 export const resolveOffer = async (
@@ -108,15 +92,13 @@ export const resolveOffer = async (
 ) => {
   const finishedContest = await updateContest(
     {
-      status: sequelize.literal(`
-CASE
-  WHEN "id"=${contestId} AND "orderId"='${orderId}'
-  THEN '${CONTEST_STATUS_FINISHED}'
-  WHEN "orderId"='${orderId}' AND "priority"=${priority + 1}
-  THEN '${CONTEST_STATUS_ACTIVE}'
-  ELSE '${CONTEST_STATUS_PENDING}'
-END
-      `),
+      status: sequelize.literal(`CASE
+WHEN "id"=${contestId} AND "orderId"='${orderId}'
+THEN '${CONTEST_STATUS_FINISHED}'
+WHEN "orderId"='${orderId}' AND "priority"=${priority + 1}
+THEN '${CONTEST_STATUS_ACTIVE}'
+ELSE '${CONTEST_STATUS_PENDING}'
+END`),
     },
     { orderId },
     transaction,
@@ -128,13 +110,11 @@ END
   );
   const updatedOffers = await updateOfferStatus(
     {
-      status: sequelize.literal(`
-CASE
-  WHEN "id"=${offerId} THEN '${OFFER_STATUS_WON}'
-  WHEN "status"=${OFFER_STATUS_APPROVED} THEN '${OFFER_STATUS_REJECTED}'
-  ELSE '${OFFER_STATUS_DISCARDED}'
-END
-`),
+      status: sequelize.literal(`CASE
+WHEN "id"=${offerId} THEN '${OFFER_STATUS_WON}'
+WHEN "status"=${OFFER_STATUS_APPROVED} THEN '${OFFER_STATUS_REJECTED}'
+ELSE '${OFFER_STATUS_DISCARDED}'
+END`),
     },
     { contestId },
     transaction,

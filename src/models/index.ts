@@ -60,5 +60,3 @@ export const {
   Select,
   User,
 } = db;
-
-export default db;

@@ -162,7 +162,7 @@ export const CreatorFilter = () => {
             <span>By industry</span>
             <IndustryType
               filter={creatorFilter.industry}
-              industries={industry}
+              industries={industry as Industry[]}
               onChange={handleIndustryTypeChange}
             />
           </div>

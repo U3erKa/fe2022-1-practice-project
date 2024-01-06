@@ -35,11 +35,11 @@ export async function POST(req: NextRequest) {
       {
         balance: sequelize.literal(`CASE
 WHEN "cardNumber"='${cardNumber}'
-AND "expiry"='${expiry}' AND "cvc"='${cvc}'
+ AND "expiry"='${expiry}' AND "cvc"='${cvc}'
 THEN "balance"+${sum}
 WHEN "cardNumber"='${SQUADHELP_BANK_NUMBER}'
-AND "expiry"='${SQUADHELP_BANK_EXPIRY}'
-AND "cvc"='${SQUADHELP_BANK_CVC}'
+ AND "expiry"='${SQUADHELP_BANK_EXPIRY}'
+ AND "cvc"='${SQUADHELP_BANK_CVC}'
 THEN "balance"-${sum}
 END`),
       },

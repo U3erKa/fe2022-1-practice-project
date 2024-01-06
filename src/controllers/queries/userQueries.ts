@@ -6,7 +6,7 @@ import type {
 } from 'sequelize';
 import { NotFoundError, ServerError } from 'errors';
 import { User } from 'models';
-import type { UserId } from 'types';
+import type { UserId } from 'types/api/_common';
 import type { ModelUpdateAttributes, User as _User } from 'types/models';
 
 export const updateUser = async (
@@ -34,12 +34,4 @@ export const findUser = async (
     throw new NotFoundError('user with this data didn`t exist');
   }
   return user.get({ plain: true });
-};
-
-export const userCreation = async (data: CreationAttributes<_User>) => {
-  const newUser = await User.create(data);
-  if (!newUser) {
-    throw new ServerError('server error on user creation');
-  }
-  return newUser.get({ plain: true });
 };
