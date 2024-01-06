@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { SelectInput } from 'components/input';
 import { addChatToCatalog } from 'store/slices/chatSlice';
-import type { CatalogId } from 'types/api/_common';
+import type { CatalogId } from 'types/_common';
 import styles from './styles/AddToCatalog.module.scss';
 
 const classes = {

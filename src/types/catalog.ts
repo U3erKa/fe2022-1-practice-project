@@ -1,4 +1,4 @@
-import type { WithId } from 'types/api/_common';
+import type { WithId } from 'types/_common';
 
 export type AddChatToCatalogParams = WithId<'catalogId' | 'chatId'>;
 export type RemoveChatFromCatalogParams = WithId<'catalogId' | 'chatId'>;

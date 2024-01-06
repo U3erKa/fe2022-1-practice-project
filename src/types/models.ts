@@ -15,7 +15,7 @@ import type _Rating from 'models/rating';
 import type _RefreshToken from 'models/refreshToken';
 import type _Select from 'models/select';
 import type _User from 'models/user';
-import type { WithTimeStamps } from 'types/api/_common';
+import type { WithTimeStamps } from 'types/_common';
 
 export interface DB {
   Bank: ReturnType<typeof _Bank>;

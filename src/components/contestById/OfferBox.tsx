@@ -38,13 +38,13 @@ import {
 } from 'store/slices/contestByIdSlice';
 import StarOutlineIcon from 'assets/icons/star-outline.png';
 import StarIcon from 'assets/icons/star.png';
-import type { OfferId, UserId } from 'types/api/_common';
-import type { Offer } from 'types/api/contest';
+import type { OfferId, UserId } from 'types/_common';
+import type { Offer } from 'types/contest';
 import type {
   OfferStatus,
   OfferStatus as OfferStatusIcon,
   Rating as _Rating,
-} from 'types/api/offer';
+} from 'types/offer';
 import type { ContestData, UserState } from 'types/slices';
 import styles from './styles/OfferBox.module.scss';
 import './styles/confirmStyle.css';

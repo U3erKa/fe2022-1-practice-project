@@ -17,12 +17,12 @@ import {
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import type { GetContestParams } from 'types/api/contest';
+import type { GetContestParams } from 'types/contest';
 import type {
   ChangeMarkParams,
   GetOffersParams,
   SetOfferStatusParams,
-} from 'types/api/offer';
+} from 'types/offer';
 import type { ContestByIdState } from 'types/slices';
 
 const CONTEST_BY_ID_SLICE_NAME = 'getContestById';

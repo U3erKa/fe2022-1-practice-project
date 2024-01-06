@@ -7,7 +7,7 @@ import { getLongTimeStr } from 'utils/functions';
 import DiamondIcon from 'assets/icons/diamond.png';
 import EntryImageIcon from 'assets/icons/entrieImage.png';
 import SmallCheckIcon from 'assets/icons/smallCheck.png';
-import type { ContestId } from 'types/api/_common';
+import type { ContestId } from 'types/_common';
 import type { Contest } from 'types/contest';
 import styles from './styles/ContestBox.module.scss';
 

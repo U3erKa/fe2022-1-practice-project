@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from 'components/startContest';

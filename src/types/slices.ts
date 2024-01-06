@@ -30,17 +30,17 @@ import type {
   NameContestContestType,
   TaglineContestContestType,
 } from 'utils/schemas';
-import type { ChatId, ContestId, WithId } from 'types/api/_common';
+import type { ChatId, ContestId, WithId } from 'types/_common';
 import type {
   LogoContestInfo,
   NameContestInfo,
   TaglineContestInfo,
-} from 'types/api/contest';
-import type { CardField } from 'types/api/offer';
-import type { CatalogCreationMode, ChatData, ChatMode } from 'types/chat';
-import type { Contest, Industry, Status } from 'types/contest';
+} from 'types/contest';
 import type { Offer } from 'types/models';
-import type { UserInOffer } from './api/_common';
+import type { CardField } from 'types/offer';
+import type { UserInOffer } from './_common';
+import type { CatalogCreationMode, ChatData, ChatMode } from './chat';
+import type { Contest, Industry, Status } from './contest';
 
 export type AuthState = WithFetch;
 

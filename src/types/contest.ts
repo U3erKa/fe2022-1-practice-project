@@ -2,13 +2,80 @@ import type {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
   CONTEST_STATUS_PENDING,
+  CREATOR,
+  CUSTOMER,
   LOGO_CONTEST,
   NAME_CONTEST,
   TAGLINE_CONTEST,
 } from 'constants/general';
-import type { WithFile, WithId, WithTimeStamps, WithUUID } from './api/_common';
-import type { Priority } from './api/offer';
+import type {
+  UserInOffer,
+  WithFile,
+  WithId,
+  WithPagination,
+  WithTimeStamps,
+  WithUUID,
+} from 'types/_common';
+import type { Priority, Rating, WithOfferStatus } from 'types/offer';
+import type { CreatorFilter } from 'types/slices';
 
+export type GetContestsThunk =
+  | { requestData: GetActiveContestsParams; role: typeof CREATOR }
+  | { requestData: GetCustomersContestsParams; role: typeof CUSTOMER };
+
+export type GetCustomersContestsParams = Partial<WithPagination> & {
+  contestStatus?: Contest['status'];
+};
+
+export type GetActiveContestsParams = CreatorFilter & Partial<WithPagination>;
+
+export type GetContestParams = WithId<'contestId'>;
+
+export type DataForContestParams = {
+  characteristic1?: 'brandStyle' | 'nameStyle' | 'typeOfTagline';
+  characteristic2?: 'typeOfName';
+};
+
+export type Offer = Partial<WithFile> &
+  WithId &
+  WithOfferStatus & {
+    User: UserInOffer;
+    text: string;
+    mark?: Rating;
+  };
+
+export type SaveContestToStore =
+  | { type: typeof LOGO_CONTEST; info: LogoContestInfo }
+  | { type: typeof NAME_CONTEST; info: NameContestInfo }
+  | { type: typeof TAGLINE_CONTEST; info: TaglineContestInfo };
+
+export type ContestInfo =
+  | LogoContestInfo
+  | NameContestInfo
+  | TaglineContestInfo;
+
+export type NameContestInfo = BaseContestInfo & {
+  styleName: StyleName;
+  typeOfName: TypeOfName;
+};
+
+export type LogoContestInfo = BaseContestInfo & {
+  nameVenture: string;
+  brandStyle: BrandStyle;
+};
+
+export type TaglineContestInfo = BaseContestInfo & {
+  nameVenture: string;
+  typeOfTagline: TypeOfTagline;
+};
+
+export type BaseContestInfo = {
+  title: string;
+  industry: string;
+  focusOfWork: string;
+  targetCustomer: string;
+  file?: File;
+};
 export type Contest = LogoContest | NameContest | TaglineContest;
 
 export type NameContest = BaseContest & {

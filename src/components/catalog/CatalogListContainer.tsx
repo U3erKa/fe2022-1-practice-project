@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { CatalogList } from 'components/catalog';
 import { DialogList } from 'components/dialog';
 import { getCatalogList, removeChatFromCatalog } from 'store/slices/chatSlice';
-import type { ChatId } from 'types/api/_common';
+import type { ChatId } from 'types/_common';
 
 const CatalogListContainer = () => {
   const { catalogList, currentCatalog, data, isShowChatsInCatalog } =

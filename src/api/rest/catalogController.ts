@@ -13,7 +13,7 @@ import type {
   CreateCatalogParams,
   DeleteCatalogParams,
   RemoveChatFromCatalogParams,
-} from 'types/api/catalog';
+} from 'types/catalog';
 
 export type AddNewChatToCatalogResponse = APIHandlerReturn<
   typeof AddNewChatToCatalogHandler

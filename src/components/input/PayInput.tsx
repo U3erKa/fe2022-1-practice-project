@@ -2,7 +2,7 @@ import { type MaskProps, useMask } from '@react-input/mask';
 import clsx from 'clsx';
 import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
-import type { CardField } from 'types/api/offer';
+import type { CardField } from 'types/offer';
 
 export type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,

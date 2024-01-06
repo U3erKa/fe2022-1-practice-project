@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { FC, MutableRefObject, ReactNode } from 'react';
 import { getDays } from 'utils/functions';
-import type { UserId } from 'types/api/_common';
-import type { Message } from 'types/api/chat';
+import type { UserId } from 'types/_common';
+import type { Message } from 'types/chat';
 import styles from './styles/MainDialog.module.scss';
 
 export type Props = {

@@ -5,8 +5,7 @@ import type {
 } from 'app/api/events/route';
 import { ROUTE } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';
-import type { APIHandlerReturn } from 'types/_common';
-import type { WithTimeStamps } from 'types/api/_common';
+import type { APIHandlerReturn, WithTimeStamps } from 'types/_common';
 import type { Event } from 'types/models';
 
 export type GetEventsResponse = APIHandlerReturn<typeof GetEventsHandler>;

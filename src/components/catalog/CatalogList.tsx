@@ -3,7 +3,7 @@ import { useDispatch } from 'hooks';
 import { Catalog } from 'components/catalog';
 import styles from 'components/dialog/styles/DialogList.module.scss';
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
-import type { CatalogId } from 'types/api/_common';
+import type { CatalogId } from 'types/_common';
 import type { Catalog as _Catalog } from 'types/chat';
 
 export type Props = {

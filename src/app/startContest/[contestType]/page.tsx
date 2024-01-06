@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { type FC, useEffect } from 'react';
+import type { FC } from 'react';
 import { useSelector } from 'hooks';
 import { ContestForm } from 'components/contest';
 import { Footer, Header, ProgressBar } from 'components/general';

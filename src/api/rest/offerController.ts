@@ -12,7 +12,7 @@ import type {
   ChangeMarkParams,
   GetOffersParams,
   SetOfferStatusParams,
-} from 'types/api/offer';
+} from 'types/offer';
 
 export type SetNewOfferResponse = APIHandlerReturn<typeof SetNewOfferHandler>;
 export type SetOfferStatusResponse = APIHandlerReturn<

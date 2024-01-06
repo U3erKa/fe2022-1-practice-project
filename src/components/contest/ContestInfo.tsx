@@ -12,8 +12,7 @@ import {
   TAGLINE_CONTEST,
 } from 'constants/general';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
-import type { InterlocutorId, UserId } from 'types/api/_common';
-import type { LogoContest, NameContest, TaglineContest } from 'types/contest';
+import type { InterlocutorId, UserId } from 'types/_common';
 import type { ContestData } from 'types/slices';
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
@@ -116,18 +115,18 @@ const ContestInfo: FC<Props> = ({
         <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            styleName={styleName!}
-            typeOfName={typeOfName!}
+            styleName={styleName}
+            typeOfName={typeOfName}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            nameVenture={nameVenture!}
-            typeOfTagline={typeOfTagline!}
+            nameVenture={nameVenture}
+            typeOfTagline={typeOfTagline}
           />
         ) : (
           <LogoContestSpecialInfo
-            brandStyle={brandStyle!}
-            nameVenture={nameVenture!}
+            brandStyle={brandStyle}
+            nameVenture={nameVenture}
           />
         )}
         <DataContainer

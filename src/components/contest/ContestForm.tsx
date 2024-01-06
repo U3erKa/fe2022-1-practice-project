@@ -20,7 +20,7 @@ import {
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { type Contest, ContestSchema } from 'utils/schemas';
-import type { ContestInfo, SaveContestToStore } from 'types/api/contest';
+import type { ContestInfo, SaveContestToStore } from 'types/contest';
 import type { ContestType } from 'types/contest';
 import styles from './styles/ContestForm.module.scss';
 

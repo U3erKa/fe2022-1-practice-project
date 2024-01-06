@@ -7,7 +7,7 @@ import {
   clearContestUpdationStore,
   updateContest,
 } from 'store/slices/contestUpdationSlice';
-import type { ContestInfo as _ContestInfo } from 'types/api/contest';
+import type { ContestInfo as _ContestInfo } from 'types/contest';
 import type { ContestData } from 'types/slices';
 import styles from './styles/Brief.module.scss';
 

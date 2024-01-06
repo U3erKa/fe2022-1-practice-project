@@ -10,7 +10,7 @@ import { PayInput } from 'components/input';
 import { PAGE } from 'constants/general';
 import { changeFocusOnCard } from 'store/slices/paymentSlice';
 import { CashoutSchema, type Payment, PaymentSchema } from 'utils/schemas';
-import type { CardField } from 'types/api/offer';
+import type { CardField } from 'types/offer';
 import styles from './styles/PayForm.module.scss';
 
 export type Props = {

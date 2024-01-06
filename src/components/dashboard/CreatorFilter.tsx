@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'hooks';
 import { CONTEST_TYPES, PAGE } from 'constants/general';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';
 import type { Industry } from 'types/contest';
-import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import styles from './styles/CreatorDashboard.module.scss';
 
 export type Props = {

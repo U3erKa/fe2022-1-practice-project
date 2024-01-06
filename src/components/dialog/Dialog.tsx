@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { ChatHeader, ChatInput } from 'components/chat';
 import { BlockMessage, MainDialog } from 'components/dialog';
 import { clearMessageList, getDialogMessages } from 'store/slices/chatSlice';
-import type { UserId } from 'types/api/_common';
+import type { UserId } from 'types/_common';
 
 type Props = {
   readonly userId: UserId;

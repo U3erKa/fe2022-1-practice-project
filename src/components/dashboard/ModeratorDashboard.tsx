@@ -8,8 +8,8 @@ import {
   setIsReviewed,
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
-import type { OfferId, UserId } from 'types/api/_common';
-import type { ModeratorCommand } from 'types/api/offer';
+import type { OfferId, UserId } from 'types/_common';
+import type { ModeratorCommand } from 'types/offer';
 import { CustomFilter } from './CustomFilter';
 import styles from './styles/CustomerDashboard.module.scss';
 

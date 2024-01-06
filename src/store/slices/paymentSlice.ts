@@ -11,7 +11,7 @@ import {
   rejectedReducer,
 } from 'utils/store';
 import type { WithNavigate } from 'types/_common';
-import type { CashOutParams } from 'types/api/offer';
+import type { CashOutParams } from 'types/offer';
 import type { PaymentState } from 'types/slices';
 import { clearContestStore } from './contestCreationSlice';
 import { changeProfileViewMode } from './userProfileSlice';

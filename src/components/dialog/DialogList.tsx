@@ -13,12 +13,12 @@ import {
   goToExpandedDialog,
 } from 'store/slices/chatSlice';
 import { uniqueId } from 'utils/functions';
-import type { ChatId, UserId } from 'types/api/_common';
+import type { ChatId, UserId } from 'types/_common';
 import type {
   ChangeChatBlockParams,
   ChangeChatFavoriteParams,
   GoToExtendedDialog,
-} from 'types/api/chat';
+} from 'types/chat';
 import type { MessagePreview } from 'types/chat';
 import styles from './styles/DialogList.module.scss';
 

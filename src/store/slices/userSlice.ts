@@ -7,7 +7,7 @@ import * as authController from 'api/rest/authController';
 import * as userController from 'api/rest/userController';
 import { notificationController } from 'api/ws/socketController';
 import { pendingReducer, rejectedReducer } from 'utils/store';
-import type { JWT } from 'types/api/_common';
+import type { JWT } from 'types/_common';
 import type { UserState } from 'types/slices';
 import { checkAuth } from './authSlice';
 import { changeEditModeOnUserProfile } from './userProfileSlice';

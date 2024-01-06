@@ -11,7 +11,7 @@ import {
   setNewCreatorFilter,
 } from 'store/slices/contestsSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-import type { GetActiveContestsParams } from 'types/api/contest';
+import type { GetActiveContestsParams } from 'types/contest';
 import type { CreatorFilter as _CreatorFilter } from 'types/slices';
 import { CreatorFilter } from './CreatorFilter';
 import styles from './styles/CreatorDashboard.module.scss';

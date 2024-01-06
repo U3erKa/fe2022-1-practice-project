@@ -16,7 +16,7 @@ import {
   changeChatFavorite,
 } from 'store/slices/chatSlice';
 import LeftArrowIcon from 'assets/icons/arrow-left-thick.png';
-import type { UserId } from 'types/api/_common';
+import type { UserId } from 'types/_common';
 import type { ChatData } from 'types/chat';
 import styles from './styles/ChatHeader.module.scss';
 

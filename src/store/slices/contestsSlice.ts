@@ -7,7 +7,7 @@ import * as contestController from 'api/rest/contestController';
 import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
 import { addNewItems } from 'utils/functions';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';
-import type { GetContestsThunk } from 'types/api/contest';
+import type { GetContestsThunk } from 'types/contest';
 import type { ContestsState } from 'types/slices';
 
 const CONTESTS_SLICE_NAME = 'contests';

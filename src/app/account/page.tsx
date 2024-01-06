@@ -10,7 +10,7 @@ import { Error, Header } from 'components/general';
 import { CASHOUT_MODE, CREATOR, PAGE, USER_INFO_MODE } from 'constants/general';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
-import type { CashOutParams } from 'types/api/offer';
+import type { CashOutParams } from 'types/offer';
 import styles from './styles/page.module.scss';
 
 const UserProfile = () => {

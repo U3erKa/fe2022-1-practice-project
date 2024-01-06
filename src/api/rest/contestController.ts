@@ -12,7 +12,7 @@ import type {
   GetActiveContestsParams,
   GetContestParams,
   GetCustomersContestsParams,
-} from 'types/api/contest';
+} from 'types/contest';
 
 export type DataForContestResponse = APIHandlerReturn<
   typeof DataForContestHandler

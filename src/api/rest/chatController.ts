@@ -11,7 +11,7 @@ import type {
   ChangeChatFavoriteParams,
   GetDialogParams,
   NewMessageParams,
-} from 'types/api/chat';
+} from 'types/chat';
 
 export type GetChatResponse = APIHandlerReturn<typeof GetChatHandler>;
 export type GetPreviewResponse = APIHandlerReturn<typeof GetPreviewHandler>;

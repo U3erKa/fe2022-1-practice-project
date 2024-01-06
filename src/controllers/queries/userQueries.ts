@@ -6,7 +6,7 @@ import type {
 } from 'sequelize';
 import { NotFoundError, ServerError } from 'errors';
 import { User } from 'models';
-import type { UserId } from 'types/api/_common';
+import type { UserId } from 'types/_common';
 import type { ModelUpdateAttributes, User as _User } from 'types/models';
 
 export const updateUser = async (

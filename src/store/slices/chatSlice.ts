@@ -21,7 +21,7 @@ import type {
   CreateCatalogParams,
   DeleteCatalogParams,
   RemoveChatFromCatalogParams,
-} from 'types/api/catalog';
+} from 'types/catalog';
 import type {
   AddMessage,
   ChangeChatBlockParams,
@@ -29,7 +29,7 @@ import type {
   GetDialogParams,
   GoToExtendedDialog,
   NewMessageParams,
-} from 'types/api/chat';
+} from 'types/chat';
 import type {
   Catalog,
   CatalogCreationMode,

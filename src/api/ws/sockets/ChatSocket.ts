@@ -5,7 +5,7 @@ import {
   SOCKET_UNSUBSCRIBE_CHAT,
 } from 'constants/general';
 import { addMessage, changeBlockStatusInStore } from 'store/slices/chatSlice';
-import type { ChatId } from 'types/api/_common';
+import type { ChatId } from 'types/_common';
 import WebSocket from './WebSocket';
 
 class ChatSocket extends WebSocket {

@@ -11,7 +11,7 @@ import type {
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
-import type { WithId, WithPagination, WithUUID } from 'types/api/_common';
+import type { WithId, WithPagination, WithUUID } from 'types/_common';
 import type { Bank } from 'types/models';
 
 export type SetOfferStatusParams = WithId<'offerId'> &

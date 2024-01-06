@@ -14,7 +14,7 @@ import { updateContest } from 'controllers/queries/contestQueries';
 import { verifyAccessToken } from 'services/jwtService';
 import { uploadFile } from 'utils/backend';
 import handleError from 'utils/handleError';
-import type { Context } from 'types/api/_common';
+import type { Context } from 'types/_common';
 import type { Offer as _Offer, Rating as _Rating } from 'types/models';
 
 type RouteContext = Context<{

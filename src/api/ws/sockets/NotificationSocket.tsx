@@ -8,7 +8,7 @@ import {
   SOCKET_SUBSCRIBE,
   SOCKET_UNSUBSCRIBE,
 } from 'constants/general';
-import type { ChatId } from 'types/api/_common';
+import type { ChatId } from 'types/_common';
 import WebSocket from './WebSocket';
 
 class NotificationSocket extends WebSocket {

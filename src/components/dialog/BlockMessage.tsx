@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { UserId } from 'types/api/_common';
+import type { UserId } from 'types/_common';
 import type { ChatData } from 'types/chat';
 import styles from './styles/BlockMessage.module.scss';
 

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { SIMILAR_CHOISE } from 'constants/buttonGroup';
-import type { SaveContestToStore } from 'types/api/contest';
+import type { SaveContestToStore } from 'types/contest';
 import type { ContestCreationState, NameMatchesDomain } from 'types/slices';
 
 const CONTEST_SAVING_SLICE_NAME = 'contestCreation';

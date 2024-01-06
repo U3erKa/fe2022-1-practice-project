@@ -6,9 +6,9 @@ import {
   setOfferStatus,
 } from 'store/slices/contestByIdSlice';
 import { OfferBox } from '.';
-import type { OfferId, UserId } from 'types/api/_common';
-import type { Offer } from 'types/api/contest';
-import type { CustomerCommand } from 'types/api/offer';
+import type { OfferId, UserId } from 'types/_common';
+import type { Offer } from 'types/contest';
+import type { CustomerCommand } from 'types/offer';
 import type { ContestData } from 'types/slices';
 import styles from './styles/ContestOfferList.module.scss';
 

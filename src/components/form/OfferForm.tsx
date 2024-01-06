@@ -13,7 +13,7 @@ import {
   type TextOffer,
   TextOfferSchema,
 } from 'utils/schemas';
-import type { Id, WithId } from 'types/api/_common';
+import type { WithId } from 'types/_common';
 import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.scss';
 

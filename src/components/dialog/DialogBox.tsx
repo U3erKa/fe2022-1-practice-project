@@ -18,8 +18,8 @@ import {
 import { UserImage } from 'components/general';
 import { CATALOG_PREVIEW_CHAT_MODE, PUBLIC_URL } from 'constants/general';
 import { getShortTimeStr } from 'utils/functions';
-import type { ChatId, UserId } from 'types/api/_common';
-import type { GoToExtendedDialog, Interlocutor } from 'types/api/chat';
+import type { ChatId, UserId } from 'types/_common';
+import type { GoToExtendedDialog, Interlocutor } from 'types/chat';
 import type { ChatMode, MessagePreview } from 'types/chat';
 import styles from './styles/DialogBox.module.scss';
 

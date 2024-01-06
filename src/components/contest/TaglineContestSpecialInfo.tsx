@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { TaglineContestInfo } from 'types/api/contest';
+import type { TaglineContestInfo } from 'types/contest';
 import styles from './styles/ContestInfo.module.scss';
 
 export type Props = Pick<TaglineContestInfo, 'nameVenture' | 'typeOfTagline'>;

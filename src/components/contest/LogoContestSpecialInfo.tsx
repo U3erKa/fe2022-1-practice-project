@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { LogoContestInfo } from 'types/api/contest';
+import type { LogoContestInfo } from 'types/contest';
 import styles from './styles/ContestInfo.module.scss';
 
 export type Props = Pick<LogoContestInfo, 'brandStyle' | 'nameVenture'>;
