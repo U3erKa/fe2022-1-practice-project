@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import type { FC } from 'react';
@@ -34,9 +34,10 @@ const BundleBox: FC<Props> = ({ header, icons, setBundle, describe }) => {
   return (
     <div
       id={header}
-      className={clsx(styles.bundleContainer, {
-        [styles.combinedBundle]: icons.length === 1,
-      })}
+      className={clsx(
+        styles.bundleContainer,
+        icons.length === 1 && styles.combinedBundle,
+      )}
       onClick={() => {
         setBundle(header);
       }}

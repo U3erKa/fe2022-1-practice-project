@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { useDispatch, useSelector } from 'hooks';
 import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
 import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
@@ -13,10 +13,10 @@ export default function ButtonGroup() {
   const buttons = BUTTONS.map(({ id, choise, text }) => (
     <button
       key={id}
-      className={clsx({
-        [styles.button]: true,
-        [styles.active]: nameMathesDomain === choise,
-      })}
+      className={clsx(
+        styles.button,
+        nameMathesDomain === choise && styles.active,
+      )}
       onClick={() => dispatch(changeNameMathesDomain(choise))}
     >
       <h3 className={styles.choise}>

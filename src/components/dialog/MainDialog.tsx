@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import type { FC, MutableRefObject, ReactNode } from 'react';
 import { getDays } from 'utils/functions';
 import type { UserId } from 'types/_common';
@@ -29,7 +28,7 @@ const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
 
     messagesArray.push(
       <div
-        className={clsx(userId === sender ? styles.ownMessage : styles.message)}
+        className={userId === sender ? styles.ownMessage : styles.message}
         key={i}
       >
         <span>{body}</span>

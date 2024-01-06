@@ -1,5 +1,5 @@
 import { type MaskProps, useMask } from '@react-input/mask';
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import type { CardField } from 'types/offer';
@@ -34,11 +34,9 @@ const PayInput: FC<Props> = ({
   return (
     <div className={classes.container}>
       <input
+        className={clsx(classes.input, isTouched && error && classes.notValid)}
         ref={isMaskable ? inputRef : ref}
         value={isMaskable ? undefined : value}
-        className={clsx(classes.input, {
-          [classes.notValid]: isTouched && error,
-        })}
         onFocus={() => {
           changeFocus(field.name as CardField);
         }}

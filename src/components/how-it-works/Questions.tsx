@@ -2,7 +2,7 @@
 
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { type FC, useState } from 'react';
 import type { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Answer } from '.';
@@ -18,10 +18,6 @@ export const Questions: FC<Props> = ({ questions }) => {
     <section>
       {questions.map(({ id, question, answer }, i) => {
         const active = activeQuestion === i;
-        const iconStyles = clsx({
-          [styles.activeIcon]: active,
-          [styles.arrowIcon]: true,
-        });
 
         return (
           <section className={styles.questionContainer} key={id}>
@@ -32,7 +28,10 @@ export const Questions: FC<Props> = ({ questions }) => {
               }}
             >
               {question}
-              <FontAwesomeIcon className={iconStyles} icon={faArrowRight} />
+              <FontAwesomeIcon
+                className={clsx(styles.arrowIcon, active && styles.activeIcon)}
+                icon={faArrowRight}
+              />
             </button>
             <Answer active={active} contents={answer} />
           </section>

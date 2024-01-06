@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import type { ChangeEventHandler, FC } from 'react';
 import {
   type Control,
@@ -52,7 +52,7 @@ const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         alt="user"
-        className={clsx({ [imgStyle!]: !!field.value })}
+        className={clsx(!!field.value && imgStyle)}
         height={120}
         id={imageId}
         width={120}

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import isEqual from 'fast-deep-equal/es6/react';
 import type { FC, ReactNode } from 'react';
 import type { AnswerProps } from 'types/general';
@@ -15,10 +15,7 @@ const isAnswer = (contents: unknown): contents is AnswerProps => {
 };
 
 export const Answer: FC<Props> = ({ active, contents }) => {
-  const containerStyles = clsx({
-    [styles.inactive]: !active,
-    [styles.container]: true,
-  });
+  const containerStyles = clsx(styles.container, !active && styles.inactive);
 
   if (isAnswer(contents)) {
     const { description, list } = contents;

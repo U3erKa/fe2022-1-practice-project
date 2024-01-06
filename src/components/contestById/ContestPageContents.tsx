@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { OfferForm } from 'components/form';
@@ -45,13 +45,13 @@ function ContestPageContents({ contestId }: { readonly contestId: number }) {
       <div className={styles.infoContainer}>
         <div className={styles.buttonsContainer}>
           <span
-            className={clsx(styles.btn, { [styles.activeBtn]: isBrief })}
+            className={clsx(styles.btn, isBrief && styles.activeBtn)}
             onClick={() => dispatch(changeContestViewMode(true))}
           >
             Brief
           </span>
           <span
-            className={clsx(styles.btn, { [styles.activeBtn]: !isBrief })}
+            className={clsx(styles.btn, !isBrief && styles.activeBtn)}
             onClick={() => dispatch(changeContestViewMode(false))}
           >
             Offer

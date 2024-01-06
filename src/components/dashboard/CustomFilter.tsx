@@ -1,5 +1,4 @@
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import clsx from 'clsx';
 import type { FC } from 'react';
 import { useDispatch } from 'hooks';
 import styles from './styles/CustomerDashboard.module.scss';
@@ -21,11 +20,8 @@ export const CustomFilter: FC<Props> = ({
 
   const filterButtons = buttons.map(({ name, filter }) => (
     <div
+      className={filter === predicate ? styles.activeFilter : styles.filter}
       key={name}
-      className={clsx({
-        [styles.activeFilter]: filter === predicate,
-        [styles.filter]: filter !== predicate,
-      })}
       onClick={() => dispatch(filterAction(filter))}
       {...props}
     >

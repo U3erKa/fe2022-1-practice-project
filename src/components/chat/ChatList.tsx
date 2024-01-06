@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'hooks';
 import { CatalogListContainer, CatalogListHeader } from 'components/catalog';
@@ -22,10 +22,8 @@ const ChatList = () => {
 
   const dialogs = dialogButtons.map(({ id, name, mode }) => (
     <span
+      className={clsx(styles.button, chatMode === mode && styles.activeButton)}
       key={id}
-      className={clsx(styles.button, {
-        [styles.activeButton]: chatMode === mode,
-      })}
       onClick={() => dispatch(setPreviewChatMode(mode))}
     >
       {name}

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { useRouter } from 'next/navigation';
 import { select } from 'radash';
 import { type ChangeEventHandler, type FC, useCallback } from 'react';
@@ -122,9 +122,10 @@ export const CreatorFilter = () => {
       <span className={styles.headerFilter}>Filter Results</span>
       <div className={styles.inputsContainer}>
         <div
-          className={clsx(styles.myEntries, {
-            [styles.activeMyEntries]: creatorFilter.ownEntries,
-          })}
+          className={clsx(
+            styles.myEntries,
+            creatorFilter.ownEntries && styles.activeMyEntries,
+          )}
           onClick={() => {
             changePredicate({
               name: 'ownEntries',

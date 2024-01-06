@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
@@ -22,9 +22,7 @@ const FormTextArea: FC<Props> = ({ name, control, classes, ...rest }) => {
   return (
     <div className={container}>
       <textarea
-        className={clsx(inputStyle, {
-          [notValid!]: isTouched && error,
-        })}
+        className={clsx(inputStyle, isTouched && error && notValid)}
         {...field}
         {...rest}
       />

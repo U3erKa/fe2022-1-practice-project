@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
@@ -33,15 +33,18 @@ const FormInput = function FormInput({
     fieldState: { invalid, isTouched, error },
   } = useController({ name, control });
 
-  const inputClassName = clsx(classes.input, {
-    [classes.notValid!]: isTouched && invalid,
-    [classes.valid!]: isTouched && !invalid,
-  });
-
   return (
     <label className={classes.container}>
       {label ? <p className={classes.label}>{label}</p> : null}
-      <input className={inputClassName} type="text" {...field} {...props} />
+      <input
+        type="text"
+        className={clsx(
+          classes.input,
+          isTouched && (invalid ? classes.notValid : classes.valid),
+        )}
+        {...field}
+        {...props}
+      />
       {error ? <p className={classes.warning}>{error.message}</p> : null}
     </label>
   );

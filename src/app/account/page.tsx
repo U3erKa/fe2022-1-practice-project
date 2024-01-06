@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
@@ -48,18 +48,20 @@ const UserProfile = () => {
           <span className={styles.headerAside}>Select Option</span>
           <div className={styles.optionsContainer}>
             <div
-              className={clsx(styles.optionContainer, {
-                [styles.currentOption]: profileViewMode === USER_INFO_MODE,
-              })}
+              className={clsx(
+                styles.optionContainer,
+                profileViewMode === USER_INFO_MODE && styles.currentOption,
+              )}
               onClick={() => dispatch(changeProfileViewMode(USER_INFO_MODE))}
             >
               UserInfo
             </div>
             {role === CREATOR && (
               <div
-                className={clsx(styles.optionContainer, {
-                  [styles.currentOption]: profileViewMode === CASHOUT_MODE,
-                })}
+                className={clsx(
+                  styles.optionContainer,
+                  profileViewMode === CASHOUT_MODE && styles.currentOption,
+                )}
                 onClick={() => dispatch(changeProfileViewMode(CASHOUT_MODE))}
               >
                 Cashout

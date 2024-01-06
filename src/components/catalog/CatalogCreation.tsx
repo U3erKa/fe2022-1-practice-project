@@ -1,6 +1,6 @@
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { AddToCatalog, CreateCatalog } from 'components/catalog';
@@ -41,9 +41,9 @@ const CatalogCreation = () => {
       <FontAwesomeIcon icon={faCircleXmark} onClick={handleClick} />
       <div className={styles.buttonsContainer}>
         <span
-          className={clsx({
-            [styles.active]: catalogCreationMode === ADD_CHAT_TO_OLD_CATALOG,
-          })}
+          className={clsx(
+            catalogCreationMode === ADD_CHAT_TO_OLD_CATALOG && styles.active,
+          )}
           onClick={() =>
             dispatch(changeTypeOfChatAdding(ADD_CHAT_TO_OLD_CATALOG))
           }
@@ -51,10 +51,10 @@ const CatalogCreation = () => {
           Old
         </span>
         <span
-          className={clsx({
-            [styles.active]:
-              catalogCreationMode === CREATE_NEW_CATALOG_AND_ADD_CHAT,
-          })}
+          className={clsx(
+            catalogCreationMode === CREATE_NEW_CATALOG_AND_ADD_CHAT &&
+              styles.active,
+          )}
           onClick={() =>
             dispatch(changeTypeOfChatAdding(CREATE_NEW_CATALOG_AND_ADD_CHAT))
           }

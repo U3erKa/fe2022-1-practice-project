@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx/lite';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { chatController } from 'api/ws/socketController';
@@ -31,11 +31,7 @@ const Chat = () => {
   const getData = useCallback(() => dispatch(getPreviewChat()), [dispatch]);
 
   return (
-    <div
-      className={clsx(styles.chatContainer, {
-        [styles.showChat]: isShow,
-      })}
-    >
+    <div className={clsx(styles.chatContainer, isShow && styles.showChat)}>
       {error ? <ChatError getData={getData} /> : null}
       {isShowCatalogCreation ? <CatalogCreation /> : null}
       {isExpanded ? <Dialog userId={userId} /> : <ChatList />}
