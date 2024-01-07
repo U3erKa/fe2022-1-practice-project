@@ -4,11 +4,22 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
-import { CONTEST_STATUS_ACTIVE, CUSTOMER } from 'constants/general';
+import {
+  CONTEST_STATUS_ACTIVE,
+  type CREATOR,
+  CUSTOMER,
+} from 'constants/general';
 import { addNewItems } from 'utils/functions';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';
-import type { GetContestsThunk } from 'types/contest';
+import type {
+  GetActiveContestsParams,
+  GetCustomersContestsParams,
+} from 'types/contest';
 import type { ContestsState } from 'types/slices';
+
+export type GetContestsThunk =
+  | { requestData: GetActiveContestsParams; role: typeof CREATOR }
+  | { requestData: GetCustomersContestsParams; role: typeof CUSTOMER };
 
 const CONTESTS_SLICE_NAME = 'contests';
 

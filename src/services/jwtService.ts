@@ -1,4 +1,10 @@
-import jwt, { type Secret } from 'jsonwebtoken';
+import jwt, {
+  type Secret,
+  type Jwt,
+  type JwtPayload,
+  type SignOptions,
+  type VerifyOptions,
+} from 'jsonwebtoken';
 import { promisify } from 'util';
 import {
   ACCESS_TOKEN_SECRET,
@@ -7,7 +13,24 @@ import {
   REFRESH_TOKEN_TIME,
 } from 'constants/backend';
 import type { User } from 'types/models';
-import type { JwtSign, JwtVerify, TokenOptions } from 'types/services';
+
+export type JwtSign = (
+  payload: Buffer | object | string,
+  secretOrPrivateKey: Secret,
+  options?: SignOptions,
+) => Promise<string>;
+
+export type JwtVerify<Complete = unknown> = (
+  token: string,
+  secretOrPublicKey: Secret,
+  options?: VerifyOptions,
+) => Promise<
+  Complete extends true
+    ? Jwt
+    : Complete extends false
+      ? JwtPayload | string
+      : Jwt | JwtPayload | string
+>;
 
 export type TokenData = Pick<
   User,

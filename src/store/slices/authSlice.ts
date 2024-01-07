@@ -2,14 +2,21 @@ import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
 import * as authController from 'api/rest/authController';
 import { notificationController } from 'api/ws/socketController';
 import { AUTH_MODE, PAGE } from 'constants/general';
+import type { Login, Registration } from 'utils/schemas';
 import {
   decorateAsyncThunk,
   fulfilledReducer,
   pendingReducer,
   rejectedReducer,
 } from 'utils/store';
-import type { CheckAuth } from 'types/auth';
+import type { WithNavigate } from 'types/_common';
 import type { AuthState } from 'types/slices';
+
+export type CheckAuth = WithNavigate &
+  (
+    | { data: Login; authMode: typeof AUTH_MODE.LOGIN }
+    | { data: Registration; authMode: typeof AUTH_MODE.REGISTER }
+  );
 
 const AUTH_SLICE_NAME = 'auth';
 

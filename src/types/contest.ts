@@ -19,10 +19,6 @@ import type {
 import type { Priority, Rating, WithOfferStatus } from 'types/offer';
 import type { CreatorFilter } from 'types/slices';
 
-export type GetContestsThunk =
-  | { requestData: GetActiveContestsParams; role: typeof CREATOR }
-  | { requestData: GetCustomersContestsParams; role: typeof CUSTOMER };
-
 export type GetCustomersContestsParams = Partial<WithPagination> & {
   contestStatus?: Contest['status'];
 };
