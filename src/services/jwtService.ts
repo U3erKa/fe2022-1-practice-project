@@ -48,34 +48,15 @@ export type TokenData = Pick<
 const jwtSign: JwtSign = promisify(jwt.sign);
 const jwtVerify: JwtVerify = promisify(jwt.verify);
 
-const tokenOptions = {
-  access: {
-    expiresIn: ACCESS_TOKEN_TIME,
-    secret: ACCESS_TOKEN_SECRET!,
-  },
-  refresh: {
-    expiresIn: REFRESH_TOKEN_TIME,
-    secret: REFRESH_TOKEN_SECRET!,
-  },
-} satisfies TokenOptions;
-
-const createToken = (
-  payload: TokenData,
-  { secret, expiresIn }: TokenOptions[keyof TokenOptions],
-) => jwtSign(payload, secret, { expiresIn });
-
-const verifyToken = (token: string, { secret }: { secret: Secret }) =>
-  jwtVerify(token, secret) as Promise<TokenData>;
-
 export const generateTokenPair = async (payload: TokenData) => {
   const [accessToken, refreshToken] = await Promise.all([
-    createToken(payload, tokenOptions.access),
-    createToken(payload, tokenOptions.refresh),
+    jwtSign(payload, ACCESS_TOKEN_SECRET!, { expiresIn: ACCESS_TOKEN_TIME }),
+    jwtSign(payload, REFRESH_TOKEN_SECRET!, { expiresIn: REFRESH_TOKEN_TIME }),
   ]);
   return { accessToken, refreshToken };
 };
 
 export const verifyAccessToken = (token: string) =>
-  verifyToken(token, tokenOptions.access);
+  jwtVerify(token, ACCESS_TOKEN_SECRET!);
 export const verifyRefreshToken = (token: string) =>
-  verifyToken(token, tokenOptions.refresh);
+  jwtVerify(token, REFRESH_TOKEN_SECRET!);
