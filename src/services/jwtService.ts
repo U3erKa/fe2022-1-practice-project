@@ -57,6 +57,6 @@ export const generateTokenPair = async (payload: TokenData) => {
 };
 
 export const verifyAccessToken = (token: string) =>
-  jwtVerify(token, ACCESS_TOKEN_SECRET!);
+  jwtVerify(token, ACCESS_TOKEN_SECRET!) as Promise<TokenData>;
 export const verifyRefreshToken = (token: string) =>
-  jwtVerify(token, REFRESH_TOKEN_SECRET!);
+  jwtVerify(token, REFRESH_TOKEN_SECRET!) as Promise<TokenData>;
