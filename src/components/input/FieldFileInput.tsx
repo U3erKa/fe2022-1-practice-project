@@ -1,11 +1,11 @@
-import type { ComponentProps, FC } from 'react';
+import type { ComponentPropsWithoutRef, FC } from 'react';
 import {
   type Control,
   type UseFormRegister,
   useController,
 } from 'react-hook-form';
 
-export type Props = ComponentProps<'input'> & {
+export type Props = ComponentPropsWithoutRef<'input'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly register: UseFormRegister<any>;

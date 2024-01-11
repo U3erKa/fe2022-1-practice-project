@@ -1,8 +1,8 @@
-import type { ComponentProps, FC } from 'react';
+import type { ComponentPropsWithoutRef, FC } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import { PAGE } from 'constants/general';
 
-export type Props = ComponentProps<'input'> & {
+export type Props = ComponentPropsWithoutRef<'input'> & {
   readonly classes: Record<'container' | 'warning', string>;
   readonly control: Control<any>;
   readonly name: string;

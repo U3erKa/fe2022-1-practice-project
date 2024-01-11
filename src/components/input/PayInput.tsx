@@ -1,10 +1,10 @@
 import { type MaskProps, useMask } from '@react-input/mask';
 import clsx from 'clsx/lite';
-import type { ComponentProps, FC } from 'react';
+import type { ComponentPropsWithoutRef, FC } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import type { CardField } from 'types/offer';
 
-export type Props = ComponentProps<'input'> & {
+export type Props = ComponentPropsWithoutRef<'input'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly changeFocus: (name: CardField) => void;

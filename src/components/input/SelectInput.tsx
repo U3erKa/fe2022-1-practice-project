@@ -1,4 +1,4 @@
-import { type ComponentProps, type FC, useEffect } from 'react';
+import { type ComponentPropsWithoutRef, type FC, useEffect } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
 export type FormSelectClasses = {
@@ -8,7 +8,7 @@ export type FormSelectClasses = {
   warning?: string;
 };
 
-export type FormSelectProps = ComponentProps<'select'> & {
+export type FormSelectProps = ComponentPropsWithoutRef<'select'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly header: string;

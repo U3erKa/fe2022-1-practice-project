@@ -1,8 +1,8 @@
-import type { ComponentProps, FC, HTMLInputTypeAttribute } from 'react';
+import type { ComponentPropsWithoutRef, FC, HTMLInputTypeAttribute } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import styles from './styles/RoleInput.module.scss';
 
-export type Props = ComponentProps<'input'> & {
+export type Props = ComponentPropsWithoutRef<'input'> & {
   readonly strRole: string;
   readonly infoRole: string;
   readonly type: HTMLInputTypeAttribute;

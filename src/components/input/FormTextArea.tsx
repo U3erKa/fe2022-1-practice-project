@@ -1,8 +1,8 @@
 import clsx from 'clsx/lite';
-import type { ComponentProps, FC } from 'react';
+import type { ComponentPropsWithoutRef, FC } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
-export type Props = ComponentProps<'textarea'> & {
+export type Props = ComponentPropsWithoutRef<'textarea'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly classes: Partial<
