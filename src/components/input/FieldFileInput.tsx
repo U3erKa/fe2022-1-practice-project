@@ -1,14 +1,11 @@
-import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
+import type { ComponentProps, FC } from 'react';
 import {
   type Control,
   type UseFormRegister,
   useController,
 } from 'react-hook-form';
 
-export type Props = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
+export type Props = ComponentProps<'input'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly register: UseFormRegister<any>;

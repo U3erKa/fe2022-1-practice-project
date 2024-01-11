@@ -1,11 +1,8 @@
-import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { type Control, useController } from 'react-hook-form';
 import { PAGE } from 'constants/general';
 
-export type Props = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
+export type Props = ComponentProps<'input'> & {
   readonly classes: Record<'container' | 'warning', string>;
   readonly control: Control<any>;
   readonly name: string;

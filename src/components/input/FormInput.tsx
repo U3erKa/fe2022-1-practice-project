@@ -1,5 +1,5 @@
 import clsx from 'clsx/lite';
-import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import type { ComponentProps } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
 export type FormInputClasses = Partial<
@@ -9,10 +9,7 @@ export type FormInputClasses = Partial<
   >
 >;
 
-export type FormInputProps = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
+export type FormInputProps = ComponentProps<'input'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly classes?: FormInputClasses;

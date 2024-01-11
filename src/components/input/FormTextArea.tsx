@@ -1,11 +1,8 @@
 import clsx from 'clsx/lite';
-import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { type Control, useController } from 'react-hook-form';
 
-export type Props = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> & {
+export type Props = ComponentProps<'textarea'> & {
   readonly name: string;
   readonly control: Control<any>;
   readonly classes: Partial<
