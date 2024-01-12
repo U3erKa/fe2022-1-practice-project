@@ -1,18 +1,21 @@
 import { type MaskProps, useMask } from '@react-input/mask';
 import clsx from 'clsx/lite';
-import type { ComponentPropsWithoutRef, FC } from 'react';
-import { type Control, useController } from 'react-hook-form';
+import type { ComponentPropsWithoutRef } from 'react';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
 import type { CardField } from 'types/offer';
 
-export type Props = ComponentPropsWithoutRef<'input'> & {
-  readonly name: string;
-  readonly control: Control<any>;
-  readonly changeFocus: (name: CardField) => void;
-  readonly classes: Record<string, string>;
-  readonly replacement?: MaskProps['replacement'];
-} & (Pick<MaskProps, 'mask' | 'replacement'> | { mask?: undefined });
+export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
+  Pick<UseControllerProps<T>, 'control' | 'name'> & {
+    readonly changeFocus: (name: CardField) => void;
+    readonly classes: Record<string, string>;
+    readonly replacement?: MaskProps['replacement'];
+  } & (Pick<MaskProps, 'mask' | 'replacement'> | { mask?: undefined });
 
-const PayInput: FC<Props> = ({
+function PayInput<T extends FieldValues>({
   changeFocus,
   classes,
   mask,
@@ -20,7 +23,7 @@ const PayInput: FC<Props> = ({
   name,
   control,
   ...rest
-}) => {
+}: Props<T>) {
   const {
     field: { ref, value, ...field },
     fieldState: { isTouched, error },
@@ -45,6 +48,6 @@ const PayInput: FC<Props> = ({
       ) : null}
     </div>
   );
-};
+}
 
 export default PayInput;

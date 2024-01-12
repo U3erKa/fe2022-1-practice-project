@@ -1,5 +1,4 @@
-import type { FC } from 'react';
-import type { Control } from 'react-hook-form';
+import type { FieldValues, UseControllerProps } from 'react-hook-form';
 import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
 import { FormInput, SelectInput } from 'components/input';
@@ -7,8 +6,10 @@ import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/ContestForm.module.scss';
 
-export type Props = {
-  readonly control: Control<any>;
+export type Props<T extends FieldValues> = Pick<
+  UseControllerProps<T>,
+  'control'
+> & {
   readonly contestType: ContestType;
 };
 
@@ -30,7 +31,10 @@ const CONTEST_NAME = {
   [TAGLINE_CONTEST]: ['nameVenture', 'typeOfTagline'],
 } as const;
 
-const OptionalSelects: FC<Props> = ({ contestType, control }) => {
+const OptionalSelects = function <T extends FieldValues>({
+  contestType,
+  control,
+}: Props<T>) {
   const { data, isFetching } = useSelector(({ dataForContest }) => {
     const { data, isFetching } = dataForContest;
     return { data, isFetching };
@@ -50,14 +54,14 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             classes={selectClasses}
             control={control}
             header="type of company"
-            name={firstContestName}
+            name={firstContestName as any}
             optionsArray={data.typeOfName!}
           />
           <SelectInput
             classes={selectClasses}
             control={control}
             header="Style name"
-            name={secondContestName}
+            name={secondContestName as any}
             optionsArray={data.nameStyle!}
           />
         </>
@@ -73,7 +77,7 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             <FormInput
               classes={inputClasses}
               control={control}
-              name={firstContestName}
+              name={firstContestName as any}
               placeholder="name of venture"
             />
           </div>
@@ -81,7 +85,7 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             classes={selectClasses}
             control={control}
             header="Brand Style"
-            name={secondContestName}
+            name={secondContestName as any}
             optionsArray={data.brandStyle!}
           />
         </>
@@ -97,7 +101,7 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             <FormInput
               classes={inputClasses}
               control={control}
-              name={firstContestName}
+              name={firstContestName as any}
               placeholder="name of venture"
             />
           </div>
@@ -105,7 +109,7 @@ const OptionalSelects: FC<Props> = ({ contestType, control }) => {
             classes={selectClasses}
             control={control}
             header="Type tagline"
-            name={secondContestName}
+            name={secondContestName as any}
             optionsArray={data.typeOfTagline!}
           />
         </>

@@ -44,6 +44,7 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
       displayName: user?.displayName,
       firstName: user?.firstName,
       lastName: user?.lastName,
+      file: undefined,
     },
     resolver: zodResolver(UpdateUserSchema),
   });

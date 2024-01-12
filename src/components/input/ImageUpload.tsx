@@ -1,23 +1,30 @@
 import clsx from 'clsx/lite';
-import type { ChangeEventHandler, FC } from 'react';
+import type { ChangeEventHandler } from 'react';
 import {
-  type Control,
-  type UseFormRegister,
+  type FieldValues,
+  type UseControllerProps,
+  type UseFormReturn,
   useController,
 } from 'react-hook-form';
 
-export type Props = {
-  readonly name: string;
-  readonly control: Control<any>;
-  readonly register: UseFormRegister<any>;
-  readonly classes: Record<string, string>;
-};
+export type Props<T extends FieldValues> = Pick<
+  UseControllerProps<T>,
+  'control' | 'name'
+> &
+  Pick<UseFormReturn<T>, 'register'> & {
+    readonly classes: Record<string, string>;
+  };
 
 const imageId = 'imagePreview';
 const fileInputId = 'fileInput';
 const imageType = /image.*/;
 
-const ImageUpload: FC<Props> = ({ name, control, register, classes }) => {
+const ImageUpload = function <T extends FieldValues>({
+  name,
+  control,
+  register,
+  classes,
+}: Props<T>) {
   const { field } = useController({ name, control });
   const { uploadContainer, inputContainer, imgStyle } = classes;
 

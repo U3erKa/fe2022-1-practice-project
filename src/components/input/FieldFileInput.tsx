@@ -1,25 +1,25 @@
-import type { ComponentPropsWithoutRef, FC } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import {
-  type Control,
-  type UseFormRegister,
+  type FieldValues,
+  type UseControllerProps,
+  type UseFormReturn,
   useController,
 } from 'react-hook-form';
 
-export type Props = ComponentPropsWithoutRef<'input'> & {
-  readonly name: string;
-  readonly control: Control<any>;
-  readonly register: UseFormRegister<any>;
-  readonly classes: Record<string, string>;
-};
+export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
+  Pick<UseControllerProps<T>, 'control' | 'name'> &
+  Pick<UseFormReturn<T>, 'register'> & {
+    readonly classes: Record<string, string>;
+  };
 
-const FieldFileInput: FC<Props> = ({
+const FieldFileInput = function <T extends FieldValues>({
   name,
   control,
   register,
   classes,
   id,
   ...rest
-}) => {
+}: Props<T>) {
   const { field } = useController({ name, control });
   const { fileUploadContainer, labelClass, fileNameClass, fileInput } = classes;
 

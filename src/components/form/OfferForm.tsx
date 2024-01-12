@@ -1,6 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type FC, useCallback } from 'react';
-import { type Control, type UseFormRegister, useForm } from 'react-hook-form';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  type UseFormReturn,
+  useForm,
+} from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
@@ -17,11 +22,13 @@ import type { WithId } from 'types/_common';
 import type { ContestType } from 'types/contest';
 import styles from './styles/OfferForm.module.scss';
 
-export type Props = {
-  readonly contestType: ContestType;
-  readonly control: Control<any>;
-  readonly register: UseFormRegister<any>;
-};
+export type Props<T extends FieldValues> = Pick<
+  UseControllerProps<T>,
+  'control'
+> &
+  Pick<UseFormReturn<T>, 'register'> & {
+    readonly contestType: ContestType;
+  };
 
 export type OfferFormProps = WithId<'contestId' | 'customerId'> & {
   readonly contestType: ContestType;
@@ -40,19 +47,25 @@ const imageUploadClasses = {
   uploadContainer: styles.imageUploadContainer,
 };
 
-const OfferInput: FC<Props> = ({ control, register, contestType }) => {
+const name = 'offerData';
+
+const OfferInput = function ({
+  control,
+  register,
+  contestType,
+}: Props<{ [name]: string }>) {
   return contestType === LOGO_CONTEST ? (
     <ImageUpload
       classes={imageUploadClasses}
       control={control}
-      name="offerData"
+      name={name}
       register={register}
     />
   ) : (
     <FormInput
       classes={formInputClassses}
       control={control}
-      name="offerData"
+      name={name}
       placeholder="your suggestion"
     />
   );

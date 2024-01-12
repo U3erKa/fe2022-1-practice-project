@@ -1,6 +1,10 @@
 import clsx from 'clsx/lite';
 import type { ComponentPropsWithoutRef } from 'react';
-import { type Control, useController } from 'react-hook-form';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
 
 export type FormInputClasses = Partial<
   Record<
@@ -9,22 +13,22 @@ export type FormInputClasses = Partial<
   >
 >;
 
-export type FormInputProps = ComponentPropsWithoutRef<'input'> & {
-  readonly name: string;
-  readonly control: Control<any>;
-  readonly classes?: FormInputClasses;
-  readonly label?: string;
-};
+export type FormInputProps<T extends FieldValues> =
+  ComponentPropsWithoutRef<'input'> &
+    Pick<UseControllerProps<T>, 'control' | 'name'> & {
+      readonly classes?: FormInputClasses;
+      readonly label?: string;
+    };
 
 const DEFAULT_CLASSES = {};
 
-const FormInput = function FormInput({
+const FormInput = function FormInput<T extends FieldValues>({
   name,
   control,
   classes = DEFAULT_CLASSES,
   label,
   ...props
-}: FormInputProps) {
+}: FormInputProps<T>) {
   const {
     field,
     fieldState: { invalid, isTouched, error },

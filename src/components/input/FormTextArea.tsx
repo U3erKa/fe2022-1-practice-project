@@ -1,16 +1,25 @@
 import clsx from 'clsx/lite';
-import type { ComponentPropsWithoutRef, FC } from 'react';
-import { type Control, useController } from 'react-hook-form';
+import type { ComponentPropsWithoutRef } from 'react';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
 
-export type Props = ComponentPropsWithoutRef<'textarea'> & {
-  readonly name: string;
-  readonly control: Control<any>;
-  readonly classes: Partial<
-    Record<'container' | 'inputStyle' | 'notValid' | 'warning', string>
-  >;
-};
+export type Props<T extends FieldValues> =
+  ComponentPropsWithoutRef<'textarea'> &
+    Pick<UseControllerProps<T>, 'control' | 'name'> & {
+      readonly classes: Partial<
+        Record<'container' | 'inputStyle' | 'notValid' | 'warning', string>
+      >;
+    };
 
-const FormTextArea: FC<Props> = ({ name, control, classes, ...rest }) => {
+function FormTextArea<T extends FieldValues>({
+  name,
+  control,
+  classes,
+  ...rest
+}: Props<T>) {
   const {
     field,
     fieldState: { isTouched, error },
@@ -26,6 +35,6 @@ const FormTextArea: FC<Props> = ({ name, control, classes, ...rest }) => {
       {error ? <span className={warning}>{error.message}</span> : null}
     </div>
   );
-};
+}
 
 export default FormTextArea;

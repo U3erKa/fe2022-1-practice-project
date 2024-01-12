@@ -44,9 +44,8 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
     number: '',
     cvc: '',
     expiry: '',
+    ...(isCashoutPage ? {} : { sum: '' }),
   };
-
-  if (isCashoutPage) Object.assign(defaultValues, { sum: '' });
 
   const { handleSubmit, control, watch } = useForm({
     defaultValues,

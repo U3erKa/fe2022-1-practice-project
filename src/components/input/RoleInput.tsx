@@ -1,22 +1,29 @@
-import type { ComponentPropsWithoutRef, FC, HTMLInputTypeAttribute } from 'react';
-import { type Control, useController } from 'react-hook-form';
+import type {
+  ComponentPropsWithoutRef,
+  FC,
+  HTMLInputTypeAttribute,
+} from 'react';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
 import styles from './styles/RoleInput.module.scss';
 
-export type Props = ComponentPropsWithoutRef<'input'> & {
-  readonly strRole: string;
-  readonly infoRole: string;
-  readonly type: HTMLInputTypeAttribute;
-  readonly control: Control<any>;
-  readonly name: string;
-};
+export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
+  Pick<UseControllerProps<T>, 'control' | 'name'> & {
+    readonly strRole: string;
+    readonly infoRole: string;
+    readonly type: HTMLInputTypeAttribute;
+  };
 
-const RoleInput: FC<Props> = function RoleInput({
+const RoleInput = function RoleInput<T extends FieldValues>({
   name,
   control,
   strRole,
   infoRole,
   ...props
-}) {
+}: Props<T>) {
   const { field } = useController({ name, control });
   const { value } = field;
 

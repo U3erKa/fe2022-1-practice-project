@@ -1,20 +1,19 @@
 import type { ComponentPropsWithoutRef, FC } from 'react';
-import { type Control, useController } from 'react-hook-form';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
 import { PAGE } from 'constants/general';
 
-export type Props = ComponentPropsWithoutRef<'input'> & {
-  readonly classes: Record<'container' | 'warning', string>;
-  readonly control: Control<any>;
-  readonly name: string;
-};
+export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
+  Pick<UseControllerProps<T>, 'control' | 'name'> & {
+    readonly classes: Record<'container' | 'warning', string>;
+  };
 
-const AgreeTermOfServiceInput: FC<Props> = function AgreeTermOfServiceInput({
-  id,
-  classes,
-  name,
-  control,
-  ...rest
-}) {
+const AgreeTermOfServiceInput = function AgreeTermOfServiceInput<
+  T extends FieldValues,
+>({ id, classes, name, control, ...rest }: Props<T>) {
   const {
     field,
     fieldState: { error, isTouched },

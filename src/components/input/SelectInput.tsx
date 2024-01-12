@@ -1,5 +1,9 @@
 import { type ComponentPropsWithoutRef, type FC, useEffect } from 'react';
-import { type Control, useController } from 'react-hook-form';
+import {
+  type FieldValues,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
 
 export type FormSelectClasses = {
   inputContainer?: string;
@@ -8,16 +12,16 @@ export type FormSelectClasses = {
   warning?: string;
 };
 
-export type FormSelectProps = ComponentPropsWithoutRef<'select'> & {
-  readonly name: string;
-  readonly control: Control<any>;
-  readonly header: string;
-  readonly classes: FormSelectClasses;
-  readonly optionsArray: readonly string[];
-  readonly valueArray?: readonly number[];
-};
+export type FormSelectProps<T extends FieldValues> =
+  ComponentPropsWithoutRef<'select'> &
+    Pick<UseControllerProps<T>, 'control' | 'name'> & {
+      readonly header: string;
+      readonly classes: FormSelectClasses;
+      readonly optionsArray: readonly string[];
+      readonly valueArray?: readonly number[];
+    };
 
-const SelectInput: FC<FormSelectProps> = function SelectInput({
+const SelectInput = function SelectInput<T extends FieldValues>({
   name,
   control,
   header,
@@ -25,7 +29,7 @@ const SelectInput: FC<FormSelectProps> = function SelectInput({
   optionsArray,
   valueArray,
   ...rest
-}) {
+}: FormSelectProps<T>) {
   const {
     field,
     fieldState: { error },
