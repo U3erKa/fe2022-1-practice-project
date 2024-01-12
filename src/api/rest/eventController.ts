@@ -5,13 +5,10 @@ import type {
 } from 'app/api/events/route';
 import { ROUTE } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';
-import type { APIHandlerReturn, WithTimeStamps } from 'types/_common';
-import type { Event } from 'types/models';
+import type { APIHandlerReturn } from 'types/_common';
 
 export type GetEventsResponse = APIHandlerReturn<typeof GetEventsHandler>;
 export type CreateEventResponse = APIHandlerReturn<typeof CreateEventHandler>;
-
-export type EventResponse = Event['dataValues'] & WithTimeStamps;
 
 export const getEvents = () => http.get<GetEventsResponse>(ROUTE.EVENTS);
 export const createEvent = (data: NewEvent) =>

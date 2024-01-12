@@ -29,11 +29,13 @@ const CatalogListContainer = () => {
     [currentCatalog, dispatch],
   );
 
-  const { id } = data;
   return (
     <>
       {isShowChatsInCatalog ? (
-        <DialogList removeChat={removeChatFromCatalogMethod} userId={id} />
+        <DialogList
+          removeChat={removeChatFromCatalogMethod}
+          userId={data!.id}
+        />
       ) : (
         <CatalogList catalogList={catalogList} />
       )}

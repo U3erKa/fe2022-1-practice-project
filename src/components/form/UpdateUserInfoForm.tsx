@@ -68,12 +68,15 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
   ));
 
   return (
-    <form className={styles.updateContainer} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.updateContainer}
+      onSubmit={handleSubmit(onSubmit as any)}
+    >
       {error ? (
         <Error
           clearError={handleClearError}
-          data={error.data}
-          status={error.status}
+          data={(error as any).data}
+          status={(error as any).status}
         />
       ) : null}
       {inputContainers}

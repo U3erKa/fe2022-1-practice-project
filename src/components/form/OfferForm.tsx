@@ -116,8 +116,8 @@ const OfferForm: FC<OfferFormProps> = ({
       {addOfferError ? (
         <Error
           clearError={handleClearError}
-          data={addOfferError.data}
-          status={addOfferError.status}
+          data={(addOfferError as any).data}
+          status={(addOfferError as any).status}
         />
       ) : null}
       <form className={styles.form} onSubmit={handleSubmit(setOffer)}>

@@ -1,7 +1,7 @@
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
+import type { ApplicationError } from 'errors';
 import { saveErrorToLog } from 'logger';
-import type ApplicationError from 'errors/ApplicationError';
 
 const handleError = (err: any) => {
   saveErrorToLog(err);

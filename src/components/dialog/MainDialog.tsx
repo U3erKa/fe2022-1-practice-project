@@ -1,11 +1,11 @@
 import type { FC, MutableRefObject, ReactNode } from 'react';
+import type { GetChatResponse } from 'api/rest/chatController';
 import { getDays } from 'utils/functions';
 import type { UserId } from 'types/_common';
-import type { Message } from 'types/chat';
 import styles from './styles/MainDialog.module.scss';
 
 export type Props = {
-  readonly messages: Message[];
+  readonly messages: GetChatResponse['messages'];
   readonly userId: UserId;
   readonly messagesEnd: MutableRefObject<HTMLDivElement | undefined>;
 };

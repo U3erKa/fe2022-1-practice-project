@@ -1,5 +1,5 @@
 import { ApplicationError } from 'errors';
-import type { EventResponse } from 'api/rest/eventController';
+import type { CreateEventResponse } from 'api/rest/eventController';
 import type { WithId } from 'types/_common';
 
 /**
@@ -56,7 +56,7 @@ export const getShortTimeStr = (time: Date | number | string) => {
   return date.toDateString();
 };
 
-export function getEventProgress({ date, createdAt }: EventResponse) {
+export function getEventProgress({ date, createdAt }: CreateEventResponse) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);
   const createdAtDate = Date.parse(createdAt);

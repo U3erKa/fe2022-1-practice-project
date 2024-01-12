@@ -10,7 +10,7 @@ import type { UserState } from 'types/slices';
 import styles from './styles/UserInfo.module.scss';
 
 export type Props = {
-  readonly userData: Omit<NonNullable<UserState['data']>, 'avatar'>;
+  readonly userData: UserState['data'];
 };
 
 type Props2 = {
@@ -28,7 +28,7 @@ const InfoBlock: FC<Props2> = ({ label, value }) => {
 };
 
 const UserInfoData: FC<Props> = ({ userData }) => {
-  const { firstName, lastName, displayName, email, role, balance } = userData;
+  const { firstName, lastName, displayName, email, role, balance } = userData!;
 
   const userInfo = [
     { id: uniqueId(), label: 'First Name', value: firstName },
@@ -51,15 +51,11 @@ const UserInfoData: FC<Props> = ({ userData }) => {
 };
 
 const UserInfo: FC = () => {
-  const { avatar, userData, isEdit } = useSelector(
-    ({ userStore, userProfile }) => {
-      const { data } = userStore;
-      const { isEdit } = userProfile;
-      const { avatar, ...userData } = data ?? {};
-
-      return { avatar, userData, isEdit };
-    },
-  );
+  const { userData, isEdit } = useSelector(({ userStore, userProfile }) => {
+    const { data: userData } = userStore;
+    const { isEdit } = userProfile;
+    return { userData, isEdit };
+  });
   const dispatch = useDispatch();
 
   const updateUserData = useCallback(
@@ -88,7 +84,10 @@ const UserInfo: FC = () => {
         <UpdateUserInfoForm onSubmit={updateUserData} />
       ) : (
         <div className={styles.infoContainer}>
-          <UserImage className={styles.avatar} src={`${PUBLIC_URL}${avatar}`} />
+          <UserImage
+            className={styles.avatar}
+            src={`${PUBLIC_URL}${userData?.avatar}`}
+          />
           <UserInfoData userData={userData} />
         </div>
       )}

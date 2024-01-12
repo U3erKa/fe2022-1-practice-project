@@ -21,6 +21,8 @@ export type FormSelectProps<T extends FieldValues> =
       readonly valueArray?: readonly number[];
     };
 
+const OPTIONS_ARRAY: string[] = [];
+
 const SelectInput = function SelectInput<T extends FieldValues>({
   name,
   control,

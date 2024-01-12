@@ -1,11 +1,11 @@
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { EventResponse } from 'api/rest/eventController';
+import type { GetEventsResponse } from 'api/rest/eventController';
 import { EventListItems } from '.';
 import styles from './styles/EventsList.module.scss';
 
 export type Props = {
-  readonly events: EventResponse[];
+  readonly events: GetEventsResponse;
   readonly isPast?: boolean;
 };
 

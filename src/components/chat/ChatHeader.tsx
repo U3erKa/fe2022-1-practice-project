@@ -40,11 +40,12 @@ const ChatHeader: FC<Props> = ({ userId }) => {
     const { avatar, firstName } = interlocutor ?? {};
     return { chatData, avatar, firstName };
   });
-  const { participants } = chatData ?? {};
   const dispatch = useDispatch();
 
   const handleChangeFavorite: MouseEventHandler<SVGSVGElement> = useCallback(
     (event) => {
+      if (!chatData) return;
+      const { participants } = chatData;
       dispatch(
         changeChatFavorite({
           participants,
@@ -53,11 +54,13 @@ const ChatHeader: FC<Props> = ({ userId }) => {
       );
       event.stopPropagation();
     },
-    [userId, chatData, participants, dispatch],
+    [userId, chatData, dispatch],
   );
 
   const handleChangeBlock: MouseEventHandler<SVGSVGElement> = useCallback(
     (event) => {
+      if (!chatData) return;
+      const { participants } = chatData;
       dispatch(
         changeChatBlock({
           participants,
@@ -66,7 +69,7 @@ const ChatHeader: FC<Props> = ({ userId }) => {
       );
       event.stopPropagation();
     },
-    [userId, chatData, participants, dispatch],
+    [userId, chatData, dispatch],
   );
 
   return (

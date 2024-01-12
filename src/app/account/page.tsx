@@ -78,11 +78,11 @@ const UserProfile = () => {
                 {error ? (
                   <Error
                     clearError={clearPaymentStore}
-                    data={error.data}
-                    status={error.status}
+                    data={(error as any).data}
+                    status={(error as any).status}
                   />
                 ) : null}
-                <PayForm sendRequest={pay} />
+                <PayForm sendRequest={pay as any} />
               </div>
             ) : (
               <span className={styles.notMoney}>

@@ -69,8 +69,8 @@ const RegistrationForm = () => {
       {error ? (
         <Error
           clearError={handleClearError}
-          data={error.data}
-          status={error.status}
+          data={(error as any).data}
+          status={(error as any).status}
         />
       ) : null}
       <div className={styles.headerFormContainer}>

@@ -72,10 +72,11 @@ const ContestInfo: FC<Props> = ({
     (interlocutorId: InterlocutorId) => {
       const currentParticipants = [userId, interlocutorId].sort(
         (participant1, participant2) => participant1 - participant2,
-      );
+      ) as [number, number];
       for (const preview of messagesPreview) {
+        // @ts-expect-error
         const { _id, participants, blackList, favoriteList } = preview;
-        if (isEqual(currentParticipants, participants)) {
+        if (isEqual(participants, currentParticipants)) {
           return { _id, blackList, favoriteList, participants };
         }
       }
@@ -115,18 +116,18 @@ const ContestInfo: FC<Props> = ({
         <DataContainer label="Title of the Project" value={title} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            styleName={styleName}
-            typeOfName={typeOfName}
+            styleName={styleName!}
+            typeOfName={typeOfName!}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            nameVenture={nameVenture}
-            typeOfTagline={typeOfTagline}
+            nameVenture={nameVenture!}
+            typeOfTagline={typeOfTagline!}
           />
         ) : (
           <LogoContestSpecialInfo
-            brandStyle={brandStyle}
-            nameVenture={nameVenture}
+            brandStyle={brandStyle!}
+            nameVenture={nameVenture!}
           />
         )}
         <DataContainer

@@ -68,8 +68,8 @@ const Payment = () => {
           {error ? (
             <Error
               clearError={clearError}
-              data={error.data}
-              status={error.status}
+              data={(error as any).data}
+              status={(error as any).status}
             />
           ) : null}
           <PayForm isPayForOrder sendRequest={payMethod} />

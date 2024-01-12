@@ -1,20 +1,23 @@
 import { type FC, type MouseEvent, useCallback } from 'react';
 import { useDispatch } from 'hooks';
+import type { GetCatalogsResponse } from 'api/rest/catalogController';
 import { Catalog } from 'components/catalog';
 import styles from 'components/dialog/styles/DialogList.module.scss';
 import { changeShowModeCatalog, deleteCatalog } from 'store/slices/chatSlice';
 import type { CatalogId } from 'types/_common';
-import type { Catalog as _Catalog } from 'types/chat';
 
 export type Props = {
-  readonly catalogList: _Catalog[];
+  readonly catalogList: GetCatalogsResponse;
 };
 
 const CatalogList: FC<Props> = ({ catalogList }) => {
   const dispatch = useDispatch();
 
   const goToCatalog = useCallback(
-    (event: MouseEvent<HTMLDivElement>, catalog: _Catalog) => {
+    (
+      event: MouseEvent<HTMLDivElement>,
+      catalog: GetCatalogsResponse[number],
+    ) => {
       dispatch(changeShowModeCatalog(catalog));
       event.stopPropagation();
     },

@@ -1,11 +1,11 @@
 import { useSelector } from 'hooks';
-import type { EventResponse } from 'api/rest/eventController';
+import type { GetEventsResponse } from 'api/rest/eventController';
 import { Spinner } from 'components/general';
 import { Event } from '.';
 import styles from './styles/EventListItems.module.scss';
 
 export type Props = {
-  readonly events: EventResponse[];
+  readonly events: GetEventsResponse;
 };
 
 const EVENTS: [] = [];

@@ -1,5 +1,6 @@
 import { type FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
+import type { GetOffersResponse } from 'api/rest/offerController';
 import { Error } from 'components/general';
 import {
   clearSetOfferStatusError,
@@ -7,14 +8,13 @@ import {
 } from 'store/slices/contestByIdSlice';
 import { OfferBox } from '.';
 import type { OfferId, UserId } from 'types/_common';
-import type { Offer } from 'types/contest';
 import type { CustomerCommand } from 'types/offer';
 import type { ContestData } from 'types/slices';
 import styles from './styles/ContestOfferList.module.scss';
 
 export type Props = {
   readonly contestData: ContestData;
-  readonly offers: Offer[];
+  readonly offers: GetOffersResponse['offers'];
   readonly userId?: UserId;
 };
 
@@ -51,8 +51,8 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
       {setOfferStatusError ? (
         <Error
           clearError={handleClearError}
-          data={setOfferStatusError.data}
-          status={setOfferStatusError.status}
+          data={(setOfferStatusError as any).data}
+          status={(setOfferStatusError as any).status}
         />
       ) : null}
 

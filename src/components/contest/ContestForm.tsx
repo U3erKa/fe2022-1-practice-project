@@ -157,7 +157,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
 
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit as any)}>
         <div className={styles.inputContainer}>
           <span className={styles.inputHeader}>Title of contest</span>
           <FormInput
