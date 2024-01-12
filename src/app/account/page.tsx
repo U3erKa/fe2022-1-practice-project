@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx/lite';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserInfo } from 'components/account';

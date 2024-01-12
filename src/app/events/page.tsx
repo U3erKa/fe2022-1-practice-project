@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { fork } from 'radash';
 import { useForceUpdate } from 'hooks';
 import { useSelector } from 'hooks';
