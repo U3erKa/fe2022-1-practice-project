@@ -29,8 +29,9 @@ const AddToCatalog = () => {
     defaultValues: { catalogId: catalogIds[0] },
   });
 
-  const onSubmit = ({ catalogId }: { catalogId: CatalogId }) => {
-    dispatch(addChatToCatalog({ catalogId, chatId: addChatId! }));
+  const onSubmit = ({ catalogId }: { catalogId?: CatalogId }) => {
+    if (!catalogId || !addChatId) return;
+    dispatch(addChatToCatalog({ catalogId, chatId: addChatId }));
   };
 
   return catalogNames.length !== 0 ? (

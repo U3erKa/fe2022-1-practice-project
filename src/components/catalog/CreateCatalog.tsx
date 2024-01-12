@@ -24,6 +24,7 @@ const CreateCatalog = () => {
   });
 
   const onSubmit = (values: Pick<Catalog, 'catalogName'>) => {
+    if (!addChatId) return;
     dispatch(
       createCatalog({ catalogName: values.catalogName, chatId: addChatId }),
     );
