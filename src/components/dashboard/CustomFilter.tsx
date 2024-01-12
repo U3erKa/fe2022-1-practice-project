@@ -1,13 +1,12 @@
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import type { FC } from 'react';
+import type { ComponentPropsWithoutRef, FC } from 'react';
 import { useDispatch } from 'hooks';
 import styles from './styles/CustomerDashboard.module.scss';
 
-export type Props<Filter = any> = JSX.IntrinsicElements['div'] & {
+export type Props<Filter = any> = ComponentPropsWithoutRef<'div'> & {
   readonly buttons: { name: string; filter: Filter }[];
   readonly filterAction: ActionCreatorWithPayload<Filter>;
   readonly predicate: Filter;
-  [key: string]: any;
 };
 
 export const CustomFilter: FC<Props> = ({

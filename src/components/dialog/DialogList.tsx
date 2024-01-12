@@ -71,7 +71,7 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
   );
 
   const onlyChatsInCatalog = useCallback(
-    (chatPreview: MessagePreview, _userId: UserId) =>
+    (chatPreview: MessagePreview, _userId?: UserId) =>
       currentCatalog?.chats.includes(chatPreview._id),
     [currentCatalog?.chats],
   );

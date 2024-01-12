@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   // @ts-expect-error
   host: MAIL_HOST ?? 'smtp.ethereal.email',
   port: MAIL_PORT ?? 587,
-  secure: MAIL_PORT === '465' ?? false,
+  secure: MAIL_PORT === '465',
   auth: {
     user,
     pass,

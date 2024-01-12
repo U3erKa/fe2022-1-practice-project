@@ -26,7 +26,7 @@ const SelectInput = function SelectInput<T extends FieldValues>({
   control,
   header,
   classes,
-  optionsArray,
+  optionsArray = OPTIONS_ARRAY,
   valueArray,
   ...rest
 }: FormSelectProps<T>) {
@@ -36,7 +36,7 @@ const SelectInput = function SelectInput<T extends FieldValues>({
   } = useController({ name, control });
 
   useEffect(() => {
-    if (optionsArray) {
+    if (optionsArray.length) {
       field.onChange(valueArray ? valueArray[0] : optionsArray[0]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
