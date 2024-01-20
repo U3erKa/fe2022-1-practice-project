@@ -1,8 +1,8 @@
 diff --git a/dist/configs/all.js b/dist/configs/all.js
-index d4c3c7fe96817de2a1dfddbfca75b446e14f3e7a..824c31817cd6e455f077ac1f840202db705d0f07 100644
+index 3e350c31c437931affdb70cff62a7357f4061f86..f5b2371a859a3f3d153b2d27455db314c4bffd2b 100644
 --- a/dist/configs/all.js
 +++ b/dist/configs/all.js
-@@ -8,145 +8,145 @@
+@@ -8,148 +8,148 @@
  module.exports = {
      extends: ['./configs/base', './configs/eslint-recommended'],
      rules: {
@@ -61,10 +61,12 @@ index d4c3c7fe96817de2a1dfddbfca75b446e14f3e7a..824c31817cd6e455f077ac1f840202db
 +        '@typescript-eslint/naming-convention': 'warn',
          'no-array-constructor': 'off',
 -        '@typescript-eslint/no-array-constructor': 'error',
+-        '@typescript-eslint/no-array-delete': 'error',
 -        '@typescript-eslint/no-base-to-string': 'error',
 -        '@typescript-eslint/no-confusing-non-null-assertion': 'error',
 -        '@typescript-eslint/no-confusing-void-expression': 'error',
 +        '@typescript-eslint/no-array-constructor': 'warn',
++        '@typescript-eslint/no-array-delete': 'warn',
 +        '@typescript-eslint/no-base-to-string': 'warn',
 +        '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
 +        '@typescript-eslint/no-confusing-void-expression': 'warn',
@@ -209,15 +211,6 @@ index d4c3c7fe96817de2a1dfddbfca75b446e14f3e7a..824c31817cd6e455f077ac1f840202db
 -        '@typescript-eslint/prefer-namespace-keyword': 'error',
 -        '@typescript-eslint/prefer-nullish-coalescing': 'error',
 -        '@typescript-eslint/prefer-optional-chain': 'error',
--        '@typescript-eslint/prefer-readonly': 'error',
--        '@typescript-eslint/prefer-readonly-parameter-types': 'error',
--        '@typescript-eslint/prefer-reduce-type-parameter': 'error',
--        '@typescript-eslint/prefer-regexp-exec': 'error',
--        '@typescript-eslint/prefer-return-this-type': 'error',
--        '@typescript-eslint/prefer-string-starts-ends-with': 'error',
--        '@typescript-eslint/prefer-ts-expect-error': 'error',
--        '@typescript-eslint/promise-function-async': 'error',
--        '@typescript-eslint/require-array-sort-compare': 'error',
 +        '@typescript-eslint/prefer-destructuring': 'warn',
 +        '@typescript-eslint/prefer-enum-initializers': 'warn',
 +        '@typescript-eslint/prefer-for-of': 'warn',
@@ -227,6 +220,18 @@ index d4c3c7fe96817de2a1dfddbfca75b446e14f3e7a..824c31817cd6e455f077ac1f840202db
 +        '@typescript-eslint/prefer-namespace-keyword': 'warn',
 +        '@typescript-eslint/prefer-nullish-coalescing': 'warn',
 +        '@typescript-eslint/prefer-optional-chain': 'warn',
+         'prefer-promise-reject-errors': 'off',
+-        '@typescript-eslint/prefer-promise-reject-errors': 'error',
+-        '@typescript-eslint/prefer-readonly': 'error',
+-        '@typescript-eslint/prefer-readonly-parameter-types': 'error',
+-        '@typescript-eslint/prefer-reduce-type-parameter': 'error',
+-        '@typescript-eslint/prefer-regexp-exec': 'error',
+-        '@typescript-eslint/prefer-return-this-type': 'error',
+-        '@typescript-eslint/prefer-string-starts-ends-with': 'error',
+-        '@typescript-eslint/prefer-ts-expect-error': 'error',
+-        '@typescript-eslint/promise-function-async': 'error',
+-        '@typescript-eslint/require-array-sort-compare': 'error',
++        '@typescript-eslint/prefer-promise-reject-errors': 'warn',
 +        '@typescript-eslint/prefer-readonly': 'warn',
 +        '@typescript-eslint/prefer-readonly-parameter-types': 'warn',
 +        '@typescript-eslint/prefer-reduce-type-parameter': 'warn',
@@ -422,10 +427,10 @@ index 3ceb1ccf5c125d1a41f06b7429e26d7ae38e1fd1..9b6de4c1d441828d4868590f77c26760
  //# sourceMappingURL=recommended.js.map
 \ No newline at end of file
 diff --git a/dist/configs/strict-type-checked.js b/dist/configs/strict-type-checked.js
-index 28b99ebfae8e690c548f20bb00dd7fd79b7055b5..32f5bdb5d10c454ed6790b58eff644087697d2ae 100644
+index a556f93bbb7b55aa11b943ba73d6b40101635afc..28d66cb28acb1b4916c5060417d1b6c08d0bb41b 100644
 --- a/dist/configs/strict-type-checked.js
 +++ b/dist/configs/strict-type-checked.js
-@@ -8,69 +8,69 @@
+@@ -8,72 +8,72 @@
  module.exports = {
      extends: ['./configs/base', './configs/eslint-recommended'],
      rules: {
@@ -437,6 +442,7 @@ index 28b99ebfae8e690c548f20bb00dd7fd79b7055b5..32f5bdb5d10c454ed6790b58eff64408
 +        '@typescript-eslint/ban-types': 'warn',
          'no-array-constructor': 'off',
 -        '@typescript-eslint/no-array-constructor': 'error',
+-        '@typescript-eslint/no-array-delete': 'error',
 -        '@typescript-eslint/no-base-to-string': 'error',
 -        '@typescript-eslint/no-confusing-void-expression': 'error',
 -        '@typescript-eslint/no-duplicate-enum-values': 'error',
@@ -448,6 +454,7 @@ index 28b99ebfae8e690c548f20bb00dd7fd79b7055b5..32f5bdb5d10c454ed6790b58eff64408
 -        '@typescript-eslint/no-floating-promises': 'error',
 -        '@typescript-eslint/no-for-in-array': 'error',
 +        '@typescript-eslint/no-array-constructor': 'warn',
++        '@typescript-eslint/no-array-delete': 'warn',
 +        '@typescript-eslint/no-base-to-string': 'warn',
 +        '@typescript-eslint/no-confusing-void-expression': 'warn',
 +        '@typescript-eslint/no-duplicate-enum-values': 'warn',
@@ -523,15 +530,18 @@ index 28b99ebfae8e690c548f20bb00dd7fd79b7055b5..32f5bdb5d10c454ed6790b58eff64408
 -        '@typescript-eslint/prefer-as-const': 'error',
 -        '@typescript-eslint/prefer-includes': 'error',
 -        '@typescript-eslint/prefer-literal-enum-member': 'error',
--        '@typescript-eslint/prefer-reduce-type-parameter': 'error',
--        '@typescript-eslint/prefer-return-this-type': 'error',
--        '@typescript-eslint/prefer-ts-expect-error': 'error',
 +        '@typescript-eslint/no-useless-constructor': 'warn',
 +        '@typescript-eslint/no-useless-template-literals': 'warn',
 +        '@typescript-eslint/no-var-requires': 'warn',
 +        '@typescript-eslint/prefer-as-const': 'warn',
 +        '@typescript-eslint/prefer-includes': 'warn',
 +        '@typescript-eslint/prefer-literal-enum-member': 'warn',
+         'prefer-promise-reject-errors': 'off',
+-        '@typescript-eslint/prefer-promise-reject-errors': 'error',
+-        '@typescript-eslint/prefer-reduce-type-parameter': 'error',
+-        '@typescript-eslint/prefer-return-this-type': 'error',
+-        '@typescript-eslint/prefer-ts-expect-error': 'error',
++        '@typescript-eslint/prefer-promise-reject-errors': 'warn',
 +        '@typescript-eslint/prefer-reduce-type-parameter': 'warn',
 +        '@typescript-eslint/prefer-return-this-type': 'warn',
 +        '@typescript-eslint/prefer-ts-expect-error': 'warn',
