@@ -20,7 +20,7 @@ export default function LoginButtons({ data }: Props) {
   let activeEvents = 0;
 
   for (const { date, notify } of events) {
-    if (notify === 'never') return;
+    if (notify === 'never') continue;
     const plannedDate = Date.parse(date);
     const timeframe = plannedDate - currentDate;
 
