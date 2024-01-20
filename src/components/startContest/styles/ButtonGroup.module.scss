@@ -5,10 +5,11 @@ $colorGray: #ccc;
 $colorDarkGray: #333;
 
 .choise {
-  inline-size: 40px;
+  inline-size: 60px;
   padding: $padding;
 
   color: $colorWhite;
+  text-align: center;
 
   background-color: $colorGray;
   border-radius: 2rem;

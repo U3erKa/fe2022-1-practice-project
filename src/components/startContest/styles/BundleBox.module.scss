@@ -11,7 +11,7 @@
 
   text-align: center;
 
-  background: white;
+  background: #efefef;
   @media (hover: hover) {
     &:hover {
       box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
@@ -61,7 +61,7 @@
 .infoContainer {
   display: flex;
   flex-flow: column wrap;
-  align-self: center;
+  align-items: center;
 
   hr {
     inline-size: 60px;
