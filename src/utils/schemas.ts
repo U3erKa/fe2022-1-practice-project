@@ -50,9 +50,9 @@ export const TypeOfTaglineSchema = z.enum([
   'Powerful',
 ]);
 
-export const NameContestTypeSchema = z.enum([NAME_CONTEST]);
-export const LogoContestTypeSchema = z.enum([LOGO_CONTEST]);
-export const TaglineContestTypeSchema = z.enum([TAGLINE_CONTEST]);
+export const NameContestTypeSchema = z.literal(NAME_CONTEST);
+export const LogoContestTypeSchema = z.literal(LOGO_CONTEST);
+export const TaglineContestTypeSchema = z.literal(TAGLINE_CONTEST);
 
 export const ContestContestTypeSchema = z.enum([
   LOGO_CONTEST,
@@ -192,10 +192,10 @@ export const FilterSchema = z.object({
 });
 
 export const BaseContestSchema = z.object({
-  contestType: StringSchema,
+  contestType: StringSchema.optional(),
   file: z.union([FileSchema, z.null()]).optional(),
   focusOfWork: StringSchema,
-  haveFile: z.boolean(),
+  haveFile: z.boolean().optional(),
   industry: StringSchema,
   targetCustomer: StringSchema,
   title: StringSchema,

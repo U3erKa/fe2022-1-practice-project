@@ -91,7 +91,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
 
   const { handleSubmit, control, register } = useForm({
     defaultValues: {
-      file: '',
+      file: null,
       focusOfWork: '',
       industry: '',
       targetCustomer: '',
