@@ -36,8 +36,6 @@ function Toast({ children }: React.PropsWithChildren) {
         draggable
         hideProgressBar
         pauseOnHover
-        // @ts-expect-error
-        pauseOnVisibilityChange
         autoClose={5000}
         newestOnTop={false}
         position="top-center"
