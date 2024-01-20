@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, JSX } from 'react';
 import { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Questions } from './Questions';
 import styles from './styles/HowItWorksQnA.module.scss';

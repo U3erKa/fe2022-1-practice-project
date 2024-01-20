@@ -1,4 +1,4 @@
-import { type FC, type MouseEvent, useCallback, useMemo } from 'react';
+import { type FC, type JSX, type MouseEvent, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { DialogBox } from 'components/dialog';
 import {
