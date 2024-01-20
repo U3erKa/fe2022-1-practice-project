@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { type FC, useCallback, useEffect } from 'react';
+import { type FC, useCallback, useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { OptionalSelects } from 'components/contest';
@@ -18,10 +18,14 @@ import {
   TAGLINE_CONTEST,
 } from 'constants/general';
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
+import { updateContest } from 'store/slices/contestUpdationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
 import { type Contest, ContestSchema } from 'utils/schemas';
-import type { ContestInfo, SaveContestToStore } from 'types/contest';
-import type { ContestType } from 'types/contest';
+import type {
+  ContestInfo,
+  ContestType,
+  SaveContestToStore,
+} from 'types/contest';
 import styles from './styles/ContestForm.module.scss';
 
 const variableOptions = {
@@ -84,10 +88,57 @@ const ContestForm: FC<Props> = ({ contestType }) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const defaultContestData = contests[contestType]
-    ? contests[contestType]
-    : ({ contestType } as unknown as ContestInfo);
+  const defaultContestData = contests[contestType] ?? { contestType };
   const { isFetching, error, data: contestData } = dataForContest;
+
+  const defaultData = useMemo(() => {
+    type DefaultData = Omit<typeof data, 'originalFileName'> & {
+      file: {
+        name: typeof data.originalFileName;
+      };
+    };
+
+    const {
+      brandStyle,
+      contestType,
+      focusOfWork,
+      industry,
+      nameVenture,
+      originalFileName,
+      styleName,
+      targetCustomer,
+      title,
+      typeOfName,
+      typeOfTagline,
+    } = contestData ?? ({} as NonNullable<typeof contestData>);
+    const data = {
+      brandStyle,
+      contestType,
+      focusOfWork,
+      industry,
+      nameVenture,
+      originalFileName,
+      styleName,
+      targetCustomer,
+      title,
+      typeOfName,
+      typeOfTagline,
+    };
+
+    const defaultData = {} as DefaultData;
+    for (const key in data) {
+      if (Object.hasOwn(data, key)) {
+        const element = data[key as keyof typeof data];
+        if (key === 'originalFileName') {
+          defaultData.file = { name: data[key] };
+        } else {
+          // @ts-expect-error
+          defaultData[key] = element;
+        }
+      }
+    }
+    return defaultData;
+  }, [contestData]);
 
   const { handleSubmit, control, register } = useForm({
     defaultValues: {
@@ -98,6 +149,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
       title: '',
       ...variableOptions[contestType],
       ...defaultContestData,
+      ...(isEditContest && defaultData),
     },
     resolver: zodResolver(ContestSchema),
   });
@@ -107,7 +159,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contestType]);
 
-  const onSubmit = (values: Contest) => {
+  const createContest = (values: Contest) => {
     const { file, ...restValues } = values;
 
     dispatch(
@@ -121,6 +173,22 @@ const ContestForm: FC<Props> = ({ contestType }) => {
         ? PAGE.PAYMENT
         : `${PAGE.START_CONTEST}/${bundle![contestType]}`;
     router.push(route);
+  };
+
+  const setNewContestData = (values: ContestInfo) => {
+    const data = new FormData();
+
+    for (const key in values) {
+      if (Object.hasOwn(values, key)) {
+        const value = values[key as keyof typeof values];
+        if ((key !== 'file' && value) ?? value instanceof File) {
+          data.append(key, value);
+        }
+      }
+    }
+
+    data.append('contestId', contestData!.id as unknown as string);
+    dispatch(updateContest(data));
   };
 
   const getPreference = useCallback(() => {
@@ -157,7 +225,11 @@ const ContestForm: FC<Props> = ({ contestType }) => {
 
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={handleSubmit(onSubmit as any)}>
+      <form
+        onSubmit={handleSubmit(
+          isEditContest ? setNewContestData : (createContest as any),
+        )}
+      >
         <div className={styles.inputContainer}>
           <span className={styles.inputHeader}>Title of contest</span>
           <FormInput
