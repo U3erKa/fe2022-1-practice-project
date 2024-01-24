@@ -6,19 +6,19 @@ import {
   type MouseEventHandler,
   useCallback,
 } from 'react';
+import type { GetCatalogsResponse } from 'api/rest/catalogController';
 import type { CatalogId } from 'types/_common';
-import type { Catalog as _Catalog } from 'types/chat';
 import styles from './styles/Catalog.module.scss';
 
 export type Props = {
-  readonly catalog: _Catalog;
+  readonly catalog: GetCatalogsResponse[number];
   readonly deleteCatalog: (
     event: MouseEvent<SVGSVGElement>,
     catalogId: CatalogId,
   ) => void;
   readonly goToCatalog: (
     event: MouseEvent<HTMLDivElement>,
-    catalog: _Catalog,
+    catalog: GetCatalogsResponse[number],
   ) => void;
 };
 

@@ -1,8 +1,8 @@
 import type { FC } from 'react';
-import type { LogoContestInfo } from 'types/contest';
+import type { GetContestResponse } from 'api/rest/contestController';
 import styles from './styles/ContestInfo.module.scss';
 
-export type Props = Pick<LogoContestInfo, 'brandStyle' | 'nameVenture'>;
+export type Props = Pick<GetContestResponse, 'brandStyle' | 'nameVenture'>;
 
 const LogoContestSpecialInfo: FC<Props> = ({ nameVenture, brandStyle }) => {
   return (

@@ -1,7 +1,7 @@
 import jwt, {
-  type Secret,
   type Jwt,
   type JwtPayload,
+  type Secret,
   type SignOptions,
   type VerifyOptions,
 } from 'jsonwebtoken';

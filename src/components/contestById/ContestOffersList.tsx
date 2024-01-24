@@ -9,11 +9,10 @@ import {
 import { OfferBox } from '.';
 import type { OfferId, UserId } from 'types/_common';
 import type { CustomerCommand } from 'types/offer';
-import type { ContestData } from 'types/slices';
+import type { ContestByIdState } from 'types/slices';
 import styles from './styles/ContestOfferList.module.scss';
 
-export type Props = {
-  readonly contestData: ContestData;
+export type Props = Pick<ContestByIdState, 'contestData'> & {
   readonly offers: GetOffersResponse['offers'];
   readonly userId?: UserId;
 };
@@ -27,7 +26,7 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
   const handleSetOfferStatus = useCallback(
     (creatorId: UserId, offerId: OfferId, command: CustomerCommand) => {
       dispatch(clearSetOfferStatusError());
-      const { id, orderId, priority } = contestData;
+      const { id, orderId, priority } = contestData!;
       const obj = {
         command,
         contestId: id,

@@ -24,7 +24,7 @@ const CreatorDashboard = () => {
     },
   );
   const dispatch = useDispatch();
-  const searchParams = useSearchParams()!;
+  const searchParams = useSearchParams();
 
   const getContestsMethod = useCallback(
     (filter: GetActiveContestsParams) => {

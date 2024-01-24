@@ -13,16 +13,15 @@ import {
 } from 'constants/general';
 import { goToExpandedDialog } from 'store/slices/chatSlice';
 import type { InterlocutorId, UserId } from 'types/_common';
-import type { ContestData } from 'types/slices';
+import type { ContestByIdState } from 'types/slices';
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
 import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 import styles from './styles/ContestInfo.module.scss';
 
-export type Props = {
+export type Props = Pick<ContestByIdState, 'contestData'> & {
   readonly changeEditContest: (isEditContest: boolean) => void;
   readonly userId: UserId;
-  readonly contestData: ContestData;
   readonly role: string;
 };
 
@@ -66,7 +65,7 @@ const ContestInfo: FC<Props> = ({
     fileName,
     User,
     status,
-  } = contestData;
+  } = contestData!;
 
   const findConversationInfo = useCallback(
     (interlocutorId: InterlocutorId) => {
@@ -113,32 +112,32 @@ const ContestInfo: FC<Props> = ({
             <FontAwesomeIcon icon={faComments} onClick={goChat} />
           )}
         </div>
-        <DataContainer label="Title of the Project" value={title} />
+        <DataContainer label="Title of the Project" value={title!} />
         {contestType === NAME_CONTEST ? (
           <NameContestSpecialInfo
-            styleName={styleName!}
-            typeOfName={typeOfName!}
+            styleName={styleName}
+            typeOfName={typeOfName}
           />
         ) : contestType === TAGLINE_CONTEST ? (
           <TaglineContestSpecialInfo
-            nameVenture={nameVenture!}
-            typeOfTagline={typeOfTagline!}
+            nameVenture={nameVenture}
+            typeOfTagline={typeOfTagline}
           />
         ) : (
           <LogoContestSpecialInfo
-            brandStyle={brandStyle!}
-            nameVenture={nameVenture!}
+            brandStyle={brandStyle}
+            nameVenture={nameVenture}
           />
         )}
         <DataContainer
           label="What is your Business/ Brand about?"
-          value={focusOfWork}
+          value={focusOfWork!}
         />
         <DataContainer
           label="Description target customers of company"
-          value={targetCustomer}
+          value={targetCustomer!}
         />
-        <DataContainer label="Industry of company" value={industry} />
+        <DataContainer label="Industry of company" value={industry!} />
         {originalFileName ? (
           <div className={styles.dataContainer}>
             <span className={styles.label}>Additional File</span>

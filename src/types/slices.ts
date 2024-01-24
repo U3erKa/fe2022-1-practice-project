@@ -48,20 +48,21 @@ export type BundleState = {
   bundle: Bundle | null;
 };
 
-export type ChatState = WithFetch & {
-  isShowCatalogCreation: boolean;
-  isExpanded: boolean;
-  isShow: boolean;
-  isRenameCatalog: boolean;
-  isShowChatsInCatalog: boolean;
-  addChatId: ChatId | null;
-  currentCatalog: RemoveChatFromCatalogResponse | null;
-  chatData: ChatData | null;
-  messagesPreview: GetPreviewResponse;
-  catalogList: GetCatalogsResponse;
-  chatMode: ChatMode;
-  catalogCreationMode: CatalogCreationMode;
-} & (GetChatResponse | { messages: null; interlocutor: null });
+export type ChatState = GetChatResponse &
+  WithFetch & {
+    isShowCatalogCreation: boolean;
+    isExpanded: boolean;
+    isShow: boolean;
+    isRenameCatalog: boolean;
+    isShowChatsInCatalog: boolean;
+    addChatId: ChatId | null;
+    currentCatalog: RemoveChatFromCatalogResponse | null;
+    chatData: ChatData | null;
+    messagesPreview: GetPreviewResponse;
+    catalogList: GetCatalogsResponse;
+    chatMode: ChatMode;
+    catalogCreationMode: CatalogCreationMode;
+  };
 
 export type ContestByIdState = WithFetch & {
   contestData:

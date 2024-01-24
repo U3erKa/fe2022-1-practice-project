@@ -60,6 +60,8 @@ abstract class _Event extends Model<
   declare name: string;
   declare date: string;
   declare notify: string;
+  declare createdAt?: CreationOptional<Date>;
+  declare updatedAt?: CreationOptional<Date>;
 
   declare id: CreationOptional<number>;
   declare userId: ForeignKey<User['id']>;

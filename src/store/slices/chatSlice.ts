@@ -147,7 +147,7 @@ const sendMessageExtraReducers = (
         participants: preview.participants,
       };
       state.chatData = { ...state.chatData!, ...chatData };
-      state.messages = [...state.messages!, message];
+      state.messages = [...state.messages, message];
       state.messagesPreview = messagesPreview;
     })
     .addCase(sendMessage.rejected, rejectedReducer);

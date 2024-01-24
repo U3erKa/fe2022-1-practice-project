@@ -21,8 +21,10 @@ import type {
   NonAttribute,
   Sequelize,
 } from 'sequelize';
+import type { UUID } from 'crypto';
 import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type { Contest, DB, Offer, User } from 'types/models';
+import type { Priority } from 'types/offer';
 
 export default function Contest(sequelize: Sequelize) {
   class Contest extends _Contest {
@@ -146,10 +148,10 @@ abstract class _Contest extends Model<
   declare brandStyle?: CreationOptional<string>;
   declare status: string;
   declare prize: number;
-  declare priority: number;
+  declare priority: Priority;
 
   declare id: CreationOptional<number>;
-  declare orderId: string;
+  declare orderId: UUID;
   declare userId: ForeignKey<User['id']>;
   declare createdAt: CreationOptional<Date>;
 
