@@ -1,23 +1,42 @@
+'use client';
+
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSelector } from 'hooks';
 import { ProfileNavBar, UserImage } from 'components/general';
-import { PUBLIC_URL } from 'constants/general';
+import { PAGE, PUBLIC_URL } from 'constants/general';
 import { PROFILE_NAVBAR } from 'constants/header';
 import { getDays, getHours, getRemainingTime } from 'utils/functions';
 import EmailIcon from 'assets/icons/email.png';
 import MenuIcon from 'assets/icons/menu-down.png';
-import type { User } from 'types/models';
+import SpinnerLoader from './Spinner';
 import styles from './styles/LoginButtons.module.scss';
 
-type Props = {
-  readonly data: Pick<User, 'avatar' | 'displayName'>;
-};
-
-export default function LoginButtons({ data }: Props) {
-  const { avatar, displayName } = data;
-  const events = useSelector(({ events }) => events.events);
+export default function LoginButtons() {
+  const { avatar, displayName, events, isFetching } = useSelector(
+    ({ userStore, events }) => {
+      const { isFetching, data: user } = userStore;
+      const { events: _events } = events;
+      const { avatar, displayName } = user ?? {};
+      return { avatar, displayName, isFetching, events: _events };
+    },
+  );
   const currentDate = Date.now();
   let activeEvents = 0;
+
+  if (isFetching) return <SpinnerLoader />;
+  if (!displayName) {
+    return (
+      <>
+        <Link href={PAGE.LOGIN} style={{ textDecoration: 'none' }}>
+          <span>LOGIN</span>
+        </Link>
+        <Link href={PAGE.REGISTER} style={{ textDecoration: 'none' }}>
+          <span>SIGN UP</span>
+        </Link>
+      </>
+    );
+  }
 
   for (const { date, notify } of events) {
     if (notify === 'never') continue;

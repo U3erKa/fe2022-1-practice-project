@@ -1,7 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import type { FC } from 'react';
 import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, type SwiperProps } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import {
   EXAMPLE_SLIDER,
@@ -13,54 +16,18 @@ import {
 } from 'constants/carousel';
 import styles from './styles/SlideBar.module.scss';
 
-export type Props = {
+type Props = {
   readonly carouselType:
     | typeof EXAMPLE_SLIDER
     | typeof FEEDBACK_SLIDER
     | typeof MAIN_SLIDER;
 };
 
-const CONTAINER_STYLE = {
-  [MAIN_SLIDER]: styles.mainCarousel,
-  [EXAMPLE_SLIDER]: styles.exampleCarousel,
-  [FEEDBACK_SLIDER]: styles.feedbackCarousel,
-};
-
-const SliderBar: FC<Props> = ({ carouselType }) => {
-  const renderSlides = () => {
-    switch (carouselType) {
-      case MAIN_SLIDER: {
-        return MAIN_SLIDER_IMAGES.map(({ id, ...props }) => (
-          <SwiperSlide className={styles.carouselCell} key={id}>
-            <Image alt="slide" {...props} />
-          </SwiperSlide>
-        ));
-      }
-      case EXAMPLE_SLIDER: {
-        return EXAMPLE_SLIDER_IMAGES.map(({ text, ...props }) => (
-          <SwiperSlide className={styles.exampleCell} key={text}>
-            <Image alt="slide" {...props} />
-            <p>{text}</p>
-          </SwiperSlide>
-        ));
-      }
-      case FEEDBACK_SLIDER: {
-        return FEEDBACK_SLIDER_IMAGES.map(({ feedback, name, ...props }) => (
-          <SwiperSlide className={styles.feedbackCell} key={name}>
-            <Image alt="slide" {...props} />
-            <p>{feedback}</p>
-            <span>{name}</span>
-          </SwiperSlide>
-        ));
-      }
-      default:
-        return null;
-    }
-  };
+const SliderBar: FC<Props & SwiperProps> = ({ carouselType, ...props }) => {
   return (
     <Swiper
       loop
-      className={CONTAINER_STYLE[carouselType]}
+      className={styles.carousel}
       modules={[Autoplay]}
       slidesPerView={1}
       spaceBetween={10}
@@ -72,10 +39,42 @@ const SliderBar: FC<Props> = ({ carouselType }) => {
         512: { slidesPerView: 2, spaceBetween: 20 },
         1024: { slidesPerView: 3, spaceBetween: 30 },
       }}
+      {...props}
     >
-      {renderSlides()}
+      {carouselSlides({ carouselType })}
     </Swiper>
   );
+};
+
+export const carouselSlides = ({ carouselType }: Props) => {
+  switch (carouselType) {
+    case MAIN_SLIDER: {
+      return MAIN_SLIDER_IMAGES.map(({ id, ...props }) => (
+        <SwiperSlide className={styles.carouselCell} key={id}>
+          <Image alt="slide" {...props} />
+        </SwiperSlide>
+      ));
+    }
+    case EXAMPLE_SLIDER: {
+      return EXAMPLE_SLIDER_IMAGES.map(({ text, ...props }) => (
+        <SwiperSlide className={styles.exampleCell} key={text}>
+          <Image alt="slide" {...props} />
+          <p>{text}</p>
+        </SwiperSlide>
+      ));
+    }
+    case FEEDBACK_SLIDER: {
+      return FEEDBACK_SLIDER_IMAGES.map(({ feedback, name, ...props }) => (
+        <SwiperSlide className={styles.feedbackCell} key={name}>
+          <Image alt="slide" {...props} />
+          <p>{feedback}</p>
+          <span>{name}</span>
+        </SwiperSlide>
+      ));
+    }
+    default:
+      return null;
+  }
 };
 
 export default SliderBar;
