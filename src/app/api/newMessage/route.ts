@@ -15,15 +15,13 @@ export async function POST(req: NextRequest) {
     const participants = [userId, recipient].sort(
       (participant1, participant2) => participant1 - participant2,
     ) as [number, number];
-    const [participant1, participant2] = participants;
 
     const [newConversation, isCreated] = await Conversation.findOrCreate({
-      where: { participant1, participant2 },
+      where: { participants },
       defaults: {
         blackList: [false, false],
         favoriteList: [false, false],
-        participant1,
-        participant2,
+        participants,
       },
     });
 
@@ -40,7 +38,6 @@ export async function POST(req: NextRequest) {
       sender: userId,
     });
 
-    Object.assign(message.dataValues, { participants });
     const [interlocutorId] = participants.filter(
       (participant) => participant !== userId,
     ) as [number];

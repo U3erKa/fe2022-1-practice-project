@@ -11,11 +11,10 @@ export async function POST(req: NextRequest) {
     const authorization = headers.get('Authorization')!.split(' ')[1]!;
     const { userId } = await verifyAccessToken(authorization);
     const { participants, blackListFlag } = await json();
-    const [participant1, participant2] = participants;
     const predicate = participants.indexOf(userId);
 
     const foundChat = await Conversation.findOne({
-      where: { participant1, participant2 },
+      where: { participants },
     });
     if (!foundChat) {
       throw new NotFoundError('Conversation was not found');
@@ -24,26 +23,18 @@ export async function POST(req: NextRequest) {
 
     const [count, [chat]] = await Conversation.update(
       { blackList: foundChat.blackList },
-      { where: { participant1, participant2 }, returning: true },
+      { where: { participants }, returning: true },
     );
     if (!count) {
       throw new NotFoundError('Conversation could not be modified');
     }
-
-    Object.assign(chat!.dataValues, {
-      participants: [participant1, participant2],
-    });
 
     const [interlocutorId] = participants.filter(
       (participant: number) => participant !== userId,
     );
     getChatController().emitChangeBlockStatus(interlocutorId, chat!);
 
-    return NextResponse.json(chat as _Chat);
-
-    type _Chat = NonNullable<typeof chat> & {
-      participants: [typeof participant1, typeof participant2];
-    };
+    return NextResponse.json(chat!);
   } catch (error) {
     return handleError(error);
   }

@@ -94,6 +94,23 @@ export default function Conversation(sequelize: Sequelize) {
           isTuple,
         },
       },
+      participants: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return [this.participant1!, this.participant2!].sort(
+            (participant1, participant2) => participant1 - participant2,
+          ) as [number, number];
+        },
+        set(value) {
+          isTuple(value);
+          if (value.some((item) => typeof item !== 'number')) {
+            throw new TypeError('participant ids must be numbers');
+          }
+          const [participant1, participant2] = value as [number, number];
+          this.setDataValue('participant1', participant1);
+          this.setDataValue('participant2', participant2);
+        },
+      },
       createdAt: {
         allowNull: true,
         type: DataTypes.DATE,
@@ -124,6 +141,9 @@ abstract class _Conversation extends Model<
   declare updatedAt: CreationOptional<Date>;
   declare blackList: [boolean, boolean];
   declare favoriteList: [boolean, boolean];
+  declare participants: CreationOptional<
+    [typeof this.participant1, typeof this.participant2]
+  >;
 
   declare catalogs?: NonAttribute<DB['Catalog'][]>;
   declare messages?: NonAttribute<DB['Message'][]>;
