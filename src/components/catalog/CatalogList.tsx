@@ -32,24 +32,22 @@ const CatalogList: FC<Props> = ({ catalogList }) => {
     [dispatch],
   );
 
-  const getListCatalog = () => {
-    if (!catalogList.length) {
-      <span className={styles.notFound}>Not found</span>;
-    }
-
-    const elementList = catalogList.map((catalog) => (
-      <Catalog
-        catalog={catalog}
-        deleteCatalog={deleteCatalogMethod}
-        goToCatalog={goToCatalog}
-        key={catalog._id}
-      />
-    ));
-
-    return elementList;
-  };
-
-  return <div className={styles.previewContainer}>{getListCatalog()}</div>;
+  return (
+    <div className={styles.previewContainer}>
+      {catalogList.length ? (
+        catalogList.map((catalog) => (
+          <Catalog
+            catalog={catalog}
+            deleteCatalog={deleteCatalogMethod}
+            goToCatalog={goToCatalog}
+            key={catalog._id}
+          />
+        ))
+      ) : (
+        <span className={styles.notFound}>Not found</span>
+      )}
+    </div>
+  );
 };
 
 export default CatalogList;
