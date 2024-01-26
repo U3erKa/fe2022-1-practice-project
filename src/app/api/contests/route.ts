@@ -1,5 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { type Attributes, Op, type Order, type WhereOptions } from 'sequelize';
+import {
+  type Attributes,
+  type InferAttributes,
+  Op,
+  type Order,
+  type WhereOptions,
+} from 'sequelize';
 import { RightsError } from 'errors';
 import { Contest, Offer } from 'models';
 import {
@@ -89,13 +95,18 @@ export async function GET(req: NextRequest) {
 
     const contestsCount = await Contest.count({ where });
 
-    for (const { dataValues } of contests) {
-      // @ts-expect-error
+    for (const { dataValues } of contests as _Contests) {
       dataValues.count = dataValues.Offers.length;
     }
     const haveMore = contestsCount > offset + contests.length;
 
-    return NextResponse.json({ contests, haveMore }, { status: 200 });
+    return NextResponse.json({ contests, haveMore } as Response, {
+      status: 200,
+    });
+
+    type DataValues = { Offers: InferAttributes<_Offer>[]; count: number };
+    type _Contests = ((typeof contests)[number] & { dataValues: DataValues })[];
+    type Response = { contests: _Contests; haveMore: typeof haveMore };
   } catch (error) {
     return handleError(error);
   }

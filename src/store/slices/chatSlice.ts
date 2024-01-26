@@ -49,7 +49,7 @@ const initialState: ChatState = {
   chatData: null,
   chatMode: NORMAL_PREVIEW_CHAT_MODE,
   currentCatalog: null,
-  interlocutor: null,
+  interlocutor: {} as ChatState['interlocutor'],
   isExpanded: false,
   isRenameCatalog: false,
   isShow: false,
@@ -105,7 +105,7 @@ const getDialogMessagesExtraReducers = (
     })
     .addCase(getDialogMessages.rejected, (state, { payload }) => {
       state.isFetching = false;
-      state.interlocutor = null;
+      state.interlocutor = {} as ChatState['interlocutor'];
       state.messages = [];
       state.error = payload;
     });
@@ -146,7 +146,7 @@ const sendMessageExtraReducers = (
         favoriteList: preview.favoriteList,
         participants: preview.participants,
       };
-      state.chatData = { ...state.chatData!, ...chatData };
+      state.chatData = { ...state.chatData!, ...chatData as any };
       state.messages = [...state.messages, message];
       state.messagesPreview = messagesPreview;
     })
@@ -210,7 +210,6 @@ export const getCatalogList = decorateAsyncThunk({
   thunk: async () => {
     const { data } = await catalogController.getCatalogList();
     for (const { chats } of data) {
-      // @ts-expect-error
       const chatIds = chats.map(({ _id }) => _id);
       Object.assign(chats, chatIds);
     }
@@ -449,8 +448,7 @@ const reducers = {
     state: ChatState,
     { payload }: PayloadAction<Catalog | undefined>,
   ) => {
-    // @ts-expect-error
-    state.currentCatalog = { ...state.currentCatalog, ...payload };
+    state.currentCatalog = { ...state.currentCatalog!, ...payload };
     state.isShowChatsInCatalog = !state.isShowChatsInCatalog;
     state.isRenameCatalog = false;
   },

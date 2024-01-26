@@ -1,7 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import type { InferAttributes } from 'sequelize';
 import { Catalog, Conversation } from 'models';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
+import type { Conversation as _Conversation } from 'types/models';
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +21,11 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json(catalogs);
+    return NextResponse.json(catalogs as Response);
+
+    type Response = ((typeof catalogs)[number] & {
+      chats: InferAttributes<_Conversation>[];
+    })[];
   } catch (error) {
     return handleError(error);
   }

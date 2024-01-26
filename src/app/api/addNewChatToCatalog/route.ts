@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import type { InferAttributes } from 'sequelize';
 import { NotFoundError } from 'errors';
 import { Catalog } from 'models';
 import { verifyAccessToken } from 'services/jwtService';
@@ -26,7 +27,14 @@ export async function POST(req: NextRequest) {
     }
     Object.assign(catalog.dataValues, { chats: chats ?? [] });
 
-    return NextResponse.json(catalog);
+    return NextResponse.json(catalog as _Catalog);
+
+    type _Chat = InferAttributes<(typeof chats)[number]>;
+    type _Catalog = typeof catalog & {
+      chats: (_Chat & {
+        participants: [_Chat['participant1'], _Chat['participant2']];
+      })[];
+    };
   } catch (error) {
     return handleError(error);
   }

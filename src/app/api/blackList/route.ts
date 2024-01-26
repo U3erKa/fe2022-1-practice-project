@@ -38,7 +38,12 @@ export async function POST(req: NextRequest) {
       (participant: number) => participant !== userId,
     );
     getChatController().emitChangeBlockStatus(interlocutorId, chat!);
-    return NextResponse.json(chat!);
+
+    return NextResponse.json(chat as _Chat);
+
+    type _Chat = NonNullable<typeof chat> & {
+      participants: [typeof participant1, typeof participant2];
+    };
   } catch (error) {
     return handleError(error);
   }
