@@ -41,8 +41,7 @@ export const cashOut = decorateAsyncThunk({
   key: `${PAYMENT_SLICE_NAME}/cashOut`,
   thunk: async (payload: CashOutParams, { dispatch }) => {
     const { data } = await offerController.cashOut(payload);
-    // @ts-expect-error
-    dispatch(updateUser.fulfilled(data));
+    dispatch((updateUser as any).fulfilled(data));
     dispatch(changeProfileViewMode(USER_INFO_MODE));
   },
 });

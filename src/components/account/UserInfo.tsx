@@ -80,8 +80,7 @@ const UserInfo: FC = () => {
   return (
     <div className={styles.mainContainer}>
       {isEdit ? (
-        // @ts-expect-error
-        <UpdateUserInfoForm onSubmit={updateUserData} />
+        <UpdateUserInfoForm onSubmit={updateUserData as any} />
       ) : (
         <div className={styles.infoContainer}>
           <UserImage

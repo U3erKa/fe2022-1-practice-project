@@ -26,10 +26,9 @@ const ChatInput = () => {
   const onSubmit = (values: Message) => {
     dispatch(
       sendMessage({
-        // @ts-expect-error
         interlocutor,
         messageBody: values.message,
-        recipient: interlocutor!.id,
+        recipient: interlocutor.id,
       }),
     );
     reset();

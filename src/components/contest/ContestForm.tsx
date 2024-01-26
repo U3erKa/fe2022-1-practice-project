@@ -245,8 +245,7 @@ const ContestForm: FC<Props> = ({ contestType }) => {
             control={control}
             header="Describe industry associated with your venture"
             name="industry"
-            // @ts-expect-error
-            optionsArray={contestData?.industry}
+            optionsArray={contestData?.industry as any}
           />
         </div>
         <div className={styles.inputContainer}>

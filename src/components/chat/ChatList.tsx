@@ -46,7 +46,7 @@ const ChatList = () => {
         <CatalogListContainer />
       ) : (
         // @ts-expect-error
-        <DialogList userId={userId} />
+        <DialogList userId={userId!} />
       )}
     </div>
   );

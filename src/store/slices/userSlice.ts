@@ -94,8 +94,7 @@ const extraReducers = (builder: ActionReducerMapBuilder<UserState>) => {
     .addCase(updateUser.pending, pendingReducer)
     .addCase(updateUser.fulfilled, (state, { payload }) => {
       state.isFetching = false;
-      // @ts-expect-error
-      state.data = { ...state.data, ...payload };
+      state.data = { ...state.data!, ...payload };
       state.error = null;
     })
     .addCase(updateUser.rejected, (state, { payload }) => {
