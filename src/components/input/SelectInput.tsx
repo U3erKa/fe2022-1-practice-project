@@ -1,4 +1,6 @@
-import { type ComponentPropsWithoutRef, type FC, useEffect } from 'react';
+'use client';
+
+import { type ComponentPropsWithoutRef, useEffect } from 'react';
 import {
   type FieldValues,
   type UseControllerProps,
