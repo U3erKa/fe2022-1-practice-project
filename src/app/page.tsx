@@ -30,7 +30,7 @@ const GREEN_COLOR = { color: '#006d00' } satisfies CSSProperties;
 const Home = () => (
   <>
     <Header />
-    <div className={styles.container}>
+    <main className={styles.container}>
       <div className={styles.headerBar}>
         <Headline />
         <p>
@@ -199,7 +199,7 @@ const Home = () => (
         <h2 className={styles.whiteUnderline}>What our customers say</h2>
         <SlideBar carouselType={FEEDBACK_SLIDER} />
       </div>
-    </div>
+    </main>
     <Footer />
   </>
 );

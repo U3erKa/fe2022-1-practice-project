@@ -41,9 +41,9 @@ const UserProfile = () => {
   const { balance, role } = user;
 
   return (
-    <div>
+    <>
       <Header />
-      <div className={styles.mainContainer}>
+      <main className={styles.mainContainer}>
         <div className={styles.aside}>
           <span className={styles.headerAside}>Select Option</span>
           <div className={styles.optionsContainer}>
@@ -91,8 +91,8 @@ const UserProfile = () => {
             )}
           </div>
         )}
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 

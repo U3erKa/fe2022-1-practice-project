@@ -8,7 +8,7 @@ import PhoneIcon from 'assets/icons/phone.png';
 import styles from './styles/Header.module.scss';
 
 const Header = () => (
-  <div className={styles.headerContainer}>
+  <header className={styles.headerContainer}>
     <div className={styles.fixedHeader}>
       <span className={styles.info}>
         Squadhelp recognized as one of the Most Innovative Companies by Inc
@@ -34,7 +34,7 @@ const Header = () => (
         <StartContestButton />
       </div>
     </div>
-  </div>
+  </header>
 );
 
 export default Header;
