@@ -1,4 +1,4 @@
-import type { FC, MutableRefObject, ReactNode } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 import type { GetChatResponse } from 'api/rest/chatController';
 import { getDays } from 'utils/functions';
 import type { UserId } from 'types/_common';
@@ -7,10 +7,12 @@ import styles from './styles/MainDialog.module.scss';
 export type Props = {
   readonly messages: GetChatResponse['messages'];
   readonly userId: UserId;
-  readonly messagesEnd: MutableRefObject<HTMLDivElement | undefined>;
 };
 
-const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
+const MainDialog = forwardRef<HTMLDivElement, Props>(function MainDialog(
+  { messages, userId },
+  ref,
+) {
   const messagesArray: ReactNode[] = [];
   let currentTime = Date.now();
 
@@ -35,12 +37,11 @@ const MainDialog: FC<Props> = ({ messages, userId, messagesEnd }) => {
         <span className={styles.messageTime}>
           {new Date(createdAt).toLocaleTimeString('uk')}
         </span>
-        {/* @ts-expect-error */}
-        <div ref={messagesEnd} />
+        <div ref={ref} />
       </div>,
     );
   }
   return <div className={styles.messageList}>{messagesArray}</div>;
-};
+});
 
 export default MainDialog;

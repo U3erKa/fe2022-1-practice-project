@@ -18,13 +18,10 @@ const Dialog: FC<Props> = ({ userId }) => {
     },
   );
   const dispatch = useDispatch();
-
-  const messagesEnd = useRef<HTMLDivElement>();
+  const messagesRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    if (messagesEnd.current) {
-      messagesEnd.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    messagesRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -47,11 +44,7 @@ const Dialog: FC<Props> = ({ userId }) => {
   return (
     <>
       <ChatHeader userId={userId} />
-      <MainDialog
-        messages={messages}
-        messagesEnd={messagesEnd}
-        userId={userId}
-      />
+      <MainDialog messages={messages} ref={messagesRef} userId={userId} />
       {chatData && chatData.blackList.includes(true) ? (
         <BlockMessage chatData={chatData} userId={userId} />
       ) : (
