@@ -1,31 +1,30 @@
 'use client';
 
 import clsx from 'clsx/lite';
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserInfo } from 'components/account';
 import { PayForm } from 'components/form';
-import { Error, Header } from 'components/general';
-import { CASHOUT_MODE, CREATOR, PAGE, USER_INFO_MODE } from 'constants/general';
+import { Error, Header, OnlyAuthorizedUser } from 'components/general';
+import { CASHOUT_MODE, CREATOR, USER_INFO_MODE } from 'constants/general';
 import { cashOut, clearPaymentStore } from 'store/slices/paymentSlice';
 import { changeProfileViewMode } from 'store/slices/userProfileSlice';
 import type { CashOutParams } from 'types/offer';
 import styles from './styles/page.module.scss';
 
 const UserProfile = () => {
-  const { error, profileViewMode, user } = useSelector(
+  const { balance, error, profileViewMode, role } = useSelector(
     ({ userStore, userProfile, payment }) => {
       const { data: user } = userStore;
       const { profileViewMode } = userProfile;
       const { error } = payment;
+      const { balance, role } = user ?? {};
 
-      return { error, profileViewMode, user };
+      return { balance, error, profileViewMode, role };
     },
   );
 
   const dispatch = useDispatch();
-  const router = useRouter();
 
   const pay = useCallback(
     ({ number, expiry, cvc, sum }: CashOutParams) => {
@@ -34,13 +33,8 @@ const UserProfile = () => {
     [dispatch],
   );
 
-  useEffect(() => {
-    if (!user) router.replace(PAGE.HOME);
-  }, [router, user]);
-  const { balance, role } = user ?? {};
-
   return (
-    <>
+    <OnlyAuthorizedUser>
       <Header />
       <main className={styles.mainContainer}>
         <div className={styles.aside}>
@@ -91,7 +85,7 @@ const UserProfile = () => {
           </div>
         )}
       </main>
-    </>
+    </OnlyAuthorizedUser>
   );
 };
 

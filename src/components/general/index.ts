@@ -9,6 +9,7 @@ export { default as Spinner } from './Spinner';
 export { default as TextEntry } from './TextEntry';
 export { default as TryAgain } from './TryAgain';
 
+export { default as OnlyAuthorizedUser } from './OnlyAuthorizedUser';
 export { default as OnlyUnauthorizedUser } from './OnlyUnauthorizedUser';
 export { default as StartContestButton } from './StartContestButton';
 export { default as Toast } from './Toast';

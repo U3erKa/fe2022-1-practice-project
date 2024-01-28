@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { PAGE } from 'constants/general';
 import { clearAuthError } from 'store/slices/authSlice';
 
-export default function OnlyUnauthorizedUser({ children }: PropsWithChildren) {
+export default function OnlyAuthorizedUser({ children }: PropsWithChildren) {
   const user = useSelector(({ userStore }) => userStore.data);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -16,10 +16,10 @@ export default function OnlyUnauthorizedUser({ children }: PropsWithChildren) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (user) {
-    router.replace(PAGE.HOME);
-    return null;
-  }
+  useEffect(() => {
+    if (!user) router.replace(PAGE.HOME);
+  }, [router, user]);
 
+  if (!user) return null;
   return children;
 }

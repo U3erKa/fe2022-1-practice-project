@@ -28,7 +28,7 @@ const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       <div className={styles.startContestHeader}>
         <div className={styles.startContestInfo}>
@@ -46,7 +46,7 @@ const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

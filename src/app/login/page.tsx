@@ -7,22 +7,23 @@ import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/page.module.scss';
 
 const LoginPage = () => (
-  <main className={styles.mainContainer}>
-    <OnlyUnauthorizedUser />
-    <div className={styles.loginContainer}>
-      <div className={styles.headerSignUpPage}>
-        <Logo src={LogoIcon} />
-        <div className={styles.linkLoginContainer}>
-          <Link href={PAGE.REGISTER} style={{ textDecoration: 'none' }}>
-            <span>Signup</span>
-          </Link>
+  <OnlyUnauthorizedUser>
+    <main className={styles.mainContainer}>
+      <div className={styles.loginContainer}>
+        <div className={styles.headerSignUpPage}>
+          <Logo src={LogoIcon} />
+          <div className={styles.linkLoginContainer}>
+            <Link href={PAGE.REGISTER} style={{ textDecoration: 'none' }}>
+              <span>Signup</span>
+            </Link>
+          </div>
+        </div>
+        <div className={styles.loginFormContainer}>
+          <LoginForm />
         </div>
       </div>
-      <div className={styles.loginFormContainer}>
-        <LoginForm />
-      </div>
-    </div>
-  </main>
+    </main>
+  </OnlyUnauthorizedUser>
 );
 
 export default LoginPage;

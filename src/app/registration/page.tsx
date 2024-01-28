@@ -11,26 +11,27 @@ import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/page.module.scss';
 
 const RegistrationPage = () => (
-  <main className={styles.signUpPage}>
-    <OnlyUnauthorizedUser />
-    <div className={styles.signUpContainer}>
-      <div className={styles.headerSignUpPage}>
-        <Logo src={LogoIcon} />
-        <div className={styles.linkLoginContainer}>
-          <Link href={PAGE.LOGIN} style={{ textDecoration: 'none' }}>
-            <span>Login</span>
-          </Link>
+  <OnlyUnauthorizedUser>
+    <main className={styles.signUpPage}>
+      <div className={styles.signUpContainer}>
+        <div className={styles.headerSignUpPage}>
+          <Logo src={LogoIcon} />
+          <div className={styles.linkLoginContainer}>
+            <Link href={PAGE.LOGIN} style={{ textDecoration: 'none' }}>
+              <span>Login</span>
+            </Link>
+          </div>
+        </div>
+        <RegistrationForm />
+      </div>
+      <div className={styles.footer}>
+        <div className={styles.articlesMainContainer}>
+          <RegistrationArticles articles={REGISTRATION_ARTICLES_LEFT} />
+          <RegistrationArticles articles={REGISTRATION_ARTICLES_RIGHT} />
         </div>
       </div>
-      <RegistrationForm />
-    </div>
-    <div className={styles.footer}>
-      <div className={styles.articlesMainContainer}>
-        <RegistrationArticles articles={REGISTRATION_ARTICLES_LEFT} />
-        <RegistrationArticles articles={REGISTRATION_ARTICLES_RIGHT} />
-      </div>
-    </div>
-  </main>
+    </main>
+  </OnlyUnauthorizedUser>
 );
 
 export default RegistrationPage;

@@ -1,11 +1,16 @@
 import { Bundles } from 'components/contest';
-import { Footer, Header, ProgressBar } from 'components/general';
+import {
+  Footer,
+  Header,
+  OnlyAuthorizedUser,
+  ProgressBar,
+} from 'components/general';
 import { ButtonGroup } from 'components/startContest';
 import { COMBO_BUNDLES, SINGLE_BUNDLES } from 'constants/contest';
 import styles from './styles/page.module.scss';
 
 const StartContestPage = () => (
-  <>
+  <OnlyAuthorizedUser>
     <Header />
     <main>
       <div className={styles.startContestHeader}>
@@ -54,7 +59,7 @@ const StartContestPage = () => (
       </div>
     </main>
     <Footer />
-  </>
+  </OnlyAuthorizedUser>
 );
 
 export default StartContestPage;
