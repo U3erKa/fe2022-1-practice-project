@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { fork } from 'radash';
+import { useEffect } from 'react';
 import { useForceUpdate } from 'hooks';
 import { useSelector } from 'hooks';
 import { CreateEvent, EventsList } from 'components/events';
@@ -17,10 +18,9 @@ export default function EventsPage() {
   const router = useRouter();
   const forceUpdate = useForceUpdate();
 
-  if (!user) {
-    router.replace(PAGE.HOME);
-    return null;
-  }
+  useEffect(() => {
+    if (!user) router.replace(PAGE.HOME);
+  }, [router, user]);
 
   const currentDate = Date.now();
   const [pastEvents, upcomingEvents] = fork(events, ({ date }) => {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { Footer, Header, ProgressBar } from 'components/general';
 import { BundleBox, ButtonGroup } from 'components/startContest';
@@ -36,10 +36,9 @@ const StartContestPage = () => {
     [dispatch, router],
   );
 
-  if (user?.role !== CUSTOMER) {
-    router.replace(PAGE.HOME);
-    return null;
-  }
+  useEffect(() => {
+    if (user?.role !== CUSTOMER) router.replace(PAGE.HOME);
+  }, [router, user]);
 
   return (
     <div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useSelector } from 'hooks';
 import {
   CreatorDashboard,
@@ -14,11 +15,10 @@ const Dashboard = () => {
   const user = useSelector((state) => state.userStore.data);
   const router = useRouter();
 
-  if (!user) {
-    router.replace(PAGE.HOME);
-    return null;
-  }
-  const { role } = user;
+  useEffect(() => {
+    if (!user) router.replace(PAGE.HOME);
+  }, [router, user]);
+  const { role } = user ?? {};
 
   return (
     <div>

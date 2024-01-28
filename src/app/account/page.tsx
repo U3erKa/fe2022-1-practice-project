@@ -2,7 +2,7 @@
 
 import clsx from 'clsx/lite';
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserInfo } from 'components/account';
 import { PayForm } from 'components/form';
@@ -34,11 +34,10 @@ const UserProfile = () => {
     [dispatch],
   );
 
-  if (!user) {
-    router.replace(PAGE.HOME);
-    return null;
-  }
-  const { balance, role } = user;
+  useEffect(() => {
+    if (!user) router.replace(PAGE.HOME);
+  }, [router, user]);
+  const { balance, role } = user ?? {};
 
   return (
     <>
