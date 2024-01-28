@@ -1,15 +1,13 @@
 import type {
+  OFFER_COMMAND_APPROVE,
+  OFFER_COMMAND_DISCARD,
+  OFFER_COMMAND_REJECT,
+  OFFER_COMMAND_RESOLVE,
   OFFER_STATUS_APPROVED,
   OFFER_STATUS_DISCARDED,
   OFFER_STATUS_PENDING,
   OFFER_STATUS_REJECTED,
   OFFER_STATUS_WON,
-} from 'constants/general';
-import type {
-  OFFER_COMMAND_APPROVE,
-  OFFER_COMMAND_DISCARD,
-  OFFER_COMMAND_REJECT,
-  OFFER_COMMAND_RESOLVE,
 } from 'constants/general';
 import type { WithId, WithPagination, WithUUID } from 'types/_common';
 import type { Bank } from 'types/models';

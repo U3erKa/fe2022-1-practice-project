@@ -1,27 +1,28 @@
-import { DataTypes, Model } from 'sequelize';
-import type {
-  Association,
-  BelongsToCreateAssociationMixin,
-  BelongsToGetAssociationMixin,
-  BelongsToSetAssociationMixin,
-  CreationOptional,
-  ForeignKey,
-  HasManyAddAssociationMixin,
-  HasManyAddAssociationsMixin,
-  HasManyCountAssociationsMixin,
-  HasManyCreateAssociationMixin,
-  HasManyGetAssociationsMixin,
-  HasManyHasAssociationMixin,
-  HasManyHasAssociationsMixin,
-  HasManyRemoveAssociationMixin,
-  HasManyRemoveAssociationsMixin,
-  HasManySetAssociationsMixin,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
-  Sequelize,
-} from 'sequelize';
 import type { UUID } from 'crypto';
+import {
+  DataTypes,
+  Model,
+  type Association,
+  type BelongsToCreateAssociationMixin,
+  type BelongsToGetAssociationMixin,
+  type BelongsToSetAssociationMixin,
+  type CreationOptional,
+  type ForeignKey,
+  type HasManyAddAssociationMixin,
+  type HasManyAddAssociationsMixin,
+  type HasManyCountAssociationsMixin,
+  type HasManyCreateAssociationMixin,
+  type HasManyGetAssociationsMixin,
+  type HasManyHasAssociationMixin,
+  type HasManyHasAssociationsMixin,
+  type HasManyRemoveAssociationMixin,
+  type HasManyRemoveAssociationsMixin,
+  type HasManySetAssociationsMixin,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type NonAttribute,
+  type Sequelize,
+} from 'sequelize';
 import { LOGO_CONTEST, NAME_CONTEST, TAGLINE_CONTEST } from 'constants/general';
 import type { Contest, DB, Offer, User } from 'types/models';
 import type { Priority } from 'types/offer';

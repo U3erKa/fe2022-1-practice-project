@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { BadRequestError, NotFoundError, RightsError } from 'errors';
 import { Contest } from 'models';
 import { getNotificationController } from 'socketInit';

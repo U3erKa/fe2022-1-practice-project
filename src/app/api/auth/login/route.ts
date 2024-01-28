@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { BadRequestError, UserNotFoundError } from 'errors';
 import { User } from 'models';
 import { createSession } from 'services/authService';

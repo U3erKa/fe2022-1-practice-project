@@ -7,7 +7,7 @@ import type {
 import { NotFoundError, ServerError } from 'errors';
 import { User } from 'models';
 import type { UserId } from 'types/_common';
-import type { ModelUpdateAttributes, User as _User } from 'types/models';
+import type { User as _User, ModelUpdateAttributes } from 'types/models';
 
 export const updateUser = async (
   data: ModelUpdateAttributes<_User>,

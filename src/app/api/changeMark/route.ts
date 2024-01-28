@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { Transaction } from 'sequelize';
 import { RightsError } from 'errors';
 import { Offer, Rating, sequelize } from 'models';

@@ -1,6 +1,6 @@
 'use client';
 
-import { type FC, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, type FC } from 'react';
 import LightBox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { useDispatch, useSelector } from 'hooks';

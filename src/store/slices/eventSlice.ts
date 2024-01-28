@@ -1,4 +1,4 @@
-import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
+import { createSlice, type ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import * as eventController from 'api/rest/eventController';
 import { timezoneOffsetInMs } from 'constants/general';
 import type { NewEvent } from 'utils/schemas';

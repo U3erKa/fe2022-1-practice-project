@@ -1,9 +1,9 @@
 import clsx from 'clsx/lite';
 import type { ComponentPropsWithoutRef } from 'react';
 import {
+  useController,
   type FieldValues,
   type UseControllerProps,
-  useController,
 } from 'react-hook-form';
 
 export type Props<T extends FieldValues> =

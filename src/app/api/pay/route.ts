@@ -1,6 +1,6 @@
-import { type NextRequest, NextResponse } from 'next/server';
-import { Op } from 'sequelize';
 import { randomUUID } from 'crypto';
+import { NextResponse, type NextRequest } from 'next/server';
+import { Op } from 'sequelize';
 import { BadRequestError, RightsError } from 'errors';
 import { Contest, sequelize } from 'models';
 import {

@@ -1,7 +1,7 @@
 import clsx from 'clsx/lite';
 import { useRouter } from 'next/navigation';
 import { select } from 'radash';
-import { type ChangeEventHandler, type FC, useCallback } from 'react';
+import { useCallback, type ChangeEventHandler, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { CONTEST_TYPES, PAGE } from 'constants/general';
 import { setNewCreatorFilter } from 'store/slices/contestsSlice';

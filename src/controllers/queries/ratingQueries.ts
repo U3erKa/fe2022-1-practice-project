@@ -6,8 +6,7 @@ import type {
 } from 'sequelize';
 import { ServerError } from 'errors';
 import { Rating } from 'models';
-import type { Rating as _Rating } from 'types/models';
-import type { ModelUpdateAttributes } from 'types/models';
+import type { Rating as _Rating, ModelUpdateAttributes } from 'types/models';
 
 export const updateRating = async (
   data: ModelUpdateAttributes<_Rating>,

@@ -1,4 +1,4 @@
-import { type FC, useEffect, useRef } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { ChatHeader, ChatInput } from 'components/chat';
 import { BlockMessage, MainDialog } from 'components/dialog';

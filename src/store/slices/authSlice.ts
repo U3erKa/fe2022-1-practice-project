@@ -1,4 +1,4 @@
-import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
+import { createSlice, type ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import * as authController from 'api/rest/authController';
 import { notificationController } from 'api/ws/socketController';
 import { AUTH_MODE, PAGE } from 'constants/general';

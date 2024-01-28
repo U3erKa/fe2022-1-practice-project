@@ -4,9 +4,9 @@ import type {
   HTMLInputTypeAttribute,
 } from 'react';
 import {
+  useController,
   type FieldValues,
   type UseControllerProps,
-  useController,
 } from 'react-hook-form';
 import styles from './styles/RoleInput.module.scss';
 

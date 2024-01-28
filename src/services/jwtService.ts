@@ -1,3 +1,4 @@
+import { promisify } from 'util';
 import jwt, {
   type Jwt,
   type JwtPayload,
@@ -5,7 +6,6 @@ import jwt, {
   type SignOptions,
   type VerifyOptions,
 } from 'jsonwebtoken';
-import { promisify } from 'util';
 import {
   ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_TIME,

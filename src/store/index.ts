@@ -1,7 +1,7 @@
 import {
+  configureStore,
   type Action,
   type ThunkAction,
-  configureStore,
 } from '@reduxjs/toolkit';
 import { initSocket } from 'api/ws/socketController';
 import reducer from './reducer';

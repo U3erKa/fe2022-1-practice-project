@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { NotFoundError } from 'errors';
 import { Conversation } from 'models';
 import { getChatController } from 'socketInit';

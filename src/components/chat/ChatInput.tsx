@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { FormInput } from 'components/input';
 import { sendMessage } from 'store/slices/chatSlice';
-import { type Message, MessageSchema } from 'utils/schemas';
+import { MessageSchema, type Message } from 'utils/schemas';
 import SendMessageIcon from 'assets/icons/send.png';
 import styles from './styles/ChatInput.module.scss';
 

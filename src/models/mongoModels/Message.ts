@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
 import { deprecate } from 'util';
+import mongoose from 'mongoose';
 import { MONGO_DEPRECATED_MESSAGE } from 'constants/backend';
 import type { MessageSchema } from 'types/models';
 

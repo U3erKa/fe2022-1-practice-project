@@ -1,18 +1,19 @@
-import { DataTypes, Model } from 'sequelize';
-import type {
-  Association,
-  BelongsToCreateAssociationMixin,
-  BelongsToGetAssociationMixin,
-  BelongsToSetAssociationMixin,
-  CreationOptional,
-  ForeignKey,
-  HasOneCreateAssociationMixin,
-  HasOneGetAssociationMixin,
-  HasOneSetAssociationMixin,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
-  Sequelize,
+import {
+  DataTypes,
+  Model,
+  type Association,
+  type BelongsToCreateAssociationMixin,
+  type BelongsToGetAssociationMixin,
+  type BelongsToSetAssociationMixin,
+  type CreationOptional,
+  type ForeignKey,
+  type HasOneCreateAssociationMixin,
+  type HasOneGetAssociationMixin,
+  type HasOneSetAssociationMixin,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type NonAttribute,
+  type Sequelize,
 } from 'sequelize';
 import { OFFER_STATUS_PENDING } from 'constants/general';
 import type { Contest, DB, Offer, Rating, User } from 'types/models';

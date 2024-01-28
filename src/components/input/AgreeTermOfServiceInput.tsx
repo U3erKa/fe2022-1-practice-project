@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef, FC } from 'react';
 import {
+  useController,
   type FieldValues,
   type UseControllerProps,
-  useController,
 } from 'react-hook-form';
 import { PAGE } from 'constants/general';
 

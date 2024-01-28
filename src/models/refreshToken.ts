@@ -1,15 +1,16 @@
-import { DataTypes, Model } from 'sequelize';
-import type {
-  Association,
-  BelongsToCreateAssociationMixin,
-  BelongsToGetAssociationMixin,
-  BelongsToSetAssociationMixin,
-  CreationOptional,
-  ForeignKey,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
-  Sequelize,
+import {
+  DataTypes,
+  Model,
+  type Association,
+  type BelongsToCreateAssociationMixin,
+  type BelongsToGetAssociationMixin,
+  type BelongsToSetAssociationMixin,
+  type CreationOptional,
+  type ForeignKey,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type NonAttribute,
+  type Sequelize,
 } from 'sequelize';
 import type { DB, RefreshToken, User } from 'types/models';
 

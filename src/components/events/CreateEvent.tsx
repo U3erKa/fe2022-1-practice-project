@@ -1,11 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import type { useForceUpdate } from 'hooks';
-import { useDispatch } from 'hooks';
+import { useDispatch, type useForceUpdate } from 'hooks';
 import { FormInput, SelectInput } from 'components/input';
 import { NOTIFY_OPTIONS } from 'constants/general';
 import { createEvent } from 'store/slices/eventSlice';
-import { type NewEvent, NewEventSchema, type Notify } from 'utils/schemas';
+import { NewEventSchema, type NewEvent, type Notify } from 'utils/schemas';
 import styles from './styles/CreateEvent.module.scss';
 
 export const defaultValues = {

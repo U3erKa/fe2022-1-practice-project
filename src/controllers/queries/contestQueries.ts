@@ -19,9 +19,9 @@ import {
 } from 'constants/general';
 import { updateUser } from 'controllers/queries/userQueries';
 import type {
-  ModelUpdateAttributes,
   Contest as _Contest,
   Offer as _Offer,
+  ModelUpdateAttributes,
 } from 'types/models';
 
 export const updateContest = async (

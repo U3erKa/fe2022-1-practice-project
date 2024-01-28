@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type FC, useCallback } from 'react';
+import { useCallback, type FC } from 'react';
 import {
+  useForm,
   type FieldValues,
   type UseControllerProps,
   type UseFormReturn,
-  useForm,
 } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error } from 'components/general';
@@ -13,10 +13,10 @@ import type { FormInputClasses } from 'components/input/FormInput';
 import { LOGO_CONTEST } from 'constants/general';
 import { addOffer, clearAddOfferError } from 'store/slices/contestByIdSlice';
 import {
-  type LogoOffer,
   LogoOfferSchema,
-  type TextOffer,
   TextOfferSchema,
+  type LogoOffer,
+  type TextOffer,
 } from 'utils/schemas';
 import type { WithId } from 'types/_common';
 import type { ContestType } from 'types/contest';

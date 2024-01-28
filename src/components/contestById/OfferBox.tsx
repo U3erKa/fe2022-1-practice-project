@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import isEqual from 'fast-deep-equal/es6/react';
 import Image from 'next/image';
-import { type FC, useCallback } from 'react';
+import { useCallback, type FC } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Rating from 'react-rating';
@@ -41,9 +41,9 @@ import StarIcon from 'assets/icons/star.png';
 import type { OfferId, UserId } from 'types/_common';
 import type { Offer } from 'types/contest';
 import type {
+  Rating as _Rating,
   OfferStatus,
   OfferStatus as OfferStatusIcon,
-  Rating as _Rating,
 } from 'types/offer';
 import type { ContestData, UserState } from 'types/slices';
 import styles from './styles/OfferBox.module.scss';

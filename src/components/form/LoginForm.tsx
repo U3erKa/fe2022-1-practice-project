@@ -10,7 +10,7 @@ import { FormInput } from 'components/input';
 import type { FormInputClasses } from 'components/input/FormInput';
 import { AUTH_MODE } from 'constants/general';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
-import { type Login, LoginSchema } from 'utils/schemas';
+import { LoginSchema, type Login } from 'utils/schemas';
 import styles from './styles/LoginForm.module.scss';
 
 const formInputClasses = {

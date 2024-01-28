@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react';
+import { useCallback, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UpdateUserInfoForm } from 'components/form';
 import { UserImage } from 'components/general';

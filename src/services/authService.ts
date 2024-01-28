@@ -1,5 +1,5 @@
 import { RefreshToken } from 'models';
-import type { User, RefreshToken as _RefreshToken } from 'types/models';
+import type { RefreshToken as _RefreshToken, User } from 'types/models';
 import { generateTokenPair } from './jwtService';
 
 export const sanitizeUserData = ({

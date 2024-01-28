@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { Op } from 'sequelize';
 import { Conversation, Message, User } from 'models';
 import { verifyAccessToken } from 'services/jwtService';

@@ -1,4 +1,4 @@
-import { type NextMiddleware, NextResponse } from 'next/server';
+import { NextResponse, type NextMiddleware } from 'next/server';
 import { checkAuthorization } from 'utils/checkAuthorization';
 
 export const middleware = function (req) {

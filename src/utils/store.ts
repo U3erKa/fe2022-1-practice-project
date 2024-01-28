@@ -1,8 +1,8 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import type {
-  AsyncThunkPayloadCreator,
-  CaseReducer,
-  PayloadAction,
+import {
+  createAsyncThunk,
+  type AsyncThunkPayloadCreator,
+  type CaseReducer,
+  type PayloadAction,
 } from '@reduxjs/toolkit';
 import type { WithFetch } from 'types/slices';
 

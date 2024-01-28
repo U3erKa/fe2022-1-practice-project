@@ -1,13 +1,13 @@
 import {
+  createSlice,
   type ActionReducerMapBuilder,
   type PayloadAction,
-  createSlice,
 } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
 import {
   CONTEST_STATUS_ACTIVE,
-  type CREATOR,
   CUSTOMER,
+  type CREATOR,
 } from 'constants/general';
 import { addNewItems } from 'utils/functions';
 import { decorateAsyncThunk, pendingReducer } from 'utils/store';

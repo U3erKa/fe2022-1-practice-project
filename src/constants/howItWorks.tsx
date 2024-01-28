@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import { PAGE } from 'constants/general';
 import { uniqueId } from 'utils/functions';
-import ChicagoTribuneImage from 'assets/howItWorks/ChicagoTribune.svg';
-import ForbesImage from 'assets/howItWorks/Forbes.svg';
-import MashableImage from 'assets/howItWorks/Mashable.svg';
-import TheNextWebImage from 'assets/howItWorks/TheNextWeb.png';
 import BrandingCommunityImage from 'assets/howItWorks/brandingCommunity.webp';
+import ChicagoTribuneImage from 'assets/howItWorks/ChicagoTribune.svg';
 import ExploreNamesImage from 'assets/howItWorks/exploreNames.svg';
+import ForbesImage from 'assets/howItWorks/Forbes.svg';
 import IndustriesImage from 'assets/howItWorks/industries.svg';
 import LaunchContestImage from 'assets/howItWorks/launchContest.svg';
 import ManagedContestImage from 'assets/howItWorks/managedContest.svg';
+import MashableImage from 'assets/howItWorks/Mashable.svg';
 import StarsImage from 'assets/howItWorks/stars.svg';
+import TheNextWebImage from 'assets/howItWorks/TheNextWeb.png';
 import type { QNAItems } from 'types/general';
 
 const LINK_ID_PREFIX = 'link';

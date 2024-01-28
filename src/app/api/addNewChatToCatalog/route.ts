@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import type { InferAttributes } from 'sequelize';
 import { NotFoundError } from 'errors';
 import { Catalog } from 'models';

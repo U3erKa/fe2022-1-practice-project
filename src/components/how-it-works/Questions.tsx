@@ -3,7 +3,7 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx/lite';
-import { type FC, useState } from 'react';
+import { useState, type FC } from 'react';
 import type { HOW_IT_WORKS_QNA } from 'constants/howItWorks';
 import { Answer } from '.';
 import styles from './styles/Questions.module.scss';

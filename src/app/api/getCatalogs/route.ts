@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import type { InferAttributes } from 'sequelize';
 import { Catalog, Conversation } from 'models';
 import { verifyAccessToken } from 'services/jwtService';

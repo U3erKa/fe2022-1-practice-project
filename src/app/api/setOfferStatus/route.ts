@@ -1,18 +1,16 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { BadRequestError, RightsError } from 'errors';
 import { Contest, sequelize } from 'models';
 import {
   CONTEST_STATUS_ACTIVE,
   CUSTOMER,
   MODERATOR,
-  OFFER_STATUS_APPROVED,
-  OFFER_STATUS_DISCARDED,
-} from 'constants/general';
-import {
   OFFER_COMMAND_APPROVE,
   OFFER_COMMAND_DISCARD,
   OFFER_COMMAND_REJECT,
   OFFER_COMMAND_RESOLVE,
+  OFFER_STATUS_APPROVED,
+  OFFER_STATUS_DISCARDED,
 } from 'constants/general';
 import {
   rejectOffer,

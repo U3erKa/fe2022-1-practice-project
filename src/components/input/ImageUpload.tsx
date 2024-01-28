@@ -1,10 +1,10 @@
 import clsx from 'clsx/lite';
 import type { ChangeEventHandler } from 'react';
 import {
+  useController,
   type FieldValues,
   type UseControllerProps,
   type UseFormReturn,
-  useController,
 } from 'react-hook-form';
 
 export type Props<T extends FieldValues> = Pick<

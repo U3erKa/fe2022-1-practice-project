@@ -1,10 +1,10 @@
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  useCallback,
   type FC,
   type MouseEvent,
   type MouseEventHandler,
-  useCallback,
 } from 'react';
 import type { GetCatalogsResponse } from 'api/rest/catalogController';
 import type { CatalogId } from 'types/_common';

@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import {
+  useController,
   type FieldValues,
   type UseControllerProps,
   type UseFormReturn,
-  useController,
 } from 'react-hook-form';
 
 export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &

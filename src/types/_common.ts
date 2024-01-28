@@ -1,7 +1,7 @@
+import type { UUID } from 'crypto';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import type { NextResponse } from 'next/server';
 import type { InferAttributes, Model } from 'sequelize';
-import type { UUID } from 'crypto';
 import type { User } from 'types/models';
 
 export type WithId<K extends string = 'id'> = {

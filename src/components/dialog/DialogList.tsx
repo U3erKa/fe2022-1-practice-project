@@ -1,9 +1,9 @@
 import {
+  useCallback,
+  useMemo,
   type FC,
   type JSX,
   type MouseEvent,
-  useCallback,
-  useMemo,
 } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { DialogBox } from 'components/dialog';
@@ -24,8 +24,8 @@ import type {
   ChangeChatBlockParams,
   ChangeChatFavoriteParams,
   GoToExtendedDialog,
+  MessagePreview,
 } from 'types/chat';
-import type { MessagePreview } from 'types/chat';
 import styles from './styles/DialogList.module.scss';
 
 export type Props = {

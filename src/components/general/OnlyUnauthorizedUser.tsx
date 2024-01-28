@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { type PropsWithChildren, useEffect } from 'react';
+import { useEffect, type PropsWithChildren } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { PAGE } from 'constants/general';
 import { clearAuthError } from 'store/slices/authSlice';

@@ -1,7 +1,7 @@
 import {
+  createSlice,
   type ActionReducerMapBuilder,
   type PayloadAction,
-  createSlice,
 } from '@reduxjs/toolkit';
 import * as offerController from 'api/rest/offerController';
 import { PAGE, USER_INFO_MODE } from 'constants/general';

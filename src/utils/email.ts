@@ -1,7 +1,7 @@
-import { template } from 'radash';
-import sendEmail from 'email';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { template } from 'radash';
+import sendEmail from 'email';
 import { READ_FILE_OPTIONS } from 'constants/backend';
 import { OFFER_COMMAND_APPROVE } from 'constants/general';
 import type { Offer as _Offer } from 'types/models';

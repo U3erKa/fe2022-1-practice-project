@@ -1,6 +1,5 @@
 import clsx from 'clsx/lite';
-import type { StaticImageData } from 'next/image';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import type { FC } from 'react';
 import styles from './styles/BundleBox.module.scss';
 

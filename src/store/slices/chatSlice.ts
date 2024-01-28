@@ -1,7 +1,7 @@
 import {
+  createSlice,
   type ActionReducerMapBuilder,
   type PayloadAction,
-  createSlice,
 } from '@reduxjs/toolkit';
 import isEqual from 'fast-deep-equal/es6/react';
 import * as catalogController from 'api/rest/catalogController';
@@ -24,17 +24,15 @@ import type {
 } from 'types/catalog';
 import type {
   AddMessage,
+  Catalog,
+  CatalogCreationMode,
   ChangeChatBlockParams,
   ChangeChatFavoriteParams,
+  ChatData,
+  ChatMode,
   GetDialogParams,
   GoToExtendedDialog,
   NewMessageParams,
-} from 'types/chat';
-import type {
-  Catalog,
-  CatalogCreationMode,
-  ChatData,
-  ChatMode,
 } from 'types/chat';
 import type { ChatState } from 'types/slices';
 
@@ -146,7 +144,7 @@ const sendMessageExtraReducers = (
         favoriteList: preview.favoriteList,
         participants: preview.participants,
       };
-      state.chatData = { ...state.chatData!, ...chatData as any };
+      state.chatData = { ...state.chatData!, ...(chatData as any) };
       state.messages = [...state.messages, message];
       state.messagesPreview = messagesPreview;
     })

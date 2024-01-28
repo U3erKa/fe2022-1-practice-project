@@ -1,7 +1,7 @@
 import {
+  createSlice,
   type ActionReducerMapBuilder,
   type PayloadAction,
-  createSlice,
 } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
 import * as offerController from 'api/rest/offerController';

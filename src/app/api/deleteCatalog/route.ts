@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { Catalog } from 'models';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';

@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { Op } from 'sequelize';
 import { NotFoundError, RightsError } from 'errors';
 import { Contest, Offer, Rating, User } from 'models';

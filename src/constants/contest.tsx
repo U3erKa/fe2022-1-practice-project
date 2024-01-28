@@ -1,11 +1,11 @@
 'use client';
-import LogoIcon from "assets/contestLabels/Logo.png";
-import NameIcon from "assets/contestLabels/Name.png";
-import TaglineIcon from "assets/contestLabels/Tagline.png";
-import BlueLogoIcon from "assets/contestLabels/blue_Logo.png";
-import BlueNameIcon from "assets/contestLabels/blue_Name.png";
-import BlueTaglineIcon from "assets/contestLabels/blue_Tagline.png";
 
+import BlueLogoIcon from 'assets/contestLabels/blue_Logo.png';
+import BlueNameIcon from 'assets/contestLabels/blue_Name.png';
+import BlueTaglineIcon from 'assets/contestLabels/blue_Tagline.png';
+import LogoIcon from 'assets/contestLabels/Logo.png';
+import NameIcon from 'assets/contestLabels/Name.png';
+import TaglineIcon from 'assets/contestLabels/Tagline.png';
 
 export const SINGLE_BUNDLES = [
   {
@@ -19,14 +19,16 @@ export const SINGLE_BUNDLES = [
     icons: [[LogoIcon, BlueLogoIcon]],
   },
   {
-    describe: 'Connect deeply with your target audience with an on-target tagline.',
+    describe:
+      'Connect deeply with your target audience with an on-target tagline.',
     header: 'Tagline',
     icons: [[TaglineIcon, BlueTaglineIcon]],
   },
 ];
 export const COMBO_BUNDLES = [
   {
-    describe: 'Get the essentials needed to establish your brand together and save.',
+    describe:
+      'Get the essentials needed to establish your brand together and save.',
     header: 'Name+Logo',
     icons: [
       [NameIcon, BlueNameIcon],

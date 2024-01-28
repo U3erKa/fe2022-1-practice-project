@@ -1,22 +1,23 @@
 import bcrypt from 'bcrypt';
-import { DataTypes, Model } from 'sequelize';
-import type {
-  Association,
-  CreationOptional,
-  HasManyAddAssociationMixin,
-  HasManyAddAssociationsMixin,
-  HasManyCountAssociationsMixin,
-  HasManyCreateAssociationMixin,
-  HasManyGetAssociationsMixin,
-  HasManyHasAssociationMixin,
-  HasManyHasAssociationsMixin,
-  HasManyRemoveAssociationMixin,
-  HasManyRemoveAssociationsMixin,
-  HasManySetAssociationsMixin,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
-  Sequelize,
+import {
+  DataTypes,
+  Model,
+  type Association,
+  type CreationOptional,
+  type HasManyAddAssociationMixin,
+  type HasManyAddAssociationsMixin,
+  type HasManyCountAssociationsMixin,
+  type HasManyCreateAssociationMixin,
+  type HasManyGetAssociationsMixin,
+  type HasManyHasAssociationMixin,
+  type HasManyHasAssociationsMixin,
+  type HasManyRemoveAssociationMixin,
+  type HasManyRemoveAssociationsMixin,
+  type HasManySetAssociationsMixin,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type NonAttribute,
+  type Sequelize,
 } from 'sequelize';
 import { SALT_ROUNDS } from 'constants/backend';
 import {

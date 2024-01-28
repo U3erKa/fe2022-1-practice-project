@@ -13,7 +13,7 @@ import {
 } from 'components/input';
 import { AUTH_MODE, CREATOR, CUSTOMER } from 'constants/general';
 import { checkAuth, clearAuth } from 'store/slices/authSlice';
-import { type Registration, RegistrationSchema } from 'utils/schemas';
+import { RegistrationSchema, type Registration } from 'utils/schemas';
 import styles from './styles/RegistrationForm.module.scss';
 
 const formInputClasses = {

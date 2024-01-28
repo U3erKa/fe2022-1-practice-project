@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import type { FC } from 'react';
 import { Autoplay } from 'swiper/modules';
-import { Swiper, type SwiperProps } from 'swiper/react';
-import { SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, type SwiperProps } from 'swiper/react';
 import 'swiper/scss';
 import {
   EXAMPLE_SLIDER,

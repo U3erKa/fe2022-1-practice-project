@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { TokenError } from 'errors';
 import { RefreshToken } from 'models';
 import { refreshSession } from 'services/authService';

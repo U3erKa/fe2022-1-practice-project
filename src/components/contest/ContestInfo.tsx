@@ -1,7 +1,7 @@
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import isEqual from 'fast-deep-equal/es6/react';
-import { type FC, useCallback } from 'react';
+import { useCallback, type FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'hooks';
 import {
@@ -16,8 +16,8 @@ import type { InterlocutorId, UserId } from 'types/_common';
 import type { ContestByIdState } from 'types/slices';
 import LogoContestSpecialInfo from './LogoContestSpecialInfo';
 import NameContestSpecialInfo from './NameContestSpecialInfo';
-import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 import styles from './styles/ContestInfo.module.scss';
+import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 
 export type Props = Pick<ContestByIdState, 'contestData'> & {
   readonly changeEditContest: (isEditContest: boolean) => void;

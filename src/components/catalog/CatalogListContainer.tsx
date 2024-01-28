@@ -1,4 +1,4 @@
-import { type MouseEvent, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { CatalogList } from 'components/catalog';
 import { DialogList } from 'components/dialog';

@@ -1,12 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type FC, useCallback } from 'react';
+import { useCallback, type FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { Error, Spinner } from 'components/general';
 import { FormInput, ImageUpload } from 'components/input';
 import { clearUserError } from 'store/slices/userSlice';
 import { uniqueId } from 'utils/functions';
-import { type UpdateUser, UpdateUserSchema } from 'utils/schemas';
+import { UpdateUserSchema, type UpdateUser } from 'utils/schemas';
 import styles from './styles/UpdateUserInfoForm.module.scss';
 
 export type Props = {

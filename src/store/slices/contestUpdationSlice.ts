@@ -1,4 +1,4 @@
-import { type ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
+import { createSlice, type ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import * as contestController from 'api/rest/contestController';
 import {
   decorateAsyncThunk,

@@ -1,10 +1,10 @@
 'use client';
 
-import { type ComponentPropsWithoutRef, useEffect } from 'react';
+import { useEffect, type ComponentPropsWithoutRef } from 'react';
 import {
+  useController,
   type FieldValues,
   type UseControllerProps,
-  useController,
 } from 'react-hook-form';
 
 export type FormSelectClasses = {

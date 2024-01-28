@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import {
+  Op,
   type Attributes,
   type InferAttributes,
-  Op,
   type Order,
   type WhereOptions,
 } from 'sequelize';

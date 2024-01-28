@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react';
+import { useCallback, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import type { GetOffersResponse } from 'api/rest/offerController';
 import { Error } from 'components/general';

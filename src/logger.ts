@@ -1,8 +1,8 @@
+import { promises as fs } from 'fs';
+import path from 'path';
 import cron from 'node-cron';
 import sendEmail from 'email';
 import type { ApplicationError } from 'errors';
-import { promises as fs } from 'fs';
-import path from 'path';
 import {
   CRON_DAILY_AT_MIDNIGHT,
   LOG_PATH,

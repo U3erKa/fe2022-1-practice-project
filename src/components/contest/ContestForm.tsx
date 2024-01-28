@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { type FC, useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, type FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'hooks';
 import { OptionalSelects } from 'components/contest';
@@ -22,7 +22,7 @@ import {
 import { saveContestToStore } from 'store/slices/contestCreationSlice';
 import { updateContest } from 'store/slices/contestUpdationSlice';
 import { getDataForContest } from 'store/slices/dataForContestSlice';
-import { type Contest, ContestSchema } from 'utils/schemas';
+import { ContestSchema, type Contest } from 'utils/schemas';
 import type {
   ContestInfo,
   ContestType,

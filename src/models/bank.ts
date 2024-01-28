@@ -1,8 +1,9 @@
-import { DataTypes, Model } from 'sequelize';
-import type {
-  InferAttributes,
-  InferCreationAttributes,
-  Sequelize,
+import {
+  DataTypes,
+  Model,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type Sequelize,
 } from 'sequelize';
 import type { DB } from 'types/models';
 

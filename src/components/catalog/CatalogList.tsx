@@ -1,4 +1,4 @@
-import { type FC, type MouseEvent, useCallback } from 'react';
+import { useCallback, type FC, type MouseEvent } from 'react';
 import { useDispatch } from 'hooks';
 import type { GetCatalogsResponse } from 'api/rest/catalogController';
 import { Catalog } from 'components/catalog';

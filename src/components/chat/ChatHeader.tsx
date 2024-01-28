@@ -1,12 +1,12 @@
 import { faHeart as farFaHeart } from '@fortawesome/free-regular-svg-icons';
 import {
+  faHeart as fasFaHeart,
   faUnlock,
   faUserLock,
-  faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { type FC, type MouseEventHandler, useCallback } from 'react';
+import { useCallback, type FC, type MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { UserImage } from 'components/general';
 import { PUBLIC_URL } from 'constants/general';

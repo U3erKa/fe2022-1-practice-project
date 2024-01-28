@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { Conversation, Message } from 'models';
 import { findUser } from 'controllers/queries/userQueries';
 import { verifyAccessToken } from 'services/jwtService';
