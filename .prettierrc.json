@@ -46,10 +46,7 @@
     "^types/.*",
     "^[./]"
   ],
-  "importOrderSeparation": false,
-  "importOrderSortSpecifiers": false,
-  "importOrderGroupNamespaceSpecifiers": false,
-  "importOrderCaseInsensitive": false,
+  "importOrderTypeScriptVersion": "5.0.0",
   "importOrderParserPlugins": ["typescript", "jsx", "[\"importAssertions\"]"],
-  "plugins": ["@trivago/prettier-plugin-sort-imports"]
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"]
 }
