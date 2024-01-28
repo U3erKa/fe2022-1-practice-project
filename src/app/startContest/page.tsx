@@ -1,48 +1,13 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'hooks';
+import { Bundles } from 'components/contest';
 import { Footer, Header, ProgressBar } from 'components/general';
-import { BundleBox, ButtonGroup } from 'components/startContest';
-import { CUSTOMER, PAGE } from 'constants/general';
-import { updateBundle } from 'store/slices/bundleSlice';
-import LogoIcon from 'assets/contestLabels/Logo.png';
-import NameIcon from 'assets/contestLabels/Name.png';
-import TaglineIcon from 'assets/contestLabels/Tagline.png';
-import BlueLogoIcon from 'assets/contestLabels/blue_Logo.png';
-import BlueNameIcon from 'assets/contestLabels/blue_Name.png';
-import BlueTaglineIcon from 'assets/contestLabels/blue_Tagline.png';
-import type { Bundle } from 'types/slices';
+import { ButtonGroup } from 'components/startContest';
+import { COMBO_BUNDLES, SINGLE_BUNDLES } from 'constants/contest';
 import styles from './styles/page.module.scss';
 
-const StartContestPage = () => {
-  const user = useSelector(({ userStore }) => userStore.data);
-  const dispatch = useDispatch();
-  const router = useRouter();
-
-  const setBundle = useCallback(
-    (bundleStr: string) => {
-      const array = bundleStr.toLowerCase().split('+');
-      const bundleList = { first: array[0] } as unknown as Bundle;
-      for (let i = 0; i < array.length; i++) {
-        // @ts-expect-error
-        bundleList[array[i] as keyof typeof bundleList] =
-          i === array.length - 1 ? 'payment' : array[i + 1];
-      }
-      dispatch(updateBundle(bundleList));
-      router.push(`${PAGE.START_CONTEST}/${bundleList.first}`);
-    },
-    [dispatch, router],
-  );
-
-  useEffect(() => {
-    if (user?.role !== CUSTOMER) router.replace(PAGE.HOME);
-  }, [router, user]);
-
-  return (
-    <div>
-      <Header />
+const StartContestPage = () => (
+  <>
+    <Header />
+    <main>
       <div className={styles.startContestHeader}>
         <div className={styles.startContestInfo}>
           <h2>START A CONTEST</h2>
@@ -67,24 +32,7 @@ const StartContestPage = () => {
           <hr />
         </div>
         <div className={styles.baseBundles}>
-          <BundleBox
-            describe="Get up and running with the perfect name."
-            header="Name"
-            icons={[[NameIcon, BlueNameIcon]]}
-            setBundle={setBundle}
-          />
-          <BundleBox
-            describe="Kickstart your venture with a unique, memorable logo."
-            header="Logo"
-            icons={[[LogoIcon, BlueLogoIcon]]}
-            setBundle={setBundle}
-          />
-          <BundleBox
-            describe="Connect deeply with your target audience with an on-target tagline."
-            header="Tagline"
-            icons={[[TaglineIcon, BlueTaglineIcon]]}
-            setBundle={setBundle}
-          />
+          <Bundles bundles={SINGLE_BUNDLES} />
         </div>
       </div>
       <div className={styles.combinedBundles}>
@@ -98,51 +46,15 @@ const StartContestPage = () => {
           <hr />
         </div>
         <div className={styles.baseBundles}>
-          <BundleBox
-            describe="Get the essentials needed to establish your brand together and save."
-            header="Name+Logo"
-            setBundle={setBundle}
-            icons={[
-              [NameIcon, BlueNameIcon],
-              [LogoIcon, BlueLogoIcon],
-            ]}
-          />
-          <BundleBox
-            describe="Communicate your vision with the perfect Name/Tagline combo."
-            header="Name+Tagline"
-            setBundle={setBundle}
-            icons={[
-              [NameIcon, BlueNameIcon],
-              [TaglineIcon, BlueTaglineIcon],
-            ]}
-          />
-          <BundleBox
-            describe="Description for Logo + Tagline will come here."
-            header="Tagline+Logo"
-            setBundle={setBundle}
-            icons={[
-              [LogoIcon, BlueLogoIcon],
-              [TaglineIcon, BlueTaglineIcon],
-            ]}
-          />
-          <BundleBox
-            describe="Establish your entire brand identity and save with this bundle."
-            header="Name+Tagline+Logo"
-            setBundle={setBundle}
-            icons={[
-              [NameIcon, BlueNameIcon],
-              [LogoIcon, BlueLogoIcon],
-              [TaglineIcon, BlueTaglineIcon],
-            ]}
-          />
+          <Bundles bundles={COMBO_BUNDLES} />
         </div>
       </div>
       <div className={styles.buttonGroup}>
         <ButtonGroup />
       </div>
-      <Footer />
-    </div>
-  );
-};
+    </main>
+    <Footer />
+  </>
+);
 
 export default StartContestPage;
