@@ -95,8 +95,8 @@
       "warn",
       {
         "namedComponents": [
-          "function-declaration",
-          "function-expression",
+          // "function-declaration",
+          // "function-expression",
           "arrow-function"
         ],
         "unnamedComponents": []
