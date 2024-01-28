@@ -21,12 +21,7 @@ class NotificationSocket extends WebSocket {
         toast('Someone liked your offer');
       })
       .on(NOTIFICATION_CHANGE_OFFER_STATUS, (message: NotificationProps) => {
-        toast(
-          <Notification
-            contestId={message.contestId}
-            message={message.message}
-          />,
-        );
+        toast(<Notification {...message} />);
       });
   }
 

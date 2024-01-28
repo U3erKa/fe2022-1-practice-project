@@ -11,23 +11,21 @@ import {
   HowItWorksQnA,
 } from 'components/how-it-works';
 
-const HowItWorksPage: FC = () => {
-  return (
-    <>
-      <Header />
-      <main>
-        <HowItWorksIntro />
-        <HowItWorksCards />
-        <HowContestsWork />
-        <HowItWorksQnA />
-        <GetStarted />
-        <GetStartedImages />
-        <ContactUs />
-        <Featured />
-      </main>
-      <Footer />
-    </>
-  );
-};
+const HowItWorksPage: FC = () => (
+  <>
+    <Header />
+    <main>
+      <HowItWorksIntro />
+      <HowItWorksCards />
+      <HowContestsWork />
+      <HowItWorksQnA />
+      <GetStarted />
+      <GetStartedImages />
+      <ContactUs />
+      <Featured />
+    </main>
+    <Footer />
+  </>
+);
 
 export default HowItWorksPage;

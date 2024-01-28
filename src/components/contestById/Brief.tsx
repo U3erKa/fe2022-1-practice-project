@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { ContestForm, ContestInfo } from 'components/contest';
 import { Error } from 'components/general';

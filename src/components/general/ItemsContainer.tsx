@@ -20,10 +20,7 @@ const ItemsContainer: FC<Props> = ({
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight;
 
-    if (!items.length) {
-      return;
-    }
-    if (isScrolledToBottom && haveMore) {
+    if (items.length && isScrolledToBottom && haveMore) {
       loadMore(items.length);
     }
   };

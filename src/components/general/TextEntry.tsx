@@ -6,37 +6,33 @@ export type Props = {
 };
 
 const TextEntry: FC<Props> = ({ text }) => {
-  const entries = text.map(
-    ({ id: _id, className, text, type, href, ...props }, i) => {
-      const id = _id ?? i;
-      switch (type) {
-        case 'link': {
-          return (
-            <a className={className} href={href} key={id} {...props}>
-              {text}
-            </a>
-          );
-        }
-        case 'span': {
-          return (
-            <span className={className} key={id} {...props}>
-              {text}
-            </span>
-          );
-        }
-        case 'plain':
-        default: {
-          return (
-            <Fragment key={id} {...props}>
-              {text}
-            </Fragment>
-          );
-        }
+  return text.map(({ id: _id, className, text, type, href, ...props }, i) => {
+    const id = _id ?? i;
+    switch (type) {
+      case 'link': {
+        return (
+          <a className={className} href={href} key={id} {...props}>
+            {text}
+          </a>
+        );
       }
-    },
-  );
-
-  return entries;
+      case 'span': {
+        return (
+          <span className={className} key={id} {...props}>
+            {text}
+          </span>
+        );
+      }
+      case 'plain':
+      default: {
+        return (
+          <Fragment key={id} {...props}>
+            {text}
+          </Fragment>
+        );
+      }
+    }
+  });
 };
 
 export default TextEntry;

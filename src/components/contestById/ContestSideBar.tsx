@@ -17,9 +17,8 @@ export type Props = {
 
 const ContestSideBar: FC<Props> = ({ totalEntries, contestData }) => {
   const data = useSelector(({ userStore }) => userStore.data);
-  const { User, prize, createdAt } = contestData ?? {};
-
-  if (!User) return null;
+  if (!contestData) return null;
+  const { User, prize, createdAt } = contestData;
 
   return (
     <div className={styles.contestSideBarInfo}>

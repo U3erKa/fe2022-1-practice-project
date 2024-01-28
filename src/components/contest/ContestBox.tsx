@@ -20,13 +20,24 @@ const ContestBox: FC<Props> = ({ data }) => {
     router.push(`/contest/${contest_id}`);
   };
 
-  const getPreferenceContest = () => {
-    if (data.contestType === NAME_CONTEST) return data.typeOfName;
-    if (data.contestType === LOGO_CONTEST) return data.brandStyle;
-    return data.typeOfTagline;
-  };
+  const {
+    brandStyle,
+    contestType,
+    count,
+    id,
+    prize,
+    title,
+    typeOfName,
+    typeOfTagline,
+  } = data;
 
-  const { id, title, contestType, prize, count } = data;
+  let preferenceContest:
+    | typeof brandStyle
+    | typeof typeOfName
+    | typeof typeOfTagline = typeOfTagline;
+  if (contestType === NAME_CONTEST) preferenceContest = typeOfName;
+  else if (contestType === LOGO_CONTEST) preferenceContest = brandStyle;
+
   return (
     <div
       className={styles.contestBoxContainer}
@@ -40,8 +51,7 @@ const ContestBox: FC<Props> = ({ data }) => {
           <span className={styles.id}>{`(#${id})`}</span>
         </div>
         <div className={styles.contestType}>
-          {/* prettier-ignore */}
-          <span>{`${capitalize(contestType)} / ${getPreferenceContest()}`}</span>
+          <span>{`${capitalize(contestType)} / ${preferenceContest}`}</span>
         </div>
         <div className={styles.contestType}>
           <span>

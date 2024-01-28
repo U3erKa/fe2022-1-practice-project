@@ -17,7 +17,7 @@ export type Props = {
   readonly params: { id: number };
 };
 
-const ContestPage: FC<Props> = ({ params: { id } }) => {
+const ContestPage = (({ params: { id } }) => {
   const { imagePath, isShowOnFull } = useSelector(({ contestByIdStore }) => {
     const { imagePath, isShowOnFull } = contestByIdStore;
     return { imagePath, isShowOnFull };
@@ -52,6 +52,6 @@ const ContestPage: FC<Props> = ({ params: { id } }) => {
       <ContestPageContents contestId={id} />
     </OnlyAuthorizedUser>
   );
-};
+}) satisfies FC<Props>;
 
 export default ContestPage;

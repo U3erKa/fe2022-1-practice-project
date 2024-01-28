@@ -13,14 +13,11 @@ const BlockMessage: FC<Props> = ({ chatData, userId }) => {
   const userIndex = participants.indexOf(userId);
   let message: string | undefined;
 
-  if (chatData) {
-    if (blackList[userIndex]) {
-      message = 'You block him';
-    } else if (blackList.includes(true)) {
-      message = 'He block you';
-    }
-  }
-  if (!message) {
+  if (blackList[userIndex]) {
+    message = 'You blocked this user';
+  } else if (blackList.includes(true)) {
+    message = 'This user blocked you';
+  } else {
     return null;
   }
 
