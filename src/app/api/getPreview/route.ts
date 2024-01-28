@@ -39,8 +39,10 @@ export async function POST(req: NextRequest) {
     });
 
     for (const conversation of conversations) {
-      const { participants, dataValues, messages } = conversation;
+      const { participant1, participant2, dataValues, messages } = conversation;
+      const participants = [participant1, participant2];
       Object.assign(dataValues, {
+        participants,
         // @ts-expect-error
         text: messages?.at(-1).body,
       });

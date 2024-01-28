@@ -22,12 +22,18 @@ export async function POST(req: NextRequest) {
     await catalog.addChat(chatId);
     const chats = await catalog.getChats();
 
+    for (const { dataValues, participant1, participant2 } of chats) {
+      Object.assign(dataValues, { participants: [participant1, participant2] });
+    }
     Object.assign(catalog.dataValues, { chats: chats ?? [] });
 
     return NextResponse.json(catalog as _Catalog);
 
+    type _Chat = InferAttributes<(typeof chats)[number]>;
     type _Catalog = typeof catalog & {
-      chats: InferAttributes<(typeof chats)[number]>[];
+      chats: (_Chat & {
+        participants: [_Chat['participant1'], _Chat['participant2']];
+      })[];
     };
   } catch (error) {
     return handleError(error);

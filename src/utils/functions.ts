@@ -75,11 +75,11 @@ export function uniqueId(prefix?: any) {
   return `${prefix?.toString() ?? ''}${++_uniqueIdNum}`;
 }
 
-export function isTuple(list: unknown): asserts list is [unknown, unknown] {
+export function isTuple(list: boolean[]): asserts list is [boolean, boolean] {
   if (!(list instanceof Array)) {
     throw new ApplicationError('Must be an array');
   }
   if (list.length !== 2) {
-    throw new ApplicationError('Must be tuple of 2 items');
+    throw new ApplicationError('Must be tuple of 2 booleans');
   }
 }

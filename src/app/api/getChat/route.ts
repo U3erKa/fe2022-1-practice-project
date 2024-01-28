@@ -11,12 +11,12 @@ export async function POST(req: NextRequest) {
     const authorization = headers.get('Authorization')!.split(' ')[1]!;
     const { userId } = await verifyAccessToken(authorization);
     const { interlocutorId } = await json();
-    const participants = [userId, interlocutorId].sort(
+    const [participant1, participant2] = [userId, interlocutorId].sort(
       (participant1, participant2) => participant1 - participant2,
     ) as [number, number];
 
     const [conversation, isCreated] = await Conversation.findOrCreate({
-      where: { participants },
+      where: { participant1, participant2 },
       include: {
         as: 'messages',
         model: Message,
@@ -26,7 +26,8 @@ export async function POST(req: NextRequest) {
       defaults: {
         blackList: [false, false],
         favoriteList: [false, false],
-        participants,
+        participant1,
+        participant2,
       },
     });
 
@@ -37,6 +38,10 @@ export async function POST(req: NextRequest) {
 
     const { id, firstName, lastName, displayName, avatar } = await findUser({
       id: interlocutorId,
+    });
+
+    Object.assign(conversation, {
+      participants: [conversation.participant1, conversation.participant2],
     });
 
     return NextResponse.json({
