@@ -12,7 +12,7 @@ import { Brief, ContestOffersList, ContestSideBar } from '.';
 import type { WithId } from 'types/_common';
 import styles from './styles/ContestPage.module.scss';
 
-function ContestPageContents({ contestId }: WithId<'contestId'>) {
+const ContestPageContents = ({ contestId }: WithId<'contestId'>) => {
   const { contestData, error, isBrief, isFetching, offers, role, userId } =
     useSelector(({ contestByIdStore, userStore }) => {
       const { error, isFetching, isBrief, contestData, offers } =
@@ -83,6 +83,6 @@ function ContestPageContents({ contestId }: WithId<'contestId'>) {
       <ContestSideBar contestData={contestData} totalEntries={offers.length} />
     </div>
   );
-}
+};
 
 export default ContestPageContents;

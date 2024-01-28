@@ -9,19 +9,19 @@ export type Props = {
   readonly isPast?: boolean;
 };
 
-export default function EventsList({ isPast = false, events }: Props) {
-  return (
-    <article className={styles.container}>
-      <section className={styles.headingContainer}>
-        <h1 className={styles.heading}>
-          {isPast ? 'Past checks' : 'Live upcoming checks'}
-        </h1>
-        <p className={styles.textContainer}>
-          <span>Remaining time</span>
-          <FontAwesomeIcon className={styles.pending} icon={faClock} />
-        </p>
-      </section>
-      <EventListItems events={events} />
-    </article>
-  );
-}
+const EventsList = ({ isPast = false, events }: Props) => (
+  <article className={styles.container}>
+    <section className={styles.headingContainer}>
+      <h1 className={styles.heading}>
+        {isPast ? 'Past checks' : 'Live upcoming checks'}
+      </h1>
+      <p className={styles.textContainer}>
+        <span>Remaining time</span>
+        <FontAwesomeIcon className={styles.pending} icon={faClock} />
+      </p>
+    </section>
+    <EventListItems events={events} />
+  </article>
+);
+
+export default EventsList;

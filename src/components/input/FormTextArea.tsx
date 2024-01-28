@@ -14,12 +14,12 @@ export type Props<T extends FieldValues> =
       >;
     };
 
-function FormTextArea<T extends FieldValues>({
+const FormTextArea = <T extends FieldValues>({
   name,
   control,
   classes,
   ...rest
-}: Props<T>) {
+}: Props<T>) => {
   const {
     field,
     fieldState: { isTouched, error },
@@ -35,6 +35,6 @@ function FormTextArea<T extends FieldValues>({
       {error ? <span className={warning}>{error.message}</span> : null}
     </div>
   );
-}
+};
 
 export default FormTextArea;

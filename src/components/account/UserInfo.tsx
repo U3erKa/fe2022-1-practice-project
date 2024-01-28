@@ -18,14 +18,12 @@ type Props2 = {
   readonly value: string;
 };
 
-const InfoBlock: FC<Props2> = ({ label, value }) => {
-  return (
-    <div className={styles.infoBlock}>
-      <span className={styles.label}>{label}</span>
-      <span className={styles.info}>{value}</span>
-    </div>
-  );
-};
+const InfoBlock: FC<Props2> = ({ label, value }) => (
+  <div className={styles.infoBlock}>
+    <span className={styles.label}>{label}</span>
+    <span className={styles.info}>{value}</span>
+  </div>
+);
 
 const UserInfoData: FC<Props> = ({ userData }) => {
   const { firstName, lastName, displayName, email, role, balance } =

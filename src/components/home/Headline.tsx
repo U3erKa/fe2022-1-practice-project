@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { HEADER_ANIMATION_TEXT } from 'constants/general';
 import styles from '../../app/styles/page.module.scss';
 
-export default function Headline() {
+const Headline = () => {
   const [index, setIndex] = useState(0);
   const [styleName, setStyle] = useState(styles.headlineStatic);
 
@@ -28,4 +28,6 @@ export default function Headline() {
       <span className={styleName}>{text}</span>
     </div>
   );
-}
+};
+
+export default Headline;

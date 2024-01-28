@@ -12,14 +12,14 @@ export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
     readonly classes: Record<string, string>;
   };
 
-const FieldFileInput = function <T extends FieldValues>({
+const FieldFileInput = <T extends FieldValues>({
   name,
   control,
   register,
   classes,
   id,
   ...rest
-}: Props<T>) {
+}: Props<T>) => {
   const { field } = useController({ name, control });
   const { fileUploadContainer, labelClass, fileNameClass, fileInput } = classes;
 

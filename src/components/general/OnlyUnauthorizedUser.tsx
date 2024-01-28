@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'hooks';
 import { PAGE } from 'constants/general';
 import { clearAuthError } from 'store/slices/authSlice';
 
-export default function OnlyUnauthorizedUser({ children }: PropsWithChildren) {
+const OnlyUnauthorizedUser = ({ children }: PropsWithChildren) => {
   const user = useSelector(({ userStore }) => userStore.data);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -22,4 +22,6 @@ export default function OnlyUnauthorizedUser({ children }: PropsWithChildren) {
   }
 
   return children;
-}
+};
+
+export default OnlyUnauthorizedUser;

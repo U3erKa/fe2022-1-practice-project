@@ -9,7 +9,7 @@ import { getEvents } from 'store/slices/eventSlice';
 import { refresh } from 'store/slices/userSlice';
 import { Spinner } from '.';
 
-function Toast({ children }: React.PropsWithChildren) {
+const Toast = ({ children }: React.PropsWithChildren) => {
   const { isFetching, user } = useSelector(({ userStore, events }) => {
     const { data: user, isFetching: isFetchingUsers } = userStore;
     const { isFetching: isFetchingEvents } = events;
@@ -45,6 +45,6 @@ function Toast({ children }: React.PropsWithChildren) {
       <ChatContainer />
     </>
   );
-}
+};
 
 export default Toast;

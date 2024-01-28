@@ -11,9 +11,13 @@ export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
     readonly classes: Record<'container' | 'warning', string>;
   };
 
-const AgreeTermOfServiceInput = function AgreeTermOfServiceInput<
-  T extends FieldValues,
->({ id, classes, name, control, ...rest }: Props<T>) {
+const AgreeTermOfServiceInput = <T extends FieldValues>({
+  id,
+  classes,
+  name,
+  control,
+  ...rest
+}: Props<T>) => {
   const {
     field,
     fieldState: { error, isTouched },

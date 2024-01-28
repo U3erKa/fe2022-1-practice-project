@@ -10,7 +10,7 @@ export type Props = {
 
 const EVENTS: [] = [];
 
-export default function EventListItems({ events = EVENTS }: Props) {
+const EventListItems = ({ events = EVENTS }: Props) => {
   const isFetching = useSelector(({ events }) => events.isFetching);
 
   if (isFetching) return <Spinner />;
@@ -25,4 +25,6 @@ export default function EventListItems({ events = EVENTS }: Props) {
       ))}
     </article>
   );
-}
+};
+
+export default EventListItems;

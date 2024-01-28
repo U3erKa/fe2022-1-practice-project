@@ -13,7 +13,7 @@ export type Props = {
   readonly activeEvents: number;
 };
 
-export default function ProfileNavBar({ list, activeEvents }: Props) {
+const ProfileNavBar = ({ list, activeEvents }: Props) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -44,4 +44,6 @@ export default function ProfileNavBar({ list, activeEvents }: Props) {
       </li>
     </ul>
   );
-}
+};
+
+export default ProfileNavBar;

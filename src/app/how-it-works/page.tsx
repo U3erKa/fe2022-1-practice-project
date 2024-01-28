@@ -11,7 +11,7 @@ import {
   HowItWorksQnA,
 } from 'components/how-it-works';
 
-const HowItWorksPage: FC = () => (
+const HowItWorksPage = (() => (
   <>
     <Header />
     <main>
@@ -26,6 +26,6 @@ const HowItWorksPage: FC = () => (
     </main>
     <Footer />
   </>
-);
+)) satisfies FC;
 
 export default HowItWorksPage;

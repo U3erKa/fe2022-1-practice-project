@@ -18,7 +18,7 @@ const buttons = [
   { filter: true, name: 'Reviewed offers' },
 ];
 
-export default function ModeratorDashboard() {
+const ModeratorDashboard = () => {
   const { contestData, error, haveMore, isFetching, isReviewed, offers } =
     useSelector(({ contestByIdStore }) => {
       const { contestData, error, haveMore, isFetching, isReviewed, offers } =
@@ -77,4 +77,6 @@ export default function ModeratorDashboard() {
       </div>
     </main>
   );
-}
+};
+
+export default ModeratorDashboard;

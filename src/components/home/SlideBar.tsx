@@ -22,28 +22,26 @@ type Props = {
     | typeof MAIN_SLIDER;
 };
 
-const SliderBar: FC<Props & SwiperProps> = ({ carouselType, ...props }) => {
-  return (
-    <Swiper
-      loop
-      className={styles.carousel}
-      modules={[Autoplay]}
-      slidesPerView={1}
-      spaceBetween={10}
-      autoplay={{
-        delay: 3000,
-        pauseOnMouseEnter: true,
-      }}
-      breakpoints={{
-        512: { slidesPerView: 2, spaceBetween: 20 },
-        1024: { slidesPerView: 3, spaceBetween: 30 },
-      }}
-      {...props}
-    >
-      {carouselSlides({ carouselType })}
-    </Swiper>
-  );
-};
+const SliderBar: FC<Props & SwiperProps> = ({ carouselType, ...props }) => (
+  <Swiper
+    loop
+    className={styles.carousel}
+    modules={[Autoplay]}
+    slidesPerView={1}
+    spaceBetween={10}
+    autoplay={{
+      delay: 3000,
+      pauseOnMouseEnter: true,
+    }}
+    breakpoints={{
+      512: { slidesPerView: 2, spaceBetween: 20 },
+      1024: { slidesPerView: 3, spaceBetween: 30 },
+    }}
+    {...props}
+  >
+    {carouselSlides({ carouselType })}
+  </Swiper>
+);
 
 export const carouselSlides = ({ carouselType }: Props) => {
   switch (carouselType) {

@@ -3,12 +3,7 @@ import type { CreateEventResponse } from 'api/rest/eventController';
 import { getEventProgress } from 'utils/functions';
 import styles from './styles/EventListItems.module.scss';
 
-export default function Event({
-  id,
-  name,
-  date,
-  createdAt,
-}: CreateEventResponse) {
+const Event = ({ id, name, date, createdAt }: CreateEventResponse) => {
   const [time, setTime] = useState('');
   const [progress, setProgress] = useState(0);
 
@@ -36,4 +31,6 @@ export default function Event({
       <progress className={styles.progress} value={progress} />
     </section>
   );
-}
+};
+
+export default Event;

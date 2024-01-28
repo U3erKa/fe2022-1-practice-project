@@ -13,23 +13,21 @@ export type Article = {
   article: TextEntryT | string;
 };
 
-const RegistrationArticles: FC<Props> = ({ articles }) => {
-  return (
-    <div className={styles.columnContainer}>
-      {articles.map(({ id, header, article }) => (
-        <Fragment key={id}>
-          <div className={styles.headerArticle}>{header}</div>
-          {Array.isArray(article) ? (
-            <div className={styles.article}>
-              <TextEntry text={article} />
-            </div>
-          ) : (
-            <div className={styles.article}>{article as string}</div>
-          )}
-        </Fragment>
-      ))}
-    </div>
-  );
-};
+const RegistrationArticles: FC<Props> = ({ articles }) => (
+  <div className={styles.columnContainer}>
+    {articles.map(({ id, header, article }) => (
+      <Fragment key={id}>
+        <div className={styles.headerArticle}>{header}</div>
+        {Array.isArray(article) ? (
+          <div className={styles.article}>
+            <TextEntry text={article} />
+          </div>
+        ) : (
+          <div className={styles.article}>{article as string}</div>
+        )}
+      </Fragment>
+    ))}
+  </div>
+);
 
 export default RegistrationArticles;

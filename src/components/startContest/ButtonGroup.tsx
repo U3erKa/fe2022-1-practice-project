@@ -6,7 +6,7 @@ import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
 import { changeNameMathesDomain } from 'store/slices/contestCreationSlice';
 import styles from './styles/ButtonGroup.module.scss';
 
-export default function ButtonGroup() {
+const ButtonGroup = () => {
   const nameMathesDomain = useSelector(
     ({ contestCreationStore }) => contestCreationStore.nameMathesDomain,
   );
@@ -27,4 +27,6 @@ export default function ButtonGroup() {
       <p className={styles.text}>{text}</p>
     </button>
   ));
-}
+};
+
+export default ButtonGroup;

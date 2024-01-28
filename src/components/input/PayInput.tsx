@@ -15,7 +15,7 @@ export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
     readonly replacement?: MaskProps['replacement'];
   } & (Pick<MaskProps, 'mask' | 'replacement'> | { mask?: undefined });
 
-function PayInput<T extends FieldValues>({
+const PayInput = <T extends FieldValues>({
   changeFocus,
   classes,
   mask,
@@ -23,7 +23,7 @@ function PayInput<T extends FieldValues>({
   name,
   control,
   ...rest
-}: Props<T>) {
+}: Props<T>) => {
   const {
     field: { ref, value, ...field },
     fieldState: { isTouched, error },
@@ -48,6 +48,6 @@ function PayInput<T extends FieldValues>({
       ) : null}
     </div>
   );
-}
+};
 
 export default PayInput;

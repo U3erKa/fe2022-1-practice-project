@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, type FC } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { BundleBox } from 'components/startContest';
 import type { SINGLE_BUNDLES } from 'constants/contest';
@@ -13,7 +13,7 @@ type Props = {
   bundles: typeof SINGLE_BUNDLES;
 };
 
-export default function Bundles({ bundles }: Props) {
+const Bundles = (({ bundles }) => {
   const role = useSelector(({ userStore }) => userStore.data?.role);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -40,4 +40,6 @@ export default function Bundles({ bundles }: Props) {
   return bundles.map((bundle) => (
     <BundleBox key={bundle.header} setBundle={setBundle} {...bundle} />
   ));
-}
+}) satisfies FC<Props>;
+
+export default Bundles;

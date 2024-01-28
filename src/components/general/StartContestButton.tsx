@@ -5,7 +5,7 @@ import { useSelector } from 'hooks';
 import { CUSTOMER, PAGE } from 'constants/general';
 import styles from './styles/Header.module.scss';
 
-export default function StartContestButton() {
+const StartContestButton = () => {
   const { isFetching, role } = useSelector(({ userStore }) => {
     const { isFetching, data } = userStore;
     return { isFetching, role: data?.role };
@@ -17,4 +17,6 @@ export default function StartContestButton() {
       START CONTEST
     </Link>
   );
-}
+};
+
+export default StartContestButton;

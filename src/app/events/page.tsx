@@ -6,7 +6,7 @@ import { CreateEvent, EventsList } from 'components/events';
 import { Footer, Header, OnlyAuthorizedUser } from 'components/general';
 import { getRemainingTime } from 'utils/functions';
 
-export default function EventsPage() {
+const EventsPage = () => {
   const events = useSelector(({ events }) => events.events);
   const forceUpdate = useForceUpdate();
 
@@ -28,4 +28,6 @@ export default function EventsPage() {
       <Footer />
     </OnlyAuthorizedUser>
   );
-}
+};
+
+export default EventsPage;

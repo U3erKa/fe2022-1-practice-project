@@ -17,13 +17,13 @@ export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
     readonly type: HTMLInputTypeAttribute;
   };
 
-const RoleInput = function RoleInput<T extends FieldValues>({
+const RoleInput = <T extends FieldValues>({
   name,
   control,
   strRole,
   infoRole,
   ...props
-}: Props<T>) {
+}: Props<T>) => {
   const { field } = useController({ name, control });
   const { value } = field;
 

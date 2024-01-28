@@ -25,7 +25,7 @@ export type FormSelectProps<T extends FieldValues> =
 
 const OPTIONS_ARRAY: string[] = [];
 
-const SelectInput = function SelectInput<T extends FieldValues>({
+const SelectInput = <T extends FieldValues>({
   name,
   control,
   header,
@@ -33,7 +33,7 @@ const SelectInput = function SelectInput<T extends FieldValues>({
   optionsArray = OPTIONS_ARRAY,
   valueArray,
   ...rest
-}: FormSelectProps<T>) {
+}: FormSelectProps<T>) => {
   const {
     field,
     fieldState: { error },

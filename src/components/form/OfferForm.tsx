@@ -49,11 +49,11 @@ const imageUploadClasses = {
 
 const name = 'offerData';
 
-const OfferInput = function ({
+const OfferInput = ({
   control,
   register,
   contestType,
-}: Props<{ [name]: string }>) {
+}: Props<{ [name]: string }>) => {
   return contestType === LOGO_CONTEST ? (
     <ImageUpload
       classes={imageUploadClasses}

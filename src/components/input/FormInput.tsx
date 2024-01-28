@@ -22,13 +22,13 @@ export type FormInputProps<T extends FieldValues> =
 
 const DEFAULT_CLASSES = {};
 
-const FormInput = function FormInput<T extends FieldValues>({
+const FormInput = <T extends FieldValues>({
   name,
   control,
   classes = DEFAULT_CLASSES,
   label,
   ...props
-}: FormInputProps<T>) {
+}: FormInputProps<T>) => {
   const {
     field,
     fieldState: { invalid, isTouched, error },

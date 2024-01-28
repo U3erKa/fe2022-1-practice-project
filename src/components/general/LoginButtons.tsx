@@ -12,7 +12,7 @@ import MenuIcon from 'assets/icons/menu-down.png';
 import SpinnerLoader from './Spinner';
 import styles from './styles/LoginButtons.module.scss';
 
-export default function LoginButtons() {
+const LoginButtons = () => {
   const { avatar, displayName, events, isFetching } = useSelector(
     ({ userStore, events }) => {
       const { isFetching, data: user } = userStore;
@@ -76,4 +76,6 @@ export default function LoginButtons() {
       <Image alt="email" className={styles.emailIcon} src={EmailIcon} />
     </>
   );
-}
+};
+
+export default LoginButtons;

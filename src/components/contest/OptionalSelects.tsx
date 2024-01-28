@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { FieldValues, UseControllerProps } from 'react-hook-form';
 import { useSelector } from 'hooks';
 import { Spinner } from 'components/general';
@@ -31,10 +32,10 @@ const CONTEST_NAME = {
   [TAGLINE_CONTEST]: ['nameVenture', 'typeOfTagline'],
 } as const;
 
-const OptionalSelects = function <T extends FieldValues>({
+const OptionalSelects = (<T extends FieldValues>({
   contestType,
   control,
-}: Props<T>) {
+}: Props<T>) => {
   const { data, isFetching } = useSelector(({ dataForContest }) => {
     const { data, isFetching } = dataForContest;
     return { data, isFetching };
@@ -119,6 +120,6 @@ const OptionalSelects = function <T extends FieldValues>({
       return null;
     }
   }
-};
+}) satisfies FC<Props<FieldValues>>;
 
 export default OptionalSelects;

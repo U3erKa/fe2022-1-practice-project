@@ -5,8 +5,8 @@ export type Props = {
   readonly text: TextEntryT[];
 };
 
-const TextEntry: FC<Props> = ({ text }) => {
-  return text.map(({ id: _id, className, text, type, href, ...props }, i) => {
+const TextEntry: FC<Props> = ({ text }) =>
+  text.map(({ id: _id, className, text, type, href, ...props }, i) => {
     const id = _id ?? i;
     switch (type) {
       case 'link': {
@@ -33,6 +33,5 @@ const TextEntry: FC<Props> = ({ text }) => {
       }
     }
   });
-};
 
 export default TextEntry;

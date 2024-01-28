@@ -29,7 +29,7 @@ const formInputClasses = {
   label: styles.text,
 };
 
-export default function CreateEvent({ forceUpdate }: Props) {
+const CreateEvent = ({ forceUpdate }: Props) => {
   const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
     defaultValues,
@@ -70,4 +70,6 @@ export default function CreateEvent({ forceUpdate }: Props) {
       </button>
     </form>
   );
-}
+};
+
+export default CreateEvent;

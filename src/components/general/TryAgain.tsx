@@ -7,13 +7,11 @@ export type Props = {
   readonly getData: () => void;
 };
 
-const TryAgain: FC<Props> = ({ getData }) => {
-  return (
-    <div className={styles.container}>
-      <span onClick={getData}>Server Error. Try again</span>
-      <FontAwesomeIcon icon={faRotateRight} onClick={getData} />
-    </div>
-  );
-};
+const TryAgain: FC<Props> = ({ getData }) => (
+  <div className={styles.container}>
+    <span onClick={getData}>Server Error. Try again</span>
+    <FontAwesomeIcon icon={faRotateRight} onClick={getData} />
+  </div>
+);
 
 export default TryAgain;

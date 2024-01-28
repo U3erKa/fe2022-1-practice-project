@@ -19,12 +19,12 @@ const imageId = 'imagePreview';
 const fileInputId = 'fileInput';
 const imageType = /image.*/;
 
-const ImageUpload = function <T extends FieldValues>({
+const ImageUpload = <T extends FieldValues>({
   name,
   control,
   register,
   classes,
-}: Props<T>) {
+}: Props<T>) => {
   const { field } = useController({ name, control });
   const { uploadContainer, inputContainer, imgStyle } = classes;
 

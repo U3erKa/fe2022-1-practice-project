@@ -30,14 +30,12 @@ type Props2 = {
   readonly value: string;
 };
 
-function DataContainer({ label, value }: Props2) {
-  return (
-    <div className={styles.dataContainer}>
-      <span className={styles.label}>{label}</span>
-      <span className={styles.data}>{value}</span>
-    </div>
-  );
-}
+const DataContainer = ({ label, value }: Props2) => (
+  <div className={styles.dataContainer}>
+    <span className={styles.label}>{label}</span>
+    <span className={styles.data}>{value}</span>
+  </div>
+);
 
 const ContestInfo: FC<Props> = ({
   changeEditContest,
