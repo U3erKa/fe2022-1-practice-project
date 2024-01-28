@@ -48,7 +48,7 @@ const Dialog: FC<Props> = ({ userId }) => {
     <>
       <ChatHeader userId={userId} />
       <MainDialog
-        messages={messages!}
+        messages={messages}
         messagesEnd={messagesEnd}
         userId={userId}
       />

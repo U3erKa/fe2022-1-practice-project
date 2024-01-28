@@ -36,9 +36,11 @@ function ContestPageContents({ contestId }: WithId<'contestId'>) {
     );
   }
   if (isFetching) {
-    <div className={styles.containerSpinner}>
-      <Spinner />
-    </div>;
+    return (
+      <div className={styles.containerSpinner}>
+        <Spinner />
+      </div>
+    );
   }
 
   return (

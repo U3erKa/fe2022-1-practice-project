@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx/lite';
 import { useDispatch, useSelector } from 'hooks';
 import { BUTTONS, NAME_ONLY_CHOISE } from 'constants/buttonGroup';
@@ -10,7 +12,7 @@ export default function ButtonGroup() {
   );
   const dispatch = useDispatch();
 
-  const buttons = BUTTONS.map(({ id, choise, text }) => (
+  return BUTTONS.map(({ id, choise, text }) => (
     <button
       key={id}
       className={clsx(
@@ -25,5 +27,4 @@ export default function ButtonGroup() {
       <p className={styles.text}>{text}</p>
     </button>
   ));
-  return <>{buttons}</>;
 }

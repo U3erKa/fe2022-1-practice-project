@@ -28,7 +28,8 @@ const InfoBlock: FC<Props2> = ({ label, value }) => {
 };
 
 const UserInfoData: FC<Props> = ({ userData }) => {
-  const { firstName, lastName, displayName, email, role, balance } = userData!;
+  const { firstName, lastName, displayName, email, role, balance } =
+    userData ?? {};
 
   const userInfo = [
     { id: uniqueId(), label: 'First Name', value: firstName },
@@ -41,7 +42,7 @@ const UserInfoData: FC<Props> = ({ userData }) => {
   return (
     <div className={styles.infoContainer}>
       {userInfo.map(({ id, label, value }) => (
-        <InfoBlock key={id} label={label} value={value} />
+        <InfoBlock key={id} label={label} value={value!} />
       ))}
       {role === CREATOR && (
         <InfoBlock label={'Balance'} value={`${balance}$`} />

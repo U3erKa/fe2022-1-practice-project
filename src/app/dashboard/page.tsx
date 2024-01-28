@@ -21,12 +21,12 @@ const Dashboard = () => {
   const { role } = user ?? {};
 
   return (
-    <div>
+    <>
       <Header />
       {role === CUSTOMER && <CustomerDashboard />}
       {role === CREATOR && <CreatorDashboard />}
       {role === MODERATOR && <ModeratorDashboard />}
-    </div>
+    </>
   );
 };
 

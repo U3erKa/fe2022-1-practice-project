@@ -57,7 +57,7 @@ export default function ModeratorDashboard() {
   ));
 
   return (
-    <div className={styles.mainContainer}>
+    <main className={styles.mainContainer}>
       <CustomFilter
         buttons={buttons}
         filterAction={setIsReviewed}
@@ -75,6 +75,6 @@ export default function ModeratorDashboard() {
           />
         )}
       </div>
-    </div>
+    </main>
   );
 }

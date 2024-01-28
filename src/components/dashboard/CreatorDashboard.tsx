@@ -97,7 +97,7 @@ const CreatorDashboard = () => {
   }, [contests.length, loadMore, dispatch]);
 
   return (
-    <div className={styles.mainContainer}>
+    <main className={styles.mainContainer}>
       <CreatorFilter />
       {error ? (
         <div className={styles.messageContainer}>
@@ -110,7 +110,7 @@ const CreatorDashboard = () => {
           loadMore={loadMore}
         />
       )}
-    </div>
+    </main>
   );
 };
 

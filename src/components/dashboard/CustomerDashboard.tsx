@@ -71,7 +71,7 @@ const CustomerDashboard = () => {
   }, [getContestsMethod, dispatch]);
 
   return (
-    <div className={styles.mainContainer}>
+    <main className={styles.mainContainer}>
       <CustomFilter
         buttons={buttons}
         filterAction={setNewCustomerFilter}
@@ -89,7 +89,7 @@ const CustomerDashboard = () => {
           />
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

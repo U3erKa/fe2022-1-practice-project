@@ -37,7 +37,7 @@ const TextEntry: FC<Props> = ({ text }) => {
     },
   );
 
-  return <>{entries}</>;
+  return entries;
 };
 
 export default TextEntry;
