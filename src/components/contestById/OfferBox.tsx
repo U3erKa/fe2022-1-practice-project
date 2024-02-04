@@ -196,7 +196,7 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
     () =>
       dispatch(
         changeShowImage({
-          imagePath: data.fileName,
+          imagePath: data.fileName!,
           isShowOnFull: true,
         }),
       ),
@@ -229,7 +229,8 @@ const OfferBox: FC<Props> = ({ data, contestData, setOfferStatus }) => {
           </div>
         </div>
         <div className={styles.responseConainer}>
-          {(contestData.contestType ?? data.contestType) === LOGO_CONTEST ? (
+          {(contestData.contestType ?? (data as any).contestType) ===
+          LOGO_CONTEST ? (
             <Image
               alt="logo"
               className={styles.responseLogo}

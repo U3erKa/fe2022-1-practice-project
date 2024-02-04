@@ -96,13 +96,13 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
     ) => {
       const arrayList: JSX.Element[] = [];
       for (const chatPreview of messagesPreview) {
-        if (!filterFunc || filterFunc(chatPreview, userId)) {
+        if (!filterFunc || filterFunc(chatPreview as any, userId)) {
           const dialogNode = (
             <DialogBox
               changeBlackList={changeBlackList}
               changeFavorite={changeFavorite}
               chatMode={chatMode}
-              chatPreview={chatPreview}
+              chatPreview={chatPreview as any}
               goToExpandedDialog={handleGoToExpandedDialog}
               interlocutor={chatPreview.interlocutor}
               key={uniqueId()}

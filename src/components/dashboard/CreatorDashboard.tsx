@@ -65,7 +65,7 @@ const CreatorDashboard = () => {
   }, [searchParams, parseUrlForParams]);
 
   const contestsList = contests.map((contest) => (
-    <ContestBox data={contest} key={contest.id} />
+    <ContestBox data={contest as any} key={contest.id} />
   ));
 
   const getPredicateOfRequest = useCallback(() => {

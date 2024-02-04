@@ -66,7 +66,7 @@ const getContestByIdExtraReducers = (
     .addCase(getContestById.fulfilled, (state, { payload }) => {
       state.isFetching = false;
       const { contestData, offers } = payload;
-      state.contestData = contestData;
+      state.contestData = contestData as any;
       state.offers = offers;
       state.error = null;
     })
@@ -87,7 +87,7 @@ const addOfferExtraReducers = (
   builder
     .addCase(addOffer.pending, pendingReducer)
     .addCase(addOffer.fulfilled, (state, { payload }) => {
-      state.offers.unshift(payload);
+      state.offers.unshift(payload as any);
       state.error = null;
     })
     .addCase(addOffer.rejected, (state, { payload }) => {
@@ -151,11 +151,11 @@ const changeMarkExtraReducers = (
       state.isFetching = false;
       const { data, offerId, mark } = payload;
       for (const offer of state.offers) {
-        if (offer.User.id === data.userId) {
-          offer.User.rating = data.rating;
+        if ((offer as any).User.id === data.userId) {
+          (offer as any).User.rating = data.rating;
         }
         if (offer.id === offerId) {
-          offer.mark = mark;
+          (offer as any).mark = mark;
         }
       }
       state.error = null;

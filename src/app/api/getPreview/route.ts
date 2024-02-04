@@ -3,6 +3,7 @@ import { Op } from 'sequelize';
 import { Conversation, Message, User } from 'models';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
+import type { User as _User } from 'types/models';
 
 export async function POST(req: NextRequest) {
   try {
@@ -57,7 +58,15 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return NextResponse.json(conversations);
+    return NextResponse.json(conversations as Response);
+
+    type Response = ((typeof conversations)[number] & {
+      interlocutor: Pick<
+        _User,
+        'avatar' | 'displayName' | 'firstName' | 'id' | 'lastName'
+      >;
+      participants: [typeof userId, typeof userId];
+    })[];
   } catch (error) {
     return handleError(error);
   }

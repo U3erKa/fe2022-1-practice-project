@@ -63,8 +63,8 @@ const ContestOffersList: FC<Props> = ({ offers, contestData }) => {
         ) : (
           offers.map((offer) => (
             <OfferBox
-              contestData={contestData}
-              data={offer}
+              contestData={contestData as any}
+              data={offer as any}
               key={offer.id}
               setOfferStatus={handleSetOfferStatus}
             />

@@ -19,9 +19,12 @@ const MainDialog = forwardRef<HTMLDivElement, Props>(function MainDialog(
   for (let i = 0; i < messages.length; i++) {
     const { createdAt, sender, body } = messages[i]!;
 
-    if (getDays(currentTime) !== getDays(Date.parse(createdAt))) {
+    if (
+      getDays(currentTime) !==
+      getDays(Date.parse(createdAt as unknown as string))
+    ) {
       messagesArray.push(
-        <div className={styles.date} key={createdAt}>
+        <div className={styles.date} key={createdAt as unknown as string}>
           {new Date(createdAt).toDateString()}
         </div>,
       );

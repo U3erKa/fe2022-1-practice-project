@@ -61,6 +61,7 @@ const ContestInfo: FC<Props> = ({
     nameVenture,
     originalFileName,
     fileName,
+    // @ts-expect-error
     User,
     status,
   } = contestData!;
@@ -71,7 +72,6 @@ const ContestInfo: FC<Props> = ({
         (participant1, participant2) => participant1 - participant2,
       ) as [number, number];
       for (const preview of messagesPreview) {
-        // @ts-expect-error
         const { _id, participants, blackList, favoriteList } = preview;
         if (isEqual(participants, currentParticipants)) {
           return { _id, blackList, favoriteList, participants };

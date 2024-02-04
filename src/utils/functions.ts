@@ -56,10 +56,13 @@ export const getShortTimeStr = (time: Date | number | string) => {
   return date.toDateString();
 };
 
-export function getEventProgress({ date, createdAt }: CreateEventResponse) {
+export function getEventProgress({
+  date,
+  createdAt,
+}: Pick<CreateEventResponse, 'createdAt' | 'date'>) {
   const currentDate = Date.now();
   const plannedDate = Date.parse(date);
-  const createdAtDate = Date.parse(createdAt);
+  const createdAtDate = Date.parse(createdAt as unknown as string);
   const createdAtTimeframe = plannedDate - createdAtDate;
   const currentDateTimeframe = plannedDate - currentDate;
   const progressValue = 1 - currentDateTimeframe / createdAtTimeframe;

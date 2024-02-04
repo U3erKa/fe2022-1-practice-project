@@ -46,7 +46,7 @@ const CustomerDashboard = () => {
   }, [customerFilter]);
 
   const contestsList = contests.map((contest) => (
-    <ContestBox data={contest} key={contest.id} />
+    <ContestBox data={contest as any} key={contest.id} />
   ));
 
   const getContestsMethod = useCallback(

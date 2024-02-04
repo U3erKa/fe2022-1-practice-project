@@ -49,8 +49,8 @@ const ModeratorDashboard = () => {
 
   const items = offers.map((offer) => (
     <OfferBox
-      contestData={contestData}
-      data={offer}
+      contestData={contestData as any}
+      data={offer as any}
       key={offer.id}
       setOfferStatus={setOfferStatusMethod}
     />

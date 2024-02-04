@@ -69,7 +69,7 @@ const ContestPageContents = ({ contestId }: WithId<'contestId'>) => {
                 <OfferForm
                   contestId={contestData.id}
                   contestType={contestData.contestType}
-                  customerId={contestData.User.id}
+                  customerId={(contestData as any).User.id}
                 />
               )}
             <ContestOffersList
@@ -80,7 +80,10 @@ const ContestPageContents = ({ contestId }: WithId<'contestId'>) => {
           </div>
         )}
       </div>
-      <ContestSideBar contestData={contestData} totalEntries={offers.length} />
+      <ContestSideBar
+        contestData={contestData as any}
+        totalEntries={offers.length}
+      />
     </div>
   );
 };

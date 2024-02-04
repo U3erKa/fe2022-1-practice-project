@@ -125,13 +125,13 @@ const sendMessageExtraReducers = (
     .addCase(sendMessage.fulfilled, (state, { payload }) => {
       state.isFetching = false;
       const { messagesPreview } = state;
-      const { message, preview } = payload;
+      const { message, preview }: any = payload;
       let isNew = true;
       for (const preview of messagesPreview) {
         if (isEqual(preview.participants, message.participants)) {
           preview.createdAt = message.createdAt;
-          preview.sender = message.sender;
-          preview.text = message.body;
+          (preview as any).sender = message.sender;
+          (preview as any).text = message.body;
           isNew = false;
         }
       }
@@ -168,10 +168,10 @@ const changeChatFavoriteExtraReducers = (
       state.isFetching = false;
       const { messagesPreview } = state;
       for (const preview of messagesPreview) {
-        if (isEqual(preview.participants, payload.participants))
+        if (isEqual(preview.participants, (payload as any).participants))
           preview.favoriteList = payload.favoriteList;
       }
-      state.chatData = payload;
+      (state as any).chatData = payload;
       state.messagesPreview = messagesPreview;
     })
     .addCase(changeChatFavorite.rejected, rejectedReducer);
@@ -274,7 +274,7 @@ const createCatalogExtraReducers = (
     .addCase(createCatalog.pending, pendingReducer)
     .addCase(createCatalog.fulfilled, (state, { payload }) => {
       state.isFetching = false;
-      state.catalogList = [...state.catalogList, payload];
+      state.catalogList = [...(state.catalogList as any), payload];
       state.isShowCatalogCreation = false;
     })
     .addCase(createCatalog.rejected, (state, { payload }) => {
@@ -335,7 +335,7 @@ const removeChatFromCatalogExtraReducers = (
       const { catalogList } = state;
       for (const catalog of catalogList) {
         if (catalog._id === payload._id) {
-          catalog.chats = payload.chats;
+          catalog.chats = payload.chats as any;
           break;
         }
       }
@@ -368,7 +368,7 @@ const changeCatalogNameExtraReducers = (
         }
       }
       state.catalogList = [...catalogList];
-      state.currentCatalog = payload;
+      state.currentCatalog = payload as any;
       state.isRenameCatalog = false;
     })
     .addCase(changeCatalogName.rejected, (state, { payload }) => {
@@ -398,17 +398,17 @@ const reducers = {
     let isNew = true;
     for (const preview of messagesPreview) {
       if (isEqual(preview.participants, message.participants)) {
-        preview.createdAt = message.createdAt;
-        preview.sender = message.sender;
-        preview.text = message.body;
+        (preview as any).createdAt = message.createdAt;
+        (preview as any).sender = message.sender;
+        (preview as any).text = message.body;
         isNew = false;
       }
     }
     if (isNew) {
-      messagesPreview.push(preview);
+      messagesPreview.push(preview as any);
     }
     state.messagesPreview = messagesPreview;
-    state.messages = [...state.messages, message];
+    state.messages = [...(state.messages as any), message];
   },
 
   backToDialogList: (state: ChatState) => {

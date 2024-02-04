@@ -1,8 +1,11 @@
 import { NextResponse, type NextRequest } from 'next/server';
+import type { InferAttributes } from 'sequelize';
 import { NotFoundError } from 'errors';
 import { Catalog, Conversation } from 'models';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
+import type { WithId } from 'types/_common';
+import type { Conversation as _Conversation } from 'types/models';
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,7 +24,8 @@ export async function POST(req: NextRequest) {
     }
     await catalog.removeChat(chatId);
 
-    return NextResponse.json(catalog);
+    return NextResponse.json(catalog as Response);
+    type Response = typeof catalog & { chats: number[] };
   } catch (error) {
     return handleError(error);
   }

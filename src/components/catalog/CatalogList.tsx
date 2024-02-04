@@ -18,7 +18,7 @@ const CatalogList: FC<Props> = ({ catalogList }) => {
       event: MouseEvent<HTMLDivElement>,
       catalog: GetCatalogsResponse[number],
     ) => {
-      dispatch(changeShowModeCatalog(catalog));
+      dispatch(changeShowModeCatalog(catalog as any));
       event.stopPropagation();
     },
     [dispatch],
