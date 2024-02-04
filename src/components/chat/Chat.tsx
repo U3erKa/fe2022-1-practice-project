@@ -1,7 +1,6 @@
 import clsx from 'clsx/lite';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'hooks';
-import { chatController } from 'api/ws/socketController';
 import { CatalogCreation } from 'components/catalog';
 import { ChatError, ChatList } from 'components/chat';
 import { Dialog } from 'components/dialog';
@@ -19,12 +18,7 @@ const Chat = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    chatController.subscribe(userId);
     dispatch(getPreviewChat());
-
-    return () => {
-      chatController.unsubscribe(userId);
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
