@@ -7,7 +7,6 @@ import type {
 } from 'sequelize';
 import { ServerError } from 'errors';
 import { Contest, Offer, sequelize } from 'models';
-import { getNotificationController } from 'socketInit';
 import {
   CONTEST_STATUS_ACTIVE,
   CONTEST_STATUS_FINISHED,
@@ -65,19 +64,10 @@ export const createOffer = async (data: CreationAttributes<_Offer>) => {
   }
 };
 
-export const rejectOffer = async (
-  offerId: number,
-  creatorId: number,
-  contestId: number,
-) => {
+export const rejectOffer = async (offerId: number) => {
   const [rejectedOffer] = await updateOfferStatus(
     { status: OFFER_STATUS_REJECTED },
     { id: offerId },
-  );
-  getNotificationController().emitChangeOfferStatus(
-    creatorId,
-    'Some of yours offers was rejected',
-    contestId,
   );
   return rejectedOffer!.dataValues;
 };
@@ -127,10 +117,5 @@ END`),
       arrayRoomsId.push(offer.userId);
     }
   }
-  getNotificationController().emitChangeOfferStatus(
-    creatorId,
-    'Some of your offers WIN',
-    contestId,
-  );
   return updatedOffers[0]!.dataValues;
 };
