@@ -1,0 +1,88 @@
+@import '../../../styles/common';
+
+.carousel {
+  position: relative;
+  inline-size: 70%;
+  margin: 30px 0;
+
+  button {
+    position: absolute;
+    color: #333;
+    background: hsl(0deg 0% 100% / 75%);
+    border: none;
+  }
+
+  @media (width <= 1440px) {
+    inline-size: 80%;
+  }
+
+  @media (width <= 760px) {
+    inline-size: 90%;
+  }
+}
+
+.exampleCell,
+.feedbackCell,
+.carouselCell {
+  cursor: pointer;
+  aspect-ratio: 1;
+}
+
+.carouselCell {
+  border-radius: 3px;
+}
+
+.feedbackCell {
+  @include container;
+
+  block-size: 450px;
+  padding-block-start: 20px;
+  color: #000;
+  background-color: #fff;
+
+  img {
+    inline-size: 80px;
+    block-size: 80px;
+    border-radius: 100%;
+  }
+
+  p {
+    margin: 20px 0 10px;
+    padding: 0 20px;
+
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+
+    opacity: 0.6;
+  }
+
+  span {
+    inline-size: 100%;
+    margin-block-start: auto;
+    padding: 20px 0;
+
+    font-size: 16px;
+    text-align: center;
+
+    opacity: 0.6;
+    border-block-start: 1px solid #808080b3;
+  }
+}
+
+.exampleCell {
+  aspect-ratio: 1.67;
+
+  p {
+    @include container(flex-start, center, row);
+
+    padding: 10px 0;
+    color: #fff;
+    background-color: #333;
+    @media (hover: hover) {
+      &:hover {
+        background-color: #ff6f54;
+      }
+    }
+  }
+}

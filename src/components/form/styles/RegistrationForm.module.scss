@@ -1,0 +1,107 @@
+@import '../../../styles/auth.module';
+
+.signUpFormContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 60%;
+  min-inline-size: 280px;
+  margin: 0 auto;
+  margin-block-start: 80px;
+  padding: 10px 20px 30px;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.choseRoleContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: stretch;
+  align-self: stretch;
+  justify-content: center;
+
+  min-inline-size: 260px;
+  margin-inline: 20px;
+  @media (width <= 850px) {
+    align-self: auto;
+  }
+}
+
+.termsOfService {
+  position: relative;
+
+  align-self: stretch;
+
+  min-inline-size: 260px;
+  margin-block-end: 10px;
+  margin-inline: 20px;
+
+  font-size: 16px;
+  color: white;
+  text-align: center;
+
+  a {
+    font-size: 16px;
+    color: white;
+  }
+  @media (width <= 850px) {
+    align-self: auto;
+  }
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  inline-size: 100%;
+  min-inline-size: 260px;
+  @media (width <= 795px) {
+    inline-size: auto;
+  }
+}
+
+.inputContainer {
+  flex: 1 1;
+  align-self: flex-start;
+}
+
+.headerFormContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+
+  margin-block-end: 18px;
+
+  text-align: center;
+
+  h2 {
+    margin-block: 20px 10px;
+
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  h4 {
+    inline-size: 88%;
+    margin: 0;
+    margin-block-end: 13px;
+
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 27px;
+    color: white;
+    text-align: center;
+    word-spacing: 3px;
+  }
+}

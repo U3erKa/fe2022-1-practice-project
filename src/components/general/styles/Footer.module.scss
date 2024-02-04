@@ -1,0 +1,56 @@
+.footerTop {
+  inline-size: 100%;
+  padding: 80px 0;
+  color: white;
+  background-color: #2b3030;
+
+  article {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    justify-content: space-around;
+
+    margin: 0 auto;
+
+    section {
+      display: flex;
+      flex: 1;
+      flex-flow: column wrap;
+
+      min-inline-size: 250px;
+      max-inline-size: 300px;
+      padding: 15px;
+
+      h2 {
+        display: block;
+
+        margin-block-end: 0;
+        padding-block-end: 20px;
+
+        font-size: 16px;
+        color: #fff;
+      }
+
+      a {
+        padding-block-end: 7px;
+        font-size: 14px;
+        color: #767979;
+        text-decoration: none;
+        @media (hover: hover) {
+          &:hover {
+            color: rgb(249 118 75);
+          }
+        }
+      }
+    }
+    @media (width >= 768px) {
+      inline-size: 750px;
+    }
+    @media (width >= 992px) {
+      inline-size: 970px;
+    }
+    @media (width >= 1200px) {
+      inline-size: 1170px;
+    }
+  }
+}

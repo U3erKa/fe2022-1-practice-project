@@ -1,0 +1,34 @@
+diff --git a/es6/index.d.ts b/es6/index.d.ts
+index c7eb9c79694cccf3232d3830d9d67a6e200c0662..8f7cd0748f815435d27db5e336b6d814b979b307 100644
+--- a/es6/index.d.ts
++++ b/es6/index.d.ts
+@@ -1,2 +1,2 @@
+-declare const equal: (a: any, b: any) => boolean;
++declare const equal: <T>(a: unknown, b: T) => a is T;
+ export = equal;
+diff --git a/es6/react.d.ts b/es6/react.d.ts
+index c7eb9c79694cccf3232d3830d9d67a6e200c0662..8f7cd0748f815435d27db5e336b6d814b979b307 100644
+--- a/es6/react.d.ts
++++ b/es6/react.d.ts
+@@ -1,2 +1,2 @@
+-declare const equal: (a: any, b: any) => boolean;
++declare const equal: <T>(a: unknown, b: T) => a is T;
+ export = equal;
+diff --git a/index.d.ts b/index.d.ts
+index 3c042caa7d5916def7b11fd3a4e910ddd379ff0c..cfffbd4161a900793d6053306ef61abb68a15dc7 100644
+--- a/index.d.ts
++++ b/index.d.ts
+@@ -1,4 +1,4 @@
+ declare module 'fast-deep-equal' {
+-    const equal: (a: any, b: any) => boolean;
++    const equal: <T>(a: unknown, b: T) => a is T;
+     export = equal;
+ }
+diff --git a/react.d.ts b/react.d.ts
+index c7eb9c79694cccf3232d3830d9d67a6e200c0662..8f7cd0748f815435d27db5e336b6d814b979b307 100644
+--- a/react.d.ts
++++ b/react.d.ts
+@@ -1,2 +1,2 @@
+-declare const equal: (a: any, b: any) => boolean;
++declare const equal: <T>(a: unknown, b: T) => a is T;
+ export = equal;

@@ -1,0 +1,71 @@
+@import '../../../styles/dashboard.module';
+
+.contestsContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  inline-size: 100%;
+  margin-block-start: 15px;
+}
+
+.filterContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+
+  min-inline-size: 270px;
+  max-block-size: 350px;
+  margin-block-end: 15px;
+  margin-inline-end: 50px;
+  padding: 30px;
+
+  background-color: white;
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+  @media (width <= 1000px) {
+    flex-direction: row;
+    justify-content: center;
+    margin-inline-end: 0;
+    padding: 10px;
+  }
+}
+
+.filter {
+  align-self: stretch;
+
+  margin-block-start: 15px;
+  padding: 10px;
+
+  font-size: 18px;
+  color: #46568a;
+  text-align: center;
+
+  border-radius: 10px;
+  @media (width <= 1000px) {
+    margin: 0 5px;
+  }
+  @media (hover: hover) {
+    &:hover {
+      background-color: #eefaea;
+    }
+  }
+}
+
+.activeFilter {
+  align-self: stretch;
+
+  margin-block-start: 15px;
+  padding: 10px;
+
+  font-size: 18px;
+  color: white;
+  text-align: center;
+
+  background-color: #4e618d;
+  border-radius: 10px;
+
+  transition: 0.5s background-color;
+  @media (width <= 1000px) {
+    margin: 0 5px;
+  }
+}

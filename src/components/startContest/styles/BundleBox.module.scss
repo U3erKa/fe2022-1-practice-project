@@ -1,0 +1,93 @@
+.bundleContainer {
+  display: inline-block;
+  flex: 1 1;
+
+  min-inline-size: 170px;
+  max-inline-size: 350px;
+  block-size: 350px;
+  margin-block-end: 30px;
+  margin-inline: 20px;
+  padding: 15px 30px;
+
+  text-align: center;
+
+  background: #efefef;
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+
+      .infoContainer {
+        hr {
+          border-block-start: 1px solid #28d2d1;
+        }
+      }
+    }
+  }
+}
+
+.imgContainer {
+  margin: 20px 0;
+}
+
+.images {
+  display: inline-block;
+  margin-inline: 8px;
+
+  img {
+    &:first-child {
+      display: block;
+    }
+
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .images:hover {
+    img {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  hr {
+    inline-size: 60px;
+    margin-block: 15px;
+    border-block-start: 1px solid #ccc;
+  }
+}
+
+.bundleName {
+  margin-block: 10px;
+
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #333;
+}
+
+.infoBundle {
+  margin: 0 0 10px;
+
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #333;
+}
+
+.combinedBundle {
+  background: #f5f5f5;
+}

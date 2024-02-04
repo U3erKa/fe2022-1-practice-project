@@ -1,0 +1,76 @@
+.messageList {
+  scrollbar-gutter: stable;
+
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+
+  block-size: 280px;
+  padding: 0 8px;
+
+  &::-webkit-scrollbar {
+    inline-size: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f3f3f3;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #6b89b0;
+  }
+}
+
+.date {
+  align-self: center;
+
+  margin: 4px 0;
+  padding: 2px;
+
+  color: white;
+
+  opacity: 0.4;
+  background-color: black;
+  border-radius: 6px;
+}
+
+.ownMessage {
+  align-self: flex-end;
+  background-color: #6b89b0;
+  border-start-start-radius: 8px;
+  border-start-end-radius: 4px;
+}
+
+.message {
+  align-self: flex-start;
+  background-color: #4e618d;
+  border-start-start-radius: 4px;
+  border-start-end-radius: 8px;
+}
+
+.ownMessage,
+.message {
+  max-inline-size: 200px;
+  margin: 4px 0;
+  padding: 6px;
+
+  color: white;
+  overflow-wrap: break-word;
+
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
+}
+
+.messageTime {
+  position: relative;
+  inset-block-start: 12px;
+
+  float: inline-end;
+
+  margin-inline-start: 5px;
+
+  font-size: 10px;
+  color: white;
+}

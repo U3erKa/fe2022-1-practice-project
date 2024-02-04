@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    cursor: pointer;
+
+    margin-inline-end: 8px;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: #4e618d;
+  }
+
+  svg {
+    cursor: pointer;
+
+    position: absolute;
+    inset-inline-end: -24px;
+
+    font-size: 24px;
+    color: #4e618d;
+
+    transition: font-size 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        font-size: 30px;
+        transition: font-size 0.2s;
+        animation: rot 0.4s infinite linear;
+      }
+    }
+  }
+}
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

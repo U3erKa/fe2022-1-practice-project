@@ -1,0 +1,36 @@
+@import './common.module';
+
+.questionContainer {
+  margin: $padding 0;
+}
+
+.question {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  inline-size: 100%;
+  padding: $padding;
+
+  text-align: start;
+
+  background-color: $buttonTextColor;
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius $borderRadius 0 0;
+  @media (hover: hover) {
+    &:hover {
+      color: $mainColor;
+      background-color: $backgroundColor;
+    }
+  }
+}
+
+.arrowIcon {
+  font-size: 0.8rem;
+  color: $mainColor;
+}
+
+.activeIcon {
+  transform: rotate(90deg);
+}

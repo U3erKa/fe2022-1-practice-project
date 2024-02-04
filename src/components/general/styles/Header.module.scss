@@ -1,0 +1,154 @@
+@import '../../../styles/common';
+
+.headerContainer {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  inline-size: 100%;
+}
+
+.navContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+
+  inline-size: 100%;
+  margin: 0 auto;
+
+  border-block-end: 1px solid #ebebeb;
+  @media (width <= 920px) {
+    justify-content: center;
+  }
+  @media (width <= 750px) {
+    flex-direction: column;
+  }
+}
+
+.logo {
+  align-self: flex-end;
+  @media (width <= 920px) {
+    display: none;
+  }
+}
+
+.startContestBtn {
+  @include button;
+}
+
+.leftNav {
+  display: flex;
+  flex-wrap: nowrap;
+  @media (width <= 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.loginSignnUpHeaders {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+
+  margin-block: 30px 13px;
+
+  border: 1px solid #ebebeb;
+}
+
+.userButtonsContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  block-size: 40px;
+  margin-inline-start: 100px;
+
+  border-inline-start: 1px solid #ebebeb;
+
+  & > a > span {
+    padding: 0 15px;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: #718888;
+
+    border-inline-end: 1px solid #ebebeb;
+  }
+  @media (width <= 600px) {
+    margin-inline-start: 60px;
+  }
+  @media (width <= 400px) {
+    margin-inline-start: 20px;
+  }
+  @media (width <= 320px) {
+    margin-inline-start: 0;
+  }
+}
+
+.numberContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  block-size: 40px;
+  margin-inline-start: 120px;
+  padding: 0 15px;
+
+  color: inherit;
+  text-decoration: none;
+
+  border-inline-start: 1px solid #ebebeb;
+  border-inline-end: 1px solid #ebebeb;
+
+  & > a {
+    margin-inline-start: 10px;
+    font-size: 14px;
+    color: #337ab7;
+    @media (width <= 360px) {
+      font-size: 12px;
+    }
+  }
+  @media (width <= 600px) {
+    margin-inline-start: 10px;
+  }
+  @media (width <= 360px) {
+    margin-inline-start: 0;
+    padding: 0 5px;
+  }
+}
+
+.fixedHeader {
+  position: fixed;
+  z-index: 500;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 100vi;
+  block-size: 30px;
+
+  background-color: rgb(69 90 137);
+  border-block-end: 3px solid rgb(255 255 255);
+
+  & > a {
+    font-size: 8pt;
+    color: lightyellow;
+    text-decoration: underline;
+    letter-spacing: 0.3px;
+  }
+}
+
+.info {
+  margin-inline-end: 4px;
+  font-size: 8pt;
+  color: white;
+  letter-spacing: 0.3px;
+  @media (width <= 600px) {
+    display: none;
+  }
+}

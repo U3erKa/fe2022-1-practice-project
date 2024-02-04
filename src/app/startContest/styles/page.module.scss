@@ -1,0 +1,79 @@
+@import '../../../styles/contest.module';
+
+.combinedBundles {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 25px 0;
+}
+
+.baseBundles {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+
+  max-inline-size: 1200px;
+  padding-inline: 15px;
+}
+
+.infoCombinedBundles,
+.infoBaseBundles {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-block-end: 20px;
+  padding-inline: 15px;
+
+  hr {
+    inline-size: 100px;
+    margin-block: 20px;
+    border-block-start: 2px solid #28d2d1;
+  }
+}
+
+.baseBundleContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  padding: 25px 0;
+
+  background-color: #28d2d1;
+}
+
+.info {
+  margin-block-end: 10px;
+
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+}
+
+.headerInfo {
+  margin-block: 20px 10px;
+
+  font-size: 32px;
+  line-height: 1.1;
+  color: white;
+  text-align: center;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px 0;
+}

@@ -1,0 +1,39 @@
+.chatContainer {
+  position: fixed;
+  z-index: 500;
+  inset-block-start: 30%;
+  inset-inline-start: -290px;
+
+  overflow: visible;
+
+  inline-size: 290px;
+  block-size: 390px;
+
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+
+  transition: inset-inline-start ease 0.25s;
+}
+
+.toggleChat {
+  cursor: pointer;
+
+  position: absolute;
+  inset-block-start: 28px;
+  inset-inline-end: -67px;
+  transform: rotate(90deg);
+
+  padding: 6px;
+
+  color: white;
+  text-align: center;
+
+  background-color: #8aca6b;
+  border-start-start-radius: 8px;
+  border-start-end-radius: 8px;
+}
+
+.showChat {
+  inset-inline-start: 0;
+}

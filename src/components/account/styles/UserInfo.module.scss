@@ -1,0 +1,68 @@
+.mainContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 100%;
+
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  @media (width <= 420px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.buttonEdit {
+  padding: 15px 35px;
+
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+
+  background-color: #455a89;
+  border-radius: 12px;
+
+  transition: background-color 0.2s;
+  @media (hover: hover) {
+    &:hover {
+      color: white;
+      background-color: #f27e51;
+      transition: background-color 0.2s;
+    }
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+}
+
+.avatar {
+  align-self: center;
+  inline-size: 140px;
+  block-size: 140px;
+  margin: 40px 0;
+}
+
+.infoBlock {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 24px;
+}
+
+.label {
+  font-size: 16px;
+  color: #515b5f;
+}
+
+.info {
+  font-size: 16px;
+  color: #455a89;
+}

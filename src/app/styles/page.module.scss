@@ -1,0 +1,383 @@
+@import '../../styles/common';
+@mixin stepCard {
+  @include container(flex-start);
+
+  max-inline-size: 540px;
+  margin: 90px 0 30px;
+
+  h3 {
+    margin-block-end: 20px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  p {
+    @include container(flex-start, space-around, row);
+
+    flex-wrap: nowrap;
+    margin-block-end: 10px;
+    line-height: 25px;
+
+    svg {
+      align-self: flex-start;
+      margin: 5px 10px 0 0;
+      color: green;
+    }
+  }
+
+  span {
+    font-size: 18px;
+  }
+  @media screen and (width <= 1024px) {
+    margin: 90px 0 30px;
+    padding: 0 80px;
+  }
+}
+
+.container {
+  @include container;
+
+  h2 {
+    margin: 30px 0;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &Description {
+    @include container;
+  }
+}
+
+.cardContainer {
+  @include container(flex-start, flex-start, row);
+  @media (width <= 720px) {
+    @include container;
+  }
+}
+
+.card {
+  @include container(flex-start);
+
+  max-inline-size: 300px;
+  margin: 40px 40px 40px 0;
+
+  h3 {
+    margin-block-start: 20px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  p {
+    margin-block-start: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  &:last-child {
+    margin-inline-end: 0;
+  }
+  @media screen and (width <= 768px) {
+    max-inline-size: 100%;
+    margin: 40px;
+  }
+  @media screen and (width <= 414px) {
+    p {
+      margin-inline-end: 10px;
+    }
+  }
+}
+
+.adv {
+  @include container(center, space-around, row);
+
+  inline-size: 100%;
+  max-inline-size: 1100px;
+  margin-block-end: 50px;
+}
+
+.step,
+.stepReverse {
+  padding: 40px 0;
+
+  div {
+    @include stepCard;
+  }
+}
+
+.step {
+  @include container(center, space-around, row);
+  @media screen and (width <= 823px) {
+    @include container;
+  }
+}
+
+.stepReverse {
+  @include container(flex-start, space-around, row);
+
+  div {
+    @include container(flex-start);
+
+    inline-size: 100%;
+    margin: 90px 0 30px;
+    padding: 0 80px;
+    @media (width <= 720px) {
+      padding: 0;
+    }
+  }
+  @media screen and (width <= 950px) {
+    @include container(center, flex-start, column-reverse);
+
+    padding: 0;
+  }
+  @media screen and (width <= 414px) {
+    padding: 0;
+  }
+}
+
+.images {
+  img {
+    cursor: pointer;
+    margin: 0 30px;
+
+    &:first-child {
+      display: block;
+    }
+
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .images:hover {
+    img {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}
+
+.whiteStep {
+  @include stepCard;
+}
+
+.greenStep {
+  @include stepCard;
+
+  color: white;
+}
+@mixin underline {
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    inset-block-end: -30px;
+    inset-inline: 0;
+
+    inline-size: 100px;
+    block-size: 3px;
+    margin: 0 auto;
+  }
+}
+
+.blueUnderline {
+  @include underline;
+
+  &::after {
+    background: #455a89;
+  }
+}
+
+.whiteUnderline {
+  @include underline;
+
+  &::after {
+    background: white;
+  }
+}
+@mixin innerContainer {
+  @include container(center, center);
+
+  inline-size: 100%;
+  padding: 40px 0 30px;
+}
+
+.greyContainer,
+.whiteContainer,
+.greenContainer,
+.blueContainer {
+  @include innerContainer;
+}
+
+.greyContainer {
+  background-color: #fafafa;
+}
+
+.whiteContainer {
+  background-color: white;
+}
+
+.greenContainer {
+  background-color: #28d2d0;
+}
+
+.blueContainer {
+  color: white;
+  background-color: #2b62ec;
+
+  h2 {
+    margin-block-end: 40px;
+  }
+}
+
+.headerBar {
+  @include container;
+
+  inline-size: 100%;
+  max-inline-size: 1140px;
+  padding-block-start: 75px;
+
+  h3 {
+    margin-block-end: 20px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  p {
+    margin-block-end: 30px;
+    padding: 0 15px;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: center;
+  }
+}
+
+.stats {
+  @include container(center, center, row);
+
+  div {
+    @include container(center, center, row);
+
+    margin-block-end: 10px;
+    padding: 10px 20px;
+    border-inline-end: 1px solid grey;
+
+    &:last-child {
+      border-inline-end: 0;
+    }
+
+    p {
+      margin-inline-end: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    @media (width <= 580px) {
+      padding: 10px 5px;
+    }
+  }
+  @media screen and (width <= 414px) {
+    flex-wrap: wrap;
+  }
+}
+
+.headline {
+  margin: 20px 0;
+  text-align: center;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  span {
+    &:first-child {
+      padding: 7px 0;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 39px;
+    }
+
+    &:last-child {
+      margin-inline-start: 5px;
+      padding: 7px 0;
+
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 40px;
+
+      transition: inline-size 0.3s -0.1s;
+    }
+  }
+
+  &Static {
+    position: relative;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+
+      inline-size: 0;
+      block-size: 3px;
+
+      background: #28d2d0;
+
+      animation: cd-pulse 3s infinite;
+    }
+  }
+}
+@keyframes cd-pulse {
+  0% {
+    inline-size: 0;
+  }
+
+  100% {
+    inline-size: 100%;
+  }
+}
+
+.button {
+  @include container(center, center, row);
+  @include button;
+
+  cursor: pointer;
+
+  inline-size: 270px;
+  block-size: 40px;
+  margin: 40px 0;
+
+  background-color: transparent;
+
+  &Link {
+    @include container(center, center, row);
+
+    flex: 1;
+
+    block-size: 100%;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+    text-decoration: none;
+    @media (hover: hover) {
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}

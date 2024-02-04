@@ -1,0 +1,73 @@
+.catalogCreationContainer {
+  position: absolute;
+  z-index: 500;
+  inset-block-start: -40px;
+  inset-inline-start: 172px;
+
+  inline-size: 150px;
+
+  color: white;
+
+  border-radius: 8px;
+
+  svg {
+    cursor: pointer;
+
+    position: absolute;
+    z-index: 700;
+    inset-block-start: -7px;
+    inset-inline-start: -7px;
+
+    font-size: 22px;
+    color: #4e618d;
+
+    background-color: white;
+    border-radius: 11px;
+    @media (hover: hover) {
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  span {
+    cursor: pointer;
+
+    display: flex;
+    flex: 1;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    block-size: 24px;
+
+    background-color: #4e618d;
+    border: 1px solid white;
+    border-block-end: none;
+    border-start-start-radius: 8px;
+    border-start-end-radius: 8px;
+
+    &:first-child {
+      border-inline-end: none;
+    }
+    @media (hover: hover) {
+      &:hover {
+        color: #4e618d;
+        background-color: #f3f3f3;
+      }
+    }
+  }
+
+  .active {
+    z-index: 600;
+    flex: 1.3;
+    background-color: #8aca6b;
+  }
+}

@@ -1,0 +1,43 @@
+@import './common.module';
+
+.container {
+  @include container;
+  @media (width < 1024px) {
+    flex-direction: column;
+  }
+}
+
+.linksContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: $gap;
+  align-items: center;
+
+  inline-size: 100%;
+  padding: calc($padding * 2);
+
+  border-block-start: 1px solid $borderColor;
+
+  @media (width < 768px) {
+    flex-direction: column;
+  }
+}
+
+.heading {
+  @media (width >= 1024px) {
+    inline-size: 30%;
+  }
+}
+
+.link {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 25%;
+
+  & > a {
+    padding: calc($padding * 1);
+  }
+}

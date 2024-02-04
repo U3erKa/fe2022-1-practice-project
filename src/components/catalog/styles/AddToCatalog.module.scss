@@ -1,0 +1,89 @@
+.notFound {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  block-size: 110px;
+
+  text-align: center;
+
+  background-color: #8aca6b;
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+
+  block-size: 110px;
+  padding: 0 10px;
+
+  background-color: #8aca6b;
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
+
+  button {
+    cursor: pointer;
+
+    margin-block-start: 5px;
+    padding: 4px 10px;
+
+    font-size: 16px;
+    color: white;
+
+    background-color: #4e618d;
+    border: none;
+    border-radius: 8px;
+  }
+}
+
+.selectInputContainer {
+  display: flex;
+  flex-flow: column wrap;
+  inline-size: 100%;
+}
+
+.select {
+  cursor: text;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: stretch;
+
+  block-size: 24px;
+  margin-block-end: 5px;
+  padding: 0 10px;
+
+  font-size: 18px;
+  color: #555;
+
+  background-color: white;
+  border: 2px solid #d0d0d0;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: none;
+
+  transition:
+    border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+
+  &:focus {
+    border: 2px solid #28d2d0;
+  }
+}
+
+.selectHeader {
+  display: inline-block;
+
+  margin-block: 12px 5px;
+
+  font-size: 15px;
+  font-weight: 700;
+  color: #585859;
+  text-align: center;
+}

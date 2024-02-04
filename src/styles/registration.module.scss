@@ -1,0 +1,39 @@
+.headerSignUpPage {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-block-start: 26px;
+  padding-inline: 45px 60px;
+
+  @media (width <= 530px) {
+    padding: 0;
+  }
+}
+
+.linkLoginContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+
+  border: 1px solid white;
+  border-radius: 4px;
+
+  a {
+    padding: 10px 20px;
+  }
+
+  span {
+    color: white;
+  }
+}
+
+.orangeSpan {
+  color: #f18762;
+}

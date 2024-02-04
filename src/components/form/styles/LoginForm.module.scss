@@ -1,0 +1,29 @@
+@import '../../../styles/auth.module';
+
+.loginForm {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: stretch;
+  justify-content: center;
+
+  inline-size: 600px;
+  padding: 10px 20px 30px;
+
+  h2 {
+    margin-block: 20px 28px;
+
+    font-size: 34px;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.6px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.inputContainer {
+  align-self: stretch;
+}

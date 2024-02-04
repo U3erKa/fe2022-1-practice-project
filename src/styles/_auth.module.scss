@@ -1,0 +1,84 @@
+.fieldWarning {
+  position: absolute;
+  z-index: 1;
+  inset-block-end: -25px;
+  inset-inline: 0;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+
+  margin-block-end: 15px;
+  padding-block: 5px;
+
+  font-size: 15px;
+  color: white;
+  text-align: center;
+
+  background: #f7542c;
+  border: 2px solid red;
+  border-radius: 0 0 5px 5px;
+}
+
+.notValid {
+  border: 2px solid red !important;
+}
+
+.valid {
+  border: 2px solid green !important;
+}
+
+.inputContainer {
+  position: relative;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+
+  margin-inline: 20px;
+}
+
+.input {
+  flex: 1;
+
+  margin-block-end: 15px;
+  padding: 23px 20px;
+
+  font-size: 18px;
+  color: #9ca8b7;
+
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  outline: none;
+  @media (width <= 1400px) {
+    align-self: normal;
+  }
+}
+
+.submitContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+
+  inline-size: stretch;
+  min-inline-size: 260px;
+  block-size: 64px;
+  margin-inline: 20px;
+  padding: 0;
+
+  background-color: #28d2d0;
+  border: 0;
+  border-radius: 5px;
+  @media (width <= 850px) {
+    align-self: auto;
+  }
+}
+
+.inscription {
+  font-size: 16px;
+  color: white;
+}

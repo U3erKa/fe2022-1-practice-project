@@ -1,0 +1,26 @@
+.columnContainer {
+  display: flex;
+  flex: 1;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin-inline: 48px;
+}
+
+.headerArticle {
+  margin-block-end: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #363945;
+}
+
+.article {
+  margin-block-end: 10px;
+  padding: 0;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #9ca8b7;
+}

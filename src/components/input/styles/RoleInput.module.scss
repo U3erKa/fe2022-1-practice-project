@@ -1,0 +1,30 @@
+.roleContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: stretch;
+
+  margin-block: 10px;
+  padding: 14px;
+
+  border: 1px solid white;
+}
+
+.infoRoleContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin-inline-start: 16px;
+}
+
+.role {
+  font-size: 22px;
+  color: white;
+}
+
+.infoRole {
+  font-size: 12px;
+  color: white;
+}

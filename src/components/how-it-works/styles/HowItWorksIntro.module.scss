@@ -1,0 +1,47 @@
+@import './common.module';
+
+$imageWidth: 500px;
+$contentWidth: calc($containerWidth - $imageWidth);
+
+.container {
+  @include container;
+}
+
+.contents {
+  inline-size: clamp($minWidth, 60%, $contentWidth);
+
+  @media (width < 1000px) {
+    inline-size: clamp($minWidth, 80%, 900px);
+  }
+
+  @media (width < 768px) {
+    inline-size: 90%;
+  }
+
+  @media (width < 480px) {
+    inline-size: 100%;
+  }
+}
+
+.imageContainer {
+  aspect-ratio: 1343 / 1166;
+  inline-size: clamp($minWidth, 40%, $imageWidth);
+  @media (width < 1000px) {
+    display: none;
+  }
+}
+
+.mainHeading {
+  margin-block-end: $gap;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: $textColorDark;
+}
+
+.button {
+  @include button(
+    $color: $buttonTextColor,
+    $backgroundColor: $mainColor,
+    $borderRadius: calc($borderRadius * 5)
+  );
+}

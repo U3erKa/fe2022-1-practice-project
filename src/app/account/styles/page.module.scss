@@ -1,0 +1,103 @@
+.mainContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin: 0 auto;
+  padding: 100px;
+  @media (width <= 800px) {
+    flex-direction: column;
+    padding: 40px;
+  }
+  @media (width <= 590px) {
+    padding: 15px;
+  }
+  @media (width <= 345px) {
+    padding: 10px 0;
+  }
+}
+
+.notMoney {
+  margin-block-end: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #455a89;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: center;
+
+  inline-size: 100%;
+  padding-block-start: 30px;
+}
+
+.aside {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin-inline-end: 40px;
+
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+  @media (width <= 800px) {
+    align-self: stretch;
+    margin-block-end: 15px;
+    margin-inline-end: 0;
+  }
+}
+
+.headerAside {
+  align-self: stretch;
+
+  padding: 20px 26px;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  background-color: #f3f3f3;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  align-self: stretch;
+  justify-content: flex-start;
+
+  margin-block-end: 10px;
+  padding: 15px 0;
+}
+
+.optionContainer {
+  cursor: pointer;
+
+  align-self: stretch;
+
+  margin-block-start: 5px;
+  padding: 14px 58px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: #455a89;
+
+  border-radius: 8px;
+  @media (width <= 800px) {
+    text-align: center;
+  }
+  @media (hover: hover) {
+    &:hover {
+      color: white;
+      background-color: #455a89;
+    }
+  }
+}
+
+.currentOption {
+  color: white;
+  background-color: #455a89;
+}

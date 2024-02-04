@@ -1,0 +1,112 @@
+@import './common.module';
+
+$lineWidth: 2.5rem;
+$lineHeight: 0.0625rem;
+
+.container {
+  @include container;
+
+  flex-direction: column;
+  gap: calc($gap * 8);
+}
+
+.headingContainer,
+.listContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: calc($gap * 2);
+  align-items: center;
+}
+
+.headingContainer {
+  flex-direction: column;
+}
+
+.listContainer {
+  gap: calc($gap * 8);
+  inline-size: 100%;
+
+  @media (width < 1024px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.listIcon {
+  aspect-ratio: 925 / 1060;
+  inline-size: 75%;
+  padding: 0 $padding;
+  @media (width < 768px) {
+    display: none;
+  }
+}
+
+.howToContainer {
+  padding: 0 $padding;
+}
+
+.howTo {
+  counter-reset: how-to;
+  display: flex;
+  flex-flow: column wrap;
+
+  &Item {
+    position: relative;
+    padding: $padding;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto auto auto 0;
+    }
+
+    &::before {
+      inset-inline-start: calc($lineWidth * -1);
+      inline-size: $lineWidth;
+      block-size: $lineHeight;
+      border-block-start: 1px solid $borderColor;
+    }
+
+    &::after {
+      inset-inline-start: calc($lineWidth * -1 - 0.1rem);
+      inline-size: $lineHeight;
+      border-inline-end: 1px solid $borderColor;
+    }
+
+    &:first-child::after {
+      inset-block-start: auto;
+      block-size: 50%;
+    }
+
+    &:last-child::after {
+      inset-block-end: auto;
+      block-size: 50%;
+    }
+  }
+}
+
+.text {
+  counter-increment: how-to;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  margin-block-end: 0;
+  padding: calc($padding * 2 / 3) calc($padding * 2);
+
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius;
+
+  &::before {
+    content: counter(how-to) '.';
+
+    display: block;
+
+    inline-size: 64px;
+
+    font-size: 4rem;
+    color: $mainColor;
+  }
+}

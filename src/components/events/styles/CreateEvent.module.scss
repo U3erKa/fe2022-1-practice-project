@@ -1,0 +1,64 @@
+@import '../../../styles/common';
+
+$colorWhite: #fff;
+$colorLightGray: #d0d0d0;
+$colorDarkGray: #555;
+$colorCyan: #28d2d0;
+
+.container {
+  @include container($align: center, $justify: flex-start, $dir: column);
+
+  gap: $gap;
+
+  inline-size: clamp($minWidth, 100%, $containerWidth);
+  margin: 0 auto;
+  padding: $padding;
+
+  font-size: $fontSize;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.inputContainer {
+  @include container($align: flex-start, $justify: center, $dir: column);
+
+  gap: $gap;
+  inline-size: 100%;
+  padding: $padding 0;
+}
+
+.input {
+  inline-size: 100%;
+  block-size: 3rem;
+  margin-block-end: $padding;
+  padding: 0 $padding;
+
+  font-size: 1.25rem;
+  color: $colorDarkGray;
+
+  background-color: $colorWhite;
+  border: 2px solid $colorLightGray;
+  border-radius: $borderRadius;
+
+  transition:
+    border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+
+  &:focus {
+    border: 2px solid $colorCyan;
+  }
+}
+
+.text {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.submit {
+  @include button;
+
+  font-size: 1.15rem;
+}

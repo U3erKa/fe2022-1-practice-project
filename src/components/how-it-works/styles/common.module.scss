@@ -1,0 +1,87 @@
+$mainColor: #377dff;
+$backgroundColor: rgb(55 125 255 / 10%);
+$borderColor: #e7eaf3;
+$textColorDark: #1e2022;
+$textColorLight: #77838f;
+$buttonTextColor: #fff;
+$getStartedHeadingColor: #00dffc;
+$getStartedTextColor: #fff;
+$gradientStartColor: #2d1582;
+$gradientEndColor: #19a0ff;
+$fontSize: 16px;
+$gap: 8px;
+$padding: calc($gap * 2);
+$borderRadius: 5px;
+$minWidth: 320px;
+$containerWidth: 1280px;
+@mixin container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: clamp($minWidth, 100%, $containerWidth);
+  margin: 0 auto;
+  padding: calc($padding * 4) calc($padding * 2);
+
+  font-size: $fontSize;
+}
+
+.heading {
+  margin: $padding;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.subHeading {
+  inline-size: fit-content;
+  margin-block-end: $gap;
+  padding: $gap calc($gap * 2);
+
+  font-size: 0.7rem;
+  color: $mainColor;
+
+  background-color: $backgroundColor;
+  border-radius: 1rem;
+}
+
+.text {
+  margin-block-end: calc($gap * 2);
+  line-height: 1.7;
+  color: $textColorLight;
+}
+
+.icon {
+  inline-size: 72px;
+}
+
+@mixin button($color, $backgroundColor, $borderRadius) {
+  padding: calc($gap * 1.5) calc($gap * 2);
+
+  line-height: 1.5;
+  color: $color;
+  text-align: center;
+  text-decoration: none;
+
+  background-color: $backgroundColor;
+  border: none;
+  border-radius: $borderRadius;
+
+  transition: all 0.3s ease-in-out;
+
+  & > svg {
+    margin-inline-end: $gap;
+  }
+
+  @media (width < 480px) {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 11px rgb(55 125 255 / 35%);
+    }
+  }
+}

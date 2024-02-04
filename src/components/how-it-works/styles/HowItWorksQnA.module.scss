@@ -1,0 +1,52 @@
+@import './common.module';
+
+.container {
+  @include container;
+
+  gap: calc($gap * 4);
+  align-items: flex-start;
+  @media (width < 1024px) {
+    flex-direction: column;
+  }
+}
+
+.linksContainer {
+  inline-size: 100%;
+  padding: $padding;
+  background-color: $mainColor;
+  border-radius: $borderRadius;
+
+  @media (width >= 1024px) {
+    inline-size: 25%;
+    margin-block-start: calc($padding * 4);
+  }
+}
+
+.link {
+  padding: $padding;
+
+  & > a {
+    color: $buttonTextColor;
+    text-decoration: none;
+  }
+}
+
+.answersContainer {
+  @media (width >= 1024px) {
+    inline-size: 75%;
+  }
+}
+
+.heading {
+  margin: 0;
+  margin-block-end: $padding;
+  color: $mainColor;
+}
+
+.answers {
+  padding: calc($padding * 4) 0;
+
+  &:nth-child(n + 2) {
+    border-block-start: 1px solid $borderColor;
+  }
+}

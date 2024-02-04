@@ -1,0 +1,48 @@
+.imgStyle {
+  display: block;
+  align-self: center;
+}
+
+.uploadInputContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-block-end: 10px;
+
+  span {
+    margin-block-end: 4px;
+    font-size: 14px;
+    color: red;
+  }
+
+  input {
+    display: none;
+
+    color: white;
+
+    background-color: #66afe9;
+    border: none;
+    border-radius: 8px;
+  }
+
+  label {
+    cursor: pointer;
+
+    align-self: flex-start;
+
+    padding: 5px 10px;
+
+    color: white;
+
+    background-color: #455a89;
+    border-radius: 4px;
+    @media (hover: hover) {
+      &:hover {
+        color: white;
+        background-color: #f27e51;
+      }
+    }
+  }
+}

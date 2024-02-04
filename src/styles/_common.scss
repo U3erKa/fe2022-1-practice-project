@@ -1,0 +1,41 @@
+$fontSize: 16px;
+$gap: 8px;
+$padding: calc($gap * 2);
+$borderRadius: 5px;
+$minWidth: 320px;
+$containerWidth: 1280px;
+
+@mixin container($align: center, $justify: flex-start, $dir: column) {
+  display: flex;
+  flex-flow: $dir wrap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin button {
+  max-inline-size: 340px;
+  margin-block-end: 10px;
+  padding: 10px 22px;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: #28d2d0;
+  text-align: center;
+  text-decoration: none;
+
+  background-color: #fff;
+  border: 2px solid #28d2d0;
+  border-radius: 5px;
+
+  &[disabled] {
+    color: #28d2d0;
+    background-color: #dedede;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: white;
+      background-color: #28d2d0;
+    }
+  }
+}

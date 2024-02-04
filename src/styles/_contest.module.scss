@@ -1,0 +1,39 @@
+.startContestHeader {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 35px;
+}
+
+.startContestInfo {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+
+  max-inline-size: 480px;
+  padding-inline: 15px;
+
+  h2 {
+    margin-block: 20px 10px;
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  span {
+    margin-block-end: 10px;
+    padding-inline-end: 20px;
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.428;
+    color: #333;
+  }
+
+  @media (width <= 750px) {
+    max-inline-size: none;
+  }
+}

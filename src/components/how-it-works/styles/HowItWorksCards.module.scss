@@ -1,0 +1,50 @@
+@import './common.module';
+
+$columnWidth: minmax(260px, 1fr);
+
+.container {
+  @include container;
+
+  flex-direction: column;
+  gap: calc($gap * 8);
+  text-align: center;
+}
+
+.contentsContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $columnWidth);
+  gap: calc($gap * 4);
+  @media (width <= 920px) {
+    grid-template-columns: repeat(1, $columnWidth);
+  }
+}
+
+.card {
+  display: grid;
+  justify-items: center;
+
+  padding: calc($padding * 4) $padding;
+
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius;
+}
+
+.smallHeading {
+  font-size: 1.5rem;
+}
+
+.button {
+  @include button(
+    $color: $buttonTextColor,
+    $backgroundColor: $mainColor,
+    $borderRadius: $borderRadius
+  );
+
+  align-self: flex-end;
+}

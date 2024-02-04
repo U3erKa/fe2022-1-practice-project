@@ -1,0 +1,32 @@
+@import '../../../styles/registration.module';
+
+.mainContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
+
+  block-size: 100vb;
+  padding-block-start: 40px;
+
+  background-color: #3ea9f5;
+}
+
+.loginContainer {
+  display: flex;
+  flex-flow: column nowrap;
+
+  inline-size: 1200px;
+  min-inline-size: 300px;
+
+  background-color: #3ea9f5;
+}
+
+.loginFormContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  margin-block-start: 80px;
+}

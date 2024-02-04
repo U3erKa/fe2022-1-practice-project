@@ -1,0 +1,61 @@
+@import './common.module';
+
+$borderColor: rgb(30 32 34 / 20%);
+$iconSize: 80px;
+
+.cardContainer {
+  @include container;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  @media (width < 768px) {
+    flex-direction: column;
+    gap: calc($gap * 6);
+  }
+}
+
+.card {
+  position: relative;
+
+  display: flex;
+  flex-flow: column wrap;
+  gap: calc($gap * 2);
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: center;
+
+  b {
+    font-weight: 600;
+    color: $textColorDark;
+  }
+
+  @media (width >= 768px) {
+    inline-size: 33%;
+    padding: 0 calc($padding * 3);
+
+    &:nth-child(n + 2)::before {
+      content: '';
+
+      position: absolute;
+      inset-block-start: 25%;
+      inset-inline-start: 0;
+      transform: rotate(15deg);
+
+      block-size: 4rem;
+
+      border-inline-start: 1px solid $borderColor;
+    }
+  }
+}
+
+.icon {
+  inline-size: $iconSize;
+  block-size: $iconSize;
+}
+
+.text {
+  padding: 0;
+}

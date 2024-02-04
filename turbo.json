@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": { "outputs": [".next/**", "!.next/cache/**"] },
+    "clear:styles": { "cache": false },
+    "dev": { "cache": false, "persistent": true },
+    "format": {},
+    "lint": {},
+    "lint:fix": {},
+    "lint:code": {},
+    "lint:styles": {},
+    "prepare": {},
+    "migrate": {},
+    "start": { "cache": false, "persistent": true },
+    "typecheck": { "outputs": ["tsconfig.tsbuildinfo"] },
+    "styles": {},
+    "styles:watch": { "cache": false, "persistent": true }
+  }
+}

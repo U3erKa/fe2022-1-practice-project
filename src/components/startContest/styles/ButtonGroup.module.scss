@@ -1,0 +1,48 @@
+$padding: 8px;
+$colorCyan: #28d2d1;
+$colorWhite: #fff;
+$colorGray: #ccc;
+$colorDarkGray: #333;
+
+.choise {
+  inline-size: 60px;
+  padding: $padding;
+
+  color: $colorWhite;
+  text-align: center;
+
+  background-color: $colorGray;
+  border-radius: 2rem;
+}
+
+.button {
+  display: flex;
+  flex-flow: column wrap;
+  gap: calc($padding * 2);
+  align-items: center;
+  justify-content: center;
+
+  padding: calc($padding * 2);
+
+  background-color: $colorWhite;
+  border: 2px solid $colorGray;
+  border-radius: 5px;
+
+  &.active {
+    border-color: $colorCyan;
+
+    & > .choise {
+      background-color: $colorCyan;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 1px 1px 1px 1px #0002;
+    }
+  }
+}
+
+.text {
+  font-size: 14px;
+  color: $colorDarkGray;
+}

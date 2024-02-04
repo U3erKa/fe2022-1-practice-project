@@ -1,0 +1,69 @@
+@import './common.module';
+
+.container {
+  @include container;
+
+  position: relative;
+  z-index: 1;
+
+  inline-size: 100%;
+  padding: 0;
+
+  background-image: linear-gradient(
+    150deg,
+    $gradientStartColor 0%,
+    $gradientEndColor 100%
+  );
+}
+
+.icon {
+  position: absolute;
+  z-index: -1;
+  inline-size: 200px;
+
+  &:first-child {
+    inset-block-start: -31%;
+    inset-inline-start: 0;
+    align-self: flex-start;
+  }
+
+  &:last-child {
+    inset-block-end: -33%;
+    inset-inline-end: 0;
+    align-self: flex-end;
+  }
+}
+
+.headingContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  padding: calc($padding * 2) $padding;
+
+  text-align: center;
+}
+
+.getStartedHeading {
+  margin-block-end: $padding;
+  font-size: 2rem;
+  font-weight: 600;
+  color: $getStartedHeadingColor;
+}
+
+.getStartedText {
+  margin-block-end: $padding;
+  font-size: 1.25rem;
+  color: $getStartedTextColor;
+}
+
+.button {
+  @include button(
+    $color: $textColorDark,
+    $backgroundColor: $getStartedTextColor,
+    $borderRadius: $borderRadius
+  );
+  @media (width < 480px) {
+    inline-size: calc(100% - $padding * 2);
+  }
+}

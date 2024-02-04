@@ -1,0 +1,30 @@
+@import '../../../styles/common';
+
+.container {
+  inline-size: 100%;
+}
+
+.spinnerContainer {
+  display: flex;
+  flex: 1;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-block-start: 20px;
+}
+
+.notFound {
+  inline-size: 100%;
+  margin: 0 auto;
+  padding: 10px;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #4e618d;
+  text-align: center;
+}
+
+.loadMoreBtn {
+  @include button;
+}

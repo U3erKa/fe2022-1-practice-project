@@ -1,0 +1,209 @@
+.offerContainer {
+  position: relative;
+
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  align-self: stretch;
+  justify-content: flex-start;
+
+  margin-block-start: 15px;
+  padding: 30px 40px 10px;
+
+  background-color: #f9fafb;
+  border-radius: 10px;
+
+  svg {
+    position: absolute;
+    inset-block-start: -15px;
+    inset-inline-start: calc(100% - 35px);
+    font-size: 54px;
+  }
+  @media (width <= 450px) {
+    padding: 10px 0;
+  }
+}
+
+.reject {
+  color: red;
+}
+
+.resolve {
+  color: green;
+}
+
+.pending {
+  color: orange;
+}
+
+.btnsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-between;
+
+  margin: 5px 0;
+}
+
+.resolveBtn {
+  cursor: pointer;
+
+  inline-size: 100px;
+  padding: 10px;
+
+  color: white;
+  text-align: center;
+
+  background-color: #8aca6b;
+  border-radius: 8px;
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgb(138 202 107 / 70%);
+    }
+  }
+}
+
+.rejectBtn {
+  cursor: pointer;
+
+  inline-size: 100px;
+  margin: 0 25px;
+  padding: 10px;
+
+  color: white;
+  text-align: center;
+
+  background-color: #cd5c5c;
+  border-radius: 8px;
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgb(205 92 92 / 70%);
+    }
+  }
+}
+
+.mainInfoContainer {
+  position: relative;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-between;
+
+  svg {
+    cursor: pointer;
+
+    position: absolute;
+
+    align-self: flex-start;
+
+    font-size: 26px;
+    color: #4e618d;
+
+    transition: font-size 0.2s;
+    @media (width <= 450px) {
+      inset-block-start: 30px;
+    }
+    @media (width <= 380px) {
+      inset-block-start: 100px;
+      align-self: flex-end;
+    }
+    @media (width <= 500px) {
+      align-self: flex-end;
+    }
+    @media (hover: hover) {
+      &:hover {
+        font-size: 34px;
+        transition: font-size 0.2s;
+      }
+    }
+  }
+  @media (width <= 500px) {
+    flex-direction: column;
+  }
+}
+
+.userInfo {
+  min-inline-size: 215px;
+}
+
+.responseConainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  align-self: center;
+  justify-content: flex-start;
+
+  inline-size: 70%;
+  @media (width <= 800px) {
+    max-inline-size: 200px;
+    margin-block-start: 10px;
+  }
+}
+
+.responseLogo {
+  inline-size: auto;
+  block-size: 100px;
+}
+
+.response {
+  align-self: stretch;
+
+  margin-block-end: 10px;
+  margin-inline-start: 10px;
+
+  font-size: 18px;
+  color: #556da5;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.creativeRating {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-block-start: 5px;
+}
+
+.userScoreLabel {
+  margin-inline-end: 10px;
+  font-size: 15px;
+  color: #556da5;
+}
+
+.creativeInfoContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    inline-size: 50px;
+    block-size: 50px;
+    border-radius: 25px;
+  }
+}
+
+.nameAndEmail {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  span {
+    margin-inline-start: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #556da5;
+  }
+}
+
+.winner {
+  background-color: #8aca6b;
+}
+
+.loser {
+  background-color: #cd5c5c;
+}

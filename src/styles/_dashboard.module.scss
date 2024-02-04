@@ -1,0 +1,36 @@
+.mainContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+
+  inline-size: 1200px;
+  margin: 0 auto;
+  margin-block-start: 50px;
+  @media (width <= 1400px) {
+    inline-size: auto;
+  }
+  @media (width <= 1000px) {
+    flex-direction: column;
+  }
+}
+
+.errorContainer {
+  display: flex;
+  flex-flow: column wrap;
+
+  inline-size: 260px;
+  margin: 0 auto;
+  padding: 15px;
+
+  text-align: center;
+}
+
+.message {
+  font-size: 18px;
+  color: red;
+}
+
+.try {
+  font-size: 18px;
+  color: #333;
+}

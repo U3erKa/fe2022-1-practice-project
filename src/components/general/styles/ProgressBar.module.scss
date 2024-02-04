@@ -1,0 +1,122 @@
+.progressBarContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  @media (width <= 750px) {
+    display: none;
+  }
+}
+
+.progressContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+}
+
+.stepDescContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+
+  margin-inline-end: 4px;
+}
+
+.arrow {
+  inline-size: 0;
+  block-size: 0;
+
+  border: 5px solid transparent;
+  border-block-start-color: #28d2d0;
+  border-block-end: 0;
+}
+
+.stepDesc {
+  inline-size: 120px;
+  margin-block-start: -40px;
+  padding: 4px 8px 6px;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+
+  background-color: #28d2d0;
+  border-radius: 4px;
+}
+
+.lineBar {
+  inline-size: 76px;
+  block-size: 5px;
+  margin: 0 -1px;
+
+  border: 1px solid #d5d5da;
+  border-inline-start: none;
+  border-inline-end: none;
+}
+
+.outerComplete {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 34px;
+  block-size: 34px;
+
+  background-color: #8aca6b;
+  border: 2px solid #8aca6b;
+  border-radius: 18px;
+}
+
+.innerComplete {
+  inline-size: 24px;
+  block-size: 24px;
+  background-image: url('../img/check.png');
+  background-repeat: no-repeat;
+}
+
+.outerActive {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 36px;
+  block-size: 36px;
+
+  border: 2px solid #28d2d0;
+  border-radius: 18px;
+}
+
+.innerActive {
+  inline-size: 20px;
+  block-size: 20px;
+  background-color: #28d2d0;
+  border-radius: 10px;
+}
+
+.outerNotActive {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 36px;
+  block-size: 36px;
+
+  border: 1px solid #d5d5da;
+  border-radius: 18px;
+  @media (hover: hover) {
+    &:hover {
+      border: 2px solid #28d2d0;
+    }
+  }
+}
+
+.innerNotActive {
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 10px;
+}

@@ -1,0 +1,8 @@
+.react-confirm-alert {
+  inline-size: 320px;
+  margin: 0 auto;
+}
+
+.react-confirm-alert-body {
+  inline-size: auto;
+}

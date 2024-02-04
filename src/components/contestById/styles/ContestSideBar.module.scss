@@ -1,0 +1,217 @@
+.contestSideBarInfo,
+.customerNameContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.infoCustomerContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  align-self: stretch;
+  justify-content: flex-start;
+
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+}
+
+.customerInfo {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 15px 20px;
+
+  img {
+    inline-size: 40px;
+    block-size: 40px;
+    margin-inline-end: 20px;
+    border-radius: 20px;
+  }
+}
+
+.customerNameContainer {
+  span {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #337ab7;
+  }
+}
+
+.labelCustomerInfo {
+  align-self: stretch;
+
+  padding: 15px 20px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  background-color: #f3f3f3;
+}
+
+.contestInfo {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  inline-size: 100%;
+  @media (width <= 680px) {
+    align-self: stretch;
+  }
+}
+
+.contestStats {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  align-self: stretch;
+  justify-content: flex-start;
+
+  margin-block-end: 22px;
+
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+
+  span {
+    display: inline-block;
+    align-self: stretch;
+
+    padding: 15px 20px;
+
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+
+    background-color: #f3f3f3;
+  }
+}
+
+.totalEntrie {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-between;
+
+  padding: 15px 20px;
+
+  background: white;
+
+  span {
+    padding: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b89b0;
+
+    background-color: white;
+  }
+}
+
+.totalEntriesLabel {
+  padding: 0;
+
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+
+  background-color: white;
+}
+
+.awardAndTimeContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  inline-size: 100%;
+  margin-block-end: 22px;
+
+  box-shadow: 0 5px 10px 3px rgb(0 0 0 / 10%);
+}
+
+.guaranteedPrize {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: stretch;
+
+  margin-block: 10px 15px;
+  padding: 0 15px;
+
+  div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    inline-size: 16px;
+    block-size: 16px;
+
+    background-color: #8aca6b;
+    border-radius: 8px;
+  }
+
+  span {
+    margin-inline-start: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.timeContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  align-self: stretch;
+  justify-content: flex-start;
+
+  margin-block-start: 10px;
+  padding: 0 15px;
+}
+
+.time {
+  margin-inline-start: 32px;
+  font-size: 15px;
+  color: #455a89;
+}
+
+.timeDesc {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  span {
+    margin-inline-start: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.prizeContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: stretch;
+  justify-content: flex-start;
+
+  padding: 12px 20px;
+
+  background-color: #6b89b0;
+
+  span {
+    margin-inline-start: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+  }
+}
+@media (width <= 680px) {
+  .contestSideBarInfo {
+    align-self: stretch;
+    inline-size: auto;
+    margin: 0 10px;
+  }
+}

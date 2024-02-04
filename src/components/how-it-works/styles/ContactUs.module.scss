@@ -1,0 +1,92 @@
+@import './common.module';
+
+.container {
+  @include container;
+  @media (width < 1024px) {
+    flex-direction: column;
+  }
+}
+
+.contentsContainer,
+.contactsContainer {
+  padding: calc($padding * 4) calc($padding * 4) calc($padding * 4)
+    calc($padding * 3);
+}
+
+.contentsContainer {
+  box-shadow: 0 10px 40px 10px rgb(140 152 164 / 17.5%);
+}
+
+.contactsContainer {
+  color: $buttonTextColor;
+  background-color: $mainColor;
+}
+
+.contents {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $padding;
+
+  & > svg {
+    flex-shrink: 0;
+
+    inline-size: 2rem;
+    block-size: 2rem;
+
+    line-height: 2;
+    color: $mainColor;
+    text-align: center;
+
+    background-color: $backgroundColor;
+    border-radius: 1rem;
+  }
+}
+
+.smallHeading,
+.bigHeading {
+  margin-block-end: $padding;
+  font-weight: 500;
+}
+
+.smallHeading {
+  font-size: 1.25rem;
+}
+
+.bigHeading {
+  font-size: 1.5rem;
+}
+
+.heading {
+  margin: 0;
+  margin-block-end: $padding;
+}
+
+.text {
+  color: inherit;
+
+  & > a {
+    color: $mainColor;
+    text-decoration: none;
+  }
+}
+
+.button {
+  @include button(
+    $color: $mainColor,
+    $backgroundColor: $buttonTextColor,
+    $borderRadius: 2rem
+  );
+
+  display: block;
+}
+
+.link {
+  display: inline-block;
+  margin: $padding 0;
+  color: $buttonTextColor;
+  text-decoration: none;
+
+  & > img {
+    margin-inline-end: $gap;
+  }
+}
