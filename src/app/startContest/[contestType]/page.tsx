@@ -1,20 +1,29 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
 import { useSelector } from 'hooks';
 import { ContestForm } from 'components/contest';
 import { Footer, Header, ProgressBar } from 'components/general';
-import { PAGE } from 'constants/general';
+import {
+  LOGO_CONTEST,
+  NAME_CONTEST,
+  PAGE,
+  TAGLINE_CONTEST,
+} from 'constants/general';
 import type { ContestType } from 'types/contest';
 import styles from './styles/page.module.scss';
 
-export type Props = {
-  readonly params: { contestType: ContestType };
-  readonly title: string;
+type Props = {
+  readonly params: { readonly contestType: ContestType };
 };
 
-const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
+const TITLES = {
+  [NAME_CONTEST]: 'COMPANY NAME',
+  [LOGO_CONTEST]: 'LOGO',
+  [TAGLINE_CONTEST]: 'TAGLINE',
+};
+
+const ContestCreationPage = ({ params: { contestType } }: Props) => {
   const { bundle, user } = useSelector(({ bundleStore, userStore }) => {
     const { bundle } = bundleStore;
     const { data: user } = userStore;
@@ -32,7 +41,7 @@ const ContestCreationPage: FC<Props> = ({ params: { contestType }, title }) => {
       <Header />
       <div className={styles.startContestHeader}>
         <div className={styles.startContestInfo}>
-          <h2>{title}</h2>
+          <h2>{TITLES[contestType]}</h2>
           <span>
             Tell us a bit more about your business as well as your preferences
             so that creatives get a better idea about what you are looking for
