@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { NotFoundError } from 'errors';
 import { Conversation } from 'models';
-import { getChatController } from 'socketInit';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 
@@ -33,11 +32,6 @@ export async function POST(req: NextRequest) {
     Object.assign(chat!.dataValues, {
       participants: [participant1, participant2],
     });
-
-    const [interlocutorId] = participants.filter(
-      (participant: number) => participant !== userId,
-    );
-    getChatController().emitChangeBlockStatus(interlocutorId, chat!);
 
     return NextResponse.json(chat as _Chat);
 

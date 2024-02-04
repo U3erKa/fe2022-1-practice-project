@@ -2,7 +2,6 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { Transaction } from 'sequelize';
 import { RightsError } from 'errors';
 import { Offer, Rating, sequelize } from 'models';
-import { getNotificationController } from 'socketInit';
 import { CUSTOMER } from 'constants/general';
 import { createRating, updateRating } from 'controllers/queries/ratingQueries';
 import { updateUser } from 'controllers/queries/userQueries';
@@ -45,7 +44,6 @@ export async function POST(req: NextRequest) {
 
     await updateUser({ rating: avg }, creatorId, transaction);
     await transaction.commit();
-    getNotificationController()?.emitChangeMark(creatorId);
     return NextResponse.json({ userId: creatorId, rating: avg });
   } catch (error) {
     await transaction.rollback();

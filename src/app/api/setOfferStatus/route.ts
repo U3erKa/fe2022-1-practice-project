@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { BadRequestError, RightsError } from 'errors';
 import { Contest, sequelize } from 'models';
-import { getNotificationController } from 'socketInit';
 import {
   CONTEST_STATUS_ACTIVE,
   CUSTOMER,
@@ -40,11 +39,6 @@ export async function POST(req: NextRequest) {
     if (role === CUSTOMER) {
       if (command === OFFER_COMMAND_REJECT) {
         const offer = await rejectOffer(offerId);
-        getNotificationController().emitChangeOfferStatus(
-          creatorId,
-          'Some of yours offers was rejected',
-          contestId,
-        );
         return NextResponse.json(offer, { status: 200 });
       }
 
@@ -60,11 +54,6 @@ export async function POST(req: NextRequest) {
             transaction,
           );
 
-          getNotificationController().emitChangeOfferStatus(
-            creatorId,
-            'Some of your offers WIN',
-            contestId,
-          );
           return NextResponse.json(winningOffer, { status: 200 });
         } catch (err) {
           await transaction.rollback();

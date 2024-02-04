@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { BadRequestError, NotFoundError, RightsError } from 'errors';
 import { Contest } from 'models';
-import { getNotificationController } from 'socketInit';
 import {
   CONTEST_STATUS_ACTIVE,
   CREATOR,
@@ -54,7 +53,6 @@ export async function POST(req: NextRequest) {
     }
 
     const { userId, contestId: _contestId, ...offer } = await createOffer(obj);
-    getNotificationController().emitEntryCreated(customerId);
     const User = { ...tokenData, id: tokenData.userId };
     return NextResponse.json({ ...offer, User });
   } catch (error) {

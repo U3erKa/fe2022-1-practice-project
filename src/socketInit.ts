@@ -6,10 +6,10 @@ import NotificationController from './controllers/sockets/NotificationController
 let notificationController: NotificationController;
 let chatController: ChatController;
 
-const options: Partial<ServerOptions> = {
+const options = {
   cors: { origin: '*' },
   transports: ['websocket', 'polling'],
-};
+} as const satisfies Partial<ServerOptions>;
 
 export const createConnection = (httpServer: http.Server) => {
   const io = new Server(httpServer, options);
