@@ -5,7 +5,6 @@ import { UserImage } from 'components/general';
 import { CREATOR, PUBLIC_URL } from 'constants/general';
 import { changeEditModeOnUserProfile } from 'store/slices/userProfileSlice';
 import { updateUser } from 'store/slices/userSlice';
-import { uniqueId } from 'utils/functions';
 import type { UserState } from 'types/slices';
 import styles from './styles/UserInfo.module.scss';
 
@@ -30,17 +29,17 @@ const UserInfoData: FC<Props> = ({ userData }) => {
     userData ?? {};
 
   const userInfo = [
-    { id: uniqueId(), label: 'First Name', value: firstName },
-    { id: uniqueId(), label: 'Last Name', value: lastName },
-    { id: uniqueId(), label: 'Display Name', value: displayName },
-    { id: uniqueId(), label: 'Email', value: email },
-    { id: uniqueId(), label: 'Role', value: role },
+    { label: 'First Name', value: firstName },
+    { label: 'Last Name', value: lastName },
+    { label: 'Display Name', value: displayName },
+    { label: 'Email', value: email },
+    { label: 'Role', value: role },
   ];
 
   return (
     <div className={styles.infoContainer}>
-      {userInfo.map(({ id, label, value }) => (
-        <InfoBlock key={id} label={label} value={value!} />
+      {userInfo.map(({ label, value }) => (
+        <InfoBlock key={label} label={label} value={value!} />
       ))}
       {role === CREATOR && (
         <InfoBlock label={'Balance'} value={`${balance}$`} />

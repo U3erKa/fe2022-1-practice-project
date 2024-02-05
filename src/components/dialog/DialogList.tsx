@@ -18,7 +18,6 @@ import {
   changeShowAddChatToCatalogMenu,
   goToExpandedDialog,
 } from 'store/slices/chatSlice';
-import { uniqueId } from 'utils/functions';
 import type { ChatId, UserId } from 'types/_common';
 import type {
   ChangeChatBlockParams,
@@ -96,6 +95,7 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
     ) => {
       const arrayList: JSX.Element[] = [];
       for (const chatPreview of messagesPreview) {
+        const { _id, interlocutor } = chatPreview;
         if (!filterFunc || filterFunc(chatPreview as any, userId)) {
           const dialogNode = (
             <DialogBox
@@ -104,8 +104,8 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
               chatMode={chatMode}
               chatPreview={chatPreview as any}
               goToExpandedDialog={handleGoToExpandedDialog}
-              interlocutor={chatPreview.interlocutor}
-              key={uniqueId()}
+              interlocutor={interlocutor}
+              key={_id}
               userId={userId}
               catalogOperation={
                 chatMode === CATALOG_PREVIEW_CHAT_MODE
@@ -137,9 +137,7 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
   );
 
   const chatPreview = useMemo(() => {
-    if (isShowChatsInCatalog) {
-      return renderPreview(onlyChatsInCatalog);
-    }
+    if (isShowChatsInCatalog) return renderPreview(onlyChatsInCatalog);
     if (chatMode === FAVORITE_PREVIEW_CHAT_MODE)
       return renderPreview(onlyFavoriteDialogs);
     if (chatMode === BLOCKED_PREVIEW_CHAT_MODE)
