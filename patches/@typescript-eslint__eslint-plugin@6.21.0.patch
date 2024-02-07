@@ -1,8 +1,8 @@
 diff --git a/dist/configs/all.js b/dist/configs/all.js
-index 3e350c31c437931affdb70cff62a7357f4061f86..f5b2371a859a3f3d153b2d27455db314c4bffd2b 100644
+index 15a2cd7079ee314198d0f2c58a74b7001ff1b161..69a4d868a81899566dfa7ce02d59e945b43e8ff5 100644
 --- a/dist/configs/all.js
 +++ b/dist/configs/all.js
-@@ -8,148 +8,148 @@
+@@ -8,149 +8,149 @@
  module.exports = {
      extends: ['./configs/base', './configs/eslint-recommended'],
      rules: {
@@ -204,6 +204,7 @@ index 3e350c31c437931affdb70cff62a7357f4061f86..f5b2371a859a3f3d153b2d27455db314
          'prefer-destructuring': 'off',
 -        '@typescript-eslint/prefer-destructuring': 'error',
 -        '@typescript-eslint/prefer-enum-initializers': 'error',
+-        '@typescript-eslint/prefer-find': 'error',
 -        '@typescript-eslint/prefer-for-of': 'error',
 -        '@typescript-eslint/prefer-function-type': 'error',
 -        '@typescript-eslint/prefer-includes': 'error',
@@ -213,6 +214,7 @@ index 3e350c31c437931affdb70cff62a7357f4061f86..f5b2371a859a3f3d153b2d27455db314
 -        '@typescript-eslint/prefer-optional-chain': 'error',
 +        '@typescript-eslint/prefer-destructuring': 'warn',
 +        '@typescript-eslint/prefer-enum-initializers': 'warn',
++        '@typescript-eslint/prefer-find': 'warn',
 +        '@typescript-eslint/prefer-for-of': 'warn',
 +        '@typescript-eslint/prefer-function-type': 'warn',
 +        '@typescript-eslint/prefer-includes': 'warn',
