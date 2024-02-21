@@ -74,17 +74,17 @@
         "checkIntersections": true,
         "checkUnions": true,
         "groupOrder": [
-          "named",
           "keyword",
-          "operator",
           "literal",
-          "function",
-          "import",
-          "conditional",
-          "object",
-          "tuple",
+          "named",
+          "operator",
           "intersection",
           "union",
+          "conditional",
+          "function",
+          "object",
+          "tuple",
+          "import",
           "nullish"
         ]
       }
