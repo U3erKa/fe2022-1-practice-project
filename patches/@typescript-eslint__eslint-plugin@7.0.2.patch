@@ -271,25 +271,26 @@ index 15a2cd7079ee314198d0f2c58a74b7001ff1b161..69a4d868a81899566dfa7ce02d59e945
  };
  //# sourceMappingURL=all.js.map
 \ No newline at end of file
-diff --git a/dist/configs/eslint-recommended.js b/dist/configs/eslint-recommended.js
-index 9a7ea9622c3463f6e8f6c0e752aed586a87e548e..ce77d39103187d002629bb4b82ae0f0a0349d930 100644
---- a/dist/configs/eslint-recommended.js
-+++ b/dist/configs/eslint-recommended.js
-@@ -20,10 +20,10 @@ module.exports = {
-                 'no-undef': 'off', // ts(2304) & ts(2552)
-                 'no-unreachable': 'off', // ts(7027)
-                 'no-unsafe-negation': 'off', // ts(2365) & ts(2322) & ts(2358)
--                'no-var': 'error', // ts transpiles let/const to var, so no need for vars any more
--                'prefer-const': 'error', // ts provides better types with const
--                'prefer-rest-params': 'error', // ts provides better types with rest args over arguments
--                'prefer-spread': 'error', // ts transpiles spread to apply, so no need for manual apply
-+                'no-var': 'warn', // ts transpiles let/const to var, so no need for vars any more
-+                'prefer-const': 'warn', // ts provides better types with const
-+                'prefer-rest-params': 'warn', // ts provides better types with rest args over arguments
-+                'prefer-spread': 'warn', // ts transpiles spread to apply, so no need for manual apply
-             },
-         },
-     ],
+diff --git a/dist/configs/eslint-recommended-raw.js b/dist/configs/eslint-recommended-raw.js
+index 6aed847a5645f236ebe37e6d2e773208e226667c..728b49b6eed4fec1ff0a507182760e89c55675f8 100644
+--- a/dist/configs/eslint-recommended-raw.js
++++ b/dist/configs/eslint-recommended-raw.js
+@@ -31,10 +31,10 @@ exports.default = (style) => ({
+         'no-undef': 'off', // ts(2304) & ts(2552)
+         'no-unreachable': 'off', // ts(7027)
+         'no-unsafe-negation': 'off', // ts(2365) & ts(2322) & ts(2358)
+-        'no-var': 'error', // ts transpiles let/const to var, so no need for vars any more
+-        'prefer-const': 'error', // ts provides better types with const
+-        'prefer-rest-params': 'error', // ts provides better types with rest args over arguments
+-        'prefer-spread': 'error', // ts transpiles spread to apply, so no need for manual apply
++        'no-var': 'warn', // ts transpiles let/const to var, so no need for vars any more
++        'prefer-const': 'warn', // ts provides better types with const
++        'prefer-rest-params': 'warn', // ts provides better types with rest args over arguments
++        'prefer-spread': 'warn', // ts transpiles spread to apply, so no need for manual apply
+     },
+ });
+ //# sourceMappingURL=eslint-recommended-raw.js.map
+\ No newline at end of file
 diff --git a/dist/configs/recommended-type-checked.js b/dist/configs/recommended-type-checked.js
 index 15e13082e8616d9020224010ac099367a113bba6..e58ac6f0a54b5156889adf58a9c324032e2e154e 100644
 --- a/dist/configs/recommended-type-checked.js
