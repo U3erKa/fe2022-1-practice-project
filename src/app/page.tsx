@@ -25,7 +25,7 @@ import TheNextWebActiveIcon from 'assets/sponsors/the_next_web_active.png';
 import TheNextWebInactiveIcon from 'assets/sponsors/the_next_web_inactive.png';
 import styles from './styles/page.module.scss';
 
-const GREEN_COLOR = { color: '#006d00' } satisfies CSSProperties;
+const GREEN_COLOR = { color: '#006d00', width: 16 } satisfies CSSProperties;
 
 const Home = () => (
   <>

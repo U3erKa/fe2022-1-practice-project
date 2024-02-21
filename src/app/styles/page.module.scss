@@ -12,9 +12,6 @@
   }
 
   p {
-    @include container(flex-start, space-around, row);
-
-    flex-wrap: nowrap;
     margin-block-end: 10px;
     line-height: 25px;
 
@@ -126,6 +123,7 @@
       padding: 0;
     }
   }
+
   @media screen and (width <= 950px) {
     @include container(center, flex-start, column-reverse);
 
