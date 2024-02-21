@@ -14,7 +14,7 @@
     "format": "prettier -wl --cache src db",
     "lint": "turbo lint:code lint:styles",
     "lint:fix": "pnpm lint -- --fix",
-    "lint:code": "eslint --cache",
+    "lint:code": "eslint src --cache",
     "lint:styles": "stylelint --cache 'src/**/*.{css,scss}'",
     "prepare": "turbo styles",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
