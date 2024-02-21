@@ -20,7 +20,7 @@ class WebSocket {
     });
   }
 
-  // eslint-disable-next-line class-methods-use-this, @typescript-eslint/no-empty-function
+  // eslint-disable-next-line class-methods-use-this
   anotherSubscribes() {}
 }
 
