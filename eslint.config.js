@@ -9,8 +9,8 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   eslint.configs.recommended,
-  ...overrideRulesSeverity(tseslint.configs.strictTypeChecked),
-  ...overrideRulesSeverity(tseslint.configs.stylisticTypeChecked),
+  ...overrideConfigSeverity(tseslint.configs.strictTypeChecked),
+  ...overrideConfigSeverity(tseslint.configs.stylisticTypeChecked),
   {
     linterOptions: { reportUnusedDisableDirectives: true },
     languageOptions: {
@@ -37,6 +37,8 @@ export default tseslint.config(
     },
     // @ts-expect-error
     rules: {
+      // @ts-expect-error
+      ...overrideRulesSeverity(reactPlugin.configs.recommended.rules),
       ...reactPlugin.configs['jsx-runtime'].rules,
       'react/function-component-definition': [
         'warn',
@@ -52,7 +54,6 @@ export default tseslint.config(
       'react/iframe-missing-sandbox': 'warn',
       'react/jsx-boolean-value': ['warn', 'never'],
       'react/jsx-fragments': ['warn', 'syntax'],
-      'react/jsx-key': 'warn',
       'react/jsx-max-depth': ['warn', { max: 10 }],
       'react/jsx-no-bind': [
         'warn',
@@ -248,17 +249,33 @@ export default tseslint.config(
   },
 );
 
-function overrideRulesSeverity(
+function overrideConfigSeverity(
   /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */ params,
 ) {
-  return params.map(({ rules, ...config }) => {
-    /** @type {typeof rules} */ const newRules = {};
-    for (const rule in rules) {
-      if (Object.hasOwnProperty.call(rules, rule)) {
-        const item = rules[rule];
-        newRules[rule] = item === 'error' ? 'warn' : item;
+  return params.map(({ rules, ...config }) => ({
+    ...config,
+    rules: overrideRulesSeverity(rules),
+  }));
+}
+
+function overrideRulesSeverity(
+  /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config['rules']} */ rules,
+) {
+  /** @type {typeof rules} */ const newRules = {};
+  for (const rule in rules) {
+    if (Object.hasOwnProperty.call(rules, rule)) {
+      /** @type {import('@typescript-eslint/utils').TSESLint.Linter.RuleLevel | import('@typescript-eslint/utils').TSESLint.Linter.RuleLevelAndOptions} */
+      // @ts-expect-error
+      const item = rules[rule];
+      if (Array.isArray(item)) {
+        const [severity, config] = item;
+        newRules[rule] = ['error', 2].includes(severity)
+          ? ['warn', config]
+          : item;
+      } else {
+        newRules[rule] = ['error', 2].includes(item) ? 'warn' : item;
       }
     }
-    return { ...config, rules: newRules };
-  });
+  }
+  return newRules;
 }
