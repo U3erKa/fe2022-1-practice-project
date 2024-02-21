@@ -14,12 +14,12 @@ import type { Bank } from 'types/models';
 
 export type SetOfferStatusParams = WithId<'offerId'> &
   (
-    | { command: ModeratorCommand }
     | (WithId<'contestId' | 'creatorId'> &
         WithUUID<'orderId'> & {
           command: CustomerCommand;
           priority: Priority;
         })
+    | { command: ModeratorCommand }
   );
 
 export type ChangeMarkParams = WithId<'creatorId' | 'offerId'> & {
@@ -59,8 +59,8 @@ export type ModeratorCommand =
   | typeof OFFER_COMMAND_APPROVE
   | typeof OFFER_COMMAND_DISCARD;
 export type CardField =
-  | keyof Omit<Bank['dataValues'], 'balance' | 'cardNumber'>
-  | 'number';
+  | 'number'
+  | keyof Omit<Bank['dataValues'], 'balance' | 'cardNumber'>;
 
 export type WithOfferStatus<T = Commands> = {
   status: OfferStatus<T>;

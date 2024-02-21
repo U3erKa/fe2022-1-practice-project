@@ -15,7 +15,7 @@ export type Props = {
 
 export type Props2 = Pick<Props, 'onChange'> & {
   readonly industries?: Industry[];
-  readonly filter?: Industry | '';
+  readonly filter?: '' | Industry;
 };
 
 export const ContestTypes: FC<Props> = ({ onChange, value }) => {

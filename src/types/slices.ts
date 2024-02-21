@@ -128,15 +128,15 @@ export type Bundle = {
 };
 
 export type ContestsOrder =
+  | 'payment'
   | LogoContestContestType
   | NameContestContestType
-  | TaglineContestContestType
-  | 'payment';
+  | TaglineContestContestType;
 
 export type CreatorFilter = {
   contestId?: ContestId;
   typeIndex?: number | string;
-  industry?: Industry | '';
+  industry?: '' | Industry;
   awardSort?: 'ASC' | 'DESC';
   ownEntries?: boolean;
 };

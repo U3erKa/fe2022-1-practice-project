@@ -9,11 +9,12 @@ import {
 import type { CardField } from 'types/offer';
 
 export type Props<T extends FieldValues> = ComponentPropsWithoutRef<'input'> &
-  Pick<UseControllerProps<T>, 'control' | 'name'> & {
+  Pick<UseControllerProps<T>, 'control' | 'name'> &
+  (Pick<MaskProps, 'mask' | 'replacement'> | { mask?: undefined }) & {
     readonly changeFocus: (name: CardField) => void;
     readonly classes: Record<string, string>;
     readonly replacement?: MaskProps['replacement'];
-  } & (Pick<MaskProps, 'mask' | 'replacement'> | { mask?: undefined });
+  };
 
 const PayInput = <T extends FieldValues>({
   changeFocus,

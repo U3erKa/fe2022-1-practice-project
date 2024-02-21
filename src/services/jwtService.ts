@@ -15,7 +15,7 @@ import {
 import type { User } from 'types/models';
 
 export type JwtSign = (
-  payload: Buffer | object | string,
+  payload: object | string | Buffer,
   secretOrPrivateKey: Secret,
   options?: SignOptions,
 ) => Promise<string>;
@@ -28,8 +28,8 @@ export type JwtVerify<Complete = unknown> = (
   Complete extends true
     ? Jwt
     : Complete extends false
-      ? JwtPayload | string
-      : Jwt | JwtPayload | string
+      ? string | JwtPayload
+      : string | Jwt | JwtPayload
 >;
 
 export type TokenData = Pick<

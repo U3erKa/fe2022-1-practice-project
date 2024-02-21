@@ -8,12 +8,12 @@ import {
 class WebSocket {
   // @ts-expect-error
   io: ReturnType<Server['of']>;
-  connect(namespace: RegExp | string, io: Server) {
+  connect(namespace: string | RegExp, io: Server) {
     this.io = io.of(namespace);
 
     this.io.on(SOCKET_CONNECTION, (socket) => {
       socket
-        .on(SOCKET_SUBSCRIBE, (id: string[] | string) => {
+        .on(SOCKET_SUBSCRIBE, (id: string | string[]) => {
           return socket.join(id);
         })
         .on(SOCKET_UNSUBSCRIBE, (id: string) => {

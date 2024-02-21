@@ -62,6 +62,6 @@ export type DataValues<T> = T extends (infer A)[]
     : A[]
   : T extends Model
     ? InferAttributes<T>
-    : T extends PropertyKey | boolean | null | undefined
+    : T extends boolean | PropertyKey | null | undefined
       ? T
       : { [key in keyof T]: DataValues<T[key]> };

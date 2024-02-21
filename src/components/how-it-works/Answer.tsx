@@ -6,7 +6,7 @@ import styles from './styles/Answer.module.scss';
 
 export type Props = {
   readonly active: boolean;
-  readonly contents: AnswerProps | ReactNode | string;
+  readonly contents: string | AnswerProps | ReactNode;
 };
 
 const isAnswer = (contents: unknown): contents is AnswerProps => {

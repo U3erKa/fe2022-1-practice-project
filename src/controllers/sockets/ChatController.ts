@@ -24,7 +24,7 @@ export type WebSocketMessage = {
 class ChatController extends WebSocket {
   anotherSubscribes(socket: Socket) {
     socket
-      .on(SOCKET_SUBSCRIBE_CHAT, (id: string[] | string) => {
+      .on(SOCKET_SUBSCRIBE_CHAT, (id: string | string[]) => {
         return socket.join(id);
       })
       .on(SOCKET_UNSUBSCRIBE_CHAT, (id: string) => {

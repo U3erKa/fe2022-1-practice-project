@@ -48,7 +48,7 @@ const hashPassword = async (user: User) => {
 
 export default function User(sequelize: Sequelize) {
   class User extends _User {
-    async comparePassword(password: Buffer | string) {
+    async comparePassword(password: string | Buffer) {
       return await bcrypt.compare(password, this.password);
     }
 

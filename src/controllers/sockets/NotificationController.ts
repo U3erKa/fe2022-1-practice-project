@@ -6,11 +6,11 @@ import {
 import WebSocket from './WebSocket';
 
 class NotificationController extends WebSocket {
-  emitEntryCreated(target: string[] | string) {
+  emitEntryCreated(target: string | string[]) {
     this.io.to(target).emit(NOTIFICATION_ENTRY_CREATED);
   }
 
-  emitChangeMark(target: string[] | string) {
+  emitChangeMark(target: string | string[]) {
     this.io.to(target).emit(NOTIFICATION_CHANGE_MARK);
   }
 
