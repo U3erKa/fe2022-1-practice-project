@@ -16,12 +16,12 @@
     "lint:fix": "pnpm lint -- --fix",
     "lint:code": "eslint src --cache",
     "lint:styles": "stylelint --cache 'src/**/*.{css,scss}'",
-    "prepare": "turbo styles",
+    "prepare": "turbo styles 1> /dev/null",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "styles": "typed-scss-modules 'src/**/*.{css,scss}' 1> /dev/null",
-    "styles:watch": "pnpm styles -w"
+    "styles": "typed-scss-modules 'src/**/*.{css,scss}'",
+    "styles:watch": "pnpm styles -w 1> /dev/null"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
