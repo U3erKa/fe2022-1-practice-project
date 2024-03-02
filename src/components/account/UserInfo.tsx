@@ -18,10 +18,10 @@ type Props2 = {
 };
 
 const InfoBlock: FC<Props2> = ({ label, value }) => (
-  <div className={styles.infoBlock}>
+  <p className={styles.infoBlock}>
     <span className={styles.label}>{label}</span>
     <span className={styles.info}>{value}</span>
-  </div>
+  </p>
 );
 
 const UserInfoData: FC<Props> = ({ userData }) => {
@@ -76,25 +76,25 @@ const UserInfo: FC = () => {
   );
 
   return (
-    <div className={styles.mainContainer}>
+    <article className={styles.mainContainer}>
       {isEdit ? (
         <UpdateUserInfoForm onSubmit={updateUserData as any} />
       ) : (
-        <div className={styles.infoContainer}>
+        <section className={styles.infoContainer}>
           <UserImage
             className={styles.avatar}
             src={`${PUBLIC_URL}${userData?.avatar}`}
           />
           <UserInfoData userData={userData} />
-        </div>
+        </section>
       )}
-      <div
+      <button
         className={styles.buttonEdit}
         onClick={() => dispatch(changeEditModeOnUserProfile(!isEdit))}
       >
         {isEdit ? 'Cancel' : 'Edit'}
-      </div>
-    </div>
+      </button>
+    </article>
   );
 };
 

@@ -15,7 +15,7 @@ const NavList = ({ list }: { readonly list: List }) => {
       <NavListItem list={listItem} />
     </li>
   ));
-  return <ul className={styles.nav}>{mapList}</ul>;
+  return <nav className={styles.nav}>{mapList}</nav>;
 };
 
 export const NavListItem = ({ list }: { readonly list: ListItem }) => {

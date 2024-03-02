@@ -57,7 +57,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
   const replacement = { _: /\d/ } satisfies string | Replacement;
   return (
     <div className={styles.payFormContainer}>
-      <span className={styles.headerInfo}>Payment Information</span>
+      <h2 className={styles.headerInfo}>Payment Information</h2>
       <div className={styles.cardContainer}>
         <Cards
           cvc={cvc}
@@ -72,8 +72,8 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
         id="myForm"
         onSubmit={handleSubmit(sendRequest)}
       >
-        <div className={styles.bigInput}>
-          <span>Name</span>
+        <label className={styles.bigInput}>
+          <p>Name</p>
           <PayInput
             changeFocus={changeFocusOnCardMethod}
             classes={classes}
@@ -82,10 +82,10 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
             placeholder="name"
             type="text"
           />
-        </div>
+        </label>
         {!isPayForOrder && (
-          <div className={styles.bigInput}>
-            <span>Sum</span>
+          <label className={styles.bigInput}>
+            <p>Sum</p>
             <PayInput
               changeFocus={changeFocusOnCardMethod}
               classes={classes}
@@ -94,10 +94,10 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
               placeholder="sum"
               type="text"
             />
-          </div>
+          </label>
         )}
-        <div className={styles.bigInput}>
-          <span>Card Number</span>
+        <label className={styles.bigInput}>
+          <p>Card Number</p>
           <PayInput
             changeFocus={changeFocusOnCardMethod}
             classes={classes}
@@ -108,10 +108,10 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
             replacement={replacement}
             type="text"
           />
-        </div>
+        </label>
         <div className={styles.smallInputContainer}>
-          <div className={styles.smallInput}>
-            <span>* Expires</span>
+          <label className={styles.smallInput}>
+            <p>Expires *</p>
             <PayInput
               changeFocus={changeFocusOnCardMethod}
               classes={classes}
@@ -122,9 +122,9 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
               replacement={replacement}
               type="text"
             />
-          </div>
-          <div className={styles.smallInput}>
-            <span>* Security Code</span>
+          </label>
+          <label className={styles.smallInput}>
+            <p>Security Code *</p>
             <PayInput
               changeFocus={changeFocusOnCardMethod}
               classes={classes}
@@ -135,7 +135,7 @@ const PayForm: FC<Props> = ({ sendRequest, focusOnElement, isPayForOrder }) => {
               replacement={replacement}
               type="text"
             />
-          </div>
+          </label>
         </div>
       </form>
       {isPayForOrder ? (

@@ -9,31 +9,27 @@ import styles from './styles/Header.module.scss';
 
 const Header = () => (
   <header className={styles.headerContainer}>
-    <div className={styles.fixedHeader}>
-      <span className={styles.info}>
+    <section className={styles.fixedHeader}>
+      <p className={styles.info}>
         Squadhelp recognized as one of the Most Innovative Companies by Inc
         Magazine.
-      </span>
+      </p>
       <Link href={PAGE.DUMMY_LINK}>Read Announcement</Link>
-    </div>
-    <div className={styles.loginSignnUpHeaders}>
-      <div className={styles.numberContainer}>
+    </section>
+    <section className={styles.loginSignnUpHeaders}>
+      <p className={styles.numberContainer}>
         <Image alt="phone" src={PhoneIcon} />
         <a href="tel:8773553585">(877)&nbsp;355-3585</a>
-      </div>
+      </p>
       <div className={styles.userButtonsContainer}>
         <LoginButtons />
       </div>
-    </div>
-    <div className={styles.navContainer}>
+    </section>
+    <section className={styles.navContainer}>
       <Logo />
-      <div className={styles.leftNav}>
-        <div>
-          <NavList list={HEADER_LIST} />
-        </div>
-        <StartContestButton />
-      </div>
-    </div>
+      <NavList list={HEADER_LIST} />
+      <StartContestButton />
+    </section>
   </header>
 );
 

@@ -37,10 +37,10 @@ const UserProfile = () => {
     <OnlyAuthorizedUser>
       <Header />
       <main className={styles.mainContainer}>
-        <div className={styles.aside}>
-          <span className={styles.headerAside}>Select Option</span>
-          <div className={styles.optionsContainer}>
-            <div
+        <aside className={styles.aside}>
+          <h2 className={styles.headerAside}>Select Option</h2>
+          <section className={styles.optionsContainer}>
+            <button
               className={clsx(
                 styles.optionContainer,
                 profileViewMode === USER_INFO_MODE && styles.currentOption,
@@ -48,9 +48,9 @@ const UserProfile = () => {
               onClick={() => dispatch(changeProfileViewMode(USER_INFO_MODE))}
             >
               UserInfo
-            </div>
+            </button>
             {role === CREATOR && (
-              <div
+              <button
                 className={clsx(
                   styles.optionContainer,
                   profileViewMode === CASHOUT_MODE && styles.currentOption,
@@ -58,16 +58,16 @@ const UserProfile = () => {
                 onClick={() => dispatch(changeProfileViewMode(CASHOUT_MODE))}
               >
                 Cashout
-              </div>
+              </button>
             )}
-          </div>
-        </div>
+          </section>
+        </aside>
         {profileViewMode === USER_INFO_MODE ? (
           <UserInfo />
         ) : (
-          <div className={styles.container}>
+          <article className={styles.container}>
             {balance ? (
-              <div>
+              <>
                 {error ? (
                   <Error
                     clearError={clearPaymentStore}
@@ -76,13 +76,13 @@ const UserProfile = () => {
                   />
                 ) : null}
                 <PayForm sendRequest={pay as any} />
-              </div>
+              </>
             ) : (
-              <span className={styles.notMoney}>
+              <p className={styles.notMoney}>
                 There is no money on your balance
-              </span>
+              </p>
             )}
-          </div>
+          </article>
         )}
       </main>
     </OnlyAuthorizedUser>

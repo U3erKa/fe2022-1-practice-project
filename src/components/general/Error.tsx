@@ -25,10 +25,10 @@ const Error: FC<Props> = ({ status, data, clearError }) => {
   }
 
   return (
-    <div className={styles.errorContainer}>
+    <p className={styles.errorContainer}>
       <span>{message}</span>
       <FontAwesomeIcon icon={faCircleXmark} onClick={clearError} />
-    </div>
+    </p>
   );
 };
 
