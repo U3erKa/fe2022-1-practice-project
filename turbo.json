@@ -3,17 +3,19 @@
   "pipeline": {
     "build": { "outputs": [".next/**", "!.next/cache/**"] },
     "clear:styles": { "cache": false },
+    "dev:app": { "cache": false, "persistent": true },
+    "dev:server": { "cache": false, "persistent": true },
     "dev": { "cache": false, "persistent": true },
     "format": {},
-    "lint": {},
+    "lint:code": { "outputs": [".eslintcache"] },
     "lint:fix": {},
-    "lint:code": {},
-    "lint:styles": {},
-    "prepare": {},
+    "lint:styles": { "outputs": [".stylelintcache"] },
+    "lint": {},
     "migrate": {},
+    "prepare": {},
     "start": { "cache": false, "persistent": true },
-    "typecheck": { "outputs": ["tsconfig.tsbuildinfo"] },
+    "styles:watch": { "cache": false, "persistent": true },
     "styles": {},
-    "styles:watch": { "cache": false, "persistent": true }
+    "typecheck": { "outputs": ["tsconfig.tsbuildinfo"] }
   }
 }

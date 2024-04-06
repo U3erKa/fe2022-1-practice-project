@@ -2,6 +2,7 @@
   "name": "next-app",
   "version": "1.0.0",
   "type": "module",
+  "main": "src/server/",
   "private": true,
   "engines": {
     "node": "^18 || >=20",
@@ -10,18 +11,20 @@
   "scripts": {
     "build": "next build",
     "clear:styles": "rm -rf src/**/*.{css,scss}.d.ts",
-    "dev": "next dev",
+    "dev:app": "next dev",
+    "dev:server": "tsx .",
+    "dev": "turbo dev:app dev:server",
     "format": "prettier -wl --cache src db",
-    "lint": "turbo lint:code lint:styles",
-    "lint:fix": "pnpm lint -- --fix",
     "lint:code": "eslint src --cache",
+    "lint:fix": "pnpm lint -- --fix",
     "lint:styles": "stylelint --cache 'src/**/*.{css,scss}'",
-    "prepare": "turbo styles 1> /dev/null",
+    "lint": "turbo lint:code lint:styles",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
+    "prepare": "turbo styles 1> /dev/null",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
+    "styles:watch": "pnpm styles -w 1> /dev/null",
     "styles": "typed-scss-modules 'src/**/*.{css,scss}'",
-    "styles:watch": "pnpm styles -w 1> /dev/null"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
