@@ -13,12 +13,8 @@ class WebSocket {
 
     this.io.on(SOCKET_CONNECTION, (socket) => {
       socket
-        .on(SOCKET_SUBSCRIBE, (id: string | string[]) => {
-          return socket.join(id);
-        })
-        .on(SOCKET_UNSUBSCRIBE, (id: string) => {
-          return socket.leave(id);
-        });
+        .on(SOCKET_SUBSCRIBE, (id: string | string[]) => socket.join(id))
+        .on(SOCKET_UNSUBSCRIBE, (id: string) => socket.leave(id));
       this.anotherSubscribes(socket);
     });
   }

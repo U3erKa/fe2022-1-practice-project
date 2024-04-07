@@ -1,6 +1,6 @@
 import socketIoClient from 'socket.io-client';
 import type { AppDispatch, reduxStore } from 'store';
-import { BASE_URL } from 'constants/general';
+import { NEXT_PUBLIC_WS_SERVER_URL } from 'constants/general';
 
 class WebSocket {
   socket: ReturnType<typeof socketIoClient>;
@@ -9,7 +9,7 @@ class WebSocket {
     public getState: (typeof reduxStore)['getState'],
     room: string,
   ) {
-    this.socket = socketIoClient(`${BASE_URL}${room}`, {
+    this.socket = socketIoClient(`${NEXT_PUBLIC_WS_SERVER_URL}/${room}`, {
       // @ts-expect-error
       origins: 'localhost:*',
       transports: ['websocket', 'polling'],
