@@ -5,13 +5,6 @@ $borderRadius: 5px;
 $minWidth: 320px;
 $containerWidth: 1280px;
 
-@mixin container($align: center, $justify: flex-start, $dir: column) {
-  display: flex;
-  flex-flow: $dir wrap;
-  align-items: $align;
-  justify-content: $justify;
-}
-
 @mixin button {
   max-inline-size: 340px;
   margin-block-end: 10px;

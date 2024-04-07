@@ -5,14 +5,16 @@ $colorGray: #aaa;
 $colorDarkGray: #555;
 
 .container {
-  @include container($align: center, $justify: flex-start, $dir: column);
-
   scrollbar-gutter: stable;
 
   overflow: auto;
   overscroll-behavior: contain;
+  display: flex;
+  flex-flow: column wrap;
   flex-wrap: nowrap;
   gap: $gap;
+  align-items: center;
+  justify-content: flex-start;
 
   inline-size: clamp($minWidth, 100%, $containerWidth);
   max-block-size: 300px;
@@ -41,10 +43,14 @@ $colorDarkGray: #555;
 }
 
 .eventContainer {
-  @include container($align: center, $justify: space-between, $dir: row);
-
   position: relative;
+
+  display: flex;
+  flex-flow: row wrap;
   gap: $gap;
+  align-items: center;
+  justify-content: space-between;
+
   inline-size: calc(100% - $padding * 2);
   padding: $padding;
 }

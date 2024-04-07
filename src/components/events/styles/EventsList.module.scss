@@ -1,14 +1,21 @@
 @import '../../../styles/common';
 
 .container {
-  @include container($align: center, $justify: flex-start, $dir: column);
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
 
   padding: $padding;
+
   font-size: $fontSize;
 }
 
 .headingContainer {
-  @include container($align: center, $justify: space-between, $dir: row);
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
 
   inline-size: clamp($minWidth, 100%, $containerWidth);
   padding: $padding;
@@ -20,9 +27,11 @@
 }
 
 .textContainer {
-  @include container($align: center, $justify: space-between, $dir: row);
-
+  display: flex;
+  flex-flow: row wrap;
   gap: $gap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .heading {

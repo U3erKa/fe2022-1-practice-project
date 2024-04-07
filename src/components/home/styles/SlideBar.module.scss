@@ -33,11 +33,16 @@
 }
 
 .feedbackCell {
-  @include container;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
 
   block-size: 450px;
   padding-block-start: 20px;
+
   color: #000;
+
   background-color: #fff;
 
   img {
@@ -74,10 +79,15 @@
   aspect-ratio: 1.67;
 
   p {
-    @include container(flex-start, center, row);
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
 
     padding: 10px 0;
+
     color: #fff;
+
     background-color: #333;
     @media (hover: hover) {
       &:hover {

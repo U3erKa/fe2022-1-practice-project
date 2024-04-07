@@ -6,9 +6,11 @@ $colorDarkGray: #555;
 $colorCyan: #28d2d0;
 
 .container {
-  @include container($align: center, $justify: flex-start, $dir: column);
-
+  display: flex;
+  flex-flow: column wrap;
   gap: $gap;
+  align-items: center;
+  justify-content: flex-start;
 
   inline-size: clamp($minWidth, 100%, $containerWidth);
   margin: 0 auto;
@@ -23,9 +25,12 @@ $colorCyan: #28d2d0;
 }
 
 .inputContainer {
-  @include container($align: flex-start, $justify: center, $dir: column);
-
+  display: flex;
+  flex-flow: column wrap;
   gap: $gap;
+  align-items: flex-start;
+  justify-content: center;
+
   inline-size: 100%;
   padding: $padding 0;
 }
