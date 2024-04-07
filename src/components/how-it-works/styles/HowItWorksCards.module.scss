@@ -40,11 +40,8 @@ $columnWidth: minmax(260px, 1fr);
 }
 
 .button {
-  @include button(
-    $color: $buttonTextColor,
-    $backgroundColor: $mainColor,
-    $borderRadius: $borderRadius
-  );
-
   align-self: flex-end;
+  color: $buttonTextColor;
+  background-color: $mainColor;
+  border-radius: $borderRadius;
 }

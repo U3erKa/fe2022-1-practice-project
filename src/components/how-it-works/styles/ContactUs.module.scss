@@ -71,13 +71,10 @@
 }
 
 .button {
-  @include button(
-    $color: $mainColor,
-    $backgroundColor: $buttonTextColor,
-    $borderRadius: 2rem
-  );
-
   display: block;
+  color: $mainColor;
+  background-color: $buttonTextColor;
+  border-radius: 2rem;
 }
 
 .link {

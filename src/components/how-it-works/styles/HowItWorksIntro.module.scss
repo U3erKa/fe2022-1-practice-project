@@ -39,9 +39,7 @@ $contentWidth: calc($containerWidth - $imageWidth);
 }
 
 .button {
-  @include button(
-    $color: $buttonTextColor,
-    $backgroundColor: $mainColor,
-    $borderRadius: calc($borderRadius * 5)
-  );
+  color: $buttonTextColor;
+  background-color: $mainColor;
+  border-radius: calc($borderRadius * 5);
 }

@@ -55,17 +55,14 @@ $containerWidth: 1280px;
   inline-size: 72px;
 }
 
-@mixin button($color, $backgroundColor, $borderRadius) {
+.button {
   padding: calc($gap * 1.5) calc($gap * 2);
 
   line-height: 1.5;
-  color: $color;
   text-align: center;
   text-decoration: none;
 
-  background-color: $backgroundColor;
   border: none;
-  border-radius: $borderRadius;
 
   transition: all 0.3s ease-in-out;
 

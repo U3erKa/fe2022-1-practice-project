@@ -58,11 +58,9 @@
 }
 
 .button {
-  @include button(
-    $color: $textColorDark,
-    $backgroundColor: $getStartedTextColor,
-    $borderRadius: $borderRadius
-  );
+  color: $textColorDark;
+  background-color: $getStartedTextColor;
+  border-radius: $borderRadius;
   @media (width < 480px) {
     inline-size: calc(100% - $padding * 2);
   }
