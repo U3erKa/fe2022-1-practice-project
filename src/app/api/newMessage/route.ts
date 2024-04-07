@@ -1,14 +1,17 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { RightsError } from 'errors';
 import { Conversation, Message } from 'models';
+import { NEXT_PUBLIC_WS_SERVER_URL } from 'constants/general';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   try {
     const { headers, json } = req;
-    const authorization = headers.get('Authorization')!.split(' ')[1]!;
-    const { userId } = await verifyAccessToken(authorization);
+    const authorization = headers.get('Authorization')!;
+    const token = authorization.split(' ')[1]!;
+    const { userId, firstName, lastName, displayName, avatar, email } =
+      await verifyAccessToken(token);
     const { recipient, messageBody, interlocutor } = await json();
     const participants = [userId, recipient].sort(
       (participant1, participant2) => participant1 - participant2,
@@ -37,18 +40,44 @@ export async function POST(req: NextRequest) {
       conversation: _id,
       sender: userId,
     });
+    const { createdAt } = message;
 
     Object.assign(message.dataValues, { participants });
 
     const preview = {
       _id,
       blackList,
-      createdAt: message.createdAt,
+      createdAt,
       favoriteList,
       participants,
       sender: userId,
       text: messageBody,
     };
+
+    const newMessageHeaders = new Headers();
+    newMessageHeaders.append('Authorization', token);
+
+    await fetch(`${NEXT_PUBLIC_WS_SERVER_URL}/newMessage`, {
+      headers: newMessageHeaders,
+      method: 'POST',
+      body: JSON.stringify({
+        recipient,
+        message: {
+          message,
+          preview: {
+            ...preview,
+            interlocutor: {
+              id: userId,
+              firstName,
+              lastName,
+              displayName,
+              avatar,
+              email,
+            },
+          },
+        },
+      }),
+    });
 
     return NextResponse.json({
       message,

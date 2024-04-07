@@ -1,14 +1,16 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { NotFoundError } from 'errors';
 import { Conversation } from 'models';
+import { NEXT_PUBLIC_WS_SERVER_URL } from 'constants/general';
 import { verifyAccessToken } from 'services/jwtService';
 import handleError from 'utils/handleError';
 
 export async function POST(req: NextRequest) {
   try {
     const { headers, json } = req;
-    const authorization = headers.get('Authorization')!.split(' ')[1]!;
-    const { userId } = await verifyAccessToken(authorization);
+    const authorization = headers.get('Authorization')!;
+    const token = authorization.split(' ')[1]!;
+    const { userId } = await verifyAccessToken(token);
     const { participants, blackListFlag } = await json();
     const [participant1, participant2] = participants;
     const predicate = participants.indexOf(userId);
@@ -31,6 +33,18 @@ export async function POST(req: NextRequest) {
 
     Object.assign(chat!.dataValues, {
       participants: [participant1, participant2],
+    });
+
+    const newMessageHeaders = new Headers();
+    newMessageHeaders.append('Authorization', token);
+
+    await fetch(`${NEXT_PUBLIC_WS_SERVER_URL}/blackList`, {
+      headers: newMessageHeaders,
+      method: 'POST',
+      body: JSON.stringify({
+        recipient: participants.find((id: number) => id !== userId),
+        message: chat,
+      }),
     });
 
     return NextResponse.json(chat as _Chat);
