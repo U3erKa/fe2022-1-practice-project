@@ -48,8 +48,9 @@ export async function POST(req: NextRequest) {
         text: messages?.at(-1).body,
       });
 
-      for (const { dataValues } of senders) {
-        const { avatar, displayName, firstName, id, lastName } = dataValues;
+      for (const sender of senders) {
+        const { avatar, displayName, firstName, id, lastName } =
+          sender.dataValues;
         if (participants.includes(id)) {
           Object.assign(dataValues, {
             interlocutor: { avatar, displayName, firstName, id, lastName },
