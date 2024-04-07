@@ -12,7 +12,7 @@ const GetStartedImages = () => {
     );
   });
 
-  return <article className={styles.cardContainer}>{images}</article>;
+  return <article className={styles.container}>{images}</article>;
 };
 
 export default GetStartedImages;

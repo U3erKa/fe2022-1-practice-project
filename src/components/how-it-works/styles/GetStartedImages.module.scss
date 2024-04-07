@@ -3,9 +3,7 @@
 $borderColor: rgb(30 32 34 / 20%);
 $iconSize: 80px;
 
-.cardContainer {
-  @include container;
-
+.container {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;

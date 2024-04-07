@@ -3,10 +3,6 @@
 $imageWidth: 500px;
 $contentWidth: calc($containerWidth - $imageWidth);
 
-.container {
-  @include container;
-}
-
 .contents {
   inline-size: clamp($minWidth, 60%, $contentWidth);
 

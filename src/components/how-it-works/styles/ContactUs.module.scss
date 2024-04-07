@@ -1,7 +1,6 @@
 @import './common.module';
 
 .container {
-  @include container;
   @media (width < 1024px) {
     flex-direction: column;
   }

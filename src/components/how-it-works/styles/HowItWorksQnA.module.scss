@@ -1,8 +1,6 @@
 @import './common.module';
 
 .container {
-  @include container;
-
   gap: calc($gap * 4);
   align-items: flex-start;
   @media (width < 1024px) {
