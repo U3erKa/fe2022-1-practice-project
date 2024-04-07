@@ -56,17 +56,6 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
 
   if (!user) return <Spinner />;
 
-  const inputContainers = INPUT_CONTAINERS.map(({ id, label, name }) => (
-    <FormInput
-      classes={inputClasses}
-      control={control}
-      key={id}
-      label={label}
-      name={name}
-      placeholder={label}
-    />
-  ));
-
   return (
     <form
       className={styles.updateContainer}
@@ -79,7 +68,16 @@ const UpdateUserInfoForm: FC<Props> = ({ onSubmit, submitting }) => {
           status={(error as any).status}
         />
       ) : null}
-      {inputContainers}
+      {INPUT_CONTAINERS.map(({ id, label, name }) => (
+        <FormInput
+          classes={inputClasses}
+          control={control}
+          key={id}
+          label={label}
+          name={name}
+          placeholder={label}
+        />
+      ))}
       <ImageUpload
         classes={imageUploadClasses}
         control={control}

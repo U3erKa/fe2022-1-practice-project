@@ -32,10 +32,10 @@ export async function POST(req: NextRequest) {
     const data = await formData();
     const { number, cvc, expiry, price, contests } = Object.fromEntries(data);
     const parsedContests: __Contest[] = JSON.parse(contests as string);
-    const promiseArray = parsedContests.map((contest) =>
+    const promises = parsedContests.map((contest) =>
       ContestSchema.safeParseAsync(contest).then((res) => res.success),
     );
-    const results = await Promise.all(promiseArray);
+    const results = await Promise.all(promises);
     if (results.includes(false)) {
       throw new BadRequestError('Invalid contest creation data');
     }

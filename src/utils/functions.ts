@@ -6,8 +6,11 @@ import type { WithId } from 'types/_common';
  * Filters old items by id and appends new items. Returns new array
  */
 export function addNewItems<T extends WithId[]>(initial: T, items: T): T {
-  const newItemIds = items.map((item) => item.id);
-  const uniqueItems = initial.filter((item) => !newItemIds.includes(item.id));
+  const newItemIds: { [key: number]: boolean } = {};
+  for (const { id } of items) {
+    newItemIds[id] = true;
+  }
+  const uniqueItems = initial.filter((item) => !newItemIds[item.id]);
 
   return [...uniqueItems, ...items] as T;
 }

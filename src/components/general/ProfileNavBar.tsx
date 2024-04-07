@@ -23,20 +23,18 @@ const ProfileNavBar = ({ list, activeEvents }: Props) => {
     router.push(PAGE.LOGIN);
   };
 
-  const mapList = list.map(({ id, href, text }) => (
-    <li className={styles.navListItem} key={id}>
-      <Link href={href} style={{ textDecoration: 'none' }}>
-        <span className={styles.navListLinkText}>{text}</span>
-        {href === PAGE.EVENTS && !!activeEvents && (
-          <div className={styles.badge}>{activeEvents}</div>
-        )}
-      </Link>
-    </li>
-  ));
-
   return (
     <ul>
-      {mapList}
+      {list.map(({ id, href, text }) => (
+        <li className={styles.navListItem} key={id}>
+          <Link href={href} style={{ textDecoration: 'none' }}>
+            <span className={styles.navListLinkText}>{text}</span>
+            {href === PAGE.EVENTS && !!activeEvents && (
+              <div className={styles.badge}>{activeEvents}</div>
+            )}
+          </Link>
+        </li>
+      ))}
       <li className={styles.navListItem}>
         <button className={styles.navListBtn} onClick={logOut}>
           Logout

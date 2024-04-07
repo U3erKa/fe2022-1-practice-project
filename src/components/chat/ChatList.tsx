@@ -3,11 +3,22 @@ import Image from 'next/image';
 import { useDispatch, useSelector } from 'hooks';
 import { CatalogListContainer, CatalogListHeader } from 'components/catalog';
 import { DialogList } from 'components/dialog';
-import { dialogButtons } from 'constants/chat';
-import { CATALOG_PREVIEW_CHAT_MODE } from 'constants/general';
+import {
+  BLOCKED_PREVIEW_CHAT_MODE,
+  CATALOG_PREVIEW_CHAT_MODE,
+  FAVORITE_PREVIEW_CHAT_MODE,
+  NORMAL_PREVIEW_CHAT_MODE,
+} from 'constants/general';
 import { setPreviewChatMode } from 'store/slices/chatSlice';
 import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/ChatList.module.scss';
+
+export const DIALOG_BUTTONS = [
+  { id: 0, name: 'Normal', mode: NORMAL_PREVIEW_CHAT_MODE },
+  { id: 1, name: 'Favorite', mode: FAVORITE_PREVIEW_CHAT_MODE },
+  { id: 2, name: 'Blocked', mode: BLOCKED_PREVIEW_CHAT_MODE },
+  { id: 3, name: 'Catalog', mode: CATALOG_PREVIEW_CHAT_MODE },
+] as const;
 
 const ChatList = () => {
   const { chatMode, isShowChatsInCatalog, userId } = useSelector(
@@ -20,16 +31,6 @@ const ChatList = () => {
   );
   const dispatch = useDispatch();
 
-  const dialogs = dialogButtons.map(({ id, name, mode }) => (
-    <span
-      className={clsx(styles.button, chatMode === mode && styles.activeButton)}
-      key={id}
-      onClick={() => dispatch(setPreviewChatMode(mode))}
-    >
-      {name}
-    </span>
-  ));
-
   return (
     <div>
       {isShowChatsInCatalog ? (
@@ -39,7 +40,20 @@ const ChatList = () => {
           <div className={styles.chatHeader}>
             <Image alt="send Message" src={LogoIcon} />
           </div>
-          <div className={styles.buttonsContainer}>{dialogs}</div>
+          <div className={styles.buttonsContainer}>
+            {DIALOG_BUTTONS.map(({ id, name, mode }) => (
+              <span
+                className={clsx(
+                  styles.button,
+                  chatMode === mode && styles.activeButton,
+                )}
+                key={id}
+                onClick={() => dispatch(setPreviewChatMode(mode))}
+              >
+                {name}
+              </span>
+            ))}
+          </div>
         </>
       )}
       {chatMode === CATALOG_PREVIEW_CHAT_MODE ? (

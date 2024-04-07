@@ -17,16 +17,18 @@ export const CustomFilter: FC<Props> = ({
 }) => {
   const dispatch = useDispatch();
 
-  const filterButtons = buttons.map(({ name, filter }) => (
-    <div
-      className={filter === predicate ? styles.activeFilter : styles.filter}
-      key={name}
-      onClick={() => dispatch(filterAction(filter))}
-      {...props}
-    >
-      {name}
+  return (
+    <div className={styles.filterContainer}>
+      {buttons.map(({ name, filter }) => (
+        <div
+          className={filter === predicate ? styles.activeFilter : styles.filter}
+          key={name}
+          onClick={() => dispatch(filterAction(filter))}
+          {...props}
+        >
+          {name}
+        </div>
+      ))}
     </div>
-  ));
-
-  return <div className={styles.filterContainer}>{filterButtons}</div>;
+  );
 };

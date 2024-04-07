@@ -6,12 +6,6 @@ import HowContestsWorkImage2 from 'assets/howItWorks/howContestsWork2.svg';
 import styles from './styles/HowContestsWork.module.scss';
 
 export const HowContestsWork: FC = () => {
-  const howContestsWork = HOW_CONTESTS_WORK.map((listEntry) => (
-    <li className={styles.howToItem} key={listEntry}>
-      <p className={styles.text}>{listEntry}</p>
-    </li>
-  ));
-
   return (
     <article className={styles.container}>
       <section className={styles.headingContainer}>
@@ -25,7 +19,13 @@ export const HowContestsWork: FC = () => {
           <Image alt="how contests work icon" src={HowContestsWorkImage2} />
         </figure>
         <section className={styles.howToContainer}>
-          <ol className={styles.howTo}>{howContestsWork}</ol>
+          <ol className={styles.howTo}>
+            {HOW_CONTESTS_WORK.map((listEntry) => (
+              <li className={styles.howToItem} key={listEntry}>
+                <p className={styles.text}>{listEntry}</p>
+              </li>
+            ))}
+          </ol>
         </section>
       </section>
     </article>

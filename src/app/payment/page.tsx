@@ -32,15 +32,15 @@ const Payment = () => {
 
   const payMethod = useCallback(
     (values: Payment) => {
-      const submittedContests: any[] = Object.keys(contests).map((key) => ({
-        ...contests[key as keyof typeof contests],
+      const submittedContests = Object.keys(contests).map((key) => ({
+        ...contests[key as keyof typeof contests]!,
       }));
 
       const { number, expiry, cvc } = values;
       const formData = new FormData();
       for (const contest of submittedContests) {
-        formData.append('files', contest.file);
-        contest.haveFile = !!contest.file;
+        formData.append('files', contest.file!);
+        (contest as any).haveFile = !!contest.file;
       }
       formData.append('number', number);
       formData.append('expiry', expiry);

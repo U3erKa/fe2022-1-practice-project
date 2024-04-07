@@ -17,13 +17,6 @@ type Props2 = {
   readonly value: string;
 };
 
-const InfoBlock: FC<Props2> = ({ label, value }) => (
-  <p className={styles.infoBlock}>
-    <span className={styles.label}>{label}</span>
-    <span className={styles.info}>{value}</span>
-  </p>
-);
-
 const UserInfoData: FC<Props> = ({ userData }) => {
   const { firstName, lastName, displayName, email, role, balance } =
     userData ?? {};
@@ -34,16 +27,17 @@ const UserInfoData: FC<Props> = ({ userData }) => {
     { label: 'Display Name', value: displayName },
     { label: 'Email', value: email },
     { label: 'Role', value: role },
+    ...(role === CREATOR ? [{ label: 'Balance', value: `${balance}$` }] : []),
   ];
 
   return (
     <div className={styles.infoContainer}>
       {userInfo.map(({ label, value }) => (
-        <InfoBlock key={label} label={label} value={value!} />
+        <p key={label} className={styles.infoBlock}>
+          <span className={styles.label}>{label}</span>
+          <span className={styles.info}>{value}</span>
+        </p>
       ))}
-      {role === CREATOR && (
-        <InfoBlock label={'Balance'} value={`${balance}$`} />
-      )}
     </div>
   );
 };
