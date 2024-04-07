@@ -65,7 +65,7 @@ const CreateEvent = ({ forceUpdate }: Props) => {
         name="notify"
         optionsArray={NOTIFY_OPTIONS}
       />
-      <button className={styles.submit} type="submit">
+      <button className={styles.button} type="submit">
         Create event
       </button>
     </form>

@@ -62,8 +62,6 @@ $colorCyan: #28d2d0;
   font-weight: 500;
 }
 
-.submit {
-  @include button;
-
+.button {
   font-size: 1.15rem;
 }

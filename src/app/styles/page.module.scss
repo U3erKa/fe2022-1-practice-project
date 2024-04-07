@@ -381,8 +381,6 @@
 }
 
 .button {
-  @include button;
-
   cursor: pointer;
 
   display: flex;

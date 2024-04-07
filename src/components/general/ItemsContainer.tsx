@@ -34,7 +34,7 @@ const ItemsContainer: FC<Props> = ({
         </div>
       ) : items.length ? (
         <button
-          className={styles.loadMoreBtn}
+          className={styles.button}
           disabled={!items.length || !haveMore}
           onClick={onClick}
         >

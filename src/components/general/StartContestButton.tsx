@@ -13,7 +13,7 @@ const StartContestButton = () => {
 
   if (isFetching || role !== CUSTOMER) return null;
   return (
-    <Link className={styles.startContestBtn} href={PAGE.START_CONTEST}>
+    <Link className={styles.button} href={PAGE.START_CONTEST}>
       START CONTEST
     </Link>
   );
