@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useMemo,
-  type FC,
-  type JSX,
-  type MouseEvent,
-} from 'react';
+import { useCallback, useMemo, type FC, type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'hooks';
 import { DialogBox } from 'components/dialog';
 import {
@@ -86,66 +80,60 @@ const DialogList: FC<Props> = ({ userId, removeChat }) => {
     [dispatch],
   );
 
-  const renderPreview = useCallback(
-    (
+  const chatPreview = useMemo(() => {
+    const renderPreview = (
       filterFunc?:
         | typeof onlyBlockDialogs
         | typeof onlyChatsInCatalog
         | typeof onlyFavoriteDialogs,
-    ) => {
-      const arrayList: JSX.Element[] = [];
-      for (const chatPreview of messagesPreview) {
-        const { _id, interlocutor } = chatPreview;
-        if (!filterFunc || filterFunc(chatPreview as any, userId)) {
-          const dialogNode = (
-            <DialogBox
-              changeBlackList={changeBlackList}
-              changeFavorite={changeFavorite}
-              chatMode={chatMode}
-              chatPreview={chatPreview as any}
-              goToExpandedDialog={handleGoToExpandedDialog}
-              interlocutor={interlocutor}
-              key={_id}
-              userId={userId}
-              catalogOperation={
-                chatMode === CATALOG_PREVIEW_CHAT_MODE
-                  ? removeChat
-                  : changeShowCatalogCreation
-              }
-            />
-          );
-          arrayList.push(dialogNode);
-        }
-      }
-
-      return arrayList.length ? (
-        arrayList
-      ) : (
-        <span className={styles.notFound}>Not found</span>
+    ) =>
+      messagesPreview.map((chatPreview) =>
+        !filterFunc || filterFunc(chatPreview as any, userId) ? (
+          <DialogBox
+            changeBlackList={changeBlackList}
+            changeFavorite={changeFavorite}
+            chatMode={chatMode}
+            chatPreview={chatPreview as any}
+            goToExpandedDialog={handleGoToExpandedDialog}
+            interlocutor={chatPreview.interlocutor}
+            key={chatPreview._id}
+            userId={userId}
+            catalogOperation={
+              chatMode === CATALOG_PREVIEW_CHAT_MODE
+                ? removeChat
+                : changeShowCatalogCreation
+            }
+          />
+        ) : null,
       );
-    },
-    [
-      changeBlackList,
-      changeFavorite,
-      changeShowCatalogCreation,
-      chatMode,
-      handleGoToExpandedDialog,
-      messagesPreview,
-      removeChat,
-      userId,
-    ],
-  );
-
-  const chatPreview = useMemo(() => {
     if (isShowChatsInCatalog) return renderPreview(onlyChatsInCatalog);
     if (chatMode === FAVORITE_PREVIEW_CHAT_MODE)
       return renderPreview(onlyFavoriteDialogs);
     if (chatMode === BLOCKED_PREVIEW_CHAT_MODE)
       return renderPreview(onlyBlockDialogs);
     return renderPreview();
-  }, [chatMode, isShowChatsInCatalog, onlyChatsInCatalog, renderPreview]);
+  }, [
+    messagesPreview,
+    chatMode,
+    isShowChatsInCatalog,
+    onlyChatsInCatalog,
+    changeBlackList,
+    changeFavorite,
+    changeShowCatalogCreation,
+    handleGoToExpandedDialog,
+    removeChat,
+    userId,
+  ]);
 
-  return <div className={styles.previewContainer}>{chatPreview}</div>;
+  return (
+    <div className={styles.previewContainer}>
+      {chatPreview.length ? (
+        chatPreview
+      ) : (
+        <span className={styles.notFound}>Not found</span>
+      )}
+    </div>
+  );
 };
 
 export default DialogList;
