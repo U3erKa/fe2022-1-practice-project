@@ -1,38 +1,4 @@
 @import '../../styles/common';
-@mixin stepCard {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  max-inline-size: 540px;
-  margin: 90px 0 30px;
-
-  h3 {
-    margin-block-end: 20px;
-    font-size: 22px;
-    text-align: center;
-  }
-
-  p {
-    margin-block-end: 10px;
-    line-height: 25px;
-
-    svg {
-      align-self: flex-start;
-      margin: 5px 10px 0 0;
-      color: green;
-    }
-  }
-
-  span {
-    font-size: 18px;
-  }
-  @media screen and (width <= 1024px) {
-    margin: 90px 0 30px;
-    padding: 0 80px;
-  }
-}
 
 .container {
   display: flex;
@@ -113,20 +79,13 @@
   margin-block-end: 50px;
 }
 
-.step,
-.stepReverse {
-  padding: 40px 0;
-
-  div {
-    @include stepCard;
-  }
-}
-
 .step {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
+
+  padding: 40px 0;
   @media screen and (width <= 823px) {
     flex-direction: column;
     align-items: center;
@@ -139,6 +98,8 @@
   flex-flow: row wrap;
   align-items: flex-start;
   justify-content: space-around;
+
+  padding: 40px 0;
 
   div {
     display: flex;
@@ -196,16 +157,12 @@
   }
 }
 
-.whiteStep {
-  @include stepCard;
-}
-
 .greenStep {
-  @include stepCard;
-
   color: white;
 }
-@mixin underline {
+
+.blueUnderline,
+.whiteUnderline {
   position: relative;
 
   &::after {
@@ -221,22 +178,18 @@
   }
 }
 
-.blueUnderline {
-  @include underline;
-
-  &::after {
-    background: #455a89;
-  }
+.blueUnderline::after {
+  background: #455a89;
 }
 
-.whiteUnderline {
-  @include underline;
-
-  &::after {
-    background: white;
-  }
+.whiteUnderline::after {
+  background: white;
 }
-@mixin innerContainer {
+
+.greyContainer,
+.whiteContainer,
+.greenContainer,
+.blueContainer {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -244,13 +197,6 @@
 
   inline-size: 100%;
   padding: 40px 0 30px;
-}
-
-.greyContainer,
-.whiteContainer,
-.greenContainer,
-.blueContainer {
-  @include innerContainer;
 }
 
 .greyContainer {
@@ -298,6 +244,45 @@
     font-weight: 400;
     line-height: 25px;
     text-align: center;
+  }
+}
+
+.whiteStep,
+.greenStep,
+.step div,
+.stepReverse div {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  max-inline-size: 540px;
+  margin: 90px 0 30px;
+
+  h3 {
+    margin-block-end: 20px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  span {
+    font-size: 18px;
+  }
+
+  p {
+    margin-block-end: 10px;
+    line-height: 25px;
+
+    svg {
+      align-self: flex-start;
+      margin: 5px 10px 0 0;
+      color: green;
+    }
+  }
+
+  @media screen and (width <= 1024px) {
+    margin: 90px 0 30px;
+    padding: 0 80px;
   }
 }
 
