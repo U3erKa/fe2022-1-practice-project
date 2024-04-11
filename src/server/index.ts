@@ -9,7 +9,7 @@ import router from 'server/router';
 import ChatController from 'server/websocket/ChatController';
 import NotificationController from 'server/websocket/NotificationController';
 
-const PORT = +(process.env.PORT || 3000) + 1;
+const PORT = +(process.env.PORT ?? 3000) + 1;
 const app = express();
 
 app.use(cors());
@@ -24,6 +24,7 @@ app.use(((err, req, res, next) => {
 
 const server = http.createServer(app);
 server.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`WebSocket server is listening on port ${PORT}`);
 });
 

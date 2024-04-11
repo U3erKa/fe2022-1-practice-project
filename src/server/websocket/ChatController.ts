@@ -22,6 +22,7 @@ export type WebSocketMessage = {
 };
 
 class ChatController extends WebSocket {
+  // eslint-disable-next-line class-methods-use-this
   anotherSubscribes(socket: Socket) {
     socket
       .on(SOCKET_SUBSCRIBE_CHAT, (id: string | string[]) => {

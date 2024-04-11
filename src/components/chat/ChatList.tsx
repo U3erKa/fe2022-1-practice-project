@@ -13,7 +13,7 @@ import { setPreviewChatMode } from 'store/slices/chatSlice';
 import LogoIcon from 'assets/icons/logo.png';
 import styles from './styles/ChatList.module.scss';
 
-export const DIALOG_BUTTONS = [
+const DIALOG_BUTTONS = [
   { id: 0, name: 'Normal', mode: NORMAL_PREVIEW_CHAT_MODE },
   { id: 1, name: 'Favorite', mode: FAVORITE_PREVIEW_CHAT_MODE },
   { id: 2, name: 'Blocked', mode: BLOCKED_PREVIEW_CHAT_MODE },

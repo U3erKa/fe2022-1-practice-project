@@ -39,11 +39,11 @@ const SliderBar: FC<Props & SwiperProps> = ({ carouselType, ...props }) => (
     }}
     {...props}
   >
-    {carouselSlides({ carouselType })}
+    <CarouselSlides carouselType={carouselType} />
   </Swiper>
 );
 
-export const carouselSlides = ({ carouselType }: Props) => {
+export const CarouselSlides = ({ carouselType }: Props) => {
   switch (carouselType) {
     case MAIN_SLIDER: {
       return MAIN_SLIDER_IMAGES.map(({ id, ...props }) => (

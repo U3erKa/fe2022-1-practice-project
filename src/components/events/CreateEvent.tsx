@@ -7,7 +7,7 @@ import { createEvent } from 'store/slices/eventSlice';
 import { NewEventSchema, type NewEvent, type Notify } from 'utils/schemas';
 import styles from './styles/CreateEvent.module.scss';
 
-export const defaultValues = {
+const defaultValues = {
   date: '',
   name: '',
   notify: NOTIFY_OPTIONS[0] as Notify,

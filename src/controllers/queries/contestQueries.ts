@@ -94,7 +94,7 @@ END`),
     transaction,
   );
   await updateUser(
-    { balance: sequelize.literal('balance + ' + finishedContest.prize) },
+    { balance: sequelize.literal(`balance + ${finishedContest.prize}`) },
     creatorId,
     transaction,
   );
