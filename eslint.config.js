@@ -37,7 +37,6 @@ export default tseslint.config(
     },
     // @ts-expect-error
     rules: {
-      // @ts-expect-error
       ...overrideRulesSeverity(reactPlugin.configs.recommended.rules),
       ...reactPlugin.configs['jsx-runtime'].rules,
       'react/function-component-definition': [
@@ -223,7 +222,6 @@ export default tseslint.config(
       'prefer-named-capture-group': 'warn',
       'prefer-promise-reject-errors': ['warn', { allowEmptyReject: true }],
       'require-atomic-updates': ['warn', { allowProperties: true }],
-      'require-await': 'warn',
       // "sort-imports": [
       //   "warn",
       //   {
