@@ -33,7 +33,7 @@ const UserInfoData: FC<Props> = ({ userData }) => {
   return (
     <div className={styles.infoContainer}>
       {userInfo.map(({ label, value }) => (
-        <p key={label} className={styles.infoBlock}>
+        <p className={styles.infoBlock} key={label}>
           <span className={styles.label}>{label}</span>
           <span className={styles.info}>{value}</span>
         </p>

@@ -23,9 +23,9 @@ app.use(((err, req, res, next) => {
 }) as ErrorRequestHandler);
 
 const server = http.createServer(app);
-server.listen(PORT, () =>
-  console.log(`WebSocket server is listening on port ${PORT}`),
-);
+server.listen(PORT, () => {
+  console.log(`WebSocket server is listening on port ${PORT}`);
+});
 
 const io = new Server(server, {
   cors: { origin: '*' },

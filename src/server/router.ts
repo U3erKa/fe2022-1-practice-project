@@ -37,7 +37,8 @@ router.route('/changeMark').post(async (req, res, next) => {
       body: { creatorId },
     } = req;
     if (role !== CUSTOMER) {
-      return next(new RightsError('This page is only for customers'));
+      next(new RightsError('This page is only for customers'));
+      return;
     }
     notificationController.emitChangeMark(creatorId);
     res.end();

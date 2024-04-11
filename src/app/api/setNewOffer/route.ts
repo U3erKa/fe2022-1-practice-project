@@ -46,10 +46,10 @@ export async function POST(req: NextRequest) {
     };
 
     if (contestType === LOGO_CONTEST) {
-      const fileData = await uploadFile(offerData as File);
+      const fileData = await uploadFile(offerData);
       Object.assign(obj, fileData);
     } else {
-      Object.assign(obj, { text: offerData as string });
+      Object.assign(obj, { text: offerData });
     }
 
     const { userId, contestId: _contestId, ...offer } = await createOffer(obj);

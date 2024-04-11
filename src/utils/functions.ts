@@ -6,7 +6,7 @@ import type { WithId } from 'types/_common';
  * Filters old items by id and appends new items. Returns new array
  */
 export function addNewItems<T extends WithId[]>(initial: T, items: T): T {
-  const newItemIds: { [key: number]: boolean } = {};
+  const newItemIds: Record<number, boolean> = {};
   for (const { id } of items) {
     newItemIds[id] = true;
   }

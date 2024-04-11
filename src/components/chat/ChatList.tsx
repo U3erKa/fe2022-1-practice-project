@@ -43,11 +43,11 @@ const ChatList = () => {
           <div className={styles.buttonsContainer}>
             {DIALOG_BUTTONS.map(({ id, name, mode }) => (
               <span
+                key={id}
                 className={clsx(
                   styles.button,
                   chatMode === mode && styles.activeButton,
                 )}
-                key={id}
                 onClick={() => dispatch(setPreviewChatMode(mode))}
               >
                 {name}

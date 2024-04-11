@@ -1,5 +1,7 @@
 :root {
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   color: rgb(255 255 255 / 87%);
   text-size-adjust: 100%;
@@ -8,8 +10,6 @@
   color-scheme: light dark;
   background-color: #242424;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
 }
 
