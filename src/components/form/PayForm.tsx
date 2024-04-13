@@ -1,3 +1,5 @@
+'use client';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { Replacement } from '@react-input/mask';
 import { usePathname, useRouter } from 'next/navigation';
