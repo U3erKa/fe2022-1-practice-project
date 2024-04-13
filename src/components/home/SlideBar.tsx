@@ -22,56 +22,60 @@ type Props = {
     | typeof MAIN_SLIDER;
 };
 
-const SliderBar: FC<Props & SwiperProps> = ({ carouselType, ...props }) => (
-  <Swiper
-    loop
-    className={styles.carousel}
-    modules={[Autoplay]}
-    slidesPerView={1}
-    spaceBetween={10}
-    autoplay={{
-      delay: 3000,
-      pauseOnMouseEnter: true,
-    }}
-    breakpoints={{
-      512: { slidesPerView: 2, spaceBetween: 20 },
-      1024: { slidesPerView: 3, spaceBetween: 30 },
-    }}
-    {...props}
-  >
-    <CarouselSlides carouselType={carouselType} />
-  </Swiper>
-);
-
-export const CarouselSlides = ({ carouselType }: Props) => {
+const SliderBar: FC<Props & SwiperProps> = ({ carouselType, ...props }) => {
+  let slides;
   switch (carouselType) {
     case MAIN_SLIDER: {
-      return MAIN_SLIDER_IMAGES.map(({ id, ...props }) => (
+      slides = MAIN_SLIDER_IMAGES.map(({ id, ...props }) => (
         <SwiperSlide className={styles.carouselCell} key={id}>
           <Image alt="slide" {...props} />
         </SwiperSlide>
       ));
+      break;
     }
     case EXAMPLE_SLIDER: {
-      return EXAMPLE_SLIDER_IMAGES.map(({ text, ...props }) => (
+      slides = EXAMPLE_SLIDER_IMAGES.map(({ text, ...props }) => (
         <SwiperSlide className={styles.exampleCell} key={text}>
           <Image alt="slide" {...props} />
           <p>{text}</p>
         </SwiperSlide>
       ));
+      break;
     }
     case FEEDBACK_SLIDER: {
-      return FEEDBACK_SLIDER_IMAGES.map(({ feedback, name, ...props }) => (
+      slides = FEEDBACK_SLIDER_IMAGES.map(({ feedback, name, ...props }) => (
         <SwiperSlide className={styles.feedbackCell} key={name}>
           <Image alt="slide" {...props} />
           <p>{feedback}</p>
           <span>{name}</span>
         </SwiperSlide>
       ));
+      break;
     }
     default:
       return null;
   }
+
+  return (
+    <Swiper
+      loop
+      className={styles.carousel}
+      modules={[Autoplay]}
+      slidesPerView={1}
+      spaceBetween={10}
+      autoplay={{
+        delay: 3000,
+        pauseOnMouseEnter: true,
+      }}
+      breakpoints={{
+        512: { slidesPerView: 2, spaceBetween: 20 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
+      }}
+      {...props}
+    >
+      {slides}
+    </Swiper>
+  );
 };
 
 export default SliderBar;
