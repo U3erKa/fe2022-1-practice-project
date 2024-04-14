@@ -136,7 +136,7 @@ export const PAGE = {
 
 export const API_ROUTE = '/api';
 export const BASE_URL = `http://${serverIP}:${serverPort}${API_ROUTE}` as const;
-export const { NEXT_PUBLIC_WS_SERVER_URL } = process.env;
+export const { NEXT_PUBLIC_WS_SERVER_URL = 'http://localhost:3001' } = process.env;
 
 export const ROUTE = {
   ADD_NEW_CHAT_TO_CATALOG: '/addNewChatToCatalog',
