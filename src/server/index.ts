@@ -6,8 +6,7 @@ import cors from 'cors';
 import express, { type ErrorRequestHandler } from 'express';
 import { saveErrorToLog } from 'logger';
 import router from 'server/router';
-import ChatController from 'server/websocket/ChatController';
-import NotificationController from 'server/websocket/NotificationController';
+import { ChatController, NotificationController } from 'server/WebSocket';
 
 const PORT = +(process.env.PORT ?? 3000) + 1;
 const app = express();
