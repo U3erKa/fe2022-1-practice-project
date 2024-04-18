@@ -1,20 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" style="enable-background:new 0 0 120 120;" xml:space="preserve" class="injected-svg js-svg-injector" data-parent="#icon114">
-<style type="text/css">
-	.icon-27-0{fill:none;stroke:#377DFF;}
-	.icon-27-1{fill:none;stroke:#BDC5D1;}
-	.icon-27-2{fill:#BDC5D1;stroke:#BDC5D1;}
-	.icon-27-3{fill:#377DFF;stroke:#377DFF;}
-	.icon-27-4{fill:#FFFFFF;}
-</style>
-<rect x="45" y="98" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 119.9994 207.4113)" class="icon-27-0 fill-none stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="30.1" height="11.4"></rect>
-<polyline class="icon-27-1 fill-none stroke-gray-400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="82.9,116.1 82.9,91.3 37.1,91.3 37.1,116.1 "></polyline>
-<line class="icon-27-0 fill-none stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="96.3" y1="116.5" x2="23.7" y2="116.5"></line>
-<polygon class="icon-27-2 fill-gray-400 stroke-gray-400" opacity=".5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="65,22 70.3,32.9 82.3,34.6 73.6,43 75.7,55 65,49.3 54.3,55 56.3,43 47.7,34.6 59.6,32.9 "></polygon>
-<polygon class="icon-27-3 fill-primary stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="60,17.1 65.3,27.9 77.3,29.7 68.7,38.1 70.7,50 60,44.4 49.3,50 51.3,38.1 42.7,29.7 54.7,27.9 "></polygon>
-<polygon class="icon-27-4 fill-white" points="60,26.3 62.4,31.1 67.7,31.8 63.8,35.5 64.7,40.8 60,38.3 55.3,40.8 56.2,35.5 52.3,31.8 57.6,31.1 "></polygon>
-<path class="icon-27-0 fill-none stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M41.8,58.9c0.6,1,1.4,2.1,2.3,3.1"></path>
-<path class="icon-27-1 fill-none stroke-gray-400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M53.9,91.2v-1.9c0-5.5-2.6-10.6-7-13.9C36,67.1,24.7,53.6,24.7,32V3.5H94L93.9,32c0,18.4-10.8,35.4-21.9,43.5  c-4.5,3.3-7.2,8.5-7.2,14.1v1.6"></path>
-<path class="icon-27-1 fill-none stroke-gray-400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M30.8,57.4c-20.3,0-29.6-16.8-29.6-37.4v-4.5c0-1.9,1.1-3.5,2.5-3.5h21"></path>
-<path class="icon-27-1 fill-none stroke-gray-400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M87.5,57.4c21.7,0,31.3-16.8,31.3-37.4v-4.5c0-1.9-1.1-3.5-2.5-3.5h-22"></path>
-<path class="icon-27-0 fill-none stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M33.6,32.2c0.3,6.6,1.6,13.2,4.1,19.1"></path>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" class="injected-svg js-svg-injector" data-parent="#icon114" viewBox="0 0 120 120">
+  <style>
+    .icon-27-0{fill:none;stroke:#377dff}
+    .icon-27-1{fill:none;stroke:#bdc5d1}
+  </style>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M75 109.411H44.9v-11.4H75z" class="icon-27-0 fill-none stroke-primary"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M82.9 116.1V91.3H37.1v24.8" class="icon-27-1 fill-none stroke-gray-400"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M96.3 116.5H23.7" class="icon-27-0 fill-none stroke-primary"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="m65 22 5.3 10.9 12 1.7-8.7 8.4 2.1 12L65 49.3 54.3 55l2-12-8.6-8.4 11.9-1.7z" class="fill-gray-400 stroke-gray-400" opacity=".5" style="fill:#bdc5d1;stroke:#bdc5d1"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="m60 17.1 5.3 10.8 12 1.8-8.6 8.4 2 11.9L60 44.4 49.3 50l2-11.9-8.6-8.4 12-1.8z" class="fill-primary stroke-primary" style="fill:#377dff;stroke:#377dff"/>
+  <path d="m60 26.3 2.4 4.8 5.3.7-3.9 3.7.9 5.3-4.7-2.5-4.7 2.5.9-5.3-3.9-3.7 5.3-.7z" class="fill-white" style="fill:#fff"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M41.8 58.9c.6 1 1.4 2.1 2.3 3.1" class="icon-27-0 fill-none stroke-primary"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M53.9 91.2v-1.9c0-5.5-2.6-10.6-7-13.9C36 67.1 24.7 53.6 24.7 32V3.5H94L93.9 32c0 18.4-10.8 35.4-21.9 43.5-4.5 3.3-7.2 8.5-7.2 14.1v1.6" class="icon-27-1 fill-none stroke-gray-400"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M30.8 57.4C10.5 57.4 1.2 40.6 1.2 20v-4.5c0-1.9 1.1-3.5 2.5-3.5h21m62.8 45.4c21.7 0 31.3-16.8 31.3-37.4v-4.5c0-1.9-1.1-3.5-2.5-3.5h-22" class="icon-27-1 fill-none stroke-gray-400"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M33.6 32.2c.3 6.6 1.6 13.2 4.1 19.1" class="icon-27-0 fill-none stroke-primary"/>
 </svg>
