@@ -42,8 +42,8 @@ router.route('/changeMark').post(async (req, res, next) => {
     }
     notificationController.emitChangeMark(creatorId);
     res.end();
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -55,8 +55,8 @@ router.route('/newMessage').post(async (req, res, next) => {
 
     chatController.emitNewMessage(recipient, message);
     res.end();
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -67,8 +67,9 @@ router.route('/blackList').post(async (req, res, next) => {
     } = req;
 
     chatController.emitChangeBlockStatus(recipient, message);
-  } catch (err) {
-    res.send(err);
+    res.end();
+  } catch (error) {
+    next(error);
   }
 });
 
