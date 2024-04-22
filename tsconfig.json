@@ -17,6 +17,7 @@
     "verbatimModuleSyntax": true,
     "jsx": "preserve",
     "incremental": true,
+    "noErrorTruncation": false,
     "plugins": [{ "name": "next" }],
     "baseUrl": "src",
     "paths": {
