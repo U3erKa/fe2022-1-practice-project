@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, FC } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import {
   useController,
   type FieldValues,
@@ -20,7 +20,7 @@ const AgreeTermOfServiceInput = <T extends FieldValues>({
 }: Props<T>) => {
   const {
     field,
-    fieldState: { error, isTouched },
+    fieldState: { error },
   } = useController({ name, control });
 
   return (
@@ -34,7 +34,7 @@ const AgreeTermOfServiceInput = <T extends FieldValues>({
           </a>
         </label>
       </div>
-      {isTouched && error?.message ? (
+      {error?.message ? (
         <span className={classes.warning}>{error.message}</span>
       ) : null}
     </div>
