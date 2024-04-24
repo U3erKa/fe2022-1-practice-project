@@ -1,6 +1,6 @@
 import { RightsError } from 'errors';
 import express from 'express';
-import { chatController, notificationController } from 'server';
+import { chatController, notificationController } from '.';
 import { CUSTOMER } from 'constants/general';
 import { verifyAccessToken, type TokenData } from 'services/jwtService';
 import { checkAuthorization } from 'utils/checkAuthorization';
