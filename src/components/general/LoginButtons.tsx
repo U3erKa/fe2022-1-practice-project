@@ -13,19 +13,14 @@ import SpinnerLoader from './Spinner';
 import styles from './styles/LoginButtons.module.scss';
 
 const LoginButtons = () => {
-  const { avatar, displayName, events, isFetching } = useSelector(
-    ({ userStore, events }) => {
-      const { isFetching, data: user } = userStore;
-      const { events: _events } = events;
-      const { avatar, displayName } = user ?? {};
-      return { avatar, displayName, isFetching, events: _events };
-    },
-  );
-  const currentDate = Date.now();
-  let activeEvents = 0;
+  const { user, events, isFetching } = useSelector(({ userStore, events }) => {
+    const { isFetching, data: user } = userStore;
+    const { events: _events } = events;
+    return { user, isFetching, events: _events };
+  });
 
   if (isFetching) return <SpinnerLoader />;
-  if (!displayName) {
+  if (!user) {
     return (
       <>
         <Link href={PAGE.LOGIN} style={{ textDecoration: 'none' }}>
@@ -37,6 +32,10 @@ const LoginButtons = () => {
       </>
     );
   }
+
+  const { avatar, displayName } = user;
+  const currentDate = Date.now();
+  let activeEvents = 0;
 
   for (const { date, notify } of events) {
     if (notify === 'never') continue;
