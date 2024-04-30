@@ -10,10 +10,10 @@ import { refresh } from 'store/slices/userSlice';
 import { Spinner } from '.';
 
 const Toast = ({ children }: React.PropsWithChildren) => {
-  const { isFetching, user, error } = useSelector(({ userStore, events }) => {
-    const { data: user, isFetching: isFetchingUsers, error } = userStore;
+  const { isFetching, user } = useSelector(({ userStore, events }) => {
+    const { data: user, isFetching: isFetchingUsers } = userStore;
     const { isFetching: isFetchingEvents } = events;
-    return { error, isFetching: isFetchingUsers || isFetchingEvents, user };
+    return { isFetching: isFetchingUsers || isFetchingEvents, user };
   });
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const Toast = ({ children }: React.PropsWithChildren) => {
     }
   }, [dispatch, user]);
 
-  if (isFetching || (!user && !error)) return <Spinner />;
+  if (isFetching) return <Spinner />;
   return (
     <>
       <ToastContainer
